@@ -4,3 +4,20 @@ ja:
       memo: 遷移テスト
     subpage:
       top: 戻る
+  users:
+    sessions:
+      new:
+        title: ログイン
+    registrations:
+      new:
+        title: 新規登録
+        name: 名前
+        email: メールアドレス
+        password: パスワード：
+        characters: 文字です
+        password_confirmation: パスワード確認用
+        sign_in: 登録する
+    shared:
+      links:
+        login: ログイン画面へ
+        google_login: Googleでログイン

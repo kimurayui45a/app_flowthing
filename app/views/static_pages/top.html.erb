@@ -1,2 +1,8 @@
-<h1>StaticPages#top</h1>
-<p>Find me in app/views/static_pages/top.html.erb</p>
+<div class='text-center pt-5 buttonitem'>
+
+  <% if user_signed_in? %>
+    <p>ようこそ！あなたのメールアドレスです： <strong><%= current_user.email %></strong></p>
+  <% end %>
+
+  <%= link_to 'Logout', logout_path,  data: { turbo_method: :delete }, class: "btn btn-outline-primary" %>
+</div>

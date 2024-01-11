@@ -18,7 +18,7 @@ services:
     volumes:
       - .:/app_flowthing
       - bundle_data:/usr/local/bundle:cached
-      - node_modules:/app/node_modules
+      - node_modules:/app_flowthing/node_modules
     environment:
       TZ: Asia/Tokyo
       SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
