@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  username: postgres
+  password: password
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: app_flowthing_development
+
+test:
+  <<: *default
+  database: app_flowthing_test
+
+production:
+  <<: *default
+  database: app_flowthing_production
+  username: app_flowthing
+  password: <%= ENV["app_flowthing_DATABASE_PASSWORD"] %>
