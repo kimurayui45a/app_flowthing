@@ -1,8 +1,71 @@
-<div class='text-center pt-5 buttonitem'>
+<div class='text-center pt-5 buttonitem fabric'>
 
   <% if user_signed_in? %>
     <p>ようこそ！あなたのメールアドレスです： <strong><%= current_user.email %></strong></p>
   <% end %>
+
+  <div id="colorPalette">
+    <div class="colorOption" style="background-color: red;"></div>
+    <div class="colorOption" style="background-color: green;"></div>
+    <div class="colorOption" style="background-color: blue;"></div>
+    <div class="colorOption" style="background-color: yellow;"></div>
+    <div class="colorOption" style="background-color: orange;"></div>
+  </div>
+  <div id="selectedColor" style="width: 100px; height: 100px; border: 1px solid black;"></div>
+
+  <!-- 標準のカラーピッカー -->
+  <input type="color" id="customColorPicker">
+
+  <!-- 選択された色を表示する要素 -->
+  <div id="selectedColor2" style="width: 100px; height: 100px; border: 1px solid black;"></div>
+
+
+
+  <div class="canvas-container-parent">
+    <canvas id="fabricCanvas6" class="myCanvas" width="500" height="250"></canvas><br>
+  </div>
+  <div class="canvas-container-parent">
+    <label>Choose Brush Color:</label>
+    <input type="color" id="brushColorPicker" value="#000000"><br>
+  </div>
+
+  <div class="canvas-container-parent">
+    <div class="d-flex">
+      <div class="pr-2">
+        <div id="brushSizePreview" style="border: 1px solid black; width: 50px; height: 50px; border-radius: 50%;"></div>
+        <span id="brushSizeValue">5</span>px
+        <br>
+        <label>Brush Size (0.1 - 20):</label>
+        <input type="range" id="brushSizePicker" min="0.1" max="20" step="0.1" value="5">
+      </div>
+      <div>
+        <div id="eraserSizePreview" style="border: 1px solid black; width: 50px; height: 50px; border-radius: 50%;"></div>
+        <span id="eraserSizeValue">5</span>px
+        <br>
+        <label>Eraser Size (0.1 - 30):</label>
+        <input type="range" id="eraserSizePicker" min="0.1" max="30" step="0.1" value="5">
+      </div>
+    </div>
+  </div>
+
+  <div class="canvas-container-parent">
+    <div class="d-flex">
+      <div class="pr-2">
+        <button id="usePenTool">Use Pen Tool</button>
+      </div>
+      <div class="pr-2">
+        <button id="useEraserTool">Use Eraser Tool</button>
+      </div>
+      <div>
+        <button id="useRectangleTool">Draw Rectangle</button>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <canvas id="canvas3" width="600" height="400"></canvas><br>
+
 
   <%= link_to 'Logout', logout_path,  data: { turbo_method: :delete }, class: "btn btn-outline-primary" %>
 </div>

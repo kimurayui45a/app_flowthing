@@ -314,6 +314,7 @@ ul {
 
 
 
+
 /* 試作部品
 ------------------------------------------ */
 
@@ -352,4 +353,16 @@ ul {
   border-radius: 4px; /* ボーダーの角を丸くする */
 }
 
+
+#colorPalette {
+  margin-bottom: 10px;
+}
+
+.colorOption {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid black;
+}
 
