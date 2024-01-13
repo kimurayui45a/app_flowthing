@@ -16,7 +16,7 @@ ja:
         password: パスワード：
         characters: 文字です
         password_confirmation: パスワード確認用
-        sign_in: 登録する
+        sign_up: 登録する
     shared:
       links:
         login: ログイン画面へ

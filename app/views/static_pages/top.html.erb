@@ -4,29 +4,29 @@
     <p>ようこそ！あなたのメールアドレスです： <strong><%= current_user.email %></strong></p>
   <% end %>
 
-  <div id="colorPalette">
-    <div class="colorOption" style="background-color: red;"></div>
-    <div class="colorOption" style="background-color: green;"></div>
-    <div class="colorOption" style="background-color: blue;"></div>
-    <div class="colorOption" style="background-color: yellow;"></div>
-    <div class="colorOption" style="background-color: orange;"></div>
-  </div>
-  <div id="selectedColor" style="width: 100px; height: 100px; border: 1px solid black;"></div>
-
-  <!-- 標準のカラーピッカー -->
-  <input type="color" id="customColorPicker">
-
-  <!-- 選択された色を表示する要素 -->
-  <div id="selectedColor2" style="width: 100px; height: 100px; border: 1px solid black;"></div>
-
-
 
   <div class="canvas-container-parent">
     <canvas id="fabricCanvas6" class="myCanvas" width="500" height="250"></canvas><br>
   </div>
+
   <div class="canvas-container-parent">
     <label>Choose Brush Color:</label>
-    <input type="color" id="brushColorPicker" value="#000000"><br>
+    <div id="picker"></div>
+
+<div class="palletBox specialColorBox" id="blackBox"></div>
+<div class="palletBox specialColorBox" id="whiteBox"></div>
+
+<div class="palletBox" id="palletbox1"></div>
+<div class="palletBox" id="palletbox2"></div>
+<div class="palletBox" id="palletbox3"></div>
+<div class="palletBox" id="palletbox4"></div>
+<div class="palletBox" id="palletbox5"></div>
+<div class="palletBox" id="palletbox6"></div>
+
+<button id="selectColorMode"><i class="bi bi-palette"></i></button>
+<button id="dropperColorMode"><i class="bi bi-eyedropper"></i></button>
+<button id="deleteColorMode"><i class="bi bi-trash3-fill"></i></button>
+
   </div>
 
   <div class="canvas-container-parent">
@@ -51,10 +51,10 @@
   <div class="canvas-container-parent">
     <div class="d-flex">
       <div class="pr-2">
-        <button id="usePenTool">Use Pen Tool</button>
+        <button id="usePenTool"><i class="bi bi-pencil-fill"></i></button>
       </div>
       <div class="pr-2">
-        <button id="useEraserTool">Use Eraser Tool</button>
+        <button id="useEraserTool"><i class="bi bi-eraser-fill"></i></button>
       </div>
       <div>
         <button id="useRectangleTool">Draw Rectangle</button>
@@ -62,9 +62,42 @@
     </div>
   </div>
 
-  
 
-  <canvas id="canvas3" width="600" height="400"></canvas><br>
+
+
+
+
+<div class="user-colorbox">
+  <div>
+    <div id="userselectColor"></div>
+  </div>
+  <div>
+    <input type="color" id="usercolorPalette">
+  </div>
+  <div>
+    <div class="usericonColor" style="background-color: red;"></div>
+    <div class="usericonColor" style="background-color: green;"></div>
+    <div class="usericonColor" style="background-color: blue;"></div>
+    <div class="usericonColor" style="background-color: yellow;"></div>
+    <div class="usericonColor" style="background-color: yellow;"></div>
+  </div>
+  <div>
+    <div class="usericonColor" style="background-color: green;"></div>
+    <div class="usericonColor" style="background-color: blue;"></div>
+    <div class="usericonColor" style="background-color: yellow;"></div>
+    <div class="usericonColor" style="background-color: #C3E5DB;"></div>
+    <div class="usericonColor" style="background-color: yellow;"></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 
   <%= link_to 'Logout', logout_path,  data: { turbo_method: :delete }, class: "btn btn-outline-primary" %>

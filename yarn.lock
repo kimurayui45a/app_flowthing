@@ -135,6 +135,19 @@
   resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-8.0.0-beta.2.tgz#f9d01a0ca788ed5bf78a1746e06c3244af2b7535"
   integrity sha512-Ewdz4m+rlBXiqU8hXC9qjrA6/gaYlwUWbab8M/+/PW3KEoZ36pqvLt4l7wEXELPk699bRXVFS08mt3icJ0idfg==
 
+"@irojs/iro-core@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@irojs/iro-core/-/iro-core-1.2.1.tgz#ab45cf0899717fae785ef9661b82bb6f78cd3748"
+  integrity sha512-p2OvsBSSmidsDsTSkID6jEyXDF7lcyxPrkh3qBzasBZFpjkYd6kZ3yMWai3MlAaQ3F7li/Et7rSJVV09Fpei+A==
+
+"@jaames/iro@^5.5.2":
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/@jaames/iro/-/iro-5.5.2.tgz#15301c19080b985aede06c5f07867aa20d06e679"
+  integrity sha512-Fbi5U4Vdkw6UsF+R3oMlPONqkvUDMkwzh+mX718gQsDFt3+1r1jvGsrfCbedmXAAy0WsjDHOrefK0BkDk99TQg==
+  dependencies:
+    "@irojs/iro-core" "^1.2.1"
+    preact "^10.0.0"
+
 "@mapbox/node-pre-gyp@^1.0.0":
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.11.tgz#417db42b7f5323d79e93b34a6d7a2a12c0df43fa"
@@ -1081,6 +1094,11 @@ postcss@^8.4.33:
     nanoid "^3.3.7"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
+
+preact@^10.0.0:
+  version "10.19.3"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.19.3.tgz#7a7107ed2598a60676c943709ea3efb8aaafa899"
+  integrity sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==
 
 pretty-hrtime@^1.0.3:
   version "1.0.3"
