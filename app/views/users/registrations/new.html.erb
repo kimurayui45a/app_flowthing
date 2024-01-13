@@ -1,6 +1,6 @@
 <% content_for(:title, t('.title')) %>
 
-<div class="container">
+<div class="signup-container">
   <div>
     <div>
       <h1><%= t('.title') %></h1>
@@ -27,7 +27,7 @@
 
         <div class="top-margin">
           <div>
-            <%= f.submit t('.sign_in'), class: "sign-btn default-button red-button red-button:hover red-button:focus" %>
+            <%= f.submit t('.sign_up'), class: "sign-btn default-button red-button red-button:hover red-button:focus" %>
           </div>
           <div class="top-margin">
             <%= render "users/shared/links" %>
