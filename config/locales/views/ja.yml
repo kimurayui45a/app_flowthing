@@ -21,3 +21,33 @@ ja:
       links:
         login: ログイン画面へ
         google_login: Googleでログイン
+  profiles:
+    new:
+      title: プロフィール登録画面
+    show:
+      title: プロフィール詳細
+    edit:
+      title: プロフィール編集
+    form:
+      color_code: カラーアイコン
+      image_icon: 画像
+      name: お名前(任意)
+      profile_text: プロフィール(任意)
+  defaults:
+    create: 作成
+    post: 投稿
+    search_word: 検索ワード
+    edit: 編集
+    show: 詳細
+    delete: 削除
+    delete_confirm: 削除しますか？
+    password_reset: パスワードリセット
+    require_login: ログインしてください
+    not_authorized: 権限がありません
+    unspecified: 指定なし
+    flash_message:
+      created: "ユーザーを作成しました"
+      not_created: "ユーザーを作成出来ませんでした"
+      updated: "ユーザー情報を更新しました"
+      not_updated: "ユーザー情報を更新出来ませんでした"
+      deleted: "ユーザー情報を削除しました"

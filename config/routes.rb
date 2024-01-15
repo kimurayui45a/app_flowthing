@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#top"
+  resources :profiles, only: %i[new create show edit update]
+  get 'static_pages/usersselect', to: 'static_pages#usersselect', as: 'usersselect'
+  get 'static_pages/newcontents', to: 'static_pages#newcontents', as: 'newcontents'
+  post 'static_pages/create_all', to: 'static_pages#create_all', as: 'create_all'
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',

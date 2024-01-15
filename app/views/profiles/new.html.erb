@@ -1,0 +1,7 @@
+<% content_for(:title, t('.title')) %>
+<div class="profile profile-container">
+  <div>
+    <h1 class="profile-title"><%= t('.title') %></h1>
+    <%= render 'form', profile: @profile %>
+  </div>
+</div>

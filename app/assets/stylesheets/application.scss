@@ -135,7 +135,7 @@ ul {
 }
 
 .t-text {
-  color: #ECC4BA;
+  color: #FBC8C3;
 }
 
 .nav-contents {
@@ -161,6 +161,14 @@ ul {
 
 
 /* ヘッダー・userドロップダウンボタン */
+.user-headericon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  object-fit: cover;
+}
+
 .user-dropdown {
   margin: 0 0 0 auto;
   position: relative;
@@ -227,12 +235,16 @@ ul {
   color: #507a75;
 }
 
+.bi-pencil-square {
+  color: #4b9184;
+  margin: 0px auto;
+}
 
+/* ヘッダー・roomドロップダウンボタン */
 .room-dropdown {
   margin: 0 0 0 auto;
   position: relative;
 }
-
 
 .room-dropdown-btn {
   background-color: transparent;
@@ -314,7 +326,6 @@ ul {
 
 
 
-
 /* 試作部品
 ------------------------------------------ */
 
@@ -379,22 +390,10 @@ ul {
 }
 
 
-.usericonColor {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  border-radius: 50%;
-}
+/* サインアップ
+------------------------------------------ */
 
-#userselectColor {
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 50%;
-  display: inline-block;
-}
-
+/* サインアップ画面 */
 .signup-container {
   position: relative;
   width: 100%;
@@ -402,16 +401,132 @@ ul {
   margin: 0px auto;
 }
 
-.user-colorbox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.signup-title {
+  text-align: center;
+  color: #7f7f7f;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  display: block;
+  font-style: normal;
 }
+
+
+/* カラーパレット・アイコン */
 
 // .user-colorbox > div {
 //   width: 100%; /* 必要に応じて調整 */
 //   text-align: center; /* 子要素を水平中央揃え */
 // }
 
+.user-iconselect {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0px auto;
+}
+
+.profile-title {
+  text-align: center;
+  color: #7f7f7f;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  display: block;
+  font-style: normal;
+  margin-top: 5rem;
+}
+
+
+.usercolor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.radio-colortext {
+  position: absolute;
+  left: 0;
+}
+
+.user-pickerbox {
+  margin-top: 1.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.user-picker {
+  width: 100px;
+  height: 50px;
+}
+
+.pickup-color {
+  margin-top: 0.5rem;
+}
+
+.usercolor-container-background {
+  width: 220px;
+  height: 200px;
+}
+
+.active-style {
+  padding: 1rem;
+  box-shadow: 0 0 8px 4px #a8bddd;
+  border-radius: 4px;
+}
+
+.disabled-input {
+  opacity: 0.5; /* 半透明にする */
+}
+
+.usericonColor {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0.1rem;
+}
+
+.usericonColor:hover {
+  box-shadow: 0 0 8px 3px #a8bddd;
+}
+
+
+#imagePreview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+}
+
+
+#colorPreview{
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block; 
+  margin: 0px auto;
+}
+
+
+/* プロフィール画面
+------------------------------------------ */
+
+/* ユーザープロフィールアイコン */
+.user-profileicon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+}
 

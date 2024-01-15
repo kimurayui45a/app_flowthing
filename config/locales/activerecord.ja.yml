@@ -1,2 +1,9 @@
 ja:
   activerecord:
+    errors:
+      models:
+        profile:
+          attributes:
+            base:
+              image_icon_or_color_code_must_be_present: "画像アイコンかカラーアイコンを登録してください"
+              image_icon_and_color_code_cannot_be_present: "画像アイコンかカラーアイコンはどちらか片方のみ登録してください"

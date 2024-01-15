@@ -1,0 +1,30 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-5">
+  <div class="row mb-3">
+    <h1><%= t('.title') %></h1>
+
+    <div>
+      <% if current_user && current_user.profile %>
+        <% profile = current_user.profile %>
+        <div>
+          <% if profile.image_icon.present? %>
+            <%= image_tag profile.image_icon.url, class: "user-profileicon" %>
+          <% elsif profile.color_code.present? %>
+            <div style="background-color: <%= profile.color_code %>;" class="user-profileicon"></div>
+          <% else %>
+            No
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div><%= @profile.name %></div>
+    <div><%= @profile.profile_text %></div>
+    <div>トップへ戻る</div>
+    <div>アイテムを増やす</div>
+    <%= link_to edit_profile_path(@profile) do %>
+      <i class="bi bi-pencil-fill"></i>
+    <% end %>
+
+    </div>
+  </div>

@@ -54,6 +54,8 @@ gem "bootsnap", require: false
 #追加したgem
 gem 'rails-i18n'
 
+gem 'carrierwave', '~> 3.0', '>= 3.0.5'
+
 #devise関連
 gem 'devise', '~> 4.9', '>= 4.9.3'
 

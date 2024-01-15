@@ -1,0 +1,20 @@
+class Profile < ApplicationRecord
+  validates :name, length: { maximum: 20 }
+  validates :profile_text, length: { maximum: 2_000 }
+  validate :image_icon_or_color_code_must_be_present
+
+  belongs_to :user
+  has_many :sub_user, dependent: :destroy
+
+  mount_uploader :image_icon, ImageUploader
+
+  private
+
+  def image_icon_or_color_code_must_be_present
+    if image_icon.blank? && color_code.blank?
+      errors.add(:base, :image_icon_or_color_code_must_be_present)
+    elsif image_icon.present? && color_code.present?
+      errors.add(:base, :image_icon_and_color_code_cannot_be_present)
+    end
+  end
+end
