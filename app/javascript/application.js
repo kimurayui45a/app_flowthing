@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
 import "./custom/header"
+import "./custom/profile"
 import { fabric } from 'fabric';
 import iro from "@jaames/iro";
 
@@ -238,14 +239,5 @@ document.addEventListener('click', function(event) {
 
 
 
-document.querySelectorAll('.usericonColor').forEach(function(element) {
-    element.addEventListener('click', function(e) {
-        var selectedColor = e.target.style.backgroundColor;
-        document.getElementById('userselectColor').style.backgroundColor = selectedColor;
-    });
-});
-document.getElementById('usercolorPalette').addEventListener('input', function(e) {
-  var selectedColor = e.target.value;
-  document.getElementById('userselectColor').style.backgroundColor = selectedColor;
-});
+
 

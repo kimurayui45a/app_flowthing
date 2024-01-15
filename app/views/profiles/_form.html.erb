@@ -1,0 +1,60 @@
+<div class="profile">
+<div id="imagePreview"></div>
+<div id="colorPreview"></div>
+  <%= form_with model: profile, multipart: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="user-iconselect">
+      <%= f.hidden_field :selected_option, id: "selected_option" %>
+      <div class="mb-3 usercolor-container-background" id="colorInput">
+        <div class="usercolor-container">
+          <div>
+            <div class="radio-colortext">
+              <input type="radio" name="inputType" value="color" id="selectColorCode" checked>
+              <%= f.label :color_code, t('profiles.form.color_code') %>
+            </div>
+            <div class="user-pickerbox">
+              <%= f.color_field :color_code, class: "form-control user-picker", id: "color_code" %>
+            </div>
+          </div>
+          <div class="pickup-color">
+            <div class="usericonColor" style="background-color: #F6D0EB;" data-color="#F6D0EB"></div>
+            <div class="usericonColor" style="background-color: #AEA5EC;" data-color="#AEA5EC"></div>
+            <div class="usericonColor" style="background-color: #7FA8EB;" data-color="#7FA8EB"></div>
+            <div class="usericonColor" style="background-color: #91D7E9;" data-color="#91D7E9"></div>
+            <div class="usericonColor" style="background-color: #C3E5DB;" data-color="#C3E5DB"></div>
+          </div>
+          <div class="pickup-color">
+            <div class="usericonColor" style="background-color: #B8F3B9;" data-color="#B8F3B9"></div>
+            <div class="usericonColor" style="background-color: #E2F2C5;" data-color="#E2F2C5"></div>
+            <div class="usericonColor" style="background-color: #F6E4C5;" data-color="#F6E4C5"></div>
+            <div class="usericonColor" style="background-color: #FBC8C3;" data-color="#FBC8C3"></div>
+            <div class="usericonColor" style="background-color: #F8A3B1;" data-color="#F8A3B1"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 disabled-input" id="imageInput">
+        <input type="radio" name="inputType" value="image" id="selectImage">
+        <%= f.label :image_icon, t('profiles.form.image_icon') %>
+        <%= f.file_field :image_icon, class: "form-control", accept: 'image/*', id: "image_icon", disabled: true %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :name, t('profiles.form.name') %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :profile_text, t('profiles.form.profile_text') %>
+      <%= f.text_area :profile_text, class: "form-control", row: 10, style: "height: 200px" %>
+    </div>
+
+    <%= f.submit nil, class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+
+

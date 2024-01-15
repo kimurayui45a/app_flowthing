@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_11_074729) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_15_052053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "image_icon"
+    t.string "color_code"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "profile_text"
+    t.string "selected_option"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "sub_users", force: :cascade do |t|
+    t.string "sub_image"
+    t.string "sub_color"
+    t.jsonb "sub_canvas"
+    t.string "sub_name"
+    t.text "sub_text"
+    t.string "icon_choice"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_sub_users_on_profile_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,4 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_11_074729) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "profiles", "users"
+  add_foreign_key "sub_users", "profiles"
 end
