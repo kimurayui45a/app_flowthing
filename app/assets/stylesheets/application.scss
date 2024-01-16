@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
 
 
@@ -325,71 +326,6 @@ ul {
 }
 
 
-
-/* 試作部品
------------------------------------------- */
-
-.try {
-  font-family: 'Dela Gothic One', sans-serif;
-  color: blue;
-}
-
-.myCanvas {
-  border-width: 2px;
-  border-style: solid;
-  border-color: green;
-  display: block; /* ブロックレベル要素として表示 */
-  margin: auto; /* 水平方向の自動マージンで中央揃え */
-}
-
-.canvas-container-parent {
-  display: flex;
-  justify-content: center; // 水平方向の中央揃え
-  align-items: center;     // 垂直方向の中央揃え
-  height: 100%;            // 親要素に十分な高さを確保（必要に応じて）
-}
-
-#user-icon {
-  width: 50px; /* アイコンのサイズを設定 */
-  height: 50px; /* アイコンのサイズを設定 */
-  border-radius: 50%; /* 丸く表示 */
-  object-fit: cover; /* 画像の比率を保ちつつ、要素に合わせて表示 */
-}
-
-
-#myDropdown {
-  width: 200px; /* 幅の指定 */
-  padding: 10px; /* パディング */
-  border: 1px solid #ccc; /* ボーダー */
-  border-radius: 4px; /* ボーダーの角を丸くする */
-}
-
-
-#colorPalette {
-  margin-bottom: 10px;
-}
-
-.colorOption {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  border: 1px solid black;
-}
-
-
-/* カラーパレット
------------------------------------------- */
-
-.palletBox {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  display: inline-block;
-  margin: 5px;
-}
-
-
 /* サインアップ
 ------------------------------------------ */
 
@@ -408,14 +344,6 @@ ul {
   display: block;
   font-style: normal;
 }
-
-
-/* カラーパレット・アイコン */
-
-// .user-colorbox > div {
-//   width: 100%; /* 必要に応じて調整 */
-//   text-align: center; /* 子要素を水平中央揃え */
-// }
 
 .user-iconselect {
   display: flex;
@@ -438,7 +366,6 @@ ul {
   font-style: normal;
   margin-top: 5rem;
 }
-
 
 .usercolor-container {
   display: flex;
@@ -528,5 +455,146 @@ ul {
   display: inline-block;
   margin: 0px auto;
   object-fit: cover;
+}
+
+/* アイコン描画パレット
+------------------------------------------ */
+
+/* ドロップゾーンのスタイル */
+.dropzone {
+  position: relative; /* 絶対位置指定された子要素を正しく配置するために必要 */
+  width: 100%;        /* 適切なサイズに設定 */
+  height: 600px;      /* 適切なサイズに設定 */
+  border: 2px dashed #aaa;
+  margin-top: 20px;
+}
+
+/* ドラッグ可能な要素のスタイル */
+#colorPalette {
+  position: absolute; /* ドラッグ時の位置調整のために必要 */
+  z-index: 1000;      /* 他の要素の上に表示 */
+  /* その他のスタイル（サイズ、背景色など） */
+  width: 250px;
+  height: 380px;
+  background-color: #777777;
+  border: 5px solid #4A4A4A;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  // cursor: grab;
+  top: 0px;
+  left: 50%;
+}
+
+/* ドラッグ中の要素のスタイル */
+#colorPalette:active {
+  cursor: grabbing;
+}
+
+/* パレット要素 */
+.pickertool {
+  margin-top: 8px;
+}
+
+.tool-title {
+  color: #ffffff;
+  background-color: #4A4A4A;
+  width: 250px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.palletBox {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.freepalletBox {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image:
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB),
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  background-color: #DDDDDD;
+}
+
+.icon-palletbox {
+  display: flex;          /* Flexboxを有効にする */
+  flex-direction: column; /* 子要素を縦方向に配置 */
+  align-items: center;    /* 子要素を水平方向の中央に配置 */
+  justify-content: center;/* 子要素を垂直方向の中央に配置 */       
+}
+
+.pallettool {
+  margin-top: 5px;
+}
+
+.pallettool-special {
+  margin-top: 5px;
+}
+
+#editMode {
+  background-color: white;
+  color: black;
+}
+
+button.selected {
+  border: 5px solid black;
+}
+
+
+
+/* 試作部品
+------------------------------------------ */
+
+.try {
+  font-family: 'Dela Gothic One', sans-serif;
+  color: blue;
+}
+
+.myCanvas {
+  border-width: 2px;
+  border-style: solid;
+  border-color: green;
+  display: block; /* ブロックレベル要素として表示 */
+  margin: auto; /* 水平方向の自動マージンで中央揃え */
+}
+
+.canvas-container-parent {
+  display: flex;
+  justify-content: center; // 水平方向の中央揃え
+  align-items: center;     // 垂直方向の中央揃え
+  height: 100%;            // 親要素に十分な高さを確保（必要に応じて）
+}
+
+#user-icon {
+  width: 50px; /* アイコンのサイズを設定 */
+  height: 50px; /* アイコンのサイズを設定 */
+  border-radius: 50%; /* 丸く表示 */
+  object-fit: cover; /* 画像の比率を保ちつつ、要素に合わせて表示 */
+}
+
+
+#myDropdown {
+  width: 200px; /* 幅の指定 */
+  padding: 10px; /* パディング */
+  border: 1px solid #ccc; /* ボーダー */
+  border-radius: 4px; /* ボーダーの角を丸くする */
+}
+
+
+#colorPalette {
+  margin-bottom: 10px;
+}
+
+.colorOption {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 1px solid black;
 }
 
