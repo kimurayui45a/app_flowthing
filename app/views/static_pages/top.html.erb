@@ -5,28 +5,68 @@
   <% end %>
 
 
-  <div class="canvas-container-parent">
-    <canvas id="fabricCanvas6" class="myCanvas" width="500" height="250"></canvas><br>
-  </div>
+  <div class="dropzone">
+    <div class="canvas-container-parent">
+      <canvas id="iconmakingCanvas" class="myCanvas" width="500" height="250"></canvas><br>
+    </div>
 
-  <div class="canvas-container-parent">
-    <label>Choose Brush Color:</label>
-    <div id="picker"></div>
-
-<div class="palletBox specialColorBox" id="blackBox"></div>
-<div class="palletBox specialColorBox" id="whiteBox"></div>
-
-<div class="palletBox" id="palletbox1"></div>
-<div class="palletBox" id="palletbox2"></div>
-<div class="palletBox" id="palletbox3"></div>
-<div class="palletBox" id="palletbox4"></div>
-<div class="palletBox" id="palletbox5"></div>
-<div class="palletBox" id="palletbox6"></div>
-
-<button id="selectColorMode"><i class="bi bi-palette"></i></button>
-<button id="dropperColorMode"><i class="bi bi-eyedropper"></i></button>
-<button id="deleteColorMode"><i class="bi bi-trash3-fill"></i></button>
-
+    <div class="draggable" id="colorPalette">
+      <div class="icon-palletbox">
+        <div class="tool-title"><span>ツール</span></div>
+        <div id="picker" class="pickertool"></div>
+        <div class="pallettool">
+          <button id="selectColorMode">
+            <i class="bi bi-palette"></i>
+          </button>
+          <button id="dropperColorMode">
+            <i class="bi bi-eyedropper"></i>
+          </button>
+          <button id="deleteColorMode">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+        </div>
+        <div class="pallettool-special">
+          <div class="palletBox specialColorBox" id="blackBox"></div>
+          <div class="palletBox specialColorBox" id="whiteBox"></div>
+        </div>
+        <div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox1"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox2"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox3"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox4"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox5"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox6"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox7"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox8"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox9"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox10"></div></div>
+        </div>
+        <div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox11"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox12"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox13"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox14"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox15"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox16"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox17"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox18"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox19"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox20"></div></div>
+        </div>
+        <div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox21"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox22"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox23"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox24"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox25"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox26"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox27"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox28"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox29"></div></div>
+          <div class="freepalletBox"><div class="palletBox" id="palletbox30"></div></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="canvas-container-parent">
@@ -59,6 +99,27 @@
       <div>
         <button id="useRectangleTool">Draw Rectangle</button>
       </div>
+      <div>
+        <button id="editMode" class="draw">EDIT MODE</button>
+      </div>
+      <div>
+        <button id="delete" class="draw" disabled>Delete</button>
+      </div>
+      <div>
+        <button id="undo">undo</button>
+      </div>
+      <div>
+        <button id="redo">redo</button>
+      </div>
+      <div>
+        <button id="useTextTool"><i class="bi bi-fonts"></i> Add Text</button>
+      </div>
+      <div>
+        <input type="range" id="fontSizeSlider" min="10" max="100" value="20">
+        <span id="fontSizeValue">20</span>px
+      </div>
+
+
     </div>
   </div>
 
