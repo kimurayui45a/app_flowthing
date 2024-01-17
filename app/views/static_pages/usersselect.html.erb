@@ -1,0 +1,27 @@
+<% content_for(:title, t('.title')) %>
+<div class="max767-container">
+  <div>
+    <h1 class="section-title">
+      <span class="red-text">新</span><span class="gray-text">しい</span>
+      <span class="title-custom"><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+      <span class="gray-text">を</span><span class="light-blue-text">作成</span>
+    </h1>
+    <div class="flex-between">
+      <%= link_to newcontents_path do %>
+        <div class="usersselect-container">
+          <div><i class="bi bi-pencil-square" style="font-size: 6rem;"></i></div>
+          <div class="newcontents_text"><span>新規作成<span></div>
+        </div>
+      <% end %>
+      <%= link_to sub_users_path do %>
+        <div class="usersselect-container">
+          <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
+          <div class="newcontents_text-sub">
+            <span class="gray-text">既存の</span><br>
+            <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span><br>
+            <span class="gray-text">に追加する</span></div>
+        </div>
+      <% end %>
+    </div> 
+  </div>
+</div>

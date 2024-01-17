@@ -4,7 +4,9 @@ class Profile < ApplicationRecord
   validate :image_icon_or_color_code_must_be_present
 
   belongs_to :user
-  has_many :sub_user, dependent: :destroy
+  has_many :sub_users, dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :episodes, dependent: :destroy
 
   mount_uploader :image_icon, ImageUploader
 

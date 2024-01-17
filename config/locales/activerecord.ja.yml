@@ -7,3 +7,17 @@ ja:
             base:
               image_icon_or_color_code_must_be_present: "画像アイコンかカラーアイコンを登録してください"
               image_icon_and_color_code_cannot_be_present: "画像アイコンかカラーアイコンはどちらか片方のみ登録してください"
+        sub_user:
+          attributes:
+            sub_image:
+              sub_image_must_be_present: "画像アイコンを登録してください"
+            sub_canvas:
+              sub_canvas_must_be_present: "描画アイコンを登録してください"
+            sub_color:
+              sub_color_must_be_present: "カラーアイコンを登録してください"
+        item:
+          attributes:
+            base:
+              item_must_be_present: "アイテムイメージかアイテム名を入力して下さい"
+            
+

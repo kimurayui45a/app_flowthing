@@ -1,7 +1,12 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :danger
+  before_action :set_user_profile
 
   protected
+
+  def set_user_profile
+    @profile = current_user.profile if user_signed_in? && current_user.profile.present?
+  end
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User) && resource.profile_needs_completion?

@@ -4,7 +4,7 @@
   <%= form_with model: profile, multipart: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <div class="user-iconselect">
+    <div class="flex-between">
       <%= f.hidden_field :selected_option, id: "selected_option" %>
       <div class="mb-3 usercolor-container-background" id="colorInput">
         <div class="usercolor-container">

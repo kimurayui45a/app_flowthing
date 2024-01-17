@@ -2,8 +2,8 @@ ja:
   static_pages:
     top:
       memo: 遷移テスト
-    subpage:
-      top: 戻る
+    usersselect:
+      title: 新しいFlow Thingを作成
   users:
     sessions:
       new:
