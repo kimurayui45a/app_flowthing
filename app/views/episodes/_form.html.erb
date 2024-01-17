@@ -1,0 +1,110 @@
+<div class="fabric">
+  <!-- 描画ツール  -->
+  <div id="canvas-making-3">
+    <div class="dropzone" id="dropzone-3">
+      <div class="canvas-container-parent">
+        <canvas id="iconmakingCanvas-3" class="myCanvas" width="600" height="400"></canvas><br>
+      </div>
+
+      <div class="draggable" id="colorPalette-3">
+        <div class="icon-palletbox">
+          <div class="tool-title"><span>ツール</span></div>
+          <div class="undo-redo flex-between">
+            <button id="undo-3"><i class="bi bi-reply-fill"></i></button>
+            <button id="redo-3" class="bi-reply-fill-right"><i class="bi bi-reply-fill"></i></button>
+            <button id="delete-3" class="draw" disabled><i class="bi bi-trash3-fill"></i></button>
+            <div id="colorPreview-3" class="colorpreview"></div>
+          </div>
+          <div id="picker-3" class="pickertool"></div>
+          
+          <div class="pallettool flex-between">
+            <button id="usePenTool-3">
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            <button id="useEraserTool-3">
+              <i class="bi bi-eraser-fill"></i>
+            </button>
+            <button id="editMode-3" class="draw">
+              <i class="bi bi-box-arrow-in-up-left"></i>
+            </button>
+            <button id="useTextTool-3">
+              <i class="bi bi-fonts"></i>
+            </button>
+            <div>
+              <button id="useRectangleTool-3">
+                <i class="bi bi-bounding-box-circles"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="pallettool-special flex-between">
+            <div class="palletBox specialColorBox" id="blackBox-3"></div>
+            <div class="palletBox specialColorBox" id="whiteBox-3"></div>
+            <button id="dropperColorMode-3"><i class="bi bi-eyedropper"></i></button>
+            <button id="selectColorMode-3"><i class="bi bi-palette"></i></button>
+            <button id="deleteColorMode-3"><i class="bi bi-x-circle-fill"></i></button>
+          </div>
+          <div class="pallettool-free">
+            <div class="freepalletBox"><div class="palletBox" id="palletbox1-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox2-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox3-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox4-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox5-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox6-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox7-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox8-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox9-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox10-3"></div></div>
+          </div>
+          <div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox11-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox12-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox13-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox14-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox15-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox16-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox17-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox18-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox19-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox20-3"></div></div>
+          </div>
+          <div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox21-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox22-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox23-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox24-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox25-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox26-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox27-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox28-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox29-3"></div></div>
+            <div class="freepalletBox"><div class="palletBox" id="palletbox30-3"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas-container-parent">
+      <div class="d-flex">
+        <div class="pr-2">
+          <div id="brushSizePreview-3" style="border: 1px solid black; width: 50px; height: 50px; border-radius: 50%;"></div>
+          <span id="brushSizeValue-3">5</span>px
+          <br>
+          <label>Brush Size (0.1 - 20):</label>
+          <input type="range" id="brushSizePicker-3" min="0.1" max="20" step="0.1" value="5">
+        </div>
+        <div>
+          <div id="eraserSizePreview-3" style="border: 1px solid black; width: 50px; height: 50px; border-radius: 50%;"></div>
+          <span id="eraserSizeValue-3">5</span>px
+          <br>
+          <label>Eraser Size (0.1 - 30):</label>
+          <input type="range" id="eraserSizePicker-3" min="0.1" max="30" step="0.1" value="5">
+        </div>
+        <div>
+          <input type="range" id="fontSizeSlider-3" min="10" max="100" value="20">
+          <span>テキスト</span><span id="fontSizeValue-3">20</span>px
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

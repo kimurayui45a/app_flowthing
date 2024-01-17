@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'static_pages/usersselect', to: 'static_pages#usersselect', as: 'usersselect'
   get 'static_pages/newcontents', to: 'static_pages#newcontents', as: 'newcontents'
   post 'static_pages/create_all', to: 'static_pages#create_all', as: 'create_all'
+  resources :sub_users, only: %i[index show edit update]
+  resources :items, only: %i[index new create show edit update]
+  resources :episodes, only: %i[index show edit update]
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',

@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+
 
 
 
@@ -32,13 +34,58 @@ ul {
   justify-content: center;
 }
 
+/* flexbox (space-between)*/
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* 見出し/ページタイトル */
 .section-title {
   display: inline-block;
-  position: relative;
-  font-size: 1.75rem;
+  font-size: 2.3rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 700;
   text-align: center;
+  color: #7f7f7f;
+  white-space: nowrap;
+  margin-bottom: 2.5rem;
+}
+
+.title-custom {
+  font-size: 3rem;
+}
+
+.red-text {
+  color: #F8A3B1;
+}
+
+.light-blue-text {
+  color: #91D7E9;
+}
+
+
+.f-text {
+  color: #9ADFCB;
+}
+
+.t-text {
+  color: #FBC8C3;
+}
+
+.gray-text {
+  color: #acacac;
+}
+
+.bi-pencil-square {
+  color: #F8A3B1;
+  margin: 0px auto;
+}
+
+.bi-people-fill {
+  color: #91D7E9;
+  margin: 0px auto;
 }
 
 /* センター配置 */
@@ -56,6 +103,15 @@ ul {
 
 .top-margin {
   margin-top: 1rem;
+}
+
+.max767-container {
+  position: relative;
+  width: 100%;
+  max-width: 767px;
+  margin: 0px auto;
+  padding: 3rem;
+  text-align: center;
 }
 
 
@@ -129,14 +185,7 @@ ul {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   display: block;
   white-space: nowrap;
-}
-
-.f-text {
-  color: #9ADFCB;
-}
-
-.t-text {
-  color: #FBC8C3;
+  font-weight: 700;
 }
 
 .nav-contents {
@@ -234,11 +283,6 @@ ul {
   font-size: 0.95em;
   text-decoration: none;
   color: #507a75;
-}
-
-.bi-pencil-square {
-  color: #4b9184;
-  margin: 0px auto;
 }
 
 /* ヘッダー・roomドロップダウンボタン */
@@ -345,19 +389,6 @@ ul {
   font-style: normal;
 }
 
-.user-iconselect {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.profile-container {
-  position: relative;
-  width: 100%;
-  max-width: 640px;
-  margin: 0px auto;
-}
-
 .profile-title {
   text-align: center;
   color: #7f7f7f;
@@ -401,7 +432,7 @@ ul {
 
 .active-style {
   padding: 1rem;
-  box-shadow: 0 0 8px 4px #a8bddd;
+  box-shadow: 5px 5px 8px 1px #c6c6c6;
   border-radius: 4px;
 }
 
@@ -457,11 +488,48 @@ ul {
   object-fit: cover;
 }
 
-/* アイコン描画パレット
+/* 新規コンテンツ作成画面
+------------------------------------------ */
+.usersselect-container {
+  width: 18.75rem;
+  height: 18.75rem;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px 1px #c6c6c6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.newcontents_text {
+  display: inline-block;
+  font-size: 2rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  color: #7f7f7f;
+  white-space: nowrap;
+  line-height: 2.5rem
+}
+
+.newcontents_text-sub {
+  display: inline-block;
+  font-size: 1.7rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-align: center;
+  color: #7f7f7f;
+  white-space: nowrap;
+  line-height: 1.8rem
+}
+
+/* 描画パレット
 ------------------------------------------ */
 
 /* ドロップゾーンのスタイル */
-.dropzone {
+#dropzone-1, #dropzone-2, #dropzone-3 {
   position: relative; /* 絶対位置指定された子要素を正しく配置するために必要 */
   width: 100%;        /* 適切なサイズに設定 */
   height: 600px;      /* 適切なサイズに設定 */
@@ -470,22 +538,32 @@ ul {
 }
 
 /* ドラッグ可能な要素のスタイル */
-#colorPalette {
+#colorPalette-1, #colorPalette-2, #colorPalette-3 {
   position: absolute; /* ドラッグ時の位置調整のために必要 */
   z-index: 1000;      /* 他の要素の上に表示 */
   /* その他のスタイル（サイズ、背景色など） */
   width: 250px;
-  height: 380px;
+  height: 410px;
   background-color: #777777;
   border: 5px solid #4A4A4A;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   // cursor: grab;
   top: 0px;
-  left: 50%;
+  left: 70%;
 }
 
 /* ドラッグ中の要素のスタイル */
-#colorPalette:active {
+#colorPalette-1:active {
+  cursor: grabbing;
+}
+
+/* ドラッグ中の要素のスタイル */
+#colorPalette-2:active {
+  cursor: grabbing;
+}
+
+/* ドラッグ中の要素のスタイル */
+#colorPalette-3:active {
   cursor: grabbing;
 }
 
@@ -501,6 +579,7 @@ ul {
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-align: center;
 }
 
 .palletBox {
@@ -522,27 +601,72 @@ ul {
 }
 
 .icon-palletbox {
-  display: flex;          /* Flexboxを有効にする */
-  flex-direction: column; /* 子要素を縦方向に配置 */
-  align-items: center;    /* 子要素を水平方向の中央に配置 */
-  justify-content: center;/* 子要素を垂直方向の中央に配置 */       
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   
 }
 
 .pallettool {
   margin-top: 5px;
 }
 
+.pallettool > * {
+  margin: 0 1px;
+}
+
 .pallettool-special {
   margin-top: 5px;
 }
 
-#editMode {
+.pallettool-special > * {
+  margin: 0 1px;
+}
+
+.pallettool-free {
+  margin-top: 5px;
+}
+
+#editMod-1, #editMod-2, #editMod-3 {
   background-color: white;
   color: black;
 }
 
 button.selected {
-  border: 5px solid black;
+  background-color: #9199AE;
+}
+
+.canvas-container-parent {
+  display: flex;
+  justify-content: center; // 水平方向の中央揃え
+  align-items: center;     // 垂直方向の中央揃え
+  height: 100%;            // 親要素に十分な高さを確保（必要に応じて）
+}
+
+.undo-redo {
+  align-self: flex-start;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.undo-redo > * {
+  margin: 0 2px;
+}
+
+.specialColorBox {
+  width: 25px;
+  height: 25px;
+}
+
+.colorpreview {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.bi-reply-fill-right {
+  transform: scaleX(-1) !important;
 }
 
 
@@ -563,12 +687,7 @@ button.selected {
   margin: auto; /* 水平方向の自動マージンで中央揃え */
 }
 
-.canvas-container-parent {
-  display: flex;
-  justify-content: center; // 水平方向の中央揃え
-  align-items: center;     // 垂直方向の中央揃え
-  height: 100%;            // 親要素に十分な高さを確保（必要に応じて）
-}
+
 
 #user-icon {
   width: 50px; /* アイコンのサイズを設定 */
@@ -585,10 +704,6 @@ button.selected {
   border-radius: 4px; /* ボーダーの角を丸くする */
 }
 
-
-#colorPalette {
-  margin-bottom: 10px;
-}
 
 .colorOption {
   display: inline-block;
