@@ -1,17 +1,65 @@
 import { fabric } from 'fabric';
 import iro from "@jaames/iro";
 
+var canvasInstances = {};
 
 document.addEventListener("turbo:load", function() {
   if (document.querySelector('.fabric')) {
     setupiconmakingCanvas('1');
     setupiconmakingCanvas('2');
-    setupiconmakingCanvas('3');
     setupdragPalette('1');
     setupdragPalette('2');
-    setupdragPalette('3');
+    setupselectImage();
+    setupselectItem();
+    submitButton();
   }
 });
+
+// //エピソードフォームのcanvasのon/off
+// function fabricSwitch() {
+//   document.getElementById('fabricEpiBtn').addEventListener("click", function() {
+//     const element = document.getElementById('fabricSwitchEpi');
+//     if (element) {
+//       element.classList.toggle('hidden-canvas');
+//     }
+//   });
+// }
+
+function submitButton() {
+  // 'submit-button'のボタンを取得
+  var submitButton = document.getElementById('submit-button');
+  // 'save-draft-button'のボタンを取得
+  var saveDraftButton = document.getElementById('save-draft-button');
+  // 'submit-button'に対するイベントリスナーの設定
+  if (submitButton) {
+      submitButton.addEventListener('click', function(event) {
+          submitForm();
+      });
+  }
+  // 'save-draft-button'に対するイベントリスナーの設定
+  if (saveDraftButton) {
+      saveDraftButton.addEventListener('click', function(event) {
+          submitForm();
+      });
+  }
+  
+  // フォームを送信するための関数
+  function submitForm() {
+    // ここでキャンバスデータを取得し、隠れたフィールドに設定
+    if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
+      document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
+    }
+    if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas')) {
+      document.getElementById('item_canvas').value = JSON.stringify(canvasInstances["2"].toJSON());
+    }
+      var form = document.getElementById('user_create_form');
+      if (form) {
+          form.submit();
+      }
+  }
+}
+
+
 
 function setupiconmakingCanvas(uniqueId) {
   var container = document.getElementById(`canvas-making-${uniqueId}`);
@@ -24,12 +72,11 @@ function setupiconmakingCanvas(uniqueId) {
     var rectangleToolButton = document.getElementById(`useRectangleTool-${uniqueId}`);
     // テキストツール
     var textToolButton = document.getElementById(`useTextTool-${uniqueId}`);
-    var fontSizeSlider = document.getElementById(`fontSizeSlider-${uniqueId}`);
-    var fontSizeValue = document.getElementById(`fontSizeValue-${uniqueId}`);
     // スポイト・色登録・色削除
     var selectColorModeButton = document.getElementById(`selectColorMode-${uniqueId}`);
     var dropperColorModeButton = document.getElementById(`dropperColorMode-${uniqueId}`);
     var deleteColorModeButton = document.getElementById(`deleteColorMode-${uniqueId}`);
+    canvasInstances[uniqueId] = iconmakingCanvas;
 
     //初回のモード(ペン)の設定
     var currentMode = 'pen';
@@ -41,44 +88,64 @@ function setupiconmakingCanvas(uniqueId) {
     const redo_history = [];
     //初回のモード(スポイト)の設定
     let mode = 'selectcolor';
-
-    // ブラシサイズプレビューの更新関数
-    function updateSizePreview(size, previewId, sizeValueId) {
-      var preview = document.getElementById(previewId + '-' + uniqueId);
-      var newSize = size * 2;
-      preview.style.width = newSize + 'px';
-      preview.style.height = newSize + 'px';
-      preview.style.marginLeft = (50 - newSize) / 2 + 'px';
-      preview.style.marginTop = (50 - newSize) / 2 + 'px';
-      document.getElementById(sizeValueId + '-' + uniqueId).textContent = size;
-    }
-
-    // ペンモード
+    
+    // ペンモードの初期化
     function initializeBrush() {
       iconmakingCanvas.freeDrawingBrush.color = currentColor;
-      iconmakingCanvas.freeDrawingBrush.width = parseFloat(document.getElementById(`brushSizePicker-${uniqueId}`).value);
-      updateSizePreview(iconmakingCanvas.freeDrawingBrush.width, 'brushSizePreview', 'brushSizeValue');
+      var brushSize = parseFloat(document.getElementById(`brushSizeForm-${uniqueId}`).value) || 1;
+      iconmakingCanvas.freeDrawingBrush.width = brushSize;
     }
 
-    // 消しゴムモード
+    // 消しゴムモードの初期化
     function initializeEraser() {
-      iconmakingCanvas.freeDrawingBrush.color = "white"; // キャンバスの背景色に合わせる
-      iconmakingCanvas.freeDrawingBrush.width = parseFloat(document.getElementById(`eraserSizePicker-${uniqueId}`).value);
-      updateSizePreview(iconmakingCanvas.freeDrawingBrush.width, 'eraserSizePreview', 'eraserSizeValue');
+      iconmakingCanvas.freeDrawingBrush.color = "white";
+      var eraserSize = parseFloat(document.getElementById(`brushSizeForm-${uniqueId}`).value) || 1;
+      iconmakingCanvas.freeDrawingBrush.width = eraserSize;
     }
+
+    //ブラシサイズとペンの紐付け
+    function updateBrushSize(size) {
+      if (iconmakingCanvas && iconmakingCanvas.freeDrawingBrush) {
+        iconmakingCanvas.freeDrawingBrush.width = size;
+      }
+    }
+
+    // フォントサイズフォームの取得とイベントリスナーの設定
+    var fontSizeForm = document.getElementById(`fontSizeForm-${uniqueId}`);
+    fontSizeForm.addEventListener('input', updateFontSize);
 
     // フォントサイズの更新関数
     function updateFontSize() {
-      var size = parseFloat(fontSizeSlider.value);
-      fontSizeValue.textContent = size;
-    
+      var size = parseFloat(fontSizeForm.value);
       var activeObject = iconmakingCanvas.getActiveObject();
       if (activeObject && activeObject.type === 'i-text') {
-        // 'set' メソッドを使用してフォントサイズを設定
         activeObject.set({ fontSize: size });
         iconmakingCanvas.requestRenderAll();
       }
     }
+
+    // サブミットとフォームによるリロード事故を阻止する
+    var brushSizeForm = document.getElementById(`brushSizeForm-${uniqueId}`);
+    // if (fontSizeForm && fontSizeForm.form) {
+    //   fontSizeForm.form.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //   });
+    // }
+    // if (brushSizeForm && brushSizeForm.form) {
+    //   brushSizeForm.form.addEventListener('submit', function(event) {
+    //     event.preventDefault();
+    //   });
+    // }
+
+    
+
+    // フォーム入力が更新されるたびにブラシサイズを更新
+    brushSizeForm.addEventListener('input', function() {
+      const newSize = parseFloat(brushSizeForm.value);
+      if (!isNaN(newSize)) {
+        updateBrushSize(newSize);
+      }
+    });
 
     // 図形モード
     function drawRectangle() {
@@ -236,31 +303,34 @@ function setupiconmakingCanvas(uniqueId) {
       updateButtonStyles();
     });
 
-    // フォントサイズスライダーのイベントリスナー
-    fontSizeSlider.addEventListener('input', updateFontSize);
-    
     // フリーハンド描画モードの有効化
     iconmakingCanvas.isDrawingMode = true;
     initializeBrush();
     undo_history.push(JSON.stringify(iconmakingCanvas));
 
-    // ブラシサイズのスライダー
-    document.getElementById(`brushSizePicker-${uniqueId}`).addEventListener('input', function(event) {
-      if (currentMode === 'pen') {
-        var size = parseFloat(event.target.value);
-        iconmakingCanvas.freeDrawingBrush.width = size;
-        updateSizePreview(size, 'brushSizePreview', 'brushSizeValue');
-      }
+    iconmakingCanvas.preserveObjectStacking = true;
+
+
+    // サイズボタンのイベントリスナーを設定
+    document.querySelectorAll(`#sizeControl-${uniqueId} .sizeBtn`).forEach(div => {
+      div.addEventListener('click', function() {
+        const size = this.getAttribute('data-size');
+        updateBrushSize(parseFloat(size), uniqueId);
+      });
     });
 
-    // 消しゴムサイズのスライダー
-    document.getElementById(`eraserSizePicker-${uniqueId}`).addEventListener('input', function(event) {
-      if (currentMode === 'eraser') {
-        var size = parseFloat(event.target.value);
-        iconmakingCanvas.freeDrawingBrush.width = size;
-        updateSizePreview(size, 'eraserSizePreview', 'eraserSizeValue');
-      }
+    // サイズボタンのイベントリスナーを設定
+  document.querySelectorAll(`#sizeControl-${uniqueId} .sizeBtn`).forEach(div => {
+    div.addEventListener('click', function() {
+      const size = this.getAttribute('data-size');
+      document.querySelectorAll(`#sizeControl-${uniqueId} .sizeBtn`).forEach(div => {
+        div.classList.remove('selected-size-btn');
+      });
+      this.classList.add('selected-size-btn');
+      updateBrushSize(parseFloat(size), uniqueId);
+      document.getElementById(`brushSizeForm-${uniqueId}`).value = size;
     });
+  });
 
     // ペンと消しゴムの操作の制御(fabricオブジェクトにしない設定)
     iconmakingCanvas.on('object:added', function(event) {
@@ -353,17 +423,20 @@ function setupiconmakingCanvas(uniqueId) {
     
     //deleteボタンの処理
     const deleteBtn = document.getElementById(`delete-${uniqueId}`);
-
     iconmakingCanvas.on("selection:created", function () {
-      deleteBtn.removeAttribute("disabled");
+      deleteBtn.classList.remove("disabled-input");
     });
 
+    // 選択が解除されたときにボタンを無効化
     iconmakingCanvas.on("selection:cleared", function () {
-      deleteBtn.setAttribute("disabled", true);
+      deleteBtn.classList.add("disabled-input");
     });
 
+    // deleteボタンのクリックイベント
     deleteBtn.addEventListener("click", function () {
-      deleteSelectedObjects();
+      if (!deleteBtn.classList.contains("disabled-input")) {
+        deleteSelectedObjects();
+      }
     });
 
     function deleteSelectedObjects() {
@@ -385,19 +458,19 @@ function setupiconmakingCanvas(uniqueId) {
       }
     });
 
-    // ペンツールモードの切り替え
+    // ペンツールボタンのイベントリスナー
     penToolButton.addEventListener('click', function() {
       currentMode = 'pen';
       iconmakingCanvas.isDrawingMode = true;
-      initializeBrush();
+      initializeBrush(); // ペンツールを初期化
       updateButtonStyles();
     });
 
-    // 消しゴムモードの切り替え
+    // 消しゴムボタンのイベントリスナー
     eraserToolButton.addEventListener('click', function() {
       currentMode = 'eraser';
       iconmakingCanvas.isDrawingMode = true;
-      initializeEraser();
+      initializeEraser(); // 消しゴムツールを初期化
       updateButtonStyles();
     });
 
@@ -423,6 +496,7 @@ function setupdragPalette(uniqueId) {
   var container = document.getElementById(`canvas-making-${uniqueId}`);
   if (container) {
     const colorPalette = document.getElementById(`colorPalette-${uniqueId}`);
+    const toolCustom = document.getElementById(`tool-custom-${uniqueId}`);
     const dropzone = document.getElementById(`dropzone-${uniqueId}`);
     // colorPalette要素が存在する場合にのみ設定を行う
     if (colorPalette) {
@@ -431,6 +505,19 @@ function setupdragPalette(uniqueId) {
         e.dataTransfer.setData('text/plain', colorPalette.id);
       });
     }
+
+    // 共通のドラッグ開始イベントハンドラ
+    function onDragStart(e) {
+      e.dataTransfer.setData('text/plain', e.target.id);
+    }
+
+    // ドラッグ対象の設定
+    [colorPalette, toolCustom].forEach(element => {
+      if (element) {
+        element.setAttribute('draggable', 'true');
+        element.addEventListener('dragstart', onDragStart);
+      }
+    });
 
     // ドロップゾーンの設定は変更なし
     if (dropzone) {
@@ -467,3 +554,264 @@ function setupdragPalette(uniqueId) {
     }
   }
 };
+
+//サブユーザーフォーム
+function setupselectImage() {
+  //ラジオボタンの選択(id)
+  const selectImage = document.getElementById('subuserImage');
+  const selectColorCode = document.getElementById('subuserColorCode');
+  const selectCanvas = document.getElementById('subuserCanvas');
+  //toggleButton-${uniqueId}の代わりにラジオのidsubuserCanvas
+  
+  //選択項目の外枠のdiv要素(id)
+  const imageInputDiv = document.getElementById('subImageInput');
+  const colorInputDiv = document.getElementById('subColorInput');
+  const canvasInputDiv = document.getElementById('subCanvasInput');
+
+  //隠しパラメータ(いらないかも)
+  // var selectedOptionField = document.getElementById('icon_choice');
+  var imageInputField = document.getElementById('sub_image');
+
+
+  //各ラジオボタンがクリックされた時の挙動
+  function updateInputVisibility() {
+    var imagePreview = document.getElementById('subimagePreview');
+    var colorPreview = document.getElementById('subcolorPreview');
+    var canvasPreview = document.getElementById('fabricSwitchSub');
+    
+    if (selectImage.checked) {
+      // Imageが選択されたときの処理
+      //半透明にするか？
+      imageInputDiv.classList.remove('subuser-disabled');
+      colorInputDiv.classList.add('subuser-disabled');
+      canvasInputDiv.classList.add('subuser-disabled');
+      //フォームの機能の制御
+      imageInputDiv.querySelector('input[type=file]').disabled = false;
+      colorInputDiv.querySelector('input[type=color]').disabled = true;
+      //選択されている方に「subactive-style」スタイルを付与
+      imageInputDiv.classList.add('subactive-style');
+      colorInputDiv.classList.remove('subactive-style');
+      canvasInputDiv.classList.remove('subactive-style');
+      //選択されている方のプレビューを表示/他は非表示
+      imagePreview.style.display = 'block';
+      colorPreview.style.display = 'none';
+      canvasPreview.classList.add('hidden-canvas');
+    } else if (selectColorCode.checked)  {
+      // Colorが選択されたときの処理
+      colorInputDiv.classList.remove('subuser-disabled');
+      imageInputDiv.classList.add('subuser-disabled');
+      canvasInputDiv.classList.add('subuser-disabled');
+
+      colorInputDiv.querySelector('input[type=color]').disabled = false;
+      imageInputDiv.querySelector('input[type=file]').disabled = true;
+      colorInputDiv.classList.add('subactive-style');
+      imageInputDiv.classList.remove('subactive-style');
+      canvasInputDiv.classList.remove('subactive-style');
+
+      imagePreview.style.display = 'none';
+      colorPreview.style.display = 'block';
+      canvasPreview.classList.add('hidden-canvas');
+    } else if (selectCanvas.checked) {
+      // Canvasが選択されたときの処理
+      colorInputDiv.classList.add('subuser-disabled');
+      imageInputDiv.classList.add('subuser-disabled');
+      canvasInputDiv.classList.remove('subuser-disabled');
+
+      colorInputDiv.querySelector('input[type=color]').disabled = true;
+      imageInputDiv.querySelector('input[type=file]').disabled = true;
+      imageInputDiv.classList.remove('subactive-style');
+      colorInputDiv.classList.remove('subactive-style');
+      canvasInputDiv.classList.add('subactive-style');
+
+      imagePreview.style.display = 'none';
+      colorPreview.style.display = 'none';
+      canvasPreview.classList.remove('hidden-canvas');
+    }
+  }
+
+  //ピックアップカラー
+  document.querySelectorAll('.subuser-iconColor').forEach(function(colorElement) {
+    colorElement.addEventListener('click', function() {
+      var sub_color = this.getAttribute('data-color');
+      document.getElementById('sub_color').value = sub_color;
+      document.getElementById('subuserColorCode').checked = true; // ラジオボタンを選択状態にする
+      updateInputVisibility(); // 必要に応じて入力フィールドの表示を更新
+      var colorPreview = document.getElementById('subcolorPreview');
+      colorPreview.style.backgroundColor = sub_color;
+    });
+  });
+
+  //カラーピッカー
+  var colorPicker = document.getElementById('sub_color');
+  colorPicker.addEventListener('change', function() {
+    var sub_color = this.value;
+    var colorPreview = document.getElementById('subcolorPreview');
+    colorPreview.style.backgroundColor = sub_color;
+  });
+
+  //画像のプレビュー処理
+  var imageInput = document.getElementById('sub_image');
+  imageInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var imagePreview = document.getElementById('subimagePreview');
+        imagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
+        imagePreview.style.backgroundSize = 'cover';
+      };
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
+  //画像の選択可能範囲を広げる
+  imageInputDiv.addEventListener('click', function(event) {
+    // クリックされた要素がファイル入力フィールドでない場合にのみラジオボタンを選択
+    if (event.target.id !== 'sub_image') {
+      selectImage.checked = true;
+      updateInputVisibility(); // 入力の可視性を更新
+    }
+  });
+
+  imageInputField.addEventListener('click', function(event) {
+      // ファイル入力フィールドが直接クリックされたときのみラジオボタンをアクティブにする
+      selectImage.checked = true;
+      updateInputVisibility(); // 入力の可視性を更新
+  });
+
+  //カラーの選択可能範囲を広げる
+  colorInputDiv.addEventListener('click', function() {
+    selectColorCode.checked = true;
+    updateInputVisibility(); // 入力の可視性を更新
+  });
+
+  canvasInputDiv.addEventListener('click', function() {
+    selectCanvas.checked = true;
+    updateInputVisibility(); // 入力の可視性を更新
+  });
+  
+  // ラジオボタンの変更を監視
+  selectImage.addEventListener('change', updateInputVisibility);
+  selectColorCode.addEventListener('change', updateInputVisibility);
+  selectCanvas.addEventListener('change', updateInputVisibility);
+
+  // 初期状態を設定
+  updateInputVisibility();
+};
+
+
+
+//アイテムフォーム
+function setupselectItem() {
+  //ラジオボタンの選択(id)
+  const selectImage = document.getElementById('itemImage');
+  const selectCanvas = document.getElementById('itemCanvas');
+  //toggleButton-${uniqueId}の代わりにラジオのid
+  
+  //選択項目の外枠のdiv要素(id)
+  const imageInputDiv = document.getElementById('itemImageInput');
+  const canvasInputDiv = document.getElementById('itemCanvasInput');
+
+  //隠しパラメータ(いらないかも)
+  // var selectedOptionField = document.getElementById('icon_choice');
+  var imageInputField = document.getElementById('item_image');
+
+
+  //各ラジオボタンがクリックされた時の挙動
+  function updateInputVisibility() {
+    var imagePreview = document.getElementById('itemimagePreview');
+    var canvasPreview = document.getElementById('fabricSwitchItem');
+    
+    if (selectImage.checked) {
+      // Imageが選択されたときの処理
+      //半透明にするか？
+      imageInputDiv.classList.remove('subuser-disabled');
+      canvasInputDiv.classList.add('subuser-disabled');
+      //フォームの機能の制御
+      imageInputDiv.querySelector('input[type=file]').disabled = false;
+      //選択されている方に「subactive-style」スタイルを付与
+      imageInputDiv.classList.add('subactive-style');
+      canvasInputDiv.classList.remove('subactive-style');
+      //選択されている方のプレビューを表示/他は非表示
+      imagePreview.style.display = 'block';
+      canvasPreview.classList.add('hidden-canvas');
+    } else {
+      // Canvasが選択されたときの処理
+      imageInputDiv.classList.add('subuser-disabled');
+      canvasInputDiv.classList.remove('subuser-disabled');
+      imageInputDiv.querySelector('input[type=file]').disabled = true;
+      imageInputDiv.classList.remove('subactive-style');
+      canvasInputDiv.classList.add('subactive-style');
+      imagePreview.style.display = 'none';
+      canvasPreview.classList.remove('hidden-canvas');
+    }
+  }
+
+  //画像のプレビュー処理
+  var imageInput = document.getElementById('item_image');
+  imageInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var imagePreview = document.getElementById('itemimagePreview');
+        imagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
+        imagePreview.style.backgroundSize = 'cover';
+      };
+      reader.readAsDataURL(this.files[0]);
+    }
+  });
+
+  //画像の選択可能範囲を広げる
+  imageInputDiv.addEventListener('click', function(event) {
+    // クリックされた要素がファイル入力フィールドでない場合にのみラジオボタンを選択
+    if (event.target.id !== 'item_image') {
+      selectImage.checked = true;
+      updateInputVisibility(); // 入力の可視性を更新
+    }
+  });
+
+  imageInputField.addEventListener('click', function(event) {
+      // ファイル入力フィールドが直接クリックされたときのみラジオボタンをアクティブにする
+      selectImage.checked = true;
+      updateInputVisibility(); // 入力の可視性を更新
+  });
+
+  canvasInputDiv.addEventListener('click', function() {
+    selectCanvas.checked = true;
+    updateInputVisibility(); // 入力の可視性を更新
+  });
+  
+  // ラジオボタンの変更を監視
+  selectImage.addEventListener('change', updateInputVisibility);
+  selectCanvas.addEventListener('change', updateInputVisibility);
+
+  // 初期状態を設定
+  updateInputVisibility();
+};
+
+
+
+//エピソード画像のプレビュー処理
+// function setupEpisodeImage() {
+//   var imageInput = document.getElementById('episode_image');
+//   imageInput.addEventListener('change', function() {
+//     if (this.files && this.files[0]) {
+//       var reader = new FileReader();
+//       reader.onload = function(e) {
+//         var imagePreview = document.getElementById('episodeimagePreview');
+//         imagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
+//         imagePreview.style.backgroundSize = 'cover';
+//       };
+//       reader.readAsDataURL(this.files[0]);
+//     }
+//   });
+// };
+
+
+// //fabricデータ送信
+// function handleSubmitButton() {
+//   // 各キャンバスデータを取得し、対応する隠れたフィールドに設定
+//   document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
+//   document.getElementById('item_canvas').value = JSON.stringify(canvasInstances["2"].toJSON());
+//   document.getElementById('user_create_form').submit();
+// }
+

@@ -1,0 +1,12 @@
+<% content_for(:title, t('.title')) %>
+<div class="max767-container">
+<h1 class="section-title">
+  <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
+</h1>
+
+  <% if @sub_users.present? %>
+    <%= render @sub_users %>
+  <% else %>
+    <div class="mb-3">サブユーザーがいません</div>
+  <% end %>
+</div>

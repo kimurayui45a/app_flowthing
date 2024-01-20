@@ -19,5 +19,12 @@ ja:
           attributes:
             base:
               item_must_be_present: "アイテムイメージかアイテム名を入力して下さい"
-            
+        draft:
+          attributes:
+            sub_user:
+              sub_user_invalid: "Sub Thingの作成に誤りがあります"
+            item:
+              item_invalid: "Flow Thingの作成に誤りがあります"
+            episode:
+              episode_invalid: "エピソードの作成に誤りがあります"
 

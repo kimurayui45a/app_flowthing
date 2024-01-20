@@ -5,7 +5,7 @@ class SubUser < ApplicationRecord
 
   belongs_to :profile
   has_many :items, dependent: :destroy
-  has_many :episodes, dependent: :destroy
+  has_many :drafts, dependent: :destroy
 
   mount_uploader :sub_image, ImageUploader
 

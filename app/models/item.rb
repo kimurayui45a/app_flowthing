@@ -3,9 +3,8 @@ class Item < ApplicationRecord
   validates :item_text, length: { maximum: 10_000 }
   validates :item_name, length: { maximum: 50 }
 
-  belongs_to :profile
   belongs_to :sub_user
-  has_many :episodes, dependent: :destroy
+  has_many :drafts, dependent: :destroy
 
   mount_uploader :item_image, ImageUploader
 
