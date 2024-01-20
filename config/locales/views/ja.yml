@@ -33,6 +33,27 @@ ja:
       image_icon: 画像
       name: お名前(任意)
       profile_text: プロフィール(任意)
+  sub_users:
+    show:
+      title: Sub Thing 詳細
+    form:
+      sub_color: カラーアイコン
+      image_icon: 画像
+      sub_canvas: 描く
+      sub_name: お名前
+      sub_text: コメント
+  items:
+    form:
+      item_image: 画像
+      item_canvas: 描く
+      item_name: お名前
+      item_text: コメント
+  episodes:
+    form:
+      episode_image: 画像
+      episode_canvas: 描く
+      episode_title: お名前
+      episode_text: コメント
   defaults:
     create: 作成
     post: 投稿
@@ -50,4 +71,8 @@ ja:
       not_created: "ユーザーを作成出来ませんでした"
       updated: "ユーザー情報を更新しました"
       not_updated: "ユーザー情報を更新出来ませんでした"
-      deleted: "ユーザー情報を削除しました"
+      deleted: "Sub Thingを削除しました"
+      sub_user_updated: "Sub Thingを更新しました"
+      sub_user_not_updated: "Sub Thingを更新出来ませんでした"
+      sub_user_created: "Sub Thingを作成しました"
+      sub_user_not_created: "Sub Thingを作成出来ませんでした"

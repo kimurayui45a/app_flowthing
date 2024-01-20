@@ -14,7 +14,7 @@ function setupProfile() {
   function updateInputVisibility() {
     var imagePreview = document.getElementById('imagePreview');
     var colorPreview = document.getElementById('colorPreview');
-    var beforePreview = document.getElementById('beforePreview');
+    // var beforePreview = document.getElementById('beforePreview');
     
     if (selectImage.checked) {
       imageInputDiv.classList.remove('disabled-input');
@@ -25,7 +25,7 @@ function setupProfile() {
       colorInputDiv.classList.remove('active-style');
       imagePreview.style.display = 'block';
       colorPreview.style.display = 'none';
-      beforePreview.style.display = 'none';
+      // beforePreview.style.display = 'none';
     } else {
       colorInputDiv.classList.remove('disabled-input');
       imageInputDiv.classList.add('disabled-input');
@@ -34,7 +34,7 @@ function setupProfile() {
       colorInputDiv.classList.add('active-style');
       imageInputDiv.classList.remove('active-style');
       imagePreview.style.display = 'none';
-      beforePreview.style.display = 'none';
+      // beforePreview.style.display = 'none';
       colorPreview.style.display = 'block';
     }
   }
@@ -85,6 +85,20 @@ function setupProfile() {
     }
   });
 
+  imageInputDiv.addEventListener('click', function(event) {
+    // クリックされた要素がファイル入力フィールドでない場合にのみラジオボタンを選択
+    if (event.target.id !== 'image_icon') {
+      selectImage.checked = true;
+      updateInputVisibility(); // 入力の可視性を更新
+    }
+  });
+  
+
+  colorInputDiv.addEventListener('click', function() {
+    selectColorCode.checked = true;
+    updateInputVisibility(); // 入力の可視性を更新
+  });
+  
 
   // ラジオボタンの変更を監視
   selectImage.addEventListener('change', updateInputVisibility);

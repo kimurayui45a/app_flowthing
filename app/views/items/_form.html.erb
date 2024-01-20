@@ -1,110 +1,157 @@
+<h2 class="section-title">
+  <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+</h2>
 <div class="fabric">
-  <!-- 描画ツール  -->
-  <div id="canvas-making-2">
-    <div class="dropzone" id="dropzone-2">
-      <div class="canvas-container-parent">
-        <canvas id="iconmakingCanvas-2" class="myCanvas" width="600" height="400"></canvas><br>
-      </div>
+<%= f.fields_for :item, item do |item_form| %>
+<div id="itemimagePreview"></div>
 
-      <div class="draggable" id="colorPalette-2">
-        <div class="icon-palletbox">
-          <div class="tool-title"><span>ツール</span></div>
-          <div class="undo-redo flex-between">
-            <button id="undo-2"><i class="bi bi-reply-fill"></i></button>
-            <button id="redo-2" class="bi-reply-fill-right"><i class="bi bi-reply-fill"></i></button>
-            <button id="delete-2" class="draw" disabled><i class="bi bi-trash3-fill"></i></button>
-            <div id="colorPreview-2" class="colorpreview"></div>
-          </div>
-          <div id="picker-2" class="pickertool"></div>
-          
-          <div class="pallettool flex-between">
-            <button id="usePenTool-2">
-              <i class="bi bi-pencil-fill"></i>
-            </button>
-            <button id="useEraserTool-2">
-              <i class="bi bi-eraser-fill"></i>
-            </button>
-            <button id="editMode-2" class="draw">
-              <i class="bi bi-box-arrow-in-up-left"></i>
-            </button>
-            <button id="useTextTool-2">
-              <i class="bi bi-fonts"></i>
-            </button>
+  <div id="fabricSwitchItem">
+    <!-- 描画ツール  -->
+    <div id="canvas-making-2">
+      <div class="dropzone" id="dropzone-2">
+        <div class="canvas-container-parent">
+          <canvas id="iconmakingCanvas-2" class="myCanvas" width="400" height="400"></canvas><br>
+        </div>
+
+        <div class="draggable" id="colorPalette-2">
+          <div class="icon-palletbox">
+            <div class="tool-title"><span>ツール</span></div>
+            <div class="undo-redo flex-between">
+              <div id="undo-2" class="pain-button"><i class="bi bi-reply-fill"></i></div>
+              <div id="redo-2" class="bi-reply-fill-right pain-button"><i class="bi bi-reply-fill"></i></div>
+              <div id="delete-2" class="draw disabled-input pain-button"><i class="bi bi-trash3-fill"></i></div>
+              <div id="colorPreview-2" class="colorpreview"></div>
+            </div>
+            <div id="picker-2" class="pickertool"></div>
+            
+            <div class="pallettool flex-between">
+              <div id="usePenTool-2" class="pain-button">
+                <i class="bi bi-pencil-fill"></i>
+              </div>
+              <div id="useEraserTool-2" class="pain-button">
+                <i class="bi bi-eraser-fill"></i>
+              </div>
+              <div id="editMode-2" class="draw pain-button">
+                <i class="bi bi-box-arrow-in-up-left"></i>
+              </div>
+              <div id="useTextTool-2" class="pain-button">
+                <i class="bi bi-fonts"></i>
+              </div>
+              <div>
+                <div id="useRectangleTool-2" class="pain-button">
+                  <i class="bi bi-bounding-box-circles"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="pallettool-special flex-between">
+              <div class="palletBox specialColorBox" id="blackBox-2"></div>
+              <div class="palletBox specialColorBox" id="whiteBox-2"></div>
+              <div id="dropperColorMode-2" class="pain-button"><i class="bi bi-eyedropper"></i></div>
+              <div id="selectColorMode-2" class="pain-button"><i class="bi bi-palette"></i></div>
+              <div id="deleteColorMode-2" class="pain-button"><i class="bi bi-x-circle-fill"></i></div>
+            </div>
+            <div class="pallettool-free">
+              <div class="freepalletBox"><div class="palletBox" id="palletbox1-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox2-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox3-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox4-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox5-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox6-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox7-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox8-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox9-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox10-2"></div></div>
+            </div>
             <div>
-              <button id="useRectangleTool-2">
-                <i class="bi bi-bounding-box-circles"></i>
-              </button>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox11-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox12-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox13-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox14-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox15-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox16-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox17-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox18-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox19-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox20-2"></div></div>
+            </div>
+            <div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox21-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox22-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox23-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox24-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox25-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox26-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox27-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox28-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox29-2"></div></div>
+              <div class="freepalletBox"><div class="palletBox" id="palletbox30-2"></div></div>
             </div>
           </div>
+        </div>
+      
+        <div class="draggable" id="tool-custom-2">
+          <div class="toolsize-title"><span>サイズ</span></div>
+          <div id="sizeControl-2" class="tool-custom">
+            <div class="flex-between tool-group">
+              <div class="sizeBtn" data-size="0.3"><div><i class="bi bi-circle-fill" style="font-size: 0.3px;"></i></div><div>0.3</div></div>
+              <div class="sizeBtn" data-size="0.5"><div><i class="bi bi-circle-fill" style="font-size: 0.5px;"></i></div><div>0.5</div></div>
+              <div class="sizeBtn" data-size="1"><div><i class="bi bi-circle-fill" style="font-size: 1px;"></i></div><div>1</div></div>
+              <div class="sizeBtn" data-size="1.5"><div><i class="bi bi-circle-fill" style="font-size: 1.5px;"></i></div><div>1.5</div></div>
+              <div class="sizeBtn" data-size="2"><div><i class="bi bi-circle-fill" style="font-size: 2px;"></i></div><div>2</div></div>
+            </div>
+            <div class="flex-between tool-group">
+              <div class="tool-group-special">
+              <div class="sizeBtn" data-size="3"><div><i class="bi bi-circle-fill" style="font-size: 3px;"></i></div><div>3</div></div>
+              <div class="sizeBtn" data-size="5"><div><i class="bi bi-circle-fill" style="font-size: 5px;"></i></div><div>5</div></div>
+              <div class="sizeBtn" data-size="7"><div><i class="bi bi-circle-fill" style="font-size: 7px;"></i></div><div>7</div></div>
+              </div>
+              <div class="brushsize-form"><input type="number" id="brushSizeForm-2" min="0.1" max="100" step="0.1" value="1"><span>px</span></div>
+            </div>
+            <div class="flex-between tool-group">
+              <div class="fontsize-form">テキストサイズ：<input type="number" id="fontSizeForm-2" min="10" max="100" value="20"><span>px</span></div>
+            </div>
+          </div>
+        </div>
 
-          <div class="pallettool-special flex-between">
-            <div class="palletBox specialColorBox" id="blackBox-2"></div>
-            <div class="palletBox specialColorBox" id="whiteBox-2"></div>
-            <button id="dropperColorMode-2"><i class="bi bi-eyedropper"></i></button>
-            <button id="selectColorMode-2"><i class="bi bi-palette"></i></button>
-            <button id="deleteColorMode-2"><i class="bi bi-x-circle-fill"></i></button>
-          </div>
-          <div class="pallettool-free">
-            <div class="freepalletBox"><div class="palletBox" id="palletbox1-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox2-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox3-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox4-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox5-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox6-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox7-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox8-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox9-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox10-2"></div></div>
-          </div>
-          <div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox11-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox12-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox13-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox14-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox15-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox16-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox17-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox18-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox19-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox20-2"></div></div>
-          </div>
-          <div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox21-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox22-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox23-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox24-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox25-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox26-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox27-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox28-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox29-2"></div></div>
-            <div class="freepalletBox"><div class="palletBox" id="palletbox30-2"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="canvas-container-parent">
-      <div class="d-flex">
-        <div class="pr-2">
-          <div id="brushSizePreview-2" style="border: 1px solid black; width: 50px; height: 50px; border-radius: 50%;"></div>
-          <span id="brushSizeValue-2">5</span>px
-          <br>
-          <label>Brush Size (0.1 - 20):</label>
-          <input type="range" id="brushSizePicker-2" min="0.1" max="20" step="0.1" value="5">
-        </div>
-        <div>
-          <div id="eraserSizePreview-2" style="border: 1px solid black; width: 50px; height: 50px; border-radius: 50%;"></div>
-          <span id="eraserSizeValue-2">5</span>px
-          <br>
-          <label>Eraser Size (0.1 - 30):</label>
-          <input type="range" id="eraserSizePicker-2" min="0.1" max="30" step="0.1" value="5">
-        </div>
-        <div>
-          <input type="range" id="fontSizeSlider-2" min="10" max="100" value="20">
-          <span>テキスト</span><span id="fontSizeValue-2">20</span>px
-        </div>
       </div>
     </div>
   </div>
+
+
+  <div class="flex-between user-createform">
+    <div class="sub-image-container" id="itemImageInput">
+        <label for="itemImage">
+          <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio" checked>
+          <%= item_form.label :item_image, t('items.form.item_image') %>
+          <%= item_form.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
+        </label>
+      </div>
+
+      <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput">
+        <label for="itemCanvas">
+          <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas" class="custom-radio">
+          <%= item_form.label :item_canvas, t('items.form.item_canvas') %>
+          <%= item_form.hidden_field :item_canvas, id: "item_canvas" %>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-createform">
+    <div>
+      <%= item_form.label :image_choice, "どちらをアイコンにしますか？" %>
+      <%= item_form.select :image_choice, [["Item Image", "item_image"], ["Item Canvas", "item_canvas"]] %>
+    </div>
+
+    <div>
+      <%= item_form.label :item_name, t('items.form.item_name') %>
+      <%= item_form.text_field :item_name, class: "form-control" %>
+    </div>
+    <div>
+      <%= item_form.label :item_text, t('items.form.item_text') %>
+      <%= item_form.text_area :item_text, class: "form-control", row: 10, style: "height: 200px" %>
+    </div>
+  </div>
+  <% end %>
 </div>

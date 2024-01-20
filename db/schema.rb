@@ -10,23 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_023818) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_054003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "episodes", force: :cascade do |t|
-    t.string "episode_image"
-    t.jsonb "episode_canvas"
-    t.string "episode_title", null: false
-    t.text "episode_text"
-    t.bigint "profile_id", null: false
+  create_table "drafts", force: :cascade do |t|
+    t.jsonb "canvas"
     t.bigint "sub_user_id", null: false
     t.bigint "item_id", null: false
+    t.integer "status"
+    t.string "sub_image"
+    t.string "item_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_episodes_on_item_id"
-    t.index ["profile_id"], name: "index_episodes_on_profile_id"
-    t.index ["sub_user_id"], name: "index_episodes_on_sub_user_id"
+    t.index ["item_id"], name: "index_drafts_on_item_id"
+    t.index ["sub_user_id"], name: "index_drafts_on_sub_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -34,13 +32,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_023818) do
     t.jsonb "item_canvas"
     t.string "item_name"
     t.text "item_text"
-    t.string "icon_choice"
-    t.bigint "profile_id", null: false
     t.bigint "sub_user_id", null: false
-    t.string "itemicon_choice"
+    t.string "image_choice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_items_on_profile_id"
     t.index ["sub_user_id"], name: "index_items_on_sub_user_id"
   end
 
@@ -86,10 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_023818) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "episodes", "items"
-  add_foreign_key "episodes", "profiles"
-  add_foreign_key "episodes", "sub_users"
-  add_foreign_key "items", "profiles"
+  add_foreign_key "drafts", "items"
+  add_foreign_key "drafts", "sub_users"
   add_foreign_key "items", "sub_users"
   add_foreign_key "profiles", "users"
   add_foreign_key "sub_users", "profiles"

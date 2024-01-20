@@ -2,4 +2,7 @@ en:
   static_pages:
     top:
       title: Flow Thing
+  sub_users:
+    index:
+      title: Sub Thing
     

@@ -43,7 +43,6 @@ ul {
 
 /* 見出し/ページタイトル */
 .section-title {
-  display: inline-block;
   font-size: 2.3rem;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 700;
@@ -72,6 +71,14 @@ ul {
 
 .t-text {
   color: #FBC8C3;
+}
+
+.sakura-text {
+  color: #F6D0EB;
+}
+
+.melon-text {
+  color: #B8F3B9;
 }
 
 .gray-text {
@@ -113,6 +120,16 @@ ul {
   padding: 3rem;
   text-align: center;
 }
+
+.max1280-container {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0px auto;
+  padding: 3rem;
+  text-align: center;
+}
+
 
 
 /* ボタン
@@ -540,7 +557,7 @@ ul {
 /* ドラッグ可能な要素のスタイル */
 #colorPalette-1, #colorPalette-2, #colorPalette-3 {
   position: absolute; /* ドラッグ時の位置調整のために必要 */
-  z-index: 1000;      /* 他の要素の上に表示 */
+  z-index: 15;      /* 他の要素の上に表示 */
   /* その他のスタイル（サイズ、背景色など） */
   width: 250px;
   height: 410px;
@@ -548,8 +565,23 @@ ul {
   border: 5px solid #4A4A4A;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   // cursor: grab;
-  top: 0px;
+  // top: 0px;
   left: 70%;
+  bottom: 0%;
+}
+
+#tool-custom-1, #tool-custom-2, #tool-custom-3 {
+  position: absolute; /* ドラッグ時の位置調整のために必要 */
+  z-index: 14;      /* 他の要素の上に表示 */
+  /* その他のスタイル（サイズ、背景色など） */
+  width: auto;
+  height: 170px;
+  background-color: #777777;
+  border: 5px solid #4A4A4A;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  // cursor: grab;
+  top: 0px;
+  left: 10%;
 }
 
 /* ドラッグ中の要素のスタイル */
@@ -632,8 +664,43 @@ ul {
   color: black;
 }
 
-button.selected {
+div.selected {
   background-color: #9199AE;
+}
+
+.pain-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.pain-button-right {
+  cursor: pointer;
+  width: 30px;
+  height: 30px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  box-shadow: -1px 1px black;
+}
+
+.select-tool {
+  width: 30px;
+  height: 30px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
 .canvas-container-parent {
@@ -647,6 +714,16 @@ button.selected {
   align-self: flex-start;
   margin-top: 5px;
   margin-left: 5px;
+}
+
+#undo-1, #undo-2, #undo-3 {
+  border: none;
+  outline: none;
+}
+
+#redo-1, #redo-2, #redo-3 {
+  border: none;
+  outline: none;
 }
 
 .undo-redo > * {
@@ -663,20 +740,11 @@ button.selected {
   height: 25px;
   display: inline-block;
   border: 1px solid black;
+  border-radius: 50%;
 }
 
 .bi-reply-fill-right {
   transform: scaleX(-1) !important;
-}
-
-
-
-/* 試作部品
------------------------------------------- */
-
-.try {
-  font-family: 'Dela Gothic One', sans-serif;
-  color: blue;
 }
 
 .myCanvas {
@@ -687,7 +755,252 @@ button.selected {
   margin: auto; /* 水平方向の自動マージンで中央揃え */
 }
 
+.myCanvas-radius {
+  border-radius: 50%;
+}
 
+.hidden-canvas {
+  display: none;
+}
+
+.sizeBtn {
+  width: 40px;
+  height: 40px;
+  display: flex; /* Flexboxを使う */
+  flex-direction: column; /* 子要素を縦方向に並べる */
+  justify-content: center; /* 子要素を垂直方向に中央揃え */
+  align-items: center; /* 子要素を水平方向に中央揃え */
+  text-align: center; /* テキストを中央揃え */
+  margin: 1px;
+  background-color: #c2c1c1;
+  cursor: pointer;
+  box-shadow: 1px 1px black;
+  border-radius: 2px;
+  font-size: 10px; /* デフォルトのフォントサイズ */
+}
+
+.sizeBtn i {
+  font-size: 7px; /* アイコンのサイズ */
+  /* アイコンのスタイルに関する追加の設定があればここに記述 */
+}
+
+.sizeBtn div {
+  display: flex; /* 各子要素もFlexboxに */
+  justify-content: center; /* 水平方向に中央揃え */
+  align-items: center; /* 垂直方向に中央揃え */
+}
+
+.selected-size-btn {
+  background-color: #9199AE;
+  color: white;
+}
+
+.tool-custom {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.toolsize-title {
+  color: #ffffff;
+  background-color: #4A4A4A;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.tool-group {
+  margin-top: 5px;
+}
+
+.tool-group-special {
+  text-align: left;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+.brushsize-form {
+  align-self: flex-end;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+#brushSizeForm-1, #brushSizeForm-2, #brushSizeForm-3 {
+  width: 48px;
+}
+
+#fontSizeForm-1, #fontSizeForm-2, #fontSizeForm-3 {
+  width: 48px;
+}
+
+.fontsize-form {
+  text-align: right;
+  margin-left: auto;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+// /* カスタムラジオボタンのスタイル */
+// .custom-radio + label {
+//   background-color: #eee;
+//   padding: 10px;
+//   border: 1px solid #ddd;
+//   display: inline-block;
+//   cursor: pointer;
+// }
+
+// /* 選択されたときのスタイル */
+// .custom-radio:checked + label {
+//   background-color: #bada55;
+//   color: white;
+// }
+
+
+
+
+
+
+
+
+
+
+/* 新規登録フォーム/sub_user
+------------------------------------------ */
+
+.sub-canvas-container {
+  width: 220px;
+}
+
+.sub-image-container {
+  width: 220px;
+}
+
+.user-createform {
+  max-width: 767px;
+  margin: 0px auto;
+  padding: 3rem;
+  text-align: center;
+}
+
+.custom-radio {
+  display: none;
+}
+
+.subuser-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.radio-subusercolor {
+  position: absolute;
+  left: 0;
+}
+
+.subuser-pickerbox {
+  margin-top: 1.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.subuser-picker {
+  width: 100px;
+  height: 50px;
+}
+
+.subpickup-color {
+  margin-top: 0.5rem;
+}
+
+.subuser-container {
+  width: 220px;
+  height: 200px;
+}
+
+.subactive-style {
+  padding: 1rem;
+  box-shadow: 5px 5px 8px 1px #c6c6c6;
+  border-radius: 4px;
+}
+
+.subuser-disabled {
+  opacity: 0.5; /* 半透明にする */
+}
+
+.subuser-iconColor {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin: 0.1rem;
+}
+
+.subuser-iconColor:hover {
+  box-shadow: 0 0 8px 3px #a8bddd;
+}
+
+
+#subimagePreview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+}
+
+
+#subcolorPreview{
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block; 
+  margin: 0px auto;
+}
+
+
+#itemimagePreview {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+}
+
+#episodeimagePreview {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+}
+
+
+/* 試作部品
+------------------------------------------ */
+
+.try {
+  font-family: 'Dela Gothic One', sans-serif;
+  color: blue;
+}
 
 #user-icon {
   width: 50px; /* アイコンのサイズを設定 */
@@ -711,5 +1024,12 @@ button.selected {
   height: 30px;
   cursor: pointer;
   border: 1px solid black;
+}
+
+.nav-size {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
 }
 

@@ -5,8 +5,6 @@ class Profile < ApplicationRecord
 
   belongs_to :user
   has_many :sub_users, dependent: :destroy
-  has_many :items, dependent: :destroy
-  has_many :episodes, dependent: :destroy
 
   mount_uploader :image_icon, ImageUploader
 
