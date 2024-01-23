@@ -42,5 +42,6 @@ module AppFlowthing
 
     config.i18n.available_locales = %i[ja en]
     config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
   end
 end

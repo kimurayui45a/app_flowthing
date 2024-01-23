@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
   def newcontents
     @sub_user = SubUser.new
     @item = Item.new
+    @item.image_choice ||= "no_image"
   end
 
   def create_all
@@ -52,6 +53,8 @@ class StaticPagesController < ApplicationController
 
   def adjust_item_attributes(item)
     case item_params[:image_choice]
+    when 'no_image'
+      item.update!(item_canvas: nil, item_image: nil)
     when 'item_image'
       item.update!(item_canvas: nil)
     when 'item_canvas'

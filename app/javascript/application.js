@@ -5,6 +5,7 @@ import * as bootstrap from "bootstrap"
 import "./custom/header"
 import "./custom/profile"
 import "./custom/palletmodule"
+import "./custom/item"
 
 
 console.log('アプリケーションjs')
@@ -80,3 +81,4 @@ function restoreSubCanvas() {
     });
   }
 }
+

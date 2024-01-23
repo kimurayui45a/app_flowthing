@@ -13,10 +13,10 @@
       <%= render 'sub_users/form', f: f, sub_user: @sub_user %>
       <%= render 'items/form', f: f, item: @item %>
 
-    <div class="user-createform">
-      <%= f.submit "途中保存", class: "btn btn-warning", name: "save_draft", id: "save-draft-button" %>
-      <%= f.submit "データ送信", class: "btn btn-success", id: "submit-button" %>
-    </div>
+      <div class="user-createform">
+        <%= f.submit "途中保存", class: "btn btn-warning", name: "save_draft", id: "save-draft-button" %>
+        <%= f.submit "データ送信", class: "btn btn-success", id: "submit-button" %>
+      </div>
     <% end %>
   </div> 
 </div>

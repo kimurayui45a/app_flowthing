@@ -10,63 +10,173 @@ document.addEventListener("turbo:load", function() {
     setupdragPalette('1');
     setupdragPalette('2');
     setupselectImage();
-    setupselectItem();
-    submitButton();
+    setupselectItem('2');
+    setupSubmitButtons();
   }
 });
 
-// //エピソードフォームのcanvasのon/off
-// function fabricSwitch() {
-//   document.getElementById('fabricEpiBtn').addEventListener("click", function() {
-//     const element = document.getElementById('fabricSwitchEpi');
-//     if (element) {
-//       element.classList.toggle('hidden-canvas');
+document.addEventListener("turbo:load", function() {
+  if (document.querySelector('.itemformcr')) {
+    setupiconmakingCanvas('21');
+    setupdragPalette('21');
+    setupselectItem('21');
+    setupItemSubmitButtons();
+  }
+});
+
+
+
+function submitItemForm() {
+  if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas-21')) {
+    document.getElementById('item_canvas-21').value = JSON.stringify(canvasInstances["21"].toJSON());
+  }
+    var form = document.getElementById('item_create_form');
+    if (form) {
+        form.submit();
+    }
+}
+
+// アイテムクリエートのフォームを送信するための関数
+// function submitItemButton() {
+//   // 'submit-button'のボタンを取得
+//   var submitButton = document.getElementById('item-submit-button');
+//   // 'save-draft-button'のボタンを取得
+//   var saveDraftButton = document.getElementById('item-save-draft-button');
+
+//   // 'submit-button'に対するイベントリスナーの設定
+//   console.log('イベントリスナーを追加、アイテムフォーム')
+//   if (submitButton) {
+//       submitButton.addEventListener('click', function(event) {
+//           submitForm();
+//       });
+//   }
+//   // 'save-draft-button'に対するイベントリスナーの設定
+//   if (saveDraftButton) {
+//       saveDraftButton.addEventListener('click', function(event) {
+//           submitForm();
+//       });
+//   }
+  
+//   function submitForm() {
+//     if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas-21')) {
+//       document.getElementById('item_canvas-21').value = JSON.stringify(canvasInstances["21"].toJSON());
 //     }
-//   });
+//       var form = document.getElementById('item_create_form');
+//       if (form) {
+//           form.submit();
+//       }
+//   }
 // }
 
-function submitButton() {
-  // 'submit-button'のボタンを取得
+
+//目次
+//フォームを送信するための関数
+//描画ツール
+// カラーパレットのドラッグ機能
+//サブユーザーフォーム
+//アイテムフォーム
+
+
+
+function submitUserForm() {
+  // ここでキャンバスデータを取得し、隠れたフィールドに設定
+  if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
+    document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
+  }
+  if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas-2')) {
+    document.getElementById('item_canvas-2').value = JSON.stringify(canvasInstances["2"].toJSON());
+  }
+    var form = document.getElementById('user_create_form');
+    if (form) {
+        form.submit();
+    }
+}
+
+// ユーザーフォームのサブミットボタンのイベントリスナーを設定
+function setupSubmitButtons() {
   var submitButton = document.getElementById('submit-button');
-  // 'save-draft-button'のボタンを取得
   var saveDraftButton = document.getElementById('save-draft-button');
-  // 'submit-button'に対するイベントリスナーの設定
+
   if (submitButton) {
-      submitButton.addEventListener('click', function(event) {
-          submitForm();
-      });
+    submitButton.removeEventListener('click', submitUserForm);
+    submitButton.addEventListener('click', submitUserForm);
   }
-  // 'save-draft-button'に対するイベントリスナーの設定
+
   if (saveDraftButton) {
-      saveDraftButton.addEventListener('click', function(event) {
-          submitForm();
-      });
+    saveDraftButton.removeEventListener('click', submitUserForm);
+    saveDraftButton.addEventListener('click', submitUserForm);
   }
-  
-  // フォームを送信するための関数
-  function submitForm() {
-    // ここでキャンバスデータを取得し、隠れたフィールドに設定
-    if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
-      document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
-    }
-    if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas')) {
-      document.getElementById('item_canvas').value = JSON.stringify(canvasInstances["2"].toJSON());
-    }
-      var form = document.getElementById('user_create_form');
-      if (form) {
-          form.submit();
-      }
+}
+
+// アイテムフォームのサブミットボタンのイベントリスナーを設定
+function setupItemSubmitButtons() {
+  var submitButton = document.getElementById('item-submit-button');
+  var saveDraftButton = document.getElementById('item-save-draft-button');
+
+  if (submitButton) {
+    submitButton.removeEventListener('click', submitItemForm);
+    submitButton.addEventListener('click', submitItemForm);
+  }
+
+  if (saveDraftButton) {
+    saveDraftButton.removeEventListener('click', submitItemForm);
+    saveDraftButton.addEventListener('click', submitItemForm);
   }
 }
 
 
 
+
+
+
+// // フォームを送信するための関数
+// function submitButton() {
+//   // 'submit-button'のボタンを取得
+//   var submitButton = document.getElementById('submit-button');
+//   // 'save-draft-button'のボタンを取得
+//   var saveDraftButton = document.getElementById('save-draft-button');
+//   // 'submit-button'に対するイベントリスナーの設定
+//   if (submitButton) {
+//       submitButton.addEventListener('click', function(event) {
+//           submitForm();
+//       });
+//   }
+//   console.log('イベントリスナーを追加,サブミット')
+//   // 'save-draft-button'に対するイベントリスナーの設定
+//   if (saveDraftButton) {
+//       saveDraftButton.addEventListener('click', function(event) {
+//           submitForm();
+//       });
+//   }
+  
+//   function submitForm() {
+//     // ここでキャンバスデータを取得し、隠れたフィールドに設定
+//     if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
+//       document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
+//     }
+//     if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas-2')) {
+//       document.getElementById('item_canvas-2').value = JSON.stringify(canvasInstances["2"].toJSON());
+//     }
+//       var form = document.getElementById('user_create_form');
+//       if (form) {
+//           form.submit();
+//       }
+//   }
+// }
+
+
+
+
+//描画ツール
 function setupiconmakingCanvas(uniqueId) {
   var container = document.getElementById(`canvas-making-${uniqueId}`);
   if (container) {
     //canvasの初期化
-    var iconmakingCanvas = new fabric.Canvas(`iconmakingCanvas-${uniqueId}`);
-    // 描画ツール
+    var iconmakingCanvas = new fabric.Canvas(`iconmakingCanvas-${uniqueId}`, {
+      backgroundColor: 'transparent' // 背景色を透明に設定
+    });
+
+    // 描画ツールのモード
     var penToolButton = document.getElementById(`usePenTool-${uniqueId}`);
     var eraserToolButton = document.getElementById(`useEraserTool-${uniqueId}`);
     var rectangleToolButton = document.getElementById(`useRectangleTool-${uniqueId}`);
@@ -110,6 +220,7 @@ function setupiconmakingCanvas(uniqueId) {
       }
     }
 
+    console.log('イベントリスナーを追加、fonnto')
     // フォントサイズフォームの取得とイベントリスナーの設定
     var fontSizeForm = document.getElementById(`fontSizeForm-${uniqueId}`);
     fontSizeForm.addEventListener('input', updateFontSize);
@@ -138,8 +249,8 @@ function setupiconmakingCanvas(uniqueId) {
     // }
 
     
-
-    // フォーム入力が更新されるたびにブラシサイズを更新
+    console.log('イベントリスナーを追加')
+    // フォーム入力が更新されるたびにブラシサイズを更新 ここか
     brushSizeForm.addEventListener('input', function() {
       const newSize = parseFloat(brushSizeForm.value);
       if (!isNaN(newSize)) {
@@ -561,6 +672,8 @@ function setupselectImage() {
   const selectImage = document.getElementById('subuserImage');
   const selectColorCode = document.getElementById('subuserColorCode');
   const selectCanvas = document.getElementById('subuserCanvas');
+  const iconChoiceDropdown = document.getElementById('iconChoice');
+  var selectedOptionField = document.getElementById('icon_choice');
   //toggleButton-${uniqueId}の代わりにラジオのidsubuserCanvas
   
   //選択項目の外枠のdiv要素(id)
@@ -568,10 +681,27 @@ function setupselectImage() {
   const colorInputDiv = document.getElementById('subColorInput');
   const canvasInputDiv = document.getElementById('subCanvasInput');
 
-  //隠しパラメータ(いらないかも)
-  // var selectedOptionField = document.getElementById('icon_choice');
   var imageInputField = document.getElementById('sub_image');
 
+  // ドロップダウンの変更を監視するイベントリスナーを設定
+  iconChoiceDropdown.addEventListener('change', function() {
+    const selectedValue = this.value;
+    console.log('Dropdown changed:', this.value); 
+
+    // 選択された値に応じて対応するラジオボタンを選択
+    if (selectedValue === 'sub_color') {
+      selectColorCode.checked = true;
+      selectedOptionField.value = 'sub_color';
+    } else if (selectedValue === 'sub_image') {
+      selectImage.checked = true;
+      selectedOptionField.value = 'sub_image';
+    } else if (selectedValue === 'sub_canvas') {
+      selectCanvas.checked = true;
+      selectedOptionField.value = 'sub_canvas';
+    }
+    // UIを更新
+    updateInputVisibility();
+  });
 
   //各ラジオボタンがクリックされた時の挙動
   function updateInputVisibility() {
@@ -668,27 +798,53 @@ function setupselectImage() {
     // クリックされた要素がファイル入力フィールドでない場合にのみラジオボタンを選択
     if (event.target.id !== 'sub_image') {
       selectImage.checked = true;
+      iconChoiceDropdown.value = 'sub_image';
+      selectedOptionField.value = 'sub_image';
       updateInputVisibility(); // 入力の可視性を更新
     }
   });
 
-  imageInputField.addEventListener('click', function(event) {
-      // ファイル入力フィールドが直接クリックされたときのみラジオボタンをアクティブにする
-      selectImage.checked = true;
-      updateInputVisibility(); // 入力の可視性を更新
-  });
 
   //カラーの選択可能範囲を広げる
   colorInputDiv.addEventListener('click', function() {
     selectColorCode.checked = true;
+    iconChoiceDropdown.value = 'sub_color';
+      selectedOptionField.value = 'sub_color';
     updateInputVisibility(); // 入力の可視性を更新
   });
 
   canvasInputDiv.addEventListener('click', function() {
     selectCanvas.checked = true;
+    iconChoiceDropdown.value = 'sub_canvas';
+    selectedOptionField.value = 'sub_canvas';
     updateInputVisibility(); // 入力の可視性を更新
   });
   
+  // ラジオボタンの変更を監視するイベントリスナーを設定
+  selectColorCode.addEventListener('change', function() {
+    if (this.checked) {
+      iconChoiceDropdown.value = 'sub_color';
+      selectedOptionField.value = 'sub_color';
+      updateInputVisibility();
+    }
+  });
+
+  selectImage.addEventListener('change', function() {
+    if (this.checked) {
+      iconChoiceDropdown.value = 'sub_image';
+      selectedOptionField.value = 'sub_image';
+      updateInputVisibility();
+    }
+  });
+
+  selectCanvas.addEventListener('change', function() {
+    if (this.checked) {
+      iconChoiceDropdown.value = 'sub_canvas';
+      selectedOptionField.value = 'sub_canvas';
+      updateInputVisibility();
+    }
+  });
+
   // ラジオボタンの変更を監視
   selectImage.addEventListener('change', updateInputVisibility);
   selectColorCode.addEventListener('change', updateInputVisibility);
@@ -701,25 +857,50 @@ function setupselectImage() {
 
 
 //アイテムフォーム
-function setupselectItem() {
+function setupselectItem(uniqueId) {
   //ラジオボタンの選択(id)
-  const selectImage = document.getElementById('itemImage');
-  const selectCanvas = document.getElementById('itemCanvas');
+  const selectImage = document.getElementById(`itemImage-${uniqueId}`);
+  const selectCanvas = document.getElementById(`itemCanvas-${uniqueId}`);
+  const iconChoiceDropdown = document.getElementById(`iconItemChoice-${uniqueId}`);
+  var selectedOptionField = document.getElementById(`image_choice-${uniqueId}`);
   //toggleButton-${uniqueId}の代わりにラジオのid
   
   //選択項目の外枠のdiv要素(id)
-  const imageInputDiv = document.getElementById('itemImageInput');
-  const canvasInputDiv = document.getElementById('itemCanvasInput');
+  const imageInputDiv = document.getElementById(`itemImageInput-${uniqueId}`);
+  const canvasInputDiv = document.getElementById(`itemCanvasInput-${uniqueId}`);
 
-  //隠しパラメータ(いらないかも)
-  // var selectedOptionField = document.getElementById('icon_choice');
-  var imageInputField = document.getElementById('item_image');
+  var imageInputField = document.getElementById(`item_image-${uniqueId}`);
 
+  // ドロップダウンの変更を監視するイベントリスナーを設定
+  iconChoiceDropdown.addEventListener('change', function() {
+    const selectedValue = this.value;
+    console.log('Dropdown changed:', this.value);
+    
+    // 選択された値に応じて対応するラジオボタンを選択
+  if (selectedValue === 'no_image') {
+    // 「選択しない」が選ばれたときの処理
+    selectImage.checked = false;
+    selectCanvas.checked = false;
+    selectedOptionField.value = 'no_image';
+    imageInputDiv.classList.add('subuser-disabled');
+    canvasInputDiv.classList.add('subuser-disabled');
+  } else if (selectedValue === 'item_image') {
+    selectImage.checked = true;
+    selectCanvas.checked = false;
+    selectedOptionField.value = 'item_image';
+  } else if (selectedValue === 'item_canvas') {
+    selectImage.checked = false;
+    selectCanvas.checked = true;
+    selectedOptionField.value = 'item_canvas';
+  }
+    // UIを更新
+    updateInputVisibility();
+  });
 
   //各ラジオボタンがクリックされた時の挙動
   function updateInputVisibility() {
-    var imagePreview = document.getElementById('itemimagePreview');
-    var canvasPreview = document.getElementById('fabricSwitchItem');
+    var imagePreview = document.getElementById(`itemimagePreview-${uniqueId}`);
+    var canvasPreview = document.getElementById(`fabricSwitchItem-${uniqueId}`);
     
     if (selectImage.checked) {
       // Imageが選択されたときの処理
@@ -734,7 +915,7 @@ function setupselectItem() {
       //選択されている方のプレビューを表示/他は非表示
       imagePreview.style.display = 'block';
       canvasPreview.classList.add('hidden-canvas');
-    } else {
+    } else if (selectCanvas.checked) {
       // Canvasが選択されたときの処理
       imageInputDiv.classList.add('subuser-disabled');
       canvasInputDiv.classList.remove('subuser-disabled');
@@ -743,16 +924,25 @@ function setupselectItem() {
       canvasInputDiv.classList.add('subactive-style');
       imagePreview.style.display = 'none';
       canvasPreview.classList.remove('hidden-canvas');
+    } else {
+      // 「選択しない」が選ばれたときの処理
+      imageInputDiv.classList.add('subuser-disabled');
+      canvasInputDiv.classList.add('subuser-disabled');
+      imageInputDiv.querySelector('input[type=file]').disabled = true;
+      imageInputDiv.classList.remove('subactive-style');
+      canvasInputDiv.classList.remove('subactive-style');
+      imagePreview.style.display = 'none';
+      canvasPreview.classList.add('hidden-canvas');
     }
   }
 
   //画像のプレビュー処理
-  var imageInput = document.getElementById('item_image');
+  var imageInput = document.getElementById(`item_image-${uniqueId}`);
   imageInput.addEventListener('change', function() {
     if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        var imagePreview = document.getElementById('itemimagePreview');
+        var imagePreview = document.getElementById(`itemimagePreview-${uniqueId}`);
         imagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
         imagePreview.style.backgroundSize = 'cover';
       };
@@ -765,21 +955,36 @@ function setupselectItem() {
     // クリックされた要素がファイル入力フィールドでない場合にのみラジオボタンを選択
     if (event.target.id !== 'item_image') {
       selectImage.checked = true;
+      iconChoiceDropdown.value = 'item_image';
+      selectedOptionField.value = 'item_image';
       updateInputVisibility(); // 入力の可視性を更新
     }
   });
 
-  imageInputField.addEventListener('click', function(event) {
-      // ファイル入力フィールドが直接クリックされたときのみラジオボタンをアクティブにする
-      selectImage.checked = true;
-      updateInputVisibility(); // 入力の可視性を更新
-  });
-
   canvasInputDiv.addEventListener('click', function() {
     selectCanvas.checked = true;
+    iconChoiceDropdown.value = 'item_canvas';
+    selectedOptionField.value = 'item_canvas';
     updateInputVisibility(); // 入力の可視性を更新
   });
   
+  // ラジオボタンの変更を監視するイベントリスナーを設定
+  selectImage.addEventListener('change', function() {
+    if (this.checked) {
+      iconChoiceDropdown.value = 'item_image';
+      selectedOptionField.value = 'item_image';
+      updateInputVisibility();
+    }
+  });
+
+  selectCanvas.addEventListener('change', function() {
+    if (this.checked) {
+      iconChoiceDropdown.value = 'item_canvas';
+      selectedOptionField.value = 'item_canvas';
+      updateInputVisibility();
+    }
+  });
+
   // ラジオボタンの変更を監視
   selectImage.addEventListener('change', updateInputVisibility);
   selectCanvas.addEventListener('change', updateInputVisibility);

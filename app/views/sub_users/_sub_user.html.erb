@@ -1,6 +1,47 @@
-<div>
-  <%= link_to sub_user_path(sub_user), class: "itemcard-link" do %>
-    <!-- カードのコンテンツ -->
-    <%= sub_user.sub_name %>
-  <% end %>
-</div>
+<article id="sub_user_<%= sub_user.id %>", class="item-card-container">
+    <details class="details-box">
+      <summary class="item-summary-style"><%= sub_user.sub_name %></summary>
+      <span><%= sub_user.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
+    </details>
+    <section class="item-objectbox">
+      <div class="icon-object">
+        <%= link_to sub_user_path(sub_user) do %>
+          <% if sub_user.icon_choice.present? %>
+            <% case sub_user.icon_choice %>
+            <% when 'sub_image' %>
+                <!-- sub_image の内容を表示 -->
+                <% if sub_user.sub_image.present? %>
+                    <%= image_tag sub_user.sub_image.url, class: "user-profileicon" %>
+                <% end %>
+            <% when 'sub_canvas' %>
+                <!-- sub_canvas の内容を表示 -->
+                <canvas class="subfabric myCanvas-icon canvas-style" id="subCanvas_<%= sub_user.id %>" 
+                        data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+            <% when 'sub_color' %>
+                <!-- sub_color の内容を表示 -->
+                <div style="background-color: <%= sub_user.sub_color %>;" class="user-profileicon"></div>
+            <% else %>
+                <div class="no-image-icon">No Image</div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <span>アイテム数: <%= sub_user.items_count %></span>
+      <div class="item-flex">
+        <div>
+          <%= link_to "#", class: "edit-memo-link" do %>
+            <i class="bi bi-pencil-fill"></i>
+          <% end %>
+        </div>
+
+        <div>
+          <%= link_to confirm_delete_sub_user_path(sub_user), class: "delete-confirm-link" do %>
+            <i class="bi bi-trash-fill"></i>
+          <% end %>
+        </div> 
+      </div> 
+    </section>
+</article>
+
+
+

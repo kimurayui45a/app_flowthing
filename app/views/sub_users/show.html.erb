@@ -1,5 +1,5 @@
 <% content_for(:name, @sub_user.sub_name) %>
-<div class="max767-container fabicon">
+<div class="max767-container">
   <div>
     <h1 class="section-title"><%= t('.title') %></h1>
 
@@ -14,9 +14,10 @@
         <% end %>
       <% when 'sub_canvas' %>
         <!-- sub_canvas の内容を表示 -->
-        <%= link_to '/', class: 'app' do %>
-          <canvas id="restoredSubCanvas" data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
-        <% end %>
+    
+          <canvas class="fabicon" id="restoredSubCanvas" 
+        data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+      
       <% when 'sub_color' %>
         <!-- sub_color の内容を表示 -->
         <div style="background-color: <%= @sub_user.sub_color %>;" class="user-profileicon"></div>
@@ -30,7 +31,8 @@
 
     <div><%= @sub_user.sub_name %></div>
     <div>トップへ戻る</div>
-    <div>アイテムを増やす</div>
+  
+    <%= link_to '新しいアイテムを作成', new_item_path(sub_user_id: @sub_user.id), class: 'btn btn-primary' %>
     <%= link_to edit_sub_user_path(@sub_user) do %>
       <i class="bi bi-pencil-fill"></i>
     <% end %>

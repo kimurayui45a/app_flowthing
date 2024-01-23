@@ -1,0 +1,31 @@
+<% content_for(:title, t('.title')) %>
+<div class="max767-container">
+  <div>
+    <h1 class="section-title"><%= t('.title') %></h1>
+
+    <div>
+      <% if @item.image_choice.present? %>
+        <% case @item.image_choice %>
+          <% when 'item_image' %>
+            <% if @item.item_image.present? %>
+              <%= image_tag @item.item_image.url, class: "user-profileicon" %>
+            <% end %>
+          <% when 'item_canvas' %>
+              <canvas class="item-show-fabric" id="itemCanvas_<%= @item.id %>" data-canvas-json='<%= @item.item_canvas.to_json.html_safe %>'></canvas>
+          <% else %>
+            <p>アイコンは設定されていません。</p>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <div><%= @item.item_name %></div>
+    <div><%= @item.item_text %></div>
+    <div><%= @sub_user.sub_name %></div>
+    <%= link_to 'アイテムを増やす', new_item_path(sub_user_id: @sub_user.id), class: 'btn btn-primary' %>
+    <%= link_to edit_item_path(@item) do %>
+      <i class="bi bi-pencil-fill"></i>
+    <% end %>
+
+  </div>
+</div>
