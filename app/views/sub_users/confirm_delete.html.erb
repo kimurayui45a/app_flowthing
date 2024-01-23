@@ -1,0 +1,31 @@
+<h1>
+  <% if @sub_user.icon_choice.present? %>
+    <% case @sub_user.icon_choice %>
+      <% when 'sub_image' %>
+        <!-- sub_image の内容を表示 -->
+        <% if @sub_user.sub_image.present? %>
+          <%= image_tag @sub_user.sub_image.url, class: "user-itemlist-icon" %>
+        <% end %>
+      <% when 'sub_canvas' %>
+        <!-- sub_canvas の内容を表示 -->
+    
+          <canvas class="itemfabric" id="subCanvas_<%= @sub_user.id %>" 
+        data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+      
+      <% when 'sub_color' %>
+        <!-- sub_color の内容を表示 -->
+        <div style="background-color: <%= @sub_user.sub_color %>;" class="user-itemlist-icon"></div>
+      <% else %>
+        <div class="no-image-icon">No Image</div>
+    <% end %>
+  <% end %>
+の削除を確認</h1>
+
+<p>本当にこのサブユーザーを削除しますか？</p>
+<p>関連するアイテム数: <%= @sub_user.items_count %></p>
+
+<%= link_to '削除する', sub_user_path(@sub_user), id: "button-delete-#{@sub_user.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('sub_users.sub_user.delete_confirm') } %>
+<%= link_to 'キャンセル', sub_users_path %>
+
+
+

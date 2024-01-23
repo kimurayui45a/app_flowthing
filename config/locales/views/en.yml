@@ -5,4 +5,7 @@ en:
   sub_users:
     index:
       title: Sub Thing
+  items:
+    index:
+      title: Flow Thing
     

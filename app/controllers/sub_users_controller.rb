@@ -2,7 +2,7 @@ class SubUsersController < ApplicationController
   before_action :set_sub_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sub_users = @profile.sub_users.includes(:items)
+    @sub_users = @profile.sub_users
   end
 
   def new
@@ -10,6 +10,7 @@ class SubUsersController < ApplicationController
   end
 
   def show
+    @sub_user = @profile.sub_users.find(params[:id])
   end
 
   def edit
@@ -25,8 +26,13 @@ class SubUsersController < ApplicationController
   end
 
   def destroy
-    @sub_user.destroy
-    redirect_to sub_users_path, success: t('defaults.flash_message.deleted', sub_user: SubUser.model_name.human), status: :see_other
+    @sub_user.destroy!
+    redirect_to sub_users_path, success: t('defaults.flash_message.sub_user_deleted', sub_user: SubUser.model_name.human), status: :see_other
+  end
+
+  def confirm_delete
+    @sub_user = @profile.sub_users.find(params[:id])
+    # ここで関連するアイテムなどの情報を取得できます。
   end
 
   private

@@ -1,0 +1,34 @@
+
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+  <div>
+    <h1 class="section-title">
+      <span class="red-text">新規作成</span>
+    </h1>
+
+
+    <h2 class="section-title">
+      <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+    </h2>
+    <%= form_with model: @item, id: 'item_create_form', multipart: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+
+      <%= f.hidden_field :sub_user_id, value: @sub_user.id %>
+  
+      <%= render 'form_item_create', f: f %>
+      
+      
+      <div class="user-createform">
+        <!-- sub_user_idを隠しフィールドとして設定 -->
+        <%= f.hidden_field :sub_user_id, value: @sub_user_id %>
+        <%= f.submit "途中保存", class: "btn btn-warning", name: "save_draft", id: "item-save-draft-button" %>
+        <%= f.submit "データ送信", class: "btn btn-success", id: "item-submit-button" %>
+      </div>
+    <% end %>
+  </div> 
+</div>
+
+
+
+

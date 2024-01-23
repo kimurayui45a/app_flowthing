@@ -1,12 +1,22 @@
 <% content_for(:title, t('.title')) %>
-<div class="max767-container">
+<div class="max1280-container">
 <h1 class="section-title">
   <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
 </h1>
-
-  <% if @sub_users.present? %>
-    <%= render @sub_users %>
-  <% else %>
-    <div class="mb-3">サブユーザーがいません</div>
-  <% end %>
+  <div class="item-list-container">
+    <% if @sub_users.present? %>
+      <% @sub_users.each do |sub_user| %>
+        <div class="item-list-card">
+          <%= render sub_user %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="">サブユーザーがいません</div>
+    <% end %>
+  </div>
 </div>
+
+
+
+  
+

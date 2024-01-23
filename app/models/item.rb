@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   validates :item_name, length: { maximum: 50 }
 
   belongs_to :sub_user
+  counter_culture :sub_user
   has_many :drafts, dependent: :destroy
 
   mount_uploader :item_image, ImageUploader

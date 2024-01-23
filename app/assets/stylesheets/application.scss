@@ -482,7 +482,7 @@ ul {
 }
 
 
-#colorPreview{
+#colorPreview {
   width: 100px;
   height: 100px;
   border: 1px solid black;
@@ -546,7 +546,7 @@ ul {
 ------------------------------------------ */
 
 /* ドロップゾーンのスタイル */
-#dropzone-1, #dropzone-2, #dropzone-3 {
+#dropzone-1, #dropzone-2, #dropzone-21 {
   position: relative; /* 絶対位置指定された子要素を正しく配置するために必要 */
   width: 100%;        /* 適切なサイズに設定 */
   height: 600px;      /* 適切なサイズに設定 */
@@ -555,7 +555,7 @@ ul {
 }
 
 /* ドラッグ可能な要素のスタイル */
-#colorPalette-1, #colorPalette-2, #colorPalette-3 {
+#colorPalette-1, #colorPalette-2, #colorPalette-21 {
   position: absolute; /* ドラッグ時の位置調整のために必要 */
   z-index: 15;      /* 他の要素の上に表示 */
   /* その他のスタイル（サイズ、背景色など） */
@@ -570,7 +570,7 @@ ul {
   bottom: 0%;
 }
 
-#tool-custom-1, #tool-custom-2, #tool-custom-3 {
+#tool-custom-1, #tool-custom-2, #tool-custom-21 {
   position: absolute; /* ドラッグ時の位置調整のために必要 */
   z-index: 14;      /* 他の要素の上に表示 */
   /* その他のスタイル（サイズ、背景色など） */
@@ -595,7 +595,7 @@ ul {
 }
 
 /* ドラッグ中の要素のスタイル */
-#colorPalette-3:active {
+#colorPalette-21:active {
   cursor: grabbing;
 }
 
@@ -659,7 +659,7 @@ ul {
   margin-top: 5px;
 }
 
-#editMod-1, #editMod-2, #editMod-3 {
+#editMod-1, #editMod-2, #editMod-21 {
   background-color: white;
   color: black;
 }
@@ -716,12 +716,12 @@ div.selected {
   margin-left: 5px;
 }
 
-#undo-1, #undo-2, #undo-3 {
+#undo-1, #undo-2, #undo-21 {
   border: none;
   outline: none;
 }
 
-#redo-1, #redo-2, #redo-3 {
+#redo-1, #redo-2, #redo-21 {
   border: none;
   outline: none;
 }
@@ -832,11 +832,11 @@ div.selected {
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
-#brushSizeForm-1, #brushSizeForm-2, #brushSizeForm-3 {
+#brushSizeForm-1, #brushSizeForm-2, #brushSizeForm-21 {
   width: 48px;
 }
 
-#fontSizeForm-1, #fontSizeForm-2, #fontSizeForm-3 {
+#fontSizeForm-1, #fontSizeForm-2, #fontSizeForm-21 {
   width: 48px;
 }
 
@@ -865,13 +865,6 @@ div.selected {
 //   background-color: #bada55;
 //   color: white;
 // }
-
-
-
-
-
-
-
 
 
 
@@ -974,7 +967,7 @@ div.selected {
 }
 
 
-#itemimagePreview {
+#itemimagePreview-2, #itemimagePreview-21 {
   width: 100px;
   height: 100px;
   border: 1px solid black;
@@ -991,6 +984,135 @@ div.selected {
   display: inline-block;
   margin: 0px auto;
   object-fit: cover;
+}
+
+
+/* ユーザー・アイテムカード
+------------------------------------------ */
+
+.item-objectbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  width: auto;
+  position: relative;
+}
+
+.item-flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+// .icon-scale {
+//   transform: scale(0.3);
+//   transform-origin: bottom right;
+// }
+
+
+/* アイコン */
+.no-image-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 2px dashed #7f7f7f;
+  border-radius: 50%;
+  font-size: 18px;
+  text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 500;
+  color: #7f7f7f;
+  white-space: nowrap;
+}
+
+.user-itemlist-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+}
+
+.canvas-style {
+  cursor: pointer;
+}
+
+.item-card-container {
+  display: block;
+  height: auto;
+  width: 220px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 8px 1px #c6c6c6;
+}
+
+.item-summary-style {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+details[open] .item-summary-style {
+  /* detailsが開かれたときにテキストを折り返す */
+  white-space: normal;
+  text-overflow: clip;
+}
+
+.details-box {
+  height: 25px;
+}
+
+summary::-webkit-details-marker {
+  display:none;
+}
+
+summary {
+  display: block;
+  list-style: none;
+}
+
+
+.user-summary-style {
+  background-color: #9ADFCB;
+}
+
+.myCanvas-icon {
+  border-radius: 50%;
+  border: 1px solid black;
+  display: block;
+}
+
+.item-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item-list-container .item-list-card {
+  flex: 0 0 calc(25% - 10px);
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1199px) {
+  .item-list-container .item-list-card {
+    flex: 0 0 calc(33.333% - 10px);
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 929px) {
+  .item-list-container .item-list-card {
+    flex: 0 0 calc(50% - 10px);
+    margin-bottom: 10px;
+  }
 }
 
 

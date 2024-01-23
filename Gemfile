@@ -59,6 +59,10 @@ gem 'carrierwave', '~> 3.0', '>= 3.0.5'
 #devise関連
 gem 'devise', '~> 4.9', '>= 4.9.3'
 
+#カウンター
+gem 'counter_culture'
+
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

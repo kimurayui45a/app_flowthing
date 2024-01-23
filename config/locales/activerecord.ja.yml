@@ -25,6 +25,4 @@ ja:
               sub_user_invalid: "Sub Thingの作成に誤りがあります"
             item:
               item_invalid: "Flow Thingの作成に誤りがあります"
-            episode:
-              episode_invalid: "エピソードの作成に誤りがあります"
-
+  

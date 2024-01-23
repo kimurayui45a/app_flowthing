@@ -3,9 +3,9 @@
 </h2>
 <div class="fabric">
 <%= f.fields_for :item, item do |item_form| %>
-<div id="itemimagePreview"></div>
+<div id="itemimagePreview-2"></div>
 
-  <div id="fabricSwitchItem">
+  <div id="fabricSwitchItem-2">
     <!-- 描画ツール  -->
     <div id="canvas-making-2">
       <div class="dropzone" id="dropzone-2">
@@ -120,19 +120,19 @@
 
 
   <div class="flex-between user-createform">
-    <div class="sub-image-container" id="itemImageInput">
-        <label for="itemImage">
-          <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio" checked>
+    <div class="sub-image-container subuser-disabled" id="itemImageInput-2">
+        <label for="itemImage-2">
+          <input type="radio" name="inputItem" value="item_image" id="itemImage-2" class="custom-radio">
           <%= item_form.label :item_image, t('items.form.item_image') %>
-          <%= item_form.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
+          <%= item_form.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image-2" %>
         </label>
       </div>
 
-      <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput">
-        <label for="itemCanvas">
-          <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas" class="custom-radio">
+      <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput-2">
+        <label for="itemCanvas-2">
+          <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas-2" class="custom-radio">
           <%= item_form.label :item_canvas, t('items.form.item_canvas') %>
-          <%= item_form.hidden_field :item_canvas, id: "item_canvas" %>
+          <%= item_form.hidden_field :item_canvas, id: "item_canvas-2" %>
         </label>
       </div>
     </div>
@@ -140,8 +140,13 @@
 
   <div class="user-createform">
     <div>
-      <%= item_form.label :image_choice, "どちらをアイコンにしますか？" %>
-      <%= item_form.select :image_choice, [["Item Image", "item_image"], ["Item Canvas", "item_canvas"]] %>
+      <label for="iconItemChoice-2">どちらをアイコンにしますか？</label>
+      <select id="iconItemChoice-2" name="dummy_image_choice">
+        <option value="no_image" selected>選択しない</option>
+        <option value="item_image">Item Image</option>
+        <option value="item_canvas">Item Canvas</option>
+      </select>
+      <%= item_form.hidden_field :image_choice, id: "image_choice-2" %>
     </div>
 
     <div>

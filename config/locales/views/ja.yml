@@ -36,13 +36,24 @@ ja:
   sub_users:
     show:
       title: Sub Thing 詳細
+    sub_user:
+      delete_confirm: 削除しますか？
     form:
       sub_color: カラーアイコン
       image_icon: 画像
       sub_canvas: 描く
       sub_name: お名前
       sub_text: コメント
+    confirm_delete:
+      delete_confirm: 本当に削除しますか？
   items:
+    index:
+    new: 
+      title: Flow Thing 作成
+    show:
+      title: Flow Thing 詳細
+    item:
+      delete_confirm: 削除しますか？
     form:
       item_image: 画像
       item_canvas: 描く
@@ -76,3 +87,7 @@ ja:
       sub_user_not_updated: "Sub Thingを更新出来ませんでした"
       sub_user_created: "Sub Thingを作成しました"
       sub_user_not_created: "Sub Thingを作成出来ませんでした"
+      sub_user_deleted: "Sub Thingが消滅しました"
+      delete_confirm_message: "このSub Thingに関連するアイテムもすべて削除されます。削除しますか？"
+      item_created: "Flow Thingを追加作成しました"
+      item_not_updated: "Flow Thingを更新出来ませんでした"
