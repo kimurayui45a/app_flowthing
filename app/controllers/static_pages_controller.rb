@@ -6,6 +6,8 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def info; end
+
   def usersselect; end
 
   def newcontents
@@ -67,7 +69,7 @@ class StaticPagesController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id)
+    params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place)
   end
   
 end

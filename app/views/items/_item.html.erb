@@ -1,4 +1,4 @@
-<article id="item_<%= item.id %>", class="item-card-container">
+<article id="item_<%= item.id %>", class="item-card-container <%= blur_class_for_last_accessed(item.sub_user) %>">
     <details class="details-box">
       <summary class="item-summary-style"><%= item.item_name %></summary>
       <span><%= item.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
@@ -12,11 +12,11 @@
             <% case item.image_choice %>
               <% when 'item_image' %>
                 <% if item.item_image.present? %>
-                  <%= image_tag item.item_image.url, class: "user-profileicon" %>
+                  <div class="myCanvas-icon"><%= image_tag item.item_image.url, class: "user-profileicon" %></div>
                 <% end %>
               <% when 'item_canvas' %>
-                  <canvas class="itemfabric canvas-style" id="itemCanvas_<%= item.id %>" 
-                  data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas>
+                  <div class="back-white"><canvas class="itemfabric canvas-style myCanvas-icon" id="itemCanvas_<%= item.id %>" 
+                  data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas></div>
               <% else %>
                 <div class="no-image-icon">No Image</div>
             <% end %>
@@ -38,8 +38,8 @@
                   <% end %>
               <% when 'sub_canvas' %>
                   <!-- sub_canvas の内容を表示 -->
-                  <canvas class="itemfabric myCanvas-icon canvas-style" id="subCanvas_<%= item.id %>" 
-                          data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+                  <div class="back-white"><canvas class="itemfabric myCanvas-icon canvas-style" id="subCanvas_<%= item.id %>" 
+                          data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas></div>
               <% when 'sub_color' %>
                   <!-- sub_color の内容を表示 -->
                   <div style="background-color: <%= sub_user.sub_color %>;" class="user-itemlist-icon"></div>
@@ -51,7 +51,7 @@
         </div>
 
         <div>
-          <%= link_to "#", class: "edit-memo-link" do %>
+          <%= link_to edit_item_path(item, sub_user_id: item.sub_user_id) do %>
             <i class="bi bi-pencil-fill"></i>
           <% end %>
         </div>

@@ -1,4 +1,4 @@
-<h2 class="section-title">
+<h2 class="section-title item-form-container">
   <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
 </h2>
 <div class="fabric">
@@ -37,10 +37,11 @@
               <div id="useTextTool-2" class="pain-button">
                 <i class="bi bi-fonts"></i>
               </div>
-              <div>
-                <div id="useRectangleTool-2" class="pain-button">
-                  <i class="bi bi-bounding-box-circles"></i>
-                </div>
+              <div class="pain-button">
+                  <input type="file" id="imageInputFabric-2" accept="image/*" style="display: none;">
+                  <div class="btn" onclick="document.getElementById('imageInputFabric-2').click();">
+                      <i class="bi bi-image"></i>
+                  </div>
               </div>
             </div>
 
@@ -114,6 +115,51 @@
           </div>
         </div>
 
+        <div class="draggable" id="shapes-tool-2">
+            <div class="toolsize-title"><span>図形</span></div>
+            <div class="icon-palletbox shapes-tool">
+              <div class="pallettool flex-between">
+                <div>
+                  <div id="useRectangleTool-2" class="pain-button">
+                    <i class="bi bi-square"></i>
+                  </div>
+                </div>
+                <div>
+                  <div id="drawCircleTool-2" class="pain-button">
+                    <i class="bi bi-circle"></i>
+                  </div>
+                </div>
+
+                <div>
+                  <div id="drawTriangleTool-2" class="pain-button">
+                    <i class="bi bi-triangle"></i>
+                  </div>
+                </div>
+
+                <div id="drawLineTool-2" class="pain-button"><i class="bi bi-slash-lg"></i></div>
+                <div class="form-tool">
+                  <label for="cornerRadiusInput-2"><i class="bi bi-bounding-box-circles"></i></label>
+                  <input type="number" id="cornerRadiusInput-2" min="0" max="20" step="1" value="0">
+                </div>
+
+                <div class="form-tool">
+                  <label for="fillCheckbox-2"><i class="bi bi-back"></i></label>
+                  <input type="checkbox" id="fillCheckbox-2" checked>
+                </div>
+
+                <div class="form-tool">
+                  <label for="strokeCustomInput-2"><i class="bi bi-border-width"></i></label>
+                  <input type="number" id="strokeCustomInput-2" min="0" max="20" step="1" value="2">
+                </div>
+
+                <div class="form-tool">
+                  <label for="opacitySlider-2"><i class="bi bi-snapchat"></i></label>
+                  <input type="number" id="opacitySlider-2" min="0" max="100" step="1" value="100">
+                </div>
+              </div>
+            </div>
+          </div>
+
       </div>
     </div>
   </div>
@@ -129,7 +175,8 @@
       </div>
 
       <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput-2">
-        <label for="itemCanvas-2">
+        <i class="bi bi-brush brush-icon"></i>
+        <label for="itemCanvas-2" class="balloon-botann-text">
           <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas-2" class="custom-radio">
           <%= item_form.label :item_canvas, t('items.form.item_canvas') %>
           <%= item_form.hidden_field :item_canvas, id: "item_canvas-2" %>
@@ -139,24 +186,31 @@
   </div>
 
   <div class="user-createform">
-    <div>
-      <label for="iconItemChoice-2">どちらをアイコンにしますか？</label>
+    <div class="user-createform-text">
+      <label for="iconItemChoice-2"><%= t('items.form.image_choice') %></label><br>
       <select id="iconItemChoice-2" name="dummy_image_choice">
-        <option value="no_image" selected>選択しない</option>
-        <option value="item_image">Item Image</option>
-        <option value="item_canvas">Item Canvas</option>
+        <option value="no_image" selected><%= t('items.form.no_image') %></option>
+        <option value="item_image"><%= t('items.form.item_image') %></option>
+        <option value="item_canvas"><%= t('items.form.item_canvas') %></option>
       </select>
       <%= item_form.hidden_field :image_choice, id: "image_choice-2" %>
     </div>
-
-    <div>
+    <span class="red-text"><%= t('items.form.contents_note_icon') %></span>
+    <div class="user-createform-text">
       <%= item_form.label :item_name, t('items.form.item_name') %>
       <%= item_form.text_field :item_name, class: "form-control" %>
     </div>
-    <div>
+    <div class="user-createform-text">
       <%= item_form.label :item_text, t('items.form.item_text') %>
       <%= item_form.text_area :item_text, class: "form-control", row: 10, style: "height: 200px" %>
     </div>
-  </div>
-  <% end %>
+    <div class="user-createform-text">
+        <%= item_form.label :item_place, t('items.form.item_place') %>
+        <%= item_form.text_field :item_place, class: "form-control" %>
+    </div>
+    <div class="user-createform-text">
+        <%= item_form.label :episode, t('items.form.episode') %><span class="red-text"> <%= t('items.form.contents_note') %></span>
+        <%= item_form.text_area :episode, class: "form-control", row: 10, style: "height: 200px" %>
+    </div>
+<% end %>
 </div>

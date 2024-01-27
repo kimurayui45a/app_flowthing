@@ -1,0 +1,44 @@
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+  <h1 class="section-title">
+    掲示板一覧
+  </h1>
+  <%= link_to 'Free', free_boards_path %>
+  <%= link_to 'Question', question_boards_path %>
+
+  <%= link_to new_board_path do %>
+    <div class="default-button green-button">
+      <span class="red-text">掲示板を作成</span>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to 'My Boards', myboards_list_boards_path %>
+  <% end %>
+
+  <!-- 検索フォーム -->
+  <%= search_form_for @q do |f| %>
+  <div class="field">
+    <%= f.label :board_text_or_board_title_cont, "タイトルまたはテキスト" %>
+    <%= f.search_field :board_text_or_board_title_cont %>
+  </div>
+
+  <div>
+    <%= f.submit "検索" %>
+  </div>
+<% end %>
+
+  <div>
+    <% if @boards.present? %>
+      <% @boards.each do |board| %>
+        <div>
+          <%= render 'board', board: board %>
+        </div>
+      <% end %>
+
+      <%= paginate @boards %>
+    <% else %>
+      <div>掲示板がありません</div>
+    <% end %>
+  </div>
+</div>

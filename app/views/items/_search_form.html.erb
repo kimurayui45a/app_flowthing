@@ -1,0 +1,18 @@
+<div class="flex-between">
+  <%= search_form_for @q, url: items_path, method: :get do |f| %>
+    <div class="field">
+      <%= f.label :item_name_or_item_text_or_item_place_cont, "Search by Name, Text or Place" %>
+      <%= f.search_field :item_name_or_item_text_or_item_place_cont %>
+    </div>
+
+    <div class="field">
+      <%= f.check_box :s, { include_hidden: false }, 'items.updated_at asc', 'items.updated_at desc' %>
+      <%= f.label :s, "Sort by Updated Date (ascending)" %>
+
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Search" %>
+    </div>
+  <% end %>
+</div>

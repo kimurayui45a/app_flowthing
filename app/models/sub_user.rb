@@ -4,8 +4,10 @@ class SubUser < ApplicationRecord
   validates :sub_text, length: { maximum: 2_000 }
 
   belongs_to :profile
-  has_many :items, dependent: :destroy
-  has_many :drafts, dependent: :destroy
+  has_many :items
+  has_many :drafts
+
+  acts_as_paranoid
 
   mount_uploader :sub_image, ImageUploader
 

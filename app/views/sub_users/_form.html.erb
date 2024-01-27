@@ -40,9 +40,6 @@
                 <div id="useTextTool-1" class="pain-button">
                   <i class="bi bi-fonts"></i>
                 </div>
-                <div id="useRectangleTool-1" class="pain-button">
-                  <i class="bi bi-bounding-box-circles"></i>
-                </div>
               </div>
 
               <div class="pallettool-special flex-between">
@@ -115,9 +112,56 @@
               </div>
             </div>
           </div>
+
+          <div class="draggable" id="shapes-tool-1">
+            <div class="toolsize-title"><span>図形</span></div>
+            <div class="icon-palletbox shapes-tool">
+              <div class="pallettool flex-between">
+                <div>
+                  <div id="useRectangleTool-1" class="pain-button">
+                    <i class="bi bi-square"></i>
+                  </div>
+                </div>
+                <div>
+                  <div id="drawCircleTool-1" class="pain-button">
+                    <i class="bi bi-circle"></i>
+                  </div>
+                </div>
+
+                <div>
+                  <div id="drawTriangleTool-1" class="pain-button">
+                    <i class="bi bi-triangle"></i>
+                  </div>
+                </div>
+
+                <div id="drawLineTool-1" class="pain-button"><i class="bi bi-slash-lg"></i></div>
+                <div class="form-tool">
+                  <label for="cornerRadiusInput-1"><i class="bi bi-bounding-box-circles"></i></label>
+                  <input type="number" id="cornerRadiusInput-1" min="0" max="20" step="1" value="0">
+                </div>
+
+                <div class="form-tool">
+                  <label for="fillCheckbox-1"><i class="bi bi-back"></i></label>
+                  <input type="checkbox" id="fillCheckbox-1" checked>
+                </div>
+
+                <div class="form-tool">
+                  <label for="strokeCustomInput-1"><i class="bi bi-border-width"></i></label>
+                  <input type="number" id="strokeCustomInput-1" min="0" max="20" step="1" value="2">
+                </div>
+
+                <div class="form-tool">
+                  <label for="opacitySlider-1"><i class="bi bi-snapchat"></i></label>
+                  <input type="number" id="opacitySlider-1" min="0" max="100" step="1" value="100">
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
+
 
 
     <div class="flex-between user-createform">
@@ -161,7 +205,8 @@
       </div>
 
       <div class="subuser-disabled sub-canvas-container" id="subCanvasInput">
-        <label for="subuserCanvas">
+        <i class="bi bi-brush brush-icon"></i>
+        <label for="subuserCanvas" class="balloon-botann-text">
           <input type="radio" name="inputSub" value="sub_canvas" id="subuserCanvas" class="custom-radio">
           <%= sub_user_form.label :sub_canvas, t('sub_users.form.sub_canvas') %>
           <%= sub_user_form.hidden_field :sub_canvas, id: "sub_canvas" %>
@@ -170,22 +215,22 @@
     </div>
 
     <div class="user-createform">
-      <div>
-        <label for="iconChoice">どのタイプのアイコンにしますか？</label>
+      <div class="user-createform-text">
+        <label for="iconChoice"><%= t('sub_users.form.icon_choice') %></label><span class="red-text"> <%= t('sub_users.form.contents_note') %></span><br>
         <select id="iconChoice" name="dummy_icon_choice">
-          <option value="sub_color" selected>Sub Color</option>
-          <option value="sub_image">Sub Image</option>
-          <option value="sub_canvas">Sub Canvas</option>
+          <option value="sub_color" selected><%= t('sub_users.form.sub_color') %></option>
+          <option value="sub_image"><%= t('sub_users.form.image_icon') %></option>
+          <option value="sub_canvas"><%= t('sub_users.form.sub_canvas') %></option>
         </select>
         <%= sub_user_form.hidden_field :icon_choice, id: "icon_choice" %>
       </div>
 
-      <div>
-        <%= sub_user_form.label :sub_name, t('subuser.form.sub_name') %>
+      <div class="user-createform-text">
+        <%= sub_user_form.label :sub_name, t('sub_users.form.sub_name') %>
         <%= sub_user_form.text_field :sub_name, class: "form-control" %>
       </div>
-      <div>
-        <%= sub_user_form.label :sub_text, t('subuser.form.sub_text') %>
+      <div class="user-createform-text">
+        <%= sub_user_form.label :sub_text, t('sub_users.form.sub_text') %>
         <%= sub_user_form.text_area :sub_text, class: "form-control", row: 10, style: "height: 200px" %>
       </div>
     </div>

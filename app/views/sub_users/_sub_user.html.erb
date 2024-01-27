@@ -1,8 +1,10 @@
-<article id="sub_user_<%= sub_user.id %>", class="item-card-container">
+<article id="sub_user_<%= sub_user.id %>", class="<%= container_class_for_items_count(sub_user.items_count) %> <%= blur_class_for_last_accessed(sub_user) %> item-card-container">
     <details class="details-box">
       <summary class="item-summary-style"><%= sub_user.sub_name %></summary>
       <span><%= sub_user.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
+
+
     <section class="item-objectbox">
       <div class="icon-object">
         <%= link_to sub_user_path(sub_user) do %>
@@ -15,8 +17,8 @@
                 <% end %>
             <% when 'sub_canvas' %>
                 <!-- sub_canvas の内容を表示 -->
-                <canvas class="subfabric myCanvas-icon canvas-style" id="subCanvas_<%= sub_user.id %>" 
-                        data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+                <div class="back-white"><canvas class="subfabric myCanvas-icon canvas-style" id="subCanvas_<%= sub_user.id %>" 
+                        data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas></div>
             <% when 'sub_color' %>
                 <!-- sub_color の内容を表示 -->
                 <div style="background-color: <%= sub_user.sub_color %>;" class="user-profileicon"></div>
@@ -27,6 +29,16 @@
         <% end %>
       </div>
       <span>アイテム数: <%= sub_user.items_count %></span>
+
+
+<div class="icon-count-container">
+<% icon_classes = icon_class_for_items_count(sub_user.items_count) %>
+<% icon_classes.each do |icon_class| %>
+  <% unless icon_class == 'default-icon' %>
+    <i class="<%= icon_class %>"></i>
+  <% end %>
+<% end %>
+</div>
       <div class="item-flex">
         <div>
           <%= link_to "#", class: "edit-memo-link" do %>

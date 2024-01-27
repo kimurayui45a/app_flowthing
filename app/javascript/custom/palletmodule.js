@@ -3,6 +3,15 @@ import iro from "@jaames/iro";
 
 var canvasInstances = {};
 
+
+//目次
+//フォームを送信するための関数
+//描画ツール
+// カラーパレットのドラッグ機能
+//サブユーザーフォーム
+//アイテムフォーム
+
+
 document.addEventListener("turbo:load", function() {
   if (document.querySelector('.fabric')) {
     setupiconmakingCanvas('1');
@@ -25,6 +34,24 @@ document.addEventListener("turbo:load", function() {
 });
 
 
+document.addEventListener("turbo:load", function() {
+  if (document.querySelector('.edititemform')) {
+    setupiconmakingCanvas('21');
+    setupdragPalette('21');
+    setupselectItem('21');
+    setupItemSubmitButtons();
+  }
+});
+
+document.addEventListener("turbo:load", function() {
+  if (document.querySelector('.edituserform')) {
+    setupiconmakingCanvas('1');
+    setupdragPalette('1');
+    setupUserSubmitButtons();
+    setupselectImage();
+  }
+});
+
 
 function submitItemForm() {
   if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas-21')) {
@@ -36,45 +63,15 @@ function submitItemForm() {
     }
 }
 
-// アイテムクリエートのフォームを送信するための関数
-// function submitItemButton() {
-//   // 'submit-button'のボタンを取得
-//   var submitButton = document.getElementById('item-submit-button');
-//   // 'save-draft-button'のボタンを取得
-//   var saveDraftButton = document.getElementById('item-save-draft-button');
-
-//   // 'submit-button'に対するイベントリスナーの設定
-//   console.log('イベントリスナーを追加、アイテムフォーム')
-//   if (submitButton) {
-//       submitButton.addEventListener('click', function(event) {
-//           submitForm();
-//       });
-//   }
-//   // 'save-draft-button'に対するイベントリスナーの設定
-//   if (saveDraftButton) {
-//       saveDraftButton.addEventListener('click', function(event) {
-//           submitForm();
-//       });
-//   }
-  
-//   function submitForm() {
-//     if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas-21')) {
-//       document.getElementById('item_canvas-21').value = JSON.stringify(canvasInstances["21"].toJSON());
-//     }
-//       var form = document.getElementById('item_create_form');
-//       if (form) {
-//           form.submit();
-//       }
-//   }
-// }
-
-
-//目次
-//フォームを送信するための関数
-//描画ツール
-// カラーパレットのドラッグ機能
-//サブユーザーフォーム
-//アイテムフォーム
+function submitSubUserForm() {
+  if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
+    document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
+  }
+    var form = document.getElementById('subuser_create_form');
+    if (form) {
+        form.submit();
+    }
+}
 
 
 
@@ -92,77 +89,114 @@ function submitUserForm() {
     }
 }
 
-// ユーザーフォームのサブミットボタンのイベントリスナーを設定
+// 一括フォームのサブミットボタンのイベントリスナーを設定
 function setupSubmitButtons() {
   var submitButton = document.getElementById('submit-button');
-  var saveDraftButton = document.getElementById('save-draft-button');
+  // var saveDraftButton = document.getElementById('save-draft-button');
 
   if (submitButton) {
     submitButton.removeEventListener('click', submitUserForm);
     submitButton.addEventListener('click', submitUserForm);
   }
 
-  if (saveDraftButton) {
-    saveDraftButton.removeEventListener('click', submitUserForm);
-    saveDraftButton.addEventListener('click', submitUserForm);
-  }
+  // if (saveDraftButton) {
+  //   saveDraftButton.removeEventListener('click', submitUserForm);
+  //   saveDraftButton.addEventListener('click', submitUserForm);
+  // }
 }
 
 // アイテムフォームのサブミットボタンのイベントリスナーを設定
 function setupItemSubmitButtons() {
   var submitButton = document.getElementById('item-submit-button');
-  var saveDraftButton = document.getElementById('item-save-draft-button');
+  // var saveDraftButton = document.getElementById('item-save-draft-button');
 
   if (submitButton) {
     submitButton.removeEventListener('click', submitItemForm);
     submitButton.addEventListener('click', submitItemForm);
   }
 
-  if (saveDraftButton) {
-    saveDraftButton.removeEventListener('click', submitItemForm);
-    saveDraftButton.addEventListener('click', submitItemForm);
+  // if (saveDraftButton) {
+  //   saveDraftButton.removeEventListener('click', submitItemForm);
+  //   saveDraftButton.addEventListener('click', submitItemForm);
+  // }
+}
+
+// サブユーザーフォームのサブミットボタンのイベントリスナーを設定
+function setupUserSubmitButtons() {
+  var submitButton = document.getElementById('subuser-submit-button');
+  // var saveDraftButton = document.getElementById('item-save-draft-button');
+
+  if (submitButton) {
+    submitButton.removeEventListener('click', submitSubUserForm);
+    submitButton.addEventListener('click', submitSubUserForm);
   }
+
+  // if (saveDraftButton) {
+  //   saveDraftButton.removeEventListener('click', submitItemForm);
+  //   saveDraftButton.addEventListener('click', submitItemForm);
+  // }
 }
 
 
+//edit用
+function loadCanvasDataForEdit(uniqueId, callback) {
+  // 編集フォーム用のキャンバスデータ復元ロジック
+  var canvasElement = document.getElementById(`iconmakingCanvas-${uniqueId}`);
 
+    // canvasElement とそのデータ属性が存在するか確認
+  if (canvasElement && canvasElement.dataset.canvasJson) {
+    var subCanvasData = JSON.parse(canvasElement.dataset.canvasJson);
 
+    var restoredCanvas = new fabric.Canvas(canvasElement, {
+      preserveObjectStacking: true
+      // その他のオプション
+    });
 
+      restoredCanvas.loadFromJSON(subCanvasData, function() {
+        // 以前のコードと同様の処理をここに記述
+        restoredCanvas.forEachObject(function(object) {
+          object.set({
+            hasControls: false,
+            hasBorders: false,
+            selectable: false,
+            lockMovementX: true,
+            lockMovementY: true,
+            lockRotation: true,
+            lockScalingX: true,
+            lockScalingY: true,
+            lockUniScaling: true,
+            hoverCursor: 'default'
+          });
+        });  
 
-// // フォームを送信するための関数
-// function submitButton() {
-//   // 'submit-button'のボタンを取得
-//   var submitButton = document.getElementById('submit-button');
-//   // 'save-draft-button'のボタンを取得
-//   var saveDraftButton = document.getElementById('save-draft-button');
-//   // 'submit-button'に対するイベントリスナーの設定
-//   if (submitButton) {
-//       submitButton.addEventListener('click', function(event) {
-//           submitForm();
-//       });
-//   }
-//   console.log('イベントリスナーを追加,サブミット')
-//   // 'save-draft-button'に対するイベントリスナーの設定
-//   if (saveDraftButton) {
-//       saveDraftButton.addEventListener('click', function(event) {
-//           submitForm();
-//       });
-//   }
-  
-//   function submitForm() {
-//     // ここでキャンバスデータを取得し、隠れたフィールドに設定
-//     if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
-//       document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
-//     }
-//     if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas-2')) {
-//       document.getElementById('item_canvas-2').value = JSON.stringify(canvasInstances["2"].toJSON());
-//     }
-//       var form = document.getElementById('user_create_form');
-//       if (form) {
-//           form.submit();
-//       }
-//   }
-// }
+        var group = new fabric.Group(restoredCanvas.getObjects(), {
+          originX: 'center',
+          originY: 'center',
+          hasControls: false,
+          hasBorders: false,
+          selectable: false,
+          lockRotation: true,
+          lockScalingX: true,
+          lockScalingY: true,
+          lockUniScaling: true,
+          hoverCursor: 'default'
+        });
+
+        // グループをキャンバスの中央に配置
+        group.set({
+          left: restoredCanvas.width / 2,
+          top: restoredCanvas.height / 2
+        });
+
+        restoredCanvas.clear().add(group);
+        restoredCanvas.renderAll();
+        if (callback) {
+          callback(restoredCanvas);
+        }
+      });
+    }
+  };
+
 
 
 
@@ -170,11 +204,27 @@ function setupItemSubmitButtons() {
 //描画ツール
 function setupiconmakingCanvas(uniqueId) {
   var container = document.getElementById(`canvas-making-${uniqueId}`);
+  var canvasElement = document.getElementById(`iconmakingCanvas-${uniqueId}`); 
+  var iconmakingCanvas;
   if (container) {
-    //canvasの初期化
-    var iconmakingCanvas = new fabric.Canvas(`iconmakingCanvas-${uniqueId}`, {
-      backgroundColor: 'transparent' // 背景色を透明に設定
-    });
+    // 編集モードのIDをチェック
+    var editModeId = document.getElementById('editModeId');
+    if (editModeId) {
+      // 編集モードの場合、キャンバスデータをロード
+      loadCanvasDataForEdit(uniqueId, function(restoredCanvas) {
+        // ロード後の追加設定があればここに記述
+        iconmakingCanvas = restoredCanvas;
+      });
+    } else {
+      // 新規作成モードの場合、キャンバスを初期化
+      if (canvasElement && !canvasElement.fabric) {
+        iconmakingCanvas = new fabric.Canvas(canvasElement, {
+          backgroundColor: 'transparent'
+          // その他のオプション
+        });
+        canvasElement.fabric = iconmakingCanvas;
+      }
+    }
 
     // 描画ツールのモード
     var penToolButton = document.getElementById(`usePenTool-${uniqueId}`);
@@ -186,6 +236,9 @@ function setupiconmakingCanvas(uniqueId) {
     var selectColorModeButton = document.getElementById(`selectColorMode-${uniqueId}`);
     var dropperColorModeButton = document.getElementById(`dropperColorMode-${uniqueId}`);
     var deleteColorModeButton = document.getElementById(`deleteColorMode-${uniqueId}`);
+    var circleButton = document.getElementById(`drawCircleTool-${uniqueId}`);
+    var triangleToolButton = document.getElementById(`drawTriangleTool-${uniqueId}`);
+    var lineToolButton = document.getElementById(`drawLineTool-${uniqueId}`);
     canvasInstances[uniqueId] = iconmakingCanvas;
 
     //初回のモード(ペン)の設定
@@ -197,7 +250,7 @@ function setupiconmakingCanvas(uniqueId) {
     const undo_history = [];
     const redo_history = [];
     //初回のモード(スポイト)の設定
-    let mode = 'selectcolor';
+    // let mode = 'selectcolor';
     
     // ペンモードの初期化
     function initializeBrush() {
@@ -237,16 +290,6 @@ function setupiconmakingCanvas(uniqueId) {
 
     // サブミットとフォームによるリロード事故を阻止する
     var brushSizeForm = document.getElementById(`brushSizeForm-${uniqueId}`);
-    // if (fontSizeForm && fontSizeForm.form) {
-    //   fontSizeForm.form.addEventListener('submit', function(event) {
-    //     event.preventDefault();
-    //   });
-    // }
-    // if (brushSizeForm && brushSizeForm.form) {
-    //   brushSizeForm.form.addEventListener('submit', function(event) {
-    //     event.preventDefault();
-    //   });
-    // }
 
     
     console.log('イベントリスナーを追加')
@@ -258,21 +301,70 @@ function setupiconmakingCanvas(uniqueId) {
       }
     });
 
-    // 図形モード
-    function drawRectangle() {
-      var rect = new fabric.Rect({
-        left: 100,
-        top: 100,
-        fill: 'transparent', // 内部を透明に設定
-        stroke: currentColor, // 枠線の色
-        strokeWidth: 2, // 枠線の太さ
-        width: 60,
-        height: 70,
-        angle: 0,
-        transparentCorners: false
-      });
-      iconmakingCanvas.add(rect);
-    }
+// 四角形を描画する関数
+function drawRectangle(uniqueId) {
+  var cornerRadius = parseInt(document.getElementById(`cornerRadiusInput-${uniqueId}`).value, 10);
+  var fillCheckbox = document.getElementById(`fillCheckbox-${uniqueId}`);
+  var strokecustom = parseInt(document.getElementById(`strokeCustomInput-${uniqueId}`).value, 10);
+
+  var rect = new fabric.Rect({
+    left: 100,
+    top: 100,
+    rx: cornerRadius,
+    ry: cornerRadius,
+    fill: fillCheckbox.checked ? currentColor : 'transparent',
+    stroke: currentColor,
+    strokeWidth: strokecustom,
+    width: 60,
+    height: 70,
+    angle: 0,
+    transparentCorners: false
+  });
+  iconmakingCanvas.add(rect);
+}
+
+// 円を描画する関数
+function drawCircle(uniqueId) {
+  var fillCheckbox = document.getElementById(`fillCheckbox-${uniqueId}`);
+  var strokecustom = parseInt(document.getElementById(`strokeCustomInput-${uniqueId}`).value, 10);
+
+  var circle = new fabric.Circle({
+    left: 100,
+    top: 100,
+    fill: fillCheckbox.checked ? currentColor : 'transparent',
+    stroke: currentColor,
+    strokeWidth: strokecustom,
+    radius: 30
+  });
+  iconmakingCanvas.add(circle);
+}
+
+// 三角形を描画する関数
+function drawTriangle(uniqueId) {
+  var fillCheckbox = document.getElementById(`fillCheckbox-${uniqueId}`);
+  var strokecustom = parseInt(document.getElementById(`strokeCustomInput-${uniqueId}`).value, 10);
+
+  var triangle = new fabric.Triangle({
+    left: 100,
+    top: 100,
+    fill: fillCheckbox.checked ? currentColor : 'transparent',
+    stroke: currentColor,
+    strokeWidth: strokecustom,
+    width: 60,
+    height: 70
+  });
+  iconmakingCanvas.add(triangle);
+}
+
+// 線を描画する関数
+function drawLine(uniqueId) {
+  var strokecustom = parseInt(document.getElementById(`strokeCustomInput-${uniqueId}`).value, 10);
+  var line = new fabric.Line([50, 100, 200, 100], {
+    stroke: currentColor,
+    strokeWidth: strokecustom
+  });
+  iconmakingCanvas.add(line);
+}
 
     // テキストモード
     function addText() {
@@ -298,20 +390,21 @@ function setupiconmakingCanvas(uniqueId) {
 
     // 色登録モード
     document.getElementById(`selectColorMode-${uniqueId}`).addEventListener('click', function() {
-      mode = 'selectcolor';
-      updateStyles();
+      currentMode = 'selectcolor';
+      updateButtonStyles();
     });
 
      // スポイトモード
     document.getElementById(`dropperColorMode-${uniqueId}`).addEventListener('click', function() {
-      mode = 'droppercolor';
-      updateStyles();
+      currentMode = 'droppercolor';
+      iconmakingCanvas.isDrawingMode = false;
+      updateButtonStyles();
     });
 
      // 色登録の削除モード
     deleteColorModeButton.addEventListener('click', function() {
-      mode = 'deletecolor';
-      updateStyles();
+      currentMode = 'deletecolor';
+      updateButtonStyles();
     });
 
      // フリーパレット、選択されたパレットの要素を取得
@@ -327,7 +420,7 @@ function setupiconmakingCanvas(uniqueId) {
       const palletboxes = document.querySelectorAll(`#canvas-making-${uniqueId} .palletBox`);
       palletboxes.forEach(palletbox => {
         palletbox.addEventListener('click', function() {
-          if (mode === 'droppercolor') {
+          if (currentMode === 'droppercolor') {
             // スポイトモード
             // 空のboxの場合、処理を行わない
             if (!palletbox.style.backgroundColor) {
@@ -338,10 +431,10 @@ function setupiconmakingCanvas(uniqueId) {
             // 有効な色の場合のみ、HEX形式に変換してカラーピッカーに設定
             colorPicker.color.hexString = rgbToHex(palletbox.style.backgroundColor);
           } else if (!isSpecialColorBox(palletbox)) {
-            if (mode === 'deletecolor') {
+            if (currentMode === 'deletecolor') {
               // 色削除モード
               palletbox.style.backgroundColor = '';
-            } else if (mode === 'selectcolor') {
+            } else if (currentMode === 'selectcolor') {
               // 色登録モード
               palletbox.style.backgroundColor = colorPicker.color.hexString;
             }
@@ -356,7 +449,7 @@ function setupiconmakingCanvas(uniqueId) {
       currentColor = color.hexString;
       updateColorPreview(color.hexString, uniqueId);
       // カラーパレットで選択された色を現在選択されているボックスに適用
-      if (currentSelectedBox && mode === 'selectcolor') {
+      if (currentSelectedBox && currentMode === 'selectcolor') {
         currentSelectedBox.style.backgroundColor = currentColor;
       }
       // 描画モードが 'pen' の場合、キャンバスのブラシの色を更新
@@ -391,7 +484,7 @@ function setupiconmakingCanvas(uniqueId) {
       return "#" + hex(rgb[0]) + hex(rgb[1]) + hex(rgb[2]);
     }
 
-    // カラーパレッっとの選択を制御するためのもの
+    // カラーパレットの選択を制御するためのもの
     document.addEventListener('click', function(event) {
       // クリックされた要素がボックスでない場合、選択を解除
       if (!event.target.classList.contains('palletBox')) {
@@ -399,17 +492,61 @@ function setupiconmakingCanvas(uniqueId) {
       }
     }, true);
 
-    // スポイト・色登録・色削除ボタンのスタイル更新関数
-    function updateStyles() {
-      selectColorModeButton.style.backgroundColor = mode === 'selectcolor' ? '#9199AE' : '';
-      dropperColorModeButton.style.backgroundColor = mode === 'droppercolor' ? '#9199AE' : '';
-      deleteColorModeButton.style.backgroundColor = mode === 'deletecolor' ? '#9199AE' : '';
+    // スポイト・色登録・色削除ボタンのモード切り替え
+    // function updateStyles() {
+    //   selectColorModeButton.style.backgroundColor = mode === 'selectcolor' ? '#9199AE' : '';
+    //   dropperColorModeButton.style.backgroundColor = mode === 'droppercolor' ? '#9199AE' : '';
+    //   deleteColorModeButton.style.backgroundColor = mode === 'deletecolor' ? '#9199AE' : '';
+    // }
+
+    // ペン・消しゴム・図形・テキストツールのモード切り替え
+    function updateButtonStyles() {
+      penToolButton.style.backgroundColor = currentMode === 'pen' ? '#9199AE' : '';
+      eraserToolButton.style.backgroundColor = currentMode === 'eraser' ? '#9199AE' : '';
+      rectangleToolButton.style.backgroundColor = currentMode === 'rectangle' ? '#9199AE' : '';
+      textToolButton.style.backgroundColor = currentMode === 'text' ? '#9199AE' : '';
+      selectColorModeButton.style.backgroundColor = currentMode === 'selectcolor' ? '#9199AE' : '';
+      dropperColorModeButton.style.backgroundColor = currentMode === 'droppercolor' ? '#9199AE' : '';
+      deleteColorModeButton.style.backgroundColor = currentMode === 'deletecolor' ? '#9199AE' : '';
+      circleButton.style.backgroundColor = currentMode === 'circle' ? '#9199AE' : '';
+      triangleToolButton.style.backgroundColor = currentMode === 'triangle' ? '#9199AE' : '';
+      lineToolButton.style.backgroundColor = currentMode === 'line' ? '#9199AE' : '';
     }
 
+    function isValidHexColor(hexColor) {
+      return /^#[0-9A-Fa-f]{6}$/.test(hexColor);
+    }
+
+    
+    // スポイトモードボタンのイベントリスナー
+    dropperColorModeButton.addEventListener('click', function() {
+      currentMode = 'droppercolor';
+      updateButtonStyles();
+
+      // キャンバス上のオブジェクトに対するクリックイベントを設定
+      iconmakingCanvas.on('mouse:down', function(options) {
+        if (currentMode === 'droppercolor' && options.target) {
+          var clickedObject = options.target;
+          // オブジェクトの塗りつぶし色または枠線色を取得
+          var objectColor = clickedObject.fill || clickedObject.stroke;
+          
+          if (objectColor && isValidHexColor(objectColor)) {
+            currentColor = objectColor;
+            // カラーピッカーとカラープレビューを更新
+            colorPicker.color.hexString = currentColor;
+            updateColorPreview(currentColor, uniqueId);
+          } else {
+            // 無効なカラーコードの場合、色取得処理をスキップ
+            console.log("無効なカラーコード: " + objectColor);
+          }
+        }
+      });
+    });
+    
     // テキストツールボタンのイベントリスナー
     textToolButton.addEventListener('click', function() {
       currentMode = 'text';
-      iconmakingCanvas.isDrawingMode = false;
+      // iconmakingCanvas.isDrawingMode = false;
       addText();
       updateButtonStyles();
     });
@@ -508,13 +645,7 @@ function setupiconmakingCanvas(uniqueId) {
     document.getElementById(`undo-${uniqueId}`).addEventListener("click", undo);
     document.getElementById(`redo-${uniqueId}`).addEventListener("click", redo);
 
-    // ペン・消しゴム・図形・テキストツールのモード切り替え
-    function updateButtonStyles() {
-      penToolButton.style.backgroundColor = currentMode === 'pen' ? '#9199AE' : '';
-      eraserToolButton.style.backgroundColor = currentMode === 'eraser' ? '#9199AE' : '';
-      rectangleToolButton.style.backgroundColor = currentMode === 'rectangle' ? '#9199AE' : '';
-      textToolButton.style.backgroundColor = currentMode === 'text' ? '#9199AE' : '';
-    }
+
 
     // 選択ボタン
     document.getElementById(`editMode-${uniqueId}`).addEventListener("mouseup", function (e) {
@@ -531,6 +662,44 @@ function setupiconmakingCanvas(uniqueId) {
         iconmakingCanvas.requestRenderAll();
       }
     });
+
+
+    // 透明ツール
+    document.getElementById(`opacitySlider-${uniqueId}`).addEventListener('input', function(e) {
+      var opacity = parseFloat(e.target.value) / 100;
+      var activeObject = iconmakingCanvas.getActiveObject();
+    
+      if (activeObject && activeObject.type !== 'eraser') { // 消しゴム以外のオブジェクト
+        activeObject.set('opacity', opacity);
+        iconmakingCanvas.renderAll();
+      }
+    });    
+
+    // 画像挿入ツール
+    // document.getElementById(`imageInputFabric-${uniqueId}`).addEventListener('change', function(e) {
+    //   if (e.target.files && e.target.files[0]) {
+    //     var reader = new FileReader();
+    
+    //     reader.onload = function(event) {
+    //       var imageUrl = event.target.result; // DataURLを取得
+    
+    //       fabric.Image.fromURL(imageUrl, function(img) {
+    //         // 画像オブジェクトのオプションを設定（必要に応じて）
+    //         img.set({
+    //           left: 100,
+    //           top: 100,
+    //           angle: 0,
+    //           transparentCorners: false
+    //         });
+    
+    //         // 画像をキャンバスに追加
+    //         iconmakingCanvas.add(img);
+    //       });
+    //     };
+    
+    //     reader.readAsDataURL(e.target.files[0]); // ファイルをDataURLとして読み込む
+    //   }
+    // });
     
     //deleteボタンの処理
     const deleteBtn = document.getElementById(`delete-${uniqueId}`);
@@ -585,11 +754,35 @@ function setupiconmakingCanvas(uniqueId) {
       updateButtonStyles();
     });
 
+    // 円形描画モードの切り替え
+    circleButton.addEventListener('click', function() {
+      currentMode = 'circle';
+      // iconmakingCanvas.isDrawingMode = false;
+      drawCircle(uniqueId);
+      updateButtonStyles();
+    });
+
+
     // 図形描画モードの切り替え
     rectangleToolButton.addEventListener('click', function() {
       currentMode = 'rectangle';
-      iconmakingCanvas.isDrawingMode = false;
-      drawRectangle();
+      // iconmakingCanvas.isDrawingMode = false;
+      drawRectangle(uniqueId);
+      updateButtonStyles();
+    });
+
+
+    // 三角形ツールボタンのイベントリスナー
+    triangleToolButton.addEventListener('click', function() {
+      currentMode = 'triangle';
+      drawTriangle(uniqueId);
+      updateButtonStyles();
+    });
+
+    // 線ツールボタンのイベントリスナー
+    lineToolButton.addEventListener('click', function() {
+      currentMode = 'line';
+      drawLine(uniqueId);
       updateButtonStyles();
     });
 
@@ -597,7 +790,7 @@ function setupiconmakingCanvas(uniqueId) {
     updateButtonStyles();
 
     // 初期状態のボタンスタイルを設定
-    updateStyles();
+    // updateStyles();
   }
 }
 
@@ -608,6 +801,7 @@ function setupdragPalette(uniqueId) {
   if (container) {
     const colorPalette = document.getElementById(`colorPalette-${uniqueId}`);
     const toolCustom = document.getElementById(`tool-custom-${uniqueId}`);
+    const shapesTool = document.getElementById(`shapes-tool-${uniqueId}`);
     const dropzone = document.getElementById(`dropzone-${uniqueId}`);
     // colorPalette要素が存在する場合にのみ設定を行う
     if (colorPalette) {
@@ -623,7 +817,7 @@ function setupdragPalette(uniqueId) {
     }
 
     // ドラッグ対象の設定
-    [colorPalette, toolCustom].forEach(element => {
+    [colorPalette, toolCustom, shapesTool].forEach(element => {
       if (element) {
         element.setAttribute('draggable', 'true');
         element.addEventListener('dragstart', onDragStart);
@@ -992,31 +1186,3 @@ function setupselectItem(uniqueId) {
   // 初期状態を設定
   updateInputVisibility();
 };
-
-
-
-//エピソード画像のプレビュー処理
-// function setupEpisodeImage() {
-//   var imageInput = document.getElementById('episode_image');
-//   imageInput.addEventListener('change', function() {
-//     if (this.files && this.files[0]) {
-//       var reader = new FileReader();
-//       reader.onload = function(e) {
-//         var imagePreview = document.getElementById('episodeimagePreview');
-//         imagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
-//         imagePreview.style.backgroundSize = 'cover';
-//       };
-//       reader.readAsDataURL(this.files[0]);
-//     }
-//   });
-// };
-
-
-// //fabricデータ送信
-// function handleSubmitButton() {
-//   // 各キャンバスデータを取得し、対応する隠れたフィールドに設定
-//   document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
-//   document.getElementById('item_canvas').value = JSON.stringify(canvasInstances["2"].toJSON());
-//   document.getElementById('user_create_form').submit();
-// }
-

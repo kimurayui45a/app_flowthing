@@ -1,0 +1,19 @@
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+  <div>
+    <h1 class="section-title">
+      <span class="red-text">新規作成</span>
+    </h1>
+
+    <%= form_with model: @board, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+  
+      <%= render 'form', f: f %>
+      
+      <div class="user-createform">
+        <%= f.submit "データ送信", class: "btn btn-success", type: 'button', onclick: 'submit()' %>
+      </div>
+    <% end %>
+  </div> 
+</div>
+

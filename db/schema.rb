@@ -10,9 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_111031) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_26_163549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boards", force: :cascade do |t|
+    t.string "board_title", null: false
+    t.text "board_text", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "profile_id", null: false
+    t.integer "item_id"
+    t.integer "comments_count", default: 0, null: false
+    t.index ["category_id"], name: "index_boards_on_category_id"
+    t.index ["deleted_at"], name: "index_boards_on_deleted_at"
+    t.index ["item_id"], name: "index_boards_on_item_id"
+    t.index ["profile_id"], name: "index_boards_on_profile_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "board_id", null: false
+    t.text "comment_text", null: false
+    t.string "comment_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "profile_id", null: false
+    t.datetime "deleted_at"
+    t.index ["board_id"], name: "index_comments_on_board_id"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
+  end
 
   create_table "drafts", force: :cascade do |t|
     t.jsonb "canvas"
@@ -36,6 +71,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_111031) do
     t.string "image_choice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.text "episode"
+    t.string "item_place"
+    t.index ["deleted_at"], name: "index_items_on_deleted_at"
     t.index ["sub_user_id"], name: "index_items_on_sub_user_id"
   end
 
@@ -48,6 +87,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_111031) do
     t.datetime "updated_at", null: false
     t.text "profile_text"
     t.string "selected_option"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_profiles_on_deleted_at"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -62,6 +103,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_111031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "items_count", default: 0, null: false
+    t.datetime "deleted_at"
+    t.datetime "last_accessed_at"
+    t.index ["deleted_at"], name: "index_sub_users_on_deleted_at"
     t.index ["profile_id"], name: "index_sub_users_on_profile_id"
   end
 
@@ -82,6 +126,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_111031) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boards", "categories"
+  add_foreign_key "boards", "profiles"
+  add_foreign_key "comments", "boards"
   add_foreign_key "drafts", "items"
   add_foreign_key "drafts", "sub_users"
   add_foreign_key "items", "sub_users"

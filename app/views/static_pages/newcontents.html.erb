@@ -5,7 +5,7 @@
     <h1 class="section-title">
       <span class="red-text">新規作成</span>
     </h1>
-    <%= form_with url: create_all_path, id: 'user_create_form', method: :post, multipart: true do |f| %>
+    <%= form_with url: create_all_path, id: 'user_create_form', method: :post, multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
       <%= render 'shared/error_messages', object: @sub_user %>
       <%= render 'shared/error_messages', object: @item %>
 
@@ -14,8 +14,7 @@
       <%= render 'items/form', f: f, item: @item %>
 
       <div class="user-createform">
-        <%= f.submit "途中保存", class: "btn btn-warning", name: "save_draft", id: "save-draft-button" %>
-        <%= f.submit "データ送信", class: "btn btn-success", id: "submit-button" %>
+        <%= f.submit "データ送信", class: "btn btn-success", id: "submit-button", type: 'button' %>
       </div>
     <% end %>
   </div> 

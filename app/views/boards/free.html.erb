@@ -1,0 +1,5 @@
+<% @free_boards.each do |board| %>
+  <%= render 'board', board: board %>
+<% end %>
+
+<%= paginate @free_boards %>

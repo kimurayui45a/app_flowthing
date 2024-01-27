@@ -11,6 +11,10 @@ class SubUsersController < ApplicationController
 
   def show
     @sub_user = @profile.sub_users.find(params[:id])
+  @items = @sub_user.items.order(created_at: :desc).page(params[:page]).per(20)
+    if @sub_user.last_accessed_at.nil? || @sub_user.last_accessed_at < 10.minutes.ago
+      @sub_user.update(last_accessed_at: Time.current)
+    end
   end
 
   def edit
@@ -32,7 +36,6 @@ class SubUsersController < ApplicationController
 
   def confirm_delete
     @sub_user = @profile.sub_users.find(params[:id])
-    # ここで関連するアイテムなどの情報を取得できます。
   end
 
   private
