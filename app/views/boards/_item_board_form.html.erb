@@ -1,0 +1,18 @@
+<div>
+  <%= f.label :board_title %>
+  <%= f.text_field :board_title %>
+
+  <%= f.label :board_text %>
+  <%= f.text_area :board_text %>
+<div>
+<div>
+  <% if item.image_choice.present? %>
+    <% if item.image_choice == 'item_image' && item.item_image.present? %>
+      <%= image_tag item.item_image.url, class: "user-profileicon" %>
+    <% elsif item.image_choice == 'item_canvas' && item.item_canvas.present? %>
+      <canvas class="board-item-fabric" id="itemCanvas_<%= item.id %>" data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas>
+    <% else %>
+      <div class="no-image-icon">No Image</div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+  <div>
+    <h1 class="section-title">
+      <span class="red-text">このFlow Thingについて相談する</span>
+    </h1>
+
+    <%= form_with model: @board, url: item_board_create_boards_path, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.hidden_field :item_id, value: @item.id %>
+  
+      <%= render 'item_board_form', f: f, item: @item %>
+
+      
+      <div class="user-createform">
+        <%= f.submit "データ送信", class: "btn btn-success", type: 'button', onclick: 'submit()' %>
+      </div>
+    <% end %>
+  </div> 
+</div>
+

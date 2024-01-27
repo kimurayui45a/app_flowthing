@@ -1,9 +1,11 @@
-<% content_for(:title, t('.title')) %>
-<div class="max767-container">
-  <div>
-    <h1 class="section-title"><%= t('.title') %></h1>
 
-    <div>
+<% content_for(:title, t('.title')) %>
+<div class="max767-container"> 
+  <div class="user-show-space">
+    <h1 class="section-title user-show-contents">
+      <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+    </h1>
+    <div class="item-icon-frame">
       <% if @item.image_choice.present? %>
         <% case @item.image_choice %>
           <% when 'item_image' %>
@@ -11,21 +13,98 @@
               <%= image_tag @item.item_image.url, class: "user-profileicon" %>
             <% end %>
           <% when 'item_canvas' %>
-              <canvas class="item-show-fabric" id="itemCanvas_<%= @item.id %>" data-canvas-json='<%= @item.item_canvas.to_json.html_safe %>'></canvas>
+            <div class="canvas-container-parent">
+              <canvas class="item-show-icon" id="itemCanvas_<%= @item.id %>" data-canvas-json='<%= @item.item_canvas.to_json.html_safe %>'></canvas>
+            </div>
+          <% else %>
+            <div class="no-image-icon">No Image</div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="user-show-contents">
+      <span class="list-title">
+        <span class="f-text">F</span>low <span class="t-text">T</span>hing
+        <span class="f-text">Name</span>
+      </span><br>
+      <span class="f-text"><%= @item.item_name.present? ? @item.item_name : 'none' %></span>
+    </div>
+
+    <div class="user-show-comment-contents">
+      <span class="f-text">コメント</span><br>
+      <span><%= @item.item_text.present? ? @item.item_text : 'none' %></span>
+    </div>
+
+    <div class="user-show-comment-contents">
+      <span class="f-text">場所</span><br>
+      <span><%= @item.item_place.present? ? @item.item_place : 'none' %></span>
+    </div>
+
+    <div class="user-show-comment-contents">
+      <span class="f-text">エピソード</span><br>
+      <span><%= @item.episode.present? ? @item.episode : 'none' %></span>
+    </div>
+        
+    <div class="sub-item-list">
+      <span class="list-title">
+        <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing
+        <span class="light-blue-text"><i class="bi bi-gift-fill"></i></span>
+      </span>
+    </div>
+    
+    <div class="item-icon-frame">
+      <% if @sub_user.icon_choice.present? %>
+        <% case @sub_user.icon_choice %>
+          <% when 'sub_image' %>
+            <!-- sub_image の内容を表示 -->
+            <% if @sub_user.sub_image.present? %>
+              <%= image_tag @sub_user.sub_image.url, class: "user-profileicon" %>
+            <% end %>
+          <% when 'sub_canvas' %>
+            <div class="canvas-container-parent">
+              <canvas class="item-show-icon" id="subCanvas_<%= @sub_user.id %>" 
+            data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+            </div>
+          <% when 'sub_color' %>
+            <div style="background-color: <%= @sub_user.sub_color %>;" class="user-profileicon"></div>
           <% else %>
             <p>アイコンは設定されていません。</p>
         <% end %>
       <% end %>
     </div>
 
+    <div class="flex-between user-show-botann">
+      <%= link_to new_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>
+        <div>
+          <i class="bi bi-balloon-fill balloon-icon balloon-action"></i>
+        </div>
+        <div class="balloon-botann-text">
+          New<br>
+          Flow Thing
+        </div>
+      <% end %>
+      <%= link_to edit_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>  
+        <div>
+          <i class="bi bi-pen-fill pen-fill-icon"></i>
+        </div>
+        <div class="balloon-botann-text">
+          Edit<br>
+          Flow Thing
+        </div>
+      <% end %> 
+      <%= link_to 'itemについて掲示板で相談する', item_new_board_boards_path(item_id: @item.id), class: 'btn btn-primary' %>
+    </div>
 
-    <div><%= @item.item_name %></div>
-    <div><%= @item.item_text %></div>
-    <div><%= @sub_user.sub_name %></div>
-    <%= link_to 'アイテムを増やす', new_item_path(sub_user_id: @sub_user.id), class: 'btn btn-primary' %>
-    <%= link_to edit_item_path(@item) do %>
-      <i class="bi bi-pencil-fill"></i>
-    <% end %>
-
-  </div>
+    <div>
+      <%= link_to item_path(@item), class: "trash-botann", data: { turbo_method: :delete, turbo_confirm: '削除します' } do %>
+        <div>
+          <i class="bi bi-trash-fill trash-icon"></i>
+        </div>
+        <div class="trash-icon-text">
+          Delete<br>
+          Sub Thing？
+        </div>
+      <% end %>
+    </div>
+  </div> 
 </div>

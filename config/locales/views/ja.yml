@@ -4,6 +4,8 @@ ja:
       memo: 遷移テスト
     usersselect:
       title: 新しいFlow Thingを作成
+    info:
+      title: Flow Thingとは？
   users:
     sessions:
       new:
@@ -41,9 +43,11 @@ ja:
     form:
       sub_color: カラーアイコン
       image_icon: 画像
-      sub_canvas: 描く
-      sub_name: お名前
-      sub_text: コメント
+      sub_canvas: Painting
+      icon_choice: どちらをアイコンにしますか？
+      contents_note: ※必須
+      sub_name: お名前(最大20文字) ※任意
+      sub_text: コメント(最大2000文字) ※任意
     confirm_delete:
       delete_confirm: 本当に削除しますか？
   items:
@@ -57,8 +61,17 @@ ja:
     form:
       item_image: 画像
       item_canvas: 描く
-      item_name: お名前
-      item_text: コメント
+      item_name: お名前(最大50文字)
+      contents_note_icon: ※「アイコン」か「名前」のどちらかは必ず入力して下さい。両方入力も可能。
+      item_text: コメント(最大10000文字) ※任意
+      episode: エピソード(最大50000文字)
+      item_place: 場所 ※任意
+      contents_note: ※必須
+      image_choice: どちらをアイコンにしますか？
+      no_image: 選択しない
+  boards:
+    confirm_delete:
+      delete_confirm: 本当に削除しますか？
   episodes:
     form:
       episode_image: 画像
@@ -91,3 +104,6 @@ ja:
       delete_confirm_message: "このSub Thingに関連するアイテムもすべて削除されます。削除しますか？"
       item_created: "Flow Thingを追加作成しました"
       item_not_updated: "Flow Thingを更新出来ませんでした"
+      board_created: "掲示板を作成しました"
+      not_board_created: "掲示板を作成できませんでした"
+      board_deleted: "掲示板を削除しました"

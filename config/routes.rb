@@ -9,7 +9,25 @@ Rails.application.routes.draw do
       get :confirm_delete
     end
   end
+  get 'items/episode_list', to: 'items#episode_list', as: 'episode_list'
+  get 'boards/free', to: 'boards#free', as: 'free_boards'
+  get 'boards/question', to: 'boards#question', as: 'question_boards'
+  get 'info', to: 'static_pages#info'
+  
   resources :items, only: %i[index new create show edit update destroy]
+  resources :boards, only: %i[index new show create destroy] do
+    resources :comments, only: %i[create], shallow: true
+    collection do
+      get 'item_new_board'
+      post 'item_board_create'
+      get 'myboards_list'
+    end
+    member do
+      get :board_confirm_delete
+    end
+  end
+  resources :comments, only: %i[create]
+  resources :categories, only: %i[show]
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',

@@ -1,0 +1,41 @@
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+<article id="board<%= @board.id %>" class="board-show-container">
+  <h3><%= @board.board_title %></h3>
+  <p><%= @board.comments_count %> comments</p>
+  
+  <% if @board.item %>
+    <% case @board.item.image_choice %>
+    <% when 'item_image' %>
+      <%= image_tag @board.item.item_image.url, class: "user-profileicon" %>
+    <% when 'item_canvas' %>
+      <canvas class="board-item-fabric" id="itemCanvas_<%= @board.item.id %>" data-canvas-json='<%= @board.item.item_canvas.to_json.html_safe %>'></canvas>
+    <% else %>
+      <div class="no-image-icon">No Image</div>
+    <% end %>
+  <% end %>
+</article>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-toggle" hidden>
+  <label for="accordion-toggle" class="accordion-label"><i class="bi bi-chat" style="font-size: 5rem;"></i></label>
+  <div class="accordion-content">
+    <!-- ここにアコーディオンの中身を入れます -->
+    <p>アコーディオンの中身です。</p>
+  </div>
+</div>
+
+    <%= render 'comments/form', comment: @comment, board: @board %>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <table class="table">
+          <tbody id="table-comment">
+            <%= render @comments %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

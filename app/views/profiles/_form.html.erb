@@ -1,7 +1,8 @@
+
+  <%= form_with model: profile, multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
 <div class="profile">
-<div id="imagePreview"></div>
-<div id="colorPreview"></div>
-  <%= form_with model: profile, multipart: true do |f| %>
+    <div id="imagePreview"></div>
+    <div id="colorPreview"></div>
     <%= render 'shared/error_messages', object: f.object %>
 
     <div class="flex-between">
@@ -56,10 +57,11 @@
       <%= f.text_area :profile_text, class: "form-control", row: 10, style: "height: 200px" %>
     </div>
 
-    <%= f.submit nil, class: "btn btn-primary" %>
-  <% end %>
+    
+  
 </div>
-
+<%= f.submit nil, class: "btn btn-primary", type: 'button', onclick: 'submit()' %>
+<% end %>
 
 
 

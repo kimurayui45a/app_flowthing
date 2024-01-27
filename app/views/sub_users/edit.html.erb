@@ -1,0 +1,26 @@
+
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+  <div>
+    <h1 class="section-title">
+      <span class="red-text">編集</span>
+    </h1>
+
+
+    <h2 class="section-title">
+  <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
+</h2>
+    <%= form_with model: @sub_user, id: 'subuser_create_form', multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+  
+      <%= render 'form_edit', f: f, sub_user: @sub_user %>
+      
+      
+      <div class="user-createform">
+      
+        <%= f.submit "データ送信", class: "btn btn-success", id: "subuser-submit-button", type: 'button' %>
+      </div>
+    <% end %>
+  </div> 
+</div>

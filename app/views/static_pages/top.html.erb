@@ -1,11 +1,18 @@
-<div class='text-center pt-5 buttonitem'>
+<div class='max1280-container'>
 
-  <% if user_signed_in? %>
-    <p>ようこそ！あなたのメールアドレスです： <strong><%= current_user.email %></strong></p>
 
-  <% end %>
 
+<%= link_to info_path, class: 'info-botann' do %>
+<div class="wave wave1"></div>
+  <div class="wave wave2"></div>
+  <div class="wave wave3"></div>
+  <div class="wave wave4"></div>
+<div class="info-botann-text">
+    Flow Thingとは？
+  </div>
+<% end %>
 
 <%= link_to 'アイテム', items_path, class: "btn btn-outline-primary" %>
   <%= link_to 'Logout', logout_path,  data: { turbo_method: :delete }, class: "btn btn-outline-primary" %>
 </div>
+

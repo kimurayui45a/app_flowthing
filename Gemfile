@@ -62,6 +62,13 @@ gem 'devise', '~> 4.9', '>= 4.9.3'
 #カウンター
 gem 'counter_culture'
 
+#理論削除
+gem 'acts_as_paranoid'
+
+#検索とページネーション
+gem 'ransack'
+gem 'kaminari'
+
 
 
 group :development, :test do

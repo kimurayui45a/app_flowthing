@@ -1,0 +1,10 @@
+<% if @my_boards.present? %>
+  <% @my_boards.each do |board| %>
+    <div>
+      <%= render 'board', board: board %>
+    </div>
+  <% end %>
+<% else %>
+  <div>掲示板がありません</div>
+<% end %>
+

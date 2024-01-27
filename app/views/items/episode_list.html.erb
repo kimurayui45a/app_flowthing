@@ -1,0 +1,35 @@
+<h1>Episodes List</h1>
+
+<% if @sub_users.present? %>
+  <% @sub_users.each do |sub_user| %>
+    <%= link_to episode_list_path(sub_user_id: sub_user.id) do %>
+      <% if sub_user.icon_choice.present? %>
+        <% case sub_user.icon_choice %>
+        <% when 'sub_image' %>
+            <% if sub_user.sub_image.present? %>
+                <%= image_tag sub_user.sub_image.url, class: "user-itemlist-icon" %>
+            <% end %>
+        <% when 'sub_canvas' %>
+            <div class="canvas-container-parent">
+              <canvas class="sub-show-fabric" id="subCanvas_<%= sub_user.id %>" 
+                data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+            </div>
+        <% when 'sub_color' %>
+           <div style="background-color: <%= sub_user.sub_color %>;" class="user-profileicon"></div>
+        <% else %>
+            <div class="no-image-icon">No Image</div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<ul>
+  <% if @episodes.present? %>
+    <% @episodes.each do |episode| %>
+      <li><%= episode %></li>
+    <% end %>
+  <% else %>
+    <li>No episodes found.</li>
+  <% end %>
+</ul>
