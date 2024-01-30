@@ -19,6 +19,13 @@ document.addEventListener("turbo:load", function() {
 
 
 
+document.addEventListener("turbo:load", function() {
+  if (document.querySelector('.motto-miru')) {
+    mottomiru();
+  }
+});
+
+
 
 
 function restoreSubCanvas() {
@@ -80,4 +87,34 @@ function restoreSubCanvas() {
       restoredCanvas.renderAll();
     });
   }
+}
+
+
+
+
+
+
+
+function mottomiru() {
+  const toggleButtons = document.querySelectorAll('.toggle-view');
+
+  toggleButtons.forEach(function(toggleButton) {
+    const parentElement = toggleButton.closest('.motto-miru');
+    const defaultView = parentElement.querySelector('.default-view');
+    const hiddenView = parentElement.querySelector('.hidden-view');
+
+    if (defaultView && hiddenView) {
+      toggleButton.addEventListener('click', function() {
+        if (defaultView.style.display !== 'none') {
+          defaultView.style.display = 'none';
+          hiddenView.style.display = 'block';
+          toggleButton.textContent = '閉じる';
+        } else {
+          defaultView.style.display = 'block';
+          hiddenView.style.display = 'none';
+          toggleButton.textContent = 'もっと見る';
+        }
+      });
+    }
+  });
 }

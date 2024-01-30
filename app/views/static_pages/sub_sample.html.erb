@@ -1,0 +1,438 @@
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+  <h1 class="midasi-title">
+    <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
+  </h1>
+  <div class="item-list-container">
+    
+    <div class="item-list-card">
+      <article class="user-card-container default-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">クリックで更新日を表示</summary>
+          <span>日時</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 0</span>
+            <div class="icon-count-container">
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container yellow-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">登録したアイテムの数で</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 1</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container yellowgreen-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">カードの色が変わります</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 3</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container t-red-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">さらにアイコンも増え</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 5</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container sakura-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">賑やかになります</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 10</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container green-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">また、カードのリンクを</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 15</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+              <i class="bi bi-rocket-takeoff"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container light-blue-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">クリック(更新)しないと</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 20</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+              <i class="bi bi-rocket-takeoff"></i>
+              <i class="bi bi-globe-asia-australia"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container melon-background blur-2-card">
+        <details class="details-box">
+          <summary class="subuser-summary-style">徐々にぼやけていきます</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 25</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+              <i class="bi bi-rocket-takeoff"></i>
+              <i class="bi bi-globe-asia-australia"></i>
+              <i class="bi bi-moon-stars"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container blue-background blur-4-card">
+        <details class="details-box">
+          <summary class="subuser-summary-style">このように</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 30</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+              <i class="bi bi-rocket-takeoff"></i>
+              <i class="bi bi-globe-asia-australia"></i>
+              <i class="bi bi-moon-stars"></i>
+              <i class="bi bi-sun-fill"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container purple-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">2h〜1年までの11段階分</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 40</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+              <i class="bi bi-rocket-takeoff"></i>
+              <i class="bi bi-globe-asia-australia"></i>
+              <i class="bi bi-moon-stars"></i>
+              <i class="bi bi-sun-fill"></i>
+              <i class="bi bi-award"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container red-background">
+        <details class="details-box">
+          <summary class="subuser-summary-style">とても更新されてない例→</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 50</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+              <i class="bi bi-controller"></i>
+              <i class="bi bi-balloon-heart"></i>
+              <i class="bi bi-airplane-engines"></i>
+              <i class="bi bi-rocket-takeoff"></i>
+              <i class="bi bi-globe-asia-australia"></i>
+              <i class="bi bi-moon-stars"></i>
+              <i class="bi bi-sun-fill"></i>
+              <i class="bi bi-award"></i>
+              <i class="bi bi-trophy"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+    <div class="item-list-card">
+      <article class="user-card-container item-card-container-gray">
+        <details class="details-box">
+          <summary class="subuser-summary-style">クリックで更新日を表示</summary>
+          <span>日付</span>
+        </details>
+        <section class="user-objectbox">
+          <div class="icon-object">
+            <div class="icon-object">
+              <div class="myCanvas-icon"><%= image_tag('スクリーンショット 2024-01-29 11.01.31.png', alt: 'サンプル画像', class: "user-profileicon") %></div>
+            </div>
+          </div>
+          <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> 数</span>
+            <div class="icon-count-container">
+              <i class="bi bi-piggy-bank"></i>
+            </div>
+            <div class="item-flex">
+              <div>
+                <%= link_to '#', class: "edit-memo-link pencil-fill-space" do %>
+                  <i class="bi bi-pencil-fill trash-fill-font"></i>
+                <% end %>
+              </div>
+            <div>
+              <%= link_to '#', class: "delete-confirm-link" do %>
+                <i class="bi bi-trash-fill trash-fill-font"></i>
+              <% end %>
+            </div> 
+          </div> 
+        </section>
+      </article>
+    </div>
+
+
+  </div>
+</div>

@@ -1,18 +1,24 @@
-<div>
-  <%= f.label :board_title %>
-  <%= f.text_field :board_title %>
-
-  <%= f.label :board_text %>
-  <%= f.text_area :board_text %>
-<div>
-<div>
-  <% if item.image_choice.present? %>
-    <% if item.image_choice == 'item_image' && item.item_image.present? %>
-      <%= image_tag item.item_image.url, class: "user-profileicon" %>
-    <% elsif item.image_choice == 'item_canvas' && item.item_canvas.present? %>
-      <canvas class="board-item-fabric" id="itemCanvas_<%= item.id %>" data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas>
-    <% else %>
-      <div class="no-image-icon">No Image</div>
+<div class="max767-container">
+  <div class="board-form-iconframe">
+    <% if item.image_choice.present? %>
+      <% if item.image_choice == 'item_image' && item.item_image.present? %>
+        <%= image_tag item.item_image.url, class: "user-profileicon" %>
+      <% elsif item.image_choice == 'item_canvas' && item.item_canvas.present? %>
+        <div class="canvas-container-parent">
+          <canvas class="board-item-fabric" id="itemCanvas_<%= item.id %>" data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas>
+        </div>
+      <% else %>
+        <div class="no-image-icon">No Image</div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div>
+    <%= f.label t('.title') %>
+    <%= f.text_field :board_title, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= f.label t('.text') %>
+    <%= f.text_area :board_text, class: "form-control", row: 10, style: "height: 200px" %>
+  </div>
 </div>

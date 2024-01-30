@@ -1,32 +1,48 @@
 <% content_for(:title, t('.title')) %>
-<div class="max1280-container">
-  <h1 class="section-title">
+<div class="max767-container">
+  <h1 class="board-section-title">
     掲示板一覧
   </h1>
-  <%= link_to 'Free', free_boards_path %>
-  <%= link_to 'Question', question_boards_path %>
-
+<div class="btn-group">
+  <div>
   <%= link_to new_board_path do %>
-    <div class="default-button green-button">
-      <span class="red-text">掲示板を作成</span>
+    <div class="board-btn">
+      <span>掲示板を作成</span>
     </div>
   <% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to 'My Boards', myboards_list_boards_path %>
-  <% end %>
-
-  <!-- 検索フォーム -->
-  <%= search_form_for @q do |f| %>
-  <div class="field">
-    <%= f.label :board_text_or_board_title_cont, "タイトルまたはテキスト" %>
-    <%= f.search_field :board_text_or_board_title_cont %>
   </div>
 
-  <div>
-    <%= f.submit "検索" %>
+  <div class="btn-search">
+    <div>
+      <%= link_to 'Free', free_boards_path, class: "board-btn" %>
+    </div>
+    <div>
+      <%= link_to 'Question', question_boards_path, class: "board-btn" %>
+    </div>
+    
+    <div>
+    <% if user_signed_in? %>
+      <%= link_to 'My Boards', myboards_list_boards_path, class: "board-btn" %>
+    <% end %>
+    </div>
   </div>
-<% end %>
+
+  <div class="earch-board">
+    <%= search_form_for @q do |f| %>
+      <div class="search-form-container">
+        <div class="search-field-board">
+          <%= f.label :board_text_or_board_title_cont, "キーワード検索" %><br>
+          <%= f.search_field :board_text_or_board_title_cont %>
+        </div>
+      </div>
+      <div class="search-actions">
+        <%= f.submit "検索", class: "search-btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 
   <div>
     <% if @boards.present? %>

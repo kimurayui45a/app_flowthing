@@ -1,23 +1,25 @@
 <%= link_to board_path(board), class: "board-link" do %>
     <article id="board<%= board.id %>" class="board-card-container">
-      <h3><%= board.board_title %></h3>
+      <span class="board-title"><%= board.board_title %></span><br>
       <p><%= board.comments_count %> comments</p>
       
       <% if board.item %>
         <% case board.item.image_choice %>
         <% when 'item_image' %>
-          <%= image_tag board.item.item_image.url, class: "user-profileicon" %>
+        <div>
+          <%= image_tag board.item.item_image.url, class: "user-profileicon" %></div>
         <% when 'item_canvas' %>
-          <canvas class="board-item-fabric" id="itemCanvas_<%= board.item.id %>" data-canvas-json='<%= board.item.item_canvas.to_json.html_safe %>'></canvas>
+          <div><canvas class="board-item-index" id="itemCanvas_<%= board.item.id %>" data-canvas-json='<%= board.item.item_canvas.to_json.html_safe %>'></canvas>
+          </div>
         <% else %>
           <div class="no-image-icon">No Image</div>
         <% end %>
       <% end %>
-      <% if current_user.profile == board.profile %>
-  <%= link_to board_confirm_delete_board_path(board), class: "delete-confirm-link" do %>
-    <i class="bi bi-trash-fill"></i>
-  <% end %>
-<% end %>
+      <% if current_user && current_user.profile == board.profile %>
+        <%= link_to board_confirm_delete_board_path(board), class: "delete-confirm-link" do %>
+          <i class="bi bi-trash-fill"></i>
+        <% end %>
+      <% end %>
     </article>
 <% end %>
 

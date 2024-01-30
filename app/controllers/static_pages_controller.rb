@@ -22,10 +22,10 @@ class StaticPagesController < ApplicationController
       @item = create_items(@sub_user)
     end
 
-    redirect_to root_path, success: t('defaults.flash_message.created')
+    redirect_to sub_user_path(@sub_user), success: t('defaults.flash_message.created')
   rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error e.message
-    redirect_to root_path, alert: "Failed to create: #{e.message}"
+    flash[:danger] = t('defaults.flash_message.userall_not_updated')
+    redirect_to root_path
   end
 
   private
@@ -71,5 +71,13 @@ class StaticPagesController < ApplicationController
   def item_params
     params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place)
   end
+
+  def new_sample; end
+
+  def sub_sample; end
+
+  def flow_sample; end
+
+  def episode_sample; end
   
 end

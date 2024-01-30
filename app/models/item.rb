@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   validate :validate_item_presence
   validates :item_text, length: { maximum: 10_000 }
-  validates :item_name, length: { maximum: 50 }
+  validates :item_name, length: { maximum: 20 }
   validates :episode, presence: true, length: { maximum: 50_000 }
 
   belongs_to :sub_user

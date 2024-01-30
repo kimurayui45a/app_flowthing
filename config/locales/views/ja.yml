@@ -28,6 +28,7 @@ ja:
       title: プロフィール登録画面
     show:
       title: プロフィール詳細
+      withdrawal: 退会しますか？
     edit:
       title: プロフィール編集
     form:
@@ -43,25 +44,30 @@ ja:
     form:
       sub_color: カラーアイコン
       image_icon: 画像
-      sub_canvas: Painting
+      sub_canvas: 描く
       icon_choice: どちらをアイコンにしますか？
       contents_note: ※必須
       sub_name: お名前(最大20文字) ※任意
       sub_text: コメント(最大2000文字) ※任意
     confirm_delete:
       delete_confirm: 本当に削除しますか？
+    search_form:
+      search: 降順/昇順
+      search_keyword: キーワード検索
+      search_btn: 検索
   items:
     index:
     new: 
       title: Flow Thing 作成
     show:
       title: Flow Thing 詳細
+      delete_confirm: 削除しますか？
     item:
       delete_confirm: 削除しますか？
     form:
       item_image: 画像
       item_canvas: 描く
-      item_name: お名前(最大50文字)
+      item_name: お名前(最大20文字)
       contents_note_icon: ※「アイコン」か「名前」のどちらかは必ず入力して下さい。両方入力も可能。
       item_text: コメント(最大10000文字) ※任意
       episode: エピソード(最大50000文字)
@@ -69,9 +75,24 @@ ja:
       contents_note: ※必須
       image_choice: どちらをアイコンにしますか？
       no_image: 選択しない
+    search_form:
+      search: 降順/昇順
+      search_keyword: キーワード検索
+      search_btn: 検索
+
   boards:
+    form:
+      title: タイトル
+      text: 本文
+    item_board_form:
+      title: タイトル
+      text: 本文
     confirm_delete:
       delete_confirm: 本当に削除しますか？
+  comments:
+    comment:
+      title: タイトル
+      text: 本文
   episodes:
     form:
       episode_image: 画像
@@ -107,3 +128,7 @@ ja:
       board_created: "掲示板を作成しました"
       not_board_created: "掲示板を作成できませんでした"
       board_deleted: "掲示板を削除しました"
+      item_updated: "Flow Thingを更新しました"
+      item_not_created: "Flow Thingを作成できませんでした"
+      userall_not_updated: "何も作成できませんでした"
+      created_with_item: "新しい掲示板を作成しました"

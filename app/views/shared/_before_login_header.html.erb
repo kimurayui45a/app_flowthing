@@ -1,60 +1,44 @@
+
 <header>
   <div class='header-design'>
     <div class='header-layout'>
-    
-      <%= link_to '/', class: 'app-logo' do %>
-        <span class='f-text'>F</span>low 
-        <span class='t-text'>T</span>hing
-      <% end %>
 
-
-      <div class='search-form'>
-        検索フォーーーーームパーシャル
+      <div>
+        <%= link_to '/', class: 'app-logo' do %>
+          <span class='f-text'>F</span>low 
+          <span class='t-text'>T</span>hing
+        <% end %>
       </div>
+    
 
+  
       <div>
         <ul class='nav-contents'>
           <li  class="user-dropdown">
+              <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle light-blue-text" style="font-size: 3rem;"></i>
+              </button>
 
-            
-            <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-            ゲスト
-            </button>
-
-
-
-            <div class='user-dropdown-body dropdown-menu'>
+            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
               <ul class='user-dropdown-list'>
-                <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>プロフィール編集</a></li>
-                <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>エピソード</a></li>
-                <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li>
-                <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>掲示板</a></li>
-                <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>ログアウト</a></li>
+                <li class='user-dropdown-item'><%= link_to 'Flow Thing', flow_sample_path, class: 'user-dropdown-link' %></li>
+                <li class='user-dropdown-item'><%= link_to 'Sub Thing', sub_sample_path, class: 'user-dropdown-link' %></li>
+                <%# <li class='user-dropdown-item'><%= link_to 'エピソード', episode_sample_path, class: 'user-dropdown-link' %>
+                <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
+                <%# <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %> 
+                <li class='user-dropdown-item'><%= link_to '新規登録', sign_up_path, class: 'user-dropdown-link' %></li>
               <ul>
             </div>
 
           </li>
 
           <li>
-            <div>
-            <button class="header-button header-button:hover"><i class="bi 適切なブートストラップアイコン"></i></button>
-            </div>
-          </li>
-
-          <li class="room-dropdown">
-            <div class='room-container'>
-              <button class='room-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <span>ほかのroomへ<i class="bi 適切なブートストラップアイコン"></span>
-              </button>
-              <div class="room-dropdown-body dropdown-menu">
-                <ul class='room-dropdown-list'>
-                  <li class='room-dropdown-item'><a href="#" class='room-dropdown-link'>roomの表示</a></li>
-                  <li class='room-dropdown-item'><a href="#" class='room-dropdown-link'>roomを追加</a></li>
-                <ul>
+            <%= link_to new_sample_path do %>
+              <div class="header-button header-button:hover">
+                <i class="bi bi-pencil-square" style="font-size: 3rem;"></i>
               </div>
-            </div>
+            <% end %>
           </li>
-
         </ul>
       </div>
     </div>

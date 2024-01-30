@@ -1,10 +1,17 @@
-<% if @my_boards.present? %>
-  <% @my_boards.each do |board| %>
-    <div>
-      <%= render 'board', board: board %>
-    </div>
+<div class="max767-container">
+  <h1 class="section-title t-text">
+    My Board List
+  </h1>
+  <% if @my_boards.present? %>
+    <% @my_boards.each do |board| %>
+      <div>
+        <%= render 'board', board: board %>
+      </div>
+    <% end %>
+  <% else %>
+    <div>掲示板がありません</div>
   <% end %>
-<% else %>
-  <div>掲示板がありません</div>
-<% end %>
+</div>
+<%= paginate @my_boards %>
+
 

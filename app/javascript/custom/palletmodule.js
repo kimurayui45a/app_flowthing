@@ -53,6 +53,18 @@ document.addEventListener("turbo:load", function() {
 });
 
 
+document.addEventListener("turbo:load", function() {
+  if (document.querySelector('.sample-page')) {
+    setupiconmakingCanvas('1');
+    setupdragPalette('1');
+    setupiconmakingCanvas('2');
+    setupdragPalette('2');
+    setupselectItem('2');
+    setupselectImage();
+  }
+});
+
+
 function submitItemForm() {
   if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas-21')) {
     document.getElementById('item_canvas-21').value = JSON.stringify(canvasInstances["21"].toJSON());

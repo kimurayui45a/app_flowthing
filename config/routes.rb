@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     unlocks: 'users/unlocks'
   }
+  resources :users, only: [:destroy]
 
   devise_scope :user do
     get 'login', to: 'users/sessions#new'
@@ -43,4 +44,10 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'users/registrations#new'
     delete 'logout', to: 'users/sessions#destroy'
   end
+
+  #サンプルページ
+  get 'new_sample', to: 'static_pages#new_sample'
+  get 'sub_sample', to: 'static_pages#sub_sample'
+  get 'flow_sample', to: 'static_pages#flow_sample'
+  get 'episode_sample', to: 'static_pages#episode_sample'
 end

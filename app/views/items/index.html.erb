@@ -1,21 +1,83 @@
 <% content_for(:title, t('.title')) %>
 <div class="max1280-container">
-<h1 class="section-title">
-  <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
-</h1>
+  <h1 class="midasi-title">
+    <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+  </h1>
 
-<%= render 'search_form', q: @q, url: items_path %>
+  <%= render 'search_form', q: @q, url: items_path %>
 
   <div class="item-list-container">
-    <% if @items.present? %>
-      <% @items.each do |item| %>
+
+
+    
         <div class="item-list-card">
-          <%= render partial: 'items/item', locals: { item: item, sub_user: @sub_user } %>
+          <article class="item-card-container">
+            <details class="details-box">
+              <summary class="item-summary-style">クリックで更新日を表示</summary>
+              <span>日時</span>
+            </details>
+            <section class="item-objectbox">
+                
+              <div class="icon-object">
+                <%= link_to item_path(item) do %>
+                  <% if item.image_choice.present? %>
+                    <% case item.image_choice %>
+                      <% when 'item_image' %>
+                        <% if item.item_image.present? %>
+                          <div class="myCanvas-icon"><%= image_tag item.item_image.url, class: "user-profileicon" %></div>
+                        <% end %>
+                      <% when 'item_canvas' %>
+                          <div class="back-white"><canvas class="itemfabric canvas-style myCanvas-icon" id="itemCanvas_<%= item.id %>" 
+                          data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas></div>
+                      <% else %>
+                        <div class="no-image-icon">No Image</div>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              
+
+              <div class="item-flex">
+                <div class="icon-scale">
+                <i class="bi bi-stars flying-star"></i>
+                  <%= link_to sub_user_path(item.sub_user) do %>
+                    <% sub_user = item.sub_user %>
+                    <% if sub_user.icon_choice.present? %>
+                      <% case sub_user.icon_choice %>
+                      <% when 'sub_image' %>
+                          <!-- sub_image の内容を表示 -->
+                          <% if sub_user.sub_image.present? %>
+                              <%= image_tag sub_user.sub_image.url, class: "user-itemlist-icon user-action-icon" %>
+                          <% end %>
+                      <% when 'sub_canvas' %>
+                          <!-- sub_canvas の内容を表示 -->
+                          <div class="back-white user-action-icon"><canvas class="itemfabric myCanvas-icon canvas-style" id="subCanvas_<%= item.id %>" 
+                                  data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas></div>
+                      <% when 'sub_color' %>
+                          <!-- sub_color の内容を表示 -->
+                          <div style="background-color: <%= sub_user.sub_color %>;" class="user-itemlist-icon user-action-icon"></div>
+                      <% else %>
+                          <div class="no-image-icon">No Image</div>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+
+                <div class="pencil-fill-space">
+                  <%= link_to edit_item_path(item, sub_user_id: item.sub_user_id) do %>
+                    <i class="bi bi-pencil-fill pencil-fill-font"></i>
+                  <% end %>
+                </div>
+
+                <div class="pencil-fill-space">
+                  <%= link_to item_path(item), class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('items.item.delete_confirm') } do %>
+                    <i class="bi bi-trash-fill trash-fill-font"></i>
+                  <% end %>
+                </div> 
+              </div> 
+            </section>
+          </article>
+
         </div>
-      <% end %>
-    <% else %>
-      <div>アイテムがありません</div>
-    <% end %>
   </div>
-  <%= paginate @items %>
 </div>

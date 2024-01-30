@@ -13,6 +13,14 @@ class SubUser < ApplicationRecord
 
   validate :validate_icon_presence
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "deleted_at", "icon_choice", "id", "items_count", "last_accessed_at", "profile_id", "sub_canvas", "sub_color", "sub_image", "sub_name", "sub_text", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["drafts", "items", "profile"]
+  end
+  
   private
 
   def validate_icon_presence

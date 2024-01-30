@@ -1,10 +1,16 @@
 
 <% content_for(:title, t('.title')) %>
 <div class="max767-container"> 
-  <div class="user-show-space">
-    <h1 class="section-title user-show-contents">
-      <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
-    </h1>
+  <div class="item-show-space">
+
+    <div class="user-show-name-contents">
+      <span class="list-title">
+        <span class="f-text">F</span>low <span class="t-text">T</span>hing
+        <span class="purple-text">N</span>ame
+      </span><br>
+      <span class="f-text sub-name-text"><%= @item.item_name.present? ? @item.item_name : 'No Name' %></span>
+    </div>
+
     <div class="item-icon-frame">
       <% if @item.image_choice.present? %>
         <% case @item.image_choice %>
@@ -22,54 +28,98 @@
       <% end %>
     </div>
 
-    <div class="user-show-contents">
-      <span class="list-title">
-        <span class="f-text">F</span>low <span class="t-text">T</span>hing
-        <span class="f-text">Name</span>
-      </span><br>
-      <span class="f-text"><%= @item.item_name.present? ? @item.item_name : 'none' %></span>
+
+
+
+
+
+    <div class="content motto-miru user-show-comment-contents">
+      <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span>
+      <% text = @item.item_text.present? ? @item.item_text.to_s : 'No Comment' %>
+      <% lines = text.split("\n") %>
+      <% preview_text = lines.first(3).join("\n") %>
+      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+      <% if text.length > 80 or lines.length > 3 %>
+        <span class="default-view">
+          <%= simple_format(preview_text + '。。。') %>
+        </span>
+        <span class="hidden-view" style="display: none;">
+          <%= simple_format text %>
+        </span>
+        <div class="toggle-view">もっと見る</div>
+      <% else %>
+        <span>
+          <%= simple_format text %>
+        </span>
+      <% end %>
     </div>
 
-    <div class="user-show-comment-contents">
-      <span class="f-text">コメント</span><br>
-      <span><%= @item.item_text.present? ? @item.item_text : 'none' %></span>
-    </div>
+
 
     <div class="user-show-comment-contents">
-      <span class="f-text">場所</span><br>
+      <span class="comment-text"><i class="bi bi-house-fill"></i>場所</span><br>
       <span><%= @item.item_place.present? ? @item.item_place : 'none' %></span>
     </div>
 
-    <div class="user-show-comment-contents">
-      <span class="f-text">エピソード</span><br>
-      <span><%= @item.episode.present? ? @item.episode : 'none' %></span>
+
+    <div class="content motto-miru user-show-comment-contents">
+      <span class="comment-text"><i class="bi bi-film"></i>エピソード</span>
+      <% text = @item.episode.present? ? @item.episode : 'No Episode' %>
+      <% lines = text.split("\n") %>
+      <% preview_text = lines.first(3).join("\n") %>
+      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+      <% if text.length > 80 or lines.length > 3 %>
+        <span class="default-view">
+          <%= simple_format(preview_text + '。。。') %>
+        </span>
+        <span class="hidden-view" style="display: none;">
+          <%= simple_format text %>
+        </span>
+        <div class="toggle-view">もっと見る</div>
+      <% else %>
+        <span>
+          <%= simple_format text %>
+        </span>
+      <% end %>
     </div>
+
+
+
+
+
+
+
+
         
-    <div class="sub-item-list">
-      <span class="list-title">
-        <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing
-        <span class="light-blue-text"><i class="bi bi-gift-fill"></i></span>
-      </span>
-    </div>
-    
-    <div class="item-icon-frame">
+    <div class="sub-user-space">
       <% if @sub_user.icon_choice.present? %>
-        <% case @sub_user.icon_choice %>
-          <% when 'sub_image' %>
-            <!-- sub_image の内容を表示 -->
-            <% if @sub_user.sub_image.present? %>
-              <%= image_tag @sub_user.sub_image.url, class: "user-profileicon" %>
+        <%= link_to sub_user_path(@item.sub_user) do %>
+        <div class="item-link-btn">
+          <span class="list-title">
+            <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing
+          </span>
+          <div class="user-icon-frame-small">
+            <% case @sub_user.icon_choice %>
+              <% when 'sub_image' %>
+                <!-- sub_image の内容を表示 -->
+                <% if @sub_user.sub_image.present? %>
+                  <%= image_tag @sub_user.sub_image.url, class: "item-icon-small" %>
+                <% end %>
+              <% when 'sub_canvas' %>
+                <div class="canvas-container-parent">
+                  <div class="back-white">
+                    <canvas class="item-show-icon" id="subCanvas_<%= @sub_user.id %>" 
+                data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+                  </div>
+                </div>
+              <% when 'sub_color' %>
+                <div style="background-color: <%= @sub_user.sub_color %>;" class="item-icon-small"></div>
+              <% else %>
+                <p>アイコンは設定されていません。</p>
+              <% end %>
             <% end %>
-          <% when 'sub_canvas' %>
-            <div class="canvas-container-parent">
-              <canvas class="item-show-icon" id="subCanvas_<%= @sub_user.id %>" 
-            data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
-            </div>
-          <% when 'sub_color' %>
-            <div style="background-color: <%= @sub_user.sub_color %>;" class="user-profileicon"></div>
-          <% else %>
-            <p>アイコンは設定されていません。</p>
-        <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
 
@@ -92,19 +142,26 @@
           Flow Thing
         </div>
       <% end %> 
-      <%= link_to 'itemについて掲示板で相談する', item_new_board_boards_path(item_id: @item.id), class: 'btn btn-primary' %>
-    </div>
-
-    <div>
-      <%= link_to item_path(@item), class: "trash-botann", data: { turbo_method: :delete, turbo_confirm: '削除します' } do %>
+      <%= link_to item_new_board_boards_path(item_id: @item.id), class: "balloon-botann" do %>
         <div>
-          <i class="bi bi-trash-fill trash-icon"></i>
+          <i class="bi bi-send-fill send-icon"></i>
         </div>
-        <div class="trash-icon-text">
-          Delete<br>
-          Sub Thing？
+        <div class="balloon-botann-text">
+          Item<br>
+          Question
         </div>
       <% end %>
     </div>
   </div> 
+  <div>
+    <%= link_to item_path(@item), class: "trash-botann", data: { turbo_method: :delete, turbo_confirm: t('.delete_confirm') } do %>
+      <div>
+        <i class="bi bi-trash-fill trash-icon"></i>
+      </div>
+      <div class="trash-icon-text">
+        Delete<br>
+        Flow Thing？
+      </div>
+    <% end %>
+  </div>
 </div>

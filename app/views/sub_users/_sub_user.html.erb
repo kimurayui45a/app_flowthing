@@ -1,11 +1,11 @@
-<article id="sub_user_<%= sub_user.id %>", class="<%= container_class_for_items_count(sub_user.items_count) %> <%= blur_class_for_last_accessed(sub_user) %> item-card-container">
+<article id="sub_user_<%= sub_user.id %>", class="<%= container_class_for_items_count(sub_user.items_count) %> <%= blur_class_for_last_accessed(sub_user) %> user-card-container">
     <details class="details-box">
-      <summary class="item-summary-style"><%= sub_user.sub_name %></summary>
-      <span><%= sub_user.created_at.strftime("%Y年%m月%d日 %H:%M") %></span>
+      <summary class="subuser-summary-style"><%= sub_user.sub_name %></summary>
+      <span><%= sub_user.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
 
 
-    <section class="item-objectbox">
+    <section class="user-objectbox">
       <div class="icon-object">
         <%= link_to sub_user_path(sub_user) do %>
           <% if sub_user.icon_choice.present? %>
@@ -28,7 +28,7 @@
           <% end %>
         <% end %>
       </div>
-      <span>アイテム数: <%= sub_user.items_count %></span>
+      <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> <%= sub_user.items_count %></span>
 
 
 <div class="icon-count-container">
@@ -41,14 +41,14 @@
 </div>
       <div class="item-flex">
         <div>
-          <%= link_to "#", class: "edit-memo-link" do %>
-            <i class="bi bi-pencil-fill"></i>
+          <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+            <i class="bi bi-pencil-fill trash-fill-font"></i>
           <% end %>
         </div>
 
         <div>
           <%= link_to confirm_delete_sub_user_path(sub_user), class: "delete-confirm-link" do %>
-            <i class="bi bi-trash-fill"></i>
+            <i class="bi bi-trash-fill trash-fill-font"></i>
           <% end %>
         </div> 
       </div> 
