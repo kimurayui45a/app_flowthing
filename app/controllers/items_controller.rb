@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
       @items = @q.result.includes(:sub_user)
                  .where(sub_users: { profile_id: @profile.id })
                  .order(sort_order)
-                 .page(params[:page]).per(10)
+                 .page(params[:page]).per(12)
     else
       redirect_to root_path
     end
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to item_path(@item), success: t('defaults.flash_message.item_created', item: Item.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.item_not_updated', item: Item.model_name.human)
+      flash[:danger] = t('defaults.flash_message.item_not_created', item: Item.model_name.human)
       redirect_to root_path
     end
   end
@@ -71,8 +71,8 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path(@item), success: t('defaults.flash_message.item_updated', item: Item.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.item_not_updated', item: Item.model_name.human)
-      render :edit
+      flash[:danger] = t('defaults.flash_message.item_not_updated', item: Item.model_name.human)
+      redirect_to root_path
     end
   end
 
@@ -82,24 +82,20 @@ class ItemsController < ApplicationController
     redirect_to items_path, success: t('defaults.flash_message.sub_user_deleted', sub_user: SubUser.model_name.human), status: :see_other
   end
 
-
-
   def episode_list
     @sub_users = SubUser.where(profile_id: current_user.profile.id)
   
     if params[:sub_user_id].present?
       @sub_user = SubUser.find(params[:sub_user_id])
-      @episodes = @sub_user.items.pluck(:episode)
+      @episodes = @sub_user.items.select(:id, :episode)
     else
-      @episodes = []
+      sub_users_item_ids = @sub_users.joins(:items).select('items.id').distinct
+      @episodes = Item.where(id: sub_users_item_ids).order('RANDOM()').select(:id, :episode)
     end
   end
   
-
   
   
-  
-
   private
 
   def item_params

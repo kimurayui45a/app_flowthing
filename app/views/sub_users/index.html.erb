@@ -1,8 +1,11 @@
 <% content_for(:title, t('.title')) %>
 <div class="max1280-container">
-<h1 class="section-title">
+<h1 class="midasi-title">
   <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
 </h1>
+
+<%= render 'search_form', q: @q, url: sub_users_path %>
+
   <div class="item-list-container">
     <% if @sub_users.present? %>
       <% @sub_users.each do |sub_user| %>
@@ -11,12 +14,10 @@
         </div>
       <% end %>
     <% else %>
-      <div class="">サブユーザーがいません</div>
+      <div class="noitem-text">サブユーザーがいません</div>
     <% end %>
   </div>
+  <div class="paginate-box">
+    <%= paginate @sub_users %>
+  </div>
 </div>
-
-
-
-  
-

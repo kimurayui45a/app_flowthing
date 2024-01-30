@@ -1,18 +1,18 @@
 <% content_for(:title, t('.title')) %>
 
-<div class="signup-container">
+<div class="max767-container"> 
   <div>
-    <div>
+    <div class="bottomu-ma-zinn">
       <h1 class="signup-title"><%= t('.title') %></h1>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
 
-        <div>
+        <div class="bottomu-ma-zinn">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
-        <div>
+        <div class="bottomu-ma-zinn">
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <%= "#{@minimum_password_length} #{t('.characters')}" %> 
@@ -20,14 +20,14 @@
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
 
-        <div>
+        <div class="bottomu-ma-zinn">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
 
         <div class="top-margin">
           <div>
-            <%= f.submit t('.sign_up'), class: "sign-btn default-button red-button red-button:hover red-button:focus" %>
+            <%= f.submit t('.sign_up'), class: "sign-btn default-button red-button" %>
           </div>
           <div class="top-margin">
             <%= render "users/shared/links" %>

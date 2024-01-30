@@ -1,12 +1,13 @@
 <% content_for(:title, t('.title')) %>
 <div class="max767-container">
-  <div>
-    <h1 class="section-title"><%= t('.title') %></h1>
+  <div class="item-show-space">
+    <h1 class="section-title user-show-contents">
+      <span class="f-text">プロフィール</span>
+    </h1>
 
-    <div>
+    <div class="profile-icon-frame">
       <% if current_user && current_user.profile %>
         <% profile = current_user.profile %>
-        <div>
           <% if profile.image_icon.present? %>
             <%= image_tag profile.image_icon.url, class: "user-profileicon" %>
           <% elsif profile.color_code.present? %>
@@ -14,17 +15,68 @@
           <% else %>
             No
           <% end %>
-        </div>
       <% end %>
     </div>
 
-    <div><%= @profile.name %></div>
-    <div><%= @profile.profile_text %></div>
-    <div>トップへ戻る</div>
-    <div>アイテムを増やす</div>
-    <%= link_to edit_profile_path(@profile) do %>
-      <i class="bi bi-pencil-fill"></i>
-    <% end %>
+    <div class="user-show-name-contents">
+      <span class="f-text"><%= @profile.name %></span>
+    </div>
+
+    <div class="content motto-miru user-show-comment-contents">
+      <span class="comment-text">プロフィール/テキスト</span>
+      <% text = @profile.profile_text.present? ? @profile.profile_text.to_s : 'No Profile Text' %>
+      <% lines = text.split("\n") %>
+      <% preview_text = lines.first(3).join("\n") %>
+      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+      <% if text.length > 80 or lines.length > 3 %>
+        <span class="default-view">
+          <%= simple_format(preview_text + '。。。') %>
+        </span>
+        <span class="hidden-view" style="display: none;">
+          <%= simple_format text %>
+        </span>
+        <div class="toggle-view">もっと見る</div>
+      <% else %>
+        <span>
+          <%= simple_format text %>
+        </span>
+      <% end %>
+    </div>
+
+
+
+
+
+
+
+
+
+    
+    <div class="user-show-botann flex-between">
+      <%= link_to edit_profile_path(@profile), class: 'balloon-botann' do %>  
+        <div>
+          <i class="bi bi-pen-fill pen-fill-icon"></i>
+        </div>
+        <div class="balloon-botann-text">
+          Edit<br>
+          Profile
+        </div>
+      <% end %>
+
+
+
+      <% if user_signed_in? && @profile.user_id == current_user.id %>
+        <%= link_to user_path(current_user), data: { turbo_method: :delete, turbo_confirm: t('.withdrawal') }, class: 'balloon-botann' do %>
+        <div class="balloon-botann-text withdrawal-red-text withdrawal-image-container">
+          退会する<br>
+        </div>
+        <% end %>
+      <% end %>
+
+
+    
+
 
     </div>
   </div>
+</div>

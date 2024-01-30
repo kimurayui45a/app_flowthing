@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :destroy]
 
   def index
     @q = Board.ransack(params[:q])
@@ -34,13 +35,12 @@ class BoardsController < ApplicationController
     @board.category = question_category
 
     if @board.save
-      redirect_to board_path(@board), success: t('defaults.message.created_with_item', item: Board.model_name.human)
+      redirect_to board_path(@board), success: t('defaults.flash_message.created_with_item', item: Board.model_name.human)
     else
       if params[:item_id].present?
         @item = Item.find_by(id: params[:item_id])
       end
       if @item.nil?
-        flash.now[:danger] = "Item not found."
         return render :new, status: :unprocessable_entity
       end
       flash.now[:danger] = t('defaults.flash_message.not_board_created', board: Board.model_name.human)
@@ -65,7 +65,7 @@ class BoardsController < ApplicationController
   end
 
   def myboards_list
-    @my_boards = @profile.boards.includes(:item).order(created_at: :desc)
+    @my_boards = @profile.boards.includes(:item).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def free

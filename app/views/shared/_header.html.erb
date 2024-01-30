@@ -33,6 +33,8 @@
                 <% if @profile.present? && !@profile.new_record? %>
                   <li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
                 <% end %>
+                <li class='user-dropdown-item'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
+                <li class='user-dropdown-item'><%= link_to 'Sub Thing', sub_users_path, class: 'user-dropdown-link' %></li>
                 <li class='user-dropdown-item'><a href="<%= episode_list_path %>" class='user-dropdown-link'>エピソード</a></li>
                 <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
                 <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %></li>
@@ -50,7 +52,7 @@
             <% end %>
           </li>
 
-          <li class="room-dropdown">
+          <%# <li class="room-dropdown">
             <div class='room-container'>
               <button class='room-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
                 <span>他のroomへ<i class="bi bi-door-open-fill"></i></span>
@@ -62,7 +64,7 @@
                 <ul>
               </div>
             </div>
-          </li>
+          </li> %>
 
         </ul>
       </div>

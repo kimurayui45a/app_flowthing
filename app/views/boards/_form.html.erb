@@ -1,7 +1,12 @@
-<div>
-  <%= f.label :board_title %>
-  <%= f.text_field :board_title %>
 
-  <%= f.label :board_text %>
-  <%= f.text_area :board_text %>
-<div>
+<div class="max767-container">
+  <div class="board-form">
+    <%= f.label t('.title') %>
+    <%= f.text_field :board_title, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= f.label t('.text') %>
+    <%= f.text_area :board_text, class: "form-control", row: 10, style: "height: 200px" %>
+  </div>
+</div>

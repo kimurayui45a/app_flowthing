@@ -1,16 +1,24 @@
 <% content_for(:name, @sub_user.sub_name) %>
 <div class="max767-container"> 
   <div class="user-show-space">
-    <h1 class="section-title user-show-contents">
+
+  <div class="user-show-name-contents">
+      <span class="list-title">
+        <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing
+        <span class="purple-text">N</span>ame<br>
+      </span>
+      <span class="sub-name-text f-text"><%= @sub_user.sub_name.present? ? @sub_user.sub_name : 'No Name' %></span>
+    </div>
+    <%# <h1 class="section-title user-show-contents">
       <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
-    </h1>
+    </h1> %>
     <div class="user-icon-frame">
       <% if @sub_user.icon_choice.present? %>
         <% case @sub_user.icon_choice %>
           <% when 'sub_image' %>
             <!-- sub_image の内容を表示 -->
             <% if @sub_user.sub_image.present? %>
-              <%= image_tag @sub_user.sub_image.url, class: "user-profileicon" %>
+              <%= image_tag @sub_user.sub_image.url, class: "user-show-imageicon" %>
             <% end %>
           <% when 'sub_canvas' %>
             <div class="canvas-container-parent">
@@ -20,31 +28,39 @@
             </div>
           <% when 'sub_color' %>
             <!-- sub_color の内容を表示 -->
-            <div style="background-color: <%= @sub_user.sub_color %>;" class="user-profileicon"></div>
+            <div style="background-color: <%= @sub_user.sub_color %>;" class="user-show-imageicon"></div>
           <% else %>
             <p>アイコンは設定されていません。</p>
         <% end %>
       <% end %>
     </div>
 
-    <div class="user-show-contents">
-      <span class="list-title">
-        <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing
-        <span class="f-text">Name</span>
-      </span><br>
-      <span class="f-text"><%= @sub_user.sub_name.present? ? @sub_user.sub_name : 'none' %></span>
+    <div class="content motto-miru user-show-comment-contents">
+      <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span>
+      <% text = @sub_user.sub_text.present? ? @sub_user.sub_text : 'No Comment' %>
+      <% lines = text.split("\n") %>
+      <% preview_text = lines.first(3).join("\n") %>
+      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+      <% if text.length > 80 or lines.length > 3 %>
+        <span class="default-view">
+          <%= simple_format(preview_text + '。。。') %>
+        </span>
+        <span class="hidden-view" style="display: none;">
+          <%= simple_format text %>
+        </span>
+        <div class="toggle-view">もっと見る</div>
+      <% else %>
+        <span>
+          <%= simple_format text %>
+        </span>
+      <% end %>
     </div>
 
-    <div class="user-show-comment-contents">
-      <span class="f-text">コメント</span><br>
-      <span><%= @sub_user.sub_text.present? ? @sub_user.sub_text : 'none' %></span>
-    </div>
-        
     <div class="sub-item-list">
       <span class="list-title">
         <span class="f-text">F</span>low <span class="t-text">T</span>hing
-        <span class="t-text">List</span>
-        <span class="light-blue-text"><i class="bi bi-gift-fill"></i></span>
+        <span class="light-blue-text">L</span>ist
+        <span class="red-text"><i class="bi bi-gift-fill"></i></span>
         <span class="f-text"><em><%= @sub_user.items_count %></em></span>
       </span>
 
@@ -71,8 +87,8 @@
             <% end %>
           <% end %>
         <% else %>
-        <div class="sub-user-itemicon">
-          <p>No items available.</p>
+        <div class="no-item-frame">
+          <div class="no-item-icon">No Item</div>
         </div>
         <% end %>
       </div>

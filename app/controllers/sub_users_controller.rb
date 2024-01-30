@@ -2,9 +2,18 @@ class SubUsersController < ApplicationController
   before_action :set_sub_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @sub_users = @profile.sub_users
+    if @profile.present?
+      @q = @profile.sub_users.ransack(params[:q])
+      sort_order = params[:q]&.fetch(:s, 'sub_users.updated_at desc')
+      @sub_users = @q.result
+                    .order(sort_order)
+                    .page(params[:page]).per(12)
+    else
+      redirect_to root_path
+    end
   end
 
+  
   def new
     @sub_user = SubUser.new
   end

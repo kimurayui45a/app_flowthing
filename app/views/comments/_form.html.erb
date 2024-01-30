@@ -3,10 +3,15 @@
   <div class="col-lg-8 offset-lg-2">
     <%= form_with model: comment, url: board_comments_path(board) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :comment_title, 'タイトル' %>
-    <%= f.text_field :comment_title %>
-      <%= f.label :comment_text %>
-      <%= f.text_area :comment_text, class: "form-control mb-3", row: "4", placeholder: Comment.human_attribute_name(:body) %>
+      <div class="comment-form">
+        <%= f.label t('comments.comment.title') %><br>
+        <%= f.text_field :comment_title %>
+      </div>
+
+      <div class="comment-form">
+        <%= f.label t('comments.comment.text') %>
+        <%= f.text_area :comment_text, class: "form-control mb-3", row: "4", placeholder: Comment.human_attribute_name(:body) %>
+      </div>
       <%= f.submit '送信', class: "btn btn-primary" %>
     <% end %>
   </div>

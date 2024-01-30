@@ -1,5 +1,12 @@
+<% content_for(:title, t('.title')) %>
+<div class="max767-container">
+  <h1 class="board-section-title">
+    Free 掲示板一覧
+  </h1>
+
 <% @free_boards.each do |board| %>
   <%= render 'board', board: board %>
 <% end %>
 
 <%= paginate @free_boards %>
+</div>
