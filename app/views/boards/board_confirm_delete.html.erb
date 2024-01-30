@@ -1,10 +1,12 @@
+<div class="max767-container">
+<div class="btn-group">
 <h1>
   <h2><%= @board.board_title %></h2>
   
   <% if @board.item %>
     <% case @board.item.image_choice %>
     <% when 'item_image' %>
-      <%= image_tag board.item.item_image.url, class: "user-profileicon" %>
+      <%= image_tag @board.item.item_image.url, class: "user-profileicon" %>
     <% when 'item_canvas' %>
       <canvas class="board-item-fabric" id="itemCanvas_<%= @board.item.id %>" data-canvas-json='<%= @board.item.item_canvas.to_json.html_safe %>'></canvas>
     <% else %>
@@ -17,4 +19,5 @@
 
 <%= link_to '削除する', board_path(@board), id: "button-delete-#{@board.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('boards.board.delete_confirm') } %>
 <%= link_to 'キャンセル', boards_path %>
-
+</div>
+</div>

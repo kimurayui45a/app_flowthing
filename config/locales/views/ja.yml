@@ -89,6 +89,8 @@ ja:
       text: 本文
     confirm_delete:
       delete_confirm: 本当に削除しますか？
+    board:
+      delete_confirm: 本当に削除しますか？
   comments:
     comment:
       title: タイトル

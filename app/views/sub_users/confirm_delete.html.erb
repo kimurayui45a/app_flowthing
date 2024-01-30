@@ -1,3 +1,5 @@
+<div class="max767-container">
+<div class="btn-group">
 <h1>
   <% if @sub_user.icon_choice.present? %>
     <% case @sub_user.icon_choice %>
@@ -26,6 +28,7 @@
 
 <%= link_to '削除する', sub_user_path(@sub_user), id: "button-delete-#{@sub_user.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('sub_users.sub_user.delete_confirm') } %>
 <%= link_to 'キャンセル', sub_users_path %>
-
+</div>
+</div>
 
 
