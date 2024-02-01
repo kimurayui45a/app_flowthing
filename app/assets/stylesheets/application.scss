@@ -1177,7 +1177,7 @@ ul {
   position: absolute; /* ドラッグ時の位置調整のために必要 */
   z-index: 13;      /* 他の要素の上に表示 */
   /* その他のスタイル（サイズ、背景色など） */
-  width: 325px;
+  width: auto;
   height: 100px;
   background-color: #777777;
   border: 5px solid #4A4A4A;

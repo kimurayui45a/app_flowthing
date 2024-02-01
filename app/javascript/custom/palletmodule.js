@@ -828,11 +828,45 @@ function setupdragPalette(uniqueId) {
       e.dataTransfer.setData('text/plain', e.target.id);
     }
 
+    // タッチ開始イベントハンドラ
+  function onTouchStart(e) {
+    const touch = e.touches[0];
+    e.target.setAttribute('data-dragging', 'true');
+    e.target.style.position = 'absolute'; // 絶対位置指定に設定
+    moveAt(touch.pageX, touch.pageY, e.target); // 初期位置を設定
+  }
+
+  // タッチ移動イベントハンドラ
+  function onTouchMove(e) {
+    if (e.target.getAttribute('data-dragging') === 'true') {
+      const touch = e.touches[0];
+      moveAt(touch.pageX, touch.pageY, e.target);
+    }
+  }
+
+  // タッチ終了イベントハンドラ
+  function onTouchEnd(e) {
+    e.target.removeAttribute('data-dragging');
+  }
+
+  // 要素を指定された座標に移動する関数
+  function moveAt(pageX, pageY, element) {
+    const dropzoneRect = dropzone.getBoundingClientRect();
+    let newLeft = pageX - dropzoneRect.left;
+    let newTop = pageY - dropzoneRect.top;
+    // ... [移動範囲の制限のロジック] ...
+    element.style.left = `${newLeft}px`;
+    element.style.top = `${newTop}px`;
+  }
+
     // ドラッグ対象の設定
     [colorPalette, toolCustom, shapesTool].forEach(element => {
       if (element) {
         element.setAttribute('draggable', 'true');
         element.addEventListener('dragstart', onDragStart);
+        element.addEventListener('touchstart', onTouchStart);
+        element.addEventListener('touchmove', onTouchMove);
+        element.addEventListener('touchend', onTouchEnd);
       }
     });
 
