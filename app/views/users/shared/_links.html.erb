@@ -27,7 +27,10 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo_method: :post, turbo: false } %><br />
+    <%= link_to omniauth_authorize_path(resource_name, provider), data: { turbo_method: :post, turbo: false } do %>
+      <img src="<%= asset_path('web_light_rd_SI@4x.png') %>" alt="Sign in with #{provider.to_s.titleize}" style="width: 300px;">
+    <% end %>
   <% end %>
 <% end %>
+
 
