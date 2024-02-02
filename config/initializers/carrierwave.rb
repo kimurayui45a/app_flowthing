@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  config.fog_provider = 'fog/google'                        # required
+  config.fog_provider = 'fog/google'
   config.fog_credentials = {
     provider:                         'Google',
     google_project:                   Rails.application.credentials.google[:google_project_id],
