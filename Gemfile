@@ -59,6 +59,10 @@ gem 'carrierwave', '~> 3.0', '>= 3.0.5'
 #devise関連
 gem 'devise', '~> 4.9', '>= 4.9.3'
 
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-google-oauth2'
+
 #カウンター
 gem 'counter_culture'
 
