@@ -54,7 +54,9 @@ gem "bootsnap", require: false
 #追加したgem
 gem 'rails-i18n'
 
+#画像関係
 gem 'carrierwave', '~> 3.0', '>= 3.0.5'
+gem "fog-google"
 
 #devise関連
 gem 'devise', '~> 4.9', '>= 4.9.3'
