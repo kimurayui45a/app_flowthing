@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy!
-    redirect_to items_path, success: t('defaults.flash_message.sub_user_deleted', sub_user: SubUser.model_name.human), status: :see_other
+    redirect_to items_path, success: t('defaults.flash_message.item_deleted', item: Item.model_name.human), status: :see_other
   end
 
   def episode_list

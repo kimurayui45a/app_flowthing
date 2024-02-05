@@ -9,16 +9,19 @@
       <%= link_to 'Free', free_boards_path, class: "board-btn" %>
     </div>
     <div>
-    <%= link_to new_board_path do %>
-      <div class="board-btn">
-        <span>掲示板を作成</span>
-      </div>
-    <% end %>
-  </div>
+      <%= link_to new_board_path do %>
+        <div class="board-btn">
+          <span>掲示板を作成</span>
+        </div>
+      <% end %>
+    </div>
     <div>
-    <% if user_signed_in? %>
-      <%= link_to 'My Boards', myboards_list_boards_path, class: "board-btn" %>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= link_to 'My Boards', myboards_list_boards_path, class: "board-btn" %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to '掲示板', boards_path, class: 'board-btn' %>
     </div>
   </div>
 <% @question_boards.each do |board| %>

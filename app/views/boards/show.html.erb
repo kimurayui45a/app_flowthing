@@ -1,5 +1,8 @@
 <% content_for(:title, t('.title')) %>
 <div class="max767-container">
+  <div>
+      <%= link_to '掲示板', boards_path, class: 'board-btn' %>
+    </div>
   <article id="board<%= @board.id %>" class="board-show-container">
     <h3><%= @board.board_title %></h3>
     <p><%= @board.comments_count %> comments</p>

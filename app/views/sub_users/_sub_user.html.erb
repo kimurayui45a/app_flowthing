@@ -1,6 +1,6 @@
 <article id="sub_user_<%= sub_user.id %>", class="<%= container_class_for_items_count(sub_user.items_count) %> <%= blur_class_for_last_accessed(sub_user) %> user-card-container">
     <details class="details-box">
-      <summary class="subuser-summary-style"><%= sub_user.sub_name %></summary>
+      <summary class="subuser-summary-style"><%= sub_user.sub_name.present? ? sub_user.sub_name : '---' %></summary>
       <span><%= sub_user.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
 
@@ -31,14 +31,14 @@
       <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> <%= sub_user.items_count %></span>
 
 
-<div class="icon-count-container">
-<% icon_classes = icon_class_for_items_count(sub_user.items_count) %>
-<% icon_classes.each do |icon_class| %>
-  <% unless icon_class == 'default-icon' %>
-    <i class="<%= icon_class %>"></i>
-  <% end %>
-<% end %>
-</div>
+      <div class="icon-count-container">
+      <% icon_classes = icon_class_for_items_count(sub_user.items_count) %>
+      <% icon_classes.each do |icon_class| %>
+        <% unless icon_class == 'default-icon' %>
+          <i class="<%= icon_class %>"></i>
+        <% end %>
+      <% end %>
+      </div>
       <div class="item-flex">
         <div>
           <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>

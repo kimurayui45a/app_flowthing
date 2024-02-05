@@ -6,10 +6,10 @@ import "./custom/header"
 import "./custom/profile"
 import "./custom/palletmodule"
 import "./custom/item"
+import "./custom/test"
 
 
 console.log('アプリケーションjs')
-
 
 document.addEventListener("turbo:load", function() {
   if (document.querySelector('.fabicon')) {

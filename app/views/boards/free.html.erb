@@ -19,6 +19,9 @@
       <%= link_to 'My Boards', myboards_list_boards_path, class: "board-btn" %>
     <% end %>
     </div>
+    <div>
+      <%= link_to '掲示板', boards_path, class: 'board-btn' %>
+    </div>
   </div>
 <% @free_boards.each do |board| %>
   <%= render 'board', board: board %>

@@ -19,7 +19,9 @@ document.addEventListener("turbo:load", function() {
     setupdragPalette('1');
     setupdragPalette('2');
     setupselectImage();
-    setupselectItem('2');
+    setupselectItem();
+    setupValidationChecks();
+    validateFormAndToggleSubmit();
     setupSubmitButtons();
   }
 });
@@ -28,7 +30,9 @@ document.addEventListener("turbo:load", function() {
   if (document.querySelector('.itemformcr')) {
     setupiconmakingCanvas('21');
     setupdragPalette('21');
-    setupselectItem('21');
+    setupselectItem();
+    setupValidationChecks();
+    validateFormAndToggleSubmit();
     setupItemSubmitButtons();
   }
 });
@@ -38,7 +42,9 @@ document.addEventListener("turbo:load", function() {
   if (document.querySelector('.edititemform')) {
     setupiconmakingCanvas('21');
     setupdragPalette('21');
-    setupselectItem('21');
+    setupselectItem();
+    setupValidationChecks();
+    validateFormAndToggleSubmit();
     setupItemSubmitButtons();
   }
 });
@@ -48,6 +54,8 @@ document.addEventListener("turbo:load", function() {
     setupiconmakingCanvas('1');
     setupdragPalette('1');
     setupUserSubmitButtons();
+    setupValidationChecks();
+    validateFormAndToggleSubmit();
     setupselectImage();
   }
 });
@@ -59,15 +67,17 @@ document.addEventListener("turbo:load", function() {
     setupdragPalette('1');
     setupiconmakingCanvas('2');
     setupdragPalette('2');
-    setupselectItem('2');
+    setupselectItem();
+    setupValidationChecks();
+    validateFormAndToggleSubmit();
     setupselectImage();
   }
 });
 
 
 function submitItemForm() {
-  if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas-21')) {
-    document.getElementById('item_canvas-21').value = JSON.stringify(canvasInstances["21"].toJSON());
+  if (canvasInstances && canvasInstances["21"] && document.getElementById('item_canvas')) {
+    document.getElementById('item_canvas').value = JSON.stringify(canvasInstances["21"].toJSON());
   }
     var form = document.getElementById('item_create_form');
     if (form) {
@@ -85,21 +95,97 @@ function submitSubUserForm() {
     }
 }
 
-
-
 function submitUserForm() {
   // ここでキャンバスデータを取得し、隠れたフィールドに設定
   if (canvasInstances && canvasInstances["1"] && document.getElementById('sub_canvas')) {
     document.getElementById('sub_canvas').value = JSON.stringify(canvasInstances["1"].toJSON());
   }
-  if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas-2')) {
-    document.getElementById('item_canvas-2').value = JSON.stringify(canvasInstances["2"].toJSON());
+  if (canvasInstances && canvasInstances["2"] && document.getElementById('item_canvas')) {
+    document.getElementById('item_canvas').value = JSON.stringify(canvasInstances["2"].toJSON());
   }
     var form = document.getElementById('user_create_form');
     if (form) {
         form.submit();
     }
 }
+
+
+function validateFormAndToggleSubmit() {
+  var submitButton = document.getElementById('submit-button');
+
+  // 各項目が存在するかどうかを確認し、存在する場合のみ値を取得、そうでなければデフォルト値を設定
+  var iconChoiceEl = document.getElementById('icon_choice');
+  var imageChoiceEl = document.getElementById('image_choice');
+  var itemNameEl = document.getElementById('item_name');
+  var episodeEl = document.getElementById('episode');
+
+  var iconChoice = iconChoiceEl ? iconChoiceEl.value : null;
+  var imageChoice = imageChoiceEl ? imageChoiceEl.value : null;
+  var itemName = itemNameEl ? itemNameEl.value : null;
+  var episode = episodeEl ? episodeEl.value : null;
+
+  var selectsubImageEl = document.getElementById('subuserImage');
+  var selectsubImage = selectsubImageEl ? selectsubImageEl.checked : false;
+
+  var selectImageEl = document.getElementById('itemImage');
+  var selectImage = selectImageEl ? selectImageEl.checked : false;
+
+  var isSubImageUploaded = false;
+  if (iconChoice === 'sub_image') {
+    var subImageInputField = document.getElementById('sub_image');
+    isSubImageUploaded = subImageInputField && subImageInputField.files && subImageInputField.files.length > 0;
+  }
+
+  var isImageUploaded = false;
+  var imageInputField = document.getElementById('item_image');
+  isImageUploaded = imageInputField && imageInputField.files && imageInputField.files.length > 0;
+
+  // バリデーション条件を調整
+  var isIconChoiceValid = iconChoiceEl ? iconChoice !== '' : true;
+  var isImageChoiceOrItemNameValid = imageChoiceEl ? (imageChoice !== 'no_image' && selectImage) ? isImageUploaded : imageChoice !== 'no_image' || itemName !== '' : true;
+  var isEpisodeValid = episodeEl ? episode !== '' : true;
+
+  // 全ての条件を統合してisFormValidを評価
+  var isFormValid = isIconChoiceValid && isImageChoiceOrItemNameValid && isEpisodeValid && (iconChoice !== 'sub_image' || isSubImageUploaded);
+
+  // 送信ボタンの状態を切り替え
+  submitButton.disabled = !isFormValid;
+}
+
+
+function setupValidationChecks() {
+  var elements = [
+    { id: 'icon_choice', event: 'change' },
+    { id: 'image_choice', event: 'change' },
+    { id: 'item_name', event: 'input' },
+    { id: 'episode', event: 'input' }
+  ];
+
+  elements.forEach(({ id, event }) => {
+    var element = document.getElementById(id);
+    if (element) {
+      element.addEventListener(event, () => validateFormAndToggleSubmit());
+    }
+  });
+}
+
+//リロード時の挙動
+// function beforeunloadChecks() {
+//   window.addEventListener('beforeunload', function (e) {
+//     // キャンセルイベントとメッセージを設定
+//     e.preventDefault();
+//     e.returnValue = 'このページを離れると、行った変更が失われます。本当にページを離れますか？';
+//   });
+// }
+
+
+// function setupValidationChecks() {
+//   document.getElementById('icon_choice').addEventListener('change', validateFormAndToggleSubmit);
+//   document.getElementById('image_choice').addEventListener('change', validateFormAndToggleSubmit);
+//   document.getElementById('item_name').addEventListener('input', validateFormAndToggleSubmit);
+//   document.getElementById('episode').addEventListener('input', validateFormAndToggleSubmit);
+// }
+
 
 // 一括フォームのサブミットボタンのイベントリスナーを設定
 function setupSubmitButtons() {
@@ -119,7 +205,7 @@ function setupSubmitButtons() {
 
 // アイテムフォームのサブミットボタンのイベントリスナーを設定
 function setupItemSubmitButtons() {
-  var submitButton = document.getElementById('item-submit-button');
+  var submitButton = document.getElementById('submit-button');
   // var saveDraftButton = document.getElementById('item-save-draft-button');
 
   if (submitButton) {
@@ -135,7 +221,7 @@ function setupItemSubmitButtons() {
 
 // サブユーザーフォームのサブミットボタンのイベントリスナーを設定
 function setupUserSubmitButtons() {
-  var submitButton = document.getElementById('subuser-submit-button');
+  var submitButton = document.getElementById('submit-button');
   // var saveDraftButton = document.getElementById('item-save-draft-button');
 
   if (submitButton) {
@@ -906,6 +992,8 @@ function setupdragPalette(uniqueId) {
   }
 };
 
+
+
 //サブユーザーフォーム
 function setupselectImage() {
   //ラジオボタンの選択(id)
@@ -921,7 +1009,12 @@ function setupselectImage() {
   const colorInputDiv = document.getElementById('subColorInput');
   const canvasInputDiv = document.getElementById('subCanvasInput');
 
-  var imageInputField = document.getElementById('sub_image');
+  var subImageInputField = document.getElementById('sub_image');
+  if (subImageInputField) {
+    subImageInputField.addEventListener('change', function() {
+        validateFormAndToggleSubmit();
+    });
+  }
 
   // ドロップダウンの変更を監視するイベントリスナーを設定
   iconChoiceDropdown.addEventListener('change', function() {
@@ -997,7 +1090,9 @@ function setupselectImage() {
       colorPreview.style.display = 'none';
       canvasPreview.classList.remove('hidden-canvas');
     }
+    validateFormAndToggleSubmit();
   }
+
 
   //ピックアップカラー
   document.querySelectorAll('.subuser-iconColor').forEach(function(colorElement) {
@@ -1097,19 +1192,24 @@ function setupselectImage() {
 
 
 //アイテムフォーム
-function setupselectItem(uniqueId) {
+function setupselectItem() {
   //ラジオボタンの選択(id)
-  const selectImage = document.getElementById(`itemImage-${uniqueId}`);
-  const selectCanvas = document.getElementById(`itemCanvas-${uniqueId}`);
-  const iconChoiceDropdown = document.getElementById(`iconItemChoice-${uniqueId}`);
-  var selectedOptionField = document.getElementById(`image_choice-${uniqueId}`);
+  const selectImage = document.getElementById('itemImage');
+  const selectCanvas = document.getElementById('itemCanvas');
+  const iconChoiceDropdown = document.getElementById('iconItemChoice');
+  var selectedOptionField = document.getElementById('image_choice');
   //toggleButton-${uniqueId}の代わりにラジオのid
   
   //選択項目の外枠のdiv要素(id)
-  const imageInputDiv = document.getElementById(`itemImageInput-${uniqueId}`);
-  const canvasInputDiv = document.getElementById(`itemCanvasInput-${uniqueId}`);
+  const imageInputDiv = document.getElementById('itemImageInput');
+  const canvasInputDiv = document.getElementById('itemCanvasInput');
 
-  var imageInputField = document.getElementById(`item_image-${uniqueId}`);
+  var imageInputField = document.getElementById('item_image');
+  if (imageInputField) {
+    imageInputField.addEventListener('change', function() {
+        validateFormAndToggleSubmit();
+    });
+  }
 
   // ドロップダウンの変更を監視するイベントリスナーを設定
   iconChoiceDropdown.addEventListener('change', function() {
@@ -1139,8 +1239,8 @@ function setupselectItem(uniqueId) {
 
   //各ラジオボタンがクリックされた時の挙動
   function updateInputVisibility() {
-    var imagePreview = document.getElementById(`itemimagePreview-${uniqueId}`);
-    var canvasPreview = document.getElementById(`fabricSwitchItem-${uniqueId}`);
+    var imagePreview = document.getElementById('itemimagePreview');
+    var canvasPreview = document.getElementById('fabricSwitchItem');
     
     if (selectImage.checked) {
       // Imageが選択されたときの処理
@@ -1174,15 +1274,16 @@ function setupselectItem(uniqueId) {
       imagePreview.style.display = 'none';
       canvasPreview.classList.add('hidden-canvas');
     }
+    validateFormAndToggleSubmit();
   }
 
   //画像のプレビュー処理
-  var imageInput = document.getElementById(`item_image-${uniqueId}`);
+  var imageInput = document.getElementById('item_image');
   imageInput.addEventListener('change', function() {
     if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        var imagePreview = document.getElementById(`itemimagePreview-${uniqueId}`);
+        var imagePreview = document.getElementById('itemimagePreview');
         imagePreview.style.backgroundImage = 'url(' + e.target.result + ')';
         imagePreview.style.backgroundSize = 'cover';
       };

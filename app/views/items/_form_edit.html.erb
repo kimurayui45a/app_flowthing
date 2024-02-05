@@ -1,7 +1,7 @@
 <div class="edititemform">
-<div id="itemimagePreview-21"></div>
+<div id="itemimagePreview"></div>
 
-  <div id="fabricSwitchItem-21">
+  <div id="fabricSwitchItem">
     <!-- 描画ツール  -->
     <div id="canvas-making-21">
       <div class="dropzone" id="dropzone-21">
@@ -169,20 +169,20 @@
 
 
   <div class="flex-between user-createform">
-    <div class="sub-image-container subuser-disabled" id="itemImageInput-21">
-        <label for="itemImage-21">
-          <input type="radio" name="inputItem" value="item_image" id="itemImage-21" class="custom-radio">
+    <div class="sub-image-container subuser-disabled" id="itemImageInput">
+        <label for="itemImage">
+          <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio">
           <%= f.label :item_image, t('items.form.item_image') %>
-          <%= f.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image-21" %>
+          <%= f.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
         </label>
       </div>
 
-      <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput-21">
+      <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput">
         <i class="bi bi-brush brush-icon"></i>
-        <label for="itemCanvas-21" class="balloon-botann-text">
-          <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas-21" class="custom-radio">
+        <label for="itemCanvas" class="balloon-botann-text">
+          <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas" class="custom-radio">
           <%= f.label :item_canvas, t('items.form.item_canvas') %>
-          <%= f.hidden_field :item_canvas, id: "item_canvas-21" %>
+          <%= f.hidden_field :item_canvas, id: "item_canvas" %>
         </label>
       </div>
     </div>
@@ -190,18 +190,18 @@
 
   <div class="user-createform">
     <div class="user-createform-text">
-      <label for="iconItemChoice-21"><%= t('items.form.image_choice') %></label><br>
-      <select id="iconItemChoice-21" name="dummy_image_choice">
+      <label for="iconItemChoice"><%= t('items.form.image_choice') %></label><br>
+      <select id="iconItemChoice" name="dummy_image_choice">
         <option value="no_image" selected><%= t('items.form.no_image') %></option>
         <option value="item_image"><%= t('items.form.item_image') %></option>
         <option value="item_canvas"><%= t('items.form.item_canvas') %></option>
       </select>
-      <%= f.hidden_field :image_choice, id: "image_choice-21" %>
+      <%= f.hidden_field :image_choice, id: "image_choice" %>
     </div>
     <span class="red-text"><%= t('items.form.contents_note_icon') %></span>
     <div class="user-createform-text">
       <%= f.label :item_name, t('items.form.item_name') %>
-      <%= f.text_field :item_name, class: "form-control" %>
+      <%= f.text_field :item_name, class: "form-control", id: "item_name" %>
     </div>
     <div class="user-createform-text">
       <%= f.label :item_text, t('items.form.item_text') %>
@@ -213,6 +213,6 @@
     </div>
     <div class="user-createform-text">
         <%= f.label :episode, t('items.form.episode') %><span class="red-text"> <%= t('items.form.contents_note') %></span>
-        <%= f.text_area :episode, class: "form-control", row: 10, style: "height: 200px" %>
+        <%= f.text_area :episode, class: "form-control", row: 10, style: "height: 200px", id: "episode" %>
     </div>
 </div>
