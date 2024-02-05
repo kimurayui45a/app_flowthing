@@ -2,6 +2,24 @@
   <h1 class="section-title t-text">
     My Board List
   </h1>
+    <div class="btn-search">
+    <div>
+      <%= link_to 'Free', free_boards_path, class: "board-btn" %>
+    </div>
+    <div>
+      <%= link_to new_board_path do %>
+        <div class="board-btn">
+          <span>掲示板を作成</span>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to '掲示板', boards_path, class: 'board-btn' %>
+    </div>
+    <div>
+      <%= link_to 'Question', question_boards_path, class: "board-btn" %>
+    </div>
+  </div>
   <% if @my_boards.present? %>
     <% @my_boards.each do |board| %>
       <div>

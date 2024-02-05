@@ -218,7 +218,7 @@ function itemCanvasCard(usePointerCursor, canvasWidth, canvasHeight, scaleWidth,
 
 
 
-// アイテム(四角出力)
+// アイテム(四角出力、フィット)
 function itemRectCard(usePointerCursor, canvasWidth, canvasHeight, radius) {
   // 'subCanvas_' で始まるIDを持つすべてのキャンバス要素を取得
   var canvasElements = document.querySelectorAll('canvas[id^="itemCanvas_"]');

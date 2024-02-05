@@ -1,6 +1,6 @@
 <article id="item_<%= item.id %>", class="item-card-container <%= container_class_for_items_count(item.sub_user.items_count) %> <%= blur_class_for_last_accessed(item.sub_user) %>">
     <details class="details-box">
-      <summary class="item-summary-style"><%= item.item_name %></summary>
+      <summary class="item-summary-style"><%= item.item_name.present? ? item.item_name : '---' %></summary>
       <span><%= item.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
     <section class="item-objectbox">

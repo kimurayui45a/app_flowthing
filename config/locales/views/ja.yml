@@ -84,9 +84,11 @@ ja:
     form:
       title: タイトル
       text: 本文
+      contents_note: ※必須
     item_board_form:
       title: タイトル
       text: 本文
+      contents_note: ※必須
     confirm_delete:
       delete_confirm: 本当に削除しますか？
     board:
@@ -123,6 +125,7 @@ ja:
       sub_user_not_updated: "Sub Thingを更新出来ませんでした"
       sub_user_created: "Sub Thingを作成しました"
       sub_user_not_created: "Sub Thingを作成出来ませんでした"
+      item_deleted: "Flow Thingが消滅しました"
       sub_user_deleted: "Sub Thingが消滅しました"
       delete_confirm_message: "このSub Thingに関連するアイテムもすべて削除されます。削除しますか？"
       item_created: "Flow Thingを追加作成しました"
