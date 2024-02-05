@@ -7,6 +7,11 @@ import "./custom/profile"
 import "./custom/palletmodule"
 import "./custom/item"
 import "./custom/test"
+//react
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import DraggableArea from './src/DraggableArea';
+
 
 
 console.log('アプリケーションjs')
@@ -17,15 +22,11 @@ document.addEventListener("turbo:load", function() {
   }
 });
 
-
-
 document.addEventListener("turbo:load", function() {
   if (document.querySelector('.motto-miru')) {
     mottomiru();
   }
 });
-
-
 
 
 function restoreSubCanvas() {
@@ -90,11 +91,6 @@ function restoreSubCanvas() {
 }
 
 
-
-
-
-
-
 function mottomiru() {
   const toggleButtons = document.querySelectorAll('.toggle-view');
 
@@ -118,3 +114,24 @@ function mottomiru() {
     }
   });
 }
+
+
+
+//react
+let dragRoot; // マウント時に生成されるrootインスタンスを保持する変数
+document.addEventListener('turbo:load', () => {
+  // DraggableArea コンポーネントのマウント
+  const dragContainer = document.getElementById('react-drag');
+  if (dragContainer) {
+    dragRoot = createRoot(dragContainer); // dragRootを更新
+    dragRoot.render(<DraggableArea />);
+  }
+});
+
+document.addEventListener('turbo:before-cache', () => {
+  // DraggableArea コンポーネントのアンマウント
+  if (dragRoot) {
+    dragRoot.unmount();
+    dragRoot = null; // dragRootをクリア
+  }
+});
