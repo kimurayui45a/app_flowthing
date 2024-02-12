@@ -7,10 +7,14 @@ import "./custom/profile"
 import "./custom/palletmodule"
 import "./custom/item"
 import "./custom/test"
+
 //react
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import DraggableArea from './src/DraggableArea';
+import DraggableTest from './src/devicetest/DraggableTest';
+import DraggableRndTest from './src/devicetest/DraggableRndTest';
+import P5PenTest from './src/devicetest/P5PenTest';
+import P5PenDeviceTest from './src/devicetest/P5PenDeviceTest';
 
 
 
@@ -118,20 +122,64 @@ function mottomiru() {
 
 
 //react
-let dragRoot; // マウント時に生成されるrootインスタンスを保持する変数
+let draggableRndTestRoot,
+    draggableTestRoot,
+    p5PenTestRoot,
+    p5PenDeviceTestRoot;
+
+
 document.addEventListener('turbo:load', () => {
-  // DraggableArea コンポーネントのマウント
-  const dragContainer = document.getElementById('react-drag');
-  if (dragContainer) {
-    dragRoot = createRoot(dragContainer); // dragRootを更新
-    dragRoot.render(<DraggableArea />);
+  // DraggableRndTest コンポーネントのマウント
+  const draggablerndtestContainer = document.getElementById('draggableRndTest');
+  if (draggablerndtestContainer) {
+    draggableRndTestRoot = createRoot(draggablerndtestContainer);
+    draggableRndTestRoot.render(<DraggableRndTest />);
+  }
+
+  // DraggableTest コンポーネントのマウント
+  const draggabletestContainer = document.getElementById('draggableTest');
+  if (draggabletestContainer) {
+    draggableTestRoot = createRoot(draggabletestContainer);
+    draggableTestRoot.render(<DraggableTest />);
+  }
+
+  // P5PenTest コンポーネントのマウント
+  const p5PenTestContainer = document.getElementById('reactP5PenTest');
+  if (p5PenTestContainer) {
+    p5PenTestRoot = createRoot(p5PenTestContainer);
+    p5PenTestRoot.render(<P5PenTest />);
+  }
+
+  // P5PenDeviceTest コンポーネントのマウント
+  const p5PenDeviceTestContainer = document.getElementById('reactP5PenDeviceTest');
+  if (p5PenDeviceTestContainer) {
+    p5PenDeviceTestRoot = createRoot(p5PenDeviceTestContainer);
+    p5PenDeviceTestRoot.render(<P5PenDeviceTest />);
   }
 });
 
 document.addEventListener('turbo:before-cache', () => {
-  // DraggableArea コンポーネントのアンマウント
-  if (dragRoot) {
-    dragRoot.unmount();
-    dragRoot = null; // dragRootをクリア
+  // DraggableRndTest コンポーネントのアンマウント
+  if (draggableRndTestRoot) {
+    draggableRndTestRoot.unmount();
+    draggableRndTestRoot = null;
+  }
+
+  // DraggableTest コンポーネントのアンマウント
+  if (draggableTestRoot) {
+    draggableTestRoot.unmount();
+    draggableTestRoot = null;
+  }
+
+  // P5PenTest コンポーネントのアンマウント
+  if (p5PenTestRoot) {
+    p5PenTestRoot.unmount();
+    p5PenTestRoot = null;
+  }
+
+  // P5PenDeviceTest コンポーネントのアンマウント
+  if (p5PenDeviceTestRoot) {
+    p5PenDeviceTestRoot.unmount();
+    p5PenDeviceTestRoot = null;
   }
 });

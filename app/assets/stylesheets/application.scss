@@ -2971,3 +2971,50 @@ summary {
 .google-auth-form {
   margin-bottom: 10px; /* ボタン間の余白調整 */
 }
+
+
+
+
+/* デバイステスト用
+------------------------------------------ */
+
+.draggable-container {
+  width: 800px;
+  height: 600px;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.draggable-box {
+  background-color: gray;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.small-box {
+  width: 50px;
+  height: 50px;
+}
+
+.blue-box {
+  background-color: blue;
+}
+
+.red-box {
+  background-color: green;
+}
+
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* 上下のマージンを追加 */
+}
+
+
+.draggable-test2 {
+  margin-top: 100px;
+}
