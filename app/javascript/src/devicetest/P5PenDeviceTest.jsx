@@ -100,6 +100,15 @@ function P5PointerEventsTest() {
   const [inputBlurValue, setInputBlurValue] = useState(String(blurValue));
   const [blurValueMax, setBlurValueMax] = useState(0.3);
 
+  //滑らかさ調整フォーム
+  const [densityValue, setDensityValue] = useState(0.01);
+  const densityValueRef = useRef(densityValue);
+  const [inputDensityValue, setInputDensityValue] = useState(String(densityValue));
+
+  const [waterDensityValue, setWaterDensityValue] = useState(20);
+  const waterDensityValueRef = useRef(waterDensityValue);
+  const [inputWaterDensityValue, setInputWaterDensityValue] = useState(String(waterDensityValue));
+
   //補間率の調整
   const [lerpRateMin, setLerpRateMin] = useState(0.1);
   const [lerpRateMax, setLerpRateMax] = useState(0.5);
@@ -134,6 +143,14 @@ function P5PointerEventsTest() {
   useEffect(() => {
     blurRef.current = blur;
   }, [blur]);
+
+  useEffect(() => {
+    setInputDensityValue(String(densityValue));
+  }, [densityValue]);
+
+  useEffect(() => {
+    setInputWaterDensityValue(String(waterDensityValue));
+  }, [waterDensityValue]);
 
   useEffect(() => {
     setInputLerpRateMin(String(lerpRateMin));
@@ -239,6 +256,75 @@ function P5PointerEventsTest() {
       updateBlurValue(parseFloat(e.target.value));
     };
     blurValueForm.addEventListener('change', changeListener);
+  }, []);
+
+  const updateDensityValue = (newSize) => {
+    if (newSize >= 0.005 && newSize <= 9999) {
+      setDensityValue(newSize);
+      densityValueRef.current = newSize;
+    }
+  };
+
+  const handleLerpDensityValueChange = (e) => {
+    const value = e.target.value;
+    setInputDensityValue(value);
+  };
+
+  const handleLerpDensityValueBlur = () => {
+    const newSize = parseFloat(inputDensityValue);
+    if (newSize >= 0.005 && newSize <= 9999) {
+      updateDensityValue(newSize);
+    } else {
+      // 無効な値または空の場合、最後の有効な値にリセット
+      setInputDensityValue(String(densityValue));
+    }
+  };
+
+  const resetDensityValue = () => {
+    setDensityValue(0.01);
+  }
+
+  const updateWaterDensityValue = (newSize) => {
+    if (newSize >= 0.01 && newSize <= 100) {
+      setWaterDensityValue(newSize);
+      waterDensityValueRef.current = newSize;
+    }
+  };
+
+  const handleLerpWaterDensityValueChange = (e) => {
+    const value = e.target.value;
+    setInputWaterDensityValue(value);
+  };
+
+  const handleLerpWaterDensityValueBlur = () => {
+    const newSize = parseFloat(inputWaterDensityValue);
+    if (newSize >= 0.01 && newSize <= 100) {
+      updateWaterDensityValue(newSize);
+    } else {
+      // 無効な値または空の場合、最後の有効な値にリセット
+      setInputWaterDensityValue(String(waterDensityValue));
+    }
+  };
+
+  const resetWaterDensityValue = () => {
+    setWaterDensityValue(20);
+  }
+
+  useEffect(() => {
+    const densityValueForm = document.getElementById('densityValueForm');
+    const changeListener = (e) => {
+      updateDensityValue(parseFloat(e.target.value));
+    };
+    densityValueForm.addEventListener('change', changeListener);
+  }, []);
+
+
+  useEffect(() => {
+    const waterdensityValueForm = document.getElementById('waterdensityValueForm');
+    const changeListener = (e) => {
+      updateWaterDensityValue(parseFloat(e.target.value));
+    };
+    waterdensityValueForm.addEventListener('change', changeListener);
   }, []);
 
   const updateLerpRateMin = (newSize) => {
@@ -902,7 +988,7 @@ function P5PointerEventsTest() {
         p.smooth();
         brushRef.current = p.createGraphics(brushSize * 4, brushSize * 4);
         brushRef.current.noFill();
-        brushHsvRef.current = p.createGraphics(brushSize * 4, brushSize * 4);
+        brushHsvRef.current = p.createGraphics(brushSize * 16, brushSize * 16);
         brushHsvRef.current.noFill();
         brushHsvRef.current.colorMode(p.HSB, 360, 100, 100);
         layer = p.createGraphics(400, 400);
@@ -943,8 +1029,7 @@ function P5PointerEventsTest() {
         brushRef.current = p.createGraphics(brushSize * 4, brushSize * 4);
         brushRef.current.noFill();
 
-        brushSize = newToolSize / 2;
-        brushHsvRef.current = p.createGraphics(brushSize * 4, brushSize * 4);
+        brushHsvRef.current = p.createGraphics(brushSize * 16, brushSize * 16);
         brushHsvRef.current.noFill();
         brushHsvRef.current.colorMode(p.HSB, 360, 100, 100);
   
@@ -1000,8 +1085,9 @@ function P5PointerEventsTest() {
               brushRef.current.filter(p.BLUR, blurValue);
             }
 
+            let waterDensity = waterDensityValueRef.current;
             let steps = p.dist(prev.x, prev.y, p.mouseX, p.mouseY);
-            for (let i = 0; i < steps; i += brushSize / 2) {
+            for (let i = 0; i < steps; i += brushSize / waterDensity) {
               let x = p.lerp(prev.x, p.mouseX, i / steps);
               let y = p.lerp(prev.y, p.mouseY, i / steps);
               layer.image(brushRef.current, x - brushSize * 2, y - brushSize * 2);
@@ -1174,7 +1260,7 @@ function P5PointerEventsTest() {
           if (toolModeRef.current === 'inkPen') {
             // 移動距離を基にしたstepsの計算を、一定の密度で補間点を生成する方式に変更
             let distance = p.dist(prev.x, prev.y, event.offsetX, event.offsetY);
-            let density = 0.01; // 補間点の間隔（小さくするほど補間点が密になる）
+            let density = densityValueRef.current; // 補間点の間隔（小さくするほど補間点が密になる）
             let steps = distance / density;
 
             for (let i = 0; i <= steps; i++) {
@@ -1191,13 +1277,15 @@ function P5PointerEventsTest() {
               prev.y = y;
             }
           } else if (toolModeRef.current === 'watercolorPen') {
+            let waterDensity = waterDensityValueRef.current;
+            let strokeWeightBasedOnPressurehalf = strokeWeightBasedOnPressure / 2;
             brushHsvRef.current.clear();
             // カスタムペンの位置を確認する用
             // brushHsvRef.current.background(255);
 
             brushHsvRef.current.stroke(colorH, colorS, colorV);
-            for (let r = strokeWeightBasedOnPressure * 2; r > 0; --r) {
-              brushHsvRef.current.ellipse(strokeWeightBasedOnPressure * 2, strokeWeightBasedOnPressure * 2, r, r);
+            for (let r = strokeWeightBasedOnPressurehalf * 2; r > 0; --r) {
+              brushHsvRef.current.ellipse(strokeWeightBasedOnPressurehalf * 8, strokeWeightBasedOnPressurehalf * 8, r, r);
             }
             if (blurRef.current) {
               const blurValue = blurValueRef.current;
@@ -1207,10 +1295,10 @@ function P5PointerEventsTest() {
             prev.x = event.offsetX;
             prev.y = event.offsetY;
             let steps = p.dist(prev.x, prev.y, p.mouseX, p.mouseY);
-            for (let i = 0; i < steps; i += strokeWeightBasedOnPressure / 20) {
+            for (let i = 0; i < steps; i += strokeWeightBasedOnPressurehalf / waterDensity) {
               let x = p.lerp(prev.x, p.mouseX, i / steps);
               let y = p.lerp(prev.y, p.mouseY, i / steps);
-              layer.image(brushHsvRef.current, x - strokeWeightBasedOnPressure * 2, y - strokeWeightBasedOnPressure * 2); // ブラシの中心をマウス位置に合わせて描画
+              layer.image(brushHsvRef.current, x - strokeWeightBasedOnPressurehalf * 8, y - strokeWeightBasedOnPressurehalf * 8); // ブラシの中心をマウス位置に合わせて描画
             }
           }
         }
@@ -1506,6 +1594,39 @@ function P5PointerEventsTest() {
           /> ペンの変動具合を調整する
         </label>
       </div>
+      <div className="flex-between">
+        <div>
+          <span>インクペンの滑らかさ：</span>
+          <input
+            type="number"
+            id="densityValueForm"
+            min="0.005"
+            max="9999"
+            step="0.001"
+            style={{ width: '70px' }}
+            value={inputDensityValue}
+            onChange={handleLerpDensityValueChange}
+            onBlur={handleLerpDensityValueBlur}
+          />
+          <button onClick={resetDensityValue}>インクペンの滑らかさをデフォルトに戻す</button>
+        </div>
+        
+        <div>
+          <span>ミリ・水彩のブラシサイズの変化率：</span>
+          <input
+            type="number"
+            id="waterdensityValueForm"
+            min="0.01"
+            max="100"
+            step="0.01"
+            style={{ width: '70px' }}
+            value={inputWaterDensityValue}
+            onChange={handleLerpWaterDensityValueChange}
+            onBlur={handleLerpWaterDensityValueBlur}
+          />
+          <button onClick={resetWaterDensityValue}>ミリ・水彩のサイズの変化率をデフォルトに戻す</button>
+        </div>
+      </div>
 
       {/* 白色に設定するボタン */}
       <div
@@ -1549,4 +1670,5 @@ function P5PointerEventsTest() {
 }
 
 export default P5PointerEventsTest;
+
 
