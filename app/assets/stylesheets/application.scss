@@ -3018,3 +3018,18 @@ summary {
 .draggable-test2 {
   margin-top: 100px;
 }
+
+
+
+.panel-tool-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
