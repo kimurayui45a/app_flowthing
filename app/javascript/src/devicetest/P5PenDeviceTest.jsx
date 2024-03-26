@@ -1670,7 +1670,7 @@ function P5PointerEventsTest() {
       <div
       className="panel-tool-button"
     >
-      <svg id="_レイヤー_8" data-name="レイヤー 8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.16 31.15">
+      <svg id="_レイヤー_8" data-name="レイヤー 8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.16 31.15" width="31.16" height="31.15">
         <defs>
           <style>
             {`
