@@ -41,6 +41,65 @@ ul {
   justify-content: space-between;
 }
 
+.flex-justify-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex-end-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-column-start {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.flex-column-end {
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+}
+
+.flex-items-end {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
+}
+
+.flex-start-start {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.flex-end-start {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.text-Rounded {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* 見出し/ページタイトル */
 .section-title {
   font-size: 2.3rem;
@@ -527,12 +586,12 @@ ul {
 
 .icon-count-container {
   justify-content: flex-end;
-    align-items: flex-end;
-    // position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: auto;
-    // height: 25px;
+  align-items: flex-end;
+  // position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: auto;
+  // height: 25px;
 }
 
 .sub-item-list {
@@ -1138,7 +1197,7 @@ ul {
 #dropzone-1, #dropzone-2, #dropzone-21 {
   position: relative; /* 絶対位置指定された子要素を正しく配置するために必要 */
   width: 100%;        /* 適切なサイズに設定 */
-  height: 600px;      /* 適切なサイズに設定 */
+  height: 1000px;      /* 適切なサイズに設定 */
   border: 2px dashed #aaa;
   margin-top: 20px;
 }
@@ -1238,6 +1297,7 @@ ul {
 }
 
 .freepalletBox {
+  cursor: pointer;
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -1294,7 +1354,7 @@ div.selected {
   box-shadow: 1px 1px black;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
 }
 
 .pain-button-right {
@@ -1362,6 +1422,7 @@ div.selected {
 
 .bi-reply-fill-right {
   transform: scaleX(-1) !important;
+  z-index: 90;
 }
 
 .myCanvas {
@@ -2228,7 +2289,7 @@ summary {
   border-radius: 10px;
   box-shadow: 0 0.125rem 0.3125rem 0 #999999;
   background-color: white;
-  max-width: 700px;
+  width: 700px;
   height: 300px;
   position: relative;
   overflow: hidden;
@@ -2974,13 +3035,21 @@ summary {
 
 
 
+.draggable-test {
+  margin-top: 300px;
+}
 
-/* デバイステスト用
------------------------------------------- */
+
+.draggable-test2 {
+  margin-top: 100px;
+}
+
+
+
 
 .draggable-container {
-  width: 400px;
-  height: 300px;
+  width: 800px;
+  height: 600px;
   border: 2px solid #000;
   position: relative;
 }
@@ -2990,6 +3059,7 @@ summary {
   display: flex !important;
   justify-content: center;
   align-items: center;
+  border: 5px solid #4A4A4A;
 }
 
 
@@ -3015,12 +3085,205 @@ summary {
 }
 
 
-.draggable-test2 {
-  margin-top: 100px;
+
+
+.pen-tool {
+  position: fixed;
+  // width: 20px;
+  // height: 20px;
+  // border-radius: 50%;
+  border: 1px solid #000000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.dropper-tool {
+  position: fixed;
+  // width: 20px;
+  // height: 20px;
+  // border-radius: 50%;
+  // border: 1px solid #000000;
+  transform: translate(0, -80%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.selectcolor-tool {
+  position: fixed;
+  // width: 20px;
+  // height: 20px;
+  // border-radius: 50%;
+  // border: 1px solid #000000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.deletecolor-tool {
+  position: fixed;
+  // width: 20px;
+  // height: 20px;
+  // border-radius: 50%;
+  // border: 1px solid #000000;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+#reactP5PenTest {
+  cursor: none;
+}
+
+// .dropper-tool {
+//   cursor: url('/path/to/dropper-icon.png'), auto;
+// }
+
+.specialcolor {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border: 1px solid #000000;
+}
+
+
+// #cursorP5SaveRab {
+//   cursor: none;
+// }
+
+
+
+// .slider-container {
+//   width: 300px;
+//   margin: 20px;
+// }
+
+// .slider {
+//   appearance: none; /* 標準プロパティ */
+//   -webkit-appearance: none; /* ウェブキットベースのブラウザでデフォルトスタイルを無効にする */
+//   width: 100%;
+//   height: 10px;
+//   border-radius: 5px;
+//   background: #ddd;
+//   outline: none;
+//   opacity: 0.7;
+//   -webkit-transition: .2s; /* トランジション効果 */
+//   transition: opacity .2s;
+// }
+
+// .slider:hover {
+//   opacity: 1;
+// }
+
+// .slider::-webkit-slider-thumb {
+//   -webkit-appearance: none; /* ウェブキットベースのブラウザでデフォルトスタイルを無効にする */
+//   appearance: none;
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background: #4CAF50;
+//   cursor: pointer;
+// }
+
+// .slider::-moz-range-thumb {
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background: #4CAF50;
+//   cursor: pointer;
+// }
+
+.custom-checkbox {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  display: inline-block;
+  user-select: none;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
 }
 
 
 
+
+
+
+
+
+
+
+/* コントロールパネル（共通）
+------------------------------------------ */
+.control-panel {
+  background-color: #777777;
+  // display: flex !important;
+  // justify-content: center;
+  // align-items: center;
+  border: 5px solid #4A4A4A;
+  box-shadow: 2px 2px 4px #545454;
+}
+
+/* タイトル */
+.panel-title {
+  color: #c2c1c1;
+  background-color: #4A4A4A;
+  width: auto;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  position: relative;
+}
+
+.panel-tool-group {
+  padding: 4px 4px 0 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* 通常ツールボタン */
 .panel-tool-button {
   cursor: pointer;
   width: 30px;
@@ -3033,3 +3296,1839 @@ summary {
   align-items: center;
   margin: 2px;
 }
+
+/* ペンパネルボタン */
+.pen-panel-button {
+  cursor: pointer;
+  width: 25px;
+  height: 25px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  font-size: 13px;
+}
+
+/* パネル表示用ボタン */
+.panel-visible-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  position: relative;
+  border: 2px solid #4A4A4A;
+}
+
+.panel-visible-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px; /* 線の厚さ */
+  background-color: #4A4A4A; /* 線の色 */
+}
+
+.panel-visible-button::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  height: 2px; /* 点のサイズ */
+  width: 6px; /* 点3つと2つの0.5px間隔を含む全体の幅 */
+  background: linear-gradient(to right, #c2c1c1 33%, transparent 33% 66%, #c2c1c1 66% 99%, transparent 99%);
+}
+
+.panel-visible-button i {
+  margin-top: 4px;
+}
+
+
+/* リドゥ */
+.panel-tool-button-right {
+  cursor: pointer;
+  width: 30px;
+  height: 30px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  box-shadow: -1px 1px black;
+  margin: 2px;
+}
+
+/* フリーカラーパレット */
+.palette-colors-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 24px);
+  justify-content: center;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.palette-colors-palletBox {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+
+.palette-colors-freepalletBox {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image:
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB),
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  background-color: #DDDDDD;
+  margin: 2px;
+}
+
+/* 閉じるボタン */
+.close-btn-position {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #c2c1c1;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.close-btn:hover i {
+  color: #F8A3B1;
+}
+
+/* ツールチップコンテナのスタイル */
+.tooltip-container {
+  position: relative;
+  // display: inline-block;
+}
+
+/* ツールチップテキストのスタイル */
+.tooltip-text {
+  visibility: hidden;
+  width: auto;
+  background-color: rgb(255, 255, 255);
+  color: #4A4A4A;
+  text-align: center;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  /* ツールチップの位置 */
+  position: absolute;
+  z-index: 150;
+  top: 90%;
+  left: 0%;
+  margin-right: -150px;
+  font-size: 10px;
+  pointer-events: none;
+
+  /* ツールチップの表示アニメーション */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* ツールチップが表示されるトリガー */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* リドゥのツールチップコンテナのスタイル */
+.tooltip-container-right {
+  position: relative;
+}
+
+/* リドゥのツールチップテキストのスタイル */
+.tooltip-text-right {
+  visibility: hidden;
+  width: auto;
+  background-color: rgb(255, 255, 255);
+  color: #4A4A4A;
+  text-align: center;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  /* ツールチップの位置 */
+  position: absolute;
+  top: 90%;
+  left: -100%;
+  margin-right: -150px;
+  font-size: 10px;
+
+  /* ツールチップの表示アニメーション */
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform: scaleX(-1);
+}
+
+/* ツールチップが表示されるトリガー */
+.tooltip-container-right:hover .tooltip-text-right {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* フォーム（共通） */
+.form-select-value {
+  color: #4A4A4A;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 2px solid #c2c1c1;
+}
+
+/* ドロップボックス（共通） */
+.dropbox-select-value {
+  color: #4A4A4A;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+/* ツール切り替えに関するアラートメッセージ */
+.alert-message {
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+  z-index: 1000;
+  font-size: 16px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+/* コントロールパネル（topline）
+------------------------------------------ */
+/* レイヤーをセーブするチェックボックス */
+.layers-visibility-checkbox {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #c2c1c1;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.layers-visibility-checkbox i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #7FA8EB;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* トグルスイッチ */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #c2c1c1;
+  cursor: pointer;
+  transition: background-color .3s;
+  margin-right: 2px;
+}
+
+.switch {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.switch-handle {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  left: 2.5px;
+  bottom: 2.5px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform .3s;
+}
+
+/* トグルがONの時のスタイル */
+.toggle-switch .checked {
+  background-color: #7FA8EB;
+}
+
+.toggle-switch .checked .switch-handle {
+  transform: translateX(15px); /* ハンドルを右に移動 */
+}
+
+.top-line-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.size-detail-btn-position {
+  position: absolute;
+  right: 5.5px;
+  top: 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 55;
+}
+
+.size-detail-btn {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 2px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-detail-btn:hover i {
+  color: #7FA8EB;
+}
+
+
+/* レイヤーをセーブするチェックボックス */
+.layers-save-checkbox {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #c2c1c1;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  margin: 4px;
+}
+
+.layers-save-checkbox i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #7FA8EB;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* コントロールパネル（centerline）
+------------------------------------------ */
+.center-line-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 34px);
+  justify-content: center;
+}
+
+
+/* コントロールパネル（カラーピッカー周辺、デフォルトパネル・カラーパレットパネル）
+------------------------------------------ */
+ /* カラープレビュー */
+.color-preview-container {
+  position: relative;
+  width: 40px; /* 必要に応じて調整 */
+  height: 40px; /* 必要に応じて調整 */
+}
+
+.color-preview {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0; /* 重なる部分の調整 */
+  left: 0; /* 重なる部分の調整 */
+  z-index: 51; /* color-previewを前面に */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.color-preview-button {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: 0px; /* 位置の微調整 */
+  right: 0px; /* 位置の微調整 */
+  z-index: 50; /* color-preview-buttonを背面に */
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.preview-change-button {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0; /* 重なる部分の調整 */
+  right: 0; /* 重なる部分の調整 */
+}
+
+.preview-change-button:hover .change-cls-1,
+.preview-change-button:hover .change-cls-2 {
+  fill: #7FA8EB;
+  stroke: #7FA8EB;
+}
+
+.color-preview::after, .color-preview-button::after {
+  content: "";
+  position: absolute;
+  top: -2px; /* ボーダーの太さを考慮して調整 */
+  left: -2px;
+  width: calc(100% + 4px); /* 元の要素のサイズ + ボーダーの太さと間隔 */
+  height: calc(100% + 4px);
+  border: 2.5px solid transparent; /* 初期状態では透明 */
+  box-sizing: border-box;
+  z-index: -1;
+  border-radius: 6px;
+}
+
+.color-preview.active::after, .color-preview-button.active::after {
+  border-color: #7FA8EB;
+}
+
+.color-preview-box {
+  position: relative;
+  width: 40px;
+}
+
+.color-picker-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.preview-set {
+  position: absolute;
+  bottom: 35px;
+  left: 2px;
+}
+
+ /* 白黒ボタン */
+.black-white-btn-box {
+  position: relative;
+  width: 20px;
+  height: 22px;
+  transform: rotate(315deg);
+}
+
+.black-half-circle-btn {
+  cursor: pointer;
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.white-half-circle-btn {
+  cursor: pointer;
+  position: absolute;
+  background-color: white;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 10px;
+  border-radius: 10px 10px 0 0;
+  transform: rotate(180deg);
+}
+
+.black-white-btn-container {
+  position: absolute;
+  bottom: 47px;
+  left: 10px;
+}
+
+ /* ピッカーチェンジボタン */
+.picker-change-btn {
+  position: absolute;
+  left: 15px;
+  font-size: 20px;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.picker-change-btn:hover i {
+  color: #7FA8EB;
+}
+
+
+/* コントロールパネル（コンパクトパネル）
+------------------------------------------ */
+/* コンパクトパレットの場合の詳細ボタン配置 */
+.size-detail-btn-position-compact {
+  position: absolute;
+  right: 5.5px;
+  top: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 55;
+}
+
+.center-line-block-compact {
+  margin-top: 25px;
+}
+
+.panel-visible-block {
+  justify-content: flex-end;
+  display: flex;
+}
+
+ /* カラープレビュー */
+.color-preview-fast {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.color-preview-second {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+
+.color-preview-fast::after, .color-preview-second::after {
+  content: "";
+  position: absolute;
+  top: -2px; /* ボーダーの太さを考慮して調整 */
+  left: -2px;
+  width: calc(100% + 4px); /* 元の要素のサイズ + ボーダーの太さと間隔 */
+  height: calc(100% + 4px);
+  border: 2.5px solid transparent; /* 初期状態では透明 */
+  box-sizing: border-box;
+  z-index: -1;
+  border-radius: 6px;
+}
+
+.color-preview-fast.active::after, .color-preview-second.active::after {
+  border-color: #7FA8EB;
+}
+
+.under-line-block-compact {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 12px;
+  height: 30px;
+}
+
+.black-white-btn-compact {
+  margin: 3px;
+}
+
+
+/* コントロールパネル（レイヤーパネル）
+------------------------------------------ */
+/* レイヤーパネル上部 */
+.layers-panel-upper {
+  font-size: 14px;
+  padding: 0 5px 7px 5px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.layername-input-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 2px;
+  position: relative;
+}
+
+.layername-input-text {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
+.layername-input-icon {
+  color: #7FA8EB;
+}
+
+.select-secondlayer-cancel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  width: auto;
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  padding: 2px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10px;
+}
+
+/* レイヤー上部のボタングループ */
+.layers-panel-upper-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+/* 非アクティブボタン */
+.panel-tool-grayout {
+  width: 30px;
+  height: 30px; 
+  color: #c2c1c1;
+  background-color: #777777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  border: 1px solid #4A4A4A;
+  border-radius: 2px;
+}
+
+.panel-tool-grayout .swapLayers-icon-cls-1,
+.panel-tool-grayout .swapLayers-icon-cls-2,
+.panel-tool-grayout .swapLayers-icon-cls-3,
+.panel-tool-grayout .swapLayers-icon-cls-4,
+.panel-tool-grayout .swapLayers-icon-cls-5 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+.panel-tool-grayout .movelayers-icon-cls-1,
+.panel-tool-grayout .movelayers-icon-cls-2,
+.panel-tool-grayout .movelayers-icon-cls-3,
+.panel-tool-grayout .movelayers-icon-cls-4 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+.panel-tool-grayout .moveLayers-copy-icon-cls-1,
+.panel-tool-grayout .moveLayers-copy-icon-cls-2,
+.panel-tool-grayout .moveLayers-copy-icon-cls-3,
+.panel-tool-grayout .moveLayers-copy-icon-cls-4 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+.layername-input-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.layers-panel-upper-btn .bi-arrow-down-up {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+  color: #ececec;
+}
+
+/* レイヤーUI（レイヤーパネル下部） */
+.layers-info-background {
+  color: #4A4A4A;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #4A4A4A;
+  font-size: 10px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.layers-status-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  width: 140px;
+  height: 50px;
+  margin-right: 4px;
+}
+
+.layers-status-box-blend {
+  position: absolute;
+  top: 2px;
+  right: 0;
+}
+
+.layers-namespace {
+  width: auto;
+  height: 35px;
+  cursor: pointer;
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.layers-dropdown {
+  width: 80px;
+  cursor: pointer;
+}
+
+/* 透明度グループ */
+.layer-alphas-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 4px;
+  margin-top: -2px;
+}
+
+/* 透明度スライダー */
+.alphas-slider-container {
+  position: relative;
+  width: 100px;
+  height: 10px;
+  border-radius: 5px;
+  border: 1px solid #777777;
+}
+
+.alphas-slider-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #c2c1c1, #7FA8EB);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.layers-alphas-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 5px;
+}
+
+.layers-alphas-slider:hover {
+  opacity: 1;
+}
+
+.layers-alphas-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none; 
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.layers-alphas-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.layer-alphas-value {
+  color: #4A4A4A;
+  margin-left: 2px;
+  width: 20px;
+}
+
+/* レイヤープレビュー */
+.layers-info-preview-container {
+  width: 56px; /* プレビュー全体の幅 */
+  height: 42px; /* プレビュー全体の高さ */
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+}
+
+.layers-info-preview-background {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+  background-position: 0 0, 8px 8px;
+  background-size: 16px 16px;
+  position: absolute;
+  background-color: #ececec;
+  top: 0px;
+  left: 0px;
+}
+
+.layers-info-preview {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+/* 背景レイヤー */
+.backgroundlayer-status-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 140px;
+  height: 50px;
+  margin-right: 4px;
+  align-items: flex-start;
+}
+
+.backgroundlayer-status-box .bi-lock-fill {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: #4A4A4A;
+}
+
+
+/* コントロールパネル（サイズパネル）
+------------------------------------------ */
+.tool-size-selectform {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  margin-left: 8%;
+  color: #4A4A4A;
+  font-size: 14px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+}
+
+//スクロールガイドアイコン
+.guide-icon {
+  display: flex;
+  position: absolute;
+  bottom: -3px;
+  right: 8%;
+  font-size: 12px;
+  color: black;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ececec;
+}
+
+.size-btn-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 40px);
+  justify-content: center;
+  gap: 2px;
+}
+
+.size-btn-block-container {
+  margin: 5px;
+}
+
+.tool-size-selectform span {
+  margin-left: 4px;
+}
+
+
+/* コントロールパネル（スケールパネル）
+------------------------------------------ */
+.panel-tool-group-scale {
+  padding: 6px 4px 0 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.scale-panel-custom-container {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.panel-tool-group-scale .layers-panel-upper-btn,
+.panel-tool-group-scale .scale-panel-slider-container {
+  margin-top: 5px;
+}
+
+/* スケールスライダー */
+.scale-panel-slider-container {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid #4A4A4A;
+  background-color: #c2c1c1;
+}
+
+.scale-panel-slider-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #7FA8EB;
+  z-index: 1;
+  clip-path: polygon(100% 100%, 0 100%, 0 12px, 100% 0);
+  border-radius: 2px;
+}
+
+.scale-panel-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 4px;
+}
+
+.scale-panel-slider:hover {
+  opacity: 1;
+}
+
+.scale-panel-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none; 
+  width: 5px;
+  height: 24px;
+  border-radius: 2.5px;
+  //border: 1px solid #c2c1c1;
+  box-shadow: 0.5px 0.5px 2px black;
+  background: #777777;
+  cursor: pointer;
+}
+
+.scale-panel-slider::-moz-range-thumb {
+  width: 5px;
+  height: 24px;
+  border-radius: 2.5px;
+  box-shadow: 0.5px 0.5px 2px black;
+  background: #777777;
+  cursor: pointer;
+}
+
+.layer-alphas-value {
+  color: #4A4A4A;
+  margin-left: 2px;
+  width: 20px;
+}
+
+.scale-panel-slider-value {
+  color: #4A4A4A;
+  position: absolute;
+  bottom: 0;
+  right: -65px;
+  font-size: 14px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+  color: #ececec;
+}
+
+/* コントロールパネル（詳細パネル共通）
+------------------------------------------ */
+
+
+
+
+
+
+
+/* コントロールパネル（選択ツールの詳細パネル）
+------------------------------------------ */
+
+
+/* コントロールパネル（詳細パネル）
+------------------------------------------ */
+
+/* 選択詳細パネルのタブボタン */
+.select-tool-tabbtn {
+  padding: 2px;
+  font-size: 12px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  border-right: 0.5px solid #4A4A4A;
+}
+
+.shapes-tool-tabbtn {
+  padding: 2px;
+  font-size: 12px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 100%;
+  border-left: 0.5px solid #4A4A4A;
+}
+
+.select-detail-tool-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.select-detail-tool-group {
+  padding: 12px 4px 0 4px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* 選択ツールのモードのボタン */
+.select-arrange-btn-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+}
+
+.select-arrange-btn-border {
+  border: 1px solid #4A4A4A;
+}
+
+.select-arrange-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px black;
+}
+
+.arrange-btn-left {
+  border-radius: 7px 0 0 7px;
+  border-right: 0.5px solid #4A4A4A;
+}
+
+.arrange-btn-center {
+  border-left: 0.5px solid #4A4A4A;
+  border-right: 0.5px solid #4A4A4A;
+}
+
+.arrange-btn-right {
+  border-radius: 0 7px 7px 0;
+  border-left: 0.5px solid #4A4A4A;
+}
+
+/* 非アクティブボタン・選択ツールのモード */
+.select-arrange-btn-grayout {
+  width: 30px;
+  height: 30px; 
+  color: #4A4A4A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selection-range-topline {
+  position: relative;
+  height: 34px;
+  width: 190px;
+}
+
+.selection-range-topline-left {
+  position: absolute;
+  top: 2px;
+  left: 0;
+}
+
+.selection-range-topline-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* プレビューと決定ボタンのブロック */
+.selection-range-centerline {
+  display: flex;
+  align-items: flex-end;
+  width: 200px;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.selection-range-preview-left {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+/* プレビューの下のレイヤー名 */
+.selected-area-preview-layername {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 10px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: 4px;
+}
+
+/* 一時レイヤープレビュー */
+.selected-area-preview-container {
+  width: 88px; /* プレビュー全体の幅 */
+  height: 66px; /* プレビュー全体の高さ */
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+}
+
+.selected-area-preview-background {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  position: absolute;
+  background-color: #ececec;
+  top: 0px;
+  left: 0px;
+}
+
+.selected-area-preview {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.destination-layer {
+  font-size: 8px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.image-alt-blur {
+  filter: blur(2px);
+}
+
+/* 通常ツールボタン */
+.select-confirm-btn {
+  cursor: pointer;
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding: 4px;
+  font-size: 14px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+  width: 78px;
+  height: 29px;
+}
+
+/* 非アクティブボタン・決定/キャンセル */
+.confirm-btn-grayout {
+  color: #4A4A4A;
+  background-color: #777777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4A4A4A;
+  border-radius: 2px;
+  // padding: 4px;
+  font-size: 14px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  width: 78px;
+  height: 29px;
+}
+
+.select-confirm-icon {
+  position: absolute;
+  transform: translate(-60%);
+  top: -2px;
+}
+
+.select-confirm-btn-text {
+  margin-left: auto;
+  margin-right: 20%;
+}
+
+.select-confirm-icon-img {
+  margin-right: auto;
+  margin-left: 20%;
+}
+
+/* 全選択ボタン */
+.all-select-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  background-color: #c2c1c1;
+  border-radius: 50%;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  // position: absolute;
+  // top: -8px;
+  // right: 0;
+}
+
+.all-select-button-box {
+  position: absolute;
+  top: -8px;
+  right: 0;
+}
+
+.selection-range-bottomline {
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 10px;
+  width: 200px;
+  height: 145px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+  justify-content: center;
+  padding: 4px;
+}
+
+.selection-range-optiontitle {
+  position: absolute;
+  font-size: 12px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #777777;
+  top: -9px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* 反転ボタン */
+.inversion-btn-block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-top: 2px;
+}
+
+.inversion-button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px; 
+  background-color: #c2c1c1;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+
+/* テキスト */
+.selection-range-text {
+  font-size: 10px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  text-align: start;
+}
+
+
+/* コピーレイヤープレビュー */
+.copy-layer-preview-container {
+  width: 100px;
+  height: 75px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+}
+
+.copy-layer-preview-background {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  position: absolute;
+  background-color: #ececec;
+  top: 0px;
+  left: 0px;
+}
+
+.copy-layer-preview {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.layer-blur-sample {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #7FA8EB;
+  // margin: 8px 8px 2px 0px;
+}
+
+.select-blur-option-container {
+  display: flex;
+  justify-content: center;
+}
+
+.blur-option-container-right {
+  flex-direction: column;
+  align-items: flex-end;
+  display: flex;
+}
+
+.option-container {
+  flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* 全選択ボタン */
+.area-delete-button {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 2px;
+  position: absolute;
+  top: -10px;
+  right: -3px;
+}
+
+.select-area-inversion-box {
+  box-shadow: 1px 1px black;
+  border-radius: 5px;
+  margin: 2px 4px 2px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-tool-button-small {
+  cursor: pointer;
+  width: 25px;
+  height: 25px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.alpha-colors-preview {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  background-image:
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB),
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB);
+  background-position: 0 0, 12.5px 12.5px;
+  background-size: 25px 25px;
+  background-color: #DDDDDD;
+  margin: 2px;
+  border-radius: 4px;
+}
+
+.preview-change-icon {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.preview-change-icon:hover {
+  color: #7FA8EB;
+}
+
+
+/* グラデーションプレビュー */
+.gradation-preview-container {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+}
+
+.gradation-preview-background {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  position: absolute;
+  background-color: #ececec;
+  top: 0px;
+  left: 0px;
+}
+
+.gradation-preview {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+
+
+/* 透明度スライダー */
+.gradation-slider-container {
+  width: 165px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.gradation-slider-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -4px;
+  left: 0px;
+}
+
+
+.select-arrange-btn-grayout .select-area-delete-cls-1,
+.select-arrange-btn-grayout .select-area-delete-cls-2,
+.select-arrange-btn-grayout .select-area-delete-cls-3,
+.select-arrange-btn-grayout .select-area-delete-cls-4 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+.select-arrange-btn-grayout .select-area-inversion-cls-1,
+.select-arrange-btn-grayout .select-area-inversion-cls-2,
+.select-arrange-btn-grayout .select-area-inversion-cls-3,
+.select-arrange-btn-grayout .select-area-inversion-cls-4 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+
+
+
+
+.pen-pressure-settings-frame {
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 10px;
+  width: 220px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+  justify-content: center;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+
+.pen-pressure-settings-title {
+  position: absolute;
+  background-color: #777777;
+  top: -9px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.pressure-panel-btn {
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.pressure-panel-btn:hover {
+  background-color: #9199AE;
+}
+
+
+.select-detail-tool-group .bi-arrow-down-up {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  font-size: 12px;
+  color: #ececec;
+}
+
+
+
+/* ペンツールプレビュー */
+.pen-tool-preview-container {
+  width: 90px; /* プレビュー全体の幅 */
+  height: 90px; /* プレビュー全体の高さ */
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+}
+
+.pen-tool-preview-background {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  position: absolute;
+  background-color: #ececec;
+  top: 0px;
+  left: 0px;
+}
+
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  background-color: lightblue;
+}
+
+.point {
+  width: 5px;
+  height: 5px;
+  background-color: black;
+  position: absolute;
+  border-radius: 50%;
+}
+
+
+// .circle-pattern {
+//   width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   overflow: hidden;
+//   background-image: 
+//     linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+//     linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+//   background-position: 0 0, 10px 10px;
+//   background-size: 20px 20px;
+//   position: relative;
+//   background-color: #ececec;
+// }
+
+// .circle-pattern {
+//     width: 200px;
+//   height: 200px;
+//   border-radius: 50%;
+//   background-image: 
+//     linear-gradient(to right, #c2c1c1 1px, transparent 1px),
+//     linear-gradient(to bottom, #c2c1c1 1px, transparent 1px);
+//   background-position: 0 0, 0 0;
+//   background-size: 20px 20px;
+//   // position: absolute;
+//   top: 0;
+//   left: 0;
+// }
+
+.circle-pattern {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  background-image: 
+    radial-gradient(circle at 5px 5px, #000 3%, transparent 3.5%),
+    radial-gradient(circle at 15px 15px, #000 3%, transparent 3.5%);
+  background-size: 20px 20px;
+  background-repeat: repeat;
+}
+
+
+// .brush-preview-container {
+//   width: 140px;
+//   height: 140px;
+//   border-radius: 50%;
+//   background-color: #2196F3; /* ユーザーが選択した色 */
+//   position: relative;
+//   overflow: hidden;
+// }
+
+// .dot-pattern {
+//   width: 100%;
+//   height: 100%;
+//   background-image: radial-gradient(circle, transparent 20%, #FFFFFF 20%);
+//   background-size: 10px 10px; /* ドットのサイズと間隔 */
+// }
+
+
+.brush-preview-container {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: #2196F3; /* ユーザーが選択した色 */
+  position: relative;
+  overflow: hidden;
+}
+.brush-preview-container::before {
+  content: "";
+  position: absolute;
+  width: 10px; /* ドットの横幅 */
+  height: 5px; /* ドットの縦幅 */
+  background-color: #FFFFFF; /* ドットの色 */
+  top: 50%; /* ドットの縦位置 */
+  left: 50%; /* ドットの横位置 */
+}
+
+
+
+// .triangle {
+//   background: #d72929;
+//   height: calc(tan(60deg) * 60px / 2);
+//   width: 60px;
+//   clip-path: polygon(50% 0, 100% 100%, 0 100%);
+// }
+
+// .triangle {
+//   width: 0px;
+//   height: 0px;
+//   border-top: 25px solid transparent;
+//   border-right: 25px solid transparent;
+//   border-left: 25px solid transparent;
+//   border-bottom: 50px solid blue;
+// }
+
+
+
+
+
+.alpha-colors-preview-small {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image:
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB),
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%, transparent 75%, #BBBBBB 75%, #BBBBBB);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  background-color: #DDDDDD;
+  margin: 2px;
+  border-radius: 4px;
+}
+
+
+ /* カラープレビュー */
+.color-preview-fast-small {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+
+.color-preview-second-small {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+
+.color-preview-fast-small::after, .color-preview-second-small::after {
+  content: "";
+  position: absolute;
+  top: -2px; /* ボーダーの太さを考慮して調整 */
+  left: -2px;
+  width: calc(100% + 4px); /* 元の要素のサイズ + ボーダーの太さと間隔 */
+  height: calc(100% + 4px);
+  border: 2.5px solid transparent; /* 初期状態では透明 */
+  box-sizing: border-box;
+  z-index: -1;
+  border-radius: 6px;
+}
+
+.color-preview-fast-small.active::after, .color-preview-second-small.active::after {
+  border-color: #7FA8EB;
+}
+
+
+
+/* 小さいボタンの非アクティブボタン */
+.pen-panel-button-grayout {
+  width: 25px;
+  height: 25px; 
+  color: #c2c1c1;
+  background-color: #777777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  border: 1px solid #4A4A4A;
+  border-radius: 2px;
+}
+
+.pen-panel-button-grayout .nostroke-icon-cls-1,
+.pen-panel-button-grayout .nostroke-icon-cls-2 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+
+.pen-panel-button-grayout .nofill-icon-cls-1,
+.pen-panel-button-grayout .nofill-icon-cls-2 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+
+.pen-panel-button-grayout .allpaint-icon-cls-1,
+.pen-panel-button-grayout .allpaint-icon-cls-2 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+.panel-tool-button-small-grey .shapes-paint-cls-1,
+.panel-tool-button-small-grey .shapes-paint-cls-2,
+.panel-tool-button-small-grey .shapes-paint-cls-3,
+.panel-tool-button-small-grey .shapes-paint-cls-4,
+.panel-tool-button-small-grey .shapes-paint-cls-5 {
+  fill: #4A4A4A;
+  stroke: #4A4A4A;
+}
+
+
+/* テキストフォントを選択するドロップダウン */
+.text-font-dropdown {
+  width: 70px;
+  cursor: pointer;
+  height: 25px;
+  font-size: 12px;
+  margin: 4px;
+}
+
+
+/* テキスト揃えボタン */
+.text-align-button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px; 
+  background-color: #c2c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
