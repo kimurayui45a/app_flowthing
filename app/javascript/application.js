@@ -16,6 +16,7 @@ import { createRoot } from 'react-dom/client';
 // import P5PenTest from './src/devicetest/P5PenTest';
 //import P5PenDeviceTest from './src/devicetest/P5PenDeviceTest';
 import DraggableArea from './src/DraggableArea';
+import PixiTest from './src/PixiTest';
 
 
 
@@ -123,7 +124,7 @@ function mottomiru() {
 
 
 //react
-let dragRoot;
+let dragRoot, pixiTestRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -141,6 +142,14 @@ document.addEventListener('turbo:load', () => {
     dragRoot.render(<DraggableArea />);
   }
 
+
+  // PixiTest コンポーネントのマウント
+  const pixiTestContainer = document.getElementById('reactPixiTest');
+  if (pixiTestContainer) {
+    pixiTestRoot = createRoot(pixiTestContainer);
+    pixiTestRoot.render(<PixiTest />);
+  }
+
 });
 
 document.addEventListener('turbo:before-cache', () => {
@@ -155,5 +164,12 @@ document.addEventListener('turbo:before-cache', () => {
   if (dragRoot) {
     dragRoot.unmount();
     dragRoot = null; // dragRootをクリア
+  }
+
+
+  //PixiTestのアンマウント
+  if (pixiTestRoot) {
+    pixiTestRoot.unmount();
+    pixiTestRoot = null;
   }
 });
