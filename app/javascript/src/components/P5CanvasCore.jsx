@@ -14,7 +14,7 @@ import { P5SizePanel } from './P5SizePanel';
 import { useP5Color } from './P5ColorContext';
 import { useP5PenToolParametersContext } from './P5PenToolParametersContext';
 
-const P5CanvasCore = ({ canvasImgId, canvasData, canvasSize, onDataFromGrandchild, canvasSpaceSize, canvasDragSpaceSize }) => {
+const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, canvasDragSpaceSize }) => {
   
   //canvas全体の情報に関するRef
   const sketchRef = useRef();
@@ -410,9 +410,9 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSize, onDataFromGrandchil
 
   //再描画の場合の復元処理（マウント時に1回実行される）
   useEffect(() => {
-    // canvasDataが存在する場合、JSON形式からオブジェクトに変換してステートを更新
-    if (canvasData && canvasData !== '' && canvasData !== 'undefined' && canvasData !== 'null') {
-      const parsedData = JSON.parse(canvasData);
+    // canvasSaveDataが存在する場合、JSON形式からオブジェクトに変換してステートを更新
+    if (canvasSaveData && canvasSaveData !== '' && canvasSaveData !== 'undefined' && canvasSaveData !== 'null') {
+      const parsedData = JSON.parse(canvasSaveData);
   
       // すべてのレイヤーデータをもとにステートを更新（isVisibleがfalseの場合でも含める）
       setLayersInfo(parsedData.map(layerData => ({
@@ -424,7 +424,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSize, onDataFromGrandchil
       })));
       setSaveLayersBool(true);
     }
-  }, [canvasData]);  
+  }, [canvasSaveData]);  
 
   //レイヤー情報を管理するもの（layersInfoの更新時に全体を合わせる）
   useEffect(() => {
@@ -1159,15 +1159,45 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSize, onDataFromGrandchil
         mixBrushRef.current.filter(p.BLUR, 1);
 
         //メインレイヤー
-        if (!canvasData || canvasData === '') {
-        layerRefs.current = layerRefs.current.map(() => p.createGraphics(p.width, p.height));
+        // if (!canvasSaveData || canvasSaveData === '') {
+        // layerRefs.current = layerRefs.current.map(() => p.createGraphics(p.width, p.height));
 
-        // 初期状態のキャプチャ
-        undoRef.current.capture(layerRefs.current);
-        console.log(layerRefs.current);
+        // // 初期状態のキャプチャ
+        // undoRef.current.capture(layerRefs.current);
+        // console.log(layerRefs.current);
+        // } else {
+        //   // 再描画の場合
+        //   const layersData = JSON.parse(canvasSaveData);
+        //   layerRefs.current = layersData.map((layerData, index) => {
+        //     const graphics = p.createGraphics(p.width, p.height);
+        //     if (layerData.content && layerData.isVisible) {
+        //       p.loadImage(layerData.content, img => {
+        //         graphics.image(img, 0, 0, p.width, p.height);
+        //         graphics.noTint();
+        //       });
+        //     }
+        //     return graphics;
+        //   });
+        // }
+
+        //メインレイヤー（再描画時はcanvasDataかcanvasSaveDataから描画される）
+        if (!canvasSaveData || canvasSaveData === '') {
+          // canvasSaveDataがない場合、新規レイヤーを作成し、canvasDataから描画
+          layerRefs.current = layerRefs.current.map(() => p.createGraphics(p.width, p.height));
+      
+          if (canvasData) {
+            // canvasDataが存在する場合、それをレイヤー1にロードして描画
+            p.loadImage(canvasData, img => {
+              layerRefs.current[0].image(img, 0, 0, p.width, p.height);
+            });
+          }
+      
+          // 初期状態のキャプチャ
+          undoRef.current.capture(layerRefs.current);
+          console.log("Initialized new layers with canvasData", layerRefs.current);
         } else {
-          // 再描画の場合
-          const layersData = JSON.parse(canvasData);
+          // 再描画の場合、保存されたレイヤーデータを復元
+          const layersData = JSON.parse(canvasSaveData);
           layerRefs.current = layersData.map((layerData, index) => {
             const graphics = p.createGraphics(p.width, p.height);
             if (layerData.content && layerData.isVisible) {
@@ -1179,6 +1209,10 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSize, onDataFromGrandchil
             return graphics;
           });
         }
+      
+      
+
+
 
         // タッチ操作の場合、デフォルトのスクロールやズームを無効化
         canvasRef.current.touchStarted((event) => {
@@ -2964,7 +2998,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSize, onDataFromGrandchil
         p5CanvasInstanceRef.current.remove();
       }
     };
-  }, [canvasSize]);
+  }, [canvasSize, canvasSaveData, canvasData]);
 
 
 

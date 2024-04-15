@@ -1,0 +1,36 @@
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+<h1 class="midasi-title">
+  <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
+  <span>配置</span>
+</h1>
+
+<%# <%= render 'search_form', q: @q, url: sub_users_path %>
+
+  <div class="item-list-container">
+    <% if @composites.present? %>
+      <% @composites.each do |composites| %>
+        <div class="item-list-card">
+          <%= render composites %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="noitem-text">アイテムスペースがありません</div>
+    <% end %>
+  </div>
+
+
+
+
+
+  <%= link_to new_composite_path do %>
+      <div>アイテムを配置する</div>
+    <% end %>
+
+
+
+
+  <div class="paginate-box">
+    <%# <%= paginate @sub_users %>
+  </div>
+</div>

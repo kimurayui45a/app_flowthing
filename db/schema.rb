@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_01_164215) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_14_162159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_164215) do
     t.index ["profile_id"], name: "index_comments_on_profile_id"
   end
 
+  create_table "composites", force: :cascade do |t|
+    t.string "composite_name"
+    t.text "composite_text"
+    t.jsonb "composite_space"
+    t.jsonb "composite_item"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "space_id", null: false
+    t.index ["profile_id"], name: "index_composites_on_profile_id"
+    t.index ["space_id"], name: "index_composites_on_space_id"
+  end
+
   create_table "drafts", force: :cascade do |t|
     t.jsonb "canvas"
     t.bigint "sub_user_id", null: false
@@ -74,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_164215) do
     t.datetime "deleted_at"
     t.text "episode"
     t.string "item_place"
+    t.jsonb "item_save_canvas"
     t.index ["deleted_at"], name: "index_items_on_deleted_at"
     t.index ["sub_user_id"], name: "index_items_on_sub_user_id"
   end
@@ -90,6 +104,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_164215) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_profiles_on_deleted_at"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "spaces", force: :cascade do |t|
+    t.string "space_name"
+    t.text "space_text"
+    t.jsonb "space_canvas"
+    t.jsonb "space_save_canvas"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_spaces_on_profile_id"
   end
 
   create_table "sub_users", force: :cascade do |t|
@@ -138,9 +163,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_01_164215) do
   add_foreign_key "boards", "categories"
   add_foreign_key "boards", "profiles"
   add_foreign_key "comments", "boards"
+  add_foreign_key "composites", "profiles"
+  add_foreign_key "composites", "spaces"
   add_foreign_key "drafts", "items"
   add_foreign_key "drafts", "sub_users"
   add_foreign_key "items", "sub_users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "spaces", "profiles"
   add_foreign_key "sub_users", "profiles"
 end

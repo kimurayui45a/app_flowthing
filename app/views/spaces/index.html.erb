@@ -1,0 +1,36 @@
+<% content_for(:title, t('.title')) %>
+<div class="max1280-container">
+<h1 class="midasi-title">
+  <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
+  <span>スペース</span>
+</h1>
+
+<%# <%= render 'search_form', q: @q, url: sub_users_path %>
+
+  <div class="item-list-container">
+    <% if @spaces.present? %>
+      <% @spaces.each do |spaces| %>
+        <div class="item-list-card">
+          <%= render spaces %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="noitem-text">スペースがありません</div>
+    <% end %>
+  </div>
+
+
+
+
+
+  <%= link_to new_space_path do %>
+      <div>スペースを作成する</div>
+    <% end %>
+
+
+
+
+  <div class="paginate-box">
+    <%# <%= paginate @sub_users %>
+  </div>
+</div>

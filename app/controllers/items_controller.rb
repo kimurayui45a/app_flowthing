@@ -38,16 +38,37 @@ class ItemsController < ApplicationController
     end
 
     if @item.save
-      redirect_to item_path(@item), success: t('defaults.flash_message.item_created', item: Item.model_name.human)
+      if request.headers['X-React-App'] == 'true'
+        # Reactからのリクエストの場合
+        render json: { redirect_url: item_path(@item) }, status: :created
+      else
+        redirect_to item_path(@item), success: t('defaults.flash_message.item_created', item: Item.model_name.human)
+      end
     else
-      flash[:danger] = t('defaults.flash_message.item_not_created', item: Item.model_name.human)
-      redirect_to root_path
+      if request.headers['X-React-App'] == 'true'
+        render json: @item.errors, status: :unprocessable_entity
+      else
+        flash[:danger] = t('defaults.flash_message.item_not_created', item: Item.model_name.human)
+        redirect_to root_path
+      end
     end
   end
+
+  def new_canvas
+    @item = Item.new
+    @sub_user = SubUser.find(params[:sub_user_id]) if params[:sub_user_id].present?
+    @item.image_choice ||= "no_image"
+  end
+
 
   def show
     @item = Item.find(params[:id])
     @sub_user = @item.sub_user
+  end
+
+  def canvas_edit
+    @item = Item.find(params[:id])
+    @sub_user = SubUser.find(params[:sub_user_id]) if params[:sub_user_id].present?
   end
 
   def edit
@@ -69,11 +90,20 @@ class ItemsController < ApplicationController
     end
 
     if @item.update(item_params)
-      redirect_to item_path(@item), success: t('defaults.flash_message.item_updated', item: Item.model_name.human)
-    else
-      flash[:danger] = t('defaults.flash_message.item_not_updated', item: Item.model_name.human)
-      redirect_to root_path
+      if request.headers['X-React-App'] == 'true'
+        render json: { redirect_url: item_path(@item) }, status: :ok
+      else
+        redirect_to item_path(@item), success: t('defaults.flash_message.item_updated', item: Item.model_name.human)
+      end
+      else
+      if request.headers['X-React-App'] == 'true'
+        render json: @item.errors, status: :unprocessable_entity
+      else
+        flash[:danger] = t('defaults.flash_message.item_not_updated', item: Item.model_name.human)
+        redirect_to root_path
+      end
     end
+    
   end
 
   def destroy
@@ -99,6 +129,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place)
+    params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place, :item_save_canvas )
   end
 end

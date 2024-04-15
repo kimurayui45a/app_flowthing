@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
   end
   get 'items/episode_list', to: 'items#episode_list', as: 'episode_list'
+  get 'items/new_canvas', to: 'items#new_canvas', as: 'new_canvas_item'
+  get 'items/canvas_edit', to: 'items#canvas_edit', as: 'canvas_edit_item'
   get 'boards/free', to: 'boards#free', as: 'free_boards'
   get 'boards/question', to: 'boards#question', as: 'question_boards'
   get 'info', to: 'static_pages#info'
@@ -28,6 +30,18 @@ Rails.application.routes.draw do
   end
   resources :comments, only: %i[create]
   resources :categories, only: %i[show]
+
+  resources :spaces, only: %i[index new create show edit update destroy] do
+    member do
+      get :confirm_delete
+    end
+  end
+
+  resources :composites, only: %i[index new create show edit update destroy] do
+    member do
+      get :confirm_delete
+    end
+  end
 
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',

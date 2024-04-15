@@ -12,7 +12,8 @@ const P5CanvasSet = ({
   canvasSpaceSize,
   canvasDragSpaceSize,
   canvasImgId,
-  canvasData
+  canvasData,
+  canvasSaveData
 }) => {
   return (
     <div>
@@ -30,6 +31,7 @@ const P5CanvasSet = ({
                   key={canvasImgId}
                   canvasImgId={canvasImgId}
                   canvasData={canvasData}
+                  canvasSaveData={canvasSaveData}
                 />
               </div>
 

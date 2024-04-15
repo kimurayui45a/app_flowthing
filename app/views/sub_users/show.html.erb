@@ -76,7 +76,7 @@
               <% when 'item_canvas' %>
               <div class="sub-user-itemicon">
                 <div class="back-white-rect">
-                  <canvas class="sub-show-fabric" id="itemCanvas_<%= item.id %>" data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas>
+                  <div class="sub-show-fabric" id="reactLordItemSubUserShow_<%= item.id %>" data-item-id="<%= item.id %>" data-canvas-data="<%= item.item_canvas %>"></div>
                 </div>
               </div>
               <% else %>
@@ -105,6 +105,19 @@
           Flow Thing
         </div>
       <% end %>
+
+      <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>
+          <div>
+            <i class="bi bi-balloon-fill balloon-icon balloon-action"></i>
+          </div>
+          <div class="balloon-botann-text">
+            New<br>
+            Flow Paint
+          </div>
+          <span class="tooltip-text">Flow Thingを描く</span>
+        <% end %>
+
+
       <%= link_to edit_sub_user_path(@sub_user), class: 'balloon-botann' do %>  
         <div>
           <i class="bi bi-pen-fill pen-fill-icon"></i>

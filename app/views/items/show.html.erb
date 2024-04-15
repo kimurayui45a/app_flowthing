@@ -20,16 +20,13 @@
             <% end %>
           <% when 'item_canvas' %>
             <div class="canvas-container-parent">
-              <canvas class="item-show-icon" id="itemCanvas_<%= @item.id %>" data-canvas-json='<%= @item.item_canvas.to_json.html_safe %>'></canvas>
+              <div id="reactLordItemCanvas" data-item-id="<%= @item.id %>" data-canvas-data="<%= @item.item_canvas %>"></div>
             </div>
           <% else %>
             <div class="no-image-icon">No Image</div>
         <% end %>
       <% end %>
     </div>
-
-
-
 
 
 
@@ -133,15 +130,49 @@
           Flow Thing
         </div>
       <% end %>
-      <%= link_to edit_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>  
-        <div>
-          <i class="bi bi-pen-fill pen-fill-icon"></i>
-        </div>
-        <div class="balloon-botann-text">
-          Edit<br>
-          Flow Thing
-        </div>
-      <% end %> 
+
+
+      <% if @item.image_choice.present? %>
+        <% case @item.image_choice %>
+        <% when 'item_image' %>
+          <% if @item.item_image.present? %>
+            <%= link_to edit_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>  
+              <div>
+                <i class="bi bi-pen-fill pen-fill-icon"></i>
+              </div>
+              <div class="balloon-botann-text">
+                Edit<br>
+                Flow Thing
+              </div>
+            <% end %> 
+          <% end %>
+        <% when 'item_canvas' %>
+
+          <%= link_to canvas_edit_item_path(id: @item.id, sub_user_id: @sub_user.id), class: 'balloon-botann' do %>  
+            <div>
+              <i class="bi bi-pen-fill pen-fill-icon"></i>
+            </div>
+            <div class="balloon-botann-text">
+              Edit<br>
+              Flow Paint
+            </div>
+          <% end %>
+
+        <% else %>
+          <%= link_to edit_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>  
+            <div>
+              <i class="bi bi-pen-fill pen-fill-icon"></i>
+            </div>
+            <div class="balloon-botann-text">
+              Edit<br>
+              Flow Thing
+            </div>
+          <% end %> 
+        <% end %>
+      <% end %>
+
+
+
       <%= link_to item_new_board_boards_path(item_id: @item.id), class: "balloon-botann" do %>
         <div>
           <i class="bi bi-send-fill send-icon"></i>

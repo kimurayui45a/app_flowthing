@@ -109,11 +109,11 @@ const P5SizePanel = () => {
       div.addEventListener('click', clickListener);
     });
 
-    return () => {
-      sizeButtons.forEach(div => {
-        div.removeEventListener('click', clickListener);
-      });
-    };
+    // return () => {
+    //   sizeButtons.forEach(div => {
+    //     div.removeEventListener('click', clickListener);
+    //   });
+    // };
   }, []);
 
   return (

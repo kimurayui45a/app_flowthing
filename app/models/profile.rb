@@ -7,6 +7,10 @@ class Profile < ApplicationRecord
   has_many :sub_users
   has_many :boards
   has_many :comments
+  has_many :items, through: :sub_users
+
+  has_many :spaces, dependent: :destroy
+  has_many :composites, dependent: :destroy
 
   acts_as_paranoid
 

@@ -13,6 +13,7 @@
           <div class="newcontents_text"><span>新規作成<span></div>
         </div>
       <% end %>
+
       <%= link_to sub_users_path do %>
         <div class="usersselect-container">
           <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
@@ -22,6 +23,30 @@
             <span class="gray-text">に追加する</span></div>
         </div>
       <% end %>
-    </div> 
+
+    </div>
+
+    
+      <%= link_to spaces_path do %>
+        <div class="usersselect-container">
+          <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
+          <div class="newcontents_text-sub">
+            <span class="gray-text">スペースを作成</span>
+            <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span><br>
+            <span class="gray-text">に追加する</span></div> %>
+        </div>
+      <% end %> 
+
+    
+      <%= link_to composites_path do %>
+        <div class="usersselect-container">
+          <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
+          <div class="newcontents_text-sub">
+            <span class="gray-text">配置を作成</span>
+            <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span><br>
+            <span class="gray-text">に追加する</span></div> %>
+        </div>
+      <% end %> 
+      
   </div>
 </div>

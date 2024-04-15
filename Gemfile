@@ -56,7 +56,8 @@ gem 'rails-i18n'
 
 #画像関係
 gem 'carrierwave', '~> 3.0', '>= 3.0.5'
-gem "fog-google"
+gem 'fog-google', '~> 1.24.1'
+gem 'fog-core', '~> 2.4.0'
 
 #devise関連
 gem 'devise', '~> 4.9', '>= 4.9.3'

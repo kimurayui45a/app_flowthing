@@ -59,6 +59,17 @@ const P5LayersInfoPanel = () => {
     }
   }, []);
 
+  //1度だけスライダーを更新する
+  useEffect(() => {
+    layersInfo.forEach((layer, index) => {
+      const slider = document.getElementById(`slider-${index}`);
+      if (slider) {
+        const percentage = (layer.alphas - 0) / (255 - 0) * 100;
+        slider.style.background = `linear-gradient(to right, transparent ${percentage}%, #ddd ${percentage}%)`;
+      }
+    });
+  }, []);  
+
   const handleBackgroundTouch = (e) => {
     // フォーム要素以外がタッチされた場合、ドキュメント全体からフォーカスを外す
     if (!e.target.classList.contains('no-drag')) {
@@ -107,7 +118,6 @@ const P5LayersInfoPanel = () => {
 
     const percentage = (newAlpha - 0) / (255 - 0) * 100;
     e.target.style.background = `linear-gradient(to right, transparent ${percentage}%, #ddd ${percentage}%)`;
-    
   };
 
 
@@ -850,6 +860,7 @@ const P5LayersInfoPanel = () => {
                           onMouseUp={colorPaletteDragEnd}
                           onTouchEnd={colorPaletteDragEnd}
                           className="no-drag layers-alphas-slider"
+                          id={`slider-${index}`}
                         />
                       </label>
                   </div>

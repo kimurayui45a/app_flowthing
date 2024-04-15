@@ -1,0 +1,34 @@
+<article id="composite_<%= composite.id %>", class="user-card-container">
+    <details class="details-box">
+      <summary class="composite-summary-style"><%= composite.composite_name %></summary>
+      <span><%= composite.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
+    </details>
+
+
+    <section class="user-objectbox">
+      <div class="icon-object">
+        <%= link_to composite_path(composite) do %>
+        <span>画像</span>
+
+        <% end %>
+      </div>
+
+
+      <div class="item-flex">
+        <div>
+          <%= link_to edit_composite_path(composite), class: "edit-memo-link pencil-fill-space" do %>
+            <i class="bi bi-pencil-fill trash-fill-font"></i>
+          <% end %>
+        </div>
+
+        <div>
+          <%= link_to confirm_delete_composite_path(composite), class: "delete-confirm-link" do %>
+            <i class="bi bi-trash-fill trash-fill-font"></i>
+          <% end %>
+        </div> 
+      </div> 
+    </section>
+</article>
+
+
+
