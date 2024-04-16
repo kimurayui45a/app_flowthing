@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
-import p5 from 'p5';
+import { PixiListSpaceContext } from './PixiListSpaceContext';
+import { PixiListItemContext } from './PixiListItemContext';
 
 
-const PixiListPanel = ({ itemAllId }) => {
+const PixiListPanel = ({ itemAllId, spaceAllId }) => {
 
 
   // useEffect(() => {
@@ -25,8 +26,11 @@ const PixiListPanel = ({ itemAllId }) => {
 
 
   const {
-
+    handleAddSprite
   } = usePixiComponentShare();
+
+  //タブの切り替え
+  const [pixiListTabMode, setPixiListTabMode] = useState(true);
 
   const handleBackgroundTouch = (e) => {
     // フォーム要素以外がタッチされた場合、ドキュメント全体からフォーカスを外す
@@ -34,39 +38,6 @@ const PixiListPanel = ({ itemAllId }) => {
       document.activeElement.blur();
     }
   };
-
-
-  // const containerRef = useRef(null);
-  
-  // useEffect(() => {
-  //   const sketches = itemAllId.map(item => {
-  //     const sketchHolder = document.createElement('div');
-  //     containerRef.current.appendChild(sketchHolder);
-      
-  //     return new p5(p => {
-  //       p.setup = () => {
-  //         p.createCanvas(50, 50);
-  //         p.background(255);
-  //         // Load and display the item's image or handle different types of content
-  //         if (item.image_choice === 'item_canvas') {
-  //           p.loadImage(item.item_canvas, img => {
-  //             p.image(img, 0, 0, 50, 50);
-  //           });
-  //         } else if (item.image_choice === 'item_image') {
-  //           p.loadImage(item.item_image.url, img => {
-  //             p.image(img, 0, 0, 50, 50);
-  //           });
-  //         } else {
-  //           p.text('No Image', 10, 100);
-  //         }
-  //       };
-  //     }, sketchHolder);
-  //   });
-
-  //   return () => {
-  //     sketches.forEach(sketch => sketch.remove());
-  //   };
-  // }, [itemAllId]);
 
 
   return (
@@ -96,24 +67,55 @@ const PixiListPanel = ({ itemAllId }) => {
       cancel=".no-drag"
     >
 
-
-        {/* <div ref={containerRef}></div>; */}
-        {itemAllId.map((item, index) => (
-        <div key={index} style={{ margin: '10px', border: '1px solid #ccc', padding: '10px' }}>
-          {item.image_choice === 'item_canvas' && item.item_canvas ? (
-            <img src={item.item_canvas} alt="Canvas Image" style={{ width: 50, height: 50 }} />
-          ) : item.image_choice === 'item_image' && item.item_image ? (
-            <img src={item.item_image.url} alt="Uploaded Image" style={{ width: 50, height: 50 }} />
-          ) : (
-            <p>No Image</p>
-          )}
+<div className="panel-title">
+  <span>リスト</span>
+  </div>
 
 
-<div>
-<span>{item.id}</span>
+  <div className="select-detail-tool-container">
+  <div className="flex">
+    <div
+      className="select-tool-tabbtn tooltip-container"
+      onClick={() => setPixiListTabMode(true)}
+      onTouchStart={() => setPixiListTabMode(true)}
+      style={{
+        backgroundColor: pixiListTabMode ? '#777777' : '#616161',
+        borderBottom: pixiListTabMode ? 'none' : '1px solid #4A4A4A',
+        color: pixiListTabMode ? '#ececec' : '#343434'
+      }}
+    >
+      <span>アイテム</span>
+      <span className="tooltip-text">アイテムリストタブ</span>
+    </div>
+
+    <div
+      className="shapes-tool-tabbtn tooltip-container"
+      onClick={() => setPixiListTabMode(false)}
+      onTouchStart={() => setPixiListTabMode(false)}
+      style={{
+        backgroundColor: !pixiListTabMode ? '#777777' : '#616161',
+        borderBottom: !pixiListTabMode ? 'none' : '1px solid #4A4A4A',
+        color: !pixiListTabMode ? '#ececec' : '#343434'
+      }}
+    >
+      <span>スペース</span>
+      <span className="tooltip-text">スペースリストタブ</span>
+    </div>
+  </div>
+
+  <div className="select-detail-tool-group">
+    {/* グループ分岐 */}
+    {pixiListTabMode ? (
+      //アイテム
+      <PixiListItemContext itemAllId={itemAllId} />
+    ) : (
+      //スペース
+      <PixiListSpaceContext spaceAllId={spaceAllId} />
+    )}
+  </div>
+
 </div>
-        </div>
-      ))}
+
 
   </Rnd>
   );
