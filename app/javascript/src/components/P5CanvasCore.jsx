@@ -1210,9 +1210,6 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           });
         }
       
-      
-
-
 
         // タッチ操作の場合、デフォルトのスクロールやズームを無効化
         canvasRef.current.touchStarted((event) => {

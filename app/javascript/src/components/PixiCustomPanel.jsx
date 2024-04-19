@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
+import { PixiItemCustom } from './PixiItemCustom';
+import { PixiSpaceCustom } from './PixiSpaceCustom';
 
 
 const PixiCustomPanel = () => {
@@ -10,7 +12,9 @@ const PixiCustomPanel = () => {
   const {
     customPanelPosition,
     setCustomPanelPosition,
-    handlePixiPanelDragStop
+    handlePixiPanelDragStop,
+    pixiListTabMode,
+    toggleCustomPanelClose
   } = usePixiGroup();
 
   const {
@@ -23,6 +27,8 @@ const PixiCustomPanel = () => {
       document.activeElement.blur();
     }
   };
+
+
 
 
   return (
@@ -51,6 +57,37 @@ const PixiCustomPanel = () => {
       // disableDragging={!isDraggablePanel}
       cancel=".no-drag"
     >
+
+<div className="panel-title">
+  <span>カスタム</span>
+
+        {/* 閉じる */}
+        <div className="close-btn-position">
+          
+            <div
+              className="close-btn tooltip-container"
+              onClick={toggleCustomPanelClose}
+              onTouchStart={toggleCustomPanelClose}
+            >
+              <i className="bi bi-x-lg"></i>
+              <span className="tooltip-text">閉じる</span>
+            </div>
+          
+        </div>
+
+
+  </div>
+
+<div className="select-detail-tool-group">
+    {/* グループ分岐 */}
+    {pixiListTabMode ? (
+      //アイテム
+      <PixiItemCustom />
+    ) : (
+      //スペース
+      <PixiSpaceCustom />
+    )}
+  </div>
 
   </Rnd>
   );

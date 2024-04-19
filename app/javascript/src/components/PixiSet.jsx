@@ -8,7 +8,11 @@ const PixiSet = ({
   itemAllId,
   spaceAllId,
   onDataFromGrandchild,
-  pixiMode
+  pixiMode,
+  subUserAllId,
+  compositeId,
+  spaceObject,
+  itemObject
 }) => {
   return (
     <>
@@ -16,11 +20,14 @@ const PixiSet = ({
         <div>
           <PixiComponent
             onDataFromGrandchild={onDataFromGrandchild}
-            // key={canvasImgId}
-            // canvasImgId={canvasImgId}
+            key={compositeId}
+            compositeId={compositeId}
             itemAllId={itemAllId}
             spaceAllId={spaceAllId}
             pixiMode={pixiMode}
+            subUserAllId={subUserAllId}
+            spaceObject={spaceObject}
+            itemObject={itemObject}
           />
         </div>
       </PixiGroupProvider>

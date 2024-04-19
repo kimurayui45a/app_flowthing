@@ -1,0 +1,27 @@
+<div class="max1280-container">
+  <h1 class="section-title">
+    <span class="red-text">編集</span>
+  </h1>
+
+
+  <div id="reactEditComposite"
+    data-profile-id="<%= @profile.id %>"
+    data-composite-id="<%= @composite.id %>"
+    data-item-id-all="<%= @items.to_json %>"
+    data-space-id-all="<%= @spaces.to_json %>"
+    data-sub-user-id-all="<%= @sub_users.to_json %>"
+
+
+
+    data-space-data="<%= @composite.composite_space %>"
+    data-item-data="<%= @composite.composite_item %>"
+
+    data-composite-name="<%= @composite.composite_name %>"
+    data-composite-text="<%= @composite.composite_text %>"
+    data-composite-image="<%= @composite.composite_image %>"
+    data-composite-space-id="<%= @composite.space_id %>"
+  >
+  </div>
+
+</div>
+

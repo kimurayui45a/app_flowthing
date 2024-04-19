@@ -21,7 +21,10 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
   const {
     listPanelPosition,
     setListPanelPosition,
-    handlePixiPanelDragStop
+    handlePixiPanelDragStop,
+    pixiListTabMode,
+    setPixiListTabMode,
+    toggleCustomPanelVisible
   } = usePixiGroup();
 
 
@@ -29,8 +32,6 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
     handleAddSprite
   } = usePixiComponentShare();
 
-  //タブの切り替え
-  const [pixiListTabMode, setPixiListTabMode] = useState(true);
 
   const handleBackgroundTouch = (e) => {
     // フォーム要素以外がタッチされた場合、ドキュメント全体からフォーカスを外す
@@ -102,6 +103,16 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
       <span className="tooltip-text">スペースリストタブ</span>
     </div>
   </div>
+
+          {/* カスタムパネルを開くボタン */}
+          <div
+            className="panel-tool-button tooltip-container"
+            onClick={toggleCustomPanelVisible}
+            onTouchStart={toggleCustomPanelVisible}
+          >
+            <i className="bi bi-pencil-fill"></i>
+            <span className="tooltip-text">カスタムパネル</span>
+          </div>
 
   <div className="select-detail-tool-group">
     {/* グループ分岐 */}

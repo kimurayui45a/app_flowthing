@@ -21,6 +21,9 @@ import NewSpaceCreate from './src/NewSpaceCreate';
 import LordSpaceCanvas from './src/LordSpaceCanvas';
 import EditSpaceCanvas from './src/EditSpaceCanvas';
 import NewCompositeCreate from './src/NewCompositeCreate';
+import { LoadComposite } from './src/LoadComposite';
+import EditComposite from './src/EditComposite';
+import AllComposite from './src/AllComposite';
 
 
 
@@ -136,7 +139,10 @@ let dragRoot,
     newSpaceCreateRoot,
     lordSpaceCanvasRoot,
     editSpaceCanvasRoot,
-    newCompositeCreateRoot;
+    newCompositeCreateRoot,
+    loadCompositeRoot,
+    editCompositeRoot,
+    allCompositeRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -268,9 +274,60 @@ document.addEventListener('turbo:load', () => {
     const profileId = newCompositeCreateContainer.getAttribute('data-profile-id');
     const itemAllId = JSON.parse(newCompositeCreateContainer.getAttribute('data-item-id-all'));
     const spaceAllId = JSON.parse(newCompositeCreateContainer.getAttribute('data-space-id-all'));
+    const subUserAllId = JSON.parse(newCompositeCreateContainer.getAttribute('data-sub-user-id-all'));
     newCompositeCreateRoot = createRoot(newCompositeCreateContainer);
-    newCompositeCreateRoot.render(<NewCompositeCreate profileId={profileId} itemAllId={itemAllId} spaceAllId={spaceAllId} />);
+    newCompositeCreateRoot.render(<NewCompositeCreate profileId={profileId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} />);
   }
+
+
+  //「LoadComposite」のマウント
+  const loadCompositeContainer = document.getElementById('reactLoadComposite');
+  if (loadCompositeContainer) {
+    const itemAllId = JSON.parse(loadCompositeContainer.getAttribute('data-item-id-all'));
+    const spaceAllId = JSON.parse(loadCompositeContainer.getAttribute('data-space-id-all'));
+    const subUserAllId = JSON.parse(loadCompositeContainer.getAttribute('data-sub-user-id-all'));
+    const compositeId = loadCompositeContainer.getAttribute('data-composite-id');
+    const spaceObject = loadCompositeContainer.getAttribute('data-space-data');
+    const itemObject = loadCompositeContainer.getAttribute('data-item-data');
+    loadCompositeRoot = createRoot(loadCompositeContainer);
+    loadCompositeRoot.render(<LoadComposite compositeId={compositeId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} spaceObject={spaceObject} itemObject={itemObject} />);
+  }
+
+
+  //「EditComposite」のマウント
+  const editCompositeContainer = document.getElementById('reactEditComposite');
+  if (editCompositeContainer) {
+    const profileId = editCompositeContainer.getAttribute('data-profile-id');
+    const compositeId = editCompositeContainer.getAttribute('data-composite-id');
+
+    const itemAllId = JSON.parse(editCompositeContainer.getAttribute('data-item-id-all'));
+    const spaceAllId = JSON.parse(editCompositeContainer.getAttribute('data-space-id-all'));
+    const subUserAllId = JSON.parse(editCompositeContainer.getAttribute('data-sub-user-id-all'));
+    
+    
+    const spaceObject = editCompositeContainer.getAttribute('data-space-data');
+    const itemObject = editCompositeContainer.getAttribute('data-item-data');
+
+    const compositeNameLode = editCompositeContainer.getAttribute('data-composite-name');
+    const compositeTextLode = editCompositeContainer.getAttribute('data-composite-text');
+    const compositeImage = editCompositeContainer.getAttribute('data-composite-image');
+    const compositeSpaceId = editCompositeContainer.getAttribute('data-composite-space-id');
+    editCompositeRoot = createRoot(editCompositeContainer);
+    editCompositeRoot.render(<EditComposite profileId={profileId} compositeId={compositeId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} spaceObject={spaceObject} itemObject={itemObject} compositeNameLode={compositeNameLode} compositeTextLode={compositeTextLode} compositeImage={compositeImage} compositeSpaceId={compositeSpaceId} />);
+  }
+
+
+  //「AllComposite」のマウント
+  const allCompositeContainer = document.getElementById('reactAllComposite');
+  if (allCompositeContainer) {
+    const allComposite = JSON.parse(allCompositeContainer.getAttribute('data-composite-id-all'));
+    const itemAllId = JSON.parse(allCompositeContainer.getAttribute('data-item-id-all'));
+    const spaceAllId = JSON.parse(allCompositeContainer.getAttribute('data-space-id-all'));
+    const subUserAllId = JSON.parse(allCompositeContainer.getAttribute('data-sub-user-id-all'));
+    allCompositeRoot = createRoot(allCompositeContainer);
+    allCompositeRoot.render(<AllComposite allComposite={allComposite} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} />);
+  }
+
 
 });
 
@@ -282,7 +339,6 @@ document.addEventListener('turbo:before-cache', () => {
     dragRoot.unmount();
     dragRoot = null; // dragRootをクリア
   }
-
 
   //PixiTestのアンマウント
   if (pixiTestRoot) {
@@ -347,5 +403,26 @@ document.addEventListener('turbo:before-cache', () => {
     newCompositeCreateRoot.unmount();
     newCompositeCreateRoot = null;
   }
+
+  //「LoadComposite」のアンマウント
+  if (loadCompositeRoot) {
+    loadCompositeRoot.unmount();
+    loadCompositeRoot = null;
+  }
+
+
+  //「EditComposite」のアンマウント
+  if (editCompositeRoot) {
+    editCompositeRoot.unmount();
+    editCompositeRoot = null;
+  }
+
+
+  //「AllComposite」のアンマウント
+  if (allCompositeRoot) {
+    allCompositeRoot.unmount();
+    allCompositeRoot = null;
+  }
+
 
 });

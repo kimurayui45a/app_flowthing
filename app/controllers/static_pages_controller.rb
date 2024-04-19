@@ -4,6 +4,11 @@ class StaticPagesController < ApplicationController
     if user_signed_in?
       @profile = current_user.profile if current_user.profile.present?
     end
+    
+    @composites = @profile.composites if @profile.present?
+    @items = @profile.items if @profile.present?
+    @spaces = @profile.spaces if @profile.present?
+    @sub_users = @profile.sub_users if @profile.present?
   end
 
   def info; end

@@ -4,17 +4,21 @@ import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
 
 
-const PixiDetailPanel = () => {
+const PixiDetailPanel = ({ itemAllId }) => {
+
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const {
     pixiDetailPanelPosition,
     setPixiDetailPanelPosition,
-    handlePixiPanelDragStop
+    handlePixiPanelDragStop,
+    togglePixiDetailPanelClose
   } = usePixiGroup();
 
 
   const {
-
+    activeSprite,
+    spriteInfo
   } = usePixiComponentShare();
 
   const handleBackgroundTouch = (e) => {
@@ -23,6 +27,16 @@ const PixiDetailPanel = () => {
       document.activeElement.blur();
     }
   };
+
+  useEffect(() => {
+    const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+    if (sprite) {
+      const item = itemAllId.find(item => item.id === sprite.item_id);
+      setSelectedItem(item);
+    } else {
+      setSelectedItem(null);
+    }
+  }, [activeSprite]);
 
 
   return (
@@ -51,6 +65,36 @@ const PixiDetailPanel = () => {
       // disableDragging={!isDraggablePanel}
       cancel=".no-drag"
     >
+      <div className="panel-title">
+        <span>アイテム詳細</span>
+
+
+        {/* 閉じる */}
+        <div className="close-btn-position">
+  
+            <div
+              className="close-btn tooltip-container"
+              onClick={togglePixiDetailPanelClose}
+              onTouchStart={togglePixiDetailPanelClose}
+            >
+              <i className="bi bi-x-lg"></i>
+              <span className="tooltip-text">閉じる</span>
+            </div>
+        
+        </div>
+      </div>
+      <div key={selectedItem?.id}>
+      {selectedItem ? (
+        <div className="item-info">
+          
+          <a href={`/items/${selectedItem.id}`}>View Details for Item ID: {selectedItem.id}</a>
+          <span>名前: {selectedItem.item_name}</span>
+        </div>
+      ) : (
+        <span>アイテム情報がありません</span>
+      )}
+    </div>
+
   </Rnd>
   );
 };

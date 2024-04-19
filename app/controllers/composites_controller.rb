@@ -6,15 +6,22 @@ class CompositesController < ApplicationController
   end
 
   def show
+    @items = @profile.items if @profile.present?
+    @spaces = @profile.spaces if @profile.present?
+    @sub_users = @profile.sub_users if @profile.present?
   end
 
   def new
     @composite = Composite.new
     @items = @profile.items if @profile.present?
     @spaces = @profile.spaces if @profile.present?
+    @sub_users = @profile.sub_users if @profile.present?
   end
 
   def edit
+    @items = @profile.items if @profile.present?
+    @spaces = @profile.spaces if @profile.present?
+    @sub_users = @profile.sub_users if @profile.present?
   end
 
   def create
@@ -49,7 +56,7 @@ class CompositesController < ApplicationController
     end
 
     def composite_params
-      params.require(:composite).permit(:composite_name, :composite_text, :composite_space, :composite_item, :profile_id)
+      params.require(:composite).permit(:composite_name, :composite_text, :composite_space, :composite_item, :composite_image, :profile_id, :space_id)
     end
 
 end

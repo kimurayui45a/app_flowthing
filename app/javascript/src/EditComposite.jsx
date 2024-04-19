@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PixiSet } from './components/PixiSet';
 
-const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) => {
+const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceObject, itemObject, compositeNameLode, compositeTextLode, compositeImage, compositeSpaceId, compositeId }) => {
   
   //「編集・作成」なのか「再描画」なのかを知らせるステート
   const [pixiMode, setPixiMode] = useState(true);
@@ -11,6 +11,13 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
 
   const [compositeName, setCompositeName] = useState('');
   const [compositeText, setCompositeText] = useState('');
+
+
+  useEffect(() => {
+    setCompositeName(compositeNameLode);
+    setCompositeText(compositeTextLode);
+  }, [compositeNameLode, compositeTextLode]);
+
 
 
   //対象のレイヤーが選択されていない時に出るアラートメッセージ
@@ -43,8 +50,8 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
 
 
       try {
-        const response = await fetch('/composites', {
-          method: 'POST',
+        const response = await fetch(`/composites/${compositeId}`, {
+          method: 'PATCH',
           body: formData,
           headers: {
             'X-React-App': 'true',//カスタムヘッダー
@@ -98,7 +105,19 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
     <div style={{ position: 'relative' }}>
 
 
-      <PixiSet itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} onDataFromGrandchild={handleDataFromGrandchild} pixiMode={pixiMode} />
+      <PixiSet
+        itemAllId={itemAllId}
+        spaceAllId={spaceAllId}
+        subUserAllId={subUserAllId}
+        onDataFromGrandchild={handleDataFromGrandchild}
+        pixiMode={pixiMode}
+        key={compositeId}
+        compositeId={compositeId}
+        spaceObject={spaceObject}
+        itemObject={itemObject}
+        compositeName={compositeName}
+        compositeText={compositeText}
+      />
 
       {/* form */}
 
@@ -147,4 +166,4 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
   );
 };
 
-export default NewCompositeCreate;
+export default EditComposite;

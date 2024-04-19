@@ -1,0 +1,15 @@
+<div class="max767-container">
+<div class="btn-group">
+<h1>
+  <%= @composite.composite_name %>
+の削除を確認</h1>
+
+<p>本当にこのスペースを削除しますか？</p>
+
+
+<%= link_to '削除する', composite_path(@composite), id: "button-delete-#{@composite.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: '消しますよ？' } %>
+<%= link_to 'キャンセル', composites_path %>
+</div>
+</div>
+
+

@@ -2,6 +2,16 @@
 
 
 
+
+    <div id="reactAllComposite"
+      data-composite-id-all="<%= @composites.to_json %>"
+      data-item-id-all="<%= @items.to_json %>"
+      data-space-id-all="<%= @spaces.to_json %>"
+      data-sub-user-id-all="<%= @sub_users.to_json %>"
+    >
+    </div>
+
+
 <%= link_to info_path, class: 'info-botann' do %>
 <div class="wave wave1"></div>
   <div class="wave wave2"></div>
@@ -13,9 +23,13 @@
 <% end %>
 
 
-<div class="draggable-test2 f-text">テスト用スペース</div>
 
-<div id="react-drag"></div>
+
+
+
+<div class="draggable-test2 f-text">テスト用スペース</div>
+<%# 
+<div id="react-drag"></div> %>
 
 <%# <div id="reactPixiTest" class="draggable-test2"></div> %>
 

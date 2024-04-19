@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_14_162159) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_17_052747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_14_162159) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "space_id", null: false
+    t.jsonb "composite_image"
     t.index ["profile_id"], name: "index_composites_on_profile_id"
     t.index ["space_id"], name: "index_composites_on_space_id"
   end

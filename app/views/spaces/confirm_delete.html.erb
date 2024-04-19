@@ -1,1 +1,15 @@
-<span>削除するか<span>
+<div class="max767-container">
+<div class="btn-group">
+<h1>
+  <%= @space.space_name %>
+の削除を確認</h1>
+
+<p>本当にこのスペースを削除しますか？<br>削除するとあっちも消えます</p>
+
+
+<%= link_to '削除する', space_path(@space), id: "button-delete-#{@space.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: '消しますよ？' } %>
+<%= link_to 'キャンセル', spaces_path %>
+</div>
+</div>
+
+
