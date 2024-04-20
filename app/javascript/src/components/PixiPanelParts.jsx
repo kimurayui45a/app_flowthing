@@ -68,7 +68,61 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
     angleSprite,
     setAngleSprite,
     inputAngleSprite,
-    setInputAngleSprite
+    setInputAngleSprite,
+
+    //ランダムアニメ
+    randomEasing,
+    setRandomEasing,
+    inputRandomEasing,
+    setInputRandomEasing,
+    randomCloseEnough,
+    setRandomCloseEnough,
+    inputRandomCloseEnough,
+    setInputRandomCloseEnough,
+    moveClickSpeed,
+    setMoveClickSpeed,
+    inputMoveClickSpeed,
+    setInputMoveClickSpeed,
+
+    //範囲アニメ
+    boundaryAnimeSpeed,
+    setBoundaryAnimeSpeed,
+    inputBoundaryAnimeSpeed,
+    setInputBoundaryAnimeSpeed,
+    boundaryAnimeXValue,
+    setBoundaryAnimeXValue,
+    inputBoundaryAnimeXValue,
+    setInputBoundaryAnimeXValue,
+    boundaryAnimeYValue,
+    setBoundaryAnimeYValue,
+    inputBoundaryAnimeYValue,
+    setInputBoundaryAnimeYValue,
+    boundaryAnimeWidth,
+    setBoundaryAnimeWidth,
+    inputBoundaryAnimeWidth,
+    setInputBoundaryAnimeWidth,
+    boundaryAnimeHeight,
+    setBoundaryAnimeHeight,
+    inputBoundaryAnimeHeight,
+    setInputBoundaryAnimeHeight,
+
+    //円形アニメ
+    circularAnimeSpeed,
+    setCircularAnimeSpeed,
+    inputCircularAnimeSpeed,
+    setInputCircularAnimeSpeed,
+    circularAnimeXValue,
+    setCircularAnimeXValue,
+    inputCircularAnimeXValue,
+    setInputCircularAnimeXValue,
+    circularAnimeYValue,
+    setCircularAnimeYValue,
+    inputCircularAnimeYValue,
+    setInputCircularAnimeYValue,
+    circularAnimeRadius,
+    setCircularAnimeRadius,
+    inputCircularAnimeRadius,
+    setInputCircularAnimeRadius
   } = usePixiGroup();
 
   const { 
@@ -287,7 +341,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
     };
 
   const handleSpriteForm = (inputValue, type, minValue, maxValue) => {
-    
+
     let newValue;
     const inputNewValue = parseFloat(inputValue);
     if (type === 'scale') {
@@ -312,44 +366,205 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
 
 
 
+  //ランダムアニメ
+  const updateRandomAnimeForm = (newValue, type) => {
+    if (newValue >= 0.01 && newValue <= 1) {
+      if (type === 'circularSpeed') {
+        setCircularAnimeSpeed(newValue)
+        setInputCircularAnimeSpeed(String(newValue))
+      } else if (type === 'boundarySpeed') {
+        setBoundaryAnimeSpeed(newValue)
+        setInputBoundaryAnimeSpeed(String(newValue))
+      } else if (type === 'moveClick') {
+        setMoveClickSpeed(newValue)
+        setInputMoveClickSpeed(String(newValue))
+      } else if (type === 'easing') {
+        setRandomEasing(newValue)
+        setInputRandomEasing(String(newValue))
+      } else {
+        setRandomCloseEnough(newValue)
+        setInputRandomCloseEnough(String(newValue))
+      }
+    }
+  };
+  
+    const handleRandomAnimeChange = (e, type) => {
+      const value = e.target.value;
+      if (type === 'circularSpeed') {
+        setInputCircularAnimeSpeed(String(value))
+      } else if (type === 'boundarySpeed') {
+        setInputBoundaryAnimeSpeed(String(value))
+      } else if (type === 'moveClick') {
+        setInputMoveClickSpeed(String(value))
+      } else if (type === 'easing') {
+        setInputRandomEasing(String(value))
+      } else {
+        setInputRandomCloseEnough(String(value))
+      }
+    };
+
+  const handleRandomAnimeForm = (inputValue, type) => {
+    const inputNewValue = parseFloat(inputValue);
+    const newValue = Math.round(inputNewValue * 100) / 100;
+
+    if (newValue >= 0.01 && newValue <= 1) {
+      updateRandomAnimeForm(newValue, type);
+    } else {
+      if (type === 'circularSpeed') {
+        setInputCircularAnimeSpeed(String(circularAnimeSpeed))
+      } else if (type === 'boundarySpeed') {
+        setInputBoundaryAnimeSpeed(String(boundaryAnimeSpeed))
+      } else if (type === 'moveClick') {
+        setInputMoveClickSpeed(String(moveClickSpeed))
+      } else if (type === 'easing') {
+        setInputRandomEasing(String(randomEasing))
+      } else {
+        setInputRandomCloseEnough(String(randomCloseEnough))
+      }
+    }
+  };
+
+
+
+
+    //範囲アニメのパラメータ
+    const updateBoundaryAnimeForm = (newValue, type) => {
+      if (newValue >= 1 && newValue <= 1200) {
+  
+        if (type === 'xValue') {
+          setBoundaryAnimeXValue(newValue)
+          setInputBoundaryAnimeXValue(String(newValue))
+        } else if (type === 'yValue') {
+          setBoundaryAnimeYValue(newValue)
+          setInputBoundaryAnimeYValue(String(newValue))
+        } else if (type === 'width') {
+          setBoundaryAnimeWidth(newValue)
+          setInputBoundaryAnimeWidth(String(newValue))
+        } else {
+          setBoundaryAnimeHeight(newValue)
+          setInputBoundaryAnimeHeight(String(newValue))
+        }
+      }
+    };
+  
+    const handleBoundaryAnimeChange = (e, type) => {
+      const value = e.target.value;
+  
+      if (type === 'xValue') {
+        setInputBoundaryAnimeXValue(String(value))
+      } else if (type === 'yValue') {
+        setInputBoundaryAnimeYValue(String(value))
+      } else if (type === 'width') {
+        setInputBoundaryAnimeWidth(String(value))
+      } else {
+        setInputBoundaryAnimeHeight(String(value))
+      }
+    };
+
+  const handleBoundaryAnimeForm = (inputValue, type) => {
+    const newValue = parseInt(inputValue, 10);
+
+    if (newValue >= 1 && newValue <= 1200) {
+      updateBoundaryAnimeForm(newValue, type);
+    } else {
+      if (type === 'xValue') {
+        setInputBoundaryAnimeXValue(String(boundaryAnimeXValue))
+      } else if (type === 'yValue') {
+        setInputBoundaryAnimeYValue(String(boundaryAnimeYValue))
+      } else if (type === 'width') {
+        setInputBoundaryAnimeWidth(String(boundaryAnimeWidth))
+      } else {
+        setInputBoundaryAnimeHeight(String(boundaryAnimeHeight))
+      }
+    }
+  };
+
+
+
+
+
+    //円形アニメのパラメータ
+    const updateCircularAnimeForm = (newValue, type) => {
+      if (newValue >= 1 && newValue <= 1200) {
+  
+        if (type === 'xValue') {
+          setCircularAnimeXValue(newValue)
+          setInputCircularAnimeXValue(String(newValue))
+        } else if (type === 'yValue') {
+          setCircularAnimeYValue(newValue)
+          setInputCircularAnimeYValue(String(newValue))
+        } else {
+          setCircularAnimeRadius(newValue)
+          setInputCircularAnimeRadius(String(newValue))
+        }
+      }
+    };
+  
+    const handleCircularAnimeChange = (e, type) => {
+      const value = e.target.value;
+  
+      if (type === 'xValue') {
+        setInputCircularAnimeXValue(String(value))
+      } else if (type === 'yValue') {
+        setInputCircularAnimeYValue(String(value))
+      } else {
+        setInputCircularAnimeRadius(String(value))
+      }
+    };
+
+  const handleCircularAnimeForm = (inputValue, type) => {
+    const newValue = parseInt(inputValue, 10);
+
+    if (newValue >= 1 && newValue <= 1200) {
+      updateCircularAnimeForm(newValue, type);
+    } else {
+      if (type === 'xValue') {
+        setInputCircularAnimeXValue(String(circularAnimeXValue))
+      } else if (type === 'yValue') {
+        setInputCircularAnimeYValue(String(circularAnimeYValue))
+      } else {
+        setInputCircularAnimeRadius(String(circularAnimeRadius))
+      }
+    }
+  };
+
   switch (PanelParts) {
     case 'directionForm':
       return  (
         <>
         {/* 上下左右フォーム */}
-              <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
-                <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
-                <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
-                  <input
-                    className="no-drag form-select-value"
-                    type="number"
-                    min="0"
-                    max="200"
-                    step="0.1"
-                    style={{ width: '60px', fontSize: '14px' }}
-                    value={inputValue}
-                    onChange={(e) => handleDirectionAnimeChange(e, direction, type)}
-                    onBlur={() => handleDirectionAnime(inputValue, direction, type, minValue, maxValue)}
-                  />
-                  <span className="tooltip-text">最大値{maxValue}</span>
-                </div>
-              </div>
+          <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+            <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
+            <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
+              <input
+                className="no-drag form-select-value"
+                type="number"
+                min={minValue}
+                max={maxValue}
+                step="1"
+                style={{ width: '60px', fontSize: '14px' }}
+                value={inputValue}
+                onChange={(e) => handleDirectionAnimeChange(e, direction, type)}
+                onBlur={() => handleDirectionAnime(inputValue, direction, type, minValue, maxValue)}
+              />
+              <span className="tooltip-text">最大値{maxValue}</span>
+            </div>
+          </div>
         </>
         );
       case 'directionRunButton':
         return (
           <>
-          {/* 上下左右の決定ボタン */}
-                          <div
-                className="select-confirm-btn"
-                onClick={handleRunButton}
-                onTouchStart={handleRunButton}
-                style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
-                >
-                {formTitle}
-                </div>
-
-        </>
+            {/* 上下左右の決定ボタン */}
+            <div
+              className="select-confirm-btn"
+              onClick={handleRunButton}
+              onTouchStart={handleRunButton}
+              style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+            >
+              {formTitle}
+            </div>
+          </>
         );
       case 'selectClockwiseType':
         return (
@@ -366,30 +581,30 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   borderRight: '0.5px solid #4A4A4A'
                 }}
               >
-                <div style={{ transform: 'scale(0.65)' }}>
+                <div>
                   右
                 </div>
                 <span className="tooltip-text">右から</span>
               </div>
 
               <div
-              className= "panel-tool-button-small tooltip-container"
-              onClick={() => setClockwiseType(false)}
-              onTouchStart={() => setClockwiseType(false)}
-              style={{
-                backgroundColor: !clockwiseType ? '#9199AE' : '#c2c1c1',
-                borderRadius: '0px 5px 5px 0px',
-                borderLeft: '0.5px solid #4A4A4A'
-              }}
+                className= "panel-tool-button-small tooltip-container"
+                onClick={() => setClockwiseType(false)}
+                onTouchStart={() => setClockwiseType(false)}
+                style={{
+                  backgroundColor: !clockwiseType ? '#9199AE' : '#c2c1c1',
+                  borderRadius: '0px 5px 5px 0px',
+                  borderLeft: '0.5px solid #4A4A4A'
+                }}
               >
-              <div style={{ transform: 'scale(0.65)' }}>
-              左
+                <div>
+                左
+                </div>
+                <span className="tooltip-text">左から</span>
               </div>
-              <span className="tooltip-text">左から</span>
-              </div>
-              </div>
-            </>
-          );
+            </div>
+          </>
+        );
       case 'selectRotateAnimeBtn':
         return (
           <>
@@ -423,9 +638,9 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 <input
                   className="no-drag form-select-value"
                   type="number"
-                  min="0"
-                  max="200"
-                  step="0.1"
+                  min={minValue}
+                  max={maxValue}
+                  step="1"
                   style={{ width: '60px', fontSize: '14px' }}
                   value={inputValue}
                   onChange={(e) => handleRotationAnimeFormChange(e, type)}
@@ -446,9 +661,9 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 <input
                   className="no-drag form-select-value"
                   type="number"
-                  min="0"
-                  max="200"
-                  step="0.1"
+                  min={minValue}
+                  max={maxValue}
+                  step="1"
                   style={{ width: '60px', fontSize: '14px' }}
                   value={inputValue}
                   onChange={(e) => handleScaleAnimeFormChange(e, type)}
@@ -464,46 +679,94 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
           <>
             {/* スプライトのパラメータフォーム */}
             <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
-    <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
-    <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
-      <input
-        className="no-drag form-select-value"
-        type="number"
-        min="0"
-        max="200"
-        step="0.1"
-        style={{ width: '60px', fontSize: '14px' }}
-        value={inputValue}
-        onChange={(e) => handleSpriteFormChange(e, type)}
-        onBlur={() => handleSpriteForm(inputValue, type, minValue, maxValue)}
-      />
-      <span className="tooltip-text">最大値{maxValue}</span>
-    </div>
-  </div>
+              <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
+              <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
+                <input
+                  className="no-drag form-select-value"
+                  type="number"
+                  min={minValue}
+                  max={maxValue}
+                  step="1"
+                  style={{ width: '60px', fontSize: '14px' }}
+                  value={inputValue}
+                  onChange={(e) => handleSpriteFormChange(e, type)}
+                  onBlur={() => handleSpriteForm(inputValue, type, minValue, maxValue)}
+                />
+                <span className="tooltip-text">最大値{maxValue}</span>
+              </div>
+            </div>
           </>
         );
 
-      case 'selectFillColorBtn':
-        return (
-            <>
-              {/* 塗りつぶしボタン */}
-            
-  
-          </>
-        );
-
-      case 'imageToolOption':
+      case 'randomAnimeForm':
         return (
           <>
-            {/* 画像挿入モードの詳細 */}
-        
+            {/* ランダムアニメ */}  
+            <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+              <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
+              <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
+                <input
+                  className="no-drag form-select-value"
+                  type="number"
+                  min="0.01"
+                  max="1"
+                  step="0.01"
+                  style={{ width: '60px', fontSize: '14px' }}
+                  value={inputValue}
+                  onChange={(e) => handleRandomAnimeChange(e, type)}
+                  onBlur={() => handleRandomAnimeForm(inputValue, type)}
+                />
+                <span className="tooltip-text">最大値 1</span>
+              </div>
+            </div>
           </>
         );
 
-        case 'selectLayerClearIcon':
+      case 'boundaryAnimeForm':
+        return (
+          <>
+            {/* 範囲アニメのフォーム */}
+            <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+              <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
+              <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
+                <input
+                  className="no-drag form-select-value"
+                  type="number"
+                  min="1"
+                  max="1200"
+                  step="1"
+                  style={{ width: '60px', fontSize: '14px' }}
+                  value={inputValue}
+                  onChange={(e) => handleBoundaryAnimeChange(e, type)}
+                  onBlur={() => handleBoundaryAnimeForm(inputValue, type)}
+                />
+                <span className="tooltip-text">最大値 1200</span>
+              </div>
+            </div>
+          </>
+        );
+
+        case 'circularAnimeForm':
           return (
             <>
-      
+              {/* 円形アニメのフォーム */}
+              <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+                <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>{formTitle}</span></div>
+                <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
+                  <input
+                    className="no-drag form-select-value"
+                    type="number"
+                    min="1"
+                    max="1200"
+                    step="1"
+                    style={{ width: '60px', fontSize: '14px' }}
+                    value={inputValue}
+                    onChange={(e) => handleCircularAnimeChange(e, type)}
+                    onBlur={() => handleCircularAnimeForm(inputValue, type)}
+                  />
+                  <span className="tooltip-text">最大値 1200</span>
+                </div>
+              </div>
             </>
           );
         case 'selectAreaDeleteBtn':

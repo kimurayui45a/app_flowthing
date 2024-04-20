@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
+import { PixiPanelParts } from './PixiPanelParts';
 
 
 
@@ -11,12 +12,14 @@ const PixiListItemContext = ({ itemAllId }) => {
   const {
     listPanelPosition,
     setListPanelPosition,
-    handlePixiPanelDragStop
+    handlePixiPanelDragStop,
+    toggleCustomPanelVisible
   } = usePixiGroup();
 
 
   const {
-    handleAddSprite
+    handleAddSprite,
+    handleRemoveSprite
   } = usePixiComponentShare();
 
 
@@ -25,6 +28,20 @@ const PixiListItemContext = ({ itemAllId }) => {
 
 <>
 
+<PixiPanelParts PanelParts="directionRunButton" handleRunButton={handleRemoveSprite} formTitle="削除" />
+
+
+          {/* カスタムパネルを開くボタン */}
+          <div
+            className="panel-tool-button tooltip-container"
+            onClick={toggleCustomPanelVisible}
+            onTouchStart={toggleCustomPanelVisible}
+          >
+            <i className="bi bi-collection-play"></i>
+            <span className="tooltip-text">アイテムの調整・アニメーション</span>
+          </div>
+
+          <div style={{ overflowY: 'auto', height: '222px', display: 'flex', flexDirection: 'column' }}>
         {/* <div ref={containerRef}></div>; */}
         {itemAllId.map((item, index) => (
         <div key={index} className="flex">
@@ -44,14 +61,15 @@ const PixiListItemContext = ({ itemAllId }) => {
           </div>
 
           <div
-            onClick={() => handleAddSprite(item.id, item.image_choice)}
-            onTouchStart={() => handleAddSprite(item.id, item.image_choice)}
+            onClick={() => handleAddSprite(item.id, item.image_choice, item.sub_user_id)}
+            onTouchStart={() => handleAddSprite(item.id, item.image_choice, item.sub_user_id)}
             style={{ width: '20px', height: '20px', margin: '10px' }}
           >
             ボタン
           </div>
         </div>
       ))}
+      </div>
 </>
   );
 };

@@ -25,6 +25,14 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
   const [itemEpisode, setItemEpisode] = useState('');
   const [itemPlace, setItemPlace] = useState('');
 
+  //非同期保存
+  const [isAsync, setIsAsync] = useState(false);
+
+
+  //アラートメッセージ
+  const [alertToast, setAlertToast] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
   useEffect(() => {
     setItemName(canvasItemName);
     setItemText(canvasItemText);
@@ -74,7 +82,16 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
 
       if (response.ok) {
         const data = await response.json();
-        window.location.href = data.redirect_url;
+
+        // window.location.href = data.redirect_url;
+        if (isAsync) {
+          console.log('非同期更新成功:', data);
+          // ここで必要な状態更新やUI反映を行う
+          handleAlertMessage("途中保存されました");
+        } else {
+          window.location.href = data.redirect_url; // 同期的なリダイレクト処理
+        }
+
       } else {
         console.error('送信失敗');
       }
@@ -94,12 +111,51 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
     }
   };
 
+
+
+
+  //対象のレイヤーが選択されていない時に出るアラートメッセージ（位置は中央固定）
+  const handleAlertMessage = (text) => {
+    // メッセージと表示状態を設定
+    setAlertMessage(text);
+    setAlertToast(true);
+  
+    // 一定時間後にメッセージを非表示にする
+    setTimeout(() => setAlertToast(false), 4000);
+  };
+
   return (
     <div>
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} canvasDragSpaceSize={canvasDragSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} />
 
-      {/* form */}
 
+
+
+            {/* 選択背景がない場合のアラートメッセージ */}
+            {alertToast && (
+              <div
+              className="alert-message"
+                style={{
+                  // position: 'absolute',
+                  // left: '50%',
+                  // top: '50%',
+                  // transform: 'translate(-60%, 40%)',
+                  textAlign: 'left',
+                  lineHeight: '1.3',
+                  whiteSpace: 'pre-wrap'
+                }}
+              >
+                {alertMessage}
+              </div>
+            )}
+
+
+
+
+<button onClick={() => setIsAsync(true)}>非同期</button>
+      <button onClick={() => setIsAsync(false)}>同期</button>
+
+      {/* form */}
       <form id="item_create_form" onSubmit={handleTriggerGetData}>
         {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
         <input
@@ -125,6 +181,7 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
           onChange={(e) => setItemEpisode(e.target.value)}
           onKeyDown={handleKeyDown}
         />
+
 
         
         { !itemEpisode.trim() ? (

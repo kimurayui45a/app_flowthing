@@ -53,6 +53,11 @@ ul {
   justify-content: flex-end;
 }
 
+.flex-start-center {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -5132,3 +5137,104 @@ summary {
   font-size: 13px;
 }
 
+
+
+
+
+
+/* Pixi背景プレビュー */
+.pixi-space-preview-container {
+  width: 120px; /* プレビュー全体の幅 */
+  height: 90px; /* プレビュー全体の高さ */
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #4A4A4A;
+  border-radius: 5px;
+}
+
+.pixi-space-preview-background {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
+    linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+  position: absolute;
+  background-color: #ececec;
+  top: 0px;
+  left: 0px;
+}
+
+.pixi-space-preview-background img {
+  max-width: 90%;
+  max-height: 90%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+
+.pixi-space-list-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 76px);
+  justify-content: center;
+}
+
+
+.angleDegrees_value {
+  width: 100%; /* 親要素の幅を明確に指定 */
+  overflow: hidden; /* 内容がはみ出たら隠す */
+  white-space: nowrap; /* テキストを折り返さずに一行で表示 */
+  text-overflow: none; /* テキストが溢れた場合は省略記号を表示 */
+}
+
+.pixi-space-list-background {
+  background-color: #a1a1a1;
+  cursor: pointer;
+}
+
+.pixi-space-list-background:hover {
+  background-color: #7FA8EB;
+}
+
+.pixi-list-select-name {
+  margin-top: -7px;
+  width: 175px;
+  position: relative;
+  height: 18px;
+}
+
+.pixi-list-select-name .bi-arrow-down-up {
+  position: absolute;
+  bottom: 0;
+  right: -18px;
+  font-size: 12px;
+  color: #ececec;
+}
+
+.space-sprites-anime-tag {
+  //width: 80px;
+  position: relative;
+  height: 20px;
+}
+
+.space-sprites-anime-tag-name {
+  background-color: #7FA8EB;
+  border-radius: 12px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px;
+  max-width: 70px; 
+  display: inline-block;
+}
+
+
+.pixi-space-tag-block {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(75px, 1fr));
+  gap: 6px;
+}

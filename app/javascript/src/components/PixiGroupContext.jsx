@@ -12,7 +12,7 @@ export const PixiGroupProvider = ({ children }) => {
   //パネルの位置を記録する
   const [listPanelPosition, setListPanelPosition] = useState({ x: 650, y: 50 });
   const [pixiDetailPanelPosition, setPixiDetailPanelPosition] = useState({ x: 940, y: 300 });
-  const [customPanelPosition, setCustomPanelPosition] = useState({ x: 650, y: 500 });
+  const [customPanelPosition, setCustomPanelPosition] = useState({ x: 100, y: 100 });
 
   //パネルの表示に関するステート
   const [customPanelVisible, setCustomPanelVisible] = useState(false);
@@ -25,7 +25,7 @@ export const PixiGroupProvider = ({ children }) => {
 
 
   //スプライトのスケール
-  const [scaleSprite, setScaleSprite] = useState(0.1);
+  const [scaleSprite, setScaleSprite] = useState(1);
   const [inputScaleSprite, setInputScaleSprite] = useState(String(scaleSprite));
 
   //スプライトのスケール
@@ -55,8 +55,145 @@ export const PixiGroupProvider = ({ children }) => {
 
 
 
+  //背景アニメ初期値、上から下
+  const [spaceAnimeDirection, setSpaceAnimeDirection] = useState('topBottom');
 
 
+  //背景アニメ速さ
+  const [spaceAnimeSpeed, setSpaceAnimeSpeed] = useState(1);
+  const [inputSpaceAnimeSpeed, setInputSpaceAnimeSpeed] = useState(String(spaceAnimeSpeed));
+
+  //背景アニメの速さ
+  useEffect(() => {
+    setInputSpaceAnimeSpeed(String(spaceAnimeSpeed));
+  }, [spaceAnimeSpeed]);
+
+
+  //背景アニメを切り替える時間
+  const [intervalTime, setIntervalTime] = useState(2000);
+  const [inputIntervalTime, setInputIntervalTime] = useState(String(intervalTime));
+
+  //背景アニメを切り替える時間
+  useEffect(() => {
+    setInputIntervalTime(String(intervalTime));
+  }, [intervalTime]);
+
+
+
+  //ランダムアニメの速さ
+  const [randomEasing, setRandomEasing] = useState(0.05);
+  const [inputRandomEasing, setInputRandomEasing] = useState(String(randomEasing));
+
+  //ランダムアニメの速さ
+  useEffect(() => {
+    setInputRandomEasing(String(randomEasing));
+  }, [randomEasing]);
+
+
+  //ランダムアニメの目標の判定範囲
+  const [randomCloseEnough, setRandomCloseEnough] = useState(1);
+  const [inputRandomCloseEnough, setInputRandomCloseEnough] = useState(String(randomCloseEnough));
+
+  //ランダムアニメの目標の判定範囲
+  useEffect(() => {
+    setInputRandomCloseEnough(String(randomCloseEnough));
+  }, [randomCloseEnough]);
+
+  //クリックアニメの速さ
+  const [moveClickSpeed, setMoveClickSpeed] = useState(0.05);
+  const [inputMoveClickSpeed, setInputMoveClickSpeed] = useState(String(moveClickSpeed));
+
+  //クリックアニメの速さ
+  useEffect(() => {
+    setInputMoveClickSpeed(String(moveClickSpeed));
+  }, [moveClickSpeed]);
+
+
+
+
+  //範囲アニメの速さ
+  const [boundaryAnimeSpeed, setBoundaryAnimeSpeed] = useState(0.01);
+  const [inputBoundaryAnimeSpeed, setInputBoundaryAnimeSpeed] = useState(String(boundaryAnimeSpeed));
+
+  //範囲アニメの速さ
+  useEffect(() => {
+    setInputBoundaryAnimeSpeed(String(boundaryAnimeSpeed));
+  }, [boundaryAnimeSpeed]);
+
+
+  //範囲アニメのX
+  const [boundaryAnimeXValue, setBoundaryAnimeXValue] = useState(50);
+  const [inputBoundaryAnimeXValue, setInputBoundaryAnimeXValue] = useState(String(boundaryAnimeXValue));
+
+  //範囲アニメのX
+  useEffect(() => {
+    setInputBoundaryAnimeXValue(String(boundaryAnimeXValue));
+  }, [boundaryAnimeXValue]);
+
+  //範囲アニメのY
+  const [boundaryAnimeYValue, setBoundaryAnimeYValue] = useState(50);
+  const [inputBoundaryAnimeYValue, setInputBoundaryAnimeYValue] = useState(String(boundaryAnimeYValue));
+
+  //範囲アニメのY
+  useEffect(() => {
+    setInputBoundaryAnimeYValue(String(boundaryAnimeYValue));
+  }, [boundaryAnimeYValue]);
+
+  //範囲アニメの幅
+  const [boundaryAnimeWidth, setBoundaryAnimeWidth] = useState(300);
+  const [inputBoundaryAnimeWidth, setInputBoundaryAnimeWidth] = useState(String(boundaryAnimeWidth));
+
+  //範囲アニメの幅
+  useEffect(() => {
+    setInputBoundaryAnimeWidth(String(boundaryAnimeWidth));
+  }, [boundaryAnimeWidth]);
+
+  //範囲アニメの高さ
+  const [boundaryAnimeHeight, setBoundaryAnimeHeight] = useState(200);
+  const [inputBoundaryAnimeHeight, setInputBoundaryAnimeHeight] = useState(String(boundaryAnimeHeight));
+
+  //範囲アニメの高さ
+  useEffect(() => {
+    setInputBoundaryAnimeHeight(String(boundaryAnimeHeight));
+  }, [boundaryAnimeHeight]);
+
+
+  //円形アニメの速さ
+  const [circularAnimeSpeed, setCircularAnimeSpeed] = useState(0.05);
+  const [inputCircularAnimeSpeed, setInputCircularAnimeSpeed] = useState(String(circularAnimeSpeed));
+
+  //スプライトのスケール
+  useEffect(() => {
+    setInputCircularAnimeSpeed(String(circularAnimeSpeed));
+  }, [circularAnimeSpeed]);
+
+  //円形アニメのX
+  const [circularAnimeXValue, setCircularAnimeXValue] = useState(50);
+  const [inputCircularAnimeXValue, setInputCircularAnimeXValue] = useState(String(circularAnimeXValue));
+
+  //円形アニメのX
+  useEffect(() => {
+    setInputCircularAnimeXValue(String(circularAnimeXValue));
+  }, [circularAnimeXValue]);
+
+  //円形アニメのY
+  const [circularAnimeYValue, setCircularAnimeYValue] = useState(50);
+  const [inputCircularAnimeYValue, setInputCircularAnimeYValue] = useState(String(circularAnimeYValue));
+
+  //円形アニメのY
+  useEffect(() => {
+    setInputCircularAnimeYValue(String(circularAnimeYValue));
+  }, [circularAnimeYValue]);
+
+
+  //円形アニメの半径
+  const [circularAnimeRadius, setCircularAnimeRadius] = useState(100);
+  const [inputCircularAnimeRadius, setInputCircularAnimeRadius] = useState(String(circularAnimeRadius));
+
+  //円形アニメのY
+  useEffect(() => {
+    setInputCircularAnimeRadius(String(circularAnimeRadius));
+  }, [circularAnimeRadius]);
 
 
 
@@ -209,9 +346,9 @@ export const PixiGroupProvider = ({ children }) => {
 
 
   //対象のレイヤーが選択されていない時に出るアラートメッセージ（位置は中央固定）
-  const handleAlertMessageAnime = () => {
+  const handleAlertMessageAnime = (text) => {
     // メッセージと表示状態を設定
-    setAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
+    setAlertMessageAnime(text);
     setAlertToastAnime(true);
   
     // 一定時間後にメッセージを非表示にする
@@ -306,7 +443,74 @@ export const PixiGroupProvider = ({ children }) => {
     angleSprite,
     setAngleSprite,
     inputAngleSprite,
-    setInputAngleSprite
+    setInputAngleSprite,
+
+    //ランダムアニメ
+    randomEasing,
+    setRandomEasing,
+    inputRandomEasing,
+    setInputRandomEasing,
+    randomCloseEnough,
+    setRandomCloseEnough,
+    inputRandomCloseEnough,
+    setInputRandomCloseEnough,
+    moveClickSpeed,
+    setMoveClickSpeed,
+    inputMoveClickSpeed,
+    setInputMoveClickSpeed,
+
+    //範囲アニメ
+    boundaryAnimeSpeed,
+    setBoundaryAnimeSpeed,
+    inputBoundaryAnimeSpeed,
+    setInputBoundaryAnimeSpeed,
+    boundaryAnimeXValue,
+    setBoundaryAnimeXValue,
+    inputBoundaryAnimeXValue,
+    setInputBoundaryAnimeXValue,
+    boundaryAnimeYValue,
+    setBoundaryAnimeYValue,
+    inputBoundaryAnimeYValue,
+    setInputBoundaryAnimeYValue,
+    boundaryAnimeWidth,
+    setBoundaryAnimeWidth,
+    inputBoundaryAnimeWidth,
+    setInputBoundaryAnimeWidth,
+    boundaryAnimeHeight,
+    setBoundaryAnimeHeight,
+    inputBoundaryAnimeHeight,
+    setInputBoundaryAnimeHeight,
+
+    //円形アニメ
+    circularAnimeSpeed,
+    setCircularAnimeSpeed,
+    inputCircularAnimeSpeed,
+    setInputCircularAnimeSpeed,
+    circularAnimeXValue,
+    setCircularAnimeXValue,
+    inputCircularAnimeXValue,
+    setInputCircularAnimeXValue,
+    circularAnimeYValue,
+    setCircularAnimeYValue,
+    inputCircularAnimeYValue,
+    setInputCircularAnimeYValue,
+    circularAnimeRadius,
+    setCircularAnimeRadius,
+    inputCircularAnimeRadius,
+    setInputCircularAnimeRadius,
+
+    //背景アニメ
+    spaceAnimeDirection,
+    setSpaceAnimeDirection,
+    spaceAnimeSpeed,
+    setSpaceAnimeSpeed,
+    inputSpaceAnimeSpeed,
+    setInputSpaceAnimeSpeed,
+    intervalTime,
+    setIntervalTime,
+    inputIntervalTime,
+    setInputIntervalTime
+
   }
 
 

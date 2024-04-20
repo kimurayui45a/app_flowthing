@@ -38,7 +38,23 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
     scaleAnimationPeriod,
     scaleSprite,
     alphaSprite,
-    angleSprite
+    angleSprite,
+    randomCloseEnough,
+    randomEasing,
+    moveClickSpeed,
+    boundaryAnimeSpeed,
+    boundaryAnimeXValue,
+    boundaryAnimeYValue,
+    boundaryAnimeWidth,
+    boundaryAnimeHeight,
+    circularAnimeSpeed,
+    circularAnimeXValue,
+    circularAnimeYValue,
+    circularAnimeRadius,
+    spaceAnimeSpeed,
+    spaceAnimeDirection,
+    intervalTime,
+    setIntervalTime
   } = usePixiGroup();
 
 
@@ -58,8 +74,27 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
   //背景とspaceを紐付けたり、背景の状態を管理するもの（セーブ対象）
   const [spaceInfo, setSpaceInfo] = useState({ space_id: null, others_anime: false, anime_value: null });
 
-  //スプライトの上限
+
+
+//背景データを複数選択モード
+const [spaceAnimMode, setSpaceAnimMode] = useState(false);
+
+//背景データを保持する配列
+const [spaceSpritesAnime, setSpaceSpritesAnime] = useState([]);
+const spaceSpritesAnimeRef = useRef(spaceSpritesAnime);
+
+useEffect(() => {
+  spaceSpritesAnimeRef.current = spaceSpritesAnime;
+}, [spaceSpritesAnime]);
+
+
+
+  //スプライトの上限カウンター
   const [maxSprite, setMaxSprite] = useState(50);
+
+
+//背景上限のカウンター
+const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
 
   //選択状態のスプライトを管理する
   const [activeSprite, setActiveSprite] = useState(null);
@@ -202,37 +237,6 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
 
 
 
-  // function moveToTarget(targetPos, sprite, speed) {
-  //   const app = appRef.current;
-  //   // const speed = 0.01; // ここでスピードを調整（0から1の間で、低いほどゆっくり移動）
-  //   //const targetPos = event.data.global;
-  
-  //   const move = () => {
-  //     if (!app.stage.children.includes(sprite)) {
-  //       console.log("スプライトは既に削除されています");
-  //       app.ticker.remove(move);
-  //       return;
-  //     }
-  
-  //     const dx = targetPos.x - sprite.x;
-  //     const dy = targetPos.y - sprite.y;
-  //     const distance = Math.sqrt(dx * dx + dy * dy);
-  
-  //     if (distance > 1) {
-  //       sprite.x += dx * speed;
-  //       sprite.y += dy * speed;
-  //     } else {
-  //       sprite.x = targetPos.x;
-  //       sprite.y = targetPos.y;
-  //       app.ticker.remove(move); // 目的地に到達したら移動を停止
-  //       console.log("目的地に到達しました");
-  //     }
-  //   };
-  
-  //   app.ticker.add(move);
-  // }
-
-
   function moveToTarget(targetPos, sprite, speed) {
     const app = appRef.current;
   
@@ -296,6 +300,7 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
           others_anime: sprite.others_anime,
           anime_value: sprite.anime_value,
           angleDegrees_value: sprite.angleDegrees_value,
+          sub_user_id: sprite.sub_user_id
         })));
 
         itemData.forEach(spriteData => {
@@ -317,7 +322,7 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
             }
 
             // スプライトの作成
-            createSprite(appRef.current, texture, spriteData.sprite_position.x, spriteData.sprite_position.y, spriteData.item_id, false, spriteData.sprite_scale, spriteData.sprite_alpha, spriteData.angleDegrees_value, spriteData.sprite_id)
+            createSprite(appRef.current, texture, spriteData.sprite_position.x, spriteData.sprite_position.y, spriteData.item_id, false, spriteData.sprite_scale, spriteData.sprite_alpha, spriteData.angleDegrees_value, spriteData.sprite_id, spriteData.sub_user_id)
             .then(sprite => {
               if (spriteData.left_right) {
                 applyHorizontalSwingById(appRef.current, sprite.id, spriteData.left_right_value.amplitude_value, spriteData.left_right_value.period_value);
@@ -341,9 +346,16 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
                     id: spriteData.sprite_id,
                     speed: spriteData.anime_value.speed_value
                   }
-                  
+                  //調整中
                   setMoveClickSprites(loadData => [...loadData, newLoadData])
+                } else if (spriteData.anime_value.rotate_mode === 'boundary') {
+                  applyBoundaryAnimation(appRef.current, sprite.id, spriteData.anime_value.boundary_date);
+                } else if (spriteData.anime_value.rotate_mode === 'circular') {
+                  addCircular(appRef.current, sprite.id, spriteData.anime_value.center_x, spriteData.anime_value.center_y, spriteData.anime_value.radius_value, spriteData.anime_value.speed_value);
                 }
+
+
+
                 if (spriteData.scale_anime) {
                   applyScaleAnimationById(appRef.current, sprite.id, spriteData.scale_anime_value.min_scale, spriteData.scale_anime_value.max_scale, spriteData.scale_anime_value.period_value);
                 }
@@ -377,7 +389,19 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
           if (spaceDetails) {
             const texture = Texture.from(spaceDetails.space_canvas);
   
-            handleAddBackground(appRef.current, texture, spriteData.space_id, false);
+            if (spriteData.others_anime) {
+              setSpaceAnimMode(true);
+              const numberOfProperties = Object.keys(spriteData.anime_value.all_date).length;
+              const result = maxSpaceSprites - numberOfProperties;
+              setMaxSpaceSprites(result);
+
+              setSpaceSpritesAnime(spriteData.anime_value.all_date);
+              setIntervalTime(spriteData.anime_value.interval_time);
+              updateSpaceAnimeList(spriteData.anime_value.rotate_speed, spriteData.anime_value.rotate_mode, spriteData.anime_value.all_date, spriteData.anime_value.interval_time)
+            } else {
+              handleAddBackground(appRef.current, texture, spriteData.space_id, false);
+            }
+            
             // 追加のプロパティやイベントリスナーを設定する場所
           } else {
             console.error('Space details not found for space_id:', spriteData.space_id);
@@ -399,14 +423,14 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
   }
 
 
-    //背景画像を描画する処理
-    const handleAddSpaceChange = (spaceId) => {
-      const space = spaceAllId.find(space => space.id === spaceId);
-      if (space) {
-        const newTexture = Texture.from(space.space_canvas);
-        handleAddBackgroundAnime(appRef.current, newTexture, spaceId);
-      }
-    }
+    //アニメで使用する背景画像を選択
+    // const handleAddSpaceChange = (spaceId) => {
+    //   const space = spaceAllId.find(space => space.id === spaceId);
+    //   if (space) {
+    //     const newTexture = Texture.from(space.space_canvas);
+    //     handleAddBackgroundAnime(appRef.current, newTexture, spaceId);
+    //   }
+    // }
   
 
   //背景画像を切り替える処理
@@ -441,49 +465,396 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
     }));
   };
 
-//背景アニメーション
-const handleAddBackgroundAnime = (app, texture, spaceId) => {
-  // 古い背景スプライトを削除
-  backgroundSprites.forEach(sprite => app.stage.removeChild(sprite));
+
+//登録
+const handleSpaceAnimAdd = (newSpace, spaceName) => {
+  if (maxSpaceSprites === 0) {
+    handleAlertMessageAnime("登録できる背景数が上限に達しました。新規で追加する場合は削除して下さい。");
+    return;
+  }
+
+  setSpaceSpritesAnime(prevSprites => [...prevSprites, { id: newSpace, space_name: spaceName }]);
+  setSpaceInfo(prevSpaceInfo => ({
+    ...prevSpaceInfo, // 既存のステートを展開
+    space_id: newSpace // 新しいspace_idで上書き
+  }));
+  const result = maxSpaceSprites - 1;
+  setMaxSpaceSprites(result);
+};
+
+
+
+const updateSimpleSpace = () => {
+  setSpaceAnimMode(false);
+  // spaceInfo または spaceInfo.space_id が存在しない場合、関数を早期に終了する
+  if (!spaceInfo || !spaceInfo.space_id) {
+    return;
+  }
+  const space = spaceAllId.find(space => space.id === spaceInfo.space_id);
+  
+  if (!space) {
+    return;
+  }
+  const newTexture = Texture.from(space.space_canvas);
+  handleAddBackground(appRef.current, newTexture, spaceInfo.space_id, false);
+  updateOthersAnime(false);
+};
+
+
+const updateOthersAnime = (newStatus) => {
+  setSpaceInfo(prevSpaceInfo => ({
+    ...prevSpaceInfo,
+    others_anime: newStatus,
+    anime_value: null
+  }));
+};
+
+//背景アニメ更新ボタン
+const updateSpaceAnime = () => {
+
+  updateSpaceAnimeList(spaceAnimeSpeed, spaceAnimeDirection, spaceSpritesAnime, intervalTime)
+
+  setSpaceInfo(prevSpaceInfo => ({
+    ...prevSpaceInfo,
+    others_anime: true,
+    anime_value: {
+      rotate_speed: spaceAnimeSpeed,
+      rotate_mode: spaceAnimeDirection,
+      all_date: spaceSpritesAnime,
+      interval_time: intervalTime
+    }
+  }));
+}
+
+
+//背景アニメ更新ボタン
+const updateSpaceAnimeList = (speed, direction, list, interval) => {
+  let spaceList = [];
+  const textures = list.map(sprite => {
+    const spaceData = spaceAllId.find(space => space.id === sprite.id);
+    if (spaceData) {
+      return Texture.from(spaceData.space_canvas);
+    }
+    return null;
+  }).filter(texture => texture !== null);
+  spaceList = textures;
+  handleAddBackgroundAnime(appRef.current, spaceList, speed, direction, interval)
+
+};
+
+
+
+
+
+
+
+const handleAddBackgroundAnime = (app, textures, speed, direction, interval) => {
+  // 既存の背景スプライトを全てステージから削除
+  backgroundSprites.forEach(sprite => {
+    app.stage.removeChild(sprite);
+  });
   setBackgroundSprites([]);
 
-  const backgroundSprite = new Sprite(texture);
-  const backgroundSprite2 = new Sprite(texture);
-  setBackgroundSprites([backgroundSprite]);
-  setBackgroundSprites([backgroundSprite, backgroundSprite2]);
-  backgroundSprite.width = app.screen.width;
-  backgroundSprite.height = app.screen.height;
-  backgroundSprite.x = 0;
-  backgroundSprite.y = 0;
-  backgroundSprite2.width = app.screen.width;
-  backgroundSprite2.height = app.screen.height;
-  backgroundSprite2.x = 0;
-  backgroundSprite2.y = -600;
-  // 背景スプライトをステージに追加
-  app.stage.addChild(backgroundSprite);
-  // 背景スプライトを最下層に設定
-  app.stage.setChildIndex(backgroundSprite, 0);
-  // 背景スプライトをステージに追加
-  app.stage.addChild(backgroundSprite2);
-  // 背景スプライトを最下層に設定
-  app.stage.setChildIndex(backgroundSprite2, 0);
 
-  app.ticker.add(() => {
-    // 背景を下に移動させる
-    backgroundSprite.y += 1;
-    backgroundSprite2.y += 1;
-  
-    // 背景が完全に下まで来たら、上にリセット
-    if (backgroundSprite.y > 600) backgroundSprite.y = backgroundSprite2.y - 600;
-    if (backgroundSprite2.y > 600) backgroundSprite2.y = backgroundSprite.y - 600;
+  // 新しい背景スプライトを作成し、ステージに追加
+  const newSprites = textures.map((texture, index) => {
+    const sprite = new Sprite(texture);
+    sprite.width = app.screen.width;
+    sprite.height = app.screen.height;
+
+    if (direction === 'change') {
+      sprite.x = 0;
+      sprite.y = 0;
+      sprite.visible = index === 0;
+    } else if (direction === 'topBottom') {
+      sprite.x = 0;
+      sprite.y = -index * app.screen.height;
+    } else if (direction === 'bottomTop') {
+      sprite.x = 0;
+      sprite.y = app.screen.height + index * app.screen.height;
+    } else if (direction === 'leftRight') {
+      sprite.x = index * sprite.width;
+      sprite.y = 0;
+    } else {
+      sprite.x = app.screen.width - (index + 1) * sprite.width;
+      sprite.y = 0;
+    }
+
+    app.stage.addChild(sprite);
+    app.stage.setChildIndex(sprite, 0); // 最下層に設定
+    return sprite;
   });
-  backgroundSprite.texture = texture;
 
-  // if (updateState) {
-  //   updateSpaceInfo(spaceId);
-  // }
-  return backgroundSprite;
+  setBackgroundSprites(newSprites);
+
+if (direction === 'change') {
+  // 現在のスプライトのインデックス
+  let currentSpriteIndex = 0;
+
+  // 定期的に背景を切り替える
+  setInterval(() => {
+    // 現在表示されているスプライトを隠す
+    newSprites[currentSpriteIndex].visible = false;
+
+    // 次のスプライトのインデックスを計算
+    currentSpriteIndex = (currentSpriteIndex + 1) % newSprites.length;
+
+    // 新しいスプライトを表示
+    newSprites[currentSpriteIndex].visible = true;
+  }, interval);
+
+} else {
+
+
+  // Tickerに背景スクロールのアニメーションを追加
+  app.ticker.add(() => {
+    newSprites.forEach((sprite, index) => {
+      
+      if (direction === 'topBottom') {
+        sprite.y += speed;  // 背景を下に移動させる
+        // 背景が完全に下まで来たら、上にリセット
+        if (sprite.y > app.screen.height) {
+          const prevSpriteIndex = index === 0 ? newSprites.length - 1 : index - 1;
+          sprite.y = newSprites[prevSpriteIndex].y - app.screen.height;
+        }
+      } else if (direction === 'bottomTop') {
+        sprite.y -= speed;  // 背景を上に移動させる
+        // 背景が完全に画面上部を超えたら、一番下にリセット
+        if (sprite.y < -app.screen.height) {
+          const lastSpriteIndex = index === 0 ? newSprites.length - 1 : index - 1;
+          sprite.y = newSprites[lastSpriteIndex].y + app.screen.height;
+        }
+      } else if (direction === 'leftRight') {
+        sprite.x -= speed;
+        // 背景が完全に左まで来たら、次のスプライトを計算して右端にリセット
+        if (sprite.x + sprite.width <= 0) {
+          sprite.x = (newSprites.length - 1) * sprite.width; // 画面右端に移動
+          // 配列内でスプライトを末尾から先頭に移動するための処理
+          newSprites.push(newSprites.shift());
+        }
+      } else {
+        sprite.x += speed;
+        // 背景が完全に右まで来たら、左端にリセット
+        if (sprite.x >= app.screen.width) {
+          const nextSpriteIndex = (index === 0 ? newSprites.length - 1 : index - 1);
+          sprite.x = newSprites[nextSpriteIndex].x - sprite.width;
+        }
+      }
+
+    });
+  });
+}
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+//背景アニメーション
+// const handleAddBackgroundAnime = (app, texture, spaceId) => {
+//   // 古い背景スプライトを削除
+//   backgroundSprites.forEach(sprite => app.stage.removeChild(sprite));
+//   setBackgroundSprites([]);
+
+//   const backgroundSprite = new Sprite(texture);
+//   const backgroundSprite2 = new Sprite(texture);
+//   setBackgroundSprites([backgroundSprite]);
+//   setBackgroundSprites([backgroundSprite, backgroundSprite2]);
+//   backgroundSprite.width = app.screen.width;
+//   backgroundSprite.height = app.screen.height;
+//   backgroundSprite.x = 0;
+//   backgroundSprite.y = 0;
+//   backgroundSprite2.width = app.screen.width;
+//   backgroundSprite2.height = app.screen.height;
+//   backgroundSprite2.x = 0;
+//   backgroundSprite2.y = -600;
+//   // 背景スプライトをステージに追加
+//   app.stage.addChild(backgroundSprite);
+//   // 背景スプライトを最下層に設定
+//   app.stage.setChildIndex(backgroundSprite, 0);
+//   // 背景スプライトをステージに追加
+//   app.stage.addChild(backgroundSprite2);
+//   // 背景スプライトを最下層に設定
+//   app.stage.setChildIndex(backgroundSprite2, 0);
+
+//   app.ticker.add(() => {
+//     // 背景を下に移動させる
+//     backgroundSprite.y += 1;
+//     backgroundSprite2.y += 1;
+  
+//     // 背景が完全に下まで来たら、上にリセット
+//     if (backgroundSprite.y > 600) backgroundSprite.y = backgroundSprite2.y - 600;
+//     if (backgroundSprite2.y > 600) backgroundSprite2.y = backgroundSprite.y - 600;
+//   });
+//   backgroundSprite.texture = texture;
+
+//   // if (updateState) {
+//   //   updateSpaceInfo(spaceId);
+//   // }
+//   return backgroundSprite;
+// };
+
+
+
+//上から下
+// const handleAddBackgroundAnime = (app, textures, speed, direction)) => {
+//   // 既存の背景スプライトを全てステージから削除
+//   backgroundSprites.forEach(sprite => {
+//     app.stage.removeChild(sprite);
+//   });
+//   setBackgroundSprites([]);
+
+//   // 新しい背景スプライトを作成し、ステージに追加
+//   const newSprites = textures.map((texture, index) => {
+//     const sprite = new Sprite(texture);
+//     sprite.width = app.screen.width;
+//     sprite.height = app.screen.height;
+//     sprite.x = 0;
+//     // 各スプライトを画面の高さ分だけ上にずらして配置
+//     sprite.y = -index * app.screen.height;
+//     app.stage.addChild(sprite);
+//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
+//     return sprite;
+//   });
+
+//   setBackgroundSprites(newSprites);
+
+//   // Tickerに背景スクロールのアニメーションを追加
+//   app.ticker.add(() => {
+//     newSprites.forEach((sprite, index) => {
+//       sprite.y += speed;  // 背景を下に移動させる
+
+//       // 背景が完全に下まで来たら、上にリセット
+//       if (sprite.y > app.screen.height) {
+//         const prevSpriteIndex = index === 0 ? newSprites.length - 1 : index - 1;
+//         sprite.y = newSprites[prevSpriteIndex].y - app.screen.height;
+//       }
+//     });
+//   });
+// };
+
+//下から上
+// const handleAddBackgroundAnime = (app, textures, speed, direction) => {
+//   // 既存の背景スプライトを全てステージから削除
+//   backgroundSprites.forEach(sprite => {
+//     app.stage.removeChild(sprite);
+//   });
+//   setBackgroundSprites([]);
+
+//   // 新しい背景スプライトを作成し、ステージに追加
+//   const newSprites = textures.map((texture, index) => {
+//     const sprite = new Sprite(texture);
+//     sprite.width = app.screen.width;
+//     sprite.height = app.screen.height;
+//     sprite.x = 0;
+//     // 各スプライトを画面の高さ分だけ下にずらして配置
+//     sprite.y = app.screen.height + index * app.screen.height; // 最初のスプライトを画面の下端から開始
+//     app.stage.addChild(sprite);
+//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
+//     return sprite;
+//   });
+
+//   setBackgroundSprites(newSprites);
+
+//   // Tickerに背景スクロールのアニメーションを追加
+//   app.ticker.add(() => {
+//     newSprites.forEach((sprite, index) => {
+//       sprite.y -= speed;  // 背景を上に移動させる
+
+//       // 背景が完全に画面上部を超えたら、一番下にリセット
+//       if (sprite.y < -app.screen.height) {
+//         const lastSpriteIndex = index === 0 ? newSprites.length - 1 : index - 1;
+//         sprite.y = newSprites[lastSpriteIndex].y + app.screen.height;
+//       }
+//     });
+//   });
+// };
+
+
+
+//左から右
+// const handleAddBackgroundAnime = (app, textures, speed, direction) => {
+//   // 既存の背景スプライトを全てステージから削除
+//   backgroundSprites.forEach(sprite => {
+//     app.stage.removeChild(sprite);
+//   });
+//   setBackgroundSprites([]);
+
+//   // 新しい背景スプライトを作成し、ステージに追加
+//   const newSprites = textures.map((texture, index) => {
+//     const sprite = new Sprite(texture);
+//     sprite.width = app.screen.width;
+//     sprite.height = app.screen.height;
+//     sprite.x = index * sprite.width; // スプライトを画面の幅分だけ右にずらして配置
+//     sprite.y = 0;
+//     app.stage.addChild(sprite);
+//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
+//     return sprite;
+//   });
+
+//   setBackgroundSprites(newSprites);
+
+//   // Tickerに背景スクロールのアニメーションを追加
+//   app.ticker.add(() => {
+//     newSprites.forEach((sprite, index) => {
+//       // 背景を左に移動させる
+//       sprite.x -= speed;
+
+//       // 背景が完全に左まで来たら、次のスプライトを計算して右端にリセット
+//       if (sprite.x + sprite.width <= 0) {
+//         sprite.x = (newSprites.length - 1) * sprite.width; // 画面右端に移動
+//         // 配列内でスプライトを末尾から先頭に移動するための処理
+//         newSprites.push(newSprites.shift());
+//       }
+//     });
+//   });
+// };
+
+//右から左
+// const handleAddBackgroundAnime = (app, textures, speed, direction) => {
+//   // 既存の背景スプライトを全てステージから削除
+//   backgroundSprites.forEach(sprite => {
+//     app.stage.removeChild(sprite);
+//   });
+//   setBackgroundSprites([]);
+
+//   // 新しい背景スプライトを作成し、ステージに追加
+//   const newSprites = textures.map((texture, index) => {
+//     const sprite = new Sprite(texture);
+//     sprite.width = app.screen.width;
+//     sprite.height = app.screen.height;
+//     sprite.x = app.screen.width - (index + 1) * sprite.width; // スプライトを画面の幅分だけ左にずらして配置
+//     sprite.y = 0;
+//     app.stage.addChild(sprite);
+//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
+//     return sprite;
+//   });
+
+//   setBackgroundSprites(newSprites);
+
+//   // Tickerに背景スクロールのアニメーションを追加
+//   app.ticker.add(() => {
+//     newSprites.forEach((sprite, index) => {
+//       // 背景を右に移動させる
+//       sprite.x += speed;
+
+//       // 背景が完全に右まで来たら、左端にリセット
+//       if (sprite.x >= app.screen.width) {
+//         const nextSpriteIndex = (index === 0 ? newSprites.length - 1 : index - 1);
+//         sprite.x = newSprites[nextSpriteIndex].x - sprite.width;
+//       }
+//     });
+//   });
+// };
+
 
 
   
@@ -507,7 +878,7 @@ const handleAddBackgroundAnime = (app, texture, spaceId) => {
 
 
   //スプライトの画像の処理
-  const handleAddSprite = (itemId, choice) => {
+  const handleAddSprite = (itemId, choice, subUserId) => {
     const loadItem = itemAllId.find(item => item.id === itemId);
     let spriteImage;
       if (choice === 'item_canvas') {
@@ -519,13 +890,17 @@ const handleAddBackgroundAnime = (app, texture, spaceId) => {
         spriteImage = Texture.from('https://pixijs.com/assets/bunny.png');
       }
       //let spriteid = nextSpriteIdRef.current++;
-    createSprite(appRef.current, spriteImage, appRef.current.screen.width / 2, appRef.current.screen.height / 2, itemId, true, scaleSprite, alphaSprite, angleSprite, 1);
+    createSprite(appRef.current, spriteImage, appRef.current.screen.width / 2, appRef.current.screen.height / 2, itemId, true, scaleSprite, alphaSprite, angleSprite, 1, subUserId);
     //randomMove(itemSprite, appRef.current);
   };
 
 
   //スプライトの作成
-  const createSprite = (app, texture, x, y, itemId, bool, scaleValue, alphaValue, angleDegrees, spriteid) => {
+  const createSprite = (app, texture, x, y, itemId, bool, scaleValue, alphaValue, angleDegrees, spriteid, subUserId) => {
+    if (maxSprite === 0) {
+      handleAlertMessageAnime("スプライト数が上限に達しました。新規で追加する場合は削除して下さい。");
+      return;
+    }
     const sprite = new Sprite(texture);
     if (bool) {
       sprite.id = nextSpriteIdRef.current++;
@@ -545,27 +920,6 @@ const handleAddBackgroundAnime = (app, texture, spaceId) => {
     //sprite.hitArea = new Rectangle(200, 200, 400, 400);
 
     sprite.alpha = alphaValue;
-
-
-
-    const mask = new Graphics();
-    mask.beginFill(0xFFFFFF);
-    mask.drawCircle(sprite.x, sprite.y, 100); // 位置を調整し、半径100の円を描画
-    mask.endFill();
-
-
-    // マスクをスプライトに適用
-    sprite.mask = mask;
-
-    // ステージにマスクとスプライトを追加
-    app.stage.addChild(mask);
-    // app.stage.addChild(sprite);
-
-
-
-
-
-
 
     sprite.on('pointerdown', event => {
       event.stopPropagation();  // ステージのクリックイベントが発火しないように阻止
@@ -606,7 +960,8 @@ const handleAddBackgroundAnime = (app, texture, spaceId) => {
       scale_anime_value: null,
       others_anime: false,
       anime_value: null,
-      angleDegrees_value: angleDegrees
+      angleDegrees_value: angleDegrees,
+      sub_user_id: subUserId
     };
 
     setSpriteInfo(prevInfo => [...prevInfo, newSpriteInfo])
@@ -737,31 +1092,27 @@ const handleAddBackgroundAnime = (app, texture, spaceId) => {
 
 
 
-  //選択したスプライトにマスクをつける処理
-  const applyMaskToSprite = (app, spriteId, x, y, width, height) => {
-    modifySpriteById(app, spriteId, sprite => {
-      const mask = new Graphics();
-      mask.beginFill(0xFFFFFF);
+  // //選択したスプライトにマスクをつける処理
+  // const applyMaskToSprite = (app, spriteId, x, y, width, height) => {
+  //   modifySpriteById(app, spriteId, sprite => {
+  //     const mask = new Graphics();
+  //     mask.beginFill(0xFFFFFF);
   
-      // スプライトの anchor 設定が (0.5, 0.5) だと仮定して、相対座標を計算
-      const maskX = sprite.x - sprite.width * sprite.anchor.x + x;
-      const maskY = sprite.y - sprite.height * sprite.anchor.y + y;
-
-      // mask.drawRect(sprite.x, sprite.y, 20);
+  //     // スプライトの anchor 設定が (0.5, 0.5) だと仮定して、相対座標を計算
+  //     const maskX = sprite.x - sprite.width * sprite.anchor.x + x;
+  //     const maskY = sprite.y - sprite.height * sprite.anchor.y + y;
   
-      mask.drawRect(maskX, maskY, width, height);
-      mask.endFill();
-      sprite.mask = mask;
-      // app.stage.addChild(mask);
-      // app.stage.addChild(sprite);
-    });
-  };
+  //     mask.drawRect(maskX, maskY, width, height);
+  //     mask.endFill();
+  //     sprite.mask = mask;
+  //   });
+  // };
   
   
-  //選択したスプライトにマスクをつけるトリガー
-  const changeNewMask = () => {
-    applyMaskToSprite(appRef.current, activeSprite, 0, 0, 10, 10);
-  };
+  // //選択したスプライトにマスクをつけるトリガー
+  // const changeNewMask = () => {
+  //   applyMaskToSprite(appRef.current, activeSprite, 0, 0, 10, 10);
+  // };
   
   
 
@@ -882,7 +1233,7 @@ const handleHorizontalSwingById = () => {
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
   if (sprite.others_anime) {
-    handleAlertMessageAnime();
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
   } else if (sprite.left_right) {
     stopSwingAnimation(activeSprite);
   } else {
@@ -983,7 +1334,7 @@ const handleVerticalSwingById = () => {
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
   if (sprite.others_anime) {
-    handleAlertMessageAnime();
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
   } else if (sprite.top_bottom) {
     stopVerticalSwingAnimation(activeSprite)
   } else {
@@ -1087,8 +1438,32 @@ const randomMove = (app, sprite, easing, closeEnough) => {
 
 
 //作動ボタン
+// const handleRandomMove = () => {
+//   addRandomMove(appRef.current, activeSprite, 0.05, 1);
+// };
+
 const handleRandomMove = () => {
-  addRandomMove(appRef.current, activeSprite, 0.05, 1);
+  // activeSpriteが存在しない場合、何もせずに関数を終了する。
+  if (!activeSprite) {
+    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    return;
+  }
+  // スプライトを検索する。
+  const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+
+  // spriteが見つからない場合、エラーメッセージを表示する。
+  if (!sprite) {
+    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    return;
+  }
+  // spriteのアニメーション状態に応じて処理を分岐する。
+  if (sprite.anime_value && sprite.anime_value.rotate_mode !== 'random') {
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
+  } else if (sprite.others_anime) {
+    stopRandomMove(activeSprite)
+  } else {
+    addRandomMove(appRef.current, activeSprite, randomEasing, randomCloseEnough);
+  }
 };
 
 
@@ -1115,9 +1490,9 @@ const stopRandomMove = (spriteId) => {
   );
 };
 
-const stopRandomMoveBtn = () => {
-  stopRandomMove(activeSprite)
-};
+// const stopRandomMoveBtn = () => {
+//   stopRandomMove(activeSprite)
+// };
 
 
 
@@ -1183,7 +1558,7 @@ const handleRotationAnimation = () => {
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
   if (sprite.rotate_value && sprite.rotate_value.rotate_mode === 'pendulum') {
-    handleAlertMessageAnime();
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
   } else if (sprite.rotate_anime) {
     stopRotateAnimeRevolution(activeSprite)
   } else {
@@ -1305,7 +1680,7 @@ const handleSwingPendulumBtn = () => {
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
   if (sprite.rotate_value && sprite.rotate_value.rotate_mode === 'revolution') {
-    handleAlertMessageAnime();
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
   } else if (sprite.rotate_anime) {
     stopSwingPendulum(activeSprite);
   } else {
@@ -1454,7 +1829,9 @@ const stopScaleAnimation = (spriteId) => {
 
 
 
-
+const handleMoveClickBtn = () => {
+  handleMoveClickSprites(moveClickSpeed);
+};
 
 
 
@@ -1522,6 +1899,254 @@ const handleMoveClickDeleteAll = () => {
     }))
   );
 };
+
+
+
+
+
+
+//指定範囲内の移動
+const addBoundaryAnimation = (app, sprite, boundary) => {
+  let side = 0; // 0: 上辺, 1: 右辺, 2: 下辺, 3: 左辺
+  let progress = 0; // 0から1までの進行状況
+
+  const updatePosition = () => {
+
+    if (!app.stage.children.includes(sprite)) {
+      console.log("スプライトは既に削除されています");
+      app.ticker.remove(updatePosition); // スプライトが削除されたらTickerからこの関数を削除する
+      return; // スプライトが存在しなければ関数を抜ける
+    }
+
+    const { x, y, width, height, speed } = boundary;
+    switch (side) {
+      case 0: // 上辺を移動
+        sprite.x = x + progress * width;
+        sprite.y = y;
+        break;
+      case 1: // 右辺を移動
+        sprite.x = x + width;
+        sprite.y = y + progress * height;
+        break;
+      case 2: // 下辺を移動
+        sprite.x = x + width - progress * width;
+        sprite.y = y + height;
+        break;
+      case 3: // 左辺を移動
+        sprite.x = x;
+        sprite.y = y + height - progress * height;
+        break;
+    }
+    progress += speed; // 進行速度を調整
+    if (progress >= 1) {
+      progress = 0;
+      side = (side + 1) % 4; // 次の辺に移動
+    }
+  };
+
+  app.ticker.add(updatePosition);
+  sprite.stopBoundaryAnimationTicker = () => app.ticker.remove(updatePosition);
+};
+
+// アニメーションをスプライトに適用する
+const applyBoundaryAnimation = (app, spriteId, boundary) => {
+  modifySpriteById(app, spriteId, sprite => {
+    addBoundaryAnimation(app, sprite, boundary);
+  });
+
+  setSpriteInfo(prevSprites =>
+    prevSprites.map(sprite =>
+      sprite.sprite_id === spriteId
+        ? {
+            ...sprite,
+            others_anime: true,
+            anime_value: {
+              rotate_mode: 'boundary',
+              boundary_date: boundary
+            }
+          }
+        : sprite
+    )
+  );
+};
+
+const handleBoundaryAnimation = () => {
+  // activeSpriteが存在しない場合、何もせずに関数を終了する。
+  if (!activeSprite) {
+    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    return;
+  }
+  // スプライトを検索する。
+  const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+  const boundary = {
+    x: boundaryAnimeXValue, // 範囲の中心から左上隅へ調整
+    y: boundaryAnimeYValue, // 範囲の中心から左上隅へ調整
+    width: boundaryAnimeWidth, // 範囲の幅
+    height: boundaryAnimeHeight,
+    speed: boundaryAnimeSpeed
+  };
+
+  // spriteが見つからない場合、エラーメッセージを表示する。
+  if (!sprite) {
+    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    return;
+  }
+  // spriteのアニメーション状態に応じて処理を分岐する。
+  if (sprite.anime_value && sprite.anime_value.rotate_mode !== 'boundary') {
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
+  } else if (sprite.others_anime) {
+    stopBoundaryAnimation(activeSprite)
+  } else {
+    applyBoundaryAnimation(appRef.current, activeSprite, boundary);
+  }
+};
+
+
+const stopBoundaryAnimation = (spriteId) => {
+  modifySpriteById(appRef.current, spriteId, sprite => {
+    if (sprite.stopBoundaryAnimationTicker) {
+      sprite.stopBoundaryAnimationTicker();
+      delete sprite.stopBoundaryAnimationTicker;
+    }
+  });
+  setSpriteInfo(prevSprites =>
+    prevSprites.map(sprite =>
+      sprite.sprite_id === spriteId
+        ? {
+            ...sprite,
+            others_anime: false,
+            anime_value: null
+          }
+        : sprite
+    )
+  );
+}
+
+
+
+
+
+
+
+
+
+
+const addCircularAnimation = (app, sprite, centerX, centerY, radius, speed) => {
+
+  let angle = 0;
+
+  const tickerCallback = () => {
+    if (!app.stage.children.includes(sprite)) {
+      console.log("スプライトが削除されたため、移動を停止します");
+      app.ticker.remove(tickerCallback);
+      return;
+    }
+
+    sprite.x = centerX + radius * Math.cos(angle);
+    sprite.y = centerY + radius * Math.sin(angle);
+    angle += speed;
+    if (angle >= 2 * Math.PI) {
+      angle = 0;
+    }
+  };
+
+  app.ticker.add(tickerCallback);
+  sprite.stopCircularMoveAnimation = () => app.ticker.remove(tickerCallback);
+
+};
+
+
+
+const addCircular = (app, spriteId, centerX, centerY, radius, speed) => {
+  modifySpriteById(app, spriteId, sprite => {
+    addCircularAnimation(app, sprite, centerX, centerY, radius, speed);
+  });
+
+  setSpriteInfo(prevSprites =>
+    prevSprites.map(sprite =>
+      sprite.sprite_id === spriteId
+        ? {
+            ...sprite,
+            others_anime: true,
+            anime_value: {
+              rotate_mode: 'circular',
+              center_x: centerX,
+              center_y: centerY,
+              radius_value: radius,
+              speed_value: speed
+            }
+          }
+        : sprite
+    )
+  );
+};
+
+
+// 作動ボタン
+// const handleCircularMove = () => {
+//   addCircular(appRef.current, activeSprite, 100, 10, 10);
+// };
+
+
+const handleCircularMove = () => {
+  // activeSpriteが存在しない場合、何もせずに関数を終了する。
+  if (!activeSprite) {
+    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    return;
+  }
+  const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+  // spriteが見つからない場合、エラーメッセージを表示する。
+  if (!sprite) {
+    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    return;
+  }
+  // spriteのアニメーション状態に応じて処理を分岐する。
+  if (sprite.anime_value && sprite.anime_value.rotate_mode !== 'circular') {
+    handleAlertMessageAnime("現在実行中のアニメーションを停止させてから再度お願い致します。");
+  } else if (sprite.others_anime) {
+    stopCircularMove(activeSprite)
+  } else {
+    addCircular(appRef.current, activeSprite, circularAnimeXValue, circularAnimeYValue, circularAnimeRadius, circularAnimeSpeed);
+  }
+};
+
+
+
+// 停止
+const stopCircularMove = (spriteId) => {
+  modifySpriteById(appRef.current, spriteId, sprite => {
+    if (sprite.stopCircularMoveAnimation) {
+      sprite.stopCircularMoveAnimation();
+      delete sprite.stopCircularMoveAnimation;
+    }
+  });
+
+  setSpriteInfo(prevSprites =>
+    prevSprites.map(sprite =>
+      sprite.sprite_id === spriteId
+        ? {
+            ...sprite,
+            others_anime: false,
+            anime_value: null
+          }
+        : sprite
+    )
+  );
+};
+
+// const stopCircularMoveBtn = () => {
+//   stopCircularMove(activeSprite);
+// };
+
+
+
+
+
+
+
+
+
+
 
 
   // const handleSprite = () => {
@@ -1614,8 +2239,10 @@ const handleMoveClickDeleteAll = () => {
     console.log('ざんき', maxSprite);
     console.log('クリックストライプ', moveClickSprites);
     console.log('選択スプライトのid', activeSprite);
+    console.log('背景アニメリスト', spaceSpritesAnime);
+    console.log('アイテムの中', itemAllId)
   };
-
+  
 
 
   //「送信ボタン」が押された時にデータを保存
@@ -1647,7 +2274,8 @@ const handleMoveClickDeleteAll = () => {
             scale_anime_value: sprite.scale_anime_value,
             others_anime: sprite.others_anime,
             anime_value: sprite.anime_value,
-            angleDegrees_value: sprite.angleDegrees_value
+            angleDegrees_value: sprite.angleDegrees_value,
+            sub_user_id: sprite.sub_user_id
           };
         });
       } else {
@@ -1664,6 +2292,12 @@ const handleMoveClickDeleteAll = () => {
     }
   }, [getData]);
 
+  const handleRemoveSpaceData = (indexToRemove) => {
+    setSpaceSpritesAnime(prevSprites => prevSprites.filter((_, index) => index !== indexToRemove));
+
+    const result = maxSpaceSprites + 1;
+    setMaxSpaceSprites(result);
+  };
 
   
   //共有するもの
@@ -1679,7 +2313,22 @@ const handleMoveClickDeleteAll = () => {
     handleScaleAnimationById,
     changeNewScale,
     changeNewAlpha,
-    changeNewAngle
+    changeNewAngle,
+    handleRandomMove,
+    handleMoveClickBtn,
+    handleMoveClickDeleteAll,
+    handleMoveClickDelete,
+    handleBoundaryAnimation,
+    handleCircularMove,
+    spaceAnimMode,
+    updateSpaceAnime,
+    handleSpaceAnimAdd,
+    spaceInfo,
+    spaceSpritesAnime,
+    handleRemoveSpaceData,
+    setSpaceAnimMode,
+    updateSimpleSpace,
+    handleRemoveSprite
   }
 
   return (
@@ -1705,7 +2354,7 @@ const handleMoveClickDeleteAll = () => {
     <div
     className="alert-message"
       style={{
-        // position: 'absolute',
+        position: 'absolute',
         // left: '50%',
         // top: '50%',
         // transform: 'translate(-60%, 40%)',
@@ -1742,8 +2391,8 @@ const handleMoveClickDeleteAll = () => {
   <button onClick={handleVerticalSwingById}>上下</button>
   <button onClick={handleVerticalSwingAnimationStop}>上下ストップ</button> */}
 
-  <button onClick={handleRandomMove}>ランダム</button>
-  <button onClick={stopRandomMoveBtn}>ランダムストップ</button>
+  {/* <button onClick={handleRandomMove}>ランダム</button> */}
+  {/* <button onClick={stopRandomMoveBtn}>ランダムストップ</button> */}
 
 
   {/* <button onClick={handleRotationAnimation}>回転</button>
@@ -1754,20 +2403,37 @@ const handleMoveClickDeleteAll = () => {
 {/* 
   <button onClick={handleScaleAnimationById}>スケール</button>
   <button onClick={handleScaleAnimationStop}>スケールストップ</button> */}
-
+{/* 
   <button onClick={() => handleMoveClickSprites(0.01)}>登録0.01</button>
-  <button onClick={() => handleMoveClickSprites(0.05)}>登録0.05</button>
-  <button onClick={handleMoveClickDelete}>登録削除</button>
-  <button onClick={handleMoveClickDeleteAll}>全登録削除</button>
+  <button onClick={() => handleMoveClickSprites(0.05)}>登録0.05</button> */}
+  {/* <button onClick={handleMoveClickDelete}>登録削除</button>
+  <button onClick={handleMoveClickDeleteAll}>全登録削除</button> */}
   
 
-  <button onClick={() => handleAddSpaceChange(1)}>背景アニメ</button>
-  
-  <button onClick={handleRemoveSprite}>削除</button>
+  {/* <button onClick={updateSpaceAnime}>背景アニメ</button> */}
+  {/* <button onClick={() => setSpaceAnimMode(true)}>複数選択</button>
+  <button onClick={updateSimpleSpace}>複数選択解除</button>
+  <button onClick={handleRemoveSprite}>削除</button> */}
+{/* 
+  <div>
+    {spaceSpritesAnime && spaceSpritesAnime.map((sprite, index) => (
+      <button key={index} onClick={() => {
+        console.log(`Button ${index} clicked, ID: ${sprite.id}, Name: ${sprite.space_name}`);
+        handleRemoveSpaceData(index);
+      }}>
+        {sprite.space_name} (ID: {sprite.id})
+      </button>
+    ))}
+  </div> */}
+
 {/* 
   <button onClick={changeNewScale}>拡大</button> */}
-  <button onClick={changeNewMask}>マスク</button>
+  {/* <button onClick={changeNewMask}>マスク</button> */}
+  {/* <button onClick={triggerMoveToClick}>指定位置へ移動</button> */}
+  {/* <button onClick={handleBoundaryAnimation}>範囲移動</button> */}
 
+  {/* <button onClick={handleCircularMove}>円形移動</button> */}
+  {/* <button onClick={stopCircularMoveBtn}>円形停止</button> */}
     </>
   );
 };

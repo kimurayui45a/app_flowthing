@@ -19,6 +19,9 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
   }, [compositeNameLode, compositeTextLode]);
 
 
+  //非同期保存
+  const [isAsync, setIsAsync] = useState(false);
+
 
   //対象のレイヤーが選択されていない時に出るアラートメッセージ
   const [alertToast, setAlertToast] = useState(false);
@@ -62,7 +65,17 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
 
         if (response.ok) {
           const data = await response.json();
-          window.location.href = data.redirect_url;
+          //window.location.href = data.redirect_url;
+
+          if (isAsync) {
+            console.log('非同期更新成功:', data);
+            // ここで必要な状態更新やUI反映を行う
+            handleAlertMessage("途中保存されました");
+          } else {
+            window.location.href = data.redirect_url; // 同期的なリダイレクト処理
+          }
+
+
         } else {
           console.error('送信失敗');
         }
@@ -73,7 +86,7 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
     // ここで取得したデータを使う（例えば、サーバーに送信するなど）
     // console.log("送信された:");
     } else {
-      handleAlertMessage();
+      handleAlertMessage("背景の選択は必須です。");
     }
 
     console.log("画像データ（送信ボタン）:", dataURL);
@@ -84,9 +97,9 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
 
 
   //対象のレイヤーが選択されていない時に出るアラートメッセージ（位置は中央固定）
-  const handleAlertMessage = () => {
+  const handleAlertMessage = (text) => {
     // メッセージと表示状態を設定
-    setAlertMessage("背景の選択は必須です。");
+    setAlertMessage(text);
     setAlertToast(true);
   
     // 一定時間後にメッセージを非表示にする
@@ -100,6 +113,8 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
       event.preventDefault();
     }
   };
+
+  
 
   return (
     <div style={{ position: 'relative' }}>
@@ -119,8 +134,32 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
         compositeText={compositeText}
       />
 
-      {/* form */}
 
+
+
+            {/* 選択背景がない場合のアラートメッセージ */}
+            {alertToast && (
+              <div
+              className="alert-message"
+                style={{
+                  // position: 'absolute',
+                  // left: '50%',
+                  // top: '50%',
+                  // transform: 'translate(-60%, 40%)',
+                  textAlign: 'left',
+                  lineHeight: '1.3',
+                  whiteSpace: 'pre-wrap'
+                }}
+              >
+                {alertMessage}
+              </div>
+            )}
+
+<button onClick={() => setIsAsync(true)}>非同期</button>
+      <button onClick={() => setIsAsync(false)}>同期</button>
+
+
+      {/* form */}
       <form onSubmit={handleTriggerGetData}>
         {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
         <input

@@ -104,17 +104,10 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
     </div>
   </div>
 
-          {/* カスタムパネルを開くボタン */}
-          <div
-            className="panel-tool-button tooltip-container"
-            onClick={toggleCustomPanelVisible}
-            onTouchStart={toggleCustomPanelVisible}
-          >
-            <i className="bi bi-pencil-fill"></i>
-            <span className="tooltip-text">カスタムパネル</span>
-          </div>
 
   <div className="select-detail-tool-group">
+
+
     {/* グループ分岐 */}
     {pixiListTabMode ? (
       //アイテム

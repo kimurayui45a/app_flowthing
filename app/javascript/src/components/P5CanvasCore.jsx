@@ -3661,7 +3661,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
         ></div>
       </div>
 
-      <button onClick={getData}>レイヤーを手動保存</button>
+      {/* <button onClick={getData}>レイヤーを手動保存</button> */}
       <button onClick={savePc}>pcに保存</button>
 
       {/* テスト用 */}

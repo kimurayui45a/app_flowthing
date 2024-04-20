@@ -13,7 +13,7 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
   const [compositeText, setCompositeText] = useState('');
 
 
-  //対象のレイヤーが選択されていない時に出るアラートメッセージ
+  //アラートメッセージ
   const [alertToast, setAlertToast] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
