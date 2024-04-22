@@ -8,7 +8,7 @@
     <% when 'item_image' %>
       <%= image_tag @board.item.item_image.url, class: "user-profileicon" %>
     <% when 'item_canvas' %>
-      <canvas class="board-item-fabric" id="itemCanvas_<%= @board.item.id %>" data-canvas-json='<%= @board.item.item_canvas.to_json.html_safe %>'></canvas>
+      <img src="<%= @board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon" >
     <% else %>
       <div class="no-image-icon">No Image</div>
     <% end %>

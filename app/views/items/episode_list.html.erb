@@ -35,8 +35,9 @@
                   <div class="episode-subicon-frame">
                     <div class="canvas-container-parent">
                     <div class="episode-canvas-back">
-                      <canvas class="episode-usericon" id="subCanvas_<%= sub_user.id %>" 
-                        data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+                      
+                      <img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="episode-usericon">
+  
                     </div>
                     </div>
                   </div>

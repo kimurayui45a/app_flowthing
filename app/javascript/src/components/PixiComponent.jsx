@@ -377,7 +377,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
 
 
 
-  //スペースの再描画の場合の復元処理（マウント時に1回実行される）
+  //Screenの再描画の場合の復元処理（マウント時に1回実行される）
   useEffect(() => {
     if (spaceObject && appRef.current && spaceAllId.length > 0) {
       if (spaceObject !== '' && spaceObject !== 'undefined' && spaceObject !== 'null') {
@@ -2336,7 +2336,7 @@ const stopCircularMove = (spriteId) => {
 
   return (
     <>
-    <button onClick={checkSpriteInfo}>スプライトインフォの中</button>
+    {/* <button onClick={checkSpriteInfo}>スプライトインフォの中</button> */}
       <div
         style={{
           width: !pixiMode ? '1000px' : '1408px',

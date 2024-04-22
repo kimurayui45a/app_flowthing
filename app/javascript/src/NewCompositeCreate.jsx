@@ -40,7 +40,7 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
 
       formData.append('composite[composite_item]', JSON.stringify(saveItemData));
       formData.append('composite[composite_space]', JSON.stringify(saveSpaceData));
-
+      console.log("画像データ（送信ボタン）:", dataURL);
 
       try {
         const response = await fetch('/composites', {
@@ -69,10 +69,10 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
       handleAlertMessage();
     }
 
-    console.log("画像データ（送信ボタン）:", dataURL);
-    console.log("アイテムデータ（送信ボタン）:", saveItemData);
-    console.log("背景データ（送信ボタン）:", saveSpaceData);
-    console.log("背景Id（送信ボタン）:", spaceId);
+    // console.log("画像データ（送信ボタン）:", dataURL);
+    // console.log("アイテムデータ（送信ボタン）:", saveItemData);
+    // console.log("背景データ（送信ボタン）:", saveSpaceData);
+    // console.log("背景Id（送信ボタン）:", spaceId);
   };
 
 

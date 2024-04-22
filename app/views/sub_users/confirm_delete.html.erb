@@ -1,34 +1,52 @@
 <div class="max767-container">
-<div class="btn-group">
-<h1>
-  <% if @sub_user.icon_choice.present? %>
-    <% case @sub_user.icon_choice %>
-      <% when 'sub_image' %>
-        <!-- sub_image の内容を表示 -->
-        <% if @sub_user.sub_image.present? %>
-          <%= image_tag @sub_user.sub_image.url, class: "user-itemlist-icon" %>
-        <% end %>
-      <% when 'sub_canvas' %>
-        <!-- sub_canvas の内容を表示 -->
-    
-          <canvas class="itemfabric" id="subCanvas_<%= @sub_user.id %>" 
-        data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
-      
-      <% when 'sub_color' %>
-        <!-- sub_color の内容を表示 -->
-        <div style="background-color: <%= @sub_user.sub_color %>;" class="user-itemlist-icon"></div>
-      <% else %>
-        <div class="no-image-icon">No Image</div>
-    <% end %>
-  <% end %>
-の削除を確認</h1>
+  <div class="btn-group user-createform-text">
+    <div class="delete-card" style="margin-top: 2rem;">
+      <div class="delete-background flex-start-start-flex-center">
+        <div class="flex-column">
+          <h1 style="font-size: 2rem;">
+            <% if @sub_user.icon_choice.present? %>
+              <% case @sub_user.icon_choice %>
+                <% when 'sub_image' %>
+                  <!-- sub_image の内容を表示 -->
+                  <% if @sub_user.sub_image.present? %>
+                    <%= image_tag @sub_user.sub_image.url, class: "delete-icon" %>
+                  <% end %>
+                <% when 'sub_canvas' %>
+                  <!-- sub_canvas の内容を表示 -->
 
-<p>本当にこのサブユーザーを削除しますか？</p>
-<p>関連するアイテム数: <%= @sub_user.items_count %></p>
+                  <img src="<%= @sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="delete-icon">
+                
+                <% when 'sub_color' %>
+                  <!-- sub_color の内容を表示 -->
+                  <div style="background-color: <%= @sub_user.sub_color %>;" class="delete-icon"></div>
+                  
+                <% else %>
+                  <div class="no-image-icon">No Image</div>
+              <% end %>
+            <% end %>
+            の削除確認
+          </h1>
 
-<%= link_to '削除する', sub_user_path(@sub_user), id: "button-delete-#{@sub_user.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('sub_users.sub_user.delete_confirm') } %>
-<%= link_to 'キャンセル', sub_users_path %>
-</div>
+          <p style="font-size: 1rem;">本当にこのSub Thingを削除しますか？</p>
+
+          <% if @sub_user.items_count.present? %>
+            <p>関連するFlow Thing数: <%= @sub_user.items_count %></p>
+          <% end %>
+
+          <p class="red-text" style="text-align: start;">※Sub Thingを削除すると関連するFlow Thingも全て削除されます。<br>このSub ThingのFlow ThingをFlux Screenに配置していた場合、そのFlow Thingも削除されます。</p>
+
+          <div class="flex-between" style="width: 20rem;">
+            <div>
+            <%= link_to 'キャンセル', sub_users_path %>
+            </div>
+            <div>
+              <%= link_to '削除する', sub_user_path(@sub_user), id: "button-delete-#{@sub_user.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('sub_users.sub_user.delete_confirm') } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

@@ -40,7 +40,7 @@ ja:
     show:
       title: Sub Thing 詳細
     sub_user:
-      delete_confirm: 削除しますか？
+      delete_confirm: 本当に削除しますか？
     form:
       sub_color: カラーアイコン
       image_icon: 画像アイコン
@@ -79,7 +79,11 @@ ja:
       search: 降順/昇順
       search_keyword: キーワード検索
       search_btn: 検索
-
+  spaces:
+    search_form:
+      search: 降順/昇順
+      search_keyword: キーワード検索
+      search_btn: 検索
   boards:
     form:
       title: タイトル

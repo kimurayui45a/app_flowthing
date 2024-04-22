@@ -208,7 +208,7 @@ const PixiSpaceCustom = () => {
                   onChange={(e) => handleIntervalTimeChange(e)}
                   onBlur={handleIntervalTimeForm}
                 />
-                <span className="tooltip-text" style={{ textAlign: 'left' }}>スペースを切り替える時間<br />最大値 10分(600000)</span>
+                <span className="tooltip-text" style={{ textAlign: 'left' }}>Screenを切り替える時間<br />最大値 10分(600000)</span>
               </div>
             </div>
             </>
@@ -241,7 +241,7 @@ const PixiSpaceCustom = () => {
       </div>
 
 
-      <div><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>[スペースの選択]</span></div>
+      <div><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>[Screenの選択]</span></div>
       <div className="flex-between" style={{ alignItems: 'flex-end', width: '200px' }}>
         {/* 複数選択ボタン */}
         <div
@@ -257,7 +257,7 @@ const PixiSpaceCustom = () => {
           }}
         >
             複数選択
-            <span className="tooltip-text" style={{ textAlign: 'left', marginTop: '5px' }}>アニメーションで使用するスペースを選択</span>
+            <span className="tooltip-text" style={{ textAlign: 'left', marginTop: '5px' }}>アニメーションで使用するScreenを選択</span>
         </div>
 
         {/* 複数選択ボタン */}
@@ -274,12 +274,12 @@ const PixiSpaceCustom = () => {
           }}
         >
             単一選択
-            <span className="tooltip-text" style={{ textAlign: 'left' }}>アニメーションを停止しメインスペースのみを表示</span>
+            <span className="tooltip-text" style={{ textAlign: 'left' }}>アニメーションを停止しメインScreenのみを表示</span>
         </div>
       </div>
 
       <div className="flex-between" style={{ alignItems: 'flex-end', width: '180px', marginTop: '5px' }}>
-        <div><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>[選択中のスペース]</span></div>
+        <div><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>[選択中のScreen]</span></div>
         <div><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>あと{maxSpaceSprites}枚</span></div>
       </div>
 

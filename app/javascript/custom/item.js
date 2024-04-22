@@ -1,66 +1,66 @@
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.itemfabric')) {
-    subCanvasCard(true, 40, 40, 30, 30, 175);
-    itemCanvasCard(true, 120, 120, 120, 120, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.itemfabric')) {
+//     subCanvasCard(true, 40, 40, 30, 30, 175);
+//     itemCanvasCard(true, 120, 120, 120, 120, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.item-show-fabric')) {
-    itemCanvasCard(true, 200, 200, 200, 200, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.item-show-fabric')) {
+//     itemCanvasCard(true, 200, 200, 200, 200, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.board-item-fabric')) {
-    itemRectCard(false, 350, 350, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.board-item-fabric')) {
+//     itemRectCard(false, 350, 350, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.subfabric')) {
-    subCanvasCard(true, 120, 120, 105, 105, 175);
-    itemCanvasCard(true, 40, 40, 30, 30, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.subfabric')) {
+//     subCanvasCard(true, 120, 120, 105, 105, 175);
+//     itemCanvasCard(true, 40, 40, 30, 30, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.searchfabric')) {
-    subCanvasCard(false, 40, 40, 30, 30, 175);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.searchfabric')) {
+//     subCanvasCard(false, 40, 40, 30, 30, 175);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.sub-show-fabric')) {
-    subCanvasCard(false, 250, 250, 200, 200, 175);
-    itemRectCard(true, 100, 100, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.sub-show-fabric')) {
+//     subCanvasCard(false, 250, 250, 200, 200, 175);
+//     itemRectCard(true, 100, 100, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.item-show-icon')) {
-    subfitCard(true, 40, 40, 175);
-    itemRectCard(false, 230, 230, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.item-show-icon')) {
+//     subfitCard(true, 40, 40, 175);
+//     itemRectCard(false, 230, 230, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.episode-usericon')) {
-    subCanvasCard(true, 55, 55, 45, 45, 175);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.episode-usericon')) {
+//     subCanvasCard(true, 55, 55, 45, 45, 175);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.board-item-index')) {
-    itemRectCard(true, 120, 120, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.board-item-index')) {
+//     itemRectCard(true, 120, 120, 200);
+//   }
+// });
 
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.board-item-showfabric')) {
-    itemRectCard(false, 200, 200, 200);
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.board-item-showfabric')) {
+//     itemRectCard(false, 200, 200, 200);
+//   }
+// });
 
 
 // 関数名(カーソルの種類, キャンバスの幅, キャンバスの高さ, スケールの幅, スケールの高さ, 背景の円形オブジェクトの半径)

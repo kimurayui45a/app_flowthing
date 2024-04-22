@@ -167,20 +167,20 @@ const PixiCustomSpecial = () => {
 
             <div className="tooltip-container">
               <PixiPanelParts PanelParts="directionRunButton" handleRunButton={handleMoveClickBtn} formTitle="登録" />
-              <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のアイテムにクリック地点を追従するアニメを付与</span>
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のFlow Thingにクリック地点を追従するアニメを付与</span>
             </div>
           </div>
 
           <div className="flex-between" style={{ alignItems: 'flex-end', width: '150px', marginTop: '5px', marginBottom: '5px' }}>
             <div className="tooltip-container">
               <PixiPanelParts PanelParts="directionRunButton" handleRunButton={handleMoveClickDelete} formTitle="削除" />
-              <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のアイテムの追従アニメを削除</span>
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のFlow Thingの追従アニメを削除</span>
             </div>
 
 
             <div className="tooltip-container">
               <PixiPanelParts PanelParts="directionRunButton" handleRunButton={handleMoveClickDeleteAll} formTitle="全削除" />
-              <span className="tooltip-text" style={{ textAlign: 'left' }}>全てのアイテムの追従アニメを削除</span>
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>全てのFlow Thingの追従アニメを削除</span>
             </div>
           </div>
         </div>

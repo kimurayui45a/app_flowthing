@@ -1,5 +1,118 @@
 <div class="edititemform">
-<div id="itemimagePreview"></div>
+
+
+
+
+
+
+
+
+<div class="form-card">
+  <div class="item-form-card-background flex-start-start-flex-center">
+    <div class="flex-column">
+
+      <div class="section-title logo-transform-form-card">
+        <div class="app-logo">
+          <div class="flex flex-animated-text">
+            <div class="flex-between flex-animated-text-absolute logo-blur-05">
+              <div class="animated-text">
+                <span class='zen-antique logo-setting'>F</span>
+                <span class='sawarabi-mincho logo-setting'>l</span>
+                <span class="logo-setting">o</span>
+                <span class='dotgothic16'>w</span>
+
+                <span class='potta-one logo-setting-t logo-setting'>T</span>
+                <span class='rocknroll-one logo-setting-hi'>h</span>
+                <span class='yuji-mai logo-setting-hi'>i</span>
+                <span class='yuji-syuku logo-setting-n'>n</span>
+              </div>
+              <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
+            </div>
+
+            <div class="flex-between logo-blur-15">
+              <div class="animated-text">
+                <span class='zen-antique logo-setting'>F</span>
+                <span class='sawarabi-mincho logo-setting'>l</span>
+                <span class="logo-setting">o</span>
+                <span class='dotgothic16'>w</span>
+
+                <span class='potta-one logo-setting-t logo-setting'>T</span>
+                <span class='rocknroll-one logo-setting-hi'>h</span>
+                <span class='yuji-mai logo-setting-hi'>i</span>
+                <span class='yuji-syuku logo-setting-n'>n</span>
+              </div>
+              <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card-container">
+        <div class="flex-column">
+          
+        <div id="itemimagePreview"></div>
+
+          <div class="user-createform-text">
+            <label for="iconItemChoice"><%= t('items.form.image_choice') %></label><br>
+                      
+            <select id="iconItemChoice" name="dummy_image_choice">
+              <option value="no_image" selected><%= t('items.form.no_image') %></option>
+              <option value="item_image"><%= t('items.form.item_image') %></option>
+            </select>
+            <%= f.hidden_field :image_choice, id: "image_choice" %>
+            <%= f.hidden_field :item_save_canvas, id: "item_save_canvas" %>
+          </div>
+
+          <div class="subuser-disabled sub-image-container form-card-background-white form-card-top" id="itemImageInput">
+          
+            <label for="itemImage">
+              <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio">
+              <%= f.label :item_image, t('items.form.item_image') %>
+              <%= f.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
+
+              <%= f.hidden_field :item_canvas, id: "item_canvas" %>
+            </label>
+          </div>
+        </div>
+
+        <div class="item-createform-text-right">
+          <span class="red-text"><%= t('items.form.contents_note_icon') %></span>
+          <div class="user-createform-text">
+            <%= f.label :item_name, t('items.form.item_name') %>
+            <%= f.text_field :item_name, class: "form-control", id: "item_name" %>
+          </div>
+          <div class="user-createform-text">
+            <%= f.label :item_text, t('items.form.item_text') %>
+            <%= f.text_area :item_text, class: "form-control item-form-card-textform", row: 10 %>
+          </div>
+        </div>
+      </div>
+        <div class="flex-start-start">
+
+          <div class="item-form-card-createform-text">
+            <%= f.label :item_place, t('items.form.item_place') %>
+            <%= f.text_field :item_place, class: "form-control" %>
+          </div>
+
+          <div class="item-form-card-createform-text">
+            <%= f.label :episode, t('items.form.episode') %><span class="red-text"> <%= t('items.form.contents_note') %></span>
+            <%= f.text_area :episode, class: "form-control item-form-card-textepisode", row: 10, id: "episode" %>
+          </div>
+
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 
   <div id="fabricSwitchItem">
     <!-- 描画ツール  -->
@@ -166,53 +279,3 @@
       </div>
     </div>
   </div>
-
-
-  <div class="flex-between user-createform">
-    <div class="sub-image-container subuser-disabled" id="itemImageInput">
-        <label for="itemImage">
-          <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio">
-          <%= f.label :item_image, t('items.form.item_image') %>
-          <%= f.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
-        </label>
-      </div>
-
-      <div class="subuser-disabled sub-canvas-container" id="itemCanvasInput">
-        <i class="bi bi-brush brush-icon"></i>
-        <label for="itemCanvas" class="balloon-botann-text">
-          <input type="radio" name="inputItem" value="item_canvas" id="itemCanvas" class="custom-radio">
-          <%= f.label :item_canvas, t('items.form.item_canvas') %>
-          <%= f.hidden_field :item_canvas, id: "item_canvas" %>
-        </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="user-createform">
-    <div class="user-createform-text">
-      <label for="iconItemChoice"><%= t('items.form.image_choice') %></label><br>
-      <select id="iconItemChoice" name="dummy_image_choice">
-        <option value="no_image" selected><%= t('items.form.no_image') %></option>
-        <option value="item_image"><%= t('items.form.item_image') %></option>
-        <option value="item_canvas"><%= t('items.form.item_canvas') %></option>
-      </select>
-      <%= f.hidden_field :image_choice, id: "image_choice" %>
-    </div>
-    <span class="red-text"><%= t('items.form.contents_note_icon') %></span>
-    <div class="user-createform-text">
-      <%= f.label :item_name, t('items.form.item_name') %>
-      <%= f.text_field :item_name, class: "form-control", id: "item_name" %>
-    </div>
-    <div class="user-createform-text">
-      <%= f.label :item_text, t('items.form.item_text') %>
-      <%= f.text_area :item_text, class: "form-control", row: 10, style: "height: 200px" %>
-    </div>
-    <div class="user-createform-text">
-        <%= f.label :item_place, t('items.form.item_place') %>
-        <%= f.text_field :item_place, class: "form-control" %>
-    </div>
-    <div class="user-createform-text">
-        <%= f.label :episode, t('items.form.episode') %><span class="red-text"> <%= t('items.form.contents_note') %></span>
-        <%= f.text_area :episode, class: "form-control", row: 10, style: "height: 200px", id: "episode" %>
-    </div>
-</div>

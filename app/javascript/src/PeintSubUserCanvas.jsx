@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSubUserText }) => {
+const PeintSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSubUserText, canvasData }) => {
 
 
 
@@ -29,25 +29,10 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
   const [alertToast, setAlertToast] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
-  //文字数バリデーション
-  const [isValid, setIsValid] = useState(true);
-
   useEffect(() => {
     setSubUserName(canvasSubUserName);
     setSubUserText(canvasSubUserText);
   }, [canvasSubUserName, canvasSubUserText]);
-
-  useEffect(() => {
-    const isValidUserName = subUserName.length <= 20;
-    const isValidUserText = subUserText.length <= 2000;
-
-    if (!isValidUserName || !isValidUserText) {
-      handleDataFromGrandchild("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は2000文字でお願い致します。")
-      setIsValid(false);
-    } else {
-      setIsValid(true);
-    }
-  }, [subUserName, subUserText]);
 
   // 孫コンポーネントからデータを受け取るための関数
   const handleDataFromGrandchild = (getDataFunc) => {
@@ -96,7 +81,6 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
 
       } else {
         console.error('送信失敗');
-        handleDataFromGrandchild("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は2000文字でお願い致します。")
       }
     } catch (error) {
       console.error('エラーが発生しました', error);
@@ -127,7 +111,7 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
 
   return (
     <div>
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} notLayerSave={notLayerSave} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} notLayerSave={notLayerSave} canvasData={canvasData} />
 
 
             {/* 選択背景がない場合のアラートメッセージ */}
@@ -169,15 +153,11 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
           onKeyDown={handleKeyDown}
         />
 
-{isValid ? (
         <button type="submit">データ送信</button>
-      ) : (
-        <div>送信不可</div>
-      )}
 
     </form>
     </div>
   );
 };
 
-export default EditSubUserCanvas;
+export default PeintSubUserCanvas;

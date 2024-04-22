@@ -1,20 +1,23 @@
-<article id="space_<%= space.id %>", class="user-card-container">
+<article id="space_<%= space.id %>", class="space-card-user-card-container">
     <details class="details-box">
-      <summary class="space-summary-style"><%= space.space_name %></summary>
+      <summary class="space-summary-style"><%= space.space_name.present? ? space.space_name : 'No Name' %></summary>
       <span><%= space.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
 
 
-    <section class="user-objectbox">
-      <div class="icon-object">
+    <section class="space-card-user-objectbox">
+      <div class="space-icon-card-frame">
         <%= link_to space_path(space) do %>
-        <span>画像</span>
 
+
+            <% if space.space_canvas.present? %>
+              <img src="<%= space.space_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="space-card-icon">
+            <% end %>
         <% end %>
       </div>
 
 
-      <div class="item-flex">
+      <div class="space-card-item-flex">
         <div>
           <%= link_to edit_space_path(space), class: "edit-memo-link pencil-fill-space" do %>
             <i class="bi bi-pencil-fill trash-fill-font"></i>

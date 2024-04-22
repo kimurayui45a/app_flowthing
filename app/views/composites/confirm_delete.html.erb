@@ -1,15 +1,36 @@
+
 <div class="max767-container">
-<div class="btn-group">
-<h1>
-  <%= @composite.composite_name %>
-の削除を確認</h1>
+  <div class="btn-group user-createform-text">
+    <div class="delete-card" style="margin-top: 2rem;">
+      <div class="delete-background flex-start-start-flex-center">
+        <div class="flex-column">
+          <h1 style="font-size: 2rem;">
 
-<p>本当にこのスペースを削除しますか？</p>
+            <% if @composite.composite_image.present? %>
+              <img src="<%= @composite.composite_image %>" alt="Canvas Image" style="object-fit: contain;" class="delete-space-icon">
+            <% end %>
 
+            の削除確認
+          </h1>
 
-<%= link_to '削除する', composite_path(@composite), id: "button-delete-#{@composite.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: '消しますよ？' } %>
-<%= link_to 'キャンセル', composites_path %>
+          <% if @composite.composite_name.present? %>
+            <p style="margin-top: 1rem;">Flux Screen名：<%= @composite.composite_name %></p>
+          <% end %>
+
+          <p style="margin-top: 0.5rem;">本当にこのFlux Screenを削除しますか？</p>
+          
+          <p class="red-text" style="text-align: start;">※このFlux Screenに配置しているFlow ThingとScreenは削除されません。</p>
+
+          <div class="flex-between" style="width: 20rem;">
+            <div>
+              <%= link_to 'キャンセル', composites_path %>
+            </div>
+            <div>
+              <%= link_to '削除する', composite_path(@composite), id: "button-delete-#{@composite.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-
-

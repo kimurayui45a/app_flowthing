@@ -1,0 +1,18 @@
+<div class="search-text">
+  <%= search_form_for @q, url: spaces_path, method: :get do |f| %>
+  <div class="search-form-container">
+    <div class="search-field">
+      <%= f.label :space_name_or_space_text_cont, t('spaces.search_form.search_keyword') %><br>
+      <%= f.search_field :space_name_or_space_text_cont, class: "search-form" %>
+    </div>
+    <div class="search-options">
+      <%= f.label :s, t('spaces.search_form.search') %><br>
+      <%= f.check_box :s, { include_hidden: false }, 'spaces.updated_at asc', 'spaces.updated_at desc' %>
+    </div>
+  </div>
+  <div class="search-actions">
+    <%= f.submit t('spaces.search_form.search_btn'), class: "search-btn" %>
+  </div>
+
+  <% end %>
+</div>

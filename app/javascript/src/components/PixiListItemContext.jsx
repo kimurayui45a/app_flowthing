@@ -35,7 +35,7 @@ const PixiListItemContext = ({ itemAllId }) => {
         style={{ position: 'absolute', top: '12px', left: '8px' }}
       >
         <i className="bi bi-collection-play"></i>
-        <span className="tooltip-text">アイテムの調整・アニメーション</span>
+        <span className="tooltip-text">Flow Thingの調整・アニメーション</span>
       </div>
 
       <div
@@ -45,7 +45,7 @@ const PixiListItemContext = ({ itemAllId }) => {
         style={{ position: 'absolute', top: '12px', left: '45px' }}
       >
         <i className="bi bi-trash3-fill"></i>
-        <span className="tooltip-text">選択中のアイテムを削除</span>
+        <span className="tooltip-text">選択中のFlow Thingを削除</span>
       </div>
 
       <div className="bi-arrow-position"><i className="bi bi-arrow-down-up"></i></div>

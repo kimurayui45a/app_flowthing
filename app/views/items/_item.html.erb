@@ -15,8 +15,13 @@
                   <div class="myCanvas-icon"><%= image_tag item.item_image.url, class: "user-profileicon" %></div>
                 <% end %>
               <% when 'item_canvas' %>
-                  <div class="back-white"><canvas class="itemfabric canvas-style myCanvas-icon" id="itemCanvas_<%= item.id %>" 
-                  data-canvas-json='<%= item.item_canvas.to_json.html_safe %>'></canvas></div>
+              <div class="back-white">
+
+<img src="<%= item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon">
+
+                  
+                  </div>
+
               <% else %>
                 <div class="no-image-icon">No Image</div>
             <% end %>
@@ -39,8 +44,11 @@
                   <% end %>
               <% when 'sub_canvas' %>
                   <!-- sub_canvas の内容を表示 -->
-                  <div class="back-white user-action-icon"><canvas class="itemfabric myCanvas-icon canvas-style" id="subCanvas_<%= item.id %>" 
-                          data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas></div>
+
+                  <div class="back-white user-action-icon">
+
+<img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-itemlist-icon user-action-icon"></div>
+
               <% when 'sub_color' %>
                   <!-- sub_color の内容を表示 -->
                   <div style="background-color: <%= sub_user.sub_color %>;" class="user-itemlist-icon user-action-icon"></div>

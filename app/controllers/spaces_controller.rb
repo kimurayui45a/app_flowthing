@@ -1,9 +1,23 @@
 class SpacesController < ApplicationController
   before_action :set_space, only: [:show, :edit, :update, :destroy]
 
+  # def index
+  #   @spaces = Space.all
+  # end
+
+
   def index
-    @spaces = Space.all
+    if @profile.present?
+      @q = @profile.spaces.ransack(params[:q])
+      sort_order = params[:q]&.fetch(:s, 'spaces.updated_at desc')
+      @spaces = @q.result
+                    .order(sort_order)
+                    .page(params[:page]).per(12)
+    else
+      redirect_to root_path
+    end
   end
+
 
   def show
   end

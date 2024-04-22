@@ -42,7 +42,7 @@ const PixiListSpaceContext = ({ spaceAllId }) => {
         style={{ position: 'absolute', top: '12px', left: '8px' }}
       >
         <i className="bi bi-collection-play"></i>
-        <span className="tooltip-text">スペースのアニメーション</span>
+        <span className="tooltip-text">Screenのアニメーション</span>
       </div>
 
       <div style={{ position: 'relative', marginBottom: '8px' }} className="flex-column">
@@ -54,7 +54,7 @@ const PixiListSpaceContext = ({ spaceAllId }) => {
             }
           </div>
         </div>
-        <div style={{ marginTop: '-5px' }}><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>現在のメインスペース</span></div>
+        <div style={{ marginTop: '-5px' }}><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>現在のメインScreen</span></div>
         <div className="pixi-list-select-name">
           <div className="angleDegrees_value"><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>{imageName}</span></div>
           <i className="bi bi-arrow-down-up"></i>

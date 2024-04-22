@@ -33,6 +33,11 @@ class SubUsersController < ApplicationController
     @sub_user = @profile.sub_users.find(params[:id])
   end
 
+
+  def peint_edit
+    @sub_user = @profile.sub_users.find(params[:id])
+  end
+
   def update
     @sub_user = @profile.sub_users.find(params[:id])
     

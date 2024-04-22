@@ -1,18 +1,17 @@
 <%# <% content_for(:name, @sub_user.sub_name) %> 
-<div class="p5canvas-container"> 
-  <div class="user-show-space">
+<div class="flux-screen-show-container"> 
+  <div class="flux-screen-show-space">
 
   <div class="user-show-name-contents">
-      <span class="list-title">
-        <span class="light-blue-text">スペース</span>
-        <%# <span class="purple-text">N</span>ame<br> %>
-      </span>
-      <span class="sub-name-text f-text"><%= @composite.composite_name %></span>
-    </div>
-    <%# <h1 class="section-title user-show-contents">
-      <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
-    </h1> %>
-    <div class="user-icon-frame">
+    <span class="list-title">
+      <span class="light-blue-text">Flux Screen</span>
+      <%# <span class="purple-text">N</span>ame<br> %>
+    </span>
+    <span class="sub-name-text f-text"><%= @composite.composite_name.present? ? @composite.composite_name : 'No Name' %></span>
+  </div>
+
+
+    <div class="flux-screen-show-frame">
 
     <div id="reactLoadComposite"
       data-composite-id="<%= @composite.id %>"
@@ -49,9 +48,11 @@
     </div>
 
 
-    <div class="flex-between user-show-botann">
+  </div>
 
 
+<div class="flex-between user-show-botann">
+    <div>
       <%= link_to edit_composite_path(@composite), class: 'balloon-botann' do %>  
         <div>
           <i class="bi bi-pen-fill pen-fill-icon"></i>
@@ -61,12 +62,9 @@
           Composite
         </div>
       <% end %>  
-
     </div>
-  </div>
-
   <div>
-    <%= link_to confirm_delete_composite_path(@composite), class: "trash-botann" do %>
+    <%= link_to confirm_delete_composite_path(@composite), class: "flux-screen-trash-botann" do %>
     <div>
       <i class="bi bi-trash-fill trash-icon"></i>
     </div>
@@ -76,4 +74,7 @@
     </div>
     <% end %>
   </div> 
+</div>
+
+
 </div>

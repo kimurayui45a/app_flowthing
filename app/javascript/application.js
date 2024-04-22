@@ -25,14 +25,14 @@ import { LoadComposite } from './src/LoadComposite';
 import EditComposite from './src/EditComposite';
 import AllComposite from './src/AllComposite';
 import EditSubUserCanvas from './src/EditSubUserCanvas';
+import PeintSubUserCanvas from './src/PeintSubUserCanvas';
 
 
-
-document.addEventListener("turbo:load", function() {
-  if (document.querySelector('.fabicon')) {
-    restoreSubCanvas();
-  }
-});
+// document.addEventListener("turbo:load", function() {
+//   if (document.querySelector('.fabicon')) {
+//     restoreSubCanvas();
+//   }
+// });
 
 document.addEventListener("turbo:load", function() {
   if (document.querySelector('.motto-miru')) {
@@ -41,66 +41,66 @@ document.addEventListener("turbo:load", function() {
 });
 
 
-function restoreSubCanvas() {
-  var canvasElement = document.getElementById('restoredSubCanvas');
-  var subCanvasData = JSON.parse(canvasElement.dataset.canvasJson);
+// function restoreSubCanvas() {
+//   var canvasElement = document.getElementById('restoredSubCanvas');
+//   var subCanvasData = JSON.parse(canvasElement.dataset.canvasJson);
 
-  if (canvasElement && subCanvasData) {
-    var restoredCanvas = new fabric.Canvas('restoredSubCanvas', {
-      width: 600, // キャンバスの幅
-      height: 400 // キャンバスの高さ
-    });
-    restoredCanvas.preserveObjectStacking = true;
-    var radius = 175;
+//   if (canvasElement && subCanvasData) {
+//     var restoredCanvas = new fabric.Canvas('restoredSubCanvas', {
+//       width: 600, // キャンバスの幅
+//       height: 400 // キャンバスの高さ
+//     });
+//     restoredCanvas.preserveObjectStacking = true;
+//     var radius = 175;
 
-    restoredCanvas.loadFromJSON(subCanvasData, function() {
-      // オブジェクトが変形できないように設定
-      restoredCanvas.forEachObject(function(object) {
-        object.set({
-          hasControls: false,
-          hasBorders: false,
-          selectable: true,
-          lockMovementX: false,
-          lockMovementY: false,
-          lockRotation: true,
-          lockScalingX: true,
-          lockScalingY: true,
-          lockUniScaling: true
-        });
-      });
+//     restoredCanvas.loadFromJSON(subCanvasData, function() {
+//       // オブジェクトが変形できないように設定
+//       restoredCanvas.forEachObject(function(object) {
+//         object.set({
+//           hasControls: false,
+//           hasBorders: false,
+//           selectable: true,
+//           lockMovementX: false,
+//           lockMovementY: false,
+//           lockRotation: true,
+//           lockScalingX: true,
+//           lockScalingY: true,
+//           lockUniScaling: true
+//         });
+//       });
 
-      // // オブジェクトをグループ化し、縮小
-      var group = new fabric.Group(restoredCanvas.getObjects(), {
-        // scaleX: 100 / 350, // 元のサイズから縮小
-        // scaleY: 100 / 350,
-        // left: restoredCanvas.width / 2, // キャンバスの中央に配置
-        // top: restoredCanvas.height / 2,
-        originX: 'center',
-        originY: 'center',
-        hasControls: false,
-        hasBorders: false,
-        selectable: true,
-        lockRotation: true,
-        lockScalingX: true,
-        lockScalingY: true,
-        lockUniScaling: true,
-        clipPath: new fabric.Circle({
-          radius: radius,
-          originX: 'center',
-          originY: 'center',
-          // absolutePositioned: true
-        })
-      });
+//       // // オブジェクトをグループ化し、縮小
+//       var group = new fabric.Group(restoredCanvas.getObjects(), {
+//         // scaleX: 100 / 350, // 元のサイズから縮小
+//         // scaleY: 100 / 350,
+//         // left: restoredCanvas.width / 2, // キャンバスの中央に配置
+//         // top: restoredCanvas.height / 2,
+//         originX: 'center',
+//         originY: 'center',
+//         hasControls: false,
+//         hasBorders: false,
+//         selectable: true,
+//         lockRotation: true,
+//         lockScalingX: true,
+//         lockScalingY: true,
+//         lockUniScaling: true,
+//         clipPath: new fabric.Circle({
+//           radius: radius,
+//           originX: 'center',
+//           originY: 'center',
+//           // absolutePositioned: true
+//         })
+//       });
 
-      // キャンバスにグループを追加
-      restoredCanvas.clear().add(group);
-      // グループを縮小
-      group.scaleToWidth(150);
-      group.scaleToHeight(150);
-      restoredCanvas.renderAll();
-    });
-  }
-}
+//       // キャンバスにグループを追加
+//       restoredCanvas.clear().add(group);
+//       // グループを縮小
+//       group.scaleToWidth(150);
+//       group.scaleToHeight(150);
+//       restoredCanvas.renderAll();
+//     });
+//   }
+// }
 
 
 function mottomiru() {
@@ -143,7 +143,8 @@ let dragRoot,
     loadCompositeRoot,
     editCompositeRoot,
     allCompositeRoot,
-    editSubUserCanvasRoot;
+    editSubUserCanvasRoot,
+    peintSubUserCanvasRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -305,7 +306,6 @@ document.addEventListener('turbo:load', () => {
     const spaceAllId = JSON.parse(editCompositeContainer.getAttribute('data-space-id-all'));
     const subUserAllId = JSON.parse(editCompositeContainer.getAttribute('data-sub-user-id-all'));
     
-    
     const spaceObject = editCompositeContainer.getAttribute('data-space-data');
     const itemObject = editCompositeContainer.getAttribute('data-item-data');
 
@@ -341,6 +341,20 @@ document.addEventListener('turbo:load', () => {
 
     editSubUserCanvasRoot = createRoot(editSubUserCanvasContainer);
     editSubUserCanvasRoot.render(<EditSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} />);
+  }
+
+
+  //「PeintSubUserCanvas」のマウント
+  const peintSubUserCanvasContainer = document.getElementById('reactPeintSubUserCanvas');
+  if (peintSubUserCanvasContainer) {
+    const canvasImgId = peintSubUserCanvasContainer.getAttribute('data-user-id');
+    const profileId = peintSubUserCanvasContainer.getAttribute('data-profile-id');
+    const canvasSubUserName = peintSubUserCanvasContainer.getAttribute('data-sub-user-name');
+    const canvasSubUserText = peintSubUserCanvasContainer.getAttribute('data-sub-user-text');
+    const canvasData = peintSubUserCanvasContainer.getAttribute('data-sub-user-canvas');
+
+    peintSubUserCanvasRoot = createRoot(peintSubUserCanvasContainer);
+    peintSubUserCanvasRoot.render(<PeintSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} canvasData={canvasData} />);
   }
 
 });
@@ -442,6 +456,13 @@ document.addEventListener('turbo:before-cache', () => {
   if (editSubUserCanvasRoot) {
     editSubUserCanvasRoot.unmount();
     editSubUserCanvasRoot = null;
+  }
+
+
+  //「PeintSubUserCanvas」のアンマウント
+  if (peintSubUserCanvasRoot) {
+    peintSubUserCanvasRoot.unmount();
+    peintSubUserCanvasRoot = null;
   }
 
 });

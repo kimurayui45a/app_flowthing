@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get 'sub_users/canvas_edit/:id', to: 'sub_users#canvas_edit', as: 'canvas_edit_sub_user'
+  get 'sub_users/peint_edit/:id', to: 'sub_users#peint_edit', as: 'peint_edit_sub_user'
   get 'items/episode_list', to: 'items#episode_list', as: 'episode_list'
   get 'items/new_canvas', to: 'items#new_canvas', as: 'new_canvas_item'
   get 'items/canvas_edit', to: 'items#canvas_edit', as: 'canvas_edit_item'

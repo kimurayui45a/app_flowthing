@@ -85,8 +85,8 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
         color: pixiListTabMode ? '#ececec' : '#343434'
       }}
     >
-      <span>アイテム</span>
-      <span className="tooltip-text">アイテムリストタブ</span>
+      <span>Flow Thing</span>
+      <span className="tooltip-text">Flow Thingリストタブ</span>
     </div>
 
     <div
@@ -99,8 +99,8 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
         color: !pixiListTabMode ? '#ececec' : '#343434'
       }}
     >
-      <span>スペース</span>
-      <span className="tooltip-text">スペースリストタブ</span>
+      <span>Screen</span>
+      <span className="tooltip-text">Screenリストタブ</span>
     </div>
   </div>
 
@@ -113,7 +113,7 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
       //アイテム
       <PixiListItemContext itemAllId={itemAllId} />
     ) : (
-      //スペース
+      //Screen
       <PixiListSpaceContext spaceAllId={spaceAllId} />
     )}
   </div>

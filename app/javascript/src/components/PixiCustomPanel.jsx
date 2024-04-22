@@ -84,7 +84,7 @@ const PixiCustomPanel = () => {
       //アイテム
       <PixiItemCustom />
     ) : (
-      //スペース
+      //Screen
       <PixiSpaceCustom />
     )}
   </div>

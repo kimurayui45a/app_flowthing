@@ -145,7 +145,7 @@ const PixiDetailPanel = ({ itemAllId, subUserAllId }) => {
       cancel=".no-drag"
     >
       <div className="item-detail-panel-title" style={{ marginTop: '8px' }}>
-        <span>アイテム詳細</span>
+        <span>Flow Thing詳細</span>
 
 
           {/* 閉じる */}

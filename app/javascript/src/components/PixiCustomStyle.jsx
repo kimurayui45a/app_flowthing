@@ -58,7 +58,7 @@ const PixiCustomStyle = () => {
           <PixiPanelParts PanelParts="spriteForm" type="scale" minValue={0.01} maxValue={20} formTitle="スケール" inputValue={inputScaleSprite} />
         <div className="tooltip-container">
           <PixiPanelParts PanelParts="directionRunButton" handleRunButton={changeNewScale} formTitle="変更" />
-          <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のアイテム及び<br />以降の追加アイテムのスケールを選択値に変更</span>
+          <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のFlow Thing及び<br />以降の追加Flow Thingのスケールを選択値に変更</span>
         </div>
       </div>
 
@@ -69,7 +69,7 @@ const PixiCustomStyle = () => {
         <PixiPanelParts PanelParts="spriteForm" type="alpha" minValue={0.1} maxValue={1} formTitle="透明度" inputValue={inputAlphaSprite} />
         <div className="tooltip-container">
         <PixiPanelParts PanelParts="directionRunButton" handleRunButton={changeNewAlpha} formTitle="変更" />
-          <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のアイテム及び<br />以降の追加アイテムの透明度を選択値に変更</span>
+          <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のFlow Thing及び<br />以降の追加Flow Thingの透明度を選択値に変更</span>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ const PixiCustomStyle = () => {
         <PixiPanelParts PanelParts="spriteForm" type="angle" minValue={0} maxValue={360} formTitle="角度" inputValue={inputAngleSprite} />
         <div className="tooltip-container">
         <PixiPanelParts PanelParts="directionRunButton" handleRunButton={changeNewAngle} formTitle="変更" />
-          <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のアイテム及び<br />以降の追加アイテムの角度を選択値に変更</span>
+          <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のFlow Thing及び<br />以降の追加Flow Thingの角度を選択値に変更</span>
         </div>
       </div>
 

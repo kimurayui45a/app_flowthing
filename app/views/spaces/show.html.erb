@@ -1,21 +1,17 @@
 <%# <% content_for(:name, @sub_user.sub_name) %> 
 <div class="max767-container"> 
-  <div class="user-show-space">
+  <div class="space-show-space">
 
-  <div class="user-show-name-contents">
+    <div class="user-show-name-contents">
       <span class="list-title">
-        <span class="light-blue-text">スペース</span>
+        <span class="orange-text">Screen</span>
         <%# <span class="purple-text">N</span>ame<br> %>
       </span>
-      <span class="sub-name-text f-text"><%= @space.space_name %></span>
+      <span class="sub-name-text f-text"><%= @space.space_name.present? ? @space.space_name : 'No Name' %></span>
     </div>
-    <%# <h1 class="section-title user-show-contents">
-      <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
-    </h1> %>
-    <div class="user-icon-frame">
 
-      <div id="reactLordSpaceCanvas" data-space-id="<%= @space.id %>" data-canvas-data="<%= @space.space_canvas %>"></div>
-
+    <div class="space-show-frame">
+      <img src="<%= @space.space_canvas %>" alt="Canvas Image" style="width: 100%; height: 100%; object-fit: contain;" class="space-show-imageicon">
     </div>
 
     <div class="content motto-miru user-show-comment-contents">
@@ -39,9 +35,7 @@
       <% end %>
     </div>
 
-
     <div class="flex-between user-show-botann">
-
 
       <%= link_to edit_space_path(@space), class: 'balloon-botann' do %>  
         <div>
@@ -52,7 +46,6 @@
           Space
         </div>
       <% end %>  
-
     </div>
   </div>
 

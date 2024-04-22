@@ -49,6 +49,7 @@ const NewItemCreate = ({ subUserId }) => {
     formData.append('item[item_place]', itemPlace);
     formData.append('item[item_image]', itemImage);
 
+    
     if (saveLayersData) {
       formData.append('item[item_save_canvas]', JSON.stringify(saveLayersData));
   } else {

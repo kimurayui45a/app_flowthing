@@ -1,11 +1,21 @@
 <% content_for(:title, t('.title')) %>
 <div class="index-container">
-<h1 class="midasi-title">
-  <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
-  <span>スペース</span>
-</h1>
+  <h1 class="midasi-title">
+    <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
+    <span>Screen</span>
+  </h1>
 
-<%# <%= render 'search_form', q: @q, url: sub_users_path %>
+  <div class="flex-end-end">  
+    <%= link_to new_space_path, class: 'tooltip-container' do %>
+      <div class="flex create-usersselect-container">
+        <div><i class="bi bi-image bi-image-title" style="font-size: 2rem;"></i></div>
+        <div class="newcontents_text"><span>Screenを作成<span></div>
+        <span class="tooltip-text" style="text-align: start;">Flow Thingを配置するScreenを作成できます。</span>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render 'search_form', q: @q, url: spaces_path %>
 
   <div class="item-list-container">
     <% if @spaces.present? %>
@@ -15,22 +25,12 @@
         </div>
       <% end %>
     <% else %>
-      <div class="noitem-text">スペースがありません</div>
+      <div class="noitem-text">Screenがありません</div>
     <% end %>
   </div>
-
-
-
-
-
-  <%= link_to new_space_path do %>
-      <div>スペースを作成する</div>
-    <% end %>
-
-
-
 
   <div class="paginate-box">
-    <%# <%= paginate @sub_users %>
+    <%= paginate @spaces %>
   </div>
+
 </div>

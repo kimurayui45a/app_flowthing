@@ -1,20 +1,26 @@
-<article id="composite_<%= composite.id %>", class="user-card-container">
+
+
+
+<article id="composite_<%= composite.id %>", class="space-card-user-card-container">
     <details class="details-box">
-      <summary class="composite-summary-style"><%= composite.composite_name %></summary>
+      <summary class="space-summary-style"><%= composite.composite_name.present? ? composite.composite_name : 'No Name' %></summary>
       <span><%= composite.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
 
 
-    <section class="user-objectbox">
-      <div class="icon-object">
+    <section class="space-card-user-objectbox">
+      <div class="space-icon-card-frame">
         <%= link_to composite_path(composite) do %>
-        <span>画像</span>
 
+
+            <% if composite.composite_image.present? %>
+              <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
+            <% end %>
         <% end %>
       </div>
 
 
-      <div class="item-flex">
+      <div class="space-card-item-flex">
         <div>
           <%= link_to edit_composite_path(composite), class: "edit-memo-link pencil-fill-space" do %>
             <i class="bi bi-pencil-fill trash-fill-font"></i>
@@ -29,6 +35,4 @@
       </div> 
     </section>
 </article>
-
-
 

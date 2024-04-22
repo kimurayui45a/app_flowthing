@@ -9,7 +9,9 @@
         <div>
           <%= image_tag board.item.item_image.url, class: "user-profileicon" %></div>
         <% when 'item_canvas' %>
-          <div><canvas class="board-item-index" id="itemCanvas_<%= board.item.id %>" data-canvas-json='<%= board.item.item_canvas.to_json.html_safe %>'></canvas>
+          <div>
+
+          <img src="<%= board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon" >
           </div>
         <% else %>
           <div class="no-image-icon">No Image</div>
