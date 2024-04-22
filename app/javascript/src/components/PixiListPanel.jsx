@@ -105,7 +105,7 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
   </div>
 
 
-  <div className="select-detail-tool-group">
+  <div className="select-detail-tool-group" style={{ position: 'relative' }}>
 
 
     {/* グループ分岐 */}

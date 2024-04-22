@@ -6,7 +6,14 @@ const P5PanelGroupContext = createContext();
 export const useP5PanelGroupContext = () => useContext(P5PanelGroupContext);
 
 
-export const P5PanelGroupProvider = ({ children }) => {
+export const P5PanelGroupProvider = ({ children, notLayerSave }) => {
+
+  //レイヤーセーブに関するステート
+  const [layerSave, setLayerSave] = useState(true);
+
+  useEffect(() => {
+    setLayerSave(notLayerSave)
+  }, []);
 
   //描画の有効/無効状態を管理
   const [p5DrawingEnabled, setP5DrawingEnabled] = useState(true);
@@ -241,6 +248,7 @@ export const P5PanelGroupProvider = ({ children }) => {
     setScalePanelPosition,
     detailPanelPosition,
     setDetailPanelPosition,
+    layerSave
   };
 
 

@@ -23,8 +23,7 @@
           <% when 'sub_canvas' %>
             <div class="canvas-container-parent">
             <!-- sub_canvas の内容を表示 -->
-              <canvas class="sub-show-fabric" id="subCanvas_<%= @sub_user.id %>" 
-            data-canvas-json='<%= @sub_user.sub_canvas.to_json.html_safe %>'></canvas>
+              <img src="<%= @sub_user.sub_canvas %>" alt="Canvas Image" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
           <% when 'sub_color' %>
             <!-- sub_color の内容を表示 -->
@@ -76,7 +75,7 @@
               <% when 'item_canvas' %>
               <div class="sub-user-itemicon">
                 <div class="back-white-rect">
-                  <div class="sub-show-fabric" id="reactLordItemSubUserShow_<%= item.id %>" data-item-id="<%= item.id %>" data-canvas-data="<%= item.item_canvas %>"></div>
+                  <img src="<%= item.item_canvas %>" alt="Canvas Image" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
               </div>
               <% else %>
@@ -127,6 +126,21 @@
           Sub Thing
         </div>
       <% end %>  
+
+<%= link_to canvas_edit_sub_user_path(id: @sub_user.id), class: 'balloon-botann' do %>  
+  <div>
+    <i class="bi bi-pen-fill pen-fill-icon"></i>
+  </div>
+  <div class="balloon-botann-text">
+    Create<br>
+    Flow Paint
+  </div>
+<% end %>
+
+
+
+
+
     </div>
   </div>
 

@@ -34,37 +34,36 @@ const PixiListSpaceContext = ({ spaceAllId }) => {
 
   return (
     <>
-    <div style={{ position: 'relative', marginBottom: '8px' }} className="flex-column">
-      <div className="pixi-space-preview-container">
-        <div className="pixi-space-preview-background flex">
-          {imageUrl ? 
-            <img src={imageUrl} alt={imageName} />
-            : null
-          }
-        </div>
-      </div>
-      <div style={{ marginTop: '-5px' }}><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>現在のメイン背景</span></div>
-      <div className="pixi-list-select-name">
-        <div className="angleDegrees_value"><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>{imageName}</span></div>
-        <i className="bi bi-arrow-down-up"></i>
-      </div>
-
       {/* カスタムパネルを開くボタン */}
       <div
         className="panel-tool-button tooltip-container"
         onClick={toggleCustomPanelVisible}
         onTouchStart={toggleCustomPanelVisible}
-        style={{ position: 'absolute', top: '0px', left: '-25px' }}
+        style={{ position: 'absolute', top: '12px', left: '8px' }}
       >
         <i className="bi bi-collection-play"></i>
-        <span className="tooltip-text">背景のアニメーション</span>
+        <span className="tooltip-text">スペースのアニメーション</span>
       </div>
-    </div>
 
+      <div style={{ position: 'relative', marginBottom: '8px' }} className="flex-column">
+        <div className="pixi-space-preview-container">
+          <div className="pixi-space-preview-background flex">
+            {imageUrl ? 
+              <img src={imageUrl} alt={imageName} />
+              : null
+            }
+          </div>
+        </div>
+        <div style={{ marginTop: '-5px' }}><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>現在のメインスペース</span></div>
+        <div className="pixi-list-select-name">
+          <div className="angleDegrees_value"><span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>{imageName}</span></div>
+          <i className="bi bi-arrow-down-up"></i>
+        </div>
+      </div>
 
+      {/* スペースリスト */}
       <div style={{ overflowY: 'auto', height: '200px', display: 'flex', flexDirection: 'column', width:'232px' }}>
         <div className="pixi-space-list-block">
-
         {spaceAllId.map((space, index) => (
           <div key={index} className="flex-column-start pixi-space-list-background" style={{ width: '70px', height: '60px', border: '1px solid #ccc', margin: '3px', borderRadius: '3px' }}>
             {!spaceAnimMode ? (
@@ -114,7 +113,7 @@ const PixiListSpaceContext = ({ spaceAllId }) => {
         ))}
         </div>
       </div>
-</>
+    </>
   );
 };
 

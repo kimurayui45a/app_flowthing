@@ -7,9 +7,6 @@ const DraggableArea = ({ canvasImgId, canvasData }) => {
     //canvasの外枠のサイズを決めるもの
     const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1200, height: 800 });
 
-    //canvasのドラッグ範囲のサイズを決めるもの
-    const [canvasDragSpaceSize, setCanvasDragSpaceSize] = useState({ width: 800, height: 600 });
-
   return (
     <div>
       <P5CanvasSet
@@ -18,7 +15,6 @@ const DraggableArea = ({ canvasImgId, canvasData }) => {
         // canvasData={canvasData}
         canvasSize={canvasSize}
         canvasSpaceSize={canvasSpaceSize}
-        canvasDragSpaceSize={canvasDragSpaceSize}
       />
     </div>
   );

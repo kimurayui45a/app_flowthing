@@ -999,7 +999,7 @@ function setupselectImage() {
   //ラジオボタンの選択(id)
   const selectImage = document.getElementById('subuserImage');
   const selectColorCode = document.getElementById('subuserColorCode');
-  const selectCanvas = document.getElementById('subuserCanvas');
+  //const selectCanvas = document.getElementById('subuserCanvas');
   const iconChoiceDropdown = document.getElementById('iconChoice');
   var selectedOptionField = document.getElementById('icon_choice');
   //toggleButton-${uniqueId}の代わりにラジオのidsubuserCanvas
@@ -1007,7 +1007,7 @@ function setupselectImage() {
   //選択項目の外枠のdiv要素(id)
   const imageInputDiv = document.getElementById('subImageInput');
   const colorInputDiv = document.getElementById('subColorInput');
-  const canvasInputDiv = document.getElementById('subCanvasInput');
+  //const canvasInputDiv = document.getElementById('subCanvasInput');
 
   var subImageInputField = document.getElementById('sub_image');
   if (subImageInputField) {
@@ -1029,7 +1029,7 @@ function setupselectImage() {
       selectImage.checked = true;
       selectedOptionField.value = 'sub_image';
     } else if (selectedValue === 'sub_canvas') {
-      selectCanvas.checked = true;
+      //selectCanvas.checked = true;
       selectedOptionField.value = 'sub_canvas';
     }
     // UIを更新
@@ -1047,49 +1047,54 @@ function setupselectImage() {
       //半透明にするか？
       imageInputDiv.classList.remove('subuser-disabled');
       colorInputDiv.classList.add('subuser-disabled');
-      canvasInputDiv.classList.add('subuser-disabled');
+      //canvasInputDiv.classList.add('subuser-disabled');
       //フォームの機能の制御
       imageInputDiv.querySelector('input[type=file]').disabled = false;
       colorInputDiv.querySelector('input[type=color]').disabled = true;
       //選択されている方に「subactive-style」スタイルを付与
       imageInputDiv.classList.add('subactive-style');
       colorInputDiv.classList.remove('subactive-style');
-      canvasInputDiv.classList.remove('subactive-style');
+      colorInputDiv.classList.add('hidden-canvas');
+      //canvasInputDiv.classList.remove('subactive-style');
       //選択されている方のプレビューを表示/他は非表示
       imagePreview.style.display = 'block';
       colorPreview.style.display = 'none';
       canvasPreview.classList.add('hidden-canvas');
+      imageInputDiv.classList.remove('hidden-canvas');
     } else if (selectColorCode.checked)  {
       // Colorが選択されたときの処理
       colorInputDiv.classList.remove('subuser-disabled');
       imageInputDiv.classList.add('subuser-disabled');
-      canvasInputDiv.classList.add('subuser-disabled');
+      //canvasInputDiv.classList.add('subuser-disabled');
+      imageInputDiv.classList.add('hidden-canvas');
 
       colorInputDiv.querySelector('input[type=color]').disabled = false;
       imageInputDiv.querySelector('input[type=file]').disabled = true;
       colorInputDiv.classList.add('subactive-style');
       imageInputDiv.classList.remove('subactive-style');
-      canvasInputDiv.classList.remove('subactive-style');
+      colorInputDiv.classList.remove('hidden-canvas');
+      //canvasInputDiv.classList.remove('subactive-style');
 
       imagePreview.style.display = 'none';
       colorPreview.style.display = 'block';
       canvasPreview.classList.add('hidden-canvas');
-    } else if (selectCanvas.checked) {
-      // Canvasが選択されたときの処理
-      colorInputDiv.classList.add('subuser-disabled');
-      imageInputDiv.classList.add('subuser-disabled');
-      canvasInputDiv.classList.remove('subuser-disabled');
+    } 
+    // else if (selectCanvas.checked) {
+    //   // Canvasが選択されたときの処理
+    //   colorInputDiv.classList.add('subuser-disabled');
+    //   imageInputDiv.classList.add('subuser-disabled');
+    //   //canvasInputDiv.classList.remove('subuser-disabled');
 
-      colorInputDiv.querySelector('input[type=color]').disabled = true;
-      imageInputDiv.querySelector('input[type=file]').disabled = true;
-      imageInputDiv.classList.remove('subactive-style');
-      colorInputDiv.classList.remove('subactive-style');
-      canvasInputDiv.classList.add('subactive-style');
+    //   colorInputDiv.querySelector('input[type=color]').disabled = true;
+    //   imageInputDiv.querySelector('input[type=file]').disabled = true;
+    //   imageInputDiv.classList.remove('subactive-style');
+    //   colorInputDiv.classList.remove('subactive-style');
+    //   //canvasInputDiv.classList.add('subactive-style');
 
-      imagePreview.style.display = 'none';
-      colorPreview.style.display = 'none';
-      canvasPreview.classList.remove('hidden-canvas');
-    }
+    //   imagePreview.style.display = 'none';
+    //   colorPreview.style.display = 'none';
+    //   canvasPreview.classList.remove('hidden-canvas');
+    // }
     validateFormAndToggleSubmit();
   }
 
@@ -1148,12 +1153,12 @@ function setupselectImage() {
     updateInputVisibility(); // 入力の可視性を更新
   });
 
-  canvasInputDiv.addEventListener('click', function() {
-    selectCanvas.checked = true;
-    iconChoiceDropdown.value = 'sub_canvas';
-    selectedOptionField.value = 'sub_canvas';
-    updateInputVisibility(); // 入力の可視性を更新
-  });
+  // canvasInputDiv.addEventListener('click', function() {
+  //   selectCanvas.checked = true;
+  //   iconChoiceDropdown.value = 'sub_canvas';
+  //   selectedOptionField.value = 'sub_canvas';
+  //   updateInputVisibility(); // 入力の可視性を更新
+  // });
   
   // ラジオボタンの変更を監視するイベントリスナーを設定
   selectColorCode.addEventListener('change', function() {
@@ -1172,18 +1177,18 @@ function setupselectImage() {
     }
   });
 
-  selectCanvas.addEventListener('change', function() {
-    if (this.checked) {
-      iconChoiceDropdown.value = 'sub_canvas';
-      selectedOptionField.value = 'sub_canvas';
-      updateInputVisibility();
-    }
-  });
+  // selectCanvas.addEventListener('change', function() {
+  //   if (this.checked) {
+  //     iconChoiceDropdown.value = 'sub_canvas';
+  //     selectedOptionField.value = 'sub_canvas';
+  //     updateInputVisibility();
+  //   }
+  // });
 
   // ラジオボタンの変更を監視
   selectImage.addEventListener('change', updateInputVisibility);
   selectColorCode.addEventListener('change', updateInputVisibility);
-  selectCanvas.addEventListener('change', updateInputVisibility);
+  //selectCanvas.addEventListener('change', updateInputVisibility);
 
   // 初期状態を設定
   updateInputVisibility();
@@ -1195,14 +1200,14 @@ function setupselectImage() {
 function setupselectItem() {
   //ラジオボタンの選択(id)
   const selectImage = document.getElementById('itemImage');
-  const selectCanvas = document.getElementById('itemCanvas');
+  //const selectCanvas = document.getElementById('itemCanvas');
   const iconChoiceDropdown = document.getElementById('iconItemChoice');
   var selectedOptionField = document.getElementById('image_choice');
   //toggleButton-${uniqueId}の代わりにラジオのid
   
   //選択項目の外枠のdiv要素(id)
   const imageInputDiv = document.getElementById('itemImageInput');
-  const canvasInputDiv = document.getElementById('itemCanvasInput');
+  //const canvasInputDiv = document.getElementById('itemCanvasInput');
 
   var imageInputField = document.getElementById('item_image');
   if (imageInputField) {
@@ -1220,17 +1225,17 @@ function setupselectItem() {
   if (selectedValue === 'no_image') {
     // 「選択しない」が選ばれたときの処理
     selectImage.checked = false;
-    selectCanvas.checked = false;
+    //selectCanvas.checked = false;
     selectedOptionField.value = 'no_image';
     imageInputDiv.classList.add('subuser-disabled');
-    canvasInputDiv.classList.add('subuser-disabled');
+    //canvasInputDiv.classList.add('subuser-disabled');
   } else if (selectedValue === 'item_image') {
     selectImage.checked = true;
-    selectCanvas.checked = false;
+    //selectCanvas.checked = false;
     selectedOptionField.value = 'item_image';
   } else if (selectedValue === 'item_canvas') {
     selectImage.checked = false;
-    selectCanvas.checked = true;
+    //selectCanvas.checked = true;
     selectedOptionField.value = 'item_canvas';
   }
     // UIを更新
@@ -1246,34 +1251,36 @@ function setupselectItem() {
       // Imageが選択されたときの処理
       //半透明にするか？
       imageInputDiv.classList.remove('subuser-disabled');
-      canvasInputDiv.classList.add('subuser-disabled');
+      //canvasInputDiv.classList.add('subuser-disabled');
       //フォームの機能の制御
       imageInputDiv.querySelector('input[type=file]').disabled = false;
       //選択されている方に「subactive-style」スタイルを付与
       imageInputDiv.classList.add('subactive-style');
-      canvasInputDiv.classList.remove('subactive-style');
+      //canvasInputDiv.classList.remove('subactive-style');
       //選択されている方のプレビューを表示/他は非表示
       imagePreview.style.display = 'block';
       canvasPreview.classList.add('hidden-canvas');
-    } else if (selectCanvas.checked) {
-      // Canvasが選択されたときの処理
-      imageInputDiv.classList.add('subuser-disabled');
-      canvasInputDiv.classList.remove('subuser-disabled');
-      imageInputDiv.querySelector('input[type=file]').disabled = true;
-      imageInputDiv.classList.remove('subactive-style');
-      canvasInputDiv.classList.add('subactive-style');
-      imagePreview.style.display = 'none';
-      canvasPreview.classList.remove('hidden-canvas');
     } else {
       // 「選択しない」が選ばれたときの処理
       imageInputDiv.classList.add('subuser-disabled');
-      canvasInputDiv.classList.add('subuser-disabled');
+      //canvasInputDiv.classList.add('subuser-disabled');
       imageInputDiv.querySelector('input[type=file]').disabled = true;
       imageInputDiv.classList.remove('subactive-style');
-      canvasInputDiv.classList.remove('subactive-style');
-      imagePreview.style.display = 'none';
+      //canvasInputDiv.classList.remove('subactive-style');
+      //imagePreview.style.display = 'none';
       canvasPreview.classList.add('hidden-canvas');
     }
+    // else if (selectCanvas.checked) {
+    //   // Canvasが選択されたときの処理
+    //   imageInputDiv.classList.add('subuser-disabled');
+    //   //canvasInputDiv.classList.remove('subuser-disabled');
+    //   imageInputDiv.querySelector('input[type=file]').disabled = true;
+    //   imageInputDiv.classList.remove('subactive-style');
+    //   //canvasInputDiv.classList.add('subactive-style');
+    //   imagePreview.style.display = 'none';
+    //   canvasPreview.classList.remove('hidden-canvas');
+    // }
+
     validateFormAndToggleSubmit();
   }
 
@@ -1302,12 +1309,12 @@ function setupselectItem() {
     }
   });
 
-  canvasInputDiv.addEventListener('click', function() {
-    selectCanvas.checked = true;
-    iconChoiceDropdown.value = 'item_canvas';
-    selectedOptionField.value = 'item_canvas';
-    updateInputVisibility(); // 入力の可視性を更新
-  });
+  // canvasInputDiv.addEventListener('click', function() {
+  //   selectCanvas.checked = true;
+  //   iconChoiceDropdown.value = 'item_canvas';
+  //   selectedOptionField.value = 'item_canvas';
+  //   updateInputVisibility(); // 入力の可視性を更新
+  // });
   
   // ラジオボタンの変更を監視するイベントリスナーを設定
   selectImage.addEventListener('change', function() {
@@ -1318,17 +1325,17 @@ function setupselectItem() {
     }
   });
 
-  selectCanvas.addEventListener('change', function() {
-    if (this.checked) {
-      iconChoiceDropdown.value = 'item_canvas';
-      selectedOptionField.value = 'item_canvas';
-      updateInputVisibility();
-    }
-  });
+  // selectCanvas.addEventListener('change', function() {
+  //   if (this.checked) {
+  //     iconChoiceDropdown.value = 'item_canvas';
+  //     selectedOptionField.value = 'item_canvas';
+  //     updateInputVisibility();
+  //   }
+  // });
 
   // ラジオボタンの変更を監視
   selectImage.addEventListener('change', updateInputVisibility);
-  selectCanvas.addEventListener('change', updateInputVisibility);
+  //selectCanvas.addEventListener('change', updateInputVisibility);
 
   // 初期状態を設定
   updateInputVisibility();

@@ -4,13 +4,13 @@ import { P5CanvasSet } from './components/P5CanvasSet';
 const NewSpaceCreate = ({ profileId }) => {
 
   // Canvasのサイズを状態として保持
-  const [canvasSize, setCanvasSize] = useState({ width: 1000, height: 750 });
+  const [canvasSize, setCanvasSize] = useState({ width: 800, height: 450 });
 
   //canvasの外枠のサイズを決めるもの
-  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1400, height: 1050 });
+  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
 
-    //canvasのドラッグ範囲のサイズを決めるもの
-    const [canvasDragSpaceSize, setCanvasDragSpaceSize] = useState({ width: 800, height: 600 });
+  //レイヤーセーブできるようにする
+  const [notLayerSave, setNotLayerSave] = useState(true);
 
   // 描画データを受け取るための状態
   const [getData, setGetData] = useState(null);
@@ -77,7 +77,7 @@ const NewSpaceCreate = ({ profileId }) => {
 
   return (
     <div>
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} canvasDragSpaceSize={canvasDragSpaceSize}/>
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
 
       {/* form */}
 

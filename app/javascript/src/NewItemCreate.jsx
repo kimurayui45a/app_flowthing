@@ -12,10 +12,12 @@ const NewItemCreate = ({ subUserId }) => {
   const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
 
   //canvasの外枠のサイズを決めるもの
-  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1200, height: 1000 });
+  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
 
-    //canvasのドラッグ範囲のサイズを決めるもの
-    const [canvasDragSpaceSize, setCanvasDragSpaceSize] = useState({ width: 800, height: 600 });
+
+  //レイヤーセーブできるようにする
+  const [notLayerSave, setNotLayerSave] = useState(true);
+
 
   // 描画データを受け取るための状態
   const [getData, setGetData] = useState(null);
@@ -89,7 +91,7 @@ const NewItemCreate = ({ subUserId }) => {
 
   return (
     <div>
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} canvasDragSpaceSize={canvasDragSpaceSize}/>
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
 
       {/* form */}
 

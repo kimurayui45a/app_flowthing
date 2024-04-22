@@ -24,7 +24,7 @@ import NewCompositeCreate from './src/NewCompositeCreate';
 import { LoadComposite } from './src/LoadComposite';
 import EditComposite from './src/EditComposite';
 import AllComposite from './src/AllComposite';
-
+import EditSubUserCanvas from './src/EditSubUserCanvas';
 
 
 
@@ -142,7 +142,8 @@ let dragRoot,
     newCompositeCreateRoot,
     loadCompositeRoot,
     editCompositeRoot,
-    allCompositeRoot;
+    allCompositeRoot,
+    editSubUserCanvasRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -329,6 +330,19 @@ document.addEventListener('turbo:load', () => {
   }
 
 
+
+  //「EditSubUserCanvas」のマウント
+  const editSubUserCanvasContainer = document.getElementById('reactEditSubUserCanvas');
+  if (editSubUserCanvasContainer) {
+    const canvasImgId = editSubUserCanvasContainer.getAttribute('data-user-id');
+    const profileId = editSubUserCanvasContainer.getAttribute('data-profile-id');
+    const canvasSubUserName = editSubUserCanvasContainer.getAttribute('data-sub-user-name');
+    const canvasSubUserText = editSubUserCanvasContainer.getAttribute('data-sub-user-text');
+
+    editSubUserCanvasRoot = createRoot(editSubUserCanvasContainer);
+    editSubUserCanvasRoot.render(<EditSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} />);
+  }
+
 });
 
 document.addEventListener('turbo:before-cache', () => {
@@ -424,5 +438,10 @@ document.addEventListener('turbo:before-cache', () => {
     allCompositeRoot = null;
   }
 
+  //「EditSubUserCanvas」のアンマウント
+  if (editSubUserCanvasRoot) {
+    editSubUserCanvasRoot.unmount();
+    editSubUserCanvasRoot = null;
+  }
 
 });

@@ -33,8 +33,8 @@ ja:
       title: プロフィール編集
     form:
       color_code: カラーアイコン
-      image_icon: 画像
-      name: お名前(任意)
+      image_icon: 画像アイコン
+      name: 命名(任意)
       profile_text: プロフィール(任意)
   sub_users:
     show:
@@ -43,11 +43,11 @@ ja:
       delete_confirm: 削除しますか？
     form:
       sub_color: カラーアイコン
-      image_icon: 画像
+      image_icon: 画像アイコン
       sub_canvas: 描く
-      icon_choice: どちらをアイコンにしますか？
+      icon_choice: アイコンを選択
       contents_note: ※必須
-      sub_name: お名前(最大20文字) ※任意
+      sub_name: 命名(最大20文字) ※任意
       sub_text: コメント(最大2000文字) ※任意
     confirm_delete:
       delete_confirm: 本当に削除しますか？
@@ -65,15 +65,15 @@ ja:
     item:
       delete_confirm: 削除しますか？
     form:
-      item_image: 画像
+      item_image: 画像アイコン
       item_canvas: 描く
-      item_name: お名前(最大20文字)
+      item_name: 命名(最大20文字)
       contents_note_icon: ※「アイコン」か「名前」のどちらかは必ず入力して下さい。両方入力も可能。
       item_text: コメント(最大10000文字) ※任意
       episode: エピソード(最大50000文字)
       item_place: 場所 ※任意
       contents_note: ※必須
-      image_choice: どちらをアイコンにしますか？
+      image_choice: アイコン選択
       no_image: 選択しない
     search_form:
       search: 降順/昇順
@@ -99,9 +99,9 @@ ja:
       text: 本文
   episodes:
     form:
-      episode_image: 画像
+      episode_image: 画像アイコン
       episode_canvas: 描く
-      episode_title: お名前
+      episode_title: 命名
       episode_text: コメント
   defaults:
     create: 作成

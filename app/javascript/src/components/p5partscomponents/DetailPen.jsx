@@ -292,4 +292,5 @@ const DetailPen = () => {
 };
 
 
+
 export { DetailPen };

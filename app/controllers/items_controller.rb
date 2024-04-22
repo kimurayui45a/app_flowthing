@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
-    case @item.image_choice
+    case item_params[:image_choice]
     when 'no_image'
       @item.item_canvas = nil
       @item.item_image = nil

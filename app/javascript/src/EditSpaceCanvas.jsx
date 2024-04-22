@@ -4,14 +4,14 @@ import { P5CanvasSet } from './components/P5CanvasSet';
 const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, canvasSpaceName, canvasSpaceText }) => {
 
   // Canvasのサイズを状態として保持
-  const [canvasSize, setCanvasSize] = useState({ width: 1000, height: 750 });
+  const [canvasSize, setCanvasSize] = useState({ width: 800, height: 450 });
 
   //canvasの外枠のサイズを決めるもの
-  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1400, height: 1050 });
+  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
 
-  //canvasのドラッグ範囲のサイズを決めるもの
-  const [canvasDragSpaceSize, setCanvasDragSpaceSize] = useState({ width: 800, height: 600 });
 
+  //レイヤーセーブできるようにする
+  const [notLayerSave, setNotLayerSave] = useState(true);
 
   //非同期保存
   const [isAsync, setIsAsync] = useState(false);
@@ -107,7 +107,7 @@ const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, c
 
   return (
     <div>
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} canvasDragSpaceSize={canvasDragSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} notLayerSave={notLayerSave} />
 
 
 

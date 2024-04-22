@@ -12,10 +12,8 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
   const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
 
   //canvasの外枠のサイズを決めるもの
-  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1200, height: 1000 });
+  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
 
-    //canvasのドラッグ範囲のサイズを決めるもの
-    const [canvasDragSpaceSize, setCanvasDragSpaceSize] = useState({ width: 800, height: 600 });
 
   // 描画データを受け取るための状態
   const [getData, setGetData] = useState(null);
@@ -27,6 +25,10 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
 
   //非同期保存
   const [isAsync, setIsAsync] = useState(false);
+
+
+  //レイヤーセーブできるようにする
+  const [notLayerSave, setNotLayerSave] = useState(true);
 
 
   //アラートメッセージ
@@ -126,7 +128,7 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
 
   return (
     <div>
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} canvasDragSpaceSize={canvasDragSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} notLayerSave={notLayerSave} />
 
 
 

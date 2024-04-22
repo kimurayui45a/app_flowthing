@@ -153,8 +153,8 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
     const init = async () => {
       const app = new Application({
         background: 0x1099bb,
-        width: 1000,
-        height: 750
+        width: 800,
+        height: 450
       });
 
       pixiContainer.current.appendChild(app.view);
@@ -318,7 +318,8 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
                 break;
               default:
                 // デフォルトのテクスチャを設定
-                texture = Texture.from('https://pixijs.com/assets/bunny.png');
+                //texture = Texture.from('https://pixijs.com/assets/bunny.png');
+                texture = createWhiteRectangleTexture(appRef.current, 100, 100);
             }
 
             // スプライトの作成
@@ -337,6 +338,11 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
                   swingPendulumAnime(appRef.current, sprite.id, spriteData.rotate_value.maxRotation_value, spriteData.rotate_value.period_value, spriteData.rotate_value.clockwise_value);
                 }
               }
+
+              if (spriteData.scale_anime) {
+                applyScaleAnimationById(appRef.current, sprite.id, spriteData.scale_anime_value.min_scale, spriteData.scale_anime_value.max_scale, spriteData.scale_anime_value.period_value);
+              }
+
               if (spriteData.others_anime) {
                 if (spriteData.anime_value.rotate_mode === 'random') {
                   addRandomMove(appRef.current, sprite.id, spriteData.anime_value.easing_value, spriteData.anime_value.closeEnough_value);
@@ -346,18 +352,12 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
                     id: spriteData.sprite_id,
                     speed: spriteData.anime_value.speed_value
                   }
-                  //調整中
+              
                   setMoveClickSprites(loadData => [...loadData, newLoadData])
                 } else if (spriteData.anime_value.rotate_mode === 'boundary') {
                   applyBoundaryAnimation(appRef.current, sprite.id, spriteData.anime_value.boundary_date);
                 } else if (spriteData.anime_value.rotate_mode === 'circular') {
                   addCircular(appRef.current, sprite.id, spriteData.anime_value.center_x, spriteData.anime_value.center_y, spriteData.anime_value.radius_value, spriteData.anime_value.speed_value);
-                }
-
-
-
-                if (spriteData.scale_anime) {
-                  applyScaleAnimationById(appRef.current, sprite.id, spriteData.scale_anime_value.min_scale, spriteData.scale_anime_value.max_scale, spriteData.scale_anime_value.period_value);
                 }
               }
             });
@@ -650,14 +650,6 @@ if (direction === 'change') {
 
 
 
-
-
-
-
-
-
-
-
 //背景アニメーション
 // const handleAddBackgroundAnime = (app, texture, spaceId) => {
 //   // 古い背景スプライトを削除
@@ -875,6 +867,15 @@ if (direction === 'change') {
   };
 
 
+  function createWhiteRectangleTexture(app, width, height) {
+    const rectangle = new Graphics();
+    rectangle.beginFill(0xFFFFFF); // 白色で塗りつぶす
+    rectangle.drawRect(0, 0, width, height); // 指定した幅と高さの四角形を描画
+    rectangle.endFill();
+
+    // Graphics オブジェクトからテクスチャを生成
+    return app.renderer.generateTexture(rectangle);
+}
 
 
   //スプライトの画像の処理
@@ -887,7 +888,8 @@ if (direction === 'change') {
       } else if (choice === 'item_image') {
         spriteImage = Texture.from(loadItem.item_image.url);
       } else {
-        spriteImage = Texture.from('https://pixijs.com/assets/bunny.png');
+        //spriteImage = Texture.from('https://pixijs.com/assets/bunny.png');
+        spriteImage = createWhiteRectangleTexture(appRef.current, 100, 100);
       }
       //let spriteid = nextSpriteIdRef.current++;
     createSprite(appRef.current, spriteImage, appRef.current.screen.width / 2, appRef.current.screen.height / 2, itemId, true, scaleSprite, alphaSprite, angleSprite, 1, subUserId);
@@ -2328,7 +2330,8 @@ const stopCircularMove = (spriteId) => {
     handleRemoveSpaceData,
     setSpaceAnimMode,
     updateSimpleSpace,
-    handleRemoveSprite
+    handleRemoveSprite,
+    maxSpaceSprites
   }
 
   return (
@@ -2336,9 +2339,9 @@ const stopCircularMove = (spriteId) => {
     <button onClick={checkSpriteInfo}>スプライトインフォの中</button>
       <div
         style={{
-          width: '1000px',
-          height: '750px',
-          border: '1px solid black',
+          width: !pixiMode ? '1000px' : '1408px',
+          height: !pixiMode ? '590px' : '792px',
+          border: !pixiMode ? '1px solid white' : '1px solid black',
           margin: 'auto',
           display: 'flex',
           justifyContent: 'center',
@@ -2375,10 +2378,10 @@ const stopCircularMove = (spriteId) => {
           {pixiMode && customPanelVisible && <PixiCustomPanel />}
 
           {/* 詳細パネル(再描画専用) */}
-          {!pixiMode && pixiDetailPanelVisible && <PixiDetailPanel itemAllId={itemAllId} />}
+          {!pixiMode && pixiDetailPanelVisible && <PixiDetailPanel itemAllId={itemAllId} subUserAllId={subUserAllId} />}
         </PixiComponentShareProvider>
 
-        <div ref={pixiContainer} style={{ width: '100%', height: '100%' }} id={`compositeStage_${compositeId}`} />
+        <div ref={pixiContainer} id={`compositeStage_${compositeId}`} />
       </div>
         {/* <button onClick={() => handleAddSprite(385, 'item_canvas')}>Add Sprite</button> */}
         {/* <button onClick={handleSprite}>3番目のバニーが飛ぶ</button> */}

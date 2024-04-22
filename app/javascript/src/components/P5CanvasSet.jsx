@@ -10,14 +10,14 @@ const P5CanvasSet = ({
   canvasSize,
   onDataFromGrandchild,
   canvasSpaceSize,
-  canvasDragSpaceSize,
   canvasImgId,
   canvasData,
-  canvasSaveData
+  canvasSaveData,
+  notLayerSave
 }) => {
   return (
     <div>
-      <P5PanelGroupProvider>
+      <P5PanelGroupProvider notLayerSave={notLayerSave}>
         <P5ToolModeProvider>
           <P5ColorProvider>
             <P5PenToolParametersProvider>
@@ -27,7 +27,6 @@ const P5CanvasSet = ({
                   canvasSize={canvasSize}
                   onDataFromGrandchild={onDataFromGrandchild}
                   canvasSpaceSize={canvasSpaceSize}
-                  canvasDragSpaceSize={canvasDragSpaceSize}
                   key={canvasImgId}
                   canvasImgId={canvasImgId}
                   canvasData={canvasData}

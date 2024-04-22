@@ -23,7 +23,8 @@ const TopLineBlock = () => {
     toggleSizePanelVisible,
     toggleDetailPanelVisible,
     detailPanelVisible,
-    sizePanelVisible
+    sizePanelVisible,
+    layerSave
   } = useP5PanelGroupContext();
   
   return (
@@ -65,6 +66,8 @@ const TopLineBlock = () => {
       {/* 固定UI(右) */}
       <div className='flex'>
         {/* レイヤーセーブを設定するチェックボックス */}
+
+      {layerSave &&(
         <div
           type="checkbox"
           className="layers-save-checkbox tooltip-container"
@@ -75,6 +78,8 @@ const TopLineBlock = () => {
           {saveLayersBool && <i className="bi bi-flag-fill"></i>}
           <span className="tooltip-text">レイヤーの状態を保存</span>
         </div>
+      )}
+
 
         {/* 「自動表示モード」のアクティブを切り替えるトグルスイッチ */}
         <div className="toggle-switch" onClick={toggleAutomaticMode} onTouchStart={toggleAutomaticMode}>

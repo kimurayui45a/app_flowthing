@@ -29,12 +29,38 @@ class SubUsersController < ApplicationController
   def edit
   end
 
+  def canvas_edit
+    @sub_user = @profile.sub_users.find(params[:id])
+  end
+
   def update
+    @sub_user = @profile.sub_users.find(params[:id])
+    
     if @sub_user.update(sub_user_params)
-      redirect_to sub_user_path(@sub_user), success: t('defaults.flash_message.sub_user_updated', sub_user: SubUser.model_name.human)
-    else
-      flash.now[:danger] = t('defaults.flash_message.sub_user_not_updated', sub_user: SubUser.model_name.human)
-      render :edit, status: :unprocessable_entity
+      case @sub_user.icon_choice
+      when 'sub_color'
+        @sub_user.update(sub_canvas: nil, sub_image: nil)
+      when 'sub_image'
+        @sub_user.update(sub_canvas: nil, sub_color: nil)
+      when 'sub_canvas'
+        @sub_user.update(sub_image: nil, sub_color: nil)
+      end
+    end
+
+
+    if @sub_user.update(sub_user_params)
+      if request.headers['X-React-App'] == 'true'
+        render json: { redirect_url: sub_user_path(@sub_user) }, status: :ok
+      else
+        redirect_to sub_user_path(@sub_user), success: t('defaults.flash_message.sub_user_updated', sub_user: SubUser.model_name.human)
+      end
+      else
+      if request.headers['X-React-App'] == 'true'
+        render json: @sub_user.errors, status: :unprocessable_entity
+      else
+        flash.now[:danger] = t('defaults.flash_message.sub_user_not_updated', sub_user: SubUser.model_name.human)
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -48,6 +74,8 @@ class SubUsersController < ApplicationController
   end
 
   private
+
+
 
   def set_sub_user
     @sub_user = @profile.sub_users.find(params[:id])

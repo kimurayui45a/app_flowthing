@@ -3,7 +3,7 @@ import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
 
 
-const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, minValue, maxValue, handleRunButton }) => {
+const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, minValue, maxValue, handleRunButton, explanation }) => {
 
   const {
     //上下左右アニメーション
@@ -201,7 +201,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
 
 
   //回転アニメの切り替えボタン
-  const rotationTypeChange = () => {
+  const rotationTypeChangeBtn = () => {
     setRotationTypeTab(!rotationTypeTab)
   };
 
@@ -547,7 +547,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 onChange={(e) => handleDirectionAnimeChange(e, direction, type)}
                 onBlur={() => handleDirectionAnime(inputValue, direction, type, minValue, maxValue)}
               />
-              <span className="tooltip-text">最大値{maxValue}</span>
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>{explanation}<br />最大値{maxValue}</span>
             </div>
           </div>
         </>
@@ -570,7 +570,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
         return (
           <>
             {/* 回転方向決定ボタン */}
-            <div className="flex" style={{ boxShadow: '1px 1px black', borderRadius: '5px', width: '50px' }}>
+            <div className="flex" style={{ boxShadow: '1px 1px black', borderRadius: '5px', width: '40px' }}>
               <div
                 className= "panel-tool-button-small tooltip-container"
                 onClick={() => setClockwiseType(true)}
@@ -578,13 +578,15 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 style={{
                   backgroundColor: clockwiseType ? '#9199AE' : '#c2c1c1',
                   borderRadius: '5px 0px 0px 5px',
-                  borderRight: '0.5px solid #4A4A4A'
+                  borderRight: '0.5px solid #4A4A4A',
+                  width: '20px',
+                  height: '20px'
                 }}
               >
                 <div>
-                  右
+                <i className="bi bi-arrow-clockwise"></i>
                 </div>
-                <span className="tooltip-text">右から</span>
+                <span className="tooltip-text">時計回り</span>
               </div>
 
               <div
@@ -594,13 +596,15 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 style={{
                   backgroundColor: !clockwiseType ? '#9199AE' : '#c2c1c1',
                   borderRadius: '0px 5px 5px 0px',
-                  borderLeft: '0.5px solid #4A4A4A'
+                  borderLeft: '0.5px solid #4A4A4A',
+                  width: '20px',
+                  height: '20px'
                 }}
               >
                 <div>
-                左
+                <i className="bi bi-arrow-counterclockwise"></i>
                 </div>
-                <span className="tooltip-text">左から</span>
+                <span className="tooltip-text">反時計回り</span>
               </div>
             </div>
           </>
@@ -611,18 +615,19 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
             {/* 回転アニメパネル切り替えボタン */}
             <div
               className="panel-tool-button tooltip-container"
-              onClick={rotationTypeChange}
-              onTouchStart={rotationTypeChange}
+              onClick={rotationTypeChangeBtn}
+              onTouchStart={rotationTypeChangeBtn}
+              style={{ width: '20px', height: '20px' }}
             >
-              {rotationTypeChange ? (
+              {rotationTypeTab ? (
                 <>
-                  回
-                  <span className="tooltip-text">360度回転に切り替える</span>
+                  <i className="bi bi-arrow-repeat"></i>
+                  <span className="tooltip-text">360度回転アニメ</span>
                 </>
               ) : (
                 <>
-                  ふ
-                  <span className="tooltip-text">振り子に切り替える</span>
+                  <i className="bi bi-broadcast"></i>
+                  <span className="tooltip-text">振り子アニメ</span>
                 </>
               )}
             </div>
@@ -646,7 +651,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   onChange={(e) => handleRotationAnimeFormChange(e, type)}
                   onBlur={() => handleRotationAnimeForm(inputValue, type, minValue, maxValue)}
                 />
-                <span className="tooltip-text">最大値{maxValue}</span>
+                <span className="tooltip-text" style={{ textAlign: 'left' }}>{explanation}<br />最大値{maxValue}</span>
               </div>
             </div>
           </>
@@ -669,7 +674,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   onChange={(e) => handleScaleAnimeFormChange(e, type)}
                   onBlur={() => handleScaleAnimeForm(inputValue, type, minValue, maxValue)}
                 />
-                <span className="tooltip-text">最大値{maxValue}</span>
+                <span className="tooltip-text" style={{ textAlign: 'left' }}>{explanation}<br />最大値{maxValue}</span>
               </div>
             </div>
           </>
@@ -716,7 +721,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   onChange={(e) => handleRandomAnimeChange(e, type)}
                   onBlur={() => handleRandomAnimeForm(inputValue, type)}
                 />
-                <span className="tooltip-text">最大値 1</span>
+                <span className="tooltip-text" style={{ textAlign: 'left' }}>{explanation}<br />最大値 1</span>
               </div>
             </div>
           </>
@@ -740,7 +745,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   onChange={(e) => handleBoundaryAnimeChange(e, type)}
                   onBlur={() => handleBoundaryAnimeForm(inputValue, type)}
                 />
-                <span className="tooltip-text">最大値 1200</span>
+                <span className="tooltip-text" style={{ textAlign: 'left' }}>{explanation}<br />最大値 1200</span>
               </div>
             </div>
           </>
@@ -764,7 +769,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                     onChange={(e) => handleCircularAnimeChange(e, type)}
                     onBlur={() => handleCircularAnimeForm(inputValue, type)}
                   />
-                  <span className="tooltip-text">最大値 1200</span>
+                  <span className="tooltip-text" style={{ textAlign: 'left' }}>{explanation}<br />最大値 1200</span>
                 </div>
               </div>
             </>

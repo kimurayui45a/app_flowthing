@@ -54,7 +54,8 @@
     "build:src": "esbuild app/javascript/src/*.jsx --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
     "build:components": "esbuild app/javascript/src/components/*.jsx --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
     "build:hooks": "esbuild app/javascript/src/hooks/*.jsx --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
-    "build:devicetest": "esbuild app/javascript/src/devicetest/*.jsx --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx"
+    "build:devicetest": "esbuild app/javascript/src/devicetest/*.jsx --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx",
+    "build:p5partscomponents": "esbuild app/javascript/src/components/p5partscomponents/*.jsx --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets --loader:.js=jsx --loader:.jsx=jsx"
   },
   "browserslist": [
     "defaults"

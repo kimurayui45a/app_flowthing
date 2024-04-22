@@ -11,7 +11,7 @@ export const PixiGroupProvider = ({ children }) => {
 
   //パネルの位置を記録する
   const [listPanelPosition, setListPanelPosition] = useState({ x: 650, y: 50 });
-  const [pixiDetailPanelPosition, setPixiDetailPanelPosition] = useState({ x: 940, y: 300 });
+  const [pixiDetailPanelPosition, setPixiDetailPanelPosition] = useState({ x: 200, y: 150 });
   const [customPanelPosition, setCustomPanelPosition] = useState({ x: 100, y: 100 });
 
   //パネルの表示に関するステート
@@ -308,6 +308,15 @@ export const PixiGroupProvider = ({ children }) => {
   const [alertMessageAnime, setAlertMessageAnime] = useState("");
 
 
+  const handleMouseClick = (event) => {
+    // クリックされた座標を取得
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // ステートを更新
+    setPixiDetailPanelPosition({ x, y });
+};
+
   // パネルの位置を記録する（パネルのドラッグ停止時に実行される関数）
   const handlePixiPanelDragStop = (setPanelPosition, e, d) => {
     // 描画の有効/無効状態を有効に戻す
@@ -380,6 +389,7 @@ export const PixiGroupProvider = ({ children }) => {
     setAlertToastAnime,
     alertMessageAnime,
     setAlertMessageAnime,
+    handleMouseClick,
 
     //上下左右アニメーション
     leftRightAmplitude,

@@ -1,9 +1,8 @@
-<div class='max1280-container'>
+<div class='p5canvas-container'>
 
 
 
-
-
+<% if user_signed_in? %>
     <div id="reactAllComposite"
       data-composite-id-all="<%= @composites.to_json %>"
       data-item-id-all="<%= @items.to_json %>"
@@ -11,6 +10,16 @@
       data-sub-user-id-all="<%= @sub_users.to_json %>"
     >
     </div>
+    <% else %>
+      <span>ログインしてない</span>
+    <% end %>
+
+
+
+
+
+
+
 
 <%= link_to info_path, class: 'info-botann' do %>
 <div class="wave wave1"></div>

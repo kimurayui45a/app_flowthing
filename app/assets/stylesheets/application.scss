@@ -5,6 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
 
 
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Sawarabi+Mincho&family=Yuji+Syuku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Yuji+Syuku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Potta+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Yuji+Syuku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Potta+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Yuji+Syuku&family=Zen+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Potta+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Antique&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DotGothic16&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Potta+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DotGothic16&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Potta+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Slackside+One&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&family=DotGothic16&family=IBM+Plex+Sans+JP&family=Kaisei+Opti:wght@400;500;700&family=Klee+One&family=Potta+One&family=RocknRoll+One&family=Sawarabi+Mincho&family=Slackside+One&family=Yuji+Mai&family=Yuji+Syuku&family=Zen+Antique&display=swap');
+
 
 
 /* ベースのスタイル
@@ -45,6 +56,12 @@ ul {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+}
+
+.flex-end-center {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .flex-end-end {
@@ -97,6 +114,18 @@ ul {
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+}
+
+.flex-start-start-flex {
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+
+.flex-start-start-flex-center {
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
 }
 
 .text-Rounded {
@@ -171,6 +200,17 @@ ul {
   margin: 0px auto;
 }
 
+
+.bi-image {
+  color: #B8F3B9;
+  margin: 0px auto;
+}
+
+.bi-box-seam-fill {
+  color: #FBC8C3;
+  margin: 0px auto;
+}
+
 /* センター配置 */
 .center-text {
   text-align: center;
@@ -191,19 +231,26 @@ ul {
 .max767-container {
   position: relative;
   width: 100%;
-  max-width: 767px;
   margin: 0px auto;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .max1280-container {
   position: relative;
   width: 100%;
-  max-width: 1280px;
+  // max-width: 1280px;
   margin: 0px auto;
   padding: 3rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-style {
@@ -446,8 +493,8 @@ ul {
   // width: 150px;
   // height: 150px;
   // position: relative;
-  margin-top: 3rem;
-  width: 100%;
+  margin-top: 5rem;
+  width: 50rem;
   box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
 }
 
@@ -801,9 +848,11 @@ ul {
   box-sizing: border-box;
   width: auto;
   height: 5rem;
-  border-bottom: solid 0.375rem #7f7f7f;
+  // border-bottom: solid 0.375rem #7f7f7f;
   padding-left: 1rem;
-    padding-right: 1rem ;
+  padding-right: 1rem ;
+  position: relative;
+  box-shadow: 0 4px 8px rgb(83 83 83 / 20%);
 }
 
 .header-layout {
@@ -833,7 +882,7 @@ ul {
   outline: none; /* フォーカス時のアウトラインを削除 */
   width: 5rem;
   height: 5rem;
-  border-bottom: solid 0.375rem #7f7f7f;
+  // border-bottom: solid 0.375rem #7f7f7f;
 }
 
 .header-button:hover {
@@ -864,7 +913,7 @@ ul {
   outline: none; /* フォーカス時のアウトラインを削除 */
   width: 5rem;
   height: 5rem;
-  border-bottom: solid 0.375rem #7f7f7f;
+  // border-bottom: solid 0.375rem #7f7f7f;
 }
 
 .user-dropdown-btn:hover {
@@ -1173,14 +1222,15 @@ ul {
 
 .newcontents_text {
   display: inline-block;
-  font-size: 2rem;
+  font-size: 1rem;
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 500;
   font-style: normal;
   text-align: center;
   color: #7f7f7f;
   white-space: nowrap;
-  line-height: 2.5rem
+  line-height: 2.5rem;
+  margin-left: 0.5rem;
 }
 
 .newcontents_text-sub {
@@ -1580,7 +1630,7 @@ div.selected {
 }
 
 .sub-image-container {
-  width: 220px;
+  width: 190px;
   padding: 16px;
   box-shadow: 5px 5px 8px 1px #c6c6c6;
   border-radius: 0.5rem;
@@ -1598,7 +1648,7 @@ div.selected {
 }
 
 .user-createform-text {
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-family: "M PLUS Rounded 1c", sans-serif;
   font-weight: 500;
   font-style: normal;
@@ -1663,8 +1713,8 @@ div.selected {
 
 .subuser-iconColor {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   border-radius: 50%;
   margin: 0.1rem;
@@ -1676,8 +1726,8 @@ div.selected {
 
 
 #subimagePreview {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border: 1px solid black;
   border-radius: 50%;
   display: inline-block;
@@ -1687,8 +1737,8 @@ div.selected {
 
 
 #subcolorPreview{
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border: 1px solid black;
   border-radius: 50%;
   display: inline-block; 
@@ -1697,8 +1747,8 @@ div.selected {
 
 
 #itemimagePreview {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border: 1px solid black;
   border-radius: 50%;
   display: inline-block;
@@ -1867,7 +1917,7 @@ summary {
   grid-template-columns: repeat(auto-fit, 220px);
   justify-content: center;
   grid-gap: 3rem;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 
 // .item-list-container .item-list-card {
@@ -2129,15 +2179,18 @@ summary {
 }
 
 .blue-background {
-  background-color: #7FA8EB;
+  //background-color: #7FA8EB;
+  background-image: linear-gradient(to right, #b08868, #cd7f32, #e9c46a, #cd7f32, #b08868);
 }
 
 .purple-background {
-  background-color: #AEA5EC;
+  //background-color: #AEA5EC;
+  background-image: linear-gradient(to right, #b0b0b0, #d3d3d3, #f8f8f8, #d3d3d3, #b0b0b0);
 }
 
 .red-background {
-  background-color: #F8A3B1;
+  //background-color: #F8A3B1;
+  background-image: linear-gradient(to right, #bbaa52, #d4af37, #ffdd55, #d4af37, #bbaa52);
 }
 
 /* ヘルパー隠し評価(隠しぼかし) */
@@ -2214,6 +2267,23 @@ summary {
   filter: blur(10px);
   padding: 8px;
 }
+
+
+.item-card-container-gray-detail {
+  background: radial-gradient(circle at center, #626262 40%, transparent 200%);
+  filter: blur(8px);
+}
+
+.item-card-container-black-detail {
+  background: radial-gradient(circle at center, #000000 40%, transparent 200%);
+  filter: blur(9px);
+}
+
+.item-card-container-redblack-detail {
+  background: radial-gradient(circle at center, #000000 40%, transparent 200%);
+  filter: blur(10px);
+}
+
 
 
 /* ヘルパー隠し評価(隠しアイコン) */
@@ -2750,7 +2820,7 @@ summary {
 }
 
 .search-form {
-  width: 30rem;
+  width: 25rem;
 }
 
 
@@ -4918,34 +4988,6 @@ summary {
 }
 
 
-// .circle-pattern {
-//   width: 200px;
-//   height: 200px;
-//   border-radius: 50%;
-//   overflow: hidden;
-//   background-image: 
-//     linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1),
-//     linear-gradient(45deg, #c2c1c1 25%, transparent 25%, transparent 75%, #c2c1c1 75%, #c2c1c1);
-//   background-position: 0 0, 10px 10px;
-//   background-size: 20px 20px;
-//   position: relative;
-//   background-color: #ececec;
-// }
-
-// .circle-pattern {
-//     width: 200px;
-//   height: 200px;
-//   border-radius: 50%;
-//   background-image: 
-//     linear-gradient(to right, #c2c1c1 1px, transparent 1px),
-//     linear-gradient(to bottom, #c2c1c1 1px, transparent 1px);
-//   background-position: 0 0, 0 0;
-//   background-size: 20px 20px;
-//   // position: absolute;
-//   top: 0;
-//   left: 0;
-// }
-
 .circle-pattern {
   width: 100px;
   height: 100px;
@@ -5184,10 +5226,10 @@ summary {
 
 
 .angleDegrees_value {
-  width: 100%; /* 親要素の幅を明確に指定 */
-  overflow: hidden; /* 内容がはみ出たら隠す */
-  white-space: nowrap; /* テキストを折り返さずに一行で表示 */
-  text-overflow: none; /* テキストが溢れた場合は省略記号を表示 */
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: none;
 }
 
 .pixi-space-list-background {
@@ -5237,4 +5279,551 @@ summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(75px, 1fr));
   gap: 6px;
+}
+
+.bi-arrow-position {
+  position: absolute;
+  top: 30px;
+  right: 8px;
+  font-size: 12px;
+  color: #ececec;
+}
+
+.selection-rotation {
+  font-size: 12px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #777777;
+}
+
+
+.item-detail-panel {
+  box-shadow: 2px 2px 4px #545454;
+  border-radius: 20px;
+}
+
+
+.item-detail-panel-title {
+  color: #4A4A4A;
+  // background-color: #4A4A4A;
+  width: auto;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  position: relative;
+}
+
+
+.p5canvas-container {
+  position: relative;
+  width: 100%;
+  // max-width: 1280px;
+  // margin: 0px auto;
+  // padding: 3rem;
+  text-align: center;
+}
+
+
+.pixi-detail-item-background {
+  background-color: white;
+  cursor: pointer;
+}
+
+.pixi-detail-item-background:hover {
+  background-color: #dfdfdf;
+}
+
+
+
+
+
+.user-createform-text-right {
+  margin-left: 2rem;
+  width: 20rem;
+  text-align: start;
+}
+
+.item-createform-text-right {
+  margin-left: 2rem;
+  width: 20rem;
+  text-align: start;
+  margin-top: 0;
+}
+
+.form-card {
+  background-color: #c2c1c1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 42rem;
+  height: auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  //background-image: linear-gradient(120deg, #c2c1c1 10%, #F8A3B1 50%, #91D7E9 90%, #c2c1c1 100%);
+} 
+
+
+
+
+.form-card-background {
+  border-radius: 0.5rem;
+  padding: 0rem 1rem 3rem 1rem;
+  // margin: 0.5rem;
+  background: #fff;
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  width: 40rem;
+  height: 480px;
+  box-sizing: border-box;
+}
+
+.form-card-background-white {
+  background-color: white;
+}
+
+
+.form-card-subuser-container {
+  width: 190px;
+  height: 170px;
+  padding: 10px;
+  box-shadow: 5px 5px 8px 1px #c6c6c6;
+  border-radius: 0.5rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #7f7f7f;
+}
+
+
+.form-card-subpickup-color {
+  margin-top: 0.1rem;
+}
+
+
+.form-card-container {
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  margin-top: -1rem;
+}
+
+.form-card-text {
+  height: 16rem;
+}
+
+
+
+
+
+.form-card-top {
+  margin-top: 1rem;
+}
+
+
+
+
+.item-form-card-background {
+  border-radius: 0.5rem;
+  padding: 0rem 1rem 3rem 1rem;
+  // margin: 0.5rem;
+  background: #fff;
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  width: 40rem;
+  height: 45rem;
+  box-sizing: border-box;
+}
+
+
+
+.item-form-card-createform-text {
+  margin-top: 1rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #7f7f7f;
+  width: 33rem;
+  text-align: start;
+}
+
+
+.item-form-card-textform {
+  height: 10rem;
+}
+
+.item-form-card-top {
+  margin-top: 4rem;
+}
+
+.item-form-card-textepisode {
+  height: 11rem;
+}
+
+
+
+
+
+
+
+
+
+/* ロゴ
+------------------------------------------ */
+
+.yuji-syuku {
+  font-family: "Yuji Syuku", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+.rocknroll-one {
+  font-family: "RocknRoll One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.potta-one {
+  font-family: "Potta One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.zen-antique {
+  font-family: "Zen Antique", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
+.yuji-mai {
+  font-family: "Yuji Mai", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.animated-text {
+  font-weight: bold; /* ボールドにして明確なグラデーションを表示 */
+  background: linear-gradient(110deg, #c2c1c1 4%, #7f7f7f 13%, #9ADFCB 25%, #FBC8C3 50%, #717171 60%, #646464 70%, #393939 95%, #c2c1c1 99%); /* グラデーションの指定 */
+  -webkit-background-clip: text; /* テキスト形状に背景をクリップ */
+  -webkit-text-fill-color: transparent; /* テキストの色を透明に設定 */
+  background-clip: text; /* 標準プロパティも指定 */
+}
+
+.animated-text-hanntenn {
+  background: linear-gradient(-110deg, #494949 50%, #c2c1c1 75%); /* グラデーションの指定 */
+  -webkit-background-clip: text; /* テキスト形状に背景をクリップ */
+  // -webkit-text-fill-color: transparent; /* テキストの色を透明に設定 */
+  background-clip: text; /* 標準プロパティも指定 */  
+}
+
+.dotgothic16 {
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+
+.slackside-one {
+  font-family: "Slackside One", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+.sawarabi-mincho {
+  font-family: "Sawarabi Mincho", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.mirror-horizontal {
+  transform: scaleX(-1);
+}
+
+.logo-setting {
+  margin-right: -0.8rem;
+}
+
+
+.logo-setting-t {
+  margin-left: -0.3rem;
+  margin-right: -1.1rem;
+}
+
+.logo-setting-n {
+  margin-right: -0.4rem;
+}
+
+.logo-setting-hi {
+  margin-right: -1.1rem;
+}
+
+.logo-transform-form-card {
+  transform: scale(0.8);
+}
+
+.animated-text-sub-thing {
+  font-weight: bold;
+  background: linear-gradient(110deg, #c2c1c1 10%, #7f7f7f 18%, #F8A3B1 20%, #91D7E9 48%, #717171 57%, #646464 70%, #393939 95%, #c2c1c1 99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-blur-15 {
+  filter: blur(0.8px);
+}
+
+
+.logo-blur-05 {
+  filter: blur(0.2px);
+}
+
+// .area {
+//   width: 100%;  /* ヘッダー全体の幅にフィットするように設定 */
+//   height: 100%; /* 必要に応じてヘッダーの高さにもフィットさせる */
+//   max-width: 100%;  /* 最大幅も100%に設定して、常に画面全体をカバー */
+//   margin: 0 auto;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   position: absolute;
+// }
+
+// .dairiseki {
+//   background-color: rgba(100,100,100,0.2);
+//   width: 100%;  /* コンテナの幅をヘッダー全体にフィットさせる */
+//   height: 5rem;  /* 高さを5remに設定 */
+//   filter: grayscale(100%);
+//   opacity: 0.3;
+// }
+
+// svg {
+//   width: 100%;  /* SVGをコンテナの幅に合わせる */
+//   height: 100%; /* SVGをコンテナの高さに合わせる */
+// }
+
+.flex-animated-text {
+  position: relative;
+}
+
+.flex-animated-text-absolute {
+  position: absolute;
+}
+
+
+
+.section-title-form {
+  font-size: 2rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  color: #7f7f7f;
+  white-space: nowrap;
+}
+
+
+.create-usersselect-container {
+  height: auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 8px 1px #c6c6c6;
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  width: 17rem;
+}
+
+.create-usersselect-container:hover {
+background-color: #d1eee6;
+}
+
+
+
+.create-usersselect-background {
+  border-radius: 0.5rem;
+  /* padding: 1.5rem; */
+  padding: 1rem 1rem 2rem 1rem;
+  background: #fff;
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  width: 25rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.create-usersselect-card {
+  background-color: #c2c1c1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 28rem;
+  height: auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  //background-image: linear-gradient(120deg, #c2c1c1 10%, #F8A3B1 50%, #91D7E9 90%, #c2c1c1 100%);
+} 
+
+
+
+.create-usersselect-card-title {
+  margin-right: -1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.create-usersselect-card-title-left {
+  margin-left: -1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.index-container {
+  position: relative;
+  width: 100%;
+  margin: 0px auto;
+  padding: 3rem;
+  text-align: center;
+}
+
+
+
+@media (max-width: 767px) {
+
+  .form-card {
+    width: auto;
+  } 
+  
+  .form-card-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .user-createform-text-right {
+    margin-left: 0;
+    width: 17rem;
+  }
+
+  .form-card-text {
+    height: 10rem;
+  }
+
+  .form-card-background {
+    border-radius: 0.5rem;
+    padding: 0rem 1rem 1rem 1rem;
+    // margin: 0.5rem;
+    background: #fff;
+    box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+    width: 20rem;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+
+  .item-form-card-background {
+    border-radius: 0.5rem;
+    padding: 0rem 1rem 1rem 1rem;
+    // margin: 0.5rem;
+    background: #fff;
+    box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+    width: 20rem;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .item-form-card-createform-text {
+    margin-top: 1rem;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #7f7f7f;
+    width: auto;
+    text-align: start;
+  }
+
+  .item-createform-text-right {
+    margin-left: 0;
+    width: 17rem;
+    text-align: start;
+    margin-top: 1rem;
+  }
+
+  .create-usersselect-container {
+    height: auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 8px 1px #c6c6c6;
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1rem;
+    width: 16rem;
+    font-size: 0.8rem;
+  }
+
+
+
+  .create-usersselect-background {
+    border-radius: 0.5rem;
+    /* padding: 1.5rem; */
+    padding: 1rem 1rem 2rem 1rem;
+    background: #fff;
+    box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+    width: 18rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  
+  .create-usersselect-card {
+    background-color: #c2c1c1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    //background-image: linear-gradient(120deg, #c2c1c1 10%, #F8A3B1 50%, #91D7E9 90%, #c2c1c1 100%);
+  } 
+  
+
+  .search-form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20rem;
+    margin: 0 auto;
+  }
+
+
+.search-form {
+  width: 15rem;
+}
+
+.index-container {
+  position: relative;
+  width: 100%;
+  margin: 0px auto;
+  padding: 0rem;
+  text-align: center;
+}
+
 }

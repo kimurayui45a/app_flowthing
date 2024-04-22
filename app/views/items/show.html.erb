@@ -20,7 +20,7 @@
             <% end %>
           <% when 'item_canvas' %>
             <div class="canvas-container-parent">
-              <div id="reactLordItemCanvas" data-item-id="<%= @item.id %>" data-canvas-data="<%= @item.item_canvas %>"></div>
+              <img src="<%= @item.item_canvas %>" alt="Canvas Image" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
           <% else %>
             <div class="no-image-icon">No Image</div>

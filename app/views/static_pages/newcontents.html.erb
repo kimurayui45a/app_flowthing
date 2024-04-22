@@ -2,9 +2,11 @@
 <% content_for(:title, t('.title')) %>
 <div class="max1280-container">
   <div>
-    <h1 class="section-title">
+    <h1 class="section-title section-title-form" style="margin-top: 2rem;">
       <span class="red-text">新規作成</span>
     </h1>
+
+
     <%= form_with url: create_all_path, id: 'user_create_form', method: :post, multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
       <%= render 'shared/error_messages', object: @sub_user %>
       <%= render 'shared/error_messages', object: @item %>
@@ -14,7 +16,7 @@
       <%= render 'items/form', f: f, item: @item %>
 
       <div class="user-createform">
-        <%= f.submit "データ送信", class: "btn btn-success", id: "submit-button", type: 'button' %>
+        <%= f.submit "データ送信", class: "btn btn-primary", id: "submit-button", type: 'button' %>
       </div>
     <% end %>
   </div> 

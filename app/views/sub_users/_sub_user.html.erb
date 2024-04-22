@@ -17,8 +17,7 @@
                 <% end %>
             <% when 'sub_canvas' %>
                 <!-- sub_canvas の内容を表示 -->
-                <div class="back-white"><canvas class="subfabric myCanvas-icon canvas-style" id="subCanvas_<%= sub_user.id %>" 
-                        data-canvas-json='<%= sub_user.sub_canvas.to_json.html_safe %>'></canvas></div>
+                <img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" object-fit: contain;" class="user-profileicon">
             <% when 'sub_color' %>
                 <!-- sub_color の内容を表示 -->
                 <div style="background-color: <%= sub_user.sub_color %>;" class="user-profileicon"></div>

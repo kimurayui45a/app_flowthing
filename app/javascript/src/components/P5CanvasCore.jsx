@@ -14,7 +14,7 @@ import { P5SizePanel } from './P5SizePanel';
 import { useP5Color } from './P5ColorContext';
 import { useP5PenToolParametersContext } from './P5PenToolParametersContext';
 
-const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, canvasDragSpaceSize }) => {
+const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize }) => {
   
   //canvas全体の情報に関するRef
   const sketchRef = useRef();

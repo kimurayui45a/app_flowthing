@@ -1,52 +1,91 @@
 <% content_for(:title, t('.title')) %>
 <div class="max767-container">
   <div>
-    <h1 class="section-title">
-      <span class="red-text">新</span><span class="gray-text">しい</span>
-      <span class="title-custom"><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
-      <span class="gray-text">を</span><span class="light-blue-text">作成</span>
-    </h1>
-    <div class="flex-between">
-      <%= link_to newcontents_path do %>
-        <div class="usersselect-container">
-          <div><i class="bi bi-pencil-square" style="font-size: 6rem;"></i></div>
-          <div class="newcontents_text"><span>新規作成<span></div>
-        </div>
-      <% end %>
 
-      <%= link_to sub_users_path do %>
-        <div class="usersselect-container">
-          <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
-          <div class="newcontents_text-sub">
-            <span class="gray-text">既存の</span><br>
-            <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span><br>
-            <span class="gray-text">に追加する</span></div>
-        </div>
-      <% end %>
+      <div class="flex-end-center" style="margin-top: 2rem;">   
+        <div class="create-usersselect-card-title"><span class="red-text">新</span><span class="gray-text">しい</span></div>
 
+          <div class="section-title logo-transform-form-card">
+            <div class="app-logo">
+              <div class="flex flex-animated-text">
+                <div class="flex-between flex-animated-text-absolute logo-blur-05">
+                  <div class="animated-text">
+                    <span class='zen-antique logo-setting'>F</span>
+                    <span class='sawarabi-mincho logo-setting'>l</span>
+                    <span class="logo-setting">o</span>
+                    <span class='dotgothic16'>w</span>
+
+                    <span class='potta-one logo-setting-t logo-setting'>T</span>
+                    <span class='rocknroll-one logo-setting-hi'>h</span>
+                    <span class='yuji-mai logo-setting-hi'>i</span>
+                    <span class='yuji-syuku logo-setting-n'>n</span>
+                  </div>
+                  <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
+                </div>
+
+                <div class="flex-between logo-blur-15">
+                  <div class="animated-text">
+                    <span class='zen-antique logo-setting'>F</span>
+                    <span class='sawarabi-mincho logo-setting'>l</span>
+                    <span class="logo-setting">o</span>
+                    <span class='dotgothic16'>w</span>
+
+                    <span class='potta-one logo-setting-t logo-setting'>T</span>
+                    <span class='rocknroll-one logo-setting-hi'>h</span>
+                    <span class='yuji-mai logo-setting-hi'>i</span>
+                    <span class='yuji-syuku logo-setting-n'>n</span>
+                  </div>
+                  <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="create-usersselect-card-title-left">
+          <span class="gray-text">を</span><span class="light-blue-text">作成</span></div>
+      </div>
+
+
+    
+
+
+    <div class="create-usersselect-card">
+      <div class="create-usersselect-background flex-start-start-flex-center">
+        <div class="flex-column">
+
+          <%= link_to newcontents_path, class: 'tooltip-container' do %>
+            <div class="flex create-usersselect-container">
+              <div><i class="bi bi-pencil-square" style="font-size: 2rem;"></i></div>
+              <div class="newcontents_text"><span>新規作成<span></div>
+            </div>
+            <span class="tooltip-text" style="text-align: start;">新しくSub ThingとFlow Thingを作成します。<br>※ここでは描画はできません。</span>
+          <% end %>
+          <%= link_to sub_users_path, class: 'tooltip-container' do %>
+            <div class="flex create-usersselect-container">
+              <div><i class="bi bi-people-fill" style="font-size: 2rem;"></i></div>
+              
+                <div class="newcontents_text"><span>既存のSub Thingに追加する<span></div>
+                </div>
+            <span class="tooltip-text" style="text-align: start;">既存のSub ThingからFlow Thingを作成します。</span>
+          <% end %>
+          <%= link_to spaces_path, class: 'tooltip-container' do %>
+            <div class="flex create-usersselect-container">
+              <div><i class="bi bi-image" style="font-size: 2rem;"></i></div>
+              <div class="newcontents_text"><span>背景を作成<span></div>
+              <span class="tooltip-text" style="text-align: start;">Flow Thingを配置する背景を作成できます。</span>
+            </div>
+          <% end %>
+
+          <%= link_to composites_path, class: 'tooltip-container' do %>
+            <div class="flex create-usersselect-container">
+              <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
+              <div class="newcontents_text"><span>Flow Thingを配置する<span></div>
+              <span class="tooltip-text" style="text-align: start;">作成した背景をスペースとしてFlow Thingを配置できます。</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-
-    
-      <%= link_to spaces_path do %>
-        <div class="usersselect-container">
-          <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
-          <div class="newcontents_text-sub">
-            <span class="gray-text">スペースを作成</span>
-            <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span><br>
-            <span class="gray-text">に追加する</span></div> %>
-        </div>
-      <% end %> 
-
-    
-      <%= link_to composites_path do %>
-        <div class="usersselect-container">
-          <div><i class="bi bi-people-fill" style="font-size: 6rem;"></i></div>
-          <div class="newcontents_text-sub">
-            <span class="gray-text">配置を作成</span>
-            <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span><br>
-            <span class="gray-text">に追加する</span></div> %>
-        </div>
-      <% end %> 
       
   </div>
 </div>
