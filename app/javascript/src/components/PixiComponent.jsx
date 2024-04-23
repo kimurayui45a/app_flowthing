@@ -314,7 +314,8 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
                 texture = Texture.from(itemDetails.item_canvas);
                 break;
               case 'item_image':
-                texture = Texture.from(itemDetails.item_image.url);
+                //texture = Texture.from(itemDetails.item_image.url);
+                texture = createWhiteRectangleTexture(appRef.current, 100, 100);
                 break;
               default:
                 // デフォルトのテクスチャを設定
@@ -886,7 +887,8 @@ if (direction === 'change') {
         spriteImage = Texture.from(loadItem.item_canvas);
         //spriteImage.baseTexture.scaleMode = SCALE_MODES.LINEAR;
       } else if (choice === 'item_image') {
-        spriteImage = Texture.from(loadItem.item_image.url);
+        //spriteImage = Texture.from(loadItem.item_image.url);
+        spriteImage = createWhiteRectangleTexture(appRef.current, 100, 100);
       } else {
         //spriteImage = Texture.from('https://pixijs.com/assets/bunny.png');
         spriteImage = createWhiteRectangleTexture(appRef.current, 100, 100);
