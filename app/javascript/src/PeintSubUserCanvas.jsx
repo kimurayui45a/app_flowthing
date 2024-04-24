@@ -153,7 +153,7 @@ const PeintSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasS
           onKeyDown={handleKeyDown}
         />
 
-        <button type="submit">データ送信</button>
+        <button type="submit" className="btn btn-primary">データ送信</button>
 
     </form>
     </div>

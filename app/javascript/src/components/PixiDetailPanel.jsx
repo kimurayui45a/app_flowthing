@@ -223,11 +223,11 @@ const PixiDetailPanel = ({ itemAllId, subUserAllId }) => {
           <div>
             {selectedSubUser.icon_choice === 'sub_canvas' && selectedSubUser.sub_canvas ? (
               <a href={`/sub_users/${selectedSubUser.id}`}>
-              <img src={selectedSubUser.sub_canvas} alt="Canvas Image" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img src={selectedSubUser.sub_canvas} alt="Canvas Image" style={{ width: '40px', height: '40px%', objectFit: 'contain', borderRadius: '50%' }} />
               </a>
             ) : selectedSubUser.icon_choice === 'sub_image' && selectedSubUser.sub_image ? (
               <a href={`/sub_users/${selectedSubUser.id}`}>
-              <img className="item-icon-small" src={selectedSubUser.sub_image.url} alt="Uploaded Image" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              <img className="item-icon-small" src={selectedSubUser.sub_image.url} alt="Uploaded Image" style={{ width: '40px%', height: '40px%', objectFit: 'contain', borderRadius: '50%' }} />
               </a>
             ) : (
               <a href={`/sub_users/${selectedSubUser.id}`}>

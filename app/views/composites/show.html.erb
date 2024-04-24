@@ -2,32 +2,44 @@
 <div class="flux-screen-show-container"> 
   <div class="flux-screen-show-space">
 
-  <div class="user-show-name-contents">
-    <span class="list-title">
-      <span class="light-blue-text">Flux Screen</span>
-      <%# <span class="purple-text">N</span>ame<br> %>
-    </span>
-    <span class="sub-name-text f-text"><%= @composite.composite_name.present? ? @composite.composite_name : 'No Name' %></span>
+
+
+
+
+
+
+
+  <div class="flux-screen-show-third">
+    <div class="flux-screen-show-frame">
+      <div class="flux-screen-show-frame-second">
+        <div id="reactLoadComposite"
+          data-composite-id="<%= @composite.id %>"
+          data-item-id-all="<%= @items.to_json %>"
+          data-space-id-all="<%= @spaces.to_json %>"
+          data-sub-user-id-all="<%= @sub_users.to_json %>"
+
+          data-space-data="<%= @composite.composite_space %>"
+          data-item-data="<%= @composite.composite_item %>"
+        >
+        </div>
+      </div>
+    </div>
   </div>
 
 
-    <div class="flux-screen-show-frame">
+<div class="gradient-border">
+    <div class="content motto-miru screen-show-comment-contents">
 
-    <div id="reactLoadComposite"
-      data-composite-id="<%= @composite.id %>"
-      data-item-id-all="<%= @items.to_json %>"
-      data-space-id-all="<%= @spaces.to_json %>"
-      data-sub-user-id-all="<%= @sub_users.to_json %>"
+      <div class="nameplate-white" style="margin-bottom: 1rem;"><%= @composite.composite_name.present? ? @composite.composite_name : 'No Name' %>
+      
+      <div class="flex">
+      <div style="font-size: 1rem;"><span><%= @composite.created_at.strftime("%Y年%m月%d日") %></span></div>
+      <div style="font-size: 1rem;"><span>〜</div></span>
+      <div style="font-size: 1rem;"><span><%= @composite.updated_at.strftime("%Y年%m月%d日") %></span></div>
+      </div>
+      </div>
 
-      data-space-data="<%= @composite.composite_space %>"
-      data-item-data="<%= @composite.composite_item %>"
-    >
-    </div>
-
-    </div>
-
-    <div class="content motto-miru user-show-comment-contents">
-      <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span>
+      <%# <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span> %>
       <% text = @composite.composite_text.present? ? @composite.composite_text : 'No Comment' %>
       <% lines = text.split("\n") %>
       <% preview_text = lines.first(3).join("\n") %>
@@ -46,8 +58,7 @@
         </span>
       <% end %>
     </div>
-
-
+  </div>
   </div>
 
 

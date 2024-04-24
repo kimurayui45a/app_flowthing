@@ -60,7 +60,20 @@ const P5Cursor = () => {
 
   return (
     <div>
-      {penGroup.has(toolMode) && (
+
+<div
+          className="tool pen-tool"
+          style={{
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            width: `${cursorSize}px`,
+            height: `${cursorSize}px`,
+            borderRadius: '50%',
+            cursor: 'none'
+            // 必要に応じて追加
+          }}
+        />
+      {/* {penGroup.has(toolMode) && (
         <div
           className="tool pen-tool"
           style={{
@@ -69,10 +82,11 @@ const P5Cursor = () => {
             width: `${cursorSize}px`,
             height: `${cursorSize}px`,
             borderRadius: '50%',
+            cursor: 'none'
             // 必要に応じて追加
           }}
         />
-      )}
+      )} */}
       {/* {toolMode === 'betaPen' && (
   <div
     className="tool pen-tool"

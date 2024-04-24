@@ -16,6 +16,8 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
   const [pixiDateId, setPixiDateId] = useState();
 
+  const [selectCompositeName, setSelectCompositeName] = useState();
+
   
   useEffect(() => {
     // allComposite 配列が空であるかどうかを確認
@@ -31,6 +33,7 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
         const itemData = selectComposite.composite_item;
         setSpaceObject(spaceData);
         setItemObject(itemData);
+        setSelectCompositeName(selectComposite.composite_name);
       }
     }
   }, []);
@@ -58,6 +61,8 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
       setItemObject(itemData);
       setPixiDateId(dateId);  // compositeIdを更新
       setChangeDate(true);
+      setDefaultPixi(true);
+      setSelectCompositeName(selectComposite.composite_name);
     }
   }
 
@@ -65,9 +70,11 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
 
   return (
-    <div className="flex-column">
-
-<div className="flux-screen-show-frame">
+    <div className="flex-column top-container">
+<div className="flux-screen-show-third">
+    <div className="flux-screen-show-frame">
+    <div className="flux-screen-show-frame-second">
+      
       {defaultPixi ? (
         <>
           <PixiSet
@@ -86,23 +93,100 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
         </>
       ) : (
         <>
-          <PixiTest />
+          {/* <PixiTest /> */}
+          <div className="info-btn-fram flex">
+          <a href="/info">
+          <div className="info-botann">
+          <div className="wave wave1"></div>
+            <div className="wave wave2"></div>
+            <div className="wave wave3"></div>
+            <div className="wave wave4"></div>
+          <div className="info-botann-text">
+              <span className="f-text">F</span>low <span className="t-text">T</span>hing<span className="gray-text">とは？</span>
+          </div>
+          </div>
+          </a>
+          </div>
         </>
       )}
-</div>
+      </div>
+    </div>
+    </div>
 
-      {allComposite.map((composite, index) => (
-        <div key={index} className="flex">
-          <div>
+
+
+
+    {selectCompositeName ? (
+  <>
+  <div className="nameplate"><p>{selectCompositeName}</p></div>
+  </>
+):(
+  <>
+  <span>Flux Screenがありません。</span>
+  </>
+)}
+
+
+
+
+
+
+
+
+    <div className="flux-screen-menu-frame" style={{ position: 'relative' }}>
+
+
+    <div
+      className="default-composite-btn info-botann"
+      style={{ position: 'absolute', left: '-268px'}}
+      onClick={() => setDefaultPixi(false)}
+      onTouchStart={() => setDefaultPixi(false)}
+    >
+      
+      <div className="wave wave1"></div>
+      <div className="wave wave2"></div>
+      <div className="wave wave3"></div>
+      <div className="wave wave4"></div>
+      <div className="info-botann-text">
+          <span className="f-text">F</span>low 
+          <span className="t-text">T</span>hing
+          <span className="gray-text">とは？</span>
+      </div>
+  </div>
+
+  <div className="flex">
+<div style={{ width: '122px', height: '51px', marginRight: '8px'}}></div>
+
+<div style={{ overflowX: 'auto', height: 'auto', display: 'flex', width:'725px' }}>
+      <div className="flex-start-center">
+
+
+
+        {allComposite.map((composite, index) => (
+          <div key={index} className="flex">
+            <div style={{ margin: '2.5px' }}>
             <div
-              onClick={() => handleCompositeChange(composite.id)}
-              onTouchStart={() => handleCompositeChange(composite.id)}
-            >
-            {composite.composite_name}
+                onClick={() => handleCompositeChange(composite.id)}
+                onTouchStart={() => handleCompositeChange(composite.id)}
+                // className="tooltip-container"
+              >
+              <img src={composite.composite_image} alt="Canvas Image" style={{ width: '100px', height: 'auto', objectFit: 'contain' }} />
+              {/* <span className="tooltip-text" style={{ textAlign: 'left' }}>{composite.composite_name}</span> */}
+            </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+
+      </div>
+      </div>
+
+
+      </div>
+    </div>
+
+
+
+
     </div>
   );
 };

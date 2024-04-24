@@ -2342,16 +2342,17 @@ const stopCircularMove = (spriteId) => {
     {/* <button onClick={checkSpriteInfo}>スプライトインフォの中</button> */}
       <div
         style={{
-          width: !pixiMode ? '1000px' : '1408px',
-          height: !pixiMode ? '590px' : '792px',
-          border: !pixiMode ? '1px solid white' : '1px solid black',
+          width: !pixiMode ? '850px' : '1408px',
+          height: !pixiMode ? '500px' : '792px',
+          border: !pixiMode ? 'none' : '1px solid black',
           margin: 'auto',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           overflow: 'hidden',
           position: 'relative',
-          background: '#fff'
+          background: '#fff',
+          boxShadow: !pixiMode ? 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)' : 'none'
         }}
       >
 

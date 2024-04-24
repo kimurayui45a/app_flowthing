@@ -126,7 +126,7 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
   };
 
   return (
-    <div>
+    <div className="flex-column">
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} notLayerSave={notLayerSave} />
 
 
@@ -150,33 +150,97 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
 
 
 
-
-<button onClick={() => setIsAsync(true)}>非同期</button>
-      <button onClick={() => setIsAsync(false)}>同期</button>
-
       {/* form */}
       <form onSubmit={handleTriggerGetData}>
+
+
+
+
+      <div className="form-card" style={{ marginTop: '20px' }}>
+  <div className="board-card-background flex-column">
+    <div className="flex-column" style={{ width: '80%' }}>
+
+<div className="flex" style={{ boxShadow: '1px 1px black', borderRadius: '5px', marginBottom: '20px' }}>
+<div
+  className= "panel-tool-button-small tooltip-container"
+  onClick={() => setIsAsync(true)}
+  onTouchStart={() => setIsAsync(true)}
+  style={{
+    backgroundColor: isAsync ? '#9199AE' : '#c2c1c1',
+    borderRadius: '5px 0px 0px 5px',
+    borderRight: '0.5px solid #4A4A4A',
+    width: '80px',
+    height: '40px'
+  }}
+>
+  
+  途中保存
+  
+  <span className="tooltip-text" style={{ textAlign: 'left' }}>送信後のリダイレクトが発生せず、送信後引き続き作業できます。</span>
+</div>
+
+<div
+  className= "panel-tool-button-small tooltip-container"
+  onClick={() => setIsAsync(false)}
+  onTouchStart={() => setIsAsync(false)}
+  style={{
+    backgroundColor: !isAsync ? '#9199AE' : '#c2c1c1',
+    borderRadius: '0px 5px 5px 0px',
+    borderLeft: '0.5px solid #4A4A4A',
+    width: '80px',
+    height: '40px'
+  }}
+>
+
+  通常保存
+  
+  <span className="tooltip-text" style={{ textAlign: 'left' }}>送信後のリダイレクトが発生するため作業終了となります。</span>
+</div>
+</div>
+
+
+
         {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
-        <input
-          type="text"
-          value={subUserName}
-          onChange={(e) => setSubUserName(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
+        <div  style={{ marginBottom: '20px', width: '500px' }}>
+        <div><span className="text-Rounded">命名(最大20文字) ※任意</span></div>
+          <input
+            type="text"
+            value={subUserName}
+            onChange={(e) => setSubUserName(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className='form-control board-item-form'
+          />
+        </div>
+
+        <div  style={{ marginBottom: '20px', width: '500px' }}>
+        <div><span className="text-Rounded">コメント(最大2000文字) ※任意</span></div>
         <textarea
           value={subUserText}
           onChange={(e) => setSubUserText(e.target.value)}
           onKeyDown={handleKeyDown}
+          className='form-control board-item-form'
         />
+        </div>
+
+
+
+      </div>
+    </div>
+    </div>
 
 {isValid ? (
-        <button type="submit">データ送信</button>
+        <button type="submit" className="btn btn-primary">データ送信</button>
       ) : (
         <div>送信不可</div>
       )}
 
     </form>
+
+
+ 
+
     </div>
+
   );
 };
 

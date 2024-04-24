@@ -23,9 +23,12 @@
 
 
 
+
+<% if Item.where.not(item_canvas: nil).exists? && Space.where.not(space_canvas: nil).exists? %>
   <%= link_to new_composite_path do %>
-      <div>Flow Thingを配置する</div>
-    <% end %>
+    <div>Flow Thingを配置する</div>
+  <% end %>
+<% end %>
 
 
 
