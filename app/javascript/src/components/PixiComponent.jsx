@@ -154,7 +154,8 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
       const app = new Application({
         background: 0x1099bb,
         width: 800,
-        height: 450
+        height: 450,
+        preserveDrawingBuffer: true
       });
 
       pixiContainer.current.appendChild(app.view);

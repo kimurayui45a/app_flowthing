@@ -39,11 +39,37 @@
       <% end %>
       </div>
       <div class="item-flex">
-        <div>
-          <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
-            <i class="bi bi-pencil-fill trash-fill-font"></i>
-          <% end %>
-        </div>
+<% if sub_user.icon_choice.present? %>
+<% case sub_user.icon_choice %>
+<% when 'sub_image' %>
+  <% if sub_user.sub_image.present? %>
+    <div>
+      <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+        <i class="bi bi-pencil-fill trash-fill-font"></i>
+      <% end %>
+    </div>
+  <% end %>
+<% when 'sub_canvas' %>
+  <div>
+    <%= link_to peint_edit_sub_user_path(id: sub_user.id), class: "edit-memo-link pencil-fill-space" do %>
+      <i class="bi bi-pencil-fill trash-fill-font"></i>
+    <% end %>
+  </div>
+
+<% when 'sub_color' %>
+  <div>
+    <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+      <i class="bi bi-pencil-fill trash-fill-font"></i>
+    <% end %>
+  </div>
+<% else %>
+    <div>
+      <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+        <i class="bi bi-pencil-fill trash-fill-font"></i>
+      <% end %>
+    </div>
+<% end %>
+<% end %>
 
         <div>
           <%= link_to confirm_delete_sub_user_path(sub_user), class: "delete-confirm-link" do %>

@@ -58,12 +58,41 @@
             <% end %>
           <% end %>
         </div>
+<% if item.image_choice.present? %>
+<% case item.image_choice %>
+<% when 'item_image' %>
+  <% if item.item_image.present? %>
 
-        <div class="pencil-fill-space">
-          <%= link_to edit_item_path(item, sub_user_id: item.sub_user_id) do %>
-            <i class="bi bi-pencil-fill pencil-fill-font"></i>
-          <% end %>
-        </div>
+    <div class="pencil-fill-space">
+      <%= link_to edit_item_path(item, sub_user_id: item.sub_user_id) do %>
+        <i class="bi bi-pencil-fill pencil-fill-font"></i>
+      <% end %>
+    </div>
+
+    
+  <% end %>
+
+<% when 'item_canvas' %>
+
+  <div class="pencil-fill-space">
+    <%= link_to canvas_edit_item_path(id: item.id, sub_user_id: sub_user.id) do %>
+      <i class="bi bi-pencil-fill pencil-fill-font"></i>
+    <% end %>
+  </div>
+
+<% else %>
+
+  <div class="pencil-fill-space">
+    <%= link_to edit_item_path(item, sub_user_id: item.sub_user_id) do %>
+      <i class="bi bi-pencil-fill pencil-fill-font"></i>
+    <% end %>
+  </div>
+<% end %>
+<% end %>
+
+
+
+
 
         <div class="pencil-fill-space">
           <%= link_to item_path(item), class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('items.item.delete_confirm') } do %>

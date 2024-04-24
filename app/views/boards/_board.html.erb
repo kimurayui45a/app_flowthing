@@ -1,29 +1,64 @@
-<%= link_to board_path(board), class: "board-link" do %>
-    <article id="board<%= board.id %>" class="board-card-container">
-      <span class="board-title"><%= board.board_title %></span><br>
-      <p><%= board.comments_count %> comments</p>
-      
-      <% if board.item %>
-        <% case board.item.image_choice %>
-        <% when 'item_image' %>
-        <div>
-          <%= image_tag board.item.item_image.url, class: "user-profileicon" %></div>
-        <% when 'item_canvas' %>
-          <div>
+<div class="board-show-content-anime" style="position: relative;">
 
-          <img src="<%= board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon" >
+  <div class="magnet-scale bi-pin-angle-position board-anime no-animation">
+    <div class="magnet <%= container_class_for_board_comments(board.comments_count) %>">
+      <span class="highlight"></span>
+    </div>
+  </div>
+  
+  <%= link_to board_path(board), class: "board-link" do %>
+    <article id="board<%= board.id %>" class="board-card-container board-anime">
+      <div class="board-show-frame">
+        
+        <div class="board-item-show-frame board-show-content-anime">
+          <div class="flex">
+            <% if board.item %>
+              <% case board.item.image_choice %>
+              <% when 'item_image' %>
+                <% if board.item.item_image.present? %>
+                  <div>
+                    <%= image_tag board.item.item_image.url, class: "board-icon" %>
+                  </div>
+                <% else %>
+                  <div class="no-image-icon">No Image</div>
+                <% end %>
+              <% when 'item_canvas' %>
+                <% if board.item.item_canvas.present? %>
+                  <div>
+                    <img src="<%= board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="board-icon" >
+                  </div>
+                <% else %>
+                  <div class="no-image-icon">No Image</div>
+                <% end %>
+              <% else %>
+                <div class="no-image-icon">No Image</div>
+              <% end %>
+            <% else %>
+              <div class="board-no-image-icon">No Image</div>
+            <% end %>
           </div>
-        <% else %>
-          <div class="no-image-icon">No Image</div>
-        <% end %>
-      <% end %>
-      <% if current_user && current_user.profile == board.profile %>
-        <%= link_to board_confirm_delete_board_path(board), class: "delete-confirm-link" do %>
-          <i class="bi bi-trash-fill"></i>
-        <% end %>
-      <% end %>
+    
+          <div class="board-text-position">
+            <div style="width: 6.5rem" class="tooltip-container">
+              <div class="angleDegrees_value"><span class="board-title"><%= board.board_title %></span></div>
+              <span class="board-title-tooltip-text" style="text-align: start;"><%= board.board_title %></span>
+            </div>
+              
+            <div class="flex-end-end">    
+              <div style="margin-bottom: 0.3rem;"><span class="comment-count-text">コメント数：<%= board.comments_count %></span></div>
+
+              <div class="flex-end-end" style="align-self: flex-end;">
+                <% if current_user && current_user.profile == board.profile %>
+                  <%= link_to board_confirm_delete_board_path(board), class: "delete-confirm-link" do %>
+                    <i class="bi bi-trash-fill trash-fill-font"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
-<% end %>
-
-
+  <% end %>
+</div>
 

@@ -1,31 +1,124 @@
 <% content_for(:title, t('.title')) %>
-<div class="max767-container">
-  <h1 class="board-section-title">
-    Free 掲示板一覧
-  </h1>
-  <div class="btn-search">
-    <div>
-      <%= link_to 'Question', question_boards_path, class: "board-btn" %>
-    </div>
-    <div>
-    <%= link_to new_board_path do %>
-      <div class="board-btn">
-        <span>掲示板を作成</span>
-      </div>
-    <% end %>
-  </div>
-    <div>
-    <% if user_signed_in? %>
-      <%= link_to 'My Boards', myboards_list_boards_path, class: "board-btn" %>
-    <% end %>
-    </div>
-    <div>
-      <%= link_to '掲示板', boards_path, class: 'board-btn' %>
-    </div>
-  </div>
-<% @free_boards.each do |board| %>
-  <%= render 'board', board: board %>
-<% end %>
+<div class="maxboard-container" style="position: relative; padding-top: 5rem; padding-bottom: 2rem;">
 
-<%= paginate @free_boards %>
+
+<div class="question-btn-group">
+  <div class="board-menu">
+    <div style="position: absolute; top: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+    <div style="position: absolute; top: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+    <div style="position: absolute; bottom: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+    <div style="position: absolute; bottom: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+  <div>
+    <%= link_to new_board_path do %>
+        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">掲示板を作成</span></div>
+    <% end %>
+  </div>
+
+    <div class="board-menu-text">
+    
+      <%= link_to boards_path do %>
+        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">全体掲示板</span></div>
+      <% end %>
+    </div>
+    <div>
+          
+      <%= link_to question_boards_path do %>
+        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">質問掲示板</span></div>
+      <% end %>
+    </div>
+    
+    <div>
+      <% if user_signed_in? %>
+      <%= link_to myboards_list_boards_path do %>
+        <div><span class="board-menu-text">投稿した掲示板</span></div>
+      <% end %>
+      <% end %>
+    </div>
+  
+  </div>
+
+</div>
+
+
+<div style="position: relative;" class="flex-column board-scale board-top-set">
+  <div class="flex board-title-word-container">
+    <div class="board-title-word" style="border: 0.2rem solid #91D7E9; margin: 0.5rem 0.5rem 0rem 0.5rem;"><span>自<span></div>
+    <div class="board-title-word" style="border: 0.2rem solid #9ADFCB; margin: 0.5rem 0.5rem 1rem 0.5rem;""><span>由<span></div>
+    <div class="board-title-word" style="border: 0.2rem solid #F6E4C5; margin: 0.5rem 0.5rem 2rem 0.5rem;"><span>掲<span></div>
+    <div class="board-title-word" style="border: 0.2rem solid #FBC8C3; margin: 0.5rem 0.5rem 1rem 0.5rem;"><span>示<span></div>
+    <div class="board-title-word" style="border: 0.2rem solid #F8A3B1; margin: 0.5rem 0rem 0rem 0.5rem;"><span>板<span></div>
+  </div>
+
+
+  <div class="vertical-text">
+    <div><%= Date.today.strftime('%-m') %></div>
+      <div>月</div>
+      <div><%= Date.today.strftime('%-d') %></div>
+      <div>日</div>
+      <div>（<%= today_short_day_name %>）</div>
+    </div>
+
+  <div class="all-board-scroll-container">
+
+    <div class="board-magnet-red">
+      <div class="magnet-scale bi-pin-angle-position board-anime no-animation">
+        <div class="magnet magnet-red">
+          <span class="highlight"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="board-magnet-blue">
+      <div class="magnet-scale bi-pin-angle-position board-anime no-animation">
+        <div class="magnet magnet-blue">
+          <span class="highlight"></span>
+        </div>
+      </div>
+      </div>
+      <div class="board-magnet-yellow">
+      <div class="magnet-scale bi-pin-angle-position board-anime no-animation">
+        <div class="magnet magnet-yellow">
+          <span class="highlight"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="board-magnet-green">
+      <div class="magnet-scale bi-pin-angle-position board-anime no-animation">
+        <div class="magnet magnet-green">
+          <span class="highlight"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="magnet-rect"></div>
+    <div class="magnet-rect-white"></div>
+    <div class="magnet-rect-white-second"></div>
+    <div class="magnet-rect-white-third"></div>
+    <div class="magnet-rect-white-forth"></div>
+    <div class="magnet-rect-white-five"></div>
+
+
+
+    <div class="all-board-background">
+      <div class="all-board-frame">
+        <div class="all-board-grit">
+          <% if @free_boards.present? %>
+            <% @free_boards.each do |board| %>
+              <div>
+                <%= render 'board', board: board %>
+              </div>
+            <% end %>
+            <% else %>
+              <div>掲示板がありません</div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 51.2rem; margin-top: 0.3rem;">
+      <%= paginate @free_boards %>
+    </div>
+
+  </div>
 </div>

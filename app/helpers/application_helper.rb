@@ -84,6 +84,40 @@ module ApplicationHelper
       'item-card-container-redblack'
     end
   end
+
+
+
+  def container_class_for_board_comments(comments_count)
+    if comments_count >= 50
+      'magnet-gold'
+    elsif comments_count >= 40
+      'magnet-silver'
+    elsif comments_count >= 30
+      'magnet-red'
+    elsif comments_count >= 25
+      'magnet-violet'
+    elsif comments_count >= 20
+      'magnet-indigo'
+    elsif comments_count >= 15
+      'magnet-blue'
+    elsif comments_count >= 10
+      'magnet-orange'
+    elsif comments_count >= 5
+      'magnet-green'
+    elsif comments_count >= 3
+      'magnet-pink'
+    elsif comments_count >= 1
+      'magnet-liteblue'
+    else
+      'magnet-default'
+    end
+  end
+
+  def today_short_day_name
+    day_names = ["日", "月", "火", "水", "木", "金", "土"]
+    day_names[Date.today.wday]
+  end
+  
 end
 
 

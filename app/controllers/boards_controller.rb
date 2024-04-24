@@ -3,7 +3,9 @@ class BoardsController < ApplicationController
 
   def index
     @q = Board.ransack(params[:q])
-    @boards = @q.result(distinct: true).includes(:profile, :item).order(created_at: :desc).page(params[:page]).per(10)
+    @boards = @q.result(distinct: true).includes(:profile, :item).order(created_at: :desc).page(params[:page]).per(16)
+    @today = Date.today.strftime("%-m月%-d日")
+
   end  
   
 
@@ -65,17 +67,21 @@ class BoardsController < ApplicationController
   end
 
   def myboards_list
-    @my_boards = @profile.boards.includes(:item).order(created_at: :desc).page(params[:page]).per(5)
+    @my_boards = @profile.boards.includes(:item).order(created_at: :desc).page(params[:page]).per(16)
   end
 
   def free
     free_category = Category.find_by(category_name: 'Free')
-    @free_boards = free_category.boards.includes(:profile, :item).order(created_at: :desc).page(params[:page]).per(10) if free_category
+    @free_boards = free_category.boards.includes(:profile, :item).order(created_at: :desc).page(params[:page]).per(16) if free_category
+    @today = Date.today.strftime("%-m月%-d日")
+
   end  
 
   def question
     question_category = Category.find_by(category_name: 'Question')
-    @question_boards = question_category.boards.includes(:profile, :item).order(created_at: :desc).page(params[:page]).per(10) if question_category
+    @question_boards = question_category.boards.includes(:profile, :item).order(created_at: :desc).page(params[:page]).per(16) if question_category
+    @today = Date.today.strftime("%-m月%-d日")
+
   end  
 
   private

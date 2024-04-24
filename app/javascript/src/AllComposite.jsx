@@ -65,7 +65,9 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
 
   return (
-    <div>
+    <div className="flex-column">
+
+<div className="flux-screen-show-frame">
       {defaultPixi ? (
         <>
           <PixiSet
@@ -87,7 +89,7 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
           <PixiTest />
         </>
       )}
-
+</div>
 
       {allComposite.map((composite, index) => (
         <div key={index} className="flex">
