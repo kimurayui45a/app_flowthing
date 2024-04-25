@@ -18,6 +18,12 @@ export const PixiGroupProvider = ({ children }) => {
   const [customPanelVisible, setCustomPanelVisible] = useState(false);
   const [pixiDetailPanelVisible, setPixiDetailPanelVisible] = useState(false);
 
+
+  //ガイドパネル
+  const [pixiGuidePanelVisible, setPixiGuidePanelVisible] = useState(false);
+  const [guidePanelPosition, setGuidePanelPosition] = useState({ x: 50, y: 50 });
+
+
   //タブの切り替え
   const [pixiListTabMode, setPixiListTabMode] = useState(true);
   const [pixiItemListTab, setPixiItemListTab] = useState('style');
@@ -330,6 +336,17 @@ export const PixiGroupProvider = ({ children }) => {
     }));
   };
 
+  //「ガイドパネル」を表示する関数
+  const toggleGuidePanelVisible = () => {
+    setPixiGuidePanelVisible(true);
+  };
+
+  //「ガイドパネル」を閉じる関数
+  const toggleGuidePanelClose = () => {
+    setPixiGuidePanelVisible(false);
+  };
+
+
 
   //「カスタムパネル」を表示する関数
   const toggleCustomPanelVisible = () => {
@@ -519,8 +536,15 @@ export const PixiGroupProvider = ({ children }) => {
     intervalTime,
     setIntervalTime,
     inputIntervalTime,
-    setInputIntervalTime
+    setInputIntervalTime,
 
+    //ガイドパネル
+    pixiGuidePanelVisible,
+    setPixiGuidePanelVisible,
+    guidePanelPosition,
+    setGuidePanelPosition,
+    toggleGuidePanelVisible,
+    toggleGuidePanelClose
   }
 
 

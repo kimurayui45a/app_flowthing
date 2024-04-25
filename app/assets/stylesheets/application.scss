@@ -7546,3 +7546,48 @@ background-color: #d1eee6;
 .canvas-paint-container {
   margin-top: 3rem;
 }
+
+.gaido-panel {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: #4A4A4A;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.gaido-panel-title {
+  font-weight: 500;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.control-panel-white {
+  background-color: white;
+  border: 5px solid #4A4A4A;
+  box-shadow: 2px 2px 4px #545454;
+}
+
+
+.panel-tool-button-guide {
+  cursor: auto;
+  width: 25px;
+  height: 25px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c2c1c1;
+  display: inline-flex;
+  border-radius: 2px;
+  box-shadow: 1px 1px black;
+}
+
+
+.guide-section {
+  padding-top: 25px;
+  margin-top: 30px;
+  border-top: 2px solid #4A4A4A;
+  width: 360px;
+  margin-bottom: 5px;
+}

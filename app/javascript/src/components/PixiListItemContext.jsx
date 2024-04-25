@@ -13,7 +13,8 @@ const PixiListItemContext = ({ itemAllId }) => {
     listPanelPosition,
     setListPanelPosition,
     handlePixiPanelDragStop,
-    toggleCustomPanelVisible
+    toggleCustomPanelVisible,
+    toggleGuidePanelVisible
   } = usePixiGroup();
 
 
@@ -47,6 +48,18 @@ const PixiListItemContext = ({ itemAllId }) => {
         <i className="bi bi-trash3-fill"></i>
         <span className="tooltip-text">選択中のFlow Thingを削除</span>
       </div>
+
+
+    <div
+      className="panel-tool-button tooltip-container"
+      onClick={toggleGuidePanelVisible}
+      onTouchStart={toggleGuidePanelVisible}
+      style={{ position: 'absolute', top: '12px', left: '82px' }}
+    >
+      <i className="bi bi-question-circle-fill"></i>
+      <span className="tooltip-text">ガイドパネルを表示する</span>
+    </div>
+
 
       <div className="bi-arrow-position"><i className="bi bi-arrow-down-up"></i></div>
 

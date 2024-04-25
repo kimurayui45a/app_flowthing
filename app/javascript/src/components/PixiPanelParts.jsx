@@ -429,7 +429,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
 
     //範囲アニメのパラメータ
     const updateBoundaryAnimeForm = (newValue, type) => {
-      if (newValue >= 1 && newValue <= 1200) {
+      if (newValue >= 0 && newValue <= 1200) {
   
         if (type === 'xValue') {
           setBoundaryAnimeXValue(newValue)
@@ -464,7 +464,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
   const handleBoundaryAnimeForm = (inputValue, type) => {
     const newValue = parseInt(inputValue, 10);
 
-    if (newValue >= 1 && newValue <= 1200) {
+    if (newValue >= 0 && newValue <= 1200) {
       updateBoundaryAnimeForm(newValue, type);
     } else {
       if (type === 'xValue') {
@@ -485,7 +485,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
 
     //円形アニメのパラメータ
     const updateCircularAnimeForm = (newValue, type) => {
-      if (newValue >= 1 && newValue <= 1200) {
+      if (newValue >= 0 && newValue <= 1200) {
   
         if (type === 'xValue') {
           setCircularAnimeXValue(newValue)
@@ -515,7 +515,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
   const handleCircularAnimeForm = (inputValue, type) => {
     const newValue = parseInt(inputValue, 10);
 
-    if (newValue >= 1 && newValue <= 1200) {
+    if (newValue >= 0 && newValue <= 1200) {
       updateCircularAnimeForm(newValue, type);
     } else {
       if (type === 'xValue') {
@@ -737,7 +737,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 <input
                   className="no-drag form-select-value"
                   type="number"
-                  min="1"
+                  min="0"
                   max="1200"
                   step="1"
                   style={{ width: '60px', fontSize: '14px' }}
@@ -761,7 +761,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   <input
                     className="no-drag form-select-value"
                     type="number"
-                    min="1"
+                    min="0"
                     max="1200"
                     step="1"
                     style={{ width: '60px', fontSize: '14px' }}

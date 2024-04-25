@@ -5,6 +5,7 @@ import { PixiListPanel } from './PixiListPanel';
 import { PixiCustomPanel } from './PixiCustomPanel';
 import { PixiDetailPanel } from './PixiDetailPanel';
 import { usePixiGroup } from './PixiGroupContext';
+import { PixiGuidePanel } from './PixiGuidePanel';
 
 const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, itemObject, spaceObject, subUserAllId, compositeId }) => {
   
@@ -54,7 +55,8 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
     spaceAnimeSpeed,
     spaceAnimeDirection,
     intervalTime,
-    setIntervalTime
+    setIntervalTime,
+    pixiGuidePanelVisible
   } = usePixiGroup();
 
 
@@ -2380,6 +2382,9 @@ const stopCircularMove = (spriteId) => {
 
           {/* 調整パネル(作業専用) */}
           {pixiMode && customPanelVisible && <PixiCustomPanel />}
+
+          {/* ガイドパネル(作業専用) */}
+          {pixiMode && pixiGuidePanelVisible && <PixiGuidePanel />}
 
           {/* 詳細パネル(再描画専用) */}
           {!pixiMode && pixiDetailPanelVisible && <PixiDetailPanel itemAllId={itemAllId} subUserAllId={subUserAllId} />}
