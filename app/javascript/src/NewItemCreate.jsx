@@ -3,11 +3,6 @@ import { P5CanvasSet } from './components/P5CanvasSet';
 
 const NewItemCreate = ({ subUserId }) => {
 
-  // subUserIdが取得できているかの確認
-  // useEffect(() => {
-  //   console.log("Received subUserId:", subUserId);
-  // }, [subUserId]); 
-
   // Canvasのサイズを状態として保持
   const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
 
@@ -19,6 +14,15 @@ const NewItemCreate = ({ subUserId }) => {
   const [notLayerSave, setNotLayerSave] = useState(true);
 
 
+  //アラートメッセージ
+  const [alertToast, setAlertToast] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  //文字数バリデーション
+  const [isValid, setIsValid] = useState(true);
+
+
+
   // 描画データを受け取るための状態
   const [getData, setGetData] = useState(null);
 
@@ -26,6 +30,23 @@ const NewItemCreate = ({ subUserId }) => {
   const [itemText, setItemText] = useState('');
   const [itemEpisode, setItemEpisode] = useState('');
   const [itemPlace, setItemPlace] = useState('');
+
+
+  useEffect(() => {
+    const isValidItemName = itemName.length <= 20;
+    const isValidItemText = itemText.length <= 10000;
+    const isValidItemEpisode = itemEpisode.length <= 50;
+    const isValidItemPlace = itemPlace.length <= 50000;
+
+    if (!isValidItemName || !isValidItemText  || !isValidItemEpisode  || !isValidItemPlace) {
+      handleAlertMessage("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は最大10000文字、「場所」は最大50文字、「エピソード」は最大50000文字でお願い致します。")
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [itemName, itemText, itemEpisode, itemPlace]);
+
+
 
   // 孫コンポーネントからデータを受け取るための関数
   const handleDataFromGrandchild = (getDataFunc) => {
@@ -73,6 +94,7 @@ const NewItemCreate = ({ subUserId }) => {
         window.location.href = data.redirect_url;
       } else {
         console.error('送信失敗');
+        handleAlertMessage("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は最大10000文字、「場所」は最大50文字、「エピソード」は最大50000文字でお願い致します。")
       }
     } catch (error) {
       console.error('エラーが発生しました', error);
@@ -90,46 +112,108 @@ const NewItemCreate = ({ subUserId }) => {
     }
   };
 
+  //対象のレイヤーが選択されていない時に出るアラートメッセージ（位置は中央固定）
+  const handleAlertMessage = (text) => {
+    // メッセージと表示状態を設定
+    setAlertMessage(text);
+    setAlertToast(true);
+  
+    // 一定時間後にメッセージを非表示にする
+    setTimeout(() => setAlertToast(false), 5000);
+  };
+
+
   return (
-    <div>
+    <div className="flex-column">
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
 
-      {/* form */}
-
-      <form id="item_create_form" onSubmit={handleTriggerGetData}>
-        {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
-        <input
-          type="text"
-          value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <textarea
-          value={itemText}
-          onChange={(e) => setItemText(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-
-        <input
-          type="text"
-          value={itemPlace}
-          onChange={(e) => setItemPlace(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <textarea
-          value={itemEpisode}
-          onChange={(e) => setItemEpisode(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-
-        
-        { !itemEpisode.trim() ? (
-          <div>ダミーの送信ボタン</div>
-        ) : (
-          <button type="submit">データ送信</button>
+      {alertToast && (
+          <div
+          className="alert-message"
+            style={{
+              // position: 'absolute',
+              // left: '50%',
+              // top: '50%',
+              // transform: 'translate(-60%, 40%)',
+              textAlign: 'left',
+              lineHeight: '1.3',
+              whiteSpace: 'pre-wrap',
+              marginTop: '20px',
+              width: '500px'
+            }}
+          >
+            {alertMessage}
+          </div>
         )}
 
-    </form>
+
+
+      {/* form */}
+      <form id="item_create_form" onSubmit={handleTriggerGetData}>
+        {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
+
+        <div className="form-card" style={{ marginTop: '60px' }}>
+            <div className="board-card-background flex-column" style={{ height: "600px" }}>
+              <div className="flex-column" style={{ width: '80%' }}>
+
+          <div  style={{ width: '500px', textAlign: 'left', marginTop: '60px' }}>
+            <div><span className="midasi-t-five">命名(最大20文字) ※任意</span></div>
+              <input
+                type="text"
+                value={itemName}
+                onChange={(e) => setItemName(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className='form-control board-item-form'
+              />
+          </div>
+          
+
+          <div  style={{ width: '500px', textAlign: 'left' }}>
+            <div><span className="midasi-t-five">コメント(最大10000文字) ※任意</span></div>
+            <textarea
+              value={itemText}
+              onChange={(e) => setItemText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className='form-control board-item-form'
+              style={{ height: '100px', resize: 'none', marginBottom: '20px' }}
+            />
+          </div>
+
+          <div  style={{ width: '500px', textAlign: 'left' }}>
+            <div><span className="midasi-t-five">場所(最大50文字) ※任意</span></div>
+            <input
+              value={itemPlace}
+              onChange={(e) => setItemPlace(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className='form-control board-item-form'
+              style={{ resize: 'none', marginBottom: '20px' }}
+            />
+          </div>
+
+
+          <div style={{ marginBottom: '20px', width: '500px', textAlign: 'left' }}>
+            <div style={{ fontWeight: "500" }}><span className="midasi-t-five">エピソード(最大50000文字)</span> <span className="red-text">※必須</span></div>
+            <textarea
+              value={itemEpisode}
+              onChange={(e) => setItemEpisode(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className='form-control board-item-form'
+              style={{ height: '230px', resize: 'none', marginBottom: '20px' }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        {itemEpisode.trim() ? (
+            <button type="submit" className="btn btn-primary" style={{ marginTop: '60px' }}>データ送信</button>
+          ) : (
+            <button className="btn btn-primary" style={{ marginTop: '60px' }} disabled>送信不可</button>
+          )}
+
+
+      </form>
     </div>
   );
 };

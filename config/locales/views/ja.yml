@@ -71,7 +71,7 @@ ja:
       contents_note_icon: ※「アイコン」か「名前」のどちらかは必ず入力して下さい。両方入力も可能。
       item_text: コメント(最大10000文字) ※任意
       episode: エピソード(最大50000文字)
-      item_place: 場所 ※任意
+      item_place: 場所(最大50文字) ※任意
       contents_note: ※必須
       image_choice: アイコン選択
       no_image: 選択しない

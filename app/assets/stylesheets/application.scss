@@ -268,6 +268,20 @@ ul {
   align-items: center;
 }
 
+.max12800-container {
+  position: relative;
+  width: 100%;
+  // max-width: 1280px;
+  margin: 0px auto;
+  padding: 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+}
+
+
 .footer-style {
   background-color: #7f7f7f;
   width: auto;
@@ -280,6 +294,14 @@ ul {
   font-size: 3rem;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 700;
+  text-align: center;
+  color: #7f7f7f;
+  white-space: nowrap;
+}
+
+.midasi-t-five {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 500;
   text-align: center;
   color: #7f7f7f;
   white-space: nowrap;
@@ -3375,7 +3397,12 @@ summary {
 }
 
 
-
+.other-tool {
+  position: fixed;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+  z-index: 9999;
+}
 
 .pen-tool {
   position: fixed;
@@ -3406,7 +3433,7 @@ summary {
   // border-radius: 50%;
   // border: 1px solid #000000;
   transform: translate(-50%, -50%);
-  pointer-events: none;
+  //pointer-events: none;
   z-index: 9999;
 }
 
@@ -3416,14 +3443,14 @@ summary {
   // height: 20px;
   // border-radius: 50%;
   // border: 1px solid #000000;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+  transform: translate(-40%, -40%);
+  //pointer-events: none;
   z-index: 9999;
 }
 
-#reactP5PenTest {
-  cursor: none;
-}
+// #reactP5PenTest {
+//   cursor: none;
+// }
 
 // .dropper-tool {
 //   cursor: url('/path/to/dropper-icon.png'), auto;
@@ -3437,9 +3464,9 @@ summary {
 }
 
 
-// #cursorP5SaveRab {
-//   cursor: none;
-// }
+#cursorP5SaveRab {
+  cursor: none;
+}
 
 
 
@@ -7481,19 +7508,21 @@ background-color: #d1eee6;
   font-size: 20px;
   position: relative;
   overflow: hidden;
-  color: #434229;
+  color: #2b2b1f;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
-  margin: 2rem;
+  margin: 2rem 2rem 6rem 2rem;
 }
 
 .nameplate p {
   margin: 0;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2), -1px -1px 1px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2), -0.8px -0.5px 0.5px rgb(0 0 0 / 80%);
 }
 
 .top-container {
   background-color: #af918c;
   //background-color: #b5ada3;
+  padding-bottom: 10rem;
+  padding-top: 8rem;
 }
 
 .nameplate-white {
@@ -7590,4 +7619,308 @@ background-color: #d1eee6;
   border-top: 2px solid #4A4A4A;
   width: 360px;
   margin-bottom: 5px;
+}
+
+.episode-lisut {
+  width: 20rem;
+  font-weight: 400;
+  overflow-wrap: break-word;
+  margin-left: 1rem;
+  padding-left: 10px;
+  border-left: 1px solid;
+}
+
+
+.profile-top-icon-frame {
+  width: 15rem;
+  height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  filter: grayscale(100%);
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 3px inset;
+}
+
+.top-gradient-border {
+  width: auto;
+  height: auto;
+  padding: 1px;
+  /* background: linear-gradient(-195deg, rgb(184 182 182), #b9b5b5, #868080, #817f7f, rgb(150 147 147)); */
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(-15deg, #4e4d4d, #ffffff);
+  /* background: linear-gradient(-195deg, rgb(184 182 182), #b9b5b5, #868080, #817f7f, rgb(150 147 147)); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin-top: -10px;
+  margin-left: 150px;
+}
+
+.chronology-title {
+  font-family: "Zen Antique", serif;
+  font-weight: 500;
+  font-style: normal;
+  display: block;
+  margin-top: -60px;
+  font-size: 1.5rem;
+  text-align: start;
+  margin-left: 150px;
+}
+
+.mini-top-canvas {
+  width: 150px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 1.5px 1.5px inset;
+}
+
+.flux-screen-show-third-mini {
+  background: linear-gradient(140deg, #79756e, #625d53, #443f35, #332f26, #2e271a);
+    box-shadow: 1.5px 4px 4px rgba(0, 0, 0, 0.7);
+    /* box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 3px inset; */
+    /* box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 3px inset; */
+    border-radius: 0.2rem;
+    /* border: 1px solid #4A4A4A; */
+    margin: 10px;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 0.1rem;
+    transform: scale(1);
+}
+
+.flux-screen-show-frame-mini {
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  background: linear-gradient(140deg, #7f7d79, #48433a, #413b30, #3a352c, #2c2318);
+  border-radius: 0.2rem;
+  /* border: 1px solid #887f79; */
+  box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 1px inset;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 0.15rem;
+}
+
+.flux-screen-show-frame-second-mini {
+  background: linear-gradient(140deg, #545351, #565146, #3c3831, #2e2920, #1e170e);
+  box-shadow: rgba(0, 0, 0, 0.3) 1px 0.5px 1px 1px inset;
+  border-radius: 0.2rem;
+  /* margin: 3px; */
+  /* border: 1px solid #544b45; */
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding: 0.1rem;
+}
+
+
+.aquarium {
+  width: 300px;   /* 水槽の幅 */
+  height: 200px;  /* 水槽の高さ */
+  border: 10px solid #5c5c5c;  /* 水槽の境界線 */
+  box-shadow: 0 0 8px #000;  /* 影を追加 */
+  position: relative;  /* 相対位置 */
+  overflow: hidden;  /* 内部要素がはみ出さないようにする */
+  background-color: #e0f4fc;  /* 水槽の背景色 */
+}
+
+.water {
+  width: 100%;  /* 水の幅（水槽と同じ） */
+  height: 85%;  /* 水の高さ（水槽の85%） */
+  background-color: rgba(0, 123, 255, 0.3);  /* 水の色と透明度 */
+  position: absolute;  /* 絶対位置 */
+  bottom: 0;  /* 下部からの位置 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8); /* 水面の効果 */
+}
+
+
+
+
+.water-border {
+  width: auto;
+  height: auto;
+  padding: 2px 2px 0px 2px;
+  background: linear-gradient(-195deg, rgb(224, 224, 224), #d6d6d6, #c0c0c0, #b5b5b5, rgb(173, 173, 173));
+  /* box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 3px inset; */
+  /* background: linear-gradient(-15deg, #4e4d4d, #ffffff); */
+  /* background: linear-gradient(-195deg, rgb(184, 182, 182), #b9b5b5, #868080, #817f7f, rgb(150, 147, 147)); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-bottom: 2rem solid; */
+  position: relative;
+  border-radius: 0.2px 0.2px 0 0;
+}
+
+
+
+.water-contents {
+  background: linear-gradient(-195deg, rgb(231, 231, 231), #ffffff, #f1f1f1);
+  /* box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.5); */
+  box-shadow: rgb(0 0 0 / 17%) 0.5px 10px 20px inset;
+  text-align: left;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  width: 186px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  overflow-wrap: break-word;
+  font-family: "Zen Antique", serif;
+  font-weight: 400;
+  font-style: normal;
+  border-radius: 0.2px 0.2px 0 0;
+}
+
+.water-underline {
+  position: absolute;
+  bottom: 1.5;
+  width: 190px;
+  box-shadow: rgb(247, 246, 246) 0.1px 0.2px 4px inset;
+  height: 20px;
+  background: linear-gradient(180deg, rgb(76 76 76), #383838, #1c1c1c, #202020, rgb(5 5 5));
+  border-radius: 0px 0px 0.2px 0.2px;
+}
+
+
+.water-upper-highlight {
+  position: absolute;
+  bottom: 1.5;
+  width: 190px;
+  height: 20px;
+  box-shadow: -1px -4px 6px rgba(255, 255, 255, 0.3);
+}
+
+.water-top {
+  position: absolute;
+  top: 0;
+  width: 190px;
+  height: 15px;
+  border-radius: 0.2px 0.2px 0 0;
+  box-shadow: rgba(247, 246, 246, 0.2) 0.5px 0.1px 4px 2px inset;
+  background: linear-gradient(360deg, rgb(71 71 71), #3e3e3e, #292929, #202020, rgb(27 27 27));
+}
+
+
+
+.water-background {
+  width: 178px;
+  height: 120px;
+  box-shadow: rgba(241, 241, 241, 0.88) 2px 2px 10px 3px inset;
+  background: linear-gradient(-180deg, rgb(199, 218, 219), #279b9b, #324c55);
+  /* background-color: rgb(79 123 130 / 35%); */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-radius: 0.5px 0.5px 0 0;
+}
+
+.water-upper {
+  position: absolute;
+  width: 186px;
+  height: 144px;
+  top: 2px;
+  z-index: 99;
+  box-shadow: rgba(0, 0, 0, 0.1) 0.5px 10px 20px inset;
+}
+
+.water-background-second {
+  width: 170px;
+  height: 130px;
+  background-color: rgb(79 123 130 / 35%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: linear-gradient(-195deg, rgb(215 215 215 / 19%), #84848440, #4949493b);
+}
+
+.screen-container {
+  background: linear-gradient(175deg, rgb(209, 227, 232) 0%, #b1c5cf 30%, #728c97 75%, #4f5a6d 90%, rgb(30, 50, 66) 100%);
+}
+
+
+.screen-list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  justify-content: center;
+  // grid-gap: 3rem;
+  margin-top: 5rem;
+}
+
+.screen-card-container {
+  display: block;
+  height: auto;
+  width: 200px;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.screen-details-bord {
+  height: 30px;
+  /* box-shadow: rgb(40 40 40 / 20%) 0.6px 1px 1px 2px; */
+  /* margin-bottom: -20px; */
+  box-shadow: rgb(18 18 18 / 88%) 0.8px 4px 20px inset;
+  /* box-shadow: rgb(40 40 40 / 20%) 0.6px 1px 10px 20px; */
+  /* color: white; */
+  background-color: #a59e9a;
+  width: 200px;
+}
+
+.screen-card-objectbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  position: relative;
+}
+
+.screen-icon-card-frame {
+  background-color: white;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  justify-items: center;
+  align-items: flex-end;
+  width: 200px;
+  height: 210px;
+  border-bottom: 30px solid #373432;
+  background: linear-gradient(360deg, rgb(82 88 91) 0%, rgb(119 128 129) 20%, rgb(121 127 129) 40%, #90a5b0 60%, #42617da8 85%, #485777b5 95%, rgb(48 66 78 / 76%) 100%);
+  box-shadow: rgba(0, 0, 0, 0.5) 0.8px 20px 20px inset
+}
+
+.screen-card-flex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 4px;
+  right: 10px;
+}
+
+.space-summary-style {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+}
+
+.space-item-shadow {
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  bottom: 0;
+  left: 0;
+  box-shadow: rgb(31 30 30 / 65%) 0.5px 0.5px 5px 4px inset;
 }

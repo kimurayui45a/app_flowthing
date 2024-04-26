@@ -24,6 +24,26 @@ const NewSpaceCreate = ({ profileId }) => {
     setGetData(() => getDataFunc);
   };
 
+
+  //アラートメッセージ
+  const [alertToast, setAlertToast] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+
+  //文字数バリデーション
+  const [isValid, setIsValid] = useState(true);
+
+  useEffect(() => {
+    const isValidSpaceName = spaceName.length <= 20;
+    const isValidSpaceText = spaceText.length <= 2000;
+
+    if (!isValidSpaceName || !isValidSpaceText) {
+      handleAlertMessage("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は2000文字でお願い致します。")
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [spaceName, spaceText]);
+
   //送信処理
   const handleTriggerGetData = async (event) => {
     const { dataURL, saveLayersData } = getData();
@@ -58,6 +78,7 @@ const NewSpaceCreate = ({ profileId }) => {
         window.location.href = data.redirect_url;
       } else {
         console.error('送信失敗');
+        handleAlertMessage("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は2000文字でお願い致します。")
       }
     } catch (error) {
       console.error('エラーが発生しました', error);
@@ -75,34 +96,79 @@ const NewSpaceCreate = ({ profileId }) => {
     }
   };
 
+
+  //対象のレイヤーが選択されていない時に出るアラートメッセージ（位置は中央固定）
+  const handleAlertMessage = (text) => {
+    // メッセージと表示状態を設定
+    setAlertMessage(text);
+    setAlertToast(true);
+  
+    // 一定時間後にメッセージを非表示にする
+    setTimeout(() => setAlertToast(false), 5000);
+  };
+
   return (
-    <div>
+    <div className="flex-column">
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
 
-      {/* form */}
-
-      <form onSubmit={handleTriggerGetData}>
-        {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
-        <input
-          type="text"
-          value={spaceName}
-          onChange={(e) => setSpaceName(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <textarea
-          value={spaceText}
-          onChange={(e) => setSpaceText(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-
-        
-        { !spaceName.trim() ? (
-          <div>ダミーの送信ボタン</div>
-        ) : (
-          <button type="submit">データ送信</button>
+      {alertToast && (
+          <div
+          className="alert-message"
+            style={{
+              // position: 'absolute',
+              // left: '50%',
+              // top: '50%',
+              // transform: 'translate(-60%, 40%)',
+              textAlign: 'left',
+              lineHeight: '1.3',
+              whiteSpace: 'pre-wrap',
+              marginTop: '20px'
+            }}
+          >
+            {alertMessage}
+          </div>
         )}
 
-    </form>
+        {/* form */}
+        <form onSubmit={handleTriggerGetData}>
+          <div className="form-card" style={{ marginTop: '60px' }}>
+            <div className="board-card-background flex-column">
+              <div className="flex-column" style={{ width: '80%' }}>
+
+
+                {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
+                <div  style={{ marginBottom: '20px', width: '500px', textAlign: 'left', marginTop: '65px' }}>
+                  <div style={{ fontWeight: "500" }}><span className="midasi-t-five">命名(最大20文字)</span> <span className="red-text">※必須</span></div>
+                    <input
+                      type="text"
+                      value={spaceName}
+                      onChange={(e) => setSpaceName(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      className='form-control board-item-form'
+                    />
+                </div>
+
+                <div  style={{ marginBottom: '20px', width: '500px', textAlign: 'left' }}>
+                  <div><span className="midasi-t-five">コメント(最大2000文字) ※任意</span></div>
+                  <textarea
+                    value={spaceText}
+                    onChange={(e) => setSpaceText(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className='form-control board-item-form'
+                    style={{ height: '270px', resize: 'none', marginBottom: '20px' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {spaceName.trim() ? (
+            <button type="submit" className="btn btn-primary" style={{ marginTop: '60px' }}>データ送信</button>
+          ) : (
+            <button className="btn btn-primary" style={{ marginTop: '60px' }} disabled>送信不可</button>
+          )}
+
+        </form>
     </div>
   );
 };

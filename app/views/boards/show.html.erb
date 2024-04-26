@@ -1,9 +1,9 @@
 <% content_for(:title, t('.title')) %>
-<div class="maxboard-container">
-  <div>
+<div class="maxboard-container flex-column">
+  <%# <div>
       <%= link_to '掲示板', boards_path, class: 'board-btn' %>
-    </div>
-  <article id="board<%= @board.id %>" class="board-show-container">
+  
+  <article id="board<%= @board.id %>" class="board-show-container flex-column">
     <h3><%= @board.board_title %></h3>
 
 

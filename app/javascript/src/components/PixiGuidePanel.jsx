@@ -312,7 +312,7 @@ style={{ margin: '7px 2px 2px 2px' }}
 </div>
 
 
-から回転方向を設定できます。<br />
+アイコンから回転方向を設定できます。<br />
 オプションタイトル横の
 <div
 className="panel-tool-button-guide"
@@ -320,7 +320,7 @@ style={{ margin: '7px 2px 2px 2px' }}
 >
 <i className="bi bi-broadcast"></i>
 </div>
-をクリックすると[振り子アニメ]モードに切り替わります。
+アイコンをクリックすると[振り子アニメ]モードに切り替わります。
 
 <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[振り子アニメ]</span></div>
 Flow Thingが左右に振り子のように揺れます。揺れる速さと回転角度（回転範囲）を設定できます。また
@@ -340,7 +340,7 @@ style={{ margin: '7px 2px 2px 2px' }}
 </div>
 
 
-から回転方向を設定できます。<br />
+アイコンから回転方向を設定できます。<br />
 オプションタイトル横の
 <div
 className="panel-tool-button-guide"
@@ -348,7 +348,7 @@ style={{ margin: '7px 2px 2px 2px' }}
 >
 <i className="bi bi-arrow-repeat"></i>
 </div>
-をクリックすると[回転アニメ]モードに切り替わります。
+アイコンをクリックすると[回転アニメ]モードに切り替わります。
 
 
 <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[縮尺アニメ]</span></div>

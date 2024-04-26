@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { PixiSet } from './components/PixiSet';
 import PixiTest from './PixiTest';
 
-const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => {
+const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profileId }) => {
     
   //「編集・作成」なのか「再描画」なのかを知らせるステート
   const [pixiMode, setPixiMode] = useState(false);
@@ -18,7 +18,43 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
   const [selectCompositeName, setSelectCompositeName] = useState();
 
+  const [randomEpisodes, setRandomEpisodes] = useState([]);
+
+
+  useEffect(() => {
+    if (itemAllId.length > 0 && subUserAllId.length > 0) {
+      // subUserAllId を ID をキーとするオブジェクトに変換して高速アクセスを可能にする
+      const subUserIndex = subUserAllId.reduce((acc, subUser) => {
+        acc[subUser.id] = subUser;
+        return acc;
+      }, {});
   
+      // item.episode と対応する sub_user の last_accessed_at を抽出
+      const episodesWithAccessInfo = itemAllId.map(item => {
+        const subUser = subUserIndex[item.sub_user_id];
+        return {
+          id: item.item_id,
+          episode: item.episode,
+          lastAccessedAt: subUser ? subUser.last_accessed_at : 'Unknown'
+        };
+      });
+  
+      // シャッフル関数を適用
+      const shuffledEpisodes = shuffleArray(episodesWithAccessInfo);
+      setRandomEpisodes(shuffledEpisodes);
+    }
+  }, [itemAllId, subUserAllId]);  // subUserAllId 依存関係にも注意
+  
+  // Fisher-Yates Shuffle Algorithm
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+
   useEffect(() => {
     // allComposite 配列が空であるかどうかを確認
     if (allComposite.length === 0) {
@@ -37,6 +73,10 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
       }
     }
   }, []);
+  
+  useEffect(() => {
+console.log('プロフ', profileId);
+  }, [profileId]);
   
 
   
@@ -67,6 +107,38 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
   }
 
 
+
+  const getClassForLastRandom = (lastAccessedAt) => {
+    if (!lastAccessedAt) return 'default-class';
+  
+    const hoursElapsed = Math.round((new Date() - new Date(lastAccessedAt)) / (1000 * 60 * 60));
+  
+    switch (true) {
+      case (hoursElapsed >= 0 && hoursElapsed <= 2):
+        return 'blur-0-card';
+      case (hoursElapsed >= 3 && hoursElapsed <= 24):
+        return 'blur-1-card';
+      case (hoursElapsed >= 25 && hoursElapsed <= 72):
+        return 'blur-2-card';
+      case (hoursElapsed >= 73 && hoursElapsed <= 168):
+        return 'blur-3-card';
+      case (hoursElapsed >= 169 && hoursElapsed <= 720):
+        return 'blur-4-card';
+      case (hoursElapsed >= 721 && hoursElapsed <= 1464):
+        return 'blur-5-card';
+      case (hoursElapsed >= 1465 && hoursElapsed <= 2184):
+        return 'blur-6-card';
+      case (hoursElapsed >= 2185 && hoursElapsed <= 2568):
+        return 'blur-7-card';
+      case (hoursElapsed >= 2569 && hoursElapsed <= 4392):
+        return 'item-card-container-gray-detail';
+      case (hoursElapsed >= 4393 && hoursElapsed <= 8760):
+        return 'item-card-container-black-detail';
+      default:
+        return 'item-card-container-redblack-detail';
+    }
+  };
+  
 
 
   return (
@@ -133,12 +205,15 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
 
 
-    <div className="flux-screen-menu-frame" style={{ position: 'relative' }}>
+    <div style={{ position: 'relative' }}>
 
-
+    <div className="flux-screen-show-third-mini" style={{ width: '163.1px', position: 'absolute' }}>
+      <div className="flux-screen-show-frame-mini">
+        <div className="flux-screen-show-frame-second-mini">
+<div className="mini-top-canvas">
     <div
       className="default-composite-btn info-botann"
-      style={{ position: 'absolute', left: '-268px'}}
+      style={{ position: 'absolute', left: '-268px', cursor: 'pointer' }}
       onClick={() => setDefaultPixi(false)}
       onTouchStart={() => setDefaultPixi(false)}
     >
@@ -153,9 +228,13 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
           <span className="gray-text">とは？</span>
       </div>
   </div>
+  </div></div></div></div>
+
+
+  
 
   <div className="flex">
-<div style={{ width: '122px', height: '51px', marginRight: '8px'}}></div>
+<div style={{ width: '178px', height: '51px', marginRight: '8px'}}></div>
 
 <div style={{ overflowX: 'auto', height: 'auto', display: 'flex', width:'725px' }}>
       <div className="flex-start-center">
@@ -164,18 +243,30 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
         {allComposite.map((composite, index) => (
           <div key={index} className="flex">
+    <div className="flux-screen-show-third-mini">
+      <div className="flux-screen-show-frame-mini">
+        <div className="flux-screen-show-frame-second-mini">
+<div className="mini-top-canvas">
             <div style={{ margin: '2.5px' }}>
             <div
                 onClick={() => handleCompositeChange(composite.id)}
                 onTouchStart={() => handleCompositeChange(composite.id)}
+                style={{ cursor: 'pointer' }}
                 // className="tooltip-container"
               >
               <img src={composite.composite_image} alt="Canvas Image" style={{ width: '100px', height: 'auto', objectFit: 'contain' }} />
               {/* <span className="tooltip-text" style={{ textAlign: 'left' }}>{composite.composite_name}</span> */}
             </div>
             </div>
+            </div>
+</div>
+</div>
+            </div>
+
           </div>
         ))}
+
+
 
       </div>
       </div>
@@ -186,6 +277,70 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId }) => 
 
 
 
+    <div>
+
+    <div className="flex-start-start-flex-center" style={{ marginTop: '150px' }}>
+
+    <div className="flux-screen-show-third">
+      <div className="flux-screen-show-frame">
+        <div className="flux-screen-show-frame-second">
+          <div className="profile-top-icon-frame">
+            <div>
+              {profileId.image_icon && profileId.image_icon.url ? (
+                <img 
+                  src={profileId.image_icon.url} 
+                  alt="Uploaded Image"
+                  style={{ width: '200px', height: 'auto', objectFit: 'contain' }}
+                />
+              ) : profileId.color_code ? (
+                <div 
+                  className="flex"
+                  style={{
+                    width: '200px',
+                    height: '200px',
+                    borderRadius: '50%',
+                    backgroundColor: profileId.color_code
+                  }}
+                />
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div>
+    <span className="chronology-title">年表（ランダム仕様）</span>
+<div className="top-gradient-border">
+    <div style={{ overflowY: 'auto', height: '600px', display: 'flex', flexDirection: 'column', width:'450px', alignItems: 'center' }} className="screen-show-comment-contents">
+  {randomEpisodes.map((item, index) => (
+    <div key={index} className={getClassForLastRandom(item.lastAccessedAt)}>
+      <div className="flex-start-start-flex-center">
+      {/* <div><span>Last accessed: {item.lastAccessedAt}</span></div> */}
+      <div style={{ paddingTop: '15px', paddingBottom: '15px' }}><span>某日</span></div>
+
+      <div className="episode-lisut" style={{ paddingTop: '15px', paddingBottom: '15px' }}>
+    
+      <span>{item.episode}</span>
+      </div>
+      </div>
+
+    </div>
+  ))}
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+    </div>
 
     </div>
   );

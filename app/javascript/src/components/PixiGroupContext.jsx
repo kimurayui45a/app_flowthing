@@ -10,7 +10,7 @@ export const PixiGroupProvider = ({ children }) => {
 
 
   //パネルの位置を記録する
-  const [listPanelPosition, setListPanelPosition] = useState({ x: 650, y: 50 });
+  const [listPanelPosition, setListPanelPosition] = useState({ x: 850, y: 50 });
   const [pixiDetailPanelPosition, setPixiDetailPanelPosition] = useState({ x: 200, y: 150 });
   const [customPanelPosition, setCustomPanelPosition] = useState({ x: 100, y: 100 });
 

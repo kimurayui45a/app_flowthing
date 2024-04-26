@@ -14,7 +14,7 @@ import { P5SizePanel } from './P5SizePanel';
 import { useP5Color } from './P5ColorContext';
 import { useP5PenToolParametersContext } from './P5PenToolParametersContext';
 
-const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize }) => {
+const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, setCanvasP5ToPixi, canvasP5ToPixi }) => {
   
   //canvas全体の情報に関するRef
   const sketchRef = useRef();
@@ -3494,6 +3494,17 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     scaleSlider.style.background = `linear-gradient(to right, rgba(127, 168, 235, 0.5) ${percentage}%, transparent ${percentage}%)`;
   };
 
+  //スケールスライダーを更新するハンドラ
+  const handleSample = () => {
+    if (p5InstanceRef.current) {
+      const dataURL = p5InstanceRef.current.canvas.toDataURL('image/png');
+      setCanvasP5ToPixi(dataURL);
+    }
+  };
+
+
+
+
 
   //「共有」
   //他のコンポーネントと共有するもの
@@ -3662,9 +3673,34 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
       </div>
 
       {/* <button onClick={getData}>レイヤーを手動保存</button> */}
-      <button onClick={savePc}>pcに保存</button>
+      {/* <button onClick={savePc}>pcに保存</button> */}
+      <div
+        className= "panel-tool-button-small tooltip-container midasi-t-five"
+        onClick={savePc}
+        onTouchStart={savePc}
+        style={{
+          backgroundColor: '#c2c1c1',
+          borderRadius: '5px',
+          borderRight: '0.5px solid #4A4A4A',
+          width: '90px',
+          height: '40px',
+          marginLeft: '659px',
+          marginTop: '60px',
+          boxShadow: 'black 1px 1px',
+          textAlign: 'center'
+        }}
+      >
+        <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pcに保存(png)</span>
+        
+        <span className="tooltip-text" style={{ textAlign: 'left' }}>お客様のPCに作成された描画をpngで保存できます。</span>
+      </div>
 
-      
+
+
+
+
+
+      { canvasP5ToPixi && <button onClick={handleSample}>サンプル</button> }
 
       {/* テスト用 */}
       {/* <div

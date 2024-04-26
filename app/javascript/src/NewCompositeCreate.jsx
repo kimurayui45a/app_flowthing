@@ -17,11 +17,25 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
   const [alertToast, setAlertToast] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
+  //文字数バリデーション
+  const [isValid, setIsValid] = useState(true);
 
   // 孫コンポーネントからデータを受け取るための関数
   const handleDataFromGrandchild = (getDataFunc) => {
     setGetData(() => getDataFunc);
   };
+
+  useEffect(() => {
+    const isValidCompositeName = compositeName.length <= 20;
+    const isValidCompositeText = compositeText.length <= 2000;
+
+    if (!isValidCompositeName || !isValidCompositeText) {
+      handleAlertMessage("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は2000文字でお願い致します。")
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+    }
+  }, [compositeName, compositeText]);
 
   //送信処理
   const handleTriggerGetData = async (event) => {
@@ -66,7 +80,7 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
     // ここで取得したデータを使う（例えば、サーバーに送信するなど）
     // console.log("送信された:");
     } else {
-      handleAlertMessage();
+      handleAlertMessage("背景の選択は必須です。");
     }
 
     // console.log("画像データ（送信ボタン）:", dataURL);
@@ -77,13 +91,13 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
 
 
   //対象のレイヤーが選択されていない時に出るアラートメッセージ（位置は中央固定）
-  const handleAlertMessage = () => {
+  const handleAlertMessage = (text) => {
     // メッセージと表示状態を設定
-    setAlertMessage("背景の選択は必須です。");
+    setAlertMessage(text);
     setAlertToast(true);
   
     // 一定時間後にメッセージを非表示にする
-    // setTimeout(() => setAlertToast(false), 4000);
+    setTimeout(() => setAlertToast(false), 5000);
   };
 
 
@@ -95,54 +109,69 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
   };
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="flex-column">
 
 
       <PixiSet itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} onDataFromGrandchild={handleDataFromGrandchild} pixiMode={pixiMode} />
 
-      {/* form */}
-
-      <form onSubmit={handleTriggerGetData}>
-        {/* エンターキーでの送信を防ぐためにonKeyPressイベントを追加 */}
-        <input
-          type="text"
-          value={compositeName}
-          onChange={(e) => setCompositeName(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <textarea
-          value={compositeText}
-          onChange={(e) => setCompositeText(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-
-        
-
-            {/* 選択背景がない場合のアラートメッセージ */}
-            {alertToast && (
-              <div
-              className="alert-message"
-                style={{
-                  // position: 'absolute',
-                  // left: '50%',
-                  // top: '50%',
-                  // transform: 'translate(-60%, 40%)',
-                  textAlign: 'left',
-                  lineHeight: '1.3',
-                  whiteSpace: 'pre-wrap'
-                }}
-              >
-                {alertMessage}
-              </div>
-            )}
-
-        { !compositeName.trim() ? (
-          <div>ダミーの送信ボタン</div>
-        ) : (
-          <button type="submit">データ送信</button>
+      {alertToast && (
+          <div
+          className="alert-message"
+            style={{
+              // position: 'absolute',
+              // left: '50%',
+              // top: '50%',
+              // transform: 'translate(-60%, 40%)',
+              textAlign: 'left',
+              lineHeight: '1.3',
+              whiteSpace: 'pre-wrap',
+              marginTop: '20px'
+            }}
+          >
+            {alertMessage}
+          </div>
         )}
 
-    </form>
+
+      {/* form */}
+      <form onSubmit={handleTriggerGetData}>
+        <div className="form-card" style={{ marginTop: '60px' }}>
+          <div className="board-card-background flex-column">
+            <div className="flex-column" style={{ width: '80%' }}>
+
+              <div  style={{ marginBottom: '20px', width: '500px', textAlign: 'left', marginTop: '70px' }}>
+                <div style={{ fontWeight: "500" }}><span className="midasi-t-five">命名(最大20文字)</span> <span className="red-text">※必須</span></div>
+                  <input
+                    type="text"
+                    value={compositeName}
+                    onChange={(e) => setCompositeName(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className='form-control board-item-form'
+                  />
+              </div>
+
+              <div  style={{ marginBottom: '20px', width: '500px', textAlign: 'left' }}>
+                <div><span className="midasi-t-five">コメント(最大2000文字) ※任意</span></div>
+                <textarea
+                  value={compositeText}
+                  onChange={(e) => setCompositeText(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className='form-control board-item-form'
+                  style={{ height: '270px', resize: 'none', marginBottom: '20px' }}
+                />
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {compositeName.trim() ? (
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '60px' }}>データ送信</button>
+        ) : (
+          <button className="btn btn-primary" style={{ marginTop: '60px' }} disabled>送信不可</button>
+        )}
+
+      </form>
     </div>
   );
 };

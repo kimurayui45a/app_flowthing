@@ -1,26 +1,45 @@
 
 
 
-<article id="composite_<%= composite.id %>", class="space-card-user-card-container">
-    <details class="details-box">
+<article id="composite_<%= composite.id %>", class="screen-card-container">
+<div class="flex">
+    <details class="screen-details-bord">
       <summary class="space-summary-style"><%= composite.composite_name.present? ? composite.composite_name : 'No Name' %></summary>
       <span><%= composite.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
+</div>
+
+    <section class="screen-card-objectbox">
+      <div class="screen-icon-card-frame">
+        <div class="space-item-shadow"></div>
 
 
-    <section class="space-card-user-objectbox">
-      <div class="space-icon-card-frame">
+<div class="water-border">
+<div class="water-contents">
+    <div class="water-upper-highlight"></div>
+      <div class="water-top"></div>
+  <div class="water-upper"></div>
+<div class="water-underline"></div>
+<div class="water-background">
+  <div class="water-background-second">
+  <div>
         <%= link_to composite_path(composite) do %>
-
-
-            <% if composite.composite_image.present? %>
-              <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
-            <% end %>
+          <% if composite.composite_image.present? %>
+            <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
+          <% end %>
         <% end %>
+        </div>
+        </div>
+</div>
+</div>
+</div>
+
       </div>
 
 
-      <div class="space-card-item-flex">
+
+
+      <div class="screen-card-flex">
         <div>
           <%= link_to edit_composite_path(composite), class: "edit-memo-link pencil-fill-space" do %>
             <i class="bi bi-pencil-fill trash-fill-font"></i>

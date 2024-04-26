@@ -13,7 +13,9 @@ const P5CanvasSet = ({
   canvasImgId,
   canvasData,
   canvasSaveData,
-  notLayerSave
+  notLayerSave,
+  setCanvasP5ToPixi,
+  canvasP5ToPixi
 }) => {
   return (
     <div>
@@ -31,6 +33,8 @@ const P5CanvasSet = ({
                   canvasImgId={canvasImgId}
                   canvasData={canvasData}
                   canvasSaveData={canvasSaveData}
+                  setCanvasP5ToPixi={setCanvasP5ToPixi}
+                  canvasP5ToPixi={canvasP5ToPixi}
                 />
               </div>
 

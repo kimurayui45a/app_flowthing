@@ -10,10 +10,10 @@ import { PixiGuidePanel } from './PixiGuidePanel';
 const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, itemObject, spaceObject, subUserAllId, compositeId }) => {
   
   //データ取得確認用
-  useEffect(() => {
-    console.log('サブユーザー', subUserAllId);
-    console.log('アイテム', itemAllId);
-  }, []);
+  // useEffect(() => {
+  //   console.log('サブユーザー', subUserAllId);
+  //   console.log('アイテム', itemAllId);
+  // }, []);
 
 
   //全体共有からの取得
@@ -154,7 +154,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
   useEffect(() => {
     const init = async () => {
       const app = new Application({
-        background: 0x1099bb,
+        background: 0xC2C1C1,
         width: 800,
         height: 450,
         preserveDrawingBuffer: true
@@ -545,10 +545,6 @@ const updateSpaceAnimeList = (speed, direction, list, interval) => {
   handleAddBackgroundAnime(appRef.current, spaceList, speed, direction, interval)
 
 };
-
-
-
-
 
 
 

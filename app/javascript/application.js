@@ -325,8 +325,9 @@ document.addEventListener('turbo:load', () => {
     const itemAllId = JSON.parse(allCompositeContainer.getAttribute('data-item-id-all'));
     const spaceAllId = JSON.parse(allCompositeContainer.getAttribute('data-space-id-all'));
     const subUserAllId = JSON.parse(allCompositeContainer.getAttribute('data-sub-user-id-all'));
+    const profileId = JSON.parse(allCompositeContainer.getAttribute('data-profile-id'));
     allCompositeRoot = createRoot(allCompositeContainer);
-    allCompositeRoot.render(<AllComposite allComposite={allComposite} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} />);
+    allCompositeRoot.render(<AllComposite allComposite={allComposite} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} profileId={profileId} />);
   }
 
 

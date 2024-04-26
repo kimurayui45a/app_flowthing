@@ -38,10 +38,10 @@ export const P5PanelGroupProvider = ({ children, notLayerSave }) => {
   const [scrollPosition, setScrollPosition] = useState(454);
 
   //パネルの位置を記録する
-  const [mainPanelPosition, setMainPanelPosition] = useState({ x: 650, y: 50 });
-  const [layersInfoPanelPosition, setLayersInfoPanelPosition] = useState({ x: 940, y: 300 });
-  const [colorPalettePanelPosition, setColorPalettePanelPosition] = useState({ x: 650, y: 500 });
-  const [scalePanelPosition, setScalePanelPosition] = useState({ x: 940, y: 50 });
+  const [mainPanelPosition, setMainPanelPosition] = useState({ x: 850, y: 50 });
+  const [layersInfoPanelPosition, setLayersInfoPanelPosition] = useState({ x: 1140, y: 300 });
+  const [colorPalettePanelPosition, setColorPalettePanelPosition] = useState({ x: 400, y: 350 });
+  const [scalePanelPosition, setScalePanelPosition] = useState({ x: 1140, y: 50 });
   const [detailPanelPosition, setDetailPanelPosition] = useState({ x: 100, y: 300 });
 
   //ツールサイズパネルの位置とサイズを記録する

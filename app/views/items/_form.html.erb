@@ -77,7 +77,7 @@
               </div>
               <div class="user-createform-text">
                 <%= item_form.label :item_text, t('items.form.item_text') %>
-                <%= item_form.text_area :item_text, class: "form-control item-form-card-textform", row: 10 %>
+                <%= item_form.text_area :item_text, class: "form-control item-form-card-textform", style: "resize: none", row: 10 %>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
 
               <div class="item-form-card-createform-text">
                   <%= item_form.label :episode, t('items.form.episode') %><span class="red-text">  <%= t('items.form.contents_note') %></span>
-                  <%= item_form.text_area :episode, class: "form-control item-form-card-textepisode", row: 10, id: "episode" %>
+                  <%= item_form.text_area :episode, class: "form-control item-form-card-textepisode", style: "resize: none", row: 10, id: "episode" %>
               </div>
             </div>
         </div>
