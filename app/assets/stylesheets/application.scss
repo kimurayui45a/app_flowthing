@@ -7924,3 +7924,23 @@ background-color: #d1eee6;
   left: 0;
   box-shadow: rgb(31 30 30 / 65%) 0.5px 0.5px 5px 4px inset;
 }
+
+.form-card-comment {
+  border-radius: 0.5rem;
+  padding: 1rem 1rem 3rem 1rem;
+  // background: #c3bbbb;
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.board-card-background-comment {
+  border-radius: 0.5rem;
+  padding: 1rem 1rem 3rem 1rem;
+  background: #fff;
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  /* width: 40rem; */
+  height: 320px;
+  box-sizing: border-box;
+}

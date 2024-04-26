@@ -3,9 +3,9 @@
 
 
 
-<tr id="comment-<%= comment.id %>" class="flex-column">
+<tr id="comment-<%= comment.id %>" class="flex-column"  style="width: 400px; margin: 1rem;">
   
-  <td>
+  <td  style="width: 400px; margin: 1rem;">
  <p><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
   <p><%= comment.comment_title %></p>
     <p><%= comment.comment_text %></p>

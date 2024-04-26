@@ -1,6 +1,6 @@
 
 <div id="comment-form">
-  <div class="col-lg-8 offset-lg-2">
+  <div>
     <%= form_with model: comment, url: board_comments_path(board) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="comment-form">

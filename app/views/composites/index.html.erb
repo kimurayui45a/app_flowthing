@@ -12,7 +12,7 @@
 <div class="flex-end-end">
   <% if Item.where.not(item_canvas: nil).exists? && Space.where.not(space_canvas: nil).exists? %>
           <%= link_to new_composite_path, class: 'tooltip-container' do %>
-            <div class="flex create-usersselect-container">
+            <div class="flex create-usersselect-container" style="background-color: white;">
               <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
               <div class="newcontents_text"><span>Flow Thingを配置する<span></div>
               <span class="tooltip-text" style="text-align: start;">作成したScreenにFlow Thingを配置できます。</span>
