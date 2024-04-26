@@ -13,7 +13,8 @@
       <div class="screen-icon-card-frame">
         <div class="space-item-shadow"></div>
 
-
+ <%= link_to composite_path(composite) do %>
+          <% if composite.composite_image.present? %>
 <div class="water-border">
 <div class="water-contents">
     <div class="water-upper-highlight"></div>
@@ -23,16 +24,20 @@
 <div class="water-background">
   <div class="water-background-second">
   <div>
-        <%= link_to composite_path(composite) do %>
-          <% if composite.composite_image.present? %>
+       
             <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
+
+        </div>
+        </div>
+</div>
+</div>
+</div>
           <% end %>
         <% end %>
-        </div>
-        </div>
-</div>
-</div>
-</div>
+
+
+
+
 
       </div>
 
