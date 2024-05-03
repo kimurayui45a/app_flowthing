@@ -6,7 +6,7 @@ const P5PanelGroupContext = createContext();
 export const useP5PanelGroupContext = () => useContext(P5PanelGroupContext);
 
 
-export const P5PanelGroupProvider = ({ children, notLayerSave }) => {
+export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPosition }) => {
 
   //レイヤーセーブに関するステート
   const [layerSave, setLayerSave] = useState(true);
@@ -104,6 +104,18 @@ export const P5PanelGroupProvider = ({ children, notLayerSave }) => {
       height: parseInt(ref.style.height, 10)
     });
   };
+
+  useEffect(() => {
+    if (samplePanelPosition) {
+      setMainPanelPosition(samplePanelPosition.main_pane);
+      setLayersInfoPanelPosition(samplePanelPosition.layers_info_panel);
+      setColorPalettePanelPosition(samplePanelPosition.color_palette_panel);
+      setScalePanelPosition(samplePanelPosition.scale_panel_position);
+      setDetailPanelPosition(samplePanelPosition.detail_panel_position);
+      setSizePanelPosition(samplePanelPosition.size_panel_position);
+    }
+  }, [samplePanelPosition]);
+
 
   //「メインパネル」の状態を切り替える関数
   const toggleMainPanelMode = () => {

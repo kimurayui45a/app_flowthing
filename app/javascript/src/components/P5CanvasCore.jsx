@@ -3685,7 +3685,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           width: '90px',
           height: '40px',
           marginLeft: '659px',
-          marginTop: '60px',
+          marginTop: '10px',
           boxShadow: 'black 1px 1px',
           textAlign: 'center'
         }}
@@ -3700,7 +3700,29 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
 
 
-      { canvasP5ToPixi && <button onClick={handleSample}>サンプル</button> }
+      { canvasP5ToPixi && (
+          <div
+          className= "panel-tool-button-small midasi-t-five"
+          onClick={handleSample}
+          onTouchStart={handleSample}
+          style={{
+            backgroundColor: '#c2c1c1',
+            borderRadius: '5px',
+            borderRight: '0.5px solid #4A4A4A',
+            width: '150px',
+            height: '40px',
+            marginLeft: '659px',
+            marginTop: '10px',
+            boxShadow: 'black 1px 1px',
+            textAlign: 'center',
+            position: 'absolute',
+            top: '600px',
+            left: '-400px'
+          }}
+        >
+          <span style={{ color: '#3e3e3e', fontSize: '12px' }}>イラストを作成</span>
+        </div>
+      )}
 
       {/* テスト用 */}
       {/* <div

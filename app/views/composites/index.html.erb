@@ -1,11 +1,25 @@
 <% content_for(:title, t('.title')) %>
 <div class="index-container screen-container">
-<h1 class="midasi-title">
+
+  <div class="flux-screen-plate">
+    <div class="flux-screen-plate-second">
+<h1 class="screen-title">
   <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
   <span>Flux Screen</span>
 </h1>
 
 <%# <%= render 'search_form', q: @q, url: sub_users_path %>
+
+<%= render 'search_form', q: @q, url: composites_path %>
+
+</div>
+</div>
+
+
+<div class="bubble-container">
+    <div class="bubble"></div>
+</div>
+
 
 
 
@@ -24,7 +38,7 @@
   <div class="screen-list-container">
     <% if @composites.present? %>
       <% @composites.each do |composites| %>
-        <div class="item-list-card">
+        <div class="screen-list-card">
           <%= render composites %>
         </div>
       <% end %>
@@ -36,11 +50,10 @@
 
 
 
-
-
-
-
-  <div style="margin: 5rem 3rem;">
-    <%# <%= paginate @sub_users %>
+  <div style="margin: 0rem 0rem 5rem 0rem;">
+    <%= paginate @composites %>
   </div>
+
+
+
 </div>

@@ -84,6 +84,11 @@ ja:
       search: 降順/昇順
       search_keyword: キーワード検索
       search_btn: 検索
+  composites:
+    search_form:
+      search: 降順/昇順
+      search_keyword: キーワード検索
+      search_btn: 検索
   boards:
     form:
       title: タイトル

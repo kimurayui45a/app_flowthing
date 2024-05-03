@@ -1,9 +1,24 @@
 class CompositesController < ApplicationController
   before_action :set_composite, only: [:show, :edit, :update, :destroy]
 
+  # def index
+  #   @composites = Composite.all
+  # end
+
+
   def index
-    @composites = Composite.all
+    if @profile.present?
+      @q = @profile.composites.ransack(params[:q])
+      sort_order = params[:q]&.fetch(:s, 'composites.updated_at desc')
+      @composites = @q.result
+                    .order(sort_order)
+                    .page(params[:page]).per(12)
+    else
+      redirect_to root_path
+    end
   end
+
+
 
   def show
     @items = @profile.items if @profile.present?

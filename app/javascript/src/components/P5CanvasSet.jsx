@@ -15,11 +15,12 @@ const P5CanvasSet = ({
   canvasSaveData,
   notLayerSave,
   setCanvasP5ToPixi,
-  canvasP5ToPixi
+  canvasP5ToPixi,
+  samplePanelPosition
 }) => {
   return (
     <div>
-      <P5PanelGroupProvider notLayerSave={notLayerSave}>
+      <P5PanelGroupProvider notLayerSave={notLayerSave} samplePanelPosition={samplePanelPosition}>
         <P5ToolModeProvider>
           <P5ColorProvider>
             <P5PenToolParametersProvider>

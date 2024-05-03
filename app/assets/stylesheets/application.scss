@@ -2059,24 +2059,8 @@ summary {
   grid-template-columns: repeat(auto-fit, 220px);
   justify-content: center;
   grid-gap: 3rem;
-  margin-top: 5rem;
+  // margin-top: 5rem;
 }
-
-// .item-list-container .item-list-card {
-//   flex: 0 0 25%;
-// }
-
-// @media (max-width: 1199px) {
-//   .item-list-container .item-list-card {
-//     flex: 0 0 33.333%;
-//   }
-// }
-
-// @media (max-width: 929px) {
-//   .item-list-container .item-list-card {
-//     flex: 0 0 50%;
-//   }
-// }
 
 
 
@@ -3019,7 +3003,6 @@ summary {
   // text-align: center;
   color: #7f7f7f;
   white-space: nowrap;
-  margin-top: 5rem;
 }
 
 .search-form {
@@ -7521,6 +7504,7 @@ background-color: #d1eee6;
 .top-container {
   background-color: #af918c;
   //background-color: #b5ada3;
+  box-shadow: rgb(90, 86, 86) 1px 20px 40px inset;
   padding-bottom: 10rem;
   padding-top: 8rem;
 }
@@ -7783,7 +7767,7 @@ background-color: #d1eee6;
 
 .water-underline {
   position: absolute;
-  bottom: 1.5;
+  bottom: 0px;
   width: 190px;
   box-shadow: rgb(247, 246, 246) 0.1px 0.2px 4px inset;
   height: 20px;
@@ -7794,7 +7778,7 @@ background-color: #d1eee6;
 
 .water-upper-highlight {
   position: absolute;
-  bottom: 1.5;
+  bottom: 0px;
   width: 190px;
   height: 20px;
   box-shadow: -1px -4px 6px rgba(255, 255, 255, 0.3);
@@ -7813,11 +7797,11 @@ background-color: #d1eee6;
 
 
 .water-background {
-  width: 178px;
-  height: 120px;
-  box-shadow: rgba(241, 241, 241, 0.88) 2px 2px 10px 3px inset;
-  background: linear-gradient(-180deg, rgb(199, 218, 219), #279b9b, #324c55);
-  /* background-color: rgb(79 123 130 / 35%); */
+  width: 180px;
+  //height: 120px;
+  height: auto;
+  //box-shadow: rgba(241, 241, 241, 0.88) 2px 2px 10px 3px inset;
+  //background: linear-gradient(-180deg, rgb(210 226 227 / 42%), #279b9b, #324c55);
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -7827,24 +7811,27 @@ background-color: #d1eee6;
 .water-upper {
   position: absolute;
   width: 186px;
-  height: 144px;
+  height: 154px;
   top: 2px;
   // z-index: 99;
   box-shadow: rgba(0, 0, 0, 0.1) 0.5px 10px 20px inset;
 }
 
 .water-background-second {
-  width: 170px;
-  height: 130px;
-  background-color: rgb(79 123 130 / 35%);
+  width: 180px;
+  // height: 130px;
+  padding-top: 10px;
+  //background-color: rgb(79 123 130 / 35%);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  background: linear-gradient(-195deg, rgb(215 215 215 / 19%), #84848440, #4949493b);
+  //background: linear-gradient(-195deg, rgb(215 215 215 / 19%), #84848440, #4949493b);
 }
 
 .screen-container {
-  background: linear-gradient(175deg, rgb(209, 227, 232) 0%, #b1c5cf 30%, #728c97 75%, #4f5a6d 90%, rgb(30, 50, 66) 100%);
+  background: linear-gradient(175deg, rgb(209, 227, 232) 0%, #b1c5cf 30%, #7b8f97 75%, #666e7b 90%, rgb(71 78 83) 100%);
+  border-top: 10px solid #666d76;
+  box-shadow: rgb(90 86 86) 1px 10px 20px inset;
 }
 
 
@@ -7868,10 +7855,10 @@ background-color: #d1eee6;
   height: 30px;
   /* box-shadow: rgb(40 40 40 / 20%) 0.6px 1px 1px 2px; */
   /* margin-bottom: -20px; */
-  box-shadow: rgb(18 18 18 / 88%) 0.8px 4px 20px inset;
+  box-shadow: rgba(18, 18, 18, 0.88) 0.8px 2px 10px inset;
   /* box-shadow: rgb(40 40 40 / 20%) 0.6px 1px 10px 20px; */
   /* color: white; */
-  background-color: #a59e9a;
+  background-color: #6f7579;
   width: 200px;
 }
 
@@ -7894,9 +7881,11 @@ background-color: #d1eee6;
   justify-items: center;
   align-items: flex-end;
   width: 200px;
-  height: 210px;
-  border-bottom: 30px solid #373432;
-  background: linear-gradient(360deg, rgb(82 88 91) 0%, rgb(119 128 129) 20%, rgb(121 127 129) 40%, #90a5b0 60%, #42617da8 85%, #485777b5 95%, rgb(48 66 78 / 76%) 100%);
+  // height: 225px;
+  height: auto;
+  padding-top: 25px;
+  border-bottom: 30px solid #6f7579;
+  background: linear-gradient(360deg, rgb(82, 88, 91) 0%, rgb(119, 128, 129) 20%, rgb(121, 127, 129) 40%, #90a5b0 60%, rgb(77 95 111 / 66%) 85%, rgba(72, 87, 119, 0.7098039216) 95%, rgba(48, 66, 78, 0.76) 100%);
   box-shadow: rgba(0, 0, 0, 0.5) 0.8px 20px 20px inset
 }
 
@@ -7914,6 +7903,11 @@ background-color: #d1eee6;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 5px;
+  font-family: "Zen Antique", serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #dfded6;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2), -0.8px -0.5px 0.5px rgba(0, 0, 0, 0.8);
 }
 
 .space-item-shadow {
@@ -7922,7 +7916,7 @@ background-color: #d1eee6;
   height: 30px;
   bottom: 0;
   left: 0;
-  box-shadow: rgb(31 30 30 / 65%) 0.5px 0.5px 5px 4px inset;
+  box-shadow: rgba(18, 18, 18, 0.88) 0.8px 2px 10px inset;
 }
 
 .form-card-comment {
@@ -7944,3 +7938,202 @@ background-color: #d1eee6;
   height: 320px;
   box-sizing: border-box;
 }
+
+
+.trash-fill-font-screen {
+  color: #dfded6;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2), -0.8px -0.5px 0.5px rgba(0, 0, 0, 0.8);
+}
+
+.trash-fill-font-screen:hover {
+  color: #435573;
+}
+
+
+
+.screen-title {
+  font-size: 3rem;
+  text-align: center;
+  color: #ffffff;
+  white-space: nowrap;
+  font-family: "Zen Antique", serif;
+  font-weight: 700;
+  font-style: normal;
+  text-shadow: 1px 10px 10px rgba(255, 255, 255, 0.2), 1px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.screen-list-card {
+  box-shadow: 0.5px 0.5px 15px 10px rgb(76 83 88 / 38%);
+}
+
+
+.screen-container .pagination {
+  background-color: #393e45;
+  border: 1px solid #393e45;
+  box-shadow: 1.5px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+
+.bubble-fast {
+  position: absolute;
+  bottom: 40px;
+  left: 37px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid white;
+  border-radius: 50%;
+  //transform: translateX(-50%);
+  //opacity: 0; /* 初期状態では見えない */
+  animation: riseBubble-fast 4s infinite ease-in-out;
+  //animation-play-state: paused; /* ホバーしていない時は動かない */
+  //z-index: 81;
+  animation: none; /* 初期値としてアニメーションを無効化 */
+  animation-fill-mode: none;
+}
+
+.water-border:hover .bubble-fast {
+  animation: riseBubble-fast 4s infinite ease-in-out; /* .bubble-fastの場合はriseBubble-fastを使用 */
+  animation-fill-mode: none; /* ホバーをやめた時に初期状態に戻る */
+}
+
+@keyframes riseBubble-fast {
+  0% {
+      bottom: 40px;
+      transform: translateX(0%) scale(1.0);
+      opacity: 0.7;
+  }
+  25% {
+      transform: translate(-60%, 0) scale(0.7);  // 左に揺れる
+  }
+  50% {
+      transform: translateX(-30%) scale(1.2);  // 右に揺れる
+      opacity: 0.9;
+  }
+  75% {
+      transform: translate(-40%, 0) scale(1.0);  // 再び左に揺れる
+  }
+  100% {
+      bottom: 170px;
+      transform: translateX(50%) scale(0.5);  // 最終的に右に揺れながら終了
+      opacity: 0;
+      visibility: hidden;
+  }
+}
+
+
+
+.bubble-second {
+  position: absolute;
+  bottom: 57px;
+  left: 135px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid white;
+  border-radius: 50%;
+  //transform: translateX(-50%);
+  //opacity: 0; /* 初期状態では見えない */
+  animation: riseBubble-second 4s infinite ease-in-out;
+  //animation-play-state: paused; /* ホバーしていない時は動かない */
+  //z-index: 82;
+  animation: none; /* 初期値としてアニメーションを無効化 */
+  animation-fill-mode: none;
+}
+
+.water-border:hover .bubble-second {
+  animation: riseBubble-second 4s infinite ease-in-out; /* .bubble-fastの場合はriseBubble-fastを使用 */
+  animation-fill-mode: none;
+}
+
+@keyframes riseBubble-second {
+  0% {
+      bottom: 57px;
+      transform: translateX(0%) scale(1.0);
+      opacity: 0.7;
+  }
+  25% {
+      transform: translate(30%, 0) scale(1.2);  // 左に揺れる
+  }
+  50% {
+      transform: translateX(-30%) scale(0.8);  // 右に揺れる
+      opacity: 0.9;
+  }
+  75% {
+      transform: translate(20%, 0) scale(1.0);  // 再び左に揺れる
+  }
+  100% {
+      bottom: 180px;
+      transform: translateX(-20%) scale(0.5);  // 最終的に右に揺れながら終了
+      opacity: 0;
+      visibility: hidden;
+  }
+}
+
+
+
+.bubble-third {
+  position: absolute;
+  bottom: 20px;
+  left: 45px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 50%;
+  //transform: translateX(-50%);
+  //opacity: 0; /* 初期状態では見えない */
+  animation: riseBubble-third 4s infinite ease-in-out;
+  //animation-play-state: paused; /* ホバーしていない時は動かない */
+  //z-index: 83;
+  animation: none; /* 初期値としてアニメーションを無効化 */
+  animation-fill-mode: none;
+}
+
+.water-border:hover .bubble-third {
+  animation: riseBubble-third 4s infinite ease-in-out; /* .bubble-fastの場合はriseBubble-fastを使用 */
+  animation-fill-mode: none;
+}
+
+@keyframes riseBubble-third {
+  0% {
+      bottom: 20px;
+      transform: translateX(0%) scale(1.0);
+      opacity: 0.7;
+  }
+  25% {
+      transform: translate(-60%, 0) scale(1.2);  // 左に揺れる
+  }
+  50% {
+      transform: translateX(-30%) scale(0.8);  // 右に揺れる
+      opacity: 0.9;
+  }
+  75% {
+      transform: translate(-40%, 0) scale(1.0);  // 再び左に揺れる
+  }
+  100% {
+      bottom: 190px;
+      transform: translateX(50%) scale(0.5);  // 最終的に右に揺れながら終了
+      opacity: 0;
+      visibility: hidden;
+  }
+}
+
+// .flux-screen-plate {
+//   width: 500px;
+//   height: 300px;
+//   border-radius: 50%;
+//   box-shadow: 1px 1px 20px 5px rgba(0, 0, 0, 0.7) inset;
+//   background-color: #b9a585;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .flux-screen-plate-second {
+//     width: 450px;
+//     height: 250px;
+//     border-radius: 50%;
+//     box-shadow: rgba(18, 18, 18, 0.88) 10px 8px 15px -5px;
+//     background-color: #e7e2d9;
+// }

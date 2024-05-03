@@ -13,18 +13,21 @@
       <div class="screen-icon-card-frame">
         <div class="space-item-shadow"></div>
 
- <%= link_to composite_path(composite) do %>
+<%= link_to composite_path(composite) do %>
           <% if composite.composite_image.present? %>
 <div class="water-border">
 <div class="water-contents">
+  <div class="bubble-fast"></div>
+  <div class="bubble-second"></div>
+  <div class="bubble-third"></div>
     <div class="water-upper-highlight"></div>
       <div class="water-top"></div>
   <div class="water-upper"></div>
 <div class="water-underline"></div>
 <div class="water-background">
   <div class="water-background-second">
-  <div>
-       
+  <div style="margin-bottom: 20px;">
+      
             <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
 
         </div>
@@ -47,13 +50,13 @@
       <div class="screen-card-flex">
         <div>
           <%= link_to edit_composite_path(composite), class: "edit-memo-link pencil-fill-space" do %>
-            <i class="bi bi-pencil-fill trash-fill-font"></i>
+            <i class="bi bi-pencil-fill trash-fill-font-screen"></i>
           <% end %>
         </div>
 
         <div>
           <%= link_to confirm_delete_composite_path(composite), class: "delete-confirm-link" do %>
-            <i class="bi bi-trash-fill trash-fill-font"></i>
+            <i class="bi bi-trash-fill trash-fill-font-screen"></i>
           <% end %>
         </div> 
       </div> 
