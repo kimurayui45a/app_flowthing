@@ -7,7 +7,35 @@ import iro from '@jaames/iro';
 
 const BoxColorPicker = () => {
 
-  const { currentColor, setCurrentColor } = useP5Color();
+
+  const {
+    currentColor,
+    setCurrentColor,
+
+    //RGBフォーム
+    r,
+    setR,
+    g,
+    setG,
+    b,
+    setB,
+    a,
+    setA,
+
+    //HSVフォーム
+    h,
+    setH,
+    s,
+    setS,
+    v,
+    setV,
+    inputH,
+    setInputH,
+    inputS,
+    setInputS,
+    inputV,
+    setInputV
+  } = useP5Color();
 
   const { colorPaletteDrag, colorPaletteDragEnd } = useP5PanelGroupContext();
 
@@ -35,17 +63,69 @@ const BoxColorPicker = () => {
       });
 
 
-      const handleColorChange = function(color) {
+      // const handleColorChange = function(color) {
+      //   setCurrentColor(color.rgbaString);
+      // };
+  
+      //boxPickerRef.current.on(["color:init", "color:change"], handleColorChange);
+  
+
+      const syncColors = (color) => {
         setCurrentColor(color.rgbaString);
       };
+
+      
+
+    //カラーピッカーとRGBフォームを同期
+    const updateRGBA = (color) => {
+      setR(color.rgb.r);
+      setG(color.rgb.g);
+      setB(color.rgb.b);
+      setA(color.alpha);
+    };
+
+    //HSV用の処理
+    const syncColorsHsv = (color) => {
+      const roundedH = Math.round(color.hsv.h);
+      const roundedS = Math.round(color.hsv.s);
+      const roundedV = Math.round(color.hsv.v);
   
-      boxPickerRef.current.on(["color:init", "color:change"], handleColorChange);
+        // HSV形式でH値の情報を更新
+        setH(color.hsv.h);
+        setInputH(roundedH);
   
+        // V値が0の場合、S値を0として設定
+        if (color.hsv.v === 0) {
+          setS(0);
+          setInputS('100');
+        } else {
+          setS(color.hsv.s);
+          setInputS(roundedS);
+        }
+  
+        // HSV形式でV値の情報を更新
+        setV(color.hsv.v);
+        setInputV(roundedV);
+      }
+
+      boxPickerRef.current.on(["color:init", "color:change"], function(color) {
+        syncColors(color);
+        syncColorsHsv(color);
+        updateRGBA(color);
+      });
+
+
       // クリーンアップ関数
       return () => {
         // イベントリスナーの削除
         if (boxPickerRef.current) {
-          boxPickerRef.current.off(["color:init", "color:change"], handleColorChange);
+          // boxPickerRef.current.off(["color:init", "color:change"], handleColorChange);
+
+          boxPickerRef.current.off(["color:init", "color:change"], function(color) {
+            syncColors(color);
+            syncColorsHsv(color);
+            updateRGBA(color);
+          });
         }
       };
     }
