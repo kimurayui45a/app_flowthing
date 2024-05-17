@@ -35,6 +35,8 @@ const DetailMixPenBlock = () => {
     setMixPenDescription,
     handlePenToolDescription,
     setMixDensityValue,
+    activeMixAlpha,
+    setActiveMixAlpha,
 
     //「ペンツール」のbool値判定（ぼかし）
     mixBlur,
@@ -49,7 +51,7 @@ const DetailMixPenBlock = () => {
   //指先・色混ぜツール
   //色混ぜに透明度をつける
   const updateAlphaRate = (newSize) => {
-    if (newSize >= 0 && newSize <= 255) {
+    if (newSize >= 0 && newSize <= 100) {
       setAlphaRate(newSize);
       setInputAlphaRate(String(newSize));
     }
@@ -62,7 +64,7 @@ const DetailMixPenBlock = () => {
 
   const handleLerpAlphaRateBlur = () => {
     const newSize = parseInt(inputAlphaRate, 10);
-    if (newSize >= 0 && newSize <= 255) {
+    if (newSize >= 0 && newSize <= 100) {
       updateAlphaRate(newSize);
     } else {
       // 無効な値または空の場合、最後の有効な値にリセット
@@ -73,7 +75,7 @@ const DetailMixPenBlock = () => {
 
   //徐々に透明度を下げる
   const updateAlphaDecayRate = (newSize) => {
-    if (newSize >= 0 && newSize <= 50) {
+    if (newSize >= 0 && newSize <= 10) {
       setAlphaDecayRate(newSize);
       setInputAlphaDecayRate(String(newSize));
     }
@@ -90,7 +92,7 @@ const DetailMixPenBlock = () => {
     newSize = Math.round(newSize * 2) / 2;
     
     // 範囲の確認と更新
-    if (newSize >= 0 && newSize <= 50) {
+    if (newSize >= 0 && newSize <= 10) {
       updateAlphaDecayRate(newSize);
     } else {
       // 無効な値または空の場合、最後の有効な値にリセット
@@ -109,10 +111,14 @@ const DetailMixPenBlock = () => {
 
 
   //透明度を徐々に下げる
-  const handlAlphaDecayBoolChange = () => {
-    setAlphaDecayBool(!alphaDecayBool);
-  }
+  // const handlAlphaDecayBoolChange = () => {
+  //   setAlphaDecayBool(!alphaDecayBool);
+  // }
 
+  //透明度に筆圧をつける
+  const handlActiveMixAlphaChange = () => {
+    setActiveMixAlpha(!activeMixAlpha);
+  }
 
 
   //ぼかしフォーム処理
@@ -213,13 +219,52 @@ const DetailMixPenBlock = () => {
 
       {/* 色混ぜに透明度をつける */}
       <div className="flex-between" style={{ marginTop: '15px', width: '185px' }}>
+        <div
+          onMouseEnter={() => handlePenToolDescription(setMixPenDescription, '透明度に筆圧をつける', '有効にすると筆圧に応じて透明度を調整できます。強く押すほど設定した透明度に近づきます。')}
+          onTouchStart={() => handlePenToolDescription(setMixPenDescription, '透明度に筆圧をつける', '有効にすると筆圧に応じて透明度を調整できます。強く押すほど設定した透明度に近づきます。')}
+        >
+          {/* 「透明度を徐々に下げる」チェックボックス */}
+          <div className="flex">
+            <div
+              className={`layers-visibility-checkbox tooltip-container ${activeMixAlpha ? "checked" : ""}`}
+              onClick={handlActiveMixAlphaChange}
+              onTouchStart={handlActiveMixAlphaChange}
+              >
+              {activeMixAlpha && <i className="bi bi-check-lg"></i>}
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>透明度を筆圧で調整する</span>
+            </div>
+            <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>透明度に筆圧をつける</span>
+          </div>
+        </div>
+
+        <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+          <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>透明度</span>
+          <input
+            className="no-drag form-select-value"
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            style={{ width: '60px', fontSize: '14px' }}
+            value={inputAlphaRate}
+            onChange={handleLerpAlphaRateChange}
+            onBlur={handleLerpAlphaRateBlur}
+            onMouseEnter={() => handlePenToolDescription(setMixPenDescription, '透明度をつける', '取得した色に透明度を付与します。値を低く設定すると取得した色から透明度を下げた薄い色で描画します。')}
+            onTouchStart={() => handlePenToolDescription(setMixPenDescription, '透明度をつける', '取得した色に透明度を付与します。値を低く設定すると取得した色から透明度を下げた薄い色で描画します。')}
+          />
+          <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜100</span>
+        </div>
+      </div>
+
+
+      {/* <div className="flex-between" style={{ marginTop: '15px', width: '185px' }}>
         <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>透明度をつける</span></div>
         <div className="tooltip-container">
         <input
           className="no-drag form-select-value"
           type="number"
           min="0"
-          max="255"
+          max="100"
           step="1"
           style={{ width: '60px', fontSize: '14px' }}
           value={inputAlphaRate}
@@ -228,18 +273,18 @@ const DetailMixPenBlock = () => {
           onMouseEnter={() => handlePenToolDescription(setMixPenDescription, '透明度をつける', '取得した色に透明度を付与します。値を低く設定すると取得した色から透明度を下げた薄い色で描画します。')}
           onTouchStart={() => handlePenToolDescription(setMixPenDescription, '透明度をつける', '取得した色に透明度を付与します。値を低く設定すると取得した色から透明度を下げた薄い色で描画します。')}
         />
-        <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜255</span>
+        <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜100</span>
         </div>
-      </div>
-
+      </div> */}
+{/* 
       <div
         className="flex-between"
         style={{ marginTop: '15px', width: '185px' }}
         onMouseEnter={() => handlePenToolDescription(setMixPenDescription, '透明度を徐々に下げる', 'ペンの透明度に減衰率を設定します。値を高くするとペンの透明度が迅速に減少し、値を低くすると透明度の減少が緩やかになります。この機能はペンを走らせる速度によって伸び率が変化します。')}
         onTouchStart={() => handlePenToolDescription(setMixPenDescription, '透明度を徐々に下げる', 'ペンの透明度に減衰率を設定します。値を高くするとペンの透明度が迅速に減少し、値を低くすると透明度の減少が緩やかになります。この機能はペンを走らせる速度によって伸び率が変化します。')}
-      >
+      > */}
         {/* 「透明度を徐々に下げる」チェックボックス */}
-        <div className="flex">
+        {/* <div className="flex">
           <div
             className={`layers-visibility-checkbox tooltip-container ${alphaDecayBool ? "checked" : ""}`}
             onClick={handlAlphaDecayBoolChange}
@@ -249,31 +294,31 @@ const DetailMixPenBlock = () => {
             <span className="tooltip-text" style={{ textAlign: 'left' }}>ペンの透明度に減衰率を設定する</span>
           </div>
           <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>透明度を徐々に下げる</span>
-        </div>
+        </div> */}
 
         {/* 徐々に透明度を下げる */}
-        {alphaDecayBool ? (
+        {/* {alphaDecayBool ? (
           <div className="tooltip-container">
             <input
               className="no-drag form-select-value tooltip-container"
               type="number"
               min="0"
-              max="255"
+              max="10"
               step="0.5"
               style={{ width: '60px', fontSize: '14px' }}
               value={inputAlphaDecayRate}
               onChange={handleLerpAlphaDecayRateChange}
               onBlur={handleLerpAlphaDecayRateBlur}
             />
-            <span className="tooltip-text" style={{ textAlign: 'left' }}>最大値50</span>
+            <span className="tooltip-text" style={{ textAlign: 'left' }}>最大値10</span>
           </div>
         ) : (
             <div
               className="form-select-value"
               style={{ width: '60px', height: '27px' }}
             />
-        )}
-      </div>
+        )} */}
+      {/* </div> */}
 
       <div className="flex-end-end" style={{ marginTop: '15px', width: '185px' }}>
         {/* 「全ての値」を初期値に戻す */}

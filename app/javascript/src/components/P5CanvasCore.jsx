@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import p5 from 'p5';
+import iro from '@jaames/iro';
 import { useP5PanelGroupContext } from './P5PanelGroupContext';
 import { useP5ToolModeContext } from './P5ModeContext';
 import { P5CanvasCoreShareProvider } from './P5CanvasCoreShareContext';
@@ -133,6 +134,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     //詳細パネル（ペンツール...指先・色混ぜツール）
     alphaRate,
     alphaDecayRate,
+    activeMixAlpha,
+    setActiveMixAlpha,
 
     //詳細パネル（ペンツール...エアブラシツール）
     pencilLerpStep,
@@ -465,6 +468,32 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     vRef.current = v;
   }, [h, s, v]);
 
+  //色混ぜ用
+  const [mixColor, setMixColor] = useState('rgba(255, 255, 255, 0)');
+
+  const [mixH, setMixH] = useState(0);
+  const [mixS, setMixS] = useState(0);
+  const [mixV, setMixV] = useState(100);
+
+  //HSV
+  const mixHRef = useRef(mixH);
+  const mixSRef = useRef(mixS);
+  const mixVRef = useRef(mixV);
+
+  useEffect(() => {
+    mixHRef.current = mixH;
+    mixSRef.current = mixS;
+    mixVRef.current = mixV;
+  }, [mixH, mixS, mixV]);
+
+  useEffect(() => {
+    const color = new iro.Color(mixColor);
+    const hsv = color.hsv;
+    setMixH(hsv.h);
+    setMixS(hsv.s);
+    setMixV(hsv.v);
+  }, [mixColor]);
+
 
   //「カスタムブラシ」
   //「RGBカスタムペン」に関するバッファの管理
@@ -523,7 +552,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   const activeVRef = useRef(activeV);
   const maxChangeSBoolRef = useRef(maxChangeSBool);
   const maxChangeVBoolRef = useRef(maxChangeVBool);
-  const alphaDecayBoolRef = useRef(alphaDecayBool);
+  //const alphaDecayBoolRef = useRef(alphaDecayBool);
 
   //詳細パネル（ペンツール...各設定の「ぼかし」bool値）
   useEffect(() => {
@@ -575,9 +604,9 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     maxChangeVBoolRef.current = maxChangeVBool;
   }, [maxChangeVBool]);
 
-  useEffect(() => {
-    alphaDecayBoolRef.current = alphaDecayBool;
-  }, [alphaDecayBool]);
+  // useEffect(() => {
+  //   alphaDecayBoolRef.current = alphaDecayBool;
+  // }, [alphaDecayBool]);
 
 
   //詳細パネル（ペンツール...ぼかし、ミリペン、水彩ペン、エアブラシ、厚塗りペン、色混ぜ）
@@ -710,6 +739,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   //指先・色混ぜツール
   const alphaRateRef = useRef(alphaRate);
   const alphaDecayRateRef = useRef(alphaDecayRate);
+  const activeMixAlphaRef = useRef(activeMixAlpha);
 
   useEffect(() => {
     alphaRateRef.current = alphaRate;
@@ -719,6 +749,9 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     alphaDecayRateRef.current = alphaDecayRate;
   }, [alphaDecayRate]);
 
+  useEffect(() => {
+    activeMixAlphaRef.current = activeMixAlpha;
+  }, [activeMixAlpha]);
 
   //エアブラシツール
   const pencilLerpStepRef = useRef(pencilLerpStep);
@@ -1069,8 +1102,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
       let currentStrokeSize;
       let brushSize = toolSizeRef.current;
       let startHSV = false;
-      let getColor = [];
-      let currentAlpha;
+      //let getColor = [];
+      //let currentAlpha;
       let lerpStep;
       let numPoints;
       let alphaMin;
@@ -1135,8 +1168,10 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
         //「色混ぜ」
         mixBrushRef.current = p.createGraphics(brushSize * 16, brushSize * 16);
-        mixBrushRef.current.noStroke();
-        mixBrushRef.current.colorMode(p.RGBA, 255);
+
+        //mixBrushRef.current.noStroke();
+        mixBrushRef.current.noFill();
+        mixBrushRef.current.colorMode(p.HSB, 360, 100, 100);
 
         //「カスタムブラシ」の初期設定
         // ブラシのグラデーションを作成（中心を黒で、外側に向かって透明度を上げる）
@@ -1153,7 +1188,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
         brushHsvRef.current.filter(p.BLUR, 1);
 
         for (let r = brushSize * 2; r > 0; --r) {
-          mixBrushRef.current.fill(0);
+          //mixBrushRef.current.fill(0);
+          mixBrushRef.current.stroke(0);
           mixBrushRef.current.ellipse(brushSize * 4, brushSize * 4, r, r);
         }
         mixBrushRef.current.filter(p.BLUR, 1);
@@ -1297,8 +1333,9 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
         brushHsvRef.current.colorMode(p.HSB, 360, 100, 100);
   
         mixBrushRef.current = p.createGraphics(brushSize * 16, brushSize * 16);
-        mixBrushRef.current.noStroke();
-        mixBrushRef.current.colorMode(p.RGBA, 255);
+        //mixBrushRef.current.noStroke();
+        mixBrushRef.current.noFill();
+        mixBrushRef.current.colorMode(p.HSB, 360, 100, 100);
       };
 
 
@@ -2179,9 +2216,20 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           if (pressureModes.has(toolModeRef.current)) {
             const layer = layerRefs.current[layerIndex];
               if (toolModeRef.current === 'mixTool') {
-                let c = p.get(p.mouseX / zoomScale, p.mouseY / zoomScale);
-                getColor = [c[0], c[1], c[2], c[3]];
-                currentAlpha = alphaRateRef.current;
+                let c = layer.get(p.mouseX / zoomScale, p.mouseY / zoomScale);
+                
+                let colorString;
+                // 透明度を考慮して、RGBがすべて0かつ透明度も0の場合は白として扱う
+                if (c[0] === 0 && c[1] === 0 && c[2] === 0 && c[3] === 0) {
+                  colorString = `rgba(255, 255, 255, ${c[3] / 255})`;
+                } else {
+                  colorString = `rgba(${c[0]},${c[1]},${c[2]},${c[3] / 255})`;
+                }
+
+                //const colorString = `rgba(${c[0]},${c[1]},${c[2]},${c[3] / 255})`;
+                setMixColor(colorString);
+
+                layer.colorMode(p.HSB, 360, 100, 100);
               } else {
                 layer.colorMode(p.HSB, 360, 100, 100);
               }
@@ -2256,11 +2304,25 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           }
 
           // H値処理
-          let colorH = hRef.current
+          let colorH;
+          if (toolModeRef.current === 'mixTool') {
+            colorH = mixHRef.current;
+          } else {
+            colorH = hRef.current;
+          }
+          //colorH = hRef.current;
 
           // S値処理
           let colorS;
-          const S_base = sRef.current;
+          let S_base;
+          //S_base = sRef.current;
+
+          if (toolModeRef.current === 'mixTool') {
+            S_base = mixSRef.current;
+          } else {
+            S_base = sRef.current;
+          }
+
           if (activeSRef.current) {
             const S_min = sMinRef.current;
 
@@ -2294,7 +2356,15 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
           // V値処理
           let colorV;
-          const V_base = vRef.current;
+          let V_base;
+          //V_base = vRef.current;
+
+          if (toolModeRef.current === 'mixTool') {
+            V_base = mixVRef.current;
+          } else {
+            V_base = vRef.current;
+          }
+
           if (activeVRef.current) {
             const V_max = vMaxRef.current
 
@@ -2325,6 +2395,15 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
             colorV = V_base
           }
 
+          //透明度に筆圧をつける処理
+          let currentAlphaMix;
+          if (activeMixAlphaRef.current) {
+            let currentAlpha = (alphaRateRef.current / 100) * adjustedPressure;
+            currentAlphaMix = Math.max(Math.min(currentAlpha, 1), 0);
+          } else {
+            currentAlphaMix = alphaRateRef.current / 100;
+          }
+
           if (toolModeRef.current === 'inkPen') {
           //インクペンの処理
           let distance = p.dist(prev.x, prev.y, event.offsetX, event.offsetY);
@@ -2349,7 +2428,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
             return;
           } else if (toolModeRef.current === 'mixTool') {
             //色混ぜツールの処理
-            p.mixToolEvent(event, strokeWeightBasedOnPressure);
+            p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
             return;
           } else if  (toolModeRef.current === 'pencilPen' || toolModeRef.current === 'oilPen') {
             //エアブラシ・厚塗りペンの処理
@@ -2367,11 +2446,14 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           }
           isBrush = false;
           currentStrokeSize = undefined;
-          if (toolModeRef.current !== 'mixTool') {
-            // 'inkPen'または'watercolorPen'の場合に行う処理
-            // 描画が終了したらRGBモードに戻す
-            layer.colorMode(p.RGB, 255);
-          }
+
+          layer.colorMode(p.RGB, 255);
+
+          // if (toolModeRef.current !== 'mixTool') {
+          //   // 'inkPen'または'watercolorPen'の場合に行う処理
+          //   // 描画が終了したらRGBモードに戻す
+          //   layer.colorMode(p.RGB, 255);
+          // }
         }
       }
 
@@ -2433,19 +2515,25 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
 
     //色混ぜツールの処理
-    p.mixToolEvent = (event, strokeWeightBasedOnPressure) => {
+    p.mixToolEvent = (event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix) => {
       const layerIndex = selectLayerRef.current - 1;
       const layer = layerRefs.current[layerIndex];
       let waterDensity = mixDensityValueRef.current;
       let strokeWeightBasedOnPressurehalf = strokeWeightBasedOnPressure / 2;
       let scalingFactor = reductionRateValueRef.current;
+      let alphaMix = currentAlphaMix;
 
-      if (alphaDecayBoolRef.current) {
-        let alphaDecayRate = alphaDecayRateRef.current;
-        currentAlpha -= alphaDecayRate;
-      }
+      // if (alphaDecayBoolRef.current) {
+      //   let alphaDecayRate = alphaDecayRateRef.current / 100;
+      //   alphaMix -= alphaDecayRate;
+      // }
+
       mixBrushRef.current.clear();
-      mixBrushRef.current.fill(getColor[0], getColor[1], getColor[2], currentAlpha);
+      //mixBrushRef.current.fill(colorH, colorS, colorV, alphaMix);
+      mixBrushRef.current.stroke(colorH, colorS, colorV, alphaMix);
+
+      console.log('透明度', currentAlphaMix);
+
       for (let r = strokeWeightBasedOnPressurehalf * 2; r > 0; --r) {
         mixBrushRef.current.ellipse(strokeWeightBasedOnPressurehalf * 8, strokeWeightBasedOnPressurehalf * 8, r, r);
       }
@@ -2481,7 +2569,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
         // brushHsvRef.current.background(255);
       
         brushHsvRef.current.stroke(colorH, colorS, colorV);
-        for (let r = strokeWeightBasedOnPressurehalf * 2; r  > 0; --r) {
+        for (let r = strokeWeightBasedOnPressurehalf * 2; r > 0; --r) {
           brushHsvRef.current.ellipse(strokeWeightBasedOnPressurehalf * 4, strokeWeightBasedOnPressurehalf * 4, r, r);
         }
         if (watercolorBlurRef.current) {

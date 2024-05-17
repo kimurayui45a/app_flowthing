@@ -51,7 +51,7 @@ export const P5PenToolParametersProvider = ({ children }) => {
   const [maxChangeSBool, setMaxChangeSBool] = useState(true);
   const [maxChangeVBool, setMaxChangeVBool] = useState(true);
   const [activeV, setActiveV] = useState(false);
-  const [alphaDecayBool, setAlphaDecayBool] = useState(true);
+  const [alphaDecayBool, setAlphaDecayBool] = useState(false);
 
   //ぼかし（「カスタムブラシ」）
   // const [blurValue, setBlurValue] = useState(1);
@@ -128,7 +128,8 @@ export const P5PenToolParametersProvider = ({ children }) => {
   const [inputRateV, setInputRateV] = useState(String(rateV));
 
   //指先・色混ぜツール
-  const [alphaRate, setAlphaRate] = useState(255);
+  const [activeMixAlpha, setActiveMixAlpha] = useState(true);
+  const [alphaRate, setAlphaRate] = useState(100);
   const [inputAlphaRate, setInputAlphaRate] = useState(String(alphaRate));
   const [alphaDecayRate, setAlphaDecayRate] = useState(5);
   const [inputAlphaDecayRate, setInputAlphaDecayRate] = useState(String(alphaDecayRate));
@@ -542,6 +543,8 @@ export const P5PenToolParametersProvider = ({ children }) => {
     setAlphaDecayRate,
     inputAlphaDecayRate,
     setInputAlphaDecayRate,
+    activeMixAlpha,
+    setActiveMixAlpha,
 
     //詳細パネル（ペンツール...エアブラシツール）
     pencilLerpStep,
