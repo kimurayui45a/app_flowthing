@@ -95,7 +95,7 @@ const PixiListItemContext = ({ itemAllId }) => {
                   style={{ border: '1px solid #ccc', width: '60px' }}
                 >
                   <div>
-                    <img src={item.item_canvas} alt="Canvas Image" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    <img src={item.item_canvas} alt="Canvas Image" style={{ width: '58px', height: '58px', objectFit: 'contain' }} />
                   </div>
                 </div>
               </div>
