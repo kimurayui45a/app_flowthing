@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "image_choice", "item_canvas", "item_image", "item_name", "item_text", "sub_user_id", "updated_at", "episode", "item_place", "item_save_canvas"]
+    ["created_at", "id", "image_choice", "item_canvas", "item_image", "item_name", "item_text", "sub_user_id", "updated_at", "episode", "item_place", "item_save_canvas", "canvas_size"]
   end
 
   private

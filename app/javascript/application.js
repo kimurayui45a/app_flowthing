@@ -223,6 +223,7 @@ document.addEventListener('turbo:load', () => {
 
     const canvasData = editItemCanvasContainer.getAttribute('data-canvas-data');
     const canvasSaveData = editItemCanvasContainer.getAttribute('data-canvas-save-data');
+    const canvasSizeData = editItemCanvasContainer.getAttribute('data-canvas-size-data');
 
     const canvasItemName = editItemCanvasContainer.getAttribute('data-item-name');
     const canvasItemText = editItemCanvasContainer.getAttribute('data-item-text');
@@ -232,7 +233,7 @@ document.addEventListener('turbo:load', () => {
     const canvasItemPlace = editItemCanvasContainer.getAttribute('data-item-place');
 
     editItemCanvasRoot = createRoot(editItemCanvasContainer);
-    editItemCanvasRoot.render(<EditItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} subUserId={subUserId} canvasSaveData={canvasSaveData} canvasItemName={canvasItemName} canvasItemText={canvasItemText} canvasItemChoice={canvasItemChoice} canvasItemEpisode={canvasItemEpisode} canvasItemPlace={canvasItemPlace} />);
+    editItemCanvasRoot.render(<EditItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} subUserId={subUserId} canvasSaveData={canvasSaveData} canvasItemName={canvasItemName} canvasItemText={canvasItemText} canvasItemChoice={canvasItemChoice} canvasItemEpisode={canvasItemEpisode} canvasItemPlace={canvasItemPlace} canvasSizeData={canvasSizeData} />);
   }
 
 

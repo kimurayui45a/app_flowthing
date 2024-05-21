@@ -2664,10 +2664,11 @@ summary {
 }
 
 .info-container {
-  margin: 3rem;
+  //margin: 3rem;
   padding: 2rem;
   box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
   border-radius: 1rem;
+  background-color: white;
 }
 
 .info-section-text {
@@ -8137,3 +8138,15 @@ background-color: #d1eee6;
 //     box-shadow: rgba(18, 18, 18, 0.88) 10px 8px 15px -5px;
 //     background-color: #e7e2d9;
 // }
+
+.logo-image {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  width: auto;
+  height: 100px;
+}
+
+.how-to-use-container {
+  background-color: #84A3CE;
+  padding: 2rem;
+}

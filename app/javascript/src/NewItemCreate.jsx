@@ -6,12 +6,78 @@ const NewItemCreate = ({ subUserId }) => {
   // Canvasのサイズを状態として保持
   const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
 
+
+  const [canvasSizeWidth, setCanvasSizeWidth] = useState(400);
+  const [canvasSizeHeight, setCanvasSizeHeight] = useState(400);
+  const [inputCanvasSizeWidth, setInputCanvasSizeWidth] = useState(String(canvasSizeWidth));
+  const [inputCanvasSizeHeight, setInputCanvasSizeHeight] = useState(String(canvasSizeHeight));
+
+  useEffect(() => {
+    setInputCanvasSizeWidth(String(canvasSizeWidth));
+    setInputCanvasSizeHeight(String(canvasSizeHeight));
+    setCanvasSize({ width: canvasSizeWidth, height: canvasSizeHeight });
+  }, [canvasSizeWidth, canvasSizeHeight]);
+  
+  
+  const [canvasToolSet, setCanvasToolSet] = useState(false);
+
+
   //canvasの外枠のサイズを決めるもの
   const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
 
 
   //レイヤーセーブできるようにする
   const [notLayerSave, setNotLayerSave] = useState(true);
+
+
+
+//ここでcanvasSizeを指定する処理
+const updateAlphaRate = (newSize, direction) => {
+  if (newSize >= 50 && newSize <= 700) {
+    if (direction === 'width') {
+      setCanvasSizeWidth(newSize);
+      setInputCanvasSizeWidth(String(newSize));
+    } else {
+      setCanvasSizeHeight(newSize);
+      setInputCanvasSizeHeight(String(newSize));
+    }
+  }
+};
+
+const handleCanvasSizeChange = (e, direction) => {
+  const value = e.target.value;
+  if (direction === 'width') {
+    setInputCanvasSizeWidth(String(value));
+  } else {
+    setInputCanvasSizeHeight(String(value));
+  }
+};
+
+const handleCanvasSize = (inputSize, direction) => {
+  const newSize = parseInt(inputSize, 10);
+  if (newSize >= 50 && newSize <= 700) {
+    updateAlphaRate(newSize, direction);
+  } else {
+    if (direction === 'width') {
+      setInputCanvasSizeWidth(String(canvasSizeWidth));
+    } else {
+      setInputCanvasSizeHeight(String(canvasSizeHeight));
+    }
+  }
+};
+
+
+//決定ボタンでcanvasSizeが決定し、canvasToolSetをtrueにする
+const handleCanvasSizeButton = () => {
+  setCanvasToolSet(true);
+};
+
+
+
+
+
+
+
 
 
   //アラートメッセージ
@@ -69,6 +135,7 @@ const NewItemCreate = ({ subUserId }) => {
     formData.append('item[episode]', itemEpisode);
     formData.append('item[item_place]', itemPlace);
     formData.append('item[item_image]', itemImage);
+    formData.append('item[canvas_size]', JSON.stringify(canvasSize));
 
     
     if (saveLayersData) {
@@ -125,7 +192,62 @@ const NewItemCreate = ({ subUserId }) => {
 
   return (
     <div className="flex-column">
+      {/* <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} /> */}
+
+
+      {canvasToolSet ?( 
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
+    ) : (
+      <>
+        <div className="flex">
+          <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+            <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>横幅</span>
+            <input
+              className="no-drag form-select-value"
+              type="number"
+              min="50"
+              max="700"
+              step="1"
+              style={{ width: '60px', fontSize: '14px' }}
+              value={inputCanvasSizeWidth}
+              onChange={(e) => handleCanvasSizeChange(e, 'width')}
+              onBlur={() => handleCanvasSize(inputCanvasSizeWidth, 'width')}
+            />
+            <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：50〜700</span>
+          </div>
+
+          <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+            <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>縦幅</span>
+            <input
+              className="no-drag form-select-value"
+              type="number"
+              min="50"
+              max="700"
+              step="1"
+              style={{ width: '60px', fontSize: '14px' }}
+              value={inputCanvasSizeHeight}
+              onChange={(e) => handleCanvasSizeChange(e, 'height')}
+              onBlur={() => handleCanvasSize(inputCanvasSizeHeight, 'height')}
+            />
+            <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：50〜700</span>
+          </div>
+        </div>
+          {/* 決定ボタン */}
+          <div
+            className="select-confirm-btn"
+            onClick={handleCanvasSizeButton}
+            onTouchStart={handleCanvasSizeButton}
+            style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+          >
+            決定
+          </div>
+      </>
+    )}
+
+
+
+
+
 
       {alertToast && (
           <div

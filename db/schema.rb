@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_17_052747) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_17_151615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_17_052747) do
     t.text "episode"
     t.string "item_place"
     t.jsonb "item_save_canvas"
+    t.jsonb "canvas_size"
     t.index ["deleted_at"], name: "index_items_on_deleted_at"
     t.index ["sub_user_id"], name: "index_items_on_sub_user_id"
   end

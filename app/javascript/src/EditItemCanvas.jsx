@@ -1,11 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, canvasItemName, canvasItemText, canvasItemChoice, canvasItemEpisode, canvasItemPlace }) => {
 
+const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, canvasItemName, canvasItemText, canvasItemChoice, canvasItemEpisode, canvasItemPlace, canvasSizeData }) => {
 
+  const defaultSize = { width: 400, height: 400 };
+  
   // Canvasのサイズを状態として保持
-  const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
+  //const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
+
+  // const defaultSize = { width: 400, height: 400 };
+  // const [canvasSize, setCanvasSize] = useState(defaultSize);
+
+  // useEffect(() => {
+  //   if (!canvasSizeData) {
+  //     setCanvasSize(defaultSize);
+  //   } else {
+  //     try {
+  //       let sizeData = JSON.parse(canvasSizeData);
+  //       setCanvasSize({
+  //         width: sizeData.width || defaultSize.width,
+  //         height: sizeData.height || defaultSize.height
+  //       });
+  //     } catch (error) {
+  //       console.error("Failed to parse canvas size data:", error);
+  //       setCanvasSize(defaultSize);
+  //     }
+  //   }
+  // }, [canvasSizeData]);
+
+    // canvasSizeDataがnullまたはundefinedならdefaultSizeを、そうでない場合はパースした値を初期値として使用
+    const initialCanvasSize = canvasSizeData
+    ? JSON.parse(canvasSizeData)
+    : defaultSize;
+
+  const [canvasSize, setCanvasSize] = useState(() => {
+    const { width, height } = initialCanvasSize;
+    return {
+      width: width || defaultSize.width,
+      height: height || defaultSize.height,
+    };
+  });
 
   //canvasの外枠のサイズを決めるもの
   const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
@@ -78,6 +113,7 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
     formData.append('item[episode]', itemEpisode);
     formData.append('item[item_place]', itemPlace);
     formData.append('item[item_image]', itemImage);
+    formData.append('item[canvas_size]', JSON.stringify(canvasSize));
 
     if (saveLayersData) {
       formData.append('item[item_save_canvas]', JSON.stringify(saveLayersData));

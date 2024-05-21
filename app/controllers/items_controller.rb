@@ -129,6 +129,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place, :item_save_canvas )
+    params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place, :item_save_canvas, :canvas_size )
   end
 end

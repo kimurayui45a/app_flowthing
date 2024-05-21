@@ -74,9 +74,9 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
     }
   }, []);
   
-  useEffect(() => {
-console.log('プロフ', profileId);
-  }, [profileId]);
+//   useEffect(() => {
+// console.log('プロフ', profileId);
+//   }, [profileId]);
   
 
   
@@ -143,204 +143,173 @@ console.log('プロフ', profileId);
 
   return (
     <div className="flex-column top-container">
-<div className="flux-screen-show-third">
-    <div className="flux-screen-show-frame">
-    <div className="flux-screen-show-frame-second">
-      
-      {defaultPixi ? (
+      <div className="flux-screen-show-third">
+        <div className="flux-screen-show-frame">
+          <div className="flux-screen-show-frame-second">
+            {defaultPixi ? (
+              <>
+                <PixiSet
+                  // key={compositeId}
+                  // compositeId={compositeId}
+                  key={pixiDateId}
+                  itemAllId={itemAllId}
+                  spaceAllId={spaceAllId}
+                  subUserAllId={subUserAllId}
+                  spaceObject={spaceObject}
+                  itemObject={itemObject}
+                  pixiMode={pixiMode}
+                  changeDate={changeDate}
+                  setChangeDate={setChangeDate}
+                />
+              </>
+            ) : (
+              <>
+                {/* <PixiTest /> */}
+                <div className="info-btn-fram flex">
+                <a href="/info">
+                <div className="info-botann">
+                <div className="wave wave1"></div>
+                  <div className="wave wave2"></div>
+                  <div className="wave wave3"></div>
+                  <div className="wave wave4"></div>
+                <div className="info-botann-text">
+                    <span className="f-text">F</span>low <span className="t-text">T</span>hing<span className="gray-text">とは？</span>
+                </div>
+                </div>
+                </a>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+
+
+
+      {selectCompositeName ? (
         <>
-          <PixiSet
-            // key={compositeId}
-            // compositeId={compositeId}
-            key={pixiDateId}
-            itemAllId={itemAllId}
-            spaceAllId={spaceAllId}
-            subUserAllId={subUserAllId}
-            spaceObject={spaceObject}
-            itemObject={itemObject}
-            pixiMode={pixiMode}
-            changeDate={changeDate}
-            setChangeDate={setChangeDate}
-          />
+        <div className="nameplate"><p>{selectCompositeName}</p></div>
         </>
-      ) : (
+      ):(
         <>
-          {/* <PixiTest /> */}
-          <div className="info-btn-fram flex">
-          <a href="/info">
-          <div className="info-botann">
-          <div className="wave wave1"></div>
-            <div className="wave wave2"></div>
-            <div className="wave wave3"></div>
-            <div className="wave wave4"></div>
-          <div className="info-botann-text">
-              <span className="f-text">F</span>low <span className="t-text">T</span>hing<span className="gray-text">とは？</span>
-          </div>
-          </div>
-          </a>
-          </div>
+        <span>Flux Screenがありません。</span>
         </>
       )}
-      </div>
-    </div>
-    </div>
 
-
-
-
-    {selectCompositeName ? (
-  <>
-  <div className="nameplate"><p>{selectCompositeName}</p></div>
-  </>
-):(
-  <>
-  <span>Flux Screenがありません。</span>
-  </>
-)}
-
-
-
-
-
-
-
-
-    <div style={{ position: 'relative' }}>
-
-    <div className="flux-screen-show-third-mini" style={{ width: '163.1px', position: 'absolute' }}>
-      <div className="flux-screen-show-frame-mini">
-        <div className="flux-screen-show-frame-second-mini">
-<div className="mini-top-canvas">
-    <div
-      className="default-composite-btn info-botann"
-      style={{ position: 'absolute', left: '-268px', cursor: 'pointer' }}
-      onClick={() => setDefaultPixi(false)}
-      onTouchStart={() => setDefaultPixi(false)}
-    >
-      
-      <div className="wave wave1"></div>
-      <div className="wave wave2"></div>
-      <div className="wave wave3"></div>
-      <div className="wave wave4"></div>
-      <div className="info-botann-text">
-          <span className="f-text">F</span>low 
-          <span className="t-text">T</span>hing
-          <span className="gray-text">とは？</span>
-      </div>
-  </div>
-  </div></div></div></div>
-
-
-  
-
-  <div className="flex">
-<div style={{ width: '178px', height: '51px', marginRight: '8px'}}></div>
-
-<div style={{ overflowX: 'auto', height: 'auto', display: 'flex', width:'725px' }}>
-      <div className="flex-start-center">
-
-
-
-        {allComposite.map((composite, index) => (
-          <div key={index} className="flex">
-    <div className="flux-screen-show-third-mini">
-      <div className="flux-screen-show-frame-mini">
-        <div className="flux-screen-show-frame-second-mini">
-<div className="mini-top-canvas">
-            <div style={{ margin: '2.5px' }}>
-            <div
-                onClick={() => handleCompositeChange(composite.id)}
-                onTouchStart={() => handleCompositeChange(composite.id)}
-                style={{ cursor: 'pointer' }}
-                // className="tooltip-container"
-              >
-              <img src={composite.composite_image} alt="Canvas Image" style={{ width: '100px', height: 'auto', objectFit: 'contain' }} />
-              {/* <span className="tooltip-text" style={{ textAlign: 'left' }}>{composite.composite_name}</span> */}
+      <div style={{ position: 'relative' }}>
+        <div className="flux-screen-show-third-mini" style={{ width: '163.1px', position: 'absolute' }}>
+          <div className="flux-screen-show-frame-mini">
+            <div className="flux-screen-show-frame-second-mini">
+              <div className="mini-top-canvas">
+                <div
+                  className="default-composite-btn info-botann"
+                  style={{ position: 'absolute', left: '-268px', cursor: 'pointer' }}
+                  onClick={() => setDefaultPixi(false)}
+                  onTouchStart={() => setDefaultPixi(false)}
+                >
+                  <div className="wave wave1"></div>
+                  <div className="wave wave2"></div>
+                  <div className="wave wave3"></div>
+                  <div className="wave wave4"></div>
+                  <div className="info-botann-text">
+                    <span className="f-text">F</span>low 
+                    <span className="t-text">T</span>hing
+                    <span className="gray-text">とは？</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            </div>
-            </div>
-</div>
-</div>
-            </div>
-
           </div>
-        ))}
+        </div>
 
-
-
-      </div>
-      </div>
-
-
-      </div>
-    </div>
-
-
-
-    <div>
-
-    <div className="flex-start-start-flex-center" style={{ marginTop: '150px' }}>
-
-    <div className="flux-screen-show-third">
-      <div className="flux-screen-show-frame">
-        <div className="flux-screen-show-frame-second">
-          <div className="profile-top-icon-frame">
-            <div>
-              {profileId.image_icon && profileId.image_icon.url ? (
-                <img 
-                  src={profileId.image_icon.url} 
-                  alt="Uploaded Image"
-                  style={{ width: '200px', height: 'auto', objectFit: 'contain' }}
-                />
-              ) : profileId.color_code ? (
-                <div 
-                  className="flex"
-                  style={{
-                    width: '200px',
-                    height: '200px',
-                    borderRadius: '50%',
-                    backgroundColor: profileId.color_code
-                  }}
-                />
-              ) : null}
+        <div className="flex">
+          <div style={{ width: '178px', height: '51px', marginRight: '8px'}}></div>
+          <div style={{ overflowX: 'auto', height: 'auto', display: 'flex', width:'725px' }}>
+            <div className="flex-start-center">
+              {allComposite.map((composite, index) => (
+                <div key={index} className="flex">
+                  <div className="flux-screen-show-third-mini">
+                    <div className="flux-screen-show-frame-mini">
+                      <div className="flux-screen-show-frame-second-mini">
+                        <div className="mini-top-canvas">
+                          <div style={{ margin: '2.5px' }}>
+                            <div
+                                onClick={() => handleCompositeChange(composite.id)}
+                                onTouchStart={() => handleCompositeChange(composite.id)}
+                                style={{ cursor: 'pointer' }}
+                                // className="tooltip-container"
+                              >
+                              <img src={composite.composite_image} alt="Canvas Image" style={{ width: '100px', height: 'auto', objectFit: 'contain' }} />
+                              {/* <span className="tooltip-text" style={{ textAlign: 'left' }}>{composite.composite_name}</span> */}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-<div>
-    <span className="chronology-title">年表（ランダム仕様）</span>
-<div className="top-gradient-border">
-    <div style={{ overflowY: 'auto', height: '600px', display: 'flex', flexDirection: 'column', width:'450px', alignItems: 'center' }} className="screen-show-comment-contents">
-  {randomEpisodes.map((item, index) => (
-    <div key={index} className={getClassForLastRandom(item.lastAccessedAt)}>
-      <div className="flex-start-start-flex-center">
-      {/* <div><span>Last accessed: {item.lastAccessedAt}</span></div> */}
-      <div style={{ paddingTop: '15px', paddingBottom: '15px' }}><span>某日</span></div>
 
-      <div className="episode-lisut" style={{ paddingTop: '15px', paddingBottom: '15px' }}>
-    
-      <span>{item.episode}</span>
+      <div>
+        <div className="flex-start-start-flex-center" style={{ marginTop: '150px' }}>
+
+          <div className="flux-screen-show-third">
+            <div className="flux-screen-show-frame">
+              <div className="flux-screen-show-frame-second">
+                <div className="profile-top-icon-frame">
+                  <div>
+                    {profileId.image_icon && profileId.image_icon.url ? (
+                      <img 
+                        src={profileId.image_icon.url} 
+                        alt="Uploaded Image"
+                        style={{ width: '200px', height: 'auto', objectFit: 'contain' }}
+                      />
+                    ) : profileId.color_code ? (
+                      <div 
+                        className="flex"
+                        style={{
+                          width: '200px',
+                          height: '200px',
+                          borderRadius: '50%',
+                          backgroundColor: profileId.color_code
+                        }}
+                      />
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <span className="chronology-title">年表（ランダム仕様）</span>
+            <div className="top-gradient-border">
+              <div style={{ overflowY: 'auto', height: '600px', display: 'flex', flexDirection: 'column', width:'450px', alignItems: 'center' }} className="screen-show-comment-contents">
+                {randomEpisodes.map((item, index) => (
+                  <div key={index} className={getClassForLastRandom(item.lastAccessedAt)}>
+                    <div className="flex-start-start-flex-center">
+                    {/* <div><span>Last accessed: {item.lastAccessedAt}</span></div> */}
+                    <div style={{ paddingTop: '15px', paddingBottom: '15px' }}><span>某日</span></div>
+
+                    <div className="episode-lisut" style={{ paddingTop: '15px', paddingBottom: '15px' }}>
+                  
+                    <span>{item.episode}</span>
+                    </div>
+                    </div>
+
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-
-    </div>
-  ))}
-</div>
-</div>
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-    </div>
 
     </div>
   );

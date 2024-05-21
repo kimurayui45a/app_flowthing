@@ -1076,6 +1076,10 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     }
   };
 
+  useEffect(() => {
+    console.log('canvasサイズ', canvasSize)
+  }, [canvasSize]);
+  
 
   //「p5メインコード」
   useEffect(() => {

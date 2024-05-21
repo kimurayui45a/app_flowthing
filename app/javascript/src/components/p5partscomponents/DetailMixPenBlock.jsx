@@ -74,31 +74,31 @@ const DetailMixPenBlock = () => {
 
 
   //徐々に透明度を下げる
-  const updateAlphaDecayRate = (newSize) => {
-    if (newSize >= 0 && newSize <= 10) {
-      setAlphaDecayRate(newSize);
-      setInputAlphaDecayRate(String(newSize));
-    }
-  };
+  // const updateAlphaDecayRate = (newSize) => {
+  //   if (newSize >= 0 && newSize <= 10) {
+  //     setAlphaDecayRate(newSize);
+  //     setInputAlphaDecayRate(String(newSize));
+  //   }
+  // };
 
-  const handleLerpAlphaDecayRateChange = (e) => {
-    const value = e.target.value;
-    setInputAlphaDecayRate(value);
-  };
+  // const handleLerpAlphaDecayRateChange = (e) => {
+  //   const value = e.target.value;
+  //   setInputAlphaDecayRate(value);
+  // };
 
-  const handleLerpAlphaDecayRateBlur = () => {
-    let newSize = parseFloat(inputAlphaDecayRate);
-    // 0.5の倍数に変換
-    newSize = Math.round(newSize * 2) / 2;
+  // const handleLerpAlphaDecayRateBlur = () => {
+  //   let newSize = parseFloat(inputAlphaDecayRate);
+  //   // 0.5の倍数に変換
+  //   newSize = Math.round(newSize * 2) / 2;
     
-    // 範囲の確認と更新
-    if (newSize >= 0 && newSize <= 10) {
-      updateAlphaDecayRate(newSize);
-    } else {
-      // 無効な値または空の場合、最後の有効な値にリセット
-      setInputAlphaDecayRate(String(alphaDecayRate));
-    }
-  };
+  //   // 範囲の確認と更新
+  //   if (newSize >= 0 && newSize <= 10) {
+  //     updateAlphaDecayRate(newSize);
+  //   } else {
+  //     // 無効な値または空の場合、最後の有効な値にリセット
+  //     setInputAlphaDecayRate(String(alphaDecayRate));
+  //   }
+  // };
 
 
   //「全ての値」を初期値に戻す
