@@ -1115,6 +1115,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
       let heightDot;
       //let waterDensity;
 
+      let mixToolColor = false;
+
       //「図形ツール」の開始点
       let shapesX, shapesY;
 
@@ -2226,8 +2228,10 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
                 // 透明度を考慮して、RGBがすべて0かつ透明度も0の場合は白として扱う
                 if (c[0] === 0 && c[1] === 0 && c[2] === 0 && c[3] === 0) {
                   colorString = `rgba(255, 255, 255, ${c[3] / 255})`;
+                  mixToolColor = false;
                 } else {
                   colorString = `rgba(${c[0]},${c[1]},${c[2]},${c[3] / 255})`;
+                  mixToolColor = true;
                 }
 
                 //const colorString = `rgba(${c[0]},${c[1]},${c[2]},${c[3] / 255})`;
@@ -2432,7 +2436,18 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
             return;
           } else if (toolModeRef.current === 'mixTool') {
             //色混ぜツールの処理
-            p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
+            //p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
+
+  if (mixToolColor) {
+    p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
+  } else {
+    layer.erase();
+    layer.strokeWeight(toolSizeRef.current);
+    layer.line(prev.x, prev.y, p.mouseX / zoomScale, p.mouseY / zoomScale);
+    prev.x = p.mouseX / zoomScale;
+    prev.y = p.mouseY / zoomScale;
+  }
+
             return;
           } else if  (toolModeRef.current === 'pencilPen' || toolModeRef.current === 'oilPen') {
             //エアブラシ・厚塗りペンの処理
@@ -2453,11 +2468,11 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
           layer.colorMode(p.RGB, 255);
 
-          // if (toolModeRef.current !== 'mixTool') {
-          //   // 'inkPen'または'watercolorPen'の場合に行う処理
-          //   // 描画が終了したらRGBモードに戻す
-          //   layer.colorMode(p.RGB, 255);
-          // }
+          if (toolModeRef.current === 'mixTool') {
+            if (!mixToolColor) {
+              layer.noErase();
+            }
+          }
         }
       }
 
@@ -2520,6 +2535,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
     //色混ぜツールの処理
     p.mixToolEvent = (event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix) => {
+      if (mixToolColor) {
       const layerIndex = selectLayerRef.current - 1;
       const layer = layerRefs.current[layerIndex];
       let waterDensity = mixDensityValueRef.current;
@@ -2534,7 +2550,10 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
       mixBrushRef.current.clear();
       //mixBrushRef.current.fill(colorH, colorS, colorV, alphaMix);
-      mixBrushRef.current.stroke(colorH, colorS, colorV, alphaMix);
+
+    mixBrushRef.current.stroke(colorH, colorS, colorV, alphaMix);
+  
+      //mixBrushRef.current.stroke(colorH, colorS, colorV, alphaMix);
 
       console.log('透明度', currentAlphaMix);
 
@@ -2558,6 +2577,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
         let y = p.lerp(prev.y, p.mouseY / zoomScale, i / steps);
         layer.image(mixBrushRef.current, x - strokeWeightBasedOnPressurehalf * 8 * scalingFactor, y - strokeWeightBasedOnPressurehalf * 8 * scalingFactor, scaledWidth, scaledHeight);
       }
+    }
     }
 
 
@@ -3595,6 +3615,13 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   };
 
 
+  // メインレイヤーのプレビュー
+  const sampleData = () => {
+    if (p5InstanceRef.current) {
+      const dataURL = p5InstanceRef.current.canvas.toDataURL('image/png');
+      console.log(dataURL);
+    }
+  };
 
 
 
@@ -3691,6 +3718,18 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
   return (
     <div>
+
+
+
+
+<div
+  className= "panel-tool-button-small midasi-t-five"
+  onClick={sampleData}
+>
+  <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pngデータ</span>
+  
+</div>
+
       <div ref={canvasContainerRef} style={{
           width: `${canvasSpaceSize.width}px`,
           height: `${canvasSpaceSize.height}px`,

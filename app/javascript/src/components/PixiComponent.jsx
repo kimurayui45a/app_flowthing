@@ -862,7 +862,6 @@ if (direction === 'change') {
         sprite.width,
         sprite.height
       );
-      
     }
   };
 
@@ -884,6 +883,7 @@ if (direction === 'change') {
     let spriteImage;
       if (choice === 'item_canvas') {
         spriteImage = Texture.from(loadItem.item_canvas);
+        console.log('追加アイテムの確認', loadItem.item_canvas)
         //spriteImage.baseTexture.scaleMode = SCALE_MODES.LINEAR;
       } else if (choice === 'item_image') {
         //spriteImage = Texture.from(loadItem.item_image.url);

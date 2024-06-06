@@ -26,6 +26,7 @@ import EditComposite from './src/EditComposite';
 import AllComposite from './src/AllComposite';
 import EditSubUserCanvas from './src/EditSubUserCanvas';
 import PeintSubUserCanvas from './src/PeintSubUserCanvas';
+import SampleRoom from './src/SampleRoom';
 
 
 // document.addEventListener("turbo:load", function() {
@@ -144,7 +145,8 @@ let dragRoot,
     editCompositeRoot,
     allCompositeRoot,
     editSubUserCanvasRoot,
-    peintSubUserCanvasRoot;
+    peintSubUserCanvasRoot,
+    sampleRoomRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -359,6 +361,14 @@ document.addEventListener('turbo:load', () => {
     peintSubUserCanvasRoot.render(<PeintSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} canvasData={canvasData} />);
   }
 
+
+  // 「SampleRoom」のマウント
+  const sampleRoomContainer = document.getElementById('react-sample-room');
+  if (sampleRoomContainer) {
+    sampleRoomRoot = createRoot(sampleRoomContainer);
+    sampleRoomRoot.render(<SampleRoom />);
+  }
+
 });
 
 document.addEventListener('turbo:before-cache', () => {
@@ -465,6 +475,13 @@ document.addEventListener('turbo:before-cache', () => {
   if (peintSubUserCanvasRoot) {
     peintSubUserCanvasRoot.unmount();
     peintSubUserCanvasRoot = null;
+  }
+
+
+  // 「SampleRoom」のアンマウント
+  if (sampleRoomRoot) {
+    sampleRoomRoot.unmount();
+    sampleRoomRoot = null;
   }
 
 });
