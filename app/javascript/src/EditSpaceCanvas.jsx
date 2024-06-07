@@ -204,7 +204,7 @@ const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, c
                 <textarea
                   value={spaceText}
                   onChange={(e) => setSpaceText(e.target.value)}
-                  onKeyDown={handleKeyDown}
+                  //onKeyDown={handleKeyDown}
                   className='form-control board-item-form'
                   style={{ height: '270px', resize: 'none', marginBottom: '20px' }}
                 />

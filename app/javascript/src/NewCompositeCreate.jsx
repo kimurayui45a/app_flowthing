@@ -155,7 +155,7 @@ const NewCompositeCreate = ({ profileId, itemAllId, spaceAllId, subUserAllId }) 
                 <textarea
                   value={compositeText}
                   onChange={(e) => setCompositeText(e.target.value)}
-                  onKeyDown={handleKeyDown}
+                  //onKeyDown={handleKeyDown}
                   className='form-control board-item-form'
                   style={{ height: '270px', resize: 'none', marginBottom: '20px' }}
                 />

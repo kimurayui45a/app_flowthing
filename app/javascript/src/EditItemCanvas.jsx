@@ -5,7 +5,7 @@ import { P5CanvasSet } from './components/P5CanvasSet';
 const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, canvasItemName, canvasItemText, canvasItemChoice, canvasItemEpisode, canvasItemPlace, canvasSizeData }) => {
 
   const defaultSize = { width: 400, height: 400 };
-  
+
   // Canvasのサイズを状態として保持
   //const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
 
@@ -265,7 +265,7 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
             <textarea
               value={itemText}
               onChange={(e) => setItemText(e.target.value)}
-              onKeyDown={handleKeyDown}
+              // onKeyDown={handleKeyDown}
               className='form-control board-item-form'
               style={{ height: '100px', resize: 'none', marginBottom: '20px' }}
             />
@@ -288,7 +288,7 @@ const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, ca
             <textarea
               value={itemEpisode}
               onChange={(e) => setItemEpisode(e.target.value)}
-              onKeyDown={handleKeyDown}
+              // onKeyDown={handleKeyDown}
               className='form-control board-item-form'
               style={{ height: '230px', resize: 'none', marginBottom: '20px' }}
             />

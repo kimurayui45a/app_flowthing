@@ -650,204 +650,6 @@ if (direction === 'change') {
 
 
 
-//背景アニメーション
-// const handleAddBackgroundAnime = (app, texture, spaceId) => {
-//   // 古い背景スプライトを削除
-//   backgroundSprites.forEach(sprite => app.stage.removeChild(sprite));
-//   setBackgroundSprites([]);
-
-//   const backgroundSprite = new Sprite(texture);
-//   const backgroundSprite2 = new Sprite(texture);
-//   setBackgroundSprites([backgroundSprite]);
-//   setBackgroundSprites([backgroundSprite, backgroundSprite2]);
-//   backgroundSprite.width = app.screen.width;
-//   backgroundSprite.height = app.screen.height;
-//   backgroundSprite.x = 0;
-//   backgroundSprite.y = 0;
-//   backgroundSprite2.width = app.screen.width;
-//   backgroundSprite2.height = app.screen.height;
-//   backgroundSprite2.x = 0;
-//   backgroundSprite2.y = -600;
-//   // 背景スプライトをステージに追加
-//   app.stage.addChild(backgroundSprite);
-//   // 背景スプライトを最下層に設定
-//   app.stage.setChildIndex(backgroundSprite, 0);
-//   // 背景スプライトをステージに追加
-//   app.stage.addChild(backgroundSprite2);
-//   // 背景スプライトを最下層に設定
-//   app.stage.setChildIndex(backgroundSprite2, 0);
-
-//   app.ticker.add(() => {
-//     // 背景を下に移動させる
-//     backgroundSprite.y += 1;
-//     backgroundSprite2.y += 1;
-  
-//     // 背景が完全に下まで来たら、上にリセット
-//     if (backgroundSprite.y > 600) backgroundSprite.y = backgroundSprite2.y - 600;
-//     if (backgroundSprite2.y > 600) backgroundSprite2.y = backgroundSprite.y - 600;
-//   });
-//   backgroundSprite.texture = texture;
-
-//   // if (updateState) {
-//   //   updateSpaceInfo(spaceId);
-//   // }
-//   return backgroundSprite;
-// };
-
-
-
-//上から下
-// const handleAddBackgroundAnime = (app, textures, speed, direction)) => {
-//   // 既存の背景スプライトを全てステージから削除
-//   backgroundSprites.forEach(sprite => {
-//     app.stage.removeChild(sprite);
-//   });
-//   setBackgroundSprites([]);
-
-//   // 新しい背景スプライトを作成し、ステージに追加
-//   const newSprites = textures.map((texture, index) => {
-//     const sprite = new Sprite(texture);
-//     sprite.width = app.screen.width;
-//     sprite.height = app.screen.height;
-//     sprite.x = 0;
-//     // 各スプライトを画面の高さ分だけ上にずらして配置
-//     sprite.y = -index * app.screen.height;
-//     app.stage.addChild(sprite);
-//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
-//     return sprite;
-//   });
-
-//   setBackgroundSprites(newSprites);
-
-//   // Tickerに背景スクロールのアニメーションを追加
-//   app.ticker.add(() => {
-//     newSprites.forEach((sprite, index) => {
-//       sprite.y += speed;  // 背景を下に移動させる
-
-//       // 背景が完全に下まで来たら、上にリセット
-//       if (sprite.y > app.screen.height) {
-//         const prevSpriteIndex = index === 0 ? newSprites.length - 1 : index - 1;
-//         sprite.y = newSprites[prevSpriteIndex].y - app.screen.height;
-//       }
-//     });
-//   });
-// };
-
-//下から上
-// const handleAddBackgroundAnime = (app, textures, speed, direction) => {
-//   // 既存の背景スプライトを全てステージから削除
-//   backgroundSprites.forEach(sprite => {
-//     app.stage.removeChild(sprite);
-//   });
-//   setBackgroundSprites([]);
-
-//   // 新しい背景スプライトを作成し、ステージに追加
-//   const newSprites = textures.map((texture, index) => {
-//     const sprite = new Sprite(texture);
-//     sprite.width = app.screen.width;
-//     sprite.height = app.screen.height;
-//     sprite.x = 0;
-//     // 各スプライトを画面の高さ分だけ下にずらして配置
-//     sprite.y = app.screen.height + index * app.screen.height; // 最初のスプライトを画面の下端から開始
-//     app.stage.addChild(sprite);
-//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
-//     return sprite;
-//   });
-
-//   setBackgroundSprites(newSprites);
-
-//   // Tickerに背景スクロールのアニメーションを追加
-//   app.ticker.add(() => {
-//     newSprites.forEach((sprite, index) => {
-//       sprite.y -= speed;  // 背景を上に移動させる
-
-//       // 背景が完全に画面上部を超えたら、一番下にリセット
-//       if (sprite.y < -app.screen.height) {
-//         const lastSpriteIndex = index === 0 ? newSprites.length - 1 : index - 1;
-//         sprite.y = newSprites[lastSpriteIndex].y + app.screen.height;
-//       }
-//     });
-//   });
-// };
-
-
-
-//左から右
-// const handleAddBackgroundAnime = (app, textures, speed, direction) => {
-//   // 既存の背景スプライトを全てステージから削除
-//   backgroundSprites.forEach(sprite => {
-//     app.stage.removeChild(sprite);
-//   });
-//   setBackgroundSprites([]);
-
-//   // 新しい背景スプライトを作成し、ステージに追加
-//   const newSprites = textures.map((texture, index) => {
-//     const sprite = new Sprite(texture);
-//     sprite.width = app.screen.width;
-//     sprite.height = app.screen.height;
-//     sprite.x = index * sprite.width; // スプライトを画面の幅分だけ右にずらして配置
-//     sprite.y = 0;
-//     app.stage.addChild(sprite);
-//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
-//     return sprite;
-//   });
-
-//   setBackgroundSprites(newSprites);
-
-//   // Tickerに背景スクロールのアニメーションを追加
-//   app.ticker.add(() => {
-//     newSprites.forEach((sprite, index) => {
-//       // 背景を左に移動させる
-//       sprite.x -= speed;
-
-//       // 背景が完全に左まで来たら、次のスプライトを計算して右端にリセット
-//       if (sprite.x + sprite.width <= 0) {
-//         sprite.x = (newSprites.length - 1) * sprite.width; // 画面右端に移動
-//         // 配列内でスプライトを末尾から先頭に移動するための処理
-//         newSprites.push(newSprites.shift());
-//       }
-//     });
-//   });
-// };
-
-//右から左
-// const handleAddBackgroundAnime = (app, textures, speed, direction) => {
-//   // 既存の背景スプライトを全てステージから削除
-//   backgroundSprites.forEach(sprite => {
-//     app.stage.removeChild(sprite);
-//   });
-//   setBackgroundSprites([]);
-
-//   // 新しい背景スプライトを作成し、ステージに追加
-//   const newSprites = textures.map((texture, index) => {
-//     const sprite = new Sprite(texture);
-//     sprite.width = app.screen.width;
-//     sprite.height = app.screen.height;
-//     sprite.x = app.screen.width - (index + 1) * sprite.width; // スプライトを画面の幅分だけ左にずらして配置
-//     sprite.y = 0;
-//     app.stage.addChild(sprite);
-//     app.stage.setChildIndex(sprite, 0); // 最下層に設定
-//     return sprite;
-//   });
-
-//   setBackgroundSprites(newSprites);
-
-//   // Tickerに背景スクロールのアニメーションを追加
-//   app.ticker.add(() => {
-//     newSprites.forEach((sprite, index) => {
-//       // 背景を右に移動させる
-//       sprite.x += speed;
-
-//       // 背景が完全に右まで来たら、左端にリセット
-//       if (sprite.x >= app.screen.width) {
-//         const nextSpriteIndex = (index === 0 ? newSprites.length - 1 : index - 1);
-//         sprite.x = newSprites[nextSpriteIndex].x - sprite.width;
-//       }
-//     });
-//   });
-// };
-
-
 
   
   
@@ -1090,8 +892,6 @@ if (direction === 'change') {
       changeSpriteAngle(appRef.current, activeSprite, angleSprite);
     };
   
-
-
 
 
 
@@ -1602,10 +1402,6 @@ const stopRotateAnimeRevolution = (spriteId) => {
 // };
 
 
-
-
-
-
 //振り子アニメ
 const addSwingPendulumAnimation = (app, sprite, maxRotation, period, clockwise) => {
   let rotationDirection = clockwise ? 1 : -1;
@@ -1722,11 +1518,6 @@ const stopSwingPendulum = (spriteId) => {
 // const handleSwingPendulumStop = () => {
 //   stopSwingPendulum(activeSprite)
 // };
-
-
-
-
-
 
 
 
@@ -1904,10 +1695,6 @@ const handleMoveClickDeleteAll = () => {
 };
 
 
-
-
-
-
 //指定範囲内の移動
 const addBoundaryAnimation = (app, sprite, boundary) => {
   let side = 0; // 0: 上辺, 1: 右辺, 2: 下辺, 3: 左辺
@@ -2024,14 +1811,6 @@ const stopBoundaryAnimation = (spriteId) => {
     )
   );
 }
-
-
-
-
-
-
-
-
 
 
 const addCircularAnimation = (app, sprite, centerX, centerY, radius, speed) => {
@@ -2223,9 +2002,6 @@ const stopCircularMove = (spriteId) => {
   };
   
 
-
-
-
   // スプライト情報を更新する関数（ステートを使用している場合）
   const updateSpritePosition = (spriteId, newPosition) => {
     setSpriteInfo(prevSprites => 
@@ -2337,111 +2113,57 @@ const stopCircularMove = (spriteId) => {
 
   return (
     <>
-    {/* <button onClick={checkSpriteInfo}>スプライトインフォの中</button> */}
-      <div
-        style={{
-          width: !pixiMode ? '850px' : '1408px',
-          height: !pixiMode ? '500px' : '792px',
-          border: !pixiMode ? 'none' : '1px solid black',
-          margin: 'auto',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          overflow: 'hidden',
-          position: 'relative',
-          background: '#fff',
-          boxShadow: !pixiMode ? 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)' : 'none'
-        }}
-      >
+      {/* <button onClick={checkSpriteInfo}>スプライトインフォの中</button> */}
+        <div
+          style={{
+            width: !pixiMode ? '850px' : '1408px',
+            height: !pixiMode ? '500px' : '792px',
+            border: !pixiMode ? 'none' : '1px solid black',
+            margin: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden',
+            position: 'relative',
+            background: '#fff',
+            boxShadow: !pixiMode ? 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)' : 'none'
+          }}
+        >
 
-  {/* アニメ不可の時のアラートメッセージ */}
-  {alertToastAnime && (
-    <div
-    className="alert-message"
-      style={{
-        position: 'absolute',
-        // left: '50%',
-        // top: '50%',
-        // transform: 'translate(-60%, 40%)',
-        textAlign: 'left',
-        lineHeight: '1.3',
-        whiteSpace: 'pre-wrap'
-      }}
-    >
-      {alertMessageAnime}
-    </div>
-  )}
+      {/* アニメ不可の時のアラートメッセージ */}
+      {alertToastAnime && (
+        <div
+        className="alert-message"
+          style={{
+            position: 'absolute',
+            // left: '50%',
+            // top: '50%',
+            // transform: 'translate(-60%, 40%)',
+            textAlign: 'left',
+            lineHeight: '1.3',
+            whiteSpace: 'pre-wrap'
+          }}
+        >
+          {alertMessageAnime}
+        </div>
+      )}
 
-        <PixiComponentShareProvider value={value}>
-          {/* リストパネル(作業専用) */}
-          {pixiMode && <PixiListPanel itemAllId={itemAllId} spaceAllId={spaceAllId} />}
+      <PixiComponentShareProvider value={value}>
+        {/* リストパネル(作業専用) */}
+        {pixiMode && <PixiListPanel itemAllId={itemAllId} spaceAllId={spaceAllId} />}
 
-          {/* 調整パネル(作業専用) */}
-          {pixiMode && customPanelVisible && <PixiCustomPanel />}
+        {/* 調整パネル(作業専用) */}
+        {pixiMode && customPanelVisible && <PixiCustomPanel />}
 
-          {/* ガイドパネル(作業専用) */}
-          {pixiMode && pixiGuidePanelVisible && <PixiGuidePanel />}
+        {/* ガイドパネル(作業専用) */}
+        {pixiMode && pixiGuidePanelVisible && <PixiGuidePanel />}
 
-          {/* 詳細パネル(再描画専用) */}
-          {!pixiMode && pixiDetailPanelVisible && <PixiDetailPanel itemAllId={itemAllId} subUserAllId={subUserAllId} />}
-        </PixiComponentShareProvider>
+        {/* 詳細パネル(再描画専用) */}
+        {!pixiMode && pixiDetailPanelVisible && <PixiDetailPanel itemAllId={itemAllId} subUserAllId={subUserAllId} />}
+      </PixiComponentShareProvider>
 
-        <div ref={pixiContainer} id={`compositeStage_${compositeId}`} />
-      </div>
-        {/* <button onClick={() => handleAddSprite(385, 'item_canvas')}>Add Sprite</button> */}
-        {/* <button onClick={handleSprite}>3番目のバニーが飛ぶ</button> */}
-        {/* <button onClick={handleActiveSprite}>アクティブストライプのみ飛ばす</button> */}
-          
-{/* 
-        <button onClick={handleHorizontalSwingById}>左右</button>
-        <button onClick={handleHorizontalStopById}>左右ストップ</button>
+      <div ref={pixiContainer} id={`compositeStage_${compositeId}`} /></div>
 
-  <button onClick={handleVerticalSwingById}>上下</button>
-  <button onClick={handleVerticalSwingAnimationStop}>上下ストップ</button> */}
-
-  {/* <button onClick={handleRandomMove}>ランダム</button> */}
-  {/* <button onClick={stopRandomMoveBtn}>ランダムストップ</button> */}
-
-
-  {/* <button onClick={handleRotationAnimation}>回転</button>
-  <button onClick={handleRotateAnimeStop}>回転ストップ</button>
-
-  <button onClick={handleSwingPendulumBtn}>振り子</button>
-  <button onClick={handleSwingPendulumStop}>振り子ストップ</button> */}
-{/* 
-  <button onClick={handleScaleAnimationById}>スケール</button>
-  <button onClick={handleScaleAnimationStop}>スケールストップ</button> */}
-{/* 
-  <button onClick={() => handleMoveClickSprites(0.01)}>登録0.01</button>
-  <button onClick={() => handleMoveClickSprites(0.05)}>登録0.05</button> */}
-  {/* <button onClick={handleMoveClickDelete}>登録削除</button>
-  <button onClick={handleMoveClickDeleteAll}>全登録削除</button> */}
-  
-
-  {/* <button onClick={updateSpaceAnime}>背景アニメ</button> */}
-  {/* <button onClick={() => setSpaceAnimMode(true)}>複数選択</button>
-  <button onClick={updateSimpleSpace}>複数選択解除</button>
-  <button onClick={handleRemoveSprite}>削除</button> */}
-{/* 
-  <div>
-    {spaceSpritesAnime && spaceSpritesAnime.map((sprite, index) => (
-      <button key={index} onClick={() => {
-        console.log(`Button ${index} clicked, ID: ${sprite.id}, Name: ${sprite.space_name}`);
-        handleRemoveSpaceData(index);
-      }}>
-        {sprite.space_name} (ID: {sprite.id})
-      </button>
-    ))}
-  </div> */}
-
-{/* 
-  <button onClick={changeNewScale}>拡大</button> */}
-  {/* <button onClick={changeNewMask}>マスク</button> */}
-  {/* <button onClick={triggerMoveToClick}>指定位置へ移動</button> */}
-  {/* <button onClick={handleBoundaryAnimation}>範囲移動</button> */}
-
-  {/* <button onClick={handleCircularMove}>円形移動</button> */}
-  {/* <button onClick={stopCircularMoveBtn}>円形停止</button> */}
     </>
   );
 };

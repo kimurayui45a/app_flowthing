@@ -74,12 +74,6 @@ const handleCanvasSizeButton = () => {
 
 
 
-
-
-
-
-
-
   //アラートメッセージ
   const [alertToast, setAlertToast] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -295,7 +289,7 @@ const handleCanvasSizeButton = () => {
             <textarea
               value={itemText}
               onChange={(e) => setItemText(e.target.value)}
-              onKeyDown={handleKeyDown}
+              // onKeyDown={handleKeyDown}
               className='form-control board-item-form'
               style={{ height: '100px', resize: 'none', marginBottom: '20px' }}
             />
@@ -318,7 +312,7 @@ const handleCanvasSizeButton = () => {
             <textarea
               value={itemEpisode}
               onChange={(e) => setItemEpisode(e.target.value)}
-              onKeyDown={handleKeyDown}
+              //onKeyDown={handleKeyDown}
               className='form-control board-item-form'
               style={{ height: '230px', resize: 'none', marginBottom: '20px' }}
             />

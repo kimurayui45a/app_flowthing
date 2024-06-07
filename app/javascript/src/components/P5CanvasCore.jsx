@@ -1772,15 +1772,19 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
                       // 垂直または水平に近い方向に直線を修正
                       const dx = Math.abs(p.mouseX / zoomScale - shapesX);
                       const dy = Math.abs(p.mouseY / zoomScale - shapesY);
+
+                      // const dx = Math.abs(p.mouseX - shapesX);
+                      // const dy = Math.abs(p.mouseY - shapesY);
                       if (dx > dy) {
                         // 水平方向が優勢な場合
-                        p.mouseY = shapesY; // y座標を開始点に合わせる
+                        p.mouseY = shapesY * zoomScale; // y座標を開始点に合わせる
                       } else {
                         // 垂直方向が優勢または等しい場合
-                        p.mouseX = shapesX; // x座標を開始点に合わせる
+                        p.mouseX = shapesX * zoomScale; // x座標を開始点に合わせる
                       }
                     }
                     shapesLayer.line(shapesX, shapesY, p.mouseX / zoomScale, p.mouseY / zoomScale);
+                    //shapesLayer.line(shapesX, shapesY, p.mouseX, p.mouseY);
                   }
                 } else if (shapesTool.has(toolModeRef.current) && shapesInstallationRef.current) {
                   //「図形ツール（配置モード）」

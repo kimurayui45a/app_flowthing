@@ -206,7 +206,7 @@ const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSu
                   <textarea
                     value={subUserText}
                     onChange={(e) => setSubUserText(e.target.value)}
-                    onKeyDown={handleKeyDown}
+                    //onKeyDown={handleKeyDown}
                     className='form-control board-item-form'
                     style={{ height: '270px', resize: 'none', marginBottom: '20px' }}
                   />
