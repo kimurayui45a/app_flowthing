@@ -1,8 +1,40 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Application, Assets, Sprite, SCALE_MODES, Texture, Graphics } from 'pixi.js';
+import { usePixiGroupSample } from '../PixiGroupSampleContext';
 
 
-const PixiSample = ({ canvasP5ToPixi }) => {
+
+const PixiSample = ({ canvasP5ToPixi, updateTrigger }) => {
+
+  const [sampleAnime, setSampleAnime] = useState(false);
+
+  const [backgroundSample, setBackgroundSample] = useState([]);
+
+      //全体共有からの取得
+      const {
+        sampleRoomItem,
+        sampleRoomSpace,
+        pixiDetailPanelVisibleSample,
+        setPixiDetailPanelVisibleSample,
+        togglePixiDetailPanelSampleVisible,
+        activeSpriteSample,
+        setActiveSpriteSample,
+        sampleRoomItem2,
+  
+        sampleRoomItem3,
+        sampleRoomItem4,
+        sampleRoomItem5,
+        sampleRoomItem6,
+        sampleRoomItem7,
+        sampleRoomItem8,
+        sampleRoomItem9,
+        sampleRoomItem10,
+        sampleRoomItem11,
+        sampleRoomItem12,
+        sampleRoomItem13,
+        sampleRoomItem14,
+        sampleRoomItem15
+      } = usePixiGroupSample();
 
 
     //pixiを管理するref
@@ -12,20 +44,28 @@ const PixiSample = ({ canvasP5ToPixi }) => {
   const appRef = useRef(null);
   const [sampleSprite, setSampleSprite] = useState();
 
+
+
   //pixiのメイン
   useEffect(() => {
     const init = async () => {
       const app = new Application({
-        background: 0x1099bb,
+        background: 0xC2C1C1,
         width: 800,
         height: 450,
+        preserveDrawingBuffer: true
       });
 
       pixiContainer.current.appendChild(app.view);
       appRef.current = app;
       app.stage.interactive = true;
       app.stage.hitArea = app.screen;
-  }
+
+      let spriteSpace = Texture.from(sampleRoomSpace);
+      handleAddBackgroundSample(appRef.current, spriteSpace)
+
+    };
+
     init();
 
     return () => {
@@ -34,6 +74,8 @@ const PixiSample = ({ canvasP5ToPixi }) => {
       }
     };
   }, []);
+
+
 
 
 
@@ -75,12 +117,38 @@ const PixiSample = ({ canvasP5ToPixi }) => {
     app.stage.addChild(sprite);
   }
 
+  
 
-const canvasP5ToPixiBtn = () => {
+
+  //背景画像を切り替える処理
+  const handleAddBackgroundSample = (app, texture) => {
+    // 古い背景スプライトを削除
+    backgroundSample.forEach(sprite => app.stage.removeChild(sprite));
+    setBackgroundSample([]);
+
+    const backgroundSprite = new Sprite(texture);
+    setBackgroundSample([backgroundSprite]);
+    backgroundSprite.width = app.screen.width;
+    backgroundSprite.height = app.screen.height;
+    backgroundSprite.x = 0;
+    backgroundSprite.y = 0;
+    // 背景スプライトをステージに追加
+    app.stage.addChild(backgroundSprite);
+    // 背景スプライトを最下層に設定
+    app.stage.setChildIndex(backgroundSprite, 0);
+    backgroundSprite.texture = texture;
+
+
+    return backgroundSprite;
+  };
+
+
+useEffect(() => {
   if (canvasP5ToPixi !== 'sample') {
     createSpriteTest(appRef.current, canvasP5ToPixi);
+    setSampleAnime(true);
   }
-};
+}, [updateTrigger]);
 
 
 //ランダム移動
@@ -116,6 +184,7 @@ const addRandomMoveSample = (app, sprite, easing, closeEnough) => {
 
   app.ticker.add(tickerCallback);  // スプライトのプロパティとしてTickerのコールバックを保存
   sprite.stopRandomMoveAnimation = () => app.ticker.remove(tickerCallback);
+  setSampleAnime(false);
 };
 
 
@@ -155,15 +224,50 @@ const onDragEnd = (sprite) => {
 
 //作動ボタン
 const handleRandomMoveSample = () => {
-  addRandomMoveSample(appRef.current, sampleSprite, 0.05, 1);
+  if (canvasP5ToPixi !== 'sample' && sampleAnime) {
+    addRandomMoveSample(appRef.current, sampleSprite, 0.05, 1);
+  }
 };
 
 
 
   return (
 <>
+<div className="flux-screen-show-third">
+          <div className="flux-screen-show-frame">
+            <div>
+<div
+          style={{
+            width: '850px',
+            height: '500px',
+            border: 'none',
+            margin: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            overflow: 'hidden',
+            position: 'relative',
+            boxShadow: 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)',
+            borderRadius: '16px',
+            background: 'rgb(155 198 204)'
+          }}
+        >
 <div ref={pixiContainer} />
-<button onClick={canvasP5ToPixiBtn}>読み込む</button>
+</div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+{/* <button onClick={canvasP5ToPixiBtn}>読み込む</button> */}
 <button onClick={handleRandomMoveSample}>アニメ</button>
 </>
   );

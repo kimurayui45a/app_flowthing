@@ -16,7 +16,9 @@ const P5CanvasSet = ({
   notLayerSave,
   setCanvasP5ToPixi,
   canvasP5ToPixi,
-  samplePanelPosition
+  samplePanelPosition,
+  updateTrigger,
+  setUpdateTrigger
 }) => {
   return (
     <div>
@@ -36,6 +38,8 @@ const P5CanvasSet = ({
                   canvasSaveData={canvasSaveData}
                   setCanvasP5ToPixi={setCanvasP5ToPixi}
                   canvasP5ToPixi={canvasP5ToPixi}
+                  updateTrigger={updateTrigger}
+                  setUpdateTrigger={setUpdateTrigger}
                 />
               </div>
 

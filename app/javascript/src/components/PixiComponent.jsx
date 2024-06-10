@@ -1923,14 +1923,6 @@ const stopCircularMove = (spriteId) => {
 
 
 
-
-
-
-
-
-
-
-
   // const handleSprite = () => {
   // // 特定のスプライトの位置を変更する例
   // modifySpriteById(appRef.current, 3, sprite => {
@@ -2014,12 +2006,12 @@ const stopCircularMove = (spriteId) => {
   //現在のspriteInfoの中身を確認する
   const checkSpriteInfo = () => {
     console.log('spriteInfoの中身', spriteInfo )
-    console.log('背景データの中身', spaceInfo )
-    console.log('ざんき', maxSprite);
-    console.log('クリックストライプ', moveClickSprites);
+    // console.log('背景データの中身', spaceInfo )
+    // console.log('ざんき', maxSprite);
+    // console.log('クリックストライプ', moveClickSprites);
     console.log('選択スプライトのid', activeSprite);
-    console.log('背景アニメリスト', spaceSpritesAnime);
-    console.log('アイテムの中', itemAllId)
+    // console.log('背景アニメリスト', spaceSpritesAnime);
+    // console.log('アイテムの中', itemAllId)
   };
   
 
@@ -2125,8 +2117,9 @@ const stopCircularMove = (spriteId) => {
             alignItems: 'center',
             overflow: 'hidden',
             position: 'relative',
-            background: '#fff',
-            boxShadow: !pixiMode ? 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)' : 'none'
+            background: 'rgb(155 198 204)',
+            boxShadow: !pixiMode ? 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)' : 'none',
+            borderRadius: '16px'
           }}
         >
 

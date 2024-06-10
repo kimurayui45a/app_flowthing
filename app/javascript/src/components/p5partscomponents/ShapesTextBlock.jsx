@@ -294,8 +294,8 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
               className="no-drag text-font-dropdown dropbox-select-value"
             >
               <option value="Noto Sans JP">Noto Sans JP</option>
-              <option value="Hiragino Mincho ProN">ヒラギノ丸ゴ ProN</option>
-              <option value="Hiragino Maru Gothic ProN">ヒラギノ明朝 ProN</option>
+              <option value="Hiragino Mincho ProN">ヒラギノ明朝 ProN</option>
+              <option value="Hiragino Maru Gothic ProN">ヒラギノ丸ゴ ProN</option>
               <option value="Arial">Arial</option>
               <option value="Times New Roman">Times New Roman</option>
               <option value="Georgia">Georgia</option>

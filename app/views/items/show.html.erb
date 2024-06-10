@@ -5,47 +5,11 @@
 
     <div class="user-show-name-contents">
 
-
-      <div class="section-title logo-transform-form-card" style="margin-top: -1rem; margin-bottom: -1rem;">
-        <div class="app-logo">
-          <div class="flex flex-animated-text">
-            <div class="flex-between flex-animated-text-absolute logo-blur-05">
-              <div class="animated-text">
-                <span class='zen-antique logo-setting'>F</span>
-                <span class='sawarabi-mincho logo-setting'>l</span>
-                <span class="logo-setting">o</span>
-                <span class='dotgothic16'>w</span>
-
-                <span class='potta-one logo-setting-t logo-setting'>T</span>
-                <span class='rocknroll-one logo-setting-hi'>h</span>
-                <span class='yuji-mai logo-setting-hi'>i</span>
-                <span class='yuji-syuku logo-setting-n'>n</span>
-              </div>
-              <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-            </div>
-
-            <div class="flex-between logo-blur-15">
-              <div class="animated-text">
-                <span class='zen-antique logo-setting'>F</span>
-                <span class='sawarabi-mincho logo-setting'>l</span>
-                <span class="logo-setting">o</span>
-                <span class='dotgothic16'>w</span>
-
-                <span class='potta-one logo-setting-t logo-setting'>T</span>
-                <span class='rocknroll-one logo-setting-hi'>h</span>
-                <span class='yuji-mai logo-setting-hi'>i</span>
-                <span class='yuji-syuku logo-setting-n'>n</span>
-              </div>
-              <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-            </div>
-          </div>
-        </div>
+      <div class="section-title">
+        <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
       </div>
 
-
       <span class="f-text sub-name-text"><%= @item.item_name.present? ? @item.item_name : 'No Name' %></span>
-
-
 
     </div>
 
@@ -70,20 +34,20 @@
 
 
     <div class="content motto-miru user-show-comment-contents">
-      <span class="comment-text"><i class="bi bi-film"></i>詳細</span><br>
-
-      <span class="comment-text"><i class="bi bi-film"></i>作成日時</span><br>
-      <span><%= @item.created_at.strftime("%Y年%m月%d日 %H:%M") %></span><br>
-      <span><%= @item.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span><br>
-
-      <span class="comment-text"><i class="bi bi-film"></i>サイズ</span>
-      <% if @item.canvas_size.present? %>
-        <% canvas_size = JSON.parse(@item.canvas_size) %>
-        <p>幅: <%= canvas_size['width'] %>px　／　高さ: <%= canvas_size['height'] %>px</p>
-      <% else %>
-        <p>幅: 400px</p>
-        <p>高さ: 40px</p>
-      <% end %>
+      <div>
+        <span class="comment-text-show"><i class="bi bi-calendar"></i>日時</span><br>
+        <span class="comment-text-show-text">作成日時：<%= @item.created_at.strftime("%Y年%m月%d日 %H:%M") %></span><br>
+        <span class="comment-text-show-text">最終更新日：<%= @item.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span><br>
+      </div>
+      <div style="margin-top: 0.5rem">
+        <span class="comment-text-show"><i class="bi bi-aspect-ratio"></i>サイズ</span><br>
+        <% if @item.canvas_size.present? %>
+          <% canvas_size = JSON.parse(@item.canvas_size) %>
+          <span class="comment-text-show-text">幅：<%= canvas_size['width'] %>px　／　高さ：<%= canvas_size['height'] %>px</span>
+        <% else %>
+          <span class="comment-text-show-text">幅：400px　／　高さ：400px</span>
+        <% end %>
+      </div>
     </div>
 
     <div class="content motto-miru user-show-comment-contents">
@@ -110,7 +74,7 @@
 
 
     <div class="content motto-miru user-show-comment-contents">
-      <span class="comment-text"><i class="bi bi-film"></i>場所</span>
+      <span class="comment-text"><i class="bi bi-house"></i>場所</span>
       <% text = @item.item_place.present? ? @item.item_place : 'none' %>
       <% lines = text.split("\n") %>
       <% preview_text = lines.first(3).join("\n") %>
@@ -158,40 +122,9 @@
         <%= link_to sub_user_path(@item.sub_user) do %>
         <div class="item-link-btn">
 
-    <div class="section-title logo-transform-item-card">
-      <div class="app-logo">
-        <div class="flex flex-animated-text">
-          <div class="flex-between flex-animated-text-absolute logo-blur-05">
-            <div class="animated-text-sub-thing">
-              <span class='zen-antique logo-setting'>S</span>
-              <span class='sawarabi-mincho logo-setting'>u</span>
-              <span class='dotgothic16'>b</span>
-              <%# <span class='dotgothic16'>w</span> %>
-
-              <span class='potta-one logo-setting-t logo-setting'>T</span>
-              <span class='rocknroll-one logo-setting-hi'>h</span>
-              <span class='yuji-mai logo-setting-hi'>i</span>
-              <span class='yuji-syuku logo-setting-n'>n</span>
-            </div>
-            <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-          </div>
-          <div class="flex-between logo-blur-15">
-            <div class="animated-text-sub-thing">
-              <span class='zen-antique logo-setting'>S</span>
-              <span class='sawarabi-mincho logo-setting'>u</span>
-              <span class='dotgothic16'>b</span>
-              <%# <span class='dotgothic16'>w</span> %>
-
-              <span class='potta-one logo-setting-t logo-setting'>T</span>
-              <span class='rocknroll-one logo-setting-hi'>h</span>
-              <span class='yuji-mai logo-setting-hi'>i</span>
-              <span class='yuji-syuku logo-setting-n'>n</span>
-            </div>
-            <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-          </div>
-        </div>
+<div class="list-title">
+        <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
       </div>
-    </div>
 
           <div class="user-icon-frame-small">
             <% case @sub_user.icon_choice %>

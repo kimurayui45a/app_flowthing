@@ -15,7 +15,7 @@ import { P5SizePanel } from './P5SizePanel';
 import { useP5Color } from './P5ColorContext';
 import { useP5PenToolParametersContext } from './P5PenToolParametersContext';
 
-const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, setCanvasP5ToPixi, canvasP5ToPixi }) => {
+const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, setCanvasP5ToPixi, canvasP5ToPixi, updateTrigger, setUpdateTrigger }) => {
   
   //canvas全体の情報に関するRef
   const sketchRef = useRef();
@@ -290,7 +290,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   const layerRefs = useRef(new Array(12).fill(null).map(() => null));
 
   //レイヤーのセーブ状態を管理する
-  const [saveLayersBool, setSaveLayersBool] = useState(false);
+  const [saveLayersBool, setSaveLayersBool] = useState(true);
   const saveLayersBoolRef = useRef(saveLayersBool);
 
   useEffect(() => {
@@ -1076,9 +1076,9 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     }
   };
 
-  useEffect(() => {
-    console.log('canvasサイズ', canvasSize)
-  }, [canvasSize]);
+  // useEffect(() => {
+  //   console.log('canvasサイズ', canvasSize)
+  // }, [canvasSize]);
   
 
   //「p5メインコード」
@@ -3615,8 +3615,18 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     if (p5InstanceRef.current) {
       const dataURL = p5InstanceRef.current.canvas.toDataURL('image/png');
       setCanvasP5ToPixi(dataURL);
+      setUpdateTrigger(prev => prev + 1);
     }
   };
+
+  // useEffect(() => {
+  //   if (p5InstanceRef.current && canvasP5ToPixi) {
+  //     const dataURL = p5InstanceRef.current.canvas.toDataURL('image/png');
+  //     setCanvasP5ToPixi(dataURL);
+  //     setUpdateTrigger(prev => prev + 1);
+  //   }
+  // }, [updateTrigger]);
+
 
 
   // メインレイヤーのプレビュー
@@ -3639,6 +3649,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     saveLayersBool,
     setSaveLayersBool,
     toggleLayersSaveCheck,
+    savePc,
 
     //centerライン
     handleImage,
@@ -3721,7 +3732,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
 
   return (
-    <div>
+    <div className="flex-column">
 
 
 
@@ -3809,7 +3820,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
       {/* <button onClick={getData}>レイヤーを手動保存</button> */}
       {/* <button onClick={savePc}>pcに保存</button> */}
-      <div
+      {/* <div
         className= "panel-tool-button-small tooltip-container midasi-t-five"
         onClick={savePc}
         onTouchStart={savePc}
@@ -3828,34 +3839,52 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
         <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pcに保存(png)</span>
         
         <span className="tooltip-text" style={{ textAlign: 'left' }}>お客様のPCに作成された描画をpngで保存できます。</span>
-      </div>
-
-
-
-
+      </div> */}
 
 
       { canvasP5ToPixi && (
-          <div
-          className= "panel-tool-button-small midasi-t-five"
-          onClick={handleSample}
-          onTouchStart={handleSample}
-          style={{
-            backgroundColor: '#c2c1c1',
-            borderRadius: '5px',
-            borderRight: '0.5px solid #4A4A4A',
-            width: '150px',
-            height: '40px',
-            marginLeft: '659px',
-            marginTop: '10px',
-            boxShadow: 'black 1px 1px',
-            textAlign: 'center',
-            position: 'absolute',
-            top: '600px',
-            left: '-400px'
-          }}
+        <div
+        className="click-sampleitem"
+        onClick={handleSample}
+        onTouchStart={handleSample}
+        style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
         >
-          <span style={{ color: '#3e3e3e', fontSize: '12px' }}>イラストを作成</span>
+        <svg id="_レイヤー_4" data-name="レイヤー 4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 185.28 148.19" width="185.28" height="148.19">
+          <defs>
+            <style>
+            {`
+              .click-icon-cls-1 {
+                fill: #c0e2da;
+                font-family: HiraMaruPro-W4-83pv-RKSJ-H, 'Hiragino Maru Gothic Pro';
+                font-size: 39.32px;
+                stroke-linecap: round;
+              }
+
+              .click-icon-cls-1, .click-icon-cls-2 {
+                stroke: #82a3d0;
+                stroke-linejoin: round;
+              }
+
+              .click-icon-cls-2 {
+                fill: #fadbd8;
+                filter: url(#drop-shadow-1);
+                stroke-width: 4px;
+              }
+              `}
+            </style>
+            <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+              <feOffset dx="0" dy="3"/>
+              <feGaussianBlur result="blur" stdDeviation="2"/>
+              <feFlood floodColor="#bcbcbc" floodOpacity=".8"/>
+              <feComposite in2="blur" operator="in"/>
+              <feComposite in="SourceGraphic"/>
+            </filter>
+          </defs>
+          <polygon className="click-icon-cls-2" points="37.89 67.39 37.89 9.9 147.4 9.9 147.4 67.39 177.2 67.39 92.64 137.03 8.08 67.39 37.89 67.39"/>
+          <g id="_レイヤー_3" data-name="レイヤー 3">
+            <text className="click-icon-cls-1" transform="translate(47.45 56.87)"><tspan x="0" y="0">Click</tspan></text>
+          </g>
+        </svg>
         </div>
       )}
 

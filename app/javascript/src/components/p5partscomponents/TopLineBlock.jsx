@@ -12,7 +12,8 @@ const TopLineBlock = () => {
     handleSelectLayerClear,
     saveLayersBool,
     setSaveLayersBool,
-    toggleLayersSaveCheck
+    toggleLayersSaveCheck,
+    savePc
   } = useP5CanvasCoreShare();
 
   const { 
@@ -31,7 +32,21 @@ const TopLineBlock = () => {
     <div className='top-line-block'>
 
       {/* 固定UI(左) */}
-      <div className='flex'>
+      <div className='flex' style={{ position: 'relative' }}>
+
+
+      {/* PCに保存する */}
+      <div
+          className="panel-tool-button tooltip-container"
+          onClick={savePc}
+          onTouchStart={savePc}
+          style={{ position: 'absolute', top: '40px', left: '0px', zIndex: 77 }}
+        >
+          <i className="bi bi-download"></i>
+          <span className="tooltip-text" style={{ textAlign: 'left' }}>作成された描画をお客様のPCに「png」で保存できます。</span>
+        </div>
+
+
         {/* アンドゥ */}
         <div
           className="panel-tool-button tooltip-container"
@@ -65,7 +80,8 @@ const TopLineBlock = () => {
 
       {/* 固定UI(右) */}
       <div className='flex'>
-        {/* レイヤーセーブを設定するチェックボックス */}
+
+      {/* レイヤーセーブを設定するチェックボックス */}
 
       {layerSave &&(
         <div

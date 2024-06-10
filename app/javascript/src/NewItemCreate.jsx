@@ -189,7 +189,7 @@ const handleCanvasSizeButton = () => {
       {/* <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} /> */}
 
 
-      {canvasToolSet ?( 
+      {canvasToolSet ? ( 
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
     ) : (
       <>
