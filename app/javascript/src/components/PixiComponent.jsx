@@ -143,8 +143,8 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
           anime_value: spaceDataFirstItem.anime_value
         };
         setSpaceInfo(newSpaceInfo);
-        console.log('spaceDataの中', spaceDataFirstItem);
-        console.log('space_id:', spaceDataFirstItem.space_id);
+        // console.log('spaceDataの中', spaceDataFirstItem);
+        // console.log('space_id:', spaceDataFirstItem.space_id);
       }
     }
   }, [spaceObject]);
@@ -188,7 +188,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
     //     setActiveSprite(null);  // すべてのスプライトの選択を解除
     // });
     const handleClickOutside = (event) => {
-      console.log('Stage clicked, deselecting any active sprite');
+      //console.log('Stage clicked, deselecting any active sprite');
       if (borderRef.current) {
         borderRef.current.clear(); // 直接枠をクリア
       }
@@ -245,7 +245,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
   
     const move = () => {
       if (!app.stage.children.includes(sprite) || !moveClickSpritesRef.current.some(s => s.id === sprite.id)) {
-        console.log("スプライトは既に削除されています、または登録解除されました");
+        //console.log("スプライトは既に削除されています、または登録解除されました");
         app.ticker.remove(move);
         return;
       }
@@ -261,7 +261,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
         sprite.x = targetPos.x;
         sprite.y = targetPos.y;
         app.ticker.remove(move); // 目的地に到達したら移動を停止
-        console.log("目的地に到達しました");
+        // console.log("目的地に到達しました");
       }
     };
   
@@ -276,7 +276,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
       //itemObjectが存在する場合、JSON形式からオブジェクトに変換してステートを更新
       if (itemObject !== '' && itemObject !== 'undefined' && itemObject !== 'null') {
         let itemData = JSON.parse(itemObject);
-        console.log('itemObjectの中', itemObject)
+        // console.log('itemObjectの中', itemObject)
 
         // 有効なアイテムのみフィルタリング
         itemData = itemData.filter(spriteData => {
@@ -685,7 +685,7 @@ if (direction === 'change') {
     let spriteImage;
       if (choice === 'item_canvas') {
         spriteImage = Texture.from(loadItem.item_canvas);
-        console.log('追加アイテムの確認', loadItem.item_canvas)
+        // console.log('追加アイテムの確認', loadItem.item_canvas)
         //spriteImage.baseTexture.scaleMode = SCALE_MODES.LINEAR;
       } else if (choice === 'item_image') {
         //spriteImage = Texture.from(loadItem.item_image.url);
@@ -828,7 +828,7 @@ if (direction === 'change') {
   //選択したスプライトのスケールを変えるトリガー
   const changeNewScale = () => {
     if (!activeSprite) {
-      console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+      //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
       return;
     }
     changeSpriteScale(appRef.current, activeSprite, scaleSprite);
@@ -858,7 +858,7 @@ if (direction === 'change') {
   //選択したスプライトの透明度を変えるトリガー
   const changeNewAlpha = () => {
     if (!activeSprite) {
-      console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+      //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
       return;
     }
     changeSpriteAlpha(appRef.current, activeSprite, alphaSprite);
@@ -886,7 +886,7 @@ if (direction === 'change') {
     //選択したスプライトの角度を変えるトリガー
     const changeNewAngle = () => {
       if (!activeSprite) {
-        console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+        //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
         return;
       }
       changeSpriteAngle(appRef.current, activeSprite, angleSprite);
@@ -981,7 +981,7 @@ if (direction === 'change') {
     let startTime = app.ticker.lastTime;
     const horizontalSwing = () => {
       if (!app.stage.children.includes(sprite)) {
-        console.log("スプライトは既に削除されています");
+        //console.log("スプライトは既に削除されています");
         app.ticker.remove(horizontalSwing); // スプライトが削除されたらTickerからこの関数を削除する
         return; // スプライトが存在しなければ関数を抜ける
       }
@@ -1023,7 +1023,7 @@ if (direction === 'change') {
 const handleHorizontalSwingById = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1031,7 +1031,7 @@ const handleHorizontalSwingById = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1084,7 +1084,7 @@ const addContinuousVerticalSwingAnimation = (sprite, app, amplitude, period) => 
   let startTime = app.ticker.lastTime;
   const verticalSwing = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      //console.log("スプライトは既に削除されています");
       app.ticker.remove(verticalSwing); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
@@ -1124,7 +1124,7 @@ const applyVerticalSwingById = (app, spriteId, amplitude, period) => {
 const handleVerticalSwingById = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1132,7 +1132,7 @@ const handleVerticalSwingById = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1191,13 +1191,13 @@ const randomMove = (app, sprite, easing, closeEnough) => {
 
   // Tickerイベントを追加する前にスプライトが有効であるかをチェック
   if (!app.stage.children.includes(sprite)) {
-    console.log("スプライトは既に削除されています");
+    //console.log("スプライトは既に削除されています");
     return; // スプライトが存在しなければ関数を抜ける
   }
 
   const tickerCallback = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトが削除されたため、移動を停止します");
+      //console.log("スプライトが削除されたため、移動を停止します");
       app.ticker.remove(tickerCallback); // スプライトが削除されたらTickerを停止する
       return;
     }
@@ -1248,7 +1248,7 @@ const randomMove = (app, sprite, easing, closeEnough) => {
 const handleRandomMove = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1256,7 +1256,7 @@ const handleRandomMove = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1306,7 +1306,7 @@ const addRotationAnimation = (app, sprite, speed, clockwise) => {
 
   const rotateAnime = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      //console.log("スプライトは既に削除されています");
       app.ticker.remove(rotateAnime); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
@@ -1348,7 +1348,7 @@ const applyRotationById = (app, spriteId, speed, clockwise) => {
 const handleRotationAnimation = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1356,7 +1356,7 @@ const handleRotationAnimation = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1410,7 +1410,7 @@ const addSwingPendulumAnimation = (app, sprite, maxRotation, period, clockwise) 
 
   const swingPendulum = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      //console.log("スプライトは既に削除されています");
       app.ticker.remove(swingPendulum); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
@@ -1466,7 +1466,7 @@ const swingPendulumAnime = (app, spriteId, maxRotation, period, clockwise) => {
 const handleSwingPendulumBtn = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1474,7 +1474,7 @@ const handleSwingPendulumBtn = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1526,7 +1526,7 @@ const addScaleAnimation = (sprite, app, minScale, maxScale, period) => {
   let startTime = app.ticker.lastTime;
   const scaleAnimation = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      //console.log("スプライトは既に削除されています");
       app.ticker.remove(scaleAnimation); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
@@ -1571,7 +1571,7 @@ const applyScaleAnimationById = (app, spriteId, minScale, maxScale, period) => {
 const handleScaleAnimationById = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1579,7 +1579,7 @@ const handleScaleAnimationById = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1703,7 +1703,7 @@ const addBoundaryAnimation = (app, sprite, boundary) => {
   const updatePosition = () => {
 
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      //console.log("スプライトは既に削除されています");
       app.ticker.remove(updatePosition); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
@@ -1763,7 +1763,7 @@ const applyBoundaryAnimation = (app, spriteId, boundary) => {
 const handleBoundaryAnimation = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   // スプライトを検索する。
@@ -1778,7 +1778,7 @@ const handleBoundaryAnimation = () => {
 
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1819,7 +1819,7 @@ const addCircularAnimation = (app, sprite, centerX, centerY, radius, speed) => {
 
   const tickerCallback = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトが削除されたため、移動を停止します");
+      //console.log("スプライトが削除されたため、移動を停止します");
       app.ticker.remove(tickerCallback);
       return;
     }
@@ -1873,13 +1873,13 @@ const addCircular = (app, spriteId, centerX, centerY, radius, speed) => {
 const handleCircularMove = () => {
   // activeSpriteが存在しない場合、何もせずに関数を終了する。
   if (!activeSprite) {
-    console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
+    //console.log("No active sprite selected."); // 必要に応じて適切なエラーハンドリングを追加
     return;
   }
   const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
   // spriteが見つからない場合、エラーメッセージを表示する。
   if (!sprite) {
-    console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
+    //console.log("Sprite not found."); // 実際の実装ではユーザーに通知するための方法を使用することが推奨される。
     return;
   }
   // spriteのアニメーション状態に応じて処理を分岐する。
@@ -1982,14 +1982,14 @@ const stopCircularMove = (spriteId) => {
   
   const onDragEnd = (sprite) => {
     if (!sprite) {
-      console.error("ドラッグ終了時にスプライトが見つかりません。");
+      //console.error("ドラッグ終了時にスプライトが見つかりません。");
       return;
     }
     // sprite.alpha = 1;
     sprite.data = null;
     appRef.current.stage.off('pointermove');
   
-    console.log(`スプライトのポジション x: ${sprite.x}, y: ${sprite.y}`);
+    //console.log(`スプライトのポジション x: ${sprite.x}, y: ${sprite.y}`);
     updateSpritePosition(sprite.id, { x: sprite.x, y: sprite.y });
   };
   

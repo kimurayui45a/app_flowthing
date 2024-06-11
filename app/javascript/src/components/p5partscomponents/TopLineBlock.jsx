@@ -35,16 +35,18 @@ const TopLineBlock = () => {
       <div className='flex' style={{ position: 'relative' }}>
 
 
-      {/* PCに保存する */}
-      <div
-          className="panel-tool-button tooltip-container"
-          onClick={savePc}
-          onTouchStart={savePc}
-          style={{ position: 'absolute', top: '40px', left: '0px', zIndex: 77 }}
-        >
-          <i className="bi bi-download"></i>
-          <span className="tooltip-text" style={{ textAlign: 'left' }}>作成された描画をお客様のPCに「png」で保存できます。</span>
-        </div>
+        {/* PCに保存する */}
+        {mainPanelMode && (
+          <div
+            className="panel-tool-button tooltip-container"
+            onClick={savePc}
+            onTouchStart={savePc}
+            style={{ position: 'absolute', top: '40px', left: '0px', zIndex: 77 }}
+          >
+            <i className="bi bi-download"></i>
+            <span className="tooltip-text" style={{ textAlign: 'left' }}>作成された描画をお客様のPCに「png」で保存できます。</span>
+          </div>
+        )}
 
 
         {/* アンドゥ */}
@@ -83,7 +85,7 @@ const TopLineBlock = () => {
 
       {/* レイヤーセーブを設定するチェックボックス */}
 
-      {layerSave &&(
+      {layerSave && (
         <div
           type="checkbox"
           className="layers-save-checkbox tooltip-container"

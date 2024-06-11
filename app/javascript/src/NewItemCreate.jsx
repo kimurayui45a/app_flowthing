@@ -22,8 +22,19 @@ const NewItemCreate = ({ subUserId }) => {
   const [canvasToolSet, setCanvasToolSet] = useState(false);
 
 
-  //canvasの外枠のサイズを決めるもの
+  //canvasの外枠のサイズを決めるもの（更新）
   const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
+  const [canvasSizeSelect, setCanvasSizeSelect] = useState('pc');
+
+  //コントロールパネルの初期位置（更新）
+  const [panelPosition, setPanelPosition] = useState({
+    main_pane: { x: 850, y: 50 },
+    layers_info_panel: { x: 1140, y: 300 },
+    color_palette_panel: { x: 400, y: 350 },
+    scale_panel_position: { x: 1140, y: 50 },
+    detail_panel_position: { x: 100, y: 300 },
+    size_panel_position: { x: 100, y: 50, width: 250, height: 170 }
+  });
 
 
   //レイヤーセーブできるようにする
@@ -63,6 +74,56 @@ const handleCanvasSize = (inputSize, direction) => {
     } else {
       setInputCanvasSizeHeight(String(canvasSizeHeight));
     }
+  }
+};
+
+//作業範囲のサイズを選択（更新）
+const handleCanvasSizeSelect = (selectSize) => {
+  setCanvasSizeSelect(selectSize)
+
+  if (selectSize === 'pc') {
+    setCanvasSpaceSize({ width: 1408, height: 770 });
+    setPanelPosition({
+      main_pane: { x: 850, y: 50 },
+      layers_info_panel: { x: 1140, y: 300 },
+      color_palette_panel: { x: 400, y: 350 },
+      scale_panel_position: { x: 1140, y: 50 },
+      detail_panel_position: { x: 100, y: 300 },
+      size_panel_position: { x: 100, y: 50, width: 250, height: 170 }
+    })
+
+  } else if (selectSize === 'miniPc') {
+    setCanvasSpaceSize({ width: 1150, height: 750 });
+    setPanelPosition({
+      main_pane: { x: 600, y: 40 },
+      layers_info_panel: { x: 890, y: 290 },
+      color_palette_panel: { x: 330, y: 340 },
+      scale_panel_position: { x: 890, y: 40 },
+      detail_panel_position: { x: 50, y: 290 },
+      size_panel_position: { x: 50, y: 40, width: 250, height: 170 }
+    })
+    
+  } else if (selectSize === 'ipad') {
+    setCanvasSpaceSize({ width: 1000, height: 1200 });
+    setPanelPosition({
+      main_pane: { x: 720, y: 310 },
+      layers_info_panel: { x: 720, y: 740 },
+      color_palette_panel: { x: 330, y: 40 },
+      scale_panel_position: { x: 650, y: 50 },
+      detail_panel_position: { x: 30, y: 450 },
+      size_panel_position: { x: 30, y: 200, width: 250, height: 170 }
+    })
+
+  } else {
+    setCanvasSpaceSize({ width: 700, height: 933 });
+    setPanelPosition({
+      main_pane: { x: 440, y: 250 },
+      layers_info_panel: { x: 240, y: 500 },
+      color_palette_panel: { x: 330, y: 40 },
+      scale_panel_position: { x: 330, y: 10 },
+      detail_panel_position: { x: 30, y: 330 },
+      size_panel_position: { x: 30, y: 80, width: 250, height: 170 }
+    })
   }
 };
 
@@ -160,8 +221,8 @@ const handleCanvasSizeButton = () => {
     } catch (error) {
       console.error('エラーが発生しました', error);
     }
-    console.log("DataURL:", dataURL);
-    console.log("Saved Layers Data:", saveLayersData);
+    // console.log("DataURL:", dataURL);
+    // console.log("Saved Layers Data:", saveLayersData);
     // ここで取得したデータを使う（例えば、サーバーに送信するなど）
   };
 
@@ -190,9 +251,90 @@ const handleCanvasSizeButton = () => {
 
 
       {canvasToolSet ? ( 
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} />
     ) : (
       <>
+
+
+<div><span>作業スペースサイズ選択</span>
+
+<div className="flex-start-start-flex-column">
+<span>PC大：横幅1440px以上のPC用です。</span><br />
+<span>PC小：横幅1280px〜1440pxのPC用です。</span><br />
+<span>iPad大：横幅1000px以上のiPad用です。iPad Pro推奨。</span><br />
+<span>iPad小：横幅768px〜1000pxのiPad用です。iPad Air・iPad Mini推奨。</span>
+</div>
+
+</div>
+<div className="flex-between">
+    <div
+      className="select-confirm-btn tooltip-container"
+      onClick={() => handleCanvasSizeSelect('pc')}
+      onTouchStart={() => handleCanvasSizeSelect('pc')}
+      style={{
+        width: 'auto',
+        height: 'auto',
+        padding: '2px 12px',
+        marginTop: '5px',
+        backgroundColor: canvasSizeSelect === 'pc' ? '#9199AE' : '#c2c1c1'
+      }}
+    >
+      PC大
+      <span className="tooltip-text" style={{ textAlign: 'left' }}>横幅1440px以上のPC用です。</span>
+    </div>
+
+    <div
+      className="select-confirm-btn tooltip-container"
+      onClick={() => handleCanvasSizeSelect('miniPc')}
+      onTouchStart={() => handleCanvasSizeSelect('miniPc')}
+      style={{
+        width: 'auto',
+        height: 'auto',
+        padding: '2px 12px',
+        marginTop: '5px',
+        backgroundColor: canvasSizeSelect === 'miniPc' ? '#9199AE' : '#c2c1c1'
+      }}
+    >
+      PC小
+      <span className="tooltip-text" style={{ textAlign: 'left' }}>横幅1280px〜1440pxのPC用です。</span>
+    </div>
+
+    <div
+      className="select-confirm-btn tooltip-container"
+      onClick={() => handleCanvasSizeSelect('ipad')}
+      onTouchStart={() => handleCanvasSizeSelect('ipad')}
+      style={{
+        width: 'auto',
+        height: 'auto',
+        padding: '2px 12px',
+        marginTop: '5px',
+        backgroundColor: canvasSizeSelect === 'ipad' ? '#9199AE' : '#c2c1c1'
+      }}
+    >
+      iPad大
+      <span className="tooltip-text" style={{ textAlign: 'left' }}>横幅1000px以上のiPad用です。<br />iPad Pro推奨。</span>
+    </div>
+
+
+    <div
+      className="select-confirm-btn tooltip-container"
+      onClick={() => handleCanvasSizeSelect('ipadMini')}
+      onTouchStart={() => handleCanvasSizeSelect('ipadMini')}
+      style={{
+        width: 'auto',
+        height: 'auto',
+        padding: '2px 12px',
+        marginTop: '5px',
+        backgroundColor: canvasSizeSelect === 'ipadMini' ? '#9199AE' : '#c2c1c1'
+      }}
+    >
+      iPad小
+      <span className="tooltip-text" style={{ textAlign: 'left' }}>横幅768px〜1000pxのiPad用です。<br />iPad Air／iPad Mini推奨。</span>
+    </div>
+  </div>
+
+
+  <div><span>canvasサイズ選択</span></div>
         <div className="flex">
           <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
             <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>横幅</span>

@@ -163,13 +163,13 @@ const addRandomMoveSample = (app, sprite, easing, closeEnough) => {
 
   // Tickerイベントを追加する前にスプライトが有効であるかをチェック
   if (!app.stage.children.includes(sprite)) {
-    console.log("スプライトは既に削除されています");
+    //console.log("スプライトは既に削除されています");
     return; // スプライトが存在しなければ関数を抜ける
   }
 
   const tickerCallback = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトが削除されたため、移動を停止します");
+      //console.log("スプライトが削除されたため、移動を停止します");
       app.ticker.remove(tickerCallback); // スプライトが削除されたらTickerを停止する
       return;
     }
@@ -233,6 +233,7 @@ const handleRandomMoveSample = () => {
 
   return (
 <>
+<button onClick={handleRandomMoveSample}>アニメ</button>
 <div className="flux-screen-show-third">
           <div className="flux-screen-show-frame">
             <div>
@@ -268,7 +269,7 @@ const handleRandomMoveSample = () => {
 
 
 {/* <button onClick={canvasP5ToPixiBtn}>読み込む</button> */}
-<button onClick={handleRandomMoveSample}>アニメ</button>
+
 </>
   );
 };

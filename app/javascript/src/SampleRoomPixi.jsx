@@ -110,11 +110,11 @@ const SampleRoomPixi = ({ sampleRoomId }) => {
       // app.stage.addChild(backgroundSprite);
 
       app.stage.on('pointerdown', () => {
-        console.log('Stage clicked, deselecting any active sprite');
+        // console.log('Stage clicked, deselecting any active sprite');
         setActiveSpriteSample(null);  // すべてのスプライトの選択を解除
     });
     const handleClickOutside = (event) => {
-      console.log('Stage clicked, deselecting any active sprite');
+      // console.log('Stage clicked, deselecting any active sprite');
       if (borderSampleRef.current) {
         borderSampleRef.current.clear(); // 直接枠をクリア
       }
@@ -389,7 +389,7 @@ const addPendulumAnime = (app, sprite, maxRotation, period, clockwise) => {
 
   const swingPendulum = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      // console.log("スプライトは既に削除されています");
       app.ticker.remove(swingPendulum); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
@@ -425,13 +425,13 @@ const addRandomAnime = (app, sprite, easing, closeEnough) => {
 
   // Tickerイベントを追加する前にスプライトが有効であるかをチェック
   if (!app.stage.children.includes(sprite)) {
-    console.log("スプライトは既に削除されています");
+    // console.log("スプライトは既に削除されています");
     return; // スプライトが存在しなければ関数を抜ける
   }
 
   const tickerCallback = () => {
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトが削除されたため、移動を停止します");
+      // console.log("スプライトが削除されたため、移動を停止します");
       app.ticker.remove(tickerCallback); // スプライトが削除されたらTickerを停止する
       return;
     }
@@ -457,7 +457,7 @@ const addBoundaryAnime = (app, sprite, x, y, width, height, speed) => {
   const updatePosition = () => {
 
     if (!app.stage.children.includes(sprite)) {
-      console.log("スプライトは既に削除されています");
+      // console.log("スプライトは既に削除されています");
       app.ticker.remove(updatePosition); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }

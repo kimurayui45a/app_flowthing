@@ -89,7 +89,7 @@ const PeintSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasS
 
         // window.location.href = data.redirect_url;
         if (isAsync) {
-          console.log('非同期更新成功:', data);
+          // console.log('非同期更新成功:', data);
           // ここで必要な状態更新やUI反映を行う
           handleAlertMessage("途中保存されました");
         } else {
@@ -103,7 +103,7 @@ const PeintSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasS
     } catch (error) {
       console.error('エラーが発生しました', error);
     }
-    console.log("Saved Layers Data:", saveLayersData);
+    //console.log("Saved Layers Data:", saveLayersData);
   };
 
 

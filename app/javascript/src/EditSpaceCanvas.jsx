@@ -85,7 +85,7 @@ const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, c
         //window.location.href = data.redirect_url;
 
         if (isAsync) {
-          console.log('非同期更新成功:', data);
+          //console.log('非同期更新成功:', data);
           // ここで必要な状態更新やUI反映を行う
           handleAlertMessage("途中保存されました");
         } else {
@@ -97,8 +97,8 @@ const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, c
     } catch (error) {
       console.error('エラーが発生しました', error);
     }
-    console.log("DataURL:", dataURL);
-    console.log("Saved Layers Data:", saveLayersData);
+    // console.log("DataURL:", dataURL);
+    // console.log("Saved Layers Data:", saveLayersData);
     // ここで取得したデータを使う（例えば、サーバーに送信するなど）
   };
 

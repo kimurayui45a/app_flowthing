@@ -83,8 +83,8 @@ const NewSpaceCreate = ({ profileId }) => {
     } catch (error) {
       console.error('エラーが発生しました', error);
     }
-    console.log("DataURL:", dataURL);
-    console.log("Saved Layers Data:", saveLayersData);
+    // console.log("DataURL:", dataURL);
+    // console.log("Saved Layers Data:", saveLayersData);
     // ここで取得したデータを使う（例えば、サーバーに送信するなど）
   };
 

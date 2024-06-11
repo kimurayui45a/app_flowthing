@@ -1236,7 +1236,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
       
           // 初期状態のキャプチャ
           undoRef.current.capture(layerRefs.current);
-          console.log("Initialized new layers with canvasData", layerRefs.current);
+          //console.log("Initialized new layers with canvasData", layerRefs.current);
         } else {
           // 再描画の場合、保存されたレイヤーデータを復元
           const layersData = JSON.parse(canvasSaveData);
@@ -2559,7 +2559,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   
       //mixBrushRef.current.stroke(colorH, colorS, colorV, alphaMix);
 
-      console.log('透明度', currentAlphaMix);
+      //console.log('透明度', currentAlphaMix);
 
       for (let r = strokeWeightBasedOnPressurehalf * 2; r > 0; --r) {
         mixBrushRef.current.ellipse(strokeWeightBasedOnPressurehalf * 8, strokeWeightBasedOnPressurehalf * 8, r, r);
@@ -2804,7 +2804,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           selectedAreaRef.current.clear();
           if (colorState) {
             selectedAreaRef.current.background(firstColor);
-            console.log('firstColor', firstColor)
+            //console.log('firstColor', firstColor)
           } else {
             let layer = selectedAreaRef.current;
             const from = layer.color(firstColor);
@@ -2967,7 +2967,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
       getTemporaryLayersData();
 
       isTransformingActiveRef.current = false;
-      console.log('isTransformingActiveRef', isTransformingActiveRef.current);
+      //console.log('isTransformingActiveRef', isTransformingActiveRef.current);
       if (isImageInsertionActiveRef.current && toolModeRef.current === 'selectMode') {
         if ((selectArrangeModeRef.current === 'selectMove') || (selectArrangeModeRef.current === 'selectBlur' && !selectToolBlurBoolRef.current)){
           handleUndo();
@@ -3737,13 +3737,13 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
 
 
-<div
+{/* <div
   className= "panel-tool-button-small midasi-t-five"
   onClick={sampleData}
 >
   <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pngデータ</span>
   
-</div>
+</div> */}
 
       <div ref={canvasContainerRef} style={{
           width: `${canvasSpaceSize.width}px`,
@@ -3842,12 +3842,12 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
       </div> */}
 
 
-      { canvasP5ToPixi && (
+      {canvasP5ToPixi && (
         <div
         className="click-sampleitem"
         onClick={handleSample}
         onTouchStart={handleSample}
-        style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+        style={{ width: 'auto', height: 'auto', marginTop: '50px' }}
         >
         <svg id="_レイヤー_4" data-name="レイヤー 4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 185.28 148.19" width="185.28" height="148.19">
           <defs>

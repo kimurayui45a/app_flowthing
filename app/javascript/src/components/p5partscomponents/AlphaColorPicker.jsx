@@ -44,7 +44,7 @@ const AlphaColorPicker = () => {
       const handleColorChange = function(color) {
         if (selectAlphaColorPreviewRef.current) {
           setCurrentAlphaColor(color.rgbaString);
-          console.log('currentAlphaColor', currentAlphaColor)
+          //console.log('currentAlphaColor', currentAlphaColor)
         } else {
           setSecondAlphaColor(color.rgbaString);
         }

@@ -6,7 +6,7 @@ const P5PanelGroupContext = createContext();
 export const useP5PanelGroupContext = () => useContext(P5PanelGroupContext);
 
 
-export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPosition }) => {
+export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) => {
 
   //レイヤーセーブに関するステート
   const [layerSave, setLayerSave] = useState(true);
@@ -50,6 +50,9 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPositi
   //四角カラーピッカーの変更
   const [boxPickerChange, setBoxPickerChange] = useState(false);
 
+  //メインパネルのカラーピッカーの状態
+  const [meinPicker, setMeinPicker] = useState('wheel');
+
   //「カラーピッカーパネル」のカラーピッカーの形状選択
   const [colorPalettePanelPickerChange, setColorPalettePanelPickerChange] = useState(false);
 
@@ -61,6 +64,15 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPositi
       setColorPalettePanelPickerChange(!colorPalettePanelPickerChange);
     }
   };
+
+  useEffect(() => {
+    if (boxPickerChange) {
+      setMeinPicker('box')
+    } else {
+      setMeinPicker('wheel')
+    }
+  }, [boxPickerChange]);
+
 
   // カラーピッカー操作中はパネルが動かないようにする（一部スライダー要素でも使い回し）
   const colorPaletteDrag = (event) => {
@@ -90,9 +102,9 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPositi
   };
 
   //レイヤーのスクロールを記録する
-  useEffect(() => {
-    console.log('canvasはアクティブ？', p5DrawingEnabled);
-  }, [p5DrawingEnabled]);
+  // useEffect(() => {
+  //   console.log('canvasはアクティブ？', p5DrawingEnabled);
+  // }, [p5DrawingEnabled]);
 
 
   // ツールサイズパネルのリサイズ操作終了時にサイズを保存
@@ -106,15 +118,15 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPositi
   };
 
   useEffect(() => {
-    if (samplePanelPosition) {
-      setMainPanelPosition(samplePanelPosition.main_pane);
-      setLayersInfoPanelPosition(samplePanelPosition.layers_info_panel);
-      setColorPalettePanelPosition(samplePanelPosition.color_palette_panel);
-      setScalePanelPosition(samplePanelPosition.scale_panel_position);
-      setDetailPanelPosition(samplePanelPosition.detail_panel_position);
-      setSizePanelPosition(samplePanelPosition.size_panel_position);
+    if (panelPosition) {
+      setMainPanelPosition(panelPosition.main_pane);
+      setLayersInfoPanelPosition(panelPosition.layers_info_panel);
+      setColorPalettePanelPosition(panelPosition.color_palette_panel);
+      setScalePanelPosition(panelPosition.scale_panel_position);
+      setDetailPanelPosition(panelPosition.detail_panel_position);
+      setSizePanelPosition(panelPosition.size_panel_position);
     }
-  }, [samplePanelPosition]);
+  }, [panelPosition]);
 
 
   //「メインパネル」の状態を切り替える関数
@@ -168,7 +180,7 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPositi
   //「レイヤーパネル」を閉じる関数
   const toggleLayersInfoPanelClose = () => {
     setLayersInfoPanelVisible(false);
-    console.log('スクロール位置', scrollPosition);
+    //console.log('スクロール位置', scrollPosition);
   };
 
   //「カラーピッカーパネル」を表示する関数
@@ -260,7 +272,8 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, samplePanelPositi
     setScalePanelPosition,
     detailPanelPosition,
     setDetailPanelPosition,
-    layerSave
+    layerSave,
+    meinPicker
   };
 
 

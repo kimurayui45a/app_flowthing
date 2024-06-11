@@ -1108,7 +1108,7 @@ function P5PointerEventsTest() {
 
       // HSVモードで描画するための関数（こちらは「Pointer Events API」イベントを使用する）
       p.startHSVDrawing = () => {
-        console.log('HSVモードフラグstart', startHSV);
+        //console.log('HSVモードフラグstart', startHSV);
         if (!startHSV) {
           startHSV = true;
           const canvasElement = canvasRef.current.elt; // canvasの実DOM要素にアクセス
@@ -1121,7 +1121,7 @@ function P5PointerEventsTest() {
 
       // p5のsetup関数内やp5オブジェクトに追加する関数でイベントリスナーを削除するstopDrawing関数を定義
       p.stopDrawing = () => {
-        console.log('HSVモードフラグstop', startHSV);
+        //console.log('HSVモードフラグstop', startHSV);
         if (startHSV) {
           startHSV = false;
           const canvasElement = canvasRef.current.elt;

@@ -37,30 +37,33 @@ const BoxColorPicker = () => {
     setInputV
   } = useP5Color();
 
-  const { colorPaletteDrag, colorPaletteDragEnd } = useP5PanelGroupContext();
+  const { colorPaletteDrag, colorPaletteDragEnd, mainPanelMode, meinPicker } = useP5PanelGroupContext();
 
   const boxPickerRef = useRef(null);
 
 
   useEffect(() => {
     if (!boxPickerRef.current) {
-      // 四角形カラーピッカーの初期化
-      boxPickerRef.current = new iro.ColorPicker("#box-picker-container", {
-        width: 140,
-        color: currentColor,
-        layout: [
-          {
-            component: iro.ui.Box, // 四角形カラーピッカー
-            options: {}
-          },
-          {
-            component: iro.ui.Slider, // 色相調整バー
-            options: {
-              sliderType: 'hue' // 色相（Hue）を調整するためのスライダー
+      
+      
+        // 四角形カラーピッカーの初期化
+        boxPickerRef.current = new iro.ColorPicker("#box-picker-container", {
+          width: 140,
+          color: currentColor,
+          layout: [
+            {
+              component: iro.ui.Box, // 四角形カラーピッカー
+              options: {}
+            },
+            {
+              component: iro.ui.Slider, // 色相調整バー
+              options: {
+                sliderType: 'hue' // 色相（Hue）を調整するためのスライダー
+              }
             }
-          }
-        ]
-      });
+          ]
+        });
+      
 
 
       // const handleColorChange = function(color) {
@@ -148,6 +151,8 @@ const BoxColorPicker = () => {
         onMouseUp={colorPaletteDragEnd}
         onTouchEnd={colorPaletteDragEnd}
         id="box-picker-container"
+        style={{ display: (!mainPanelMode && meinPicker === 'box') ? 'none' : 'block' }}
+        //style={{ display: mainPanelMode ? 'block' : 'none' }}
       ></div>
     </div>
   );

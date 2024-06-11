@@ -37,7 +37,7 @@ const WheelColorPicker = () => {
     setInputV
   } = useP5Color();
 
-  const { colorPaletteDrag, colorPaletteDragEnd } = useP5PanelGroupContext();
+  const { colorPaletteDrag, colorPaletteDragEnd, mainPanelMode, meinPicker } = useP5PanelGroupContext();
 
   const wheelPickerRef = useRef(null);
 
@@ -47,20 +47,24 @@ const WheelColorPicker = () => {
 
     // 円形カラーピッカーの初期化
     if (!wheelPickerRef.current) {
-      wheelPickerRef.current = new iro.ColorPicker("#wheel-picker-container", {
-        width: 140,
-        color: currentColor,
-        layout: [
-          {
-            component: iro.ui.Wheel,
-            options: {wheelLightness: false}
-          },
-          {
-            component: iro.ui.Slider,
-            options: {sliderType: 'value'}
-          }
-        ]
-      });
+
+    
+        wheelPickerRef.current = new iro.ColorPicker("#wheel-picker-container", {
+          width: 140,
+          color: currentColor,
+          layout: [
+            {
+              component: iro.ui.Wheel,
+              options: {wheelLightness: false}
+            },
+            {
+              component: iro.ui.Slider,
+              options: {sliderType: 'value'}
+            }
+          ]
+        });
+      
+        
 
       // const handleColorChange = function(color) {
       //   setCurrentColor(color.rgbaString);
@@ -144,6 +148,8 @@ const WheelColorPicker = () => {
         onMouseUp={colorPaletteDragEnd}
         onTouchEnd={colorPaletteDragEnd}
         id="wheel-picker-container"
+        style={{ display: (!mainPanelMode && meinPicker === 'wheel') ? 'none' : 'block' }}
+        //style={{ display: mainPanelMode ? 'block' : 'none' }}
       ></div>
     </div>
   );

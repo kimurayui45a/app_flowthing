@@ -5,6 +5,8 @@ import { Rnd } from 'react-rnd';
 import { TopLineBlock } from './p5partscomponents/TopLineBlock';
 import { CenterLineBlock } from './p5partscomponents/CenterLineBlock';
 import { useP5Color } from './P5ColorContext';
+import { WheelColorPicker } from './p5partscomponents/WheelColorPicker';
+import { BoxColorPicker } from './p5partscomponents/BoxColorPicker';
 
 const P5CompactPanel = () => {
   const { 
@@ -20,7 +22,8 @@ const P5CompactPanel = () => {
     toggleColorPalettePanelVisible,
     toggleScalePanelVisible,
     scalePanelVisible,
-    colorPalettePanelVisible
+    colorPalettePanelVisible,
+    boxPickerChange
   } = useP5PanelGroupContext();
 
 
@@ -199,6 +202,15 @@ const P5CompactPanel = () => {
       </div>
 
       {/* フリーパレット */}
+
+      {boxPickerChange ? (
+        <BoxColorPicker />
+      ) : (
+        <WheelColorPicker />
+      )}
+      
+
+
       <div className="palette-colors-box">
         {paletteColors9.map((color, index) => (
           <div

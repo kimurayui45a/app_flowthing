@@ -59,7 +59,7 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
     // allComposite 配列が空であるかどうかを確認
     if (allComposite.length === 0) {
       setDefaultPixi(false);
-      console.log('allCompositeの中', allComposite)
+      // console.log('allCompositeの中', allComposite)
     } else {
       // allComposite の中で一番大きいIDを持つ composite を見つける
       const selectComposite = allComposite.reduce((max, composite) => composite.id > max.id ? composite : max, allComposite[0]);

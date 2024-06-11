@@ -27,7 +27,7 @@
 
       <div class="caution-statement">
         <span class="text-left info-text">
-          ※ このページは横幅768px以上のブラウザを推奨しております。
+          ※ 本アプリは横幅1000px以上のブラウザを推奨しております。
         </span>
       </div>
 
@@ -45,12 +45,51 @@
         </span>
       </div>
 
-      <h2 class="info-section2-text">
-        <span>使い方</span>
+      <h2 class="info-section2-title">
+        <span class="info-section2-line">使い方</span>
       </h2>
+
+      <div style="margin-bottom: 2rem;">
+        <span class="text-left info-text">
+          アイテムを作って、背景に配置してみましょう。<br>
+          実際のアプリでは背景の作成も可能です。
+        </span>
+      </div>
+
 
       <div id="react-drag"></div>
 
+
+      <div style="margin-top: 5rem;">
+        <span class="text-left info-text">
+
+<div class="new-account-section">
+  <span>
+          登録はこちらから
+          </span>
+          </div>
+<div>
+        <span class="text-left">
+          ※ 本アプリは全て無料です。
+        </span> 
+          </div>
+
+        </span>
+      </div>
+
+<%# <div class="new-account-btn">
+  <div><span>新規登録</span></div>
+</div> %>
+
+
+<div class="new-account-container">
+      <%= link_to sign_up_path, class: "new-account-btn" do %>
+        <div><%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "new-account-icon") %></div>
+        <div class="new-account-text"><span>新規登録</span></div>
+        <div class="new-account-arrow"><i class="bi bi-arrow-right-short"></i></div>
+      <% end %>
+
+</div>
     </div>
   </div>
 
@@ -64,26 +103,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<%# <div class="draggable-test2 f-text">テスト用スペース</div> %>
-<%# 
-<div id="react-drag"></div> %>
-
-<%# <div id="reactPixiTest" class="draggable-test2"></div> %>
-
-<%# <div id="reactP5PenTest" class="draggable-test2 myCanvas"></div> %>
-<%# <div id="reactP5PenDeviceTest" class="draggable-test2 myCanvas"></div> %>
 
 
 

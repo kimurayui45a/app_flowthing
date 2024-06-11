@@ -80,7 +80,7 @@ const P5LayersInfoPanel = () => {
   //レイヤーの選択モードを発火させる関数
   const handleLayerSelectModeChange = () => {
     setSecondLayerSelectMode(!secondLayerSelectMode); // 現在の値を反転させる
-    console.log('secondLayerSelectMode',secondLayerSelectMode);
+    //console.log('secondLayerSelectMode',secondLayerSelectMode);
 
     if (secondLayerSelectMode) {
       setSelectSecondLayer(null);
