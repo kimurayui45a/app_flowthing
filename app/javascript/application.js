@@ -27,7 +27,7 @@ import AllComposite from './src/AllComposite';
 import EditSubUserCanvas from './src/EditSubUserCanvas';
 import PeintSubUserCanvas from './src/PeintSubUserCanvas';
 import SampleRoom from './src/SampleRoom';
-
+import NewSubUserCreate from './src/NewSubUserCreate';
 
 // document.addEventListener("turbo:load", function() {
 //   if (document.querySelector('.fabicon')) {
@@ -146,7 +146,8 @@ let dragRoot,
     allCompositeRoot,
     editSubUserCanvasRoot,
     peintSubUserCanvasRoot,
-    sampleRoomRoot;
+    sampleRoomRoot,
+    newNewSubUserCreateRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -369,6 +370,14 @@ document.addEventListener('turbo:load', () => {
     sampleRoomRoot.render(<SampleRoom />);
   }
 
+  //「NewSubUserCreate」のマウント
+  const newNewSubUserCreate = document.getElementById('reactNewSubUserCreate');
+  if (newNewSubUserCreate) {
+    const profileId = newNewSubUserCreate.getAttribute('data-profile-id');
+    newNewSubUserCreateRoot = createRoot(newNewSubUserCreate);
+    newNewSubUserCreateRoot.render(<NewSubUserCreate profileId={profileId} />);
+  }
+
 });
 
 document.addEventListener('turbo:before-cache', () => {
@@ -482,6 +491,12 @@ document.addEventListener('turbo:before-cache', () => {
   if (sampleRoomRoot) {
     sampleRoomRoot.unmount();
     sampleRoomRoot = null;
+  }
+
+  //「NewSubUserCreate」のアンマウント
+  if (newNewSubUserCreateRoot) {
+    newNewSubUserCreateRoot.unmount();
+    newNewSubUserCreateRoot = null;
   }
 
 });

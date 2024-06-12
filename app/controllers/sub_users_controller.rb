@@ -18,6 +18,16 @@ class SubUsersController < ApplicationController
     @sub_user = SubUser.new
   end
 
+
+  def create
+    @sub_user = SubUser.new(sub_user_params)
+    if @sub_user.save
+      render json: { redirect_url: sub_user_path(@sub_user) }, status: :created
+    else
+      render json: { errors: @sub_user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   def show
     @sub_user = @profile.sub_users.find(params[:id])
   @items = @sub_user.items.order(created_at: :desc).page(params[:page]).per(20)

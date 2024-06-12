@@ -34,8 +34,8 @@ ja:
     form:
       color_code: カラーアイコン
       image_icon: 画像アイコン
-      name: 命名(任意)
-      profile_text: プロフィール(任意)
+      name: 命名(任意 ※最大20文字)
+      profile_text: プロフィール(任意 ※最大2000文字)
   sub_users:
     show:
       title: Sub Thing 詳細

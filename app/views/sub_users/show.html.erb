@@ -97,7 +97,7 @@
     </div>
 
     <div class="flex-between user-show-botann">
-      <%= link_to new_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>
+      <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>
         <div>
           <i class="bi bi-balloon-fill balloon-icon balloon-action"></i>
         </div>
@@ -107,16 +107,16 @@
         </div>
       <% end %>
 
-      <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>
-          <div>
+      <%# <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>
+          <%# <div>
             <i class="bi bi-balloon-fill balloon-icon balloon-action-blue"></i>
           </div>
           <div class="balloon-botann-text">
             New<br>
             Flow Paint
           </div>
-          <span class="tooltip-text">Flow Thingを描く</span>
-        <% end %>
+          <span class="tooltip-text">Flow Thingを描く</span> %>
+        <%# <% end %>
 
 
         <% if @sub_user.icon_choice.present? %>

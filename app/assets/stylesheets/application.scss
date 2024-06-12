@@ -1095,6 +1095,9 @@ header {
   border-radius: 50%;
   display: inline-block;
   object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-dropdown {
@@ -1346,8 +1349,15 @@ header {
   height: 100px;
   border: 1px solid black;
   border-radius: 50%;
-  display: inline-block; 
-  margin: 0px auto;
+  // display: inline-block; 
+  // margin: 0px auto;
+}
+
+.profile-icon-default {
+  width: 4rem;
+  // display: inline-block;
+  // -o-object-fit: cover;
+  object-fit: cover;
 }
 
 
@@ -5998,6 +6008,7 @@ background-color: #d1eee6;
   margin: 0px auto;
   padding: 3rem;
   text-align: center;
+  margin-top: 5rem;
 }
 
 
@@ -6678,6 +6689,7 @@ background-color: #d1eee6;
     margin: 0px auto;
     padding: 0rem;
     text-align: center;
+    margin-top: 5rem;
   }
 
 
@@ -7613,9 +7625,9 @@ background-color: #d1eee6;
   text-align: center; /* テキストを中央揃え */
 }
 
-.canvas-paint-container {
-  margin-top: 3rem;
-}
+// .canvas-paint-container {
+//   margin-top: 3rem;
+// }
 
 .gaido-panel {
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -7886,9 +7898,10 @@ background-color: #d1eee6;
 }
 
 .screen-container {
-  background: linear-gradient(175deg, rgb(209, 227, 232) 0%, #b1c5cf 30%, #7b8f97 75%, #666e7b 90%, rgb(71 78 83) 100%);
-  border-top: 10px solid #666d76;
-  box-shadow: rgb(90 86 86) 1px 10px 20px inset;
+  //background: linear-gradient(175deg, #EEF9FC 0%, #E7EDF5 30%, #A3D5FB 75%, #82BBE5 90%, #54A7E5 100%);
+  //border-top: 10px solid #666d76;
+  //box-shadow: rgb(90 86 86) 1px 10px 20px inset;
+  background-color: white;
 }
 
 
@@ -8532,6 +8545,12 @@ background-color: #d1eee6;
   margin-right: 1rem;
 }
 
+.header-main-none {
+  display: block;
+  margin-top: 1.6rem;
+  margin-right: 1rem;
+}
+
 .header-login-none {
   display: block;
   margin-top: 1.6rem;
@@ -8549,6 +8568,11 @@ background-color: #d1eee6;
 .header-text-Rounded500:hover {
   color: #1f5a89;
 }
+
+.header-mainlist-none {
+  display: none;
+}
+
 
   
   @media (max-width: 1199px) {
@@ -8627,6 +8651,15 @@ background-color: #d1eee6;
   }
 
   @media (max-width: 900px) {
+
+    .header-main-none {
+      display: none;
+    }
+    
+    .header-mainlist-none {
+      display: block;
+    }
+
     .footer-image-wave-none {
       display: none;
     }
@@ -8854,6 +8887,13 @@ background-color: #d1eee6;
   transition: transform 0.3s ease-in-out;
 }
 
+.userdefault-icon-header {
+  width: 2.3rem;
+  display: inline-block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
 .new-account-icon-header {
   width: 2.16rem;
   display: inline-block;
@@ -8875,4 +8915,59 @@ background-color: #d1eee6;
   font-size: 1.6rem;
   margin-top: -0.16rem;
   margin-left: 0.74rem;
+}
+
+.profile-color-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-input-container {
+  margin: 2rem;
+  width: 38rem;
+  padding: 1rem;
+  // border: 2rem solid #5395ca;
+  border-radius: 0.5rem;
+
+  background-color: #5395ca;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-input-container2 {
+  border-radius: 0.5rem;
+  background-color: white;
+  width: auto;
+  height: auto;
+
+  border-radius: 0.5rem;
+  /* padding: 1.5rem; */
+  padding: 1rem 1rem 2rem 1rem;
+  background: #fff;
+  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  width: 36rem;
+  // height: auto;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  box-sizing: border-box;
+}
+
+.profile-containe {
+  position: relative;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+  margin-bottom: 10rem;
 }
