@@ -45,31 +45,61 @@
   
       <div>
         <ul class='nav-contents'>
-          <li  class="user-dropdown">
+
+
+          <li class="header-explanation-none">
+            <%= link_to '使い方', login_path, class: "text-Rounded500 header-text-Rounded500" %>
+          </li>
+
+          <li class="header-explanation-none">
+            <%= link_to 'ツール', login_path, class: "text-Rounded500 header-text-Rounded500" %>
+          </li>
+
+          <li class="header-explanation-none">
+            <%= link_to 'アイデア', login_path, class: "text-Rounded500 header-text-Rounded500" %>
+          </li>
+
+          <li class="header-login-none">
+            <%= link_to 'ログイン', login_path, class: "text-Rounded500 header-text-Rounded500" %>
+          </li>
+
+          <li class="header-btn-none">
+            <%# <%= link_to new_sample_path do %>
+              <%# <div class="header-button header-button:hover">
+                <i class="bi bi-pencil-square header-icon-pen"></i>
+              </div> %>
+            <%# <% end %>
+              <%= link_to sign_up_path, class: "new-account-btn-header" do %>
+    <div><%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "new-account-icon-header") %></div>
+    <div class="new-account-text-header"><span>新規登録</span></div>
+    <div class="new-account-arrow-header"><i class="bi bi-arrow-right-short"></i></div>
+  <% end %>
+          </li>
+
+
+
+
+          <li  class="user-dropdown header-hamburger-btn">
               <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-circle light-blue-text header-icon-pen"></i>
+                <i class="bi bi-list header-icon-pen"></i>
               </button>
 
             <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
               <ul class='user-dropdown-list'>
                 <li class='user-dropdown-item'><%= link_to 'Flow Thing', flow_sample_path, class: 'user-dropdown-link' %></li>
                 <li class='user-dropdown-item'><%= link_to 'Sub Thing', sub_sample_path, class: 'user-dropdown-link' %></li>
-                <%# <li class='user-dropdown-item'><%= link_to 'エピソード', episode_sample_path, class: 'user-dropdown-link' %>
-                <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
-                <%# <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %> 
-                <li class='user-dropdown-item'><%= link_to '新規登録', sign_up_path, class: 'user-dropdown-link' %></li>
+
+                <li class='user-dropdown-item'><%= link_to '使い方', login_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ツール', login_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'アイデア', login_path, class: 'user-dropdown-link' %> 
+
+                <li class='user-dropdown-item header-list-none'><%= link_to '新規登録', sign_up_path, class: 'user-dropdown-link' %></li>
+                <li class='user-dropdown-item header-list-none'><%= link_to 'ログイン', login_path, class: 'user-dropdown-link' %></li>
               <ul>
             </div>
 
           </li>
 
-          <%# <li> %>
-            <%# <%= link_to new_sample_path do %>
-              <%# <div class="header-button header-button:hover">
-                <i class="bi bi-pencil-square header-icon-pen"></i>
-              </div> %>
-            <%# <% end %>
-          <%# </li> %>
           
         </ul>
       </div>

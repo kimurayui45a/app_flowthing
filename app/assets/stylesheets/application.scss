@@ -25,6 +25,9 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   font-weight: 400;
   color: #000;
+  height: 100%;
+  margin: 0;
+  padding: 0; /* パディングをリセット */
 }
 
 a {
@@ -34,6 +37,28 @@ a {
 ul {
   list-style: none;
 }
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // background-color: #fff; /* 背景色を設定 */
+  z-index: 2000; /* 他のコンテンツより前面に表示 */
+  // box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 影を付けるとより一層際立つ */
+}
+
+
+#page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* コンテナをビューポートの最小高さと同じ */
+}
+
+#content-wrap {
+  flex: 1; /* コンテンツが伸縮して空間を埋める */
+}
+
 
 /* 部品
 ------------------------------------------ */
@@ -259,13 +284,14 @@ ul {
 .max767-container {
   position: relative;
   width: 100%;
-  margin: 0px auto;
+  // margin: 0px auto;
   padding: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 5rem;
 }
 
 .max1280-container {
@@ -1037,7 +1063,12 @@ ul {
 
 .nav-contents {
   display: flex;
+  justify-content: center;
   text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
 }
 
 .header-button {
@@ -1078,13 +1109,11 @@ ul {
   outline: none; /* フォーカス時のアウトラインを削除 */
   width: 5rem;
   height: 5rem;
-  // border-bottom: solid 0.375rem #7f7f7f;
+  color: #5395ca;
 }
 
 .user-dropdown-btn:hover {
-  background-color: #e1e1e1;
-  box-sizing: border-box;
-  border-bottom: solid 0.375rem #fff;
+  color: #1f5a89;
 }
 
 .user-dropdown-btn.is-open::after {
@@ -2689,7 +2718,7 @@ summary {
 .info-container {
   //margin: 3rem;
   padding: 2rem;
-  box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  // box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
   border-radius: 1rem;
   background-color: white;
   position: relative;
@@ -5574,6 +5603,7 @@ summary {
   // margin: 0px auto;
   // padding: 3rem;
   text-align: center;
+  margin-top: 5rem;
 }
 
 
@@ -8177,6 +8207,13 @@ background-color: #d1eee6;
   padding: 2rem 2rem 0rem 2rem;
 }
 
+.login-container {
+  padding: 6rem 5rem 6rem 5rem;
+  border-radius: 1rem;
+  background-color: white;
+  position: relative;
+}
+
 
 .poi-container {
   position: absolute;
@@ -8480,9 +8517,52 @@ background-color: #d1eee6;
 }
 
 
+.header-btn-none {
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.header-list-none {
+  display: none;
+}
   
+.header-explanation-none {
+  display: block;
+  margin-top: 1.6rem;
+  margin-right: 1rem;
+}
+
+.header-login-none {
+  display: block;
+  margin-top: 1.6rem;
+  margin-right: 1rem;
+}
+
+.header-hamburger-btn {
+  display: none;
+}
+
+.header-text-Rounded500 {
+  color: #5395ca;
+}
+
+.header-text-Rounded500:hover {
+  color: #1f5a89;
+}
+
   
   @media (max-width: 1199px) {
+
+
+    .header-hamburger-btn {
+      display: block;
+    }
+    
+
+    .header-explanation-none {
+      display: none;
+    }
+
     .top-page-logo-none {
       display: none;
     }
@@ -8591,6 +8671,18 @@ background-color: #d1eee6;
   }
 
   @media (max-width: 767px) {
+    .header-btn-none {
+      display: none;
+    }
+
+    .header-login-none {
+      display: none;
+    }
+    
+    .header-list-none {
+      display: block;
+    }
+
     .top-page-text {
       font-family: "M PLUS Rounded 1c", sans-serif;
       font-weight: 500;
@@ -8739,4 +8831,48 @@ background-color: #d1eee6;
   font-weight: 700;
   font-style: normal;
   color: #0a71e4;
+}
+
+.new-account-btn-header {
+  width: 172px;
+  height: 56px;
+  background-color: #ffb1b1;
+  border-radius: 28px;
+  border: 4.8px solid #9ADFCB;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-account-btn-header:hover {
+  background-color: #ce9d9d;
+}
+
+.new-account-btn-header:hover .new-account-arrow-header {
+  transform: translateX(5px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.new-account-icon-header {
+  width: 2.16rem;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-right: 0.44rem;
+}
+
+.new-account-text-header {
+  font-size: 1rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  margin-right: -0.5rem;
+}
+
+.new-account-arrow-header {
+  font-size: 1.6rem;
+  margin-top: -0.16rem;
+  margin-left: 0.74rem;
 }
