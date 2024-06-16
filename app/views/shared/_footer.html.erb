@@ -1,5 +1,7 @@
 <footer>
-<div class="footer-style">
+
+<% profile = current_user.profile %>
+<div class="footer-style" style="background-color: <%= profile.color_code %>;">
 
 <div class="footer-image-icon"><%= image_tag('footer_left.png', alt: '左のフッターの画像', class: "footer-image") %></div>
 <div class="footer-image-wave4 top-page-logo-none"><%= image_tag('wave4_white_footer.png', alt: '波のフッターの画像', class: "footer-wave4") %></div>

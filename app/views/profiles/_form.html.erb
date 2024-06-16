@@ -1,82 +1,105 @@
 
-  <%= form_with model: profile, multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
+<%= form_with model: profile, multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
 
-<%= render 'shared/error_messages', object: f.object %>
+  <%= render 'shared/error_messages', object: f.object %>
   <div class="profile-input-container">
-    
-<div class="profile flex-between profile-input-container2">
-    <%# <div id="imagePreview"></div> %>
-
-    <div class="profile-color-container">
-      <div id="colorPreview" class="flex">
-        <%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "profile-icon-default") %>
-      </div>
-
-      
-
-      <div class="flex-between">
-        <%= f.hidden_field :selected_option, id: "selected_option" %>
-        <%= f.hidden_field :image_icon, id: "image_icon" %>
         
-        <div class="usercolor-container-background" id="colorInput">
-          <%# <label for="selectColorCode"> %>
-            <div class="usercolor-container">
-              <div>
-                <%# <div class="radio-colortext"> %>
-                  <%# <input type="radio" name="inputType" value="color" id="selectColorCode" checked> %>
-                  <%# <%= f.label :color_code, t('profiles.form.color_code') %> 
-                <%# </div> %>
-                <div class="user-pickerbox">
-                  <%= f.color_field :color_code, class: "form-control user-picker", id: "color_code" %>
+    <div class="flex-column profile-input-container3">
+      <div class="profile flex-between profile-input-container2">
+        <%# <div id="imagePreview"></div> %>
+
+        <div class="profile-color-container">
+          <div id="colorPreview" class="flex">
+            <%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "profile-icon-default") %>
+          </div>
+
+          <div class="flex-between">
+            <%= f.hidden_field :selected_option, id: "selected_option" %>
+            <%= f.hidden_field :image_icon, id: "image_icon" %>
+            <div class="usercolor-container-background" id="colorInput">
+              <%# <label for="selectColorCode"> %>
+                <div class="usercolor-container">
+                  <div>
+                    <%# <div class="radio-colortext"> %>
+                      <%# <input type="radio" name="inputType" value="color" id="selectColorCode" checked> %>
+                      <%# <%= f.label :color_code, t('profiles.form.color_code') %> 
+                    <%# </div> %>
+                    <div class="user-pickerbox">
+                      <%= f.color_field :color_code, class: "form-control user-picker", id: "color_code" %>
+                    </div>
+                  </div>
+                  <div class="pickup-color">
+                    <div class="usericonColor" style="background-color: #F6D0EB;" data-color="#F6D0EB"></div>
+                    <div class="usericonColor" style="background-color: #AEA5EC;" data-color="#AEA5EC"></div>
+                    <div class="usericonColor" style="background-color: #7FA8EB;" data-color="#7FA8EB"></div>
+                    <div class="usericonColor" style="background-color: #91D7E9;" data-color="#91D7E9"></div>
+                    <div class="usericonColor" style="background-color: #C3E5DB;" data-color="#C3E5DB"></div>
+                  </div>
+                  <div class="pickup-color">
+                    <div class="usericonColor" style="background-color: #B8F3B9;" data-color="#B8F3B9"></div>
+                    <div class="usericonColor" style="background-color: #E2F2C5;" data-color="#E2F2C5"></div>
+                    <div class="usericonColor" style="background-color: #F6E4C5;" data-color="#F6E4C5"></div>
+                    <div class="usericonColor" style="background-color: #FBC8C3;" data-color="#FBC8C3"></div>
+                    <div class="usericonColor" style="background-color: #F8A3B1;" data-color="#F8A3B1"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="pickup-color">
-                <div class="usericonColor" style="background-color: #F6D0EB;" data-color="#F6D0EB"></div>
-                <div class="usericonColor" style="background-color: #AEA5EC;" data-color="#AEA5EC"></div>
-                <div class="usericonColor" style="background-color: #7FA8EB;" data-color="#7FA8EB"></div>
-                <div class="usericonColor" style="background-color: #91D7E9;" data-color="#91D7E9"></div>
-                <div class="usericonColor" style="background-color: #C3E5DB;" data-color="#C3E5DB"></div>
-              </div>
-              <div class="pickup-color">
-                <div class="usericonColor" style="background-color: #B8F3B9;" data-color="#B8F3B9"></div>
-                <div class="usericonColor" style="background-color: #E2F2C5;" data-color="#E2F2C5"></div>
-                <div class="usericonColor" style="background-color: #F6E4C5;" data-color="#F6E4C5"></div>
-                <div class="usericonColor" style="background-color: #FBC8C3;" data-color="#FBC8C3"></div>
-                <div class="usericonColor" style="background-color: #F8A3B1;" data-color="#F8A3B1"></div>
-              </div>
+              <%# </label> %>
             </div>
-          <%# </label> %>
+          </div>
+        </div>
+            <%# <div class="disabled-input" id="imageInput"> %>
+              <%# <label for="selectImage"> %>
+                <%# <input type="radio" name="inputType" value="image" id="selectImage"> %>
+                <%# <%= f.label :image_icon, t('profiles.form.image_icon') %>
+                <%# <%= f.file_field :image_icon, class: "form-control", accept: 'image/*', id: "image_icon", disabled: true %>
+              <%# </label> %>
+            <%# </div> %>
+          
+        <div class="text-Rounded500" style="color: #7f7f7f;">
+          <div class="flex-start-start">
+            <%= f.label :name, t('profiles.form.name') %>
+            <%= f.text_field :name, class: "form-control", style: "width: 300px;" %>
+          </div>
+
+          <div style="margin-top: 1rem;" class="flex-start-start">
+            <%= f.label :profile_text, t('profiles.form.profile_text') %>
+            <%= f.text_area :profile_text, class: "form-control", rows: 10, style: "height: 200px; width: 300px;" %>
+          </div>
         </div>
       </div>
 
-      <%# <div class="disabled-input" id="imageInput"> %>
-        <%# <label for="selectImage"> %>
-          <%# <input type="radio" name="inputType" value="image" id="selectImage"> %>
-          <%# <%= f.label :image_icon, t('profiles.form.image_icon') %>
-          <%# <%= f.file_field :image_icon, class: "form-control", accept: 'image/*', id: "image_icon", disabled: true %>
-        <%# </label> %>
-      <%# </div> %>
+<div class="field">
+  <label>よく使用するブラウザのサイズを選択してください。</label><br>
+  <span class="text-left info-text">
+    ※ この項目はツールのサイズを決めるものです。<br>
+    ※ 本アプリは横幅1000px以上のブラウザを推奨しております。<br>
+    「横幅1000px以下」の場合、一部ブラウザではレイアウトの崩れ等が発生する可能性があります。<br>
+  </span>
+
+  <%= f.radio_button :space_size, 1400, checked: true, id: 'space_size_1400' %>
+  <label>横幅1440px以上のPC</label><br>
+
+  <%= f.radio_button :space_size, 1200, id: 'space_size_1200' %>
+  <label>横幅1280px〜1440pxのPC</label><br>
+
+  <%= f.radio_button :space_size, 1000, id: 'space_size_1000' %>
+  <label>横幅1000px〜1280px(iPad Pro推奨)</label><br>
+
+  <%= f.radio_button :space_size, 700, id: 'space_size_700' %>
+  <label>横幅1000px以下</label>
+</div>
+
+
     </div>
 
-  <div class="text-Rounded500" style="color: #7f7f7f;">
-    <div class="flex-start-start">
-      <%= f.label :name, t('profiles.form.name') %>
-      <%= f.text_field :name, class: "form-control", style: "width: 300px;" %>
-    </div>
 
-    <div style="margin-top: 1rem;" class="flex-start-start">
-      <%= f.label :profile_text, t('profiles.form.profile_text') %>
-      <%= f.text_area :profile_text, class: "form-control", rows: 10, style: "height: 200px; width: 300px;" %>
-    </div>
+
   </div>
 
-    
-  
-</div>
-</div>
-<div style="margin-top: 5rem;">
-<%= f.submit nil, class: "btn btn-primary", type: 'button', onclick: 'submit()' %>
-</div>
+
+  <div style="margin-top: 5rem;">
+  <%= f.submit nil, class: "btn btn-primary", type: 'button', onclick: 'submit()' %>
+  </div>
 <% end %>
 
 

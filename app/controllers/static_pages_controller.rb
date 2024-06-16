@@ -84,5 +84,7 @@ class StaticPagesController < ApplicationController
   def flow_sample; end
 
   def episode_sample; end
+
+  def how_to_use; end
   
 end

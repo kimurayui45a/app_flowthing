@@ -122,7 +122,7 @@ const PixiSampleRoomDetailPanel = () => {
         setSampleText({ title: 'ゴミ箱', place: '窓の側'});
         break;
       case 2:
-        setSampleText({ title: '住民', place: 'サンプルルーム'});
+        setSampleText({ title: 'このアプリのマスコット', place: 'サンプルルーム'});
         break;
       case 3:
         setSampleText({ title: 'ポテチ', place: '床の上'});

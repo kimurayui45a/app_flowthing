@@ -52,6 +52,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :image_icon, :color_code, :profile_text, :selected_option)
+    params.require(:profile).permit(:name, :image_icon, :color_code, :profile_text, :selected_option, :space_size)
   end
 end

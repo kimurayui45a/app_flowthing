@@ -46,6 +46,24 @@
 
 
 
+<div class="user-show-name-contents">
+  <% if @profile.space_size %>
+    <span class="f-text">
+      <% case @profile.space_size %>
+      <% when 1400 %>
+        横幅1440px以上のPC
+      <% when 1200 %>
+        横幅1280px〜1440pxのPC
+      <% when 1000 %>
+        横幅1000px〜1280px(iPad Pro推奨)
+      <% else %>
+        横幅1000px以下
+      <% end %>
+    </span>
+  <% else %>
+    <span class="f-text">情報がありません</span>
+  <% end %>
+</div>
 
 
 

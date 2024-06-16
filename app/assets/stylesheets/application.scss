@@ -48,6 +48,11 @@ header {
   // box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 影を付けるとより一層際立つ */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
 
 #page-container {
   display: flex;
@@ -8940,6 +8945,22 @@ background-color: #d1eee6;
 }
 
 .profile-input-container2 {
+  // border-radius: 0.5rem;
+  // background-color: white;
+  // width: auto;
+  // height: auto;
+
+  // border-radius: 0.5rem;
+  // /* padding: 1.5rem; */
+  // padding: 1rem 1rem 2rem 1rem;
+  // background: #fff;
+  // box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
+  width: 36rem;
+  box-sizing: border-box;
+}
+
+
+.profile-input-container3 {
   border-radius: 0.5rem;
   background-color: white;
   width: auto;
@@ -8970,4 +8991,42 @@ background-color: #d1eee6;
   align-items: center;
   margin-top: 10rem;
   margin-bottom: 10rem;
+}
+
+
+
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.content-sidebar {
+  margin-left: 220px; /* サイドバーの幅 + 余白を考慮 */
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 8px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.sidebar a:hover {
+  background-color: #ccc;
 }

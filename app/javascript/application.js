@@ -192,8 +192,9 @@ document.addEventListener('turbo:load', () => {
   const newItemCreateContainer = document.getElementById('reactNewItemCreate');
   if (newItemCreateContainer) {
     const subUserId = newItemCreateContainer.getAttribute('data-user-id');
+    const spaceSize = Number(newItemCreateContainer.getAttribute('data-space-size'));
     newItemCreateRoot = createRoot(newItemCreateContainer);
-    newItemCreateRoot.render(<NewItemCreate subUserId={subUserId} />);
+    newItemCreateRoot.render(<NewItemCreate subUserId={subUserId} spaceSize={spaceSize} />);
   }
 
 
