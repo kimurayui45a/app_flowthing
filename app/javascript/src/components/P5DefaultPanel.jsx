@@ -51,6 +51,9 @@ const P5DefaultPanel = () => {
 
   //フリーパレット(18色)の色を更新または削除する関数
   const updatePaletteColor18 = (index, color) => {
+
+    //console.log('フリーパレット(18色)', paletteColors18)
+
     const newPaletteColors = [...paletteColors18];
     if (toolMode === 'selectcolorTool') {
       newPaletteColors[index] = color;

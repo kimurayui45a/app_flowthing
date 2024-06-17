@@ -18,7 +18,7 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
 
   const [selectCompositeName, setSelectCompositeName] = useState();
 
-  const [randomEpisodes, setRandomEpisodes] = useState([]);
+  // const [randomEpisodes, setRandomEpisodes] = useState([]);
 
 
   useEffect(() => {
@@ -40,19 +40,19 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
       });
   
       // シャッフル関数を適用
-      const shuffledEpisodes = shuffleArray(episodesWithAccessInfo);
-      setRandomEpisodes(shuffledEpisodes);
+      // const shuffledEpisodes = shuffleArray(episodesWithAccessInfo);
+      // setRandomEpisodes(shuffledEpisodes);
     }
   }, [itemAllId, subUserAllId]);  // subUserAllId 依存関係にも注意
   
-  // Fisher-Yates Shuffle Algorithm
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
+  // // Fisher-Yates Shuffle Algorithm
+  // function shuffleArray(array) {
+  //   for (let i = array.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [array[i], array[j]] = [array[j], array[i]];
+  //   }
+  //   return array;
+  // }
 
 
   useEffect(() => {
@@ -108,36 +108,36 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
 
 
 
-  const getClassForLastRandom = (lastAccessedAt) => {
-    if (!lastAccessedAt) return 'default-class';
+  // const getClassForLastRandom = (lastAccessedAt) => {
+  //   if (!lastAccessedAt) return 'default-class';
   
-    const hoursElapsed = Math.round((new Date() - new Date(lastAccessedAt)) / (1000 * 60 * 60));
+  //   const hoursElapsed = Math.round((new Date() - new Date(lastAccessedAt)) / (1000 * 60 * 60));
   
-    switch (true) {
-      case (hoursElapsed >= 0 && hoursElapsed <= 2):
-        return 'blur-0-card';
-      case (hoursElapsed >= 3 && hoursElapsed <= 24):
-        return 'blur-1-card';
-      case (hoursElapsed >= 25 && hoursElapsed <= 72):
-        return 'blur-2-card';
-      case (hoursElapsed >= 73 && hoursElapsed <= 168):
-        return 'blur-3-card';
-      case (hoursElapsed >= 169 && hoursElapsed <= 720):
-        return 'blur-4-card';
-      case (hoursElapsed >= 721 && hoursElapsed <= 1464):
-        return 'blur-5-card';
-      case (hoursElapsed >= 1465 && hoursElapsed <= 2184):
-        return 'blur-6-card';
-      case (hoursElapsed >= 2185 && hoursElapsed <= 2568):
-        return 'blur-7-card';
-      case (hoursElapsed >= 2569 && hoursElapsed <= 4392):
-        return 'item-card-container-gray-detail';
-      case (hoursElapsed >= 4393 && hoursElapsed <= 8760):
-        return 'item-card-container-black-detail';
-      default:
-        return 'item-card-container-redblack-detail';
-    }
-  };
+  //   switch (true) {
+  //     case (hoursElapsed >= 0 && hoursElapsed <= 2):
+  //       return 'blur-0-card';
+  //     case (hoursElapsed >= 3 && hoursElapsed <= 24):
+  //       return 'blur-1-card';
+  //     case (hoursElapsed >= 25 && hoursElapsed <= 72):
+  //       return 'blur-2-card';
+  //     case (hoursElapsed >= 73 && hoursElapsed <= 168):
+  //       return 'blur-3-card';
+  //     case (hoursElapsed >= 169 && hoursElapsed <= 720):
+  //       return 'blur-4-card';
+  //     case (hoursElapsed >= 721 && hoursElapsed <= 1464):
+  //       return 'blur-5-card';
+  //     case (hoursElapsed >= 1465 && hoursElapsed <= 2184):
+  //       return 'blur-6-card';
+  //     case (hoursElapsed >= 2185 && hoursElapsed <= 2568):
+  //       return 'blur-7-card';
+  //     case (hoursElapsed >= 2569 && hoursElapsed <= 4392):
+  //       return 'item-card-container-gray-detail';
+  //     case (hoursElapsed >= 4393 && hoursElapsed <= 8760):
+  //       return 'item-card-container-black-detail';
+  //     default:
+  //       return 'item-card-container-redblack-detail';
+  //   }
+  // };
   
 
 
@@ -256,60 +256,6 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
       </div>
 
 
-      <div>
-        <div className="flex-start-start-flex-center" style={{ marginTop: '150px' }}>
-
-          <div className="flux-screen-show-third">
-            <div className="flux-screen-show-frame">
-              <div className="flux-screen-show-frame-second">
-                <div className="profile-top-icon-frame">
-                  <div>
-                    {profileId.image_icon && profileId.image_icon.url ? (
-                      <img 
-                        src={profileId.image_icon.url} 
-                        alt="Uploaded Image"
-                        style={{ width: '200px', height: 'auto', objectFit: 'contain' }}
-                      />
-                    ) : profileId.color_code ? (
-                      <div 
-                        className="flex"
-                        style={{
-                          width: '200px',
-                          height: '200px',
-                          borderRadius: '50%',
-                          backgroundColor: profileId.color_code
-                        }}
-                      />
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <span className="chronology-title">年表（ランダム仕様）</span>
-            <div className="top-gradient-border">
-              <div style={{ overflowY: 'auto', height: '600px', display: 'flex', flexDirection: 'column', width:'450px', alignItems: 'center' }} className="screen-show-comment-contents">
-                {randomEpisodes.map((item, index) => (
-                  <div key={index} className={getClassForLastRandom(item.lastAccessedAt)}>
-                    <div className="flex-start-start-flex-center">
-                    {/* <div><span>Last accessed: {item.lastAccessedAt}</span></div> */}
-                    <div style={{ paddingTop: '15px', paddingBottom: '15px' }}><span>某日</span></div>
-
-                    <div className="episode-lisut" style={{ paddingTop: '15px', paddingBottom: '15px' }}>
-                  
-                    <span>{item.episode}</span>
-                    </div>
-                    </div>
-
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
     </div>
   );

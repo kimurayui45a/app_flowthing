@@ -1,27 +1,92 @@
 <div class='p5canvas-container'>
-  <div><span>ハウとー</span></div>
 
-  <div class="sidebar">
-    <ul>
-        <li><a href="#section1">セクション1</a></li>
-        <li><a href="#section2">セクション2</a></li>
-        <li><a href="#section3">セクション3</a></li>
-    </ul>
-</div>
+  <% profile = current_user.profile if user_signed_in? %>
+  <div class="sidebar" style="background-color: <%= user_signed_in? ? profile.color_code : '#acd3dd' %>;">
+    <div class="text-Rounded700"><h1 class="sidebar-title">使い方</h1></div>
+    <div class="menu-sidebar text-Rounded500">
+      <ul>
+          <li><a href="#section1">全体の流れ</a></li>
+          <li><a href="#section2">Sub Thing</a></li>
+          <li><a href="#section3">Flow Thing</a></li>
+          <li><a href="#section4">Screen</a></li>
+          <li><a href="#section5">Flux Screen</a></li>
+          <li><a href="#section6">掲示板</a></li>
+      </ul>
+    </div>
 
-<div class="content-sidebar">
-    <section id="section1">
-        <h2>セクション1</h2>
-        <p>ここにセクション1の内容が入ります。</p>
-    </section>
-    <section id="section2">
-        <h2>セクション2</h2>
-        <p>ここにセクション2の内容が入ります。</p>
-    </section>
-    <section id="section3">
-        <h2>セクション3</h2>
-        <p>ここにセクション3の内容が入ります。</p>
-    </section>
-</div>
-
+    <div class="sidebar-design">
+      <%= image_tag('pocky.png', alt: '使い方ページのサイドバーの画像', class: "sidebar-image") %>
+    </div>
   </div>
+
+  <div class="sidebar-content">
+    <section id="section1">
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2>全体の流れ</h2>
+
+    <div>
+      <div class="sidebar-design">
+        <%= image_tag('how_to_use_image.png', alt: '使い方ページの説明の画像', class: "how-to-use-image") %>
+      </div>
+
+      <div class="how-to-use-complete">
+        <div class="sidebar-design">
+          <%= image_tag('how_to_use_image2.png', alt: '使い方ページの説明の完成例の画像', class: "how-to-use-image2") %>
+        </div>
+        <div class="sidebar-design">
+          <%= image_tag('how_to_use_image3.png', alt: '使い方ページの説明の完成例の画像にのっている動くししゃも', class: "how-to-use-image3") %>
+        </div>
+      </div>
+    </div>
+
+
+      <p>
+        「Flow Thing」とは「もの(Thing)」を管理するアプリです。<br>
+        お気に入りのグッズやコレクション、ペットや家族、<br>
+        実態はないけど何となくあると感じる「モノ」などを自由に表現して整理できます。<br>
+        アプリ内ではペイントツールを使用して「イラスト」「画像」「テキスト」でアイテムと背景を作成できます。<br>
+        作成したアイテムは配置ツールで「背景(Screen)」に配置でき、ちょっとしたアニメーションを付与できます。
+      </p>
+    </section>
+
+
+    <section id="section2">
+      <h2>Sub Thing</h2>
+      <p>
+        「Sub Thing」のとは登録した「もの(Flow Thing)」の持ち主やカテゴリーとしてのような立ち位置の存在です。<br>
+        「Sub Thing」と一緒に登録することで「もの」の分類が簡単になります。<br>
+        1つの「Sub Thing」に対して「Flow Thing」は幾つでも登録可能です。<br>
+
+
+        <h3 class="text-Rounded500">「Sub Thing」カード</h3><br>
+        <div class="sample-card-container">
+          <div class="sidebar-design">
+            <%= image_tag('sample_normal_card.png', alt: 'Sub Thingカードのサンプル画像1枚目', class: "sample-card-image") %>
+          </div>
+
+          <div class="sidebar-design">
+            <%= image_tag('sample_gold_card.png', alt: 'Sub Thingカードのサンプル画像2枚目', class: "sample-card-image", style: "margin-top: -0.5rem;" ) %>
+          </div>
+        </div>
+
+        「Sub Thing」を作成するとカードが作成されます。<br>
+        このカードは紐づいている「Flow Thing」の数によって背景色と付属アイコンの数が変化します。<br>
+        またアクセス頻度も記録しており、一定時間過ぎると徐々にぼやけていきます。<br>
+        アクセスのカウントは各「Sub Thing」カードのクリックをトリガーとしています。<br>
+        ぼやけ具合で何かの判断材料になるかもしれません。<br>
+        背景色：全11種類<br>
+        アイコン数：全10種類<br>
+        アクセス頻度カウント期間：2時間〜1年の11段階<br>
+
+        「Sub Thing」のアイコンの項目で作成したものはその「Sub Thing」のアイコンとして表示されます。
+      </p>
+    </section>
+
+
+    <section id="section3">
+      <h2>セクション3</h2>
+      <p>ここにセクション3の内容が入ります。</p>
+    </section>
+  </div>
+
+</div>

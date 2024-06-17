@@ -86,5 +86,9 @@ class StaticPagesController < ApplicationController
   def episode_sample; end
 
   def how_to_use; end
+
+  def tool_explanation; end
+
+  def idea_page; end
   
 end

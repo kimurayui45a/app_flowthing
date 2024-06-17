@@ -177,6 +177,13 @@ html {
   font-style: normal;
 }
 
+
+.text-Rounded700 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* 見出し/ページタイトル */
 .section-title {
   font-size: 2.3rem;
@@ -1373,7 +1380,7 @@ html {
 .user-profileicon {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  // border-radius: 50%;
   display: inline-block;
   margin: 0px auto;
   object-fit: cover;
@@ -2389,10 +2396,10 @@ summary {
   filter: blur(6px);
 }
 
-.back-white {
-  background-color: white;
-  border-radius: 50%;
-}
+// .back-white {
+//   background-color: white;
+//   border-radius: 50%;
+// }
 
 
 
@@ -8995,38 +9002,247 @@ background-color: #d1eee6;
 
 
 
+
+/* サイドバー
+------------------------------------------ */
+
 .sidebar {
   position: fixed;
-  width: 200px;
+  width: 20rem;
   height: 100%;
-  background-color: #f4f4f4;
+  //background-color: #f4f4f4;
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  padding: 20px;
+  padding: 1.25rem 1.25rem 1.25rem 1.25rem;
 }
 
-.content-sidebar {
-  margin-left: 220px; /* サイドバーの幅 + 余白を考慮 */
-  padding: 20px;
+.sidebar-content {
+  margin-left: 20rem;
+  // padding: 20px;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.sidebar li {
-  margin-bottom: 10px;
-}
+// .sidebar li {
+//     margin-bottom: 10px;
+// }
 
 .sidebar a {
   text-decoration: none;
-  color: #333;
+  color: #5395ca;
   display: block;
   padding: 8px;
-  background-color: #ddd;
   border-radius: 5px;
 }
 
 .sidebar a:hover {
-  background-color: #ccc;
+  color: #1f5a89;
 }
+
+.menu-sidebar {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+}
+
+
+.sidebar-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 280px;
+  // margin-top: 2rem;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  color: #7f7f7f;
+}
+
+.how-to-use-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 400px;
+}
+
+.how-to-use-image2 {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 500px;
+}
+
+.how-to-use-image3 {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 180px;
+  position: absolute;
+  top: 25px;
+  left: 0px;
+  //transform: translate(-50%, -50%);
+  transition: transform 1.5s ease-in-out;
+  animation: fishshake 1.5s ease-in-out infinite;
+  z-index: 3;
+}
+
+.sample-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.sample-card-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 180px;
+}
+
+
+
+@keyframes fishshake {
+  0%, 100% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(-20deg);
+  }
+}
+
+.how-to-use-complete {
+  position: relative;
+  width: 500px;
+  margin-left: 15rem;
+}
+
+
+
+@media (max-width: 1199px) {
+  .sidebar {
+    position: fixed;
+    width: 18rem;
+    height: 100%;
+    //background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  }
+
+  .sidebar-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 250px;
+    // margin-top: 2rem;
+  }
+
+  .sidebar-content {
+    margin-left: 18rem;
+    // padding: 20px;
+  }
+
+  .how-to-use-complete {
+    position: relative;
+    width: 500px;
+    margin-left: 12rem;
+  }
+}
+
+
+@media (max-width: 1010px) {
+
+  .sidebar {
+    position: fixed;
+    width: 15rem;
+    height: 100%;
+    //background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  }
+
+  .sidebar-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 205px;
+    // margin-top: 2rem;
+  }
+
+  .sidebar-title {
+    font-size: 1.2rem;
+    color: #7f7f7f;
+  }
+
+  .sidebar-content {
+    margin-left: 15rem;
+    // padding: 20px;
+  }
+
+  .how-to-use-complete {
+    position: relative;
+    width: 500px;
+    margin-left: 7rem;
+  }
+  
+}
+
+
+@media (max-width: 899px) {
+  .sidebar {
+    position: fixed;
+    width: 13rem;
+    height: 100%;
+    //background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+  }
+
+  .menu-sidebar {
+    background-color: white;
+    padding: 0.25rem;
+    border-radius: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .sidebar-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 175px;
+    // margin-top: 2rem;
+  }
+
+  .sidebar-title {
+    font-size: 1rem;
+    color: #7f7f7f;
+  }
+
+  .sidebar-content {
+    margin-left: 13rem;
+    // padding: 20px;
+  }
+
+  .how-to-use-complete {
+    position: relative;
+    width: 500px;
+    margin-left: 4rem;
+  }
+}
+
+
+
