@@ -284,13 +284,14 @@ html {
 .maxboard-container {
   position: relative;
   width: 100%;
-  margin: 0px auto;
+  // margin: 0px auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #f7f7d2;
+  margin-top: 5rem;
 }
 
 .max767-container {
@@ -3242,8 +3243,8 @@ summary {
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 5.7rem;
-  right: 1rem;
+  top: 6rem;
+  left: 1rem;
 }
 
 .question-btn-group{
@@ -3253,7 +3254,7 @@ summary {
   justify-content: center;
   position: absolute;
   bottom: 18.2rem;
-  right: 1rem;
+  left: 1rem;
 }
 
 .board-section-title {
@@ -6309,7 +6310,7 @@ background-color: #d1eee6;
   width: 18rem;
   height: 11rem;
   border-radius: 0.2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   box-shadow: 0px 1px 4px 1px #c6c6c6;
 }
 
@@ -6406,8 +6407,9 @@ background-color: #d1eee6;
     align-items: center;
     justify-content: center;  
     position: relative;
-    bottom: 0rem;
-    right: 0rem;
+    top: 2.5rem;
+    left: 0rem;
+    margin-bottom: 6rem;
   }
 
 
@@ -6430,7 +6432,7 @@ background-color: #d1eee6;
     width: 27rem;
     height: 11rem;
     border-radius: 0.2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     box-shadow: 0px 1px 4px 1px #c6c6c6;
   }
 
@@ -6537,7 +6539,7 @@ background-color: #d1eee6;
   width: 18rem;
   height: 11rem;
   border-radius: 0.2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   box-shadow: 0px 1px 4px 1px #c6c6c6;
 }
 
@@ -9018,6 +9020,7 @@ background-color: #d1eee6;
 .sidebar-content {
   margin-left: 20rem;
   // padding: 20px;
+  color: #7f7f7f;
 }
 
 .sidebar ul {
@@ -9034,7 +9037,7 @@ background-color: #d1eee6;
   text-decoration: none;
   color: #5395ca;
   display: block;
-  padding: 8px;
+  padding: 0.25rem;
   border-radius: 5px;
 }
 
@@ -9056,12 +9059,26 @@ background-color: #d1eee6;
   -o-object-fit: cover;
   object-fit: cover;
   width: 280px;
-  // margin-top: 2rem;
+  margin-top: 2.8rem;
+}
+
+.sidebar-image2 {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 280px;
+  margin-top: 1.8rem;
 }
 
 .sidebar-title {
   font-size: 1.5rem;
   color: #7f7f7f;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+.text-line {
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
 .how-to-use-image {
@@ -9069,7 +9086,7 @@ background-color: #d1eee6;
   margin: 0px auto;
   -o-object-fit: cover;
   object-fit: cover;
-  width: 400px;
+  width: 450px;
 }
 
 .how-to-use-image2 {
@@ -9087,7 +9104,7 @@ background-color: #d1eee6;
   object-fit: cover;
   width: 180px;
   position: absolute;
-  top: 25px;
+  top: 65px;
   left: 0px;
   //transform: translate(-50%, -50%);
   transition: transform 1.5s ease-in-out;
@@ -9100,6 +9117,7 @@ background-color: #d1eee6;
   align-items: center;
   justify-content: space-between;
   width: 500px;
+  margin-left: 15rem;
 }
 
 .sample-card-image {
@@ -9110,6 +9128,39 @@ background-color: #d1eee6;
   width: 180px;
 }
 
+
+.how-to-use-table {
+  border-collapse: collapse;
+  margin: 3rem 7rem;
+}
+
+.how-to-use-table th, .styled-sheet td {
+  border: 1px solid #ddd; /* 境界線のスタイル */
+  padding: 0.5rem;
+  text-align: center; 
+  font-size: 0.8rem;
+}
+
+.how-to-use-table th {
+  background-color: #f2f2f2; /* 見出し行の背景色 */
+  // color: black;
+}
+
+.how-to-use-table tr {
+  // border: 1px solid #ddd; /* 境界線のスタイル */
+  padding: 0.5rem;
+  text-align: center; 
+  font-size: 0.8rem;
+}
+
+.how-to-use-table .td-title {
+  font-weight: 500;
+}
+
+.how-to-use-table-td td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+}
 
 
 @keyframes fishshake {
@@ -9125,11 +9176,97 @@ background-color: #d1eee6;
 .how-to-use-complete {
   position: relative;
   width: 500px;
-  margin-left: 15rem;
+  margin-left: 16.5rem;
 }
 
 
+.explanation-section-title {
+  font-size: 2rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  text-align: left;
+  color: #7f7f7f;
+  white-space: nowrap;
+  margin-left: 5rem;
+  margin-bottom: 3rem;
+}
 
+.explanation-section-text {
+  text-align: left;
+  line-height: 1.7;
+  padding: 1.5rem 5.5rem;
+  font-size: 1rem;
+}
+
+.explanation-section-subtitle {
+  font-size: 1.5rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  text-align: left;
+  color: #7f7f7f;
+  white-space: nowrap;
+  margin-left: 6rem;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.sub-line {
+  background: linear-gradient(transparent 60%, #bfe6f0 0%);
+}
+
+.explanation-section-pointtitle {
+  font-size: 1.2rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  text-align: left;
+  color: #7f7f7f;
+  white-space: nowrap;
+  margin-left: 6rem;
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+}
+
+.point-line {
+  background: linear-gradient(transparent 60%, #ccf4c1 0%);
+}
+
+.red-line {
+  background: linear-gradient(transparent 60%, #F8A3B1 0%);
+}
+
+
+.how-to-board-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 600px;
+}
+
+.painttool-image {
+  width: 850px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+
+.color-picker-image {
+  width: 600px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.chevron-style {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  margin-right: -0.3rem;
+}
+
+//メディア対応
 @media (max-width: 1199px) {
   .sidebar {
     position: fixed;
@@ -9146,7 +9283,7 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
     width: 250px;
-    // margin-top: 2rem;
+    margin-top: 3rem;
   }
 
   .sidebar-content {
@@ -9159,11 +9296,51 @@ background-color: #d1eee6;
     width: 500px;
     margin-left: 12rem;
   }
+
+  .sample-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    margin-left: 12rem;
+  }
+
+  .how-to-use-table {
+    border-collapse: collapse;
+    margin: 3rem 5rem;
+  }
+  
+  .how-to-use-table th, .styled-sheet td {
+    border: 1px solid #ddd; /* 境界線のスタイル */
+    padding: 0.3rem;
+    text-align: center; 
+    font-size: 0.7rem;
+  }
+
+  .how-to-use-table-td td {
+    border: 1px solid #ddd;
+    padding: 0.3rem;
+  }
+
+  .how-to-use-table tr {
+    // border: 1px solid #ddd; /* 境界線のスタイル */
+    padding: 0.3rem;
+    text-align: center; 
+    font-size: 0.7rem;
+  }
+
+  .painttool-image {
+    width: 700px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
 }
 
 
-@media (max-width: 1010px) {
 
+@media (max-width: 1010px) {
   .sidebar {
     position: fixed;
     width: 15rem;
@@ -9179,7 +9356,7 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
     width: 205px;
-    // margin-top: 2rem;
+    margin-top: 2rem;
   }
 
   .sidebar-title {
@@ -9198,6 +9375,36 @@ background-color: #d1eee6;
     margin-left: 7rem;
   }
   
+  .sample-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    margin-left: 7rem;
+  }
+
+  .explanation-section-text {
+    text-align: left;
+    line-height: 1.6;
+    padding: 1.5rem 5.5rem;
+    font-size: 0.9rem;
+  }
+
+  .painttool-image {
+    width: 600px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .color-picker-image {
+    width: 500px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
 }
 
 
@@ -9224,7 +9431,7 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
     width: 175px;
-    // margin-top: 2rem;
+    margin-top: 2rem;
   }
 
   .sidebar-title {
@@ -9242,7 +9449,85 @@ background-color: #d1eee6;
     width: 500px;
     margin-left: 4rem;
   }
+    
+  .sample-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    margin-left: 4rem;
+  }
+
+  .how-to-use-table {
+    border-collapse: collapse;
+    margin: 3rem 4rem;
+  }
+  
+  .how-to-use-table th, .styled-sheet td {
+    border: 1px solid #ddd; /* 境界線のスタイル */
+    padding: 0.3rem;
+    text-align: center; 
+    font-size: 0.6rem;
+  }
+
+  .how-to-use-table tr {
+    // border: 1px solid #ddd; /* 境界線のスタイル */
+    padding: 0.3rem;
+    text-align: center; 
+    font-size: 0.86em;
+  }
+
+  .how-to-board-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 500px;
+  }
+
+  .painttool-image {
+    width: 500px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .color-picker-image {
+    width: 450px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
 }
 
 
 
+.accordion-content-sidebar {
+  display: none; /* デフォルトではコンテンツを非表示にする */
+  overflow: hidden; /* コンテンツのはみ出しを防ぐ */
+  transition: max-height 0.2s ease-out; /* トランジションでスムーズに表示 */
+  justify-content: center;
+}
+
+.accordion-toggle-sidebar {
+  color: #5395ca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.accordion-toggle-sidebar:hover {
+  color: #1f5a89;
+}
+
+.accordion-content-sidebar a {
+  color: #F8A3B1;
+  font-size: 0.85rem;
+}
+
+.accordion-content-sidebar a:hover {
+  color: #726c86;
+}

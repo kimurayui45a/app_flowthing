@@ -56,6 +56,9 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) 
   //「カラーピッカーパネル」のカラーピッカーの形状選択
   const [colorPalettePanelPickerChange, setColorPalettePanelPickerChange] = useState(false);
 
+  //レイヤーの透明度スライダーの更を促すステート
+  const [sliderUpdateTrigger, setSliderUpdateTrigger] = useState(false);
+
   const handleBoxPickerChange = () => {
     setBoxPickerChange(!boxPickerChange);
 
@@ -273,7 +276,9 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) 
     detailPanelPosition,
     setDetailPanelPosition,
     layerSave,
-    meinPicker
+    meinPicker,
+    sliderUpdateTrigger,
+    setSliderUpdateTrigger
   };
 
 

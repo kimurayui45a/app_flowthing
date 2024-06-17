@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PixiSet } from './components/PixiSet';
 
-const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceObject, itemObject, compositeNameLode, compositeTextLode, compositeImage, compositeSpaceId, compositeId }) => {
+const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceObject, itemObject, compositeNameLode, compositeTextLode, compositeImage, compositeSpaceId, compositeId, spaceSize }) => {
   
   //「編集・作成」なのか「再描画」なのかを知らせるステート
   const [pixiMode, setPixiMode] = useState(true);
@@ -11,6 +11,59 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
 
   const [compositeName, setCompositeName] = useState('');
   const [compositeText, setCompositeText] = useState('');
+
+  const [canvasSpaceSize, setCanvasSpaceSize] = useState(() => {
+    switch (spaceSize) {
+      case 1400:
+        return { width: 1408, height: 770 };
+      case 1200:
+        return { width: 1150, height: 750 };
+      case 1000:
+        return { width: 1000, height: 1200 };
+      case 700:
+        return { width: 850, height: 933 };
+      default:
+        return { width: 1150, height: 750 }; 
+    }
+  });
+
+
+const [panelPosition, setPanelPosition] = useState(() => {
+  switch (spaceSize) {
+    case 1400:
+      return { 
+        list_panel: { x: 850, y: 50 },
+        guide_panel: { x: 50, y: 50 },
+        custom_panel: { x: 100, y: 100 }
+      };
+    case 1200:
+      return {
+        list_panel: { x: 850, y: 50 },
+        guide_panel: { x: 50, y: 50 },
+        custom_panel: { x: 100, y: 100 }
+      };
+    case 1000:
+      return {
+        list_panel: { x: 650, y: 50 },
+        guide_panel: { x: 100, y: 100 },
+        custom_panel: { x: 200, y: 150 }
+      };
+    case 700:
+      return {
+        list_panel: { x: 450, y: 50 },
+        guide_panel: { x: 100, y: 100 },
+        custom_panel: { x: 150, y: 150 }
+      };
+    default:
+      return {
+        list_panel: { x: 850, y: 50 },
+        guide_panel: { x: 50, y: 50 },
+        custom_panel: { x: 100, y: 100 }
+      };
+  }
+});
+
+
 
 
   useEffect(() => {
@@ -146,6 +199,8 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
         itemObject={itemObject}
         compositeName={compositeName}
         compositeText={compositeText}
+        canvasSpaceSize={canvasSpaceSize}
+        panelPosition={panelPosition}
       />
 
 

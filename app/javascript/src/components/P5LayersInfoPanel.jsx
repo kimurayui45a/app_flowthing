@@ -17,7 +17,9 @@ const P5LayersInfoPanel = () => {
     colorPaletteDragEnd,
     isDraggablePanel,
     scrollPosition,
-    handleScroll
+    handleScroll,
+    sliderUpdateTrigger,
+    setSliderUpdateTrigger
   } = useP5PanelGroupContext();
 
   const {
@@ -68,7 +70,21 @@ const P5LayersInfoPanel = () => {
         slider.style.background = `linear-gradient(to right, transparent ${percentage}%, #ddd ${percentage}%)`;
       }
     });
-  }, []);  
+  }, []);
+
+    //スライダーを更新する
+    useEffect(() => {
+      if (sliderUpdateTrigger) {
+        layersInfo.forEach((layer, index) => {
+          const slider = document.getElementById(`slider-${index}`);
+          if (slider) {
+            const percentage = (layer.alphas - 0) / (255 - 0) * 100;
+            slider.style.background = `linear-gradient(to right, transparent ${percentage}%, #ddd ${percentage}%)`;
+          }
+        });
+        setSliderUpdateTrigger(false);
+      }
+    }, [sliderUpdateTrigger]);  
 
   const handleBackgroundTouch = (e) => {
     // フォーム要素以外がタッチされた場合、ドキュメント全体からフォーカスを外す

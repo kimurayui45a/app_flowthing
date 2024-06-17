@@ -12,11 +12,13 @@ const PixiSet = ({
   subUserAllId,
   compositeId,
   spaceObject,
-  itemObject
+  itemObject,
+  canvasSpaceSize,
+  panelPosition
 }) => {
   return (
     <>
-      <PixiGroupProvider>
+      <PixiGroupProvider panelPosition={panelPosition}>
         <div>
           <PixiComponent
             onDataFromGrandchild={onDataFromGrandchild}
@@ -28,6 +30,7 @@ const PixiSet = ({
             subUserAllId={subUserAllId}
             spaceObject={spaceObject}
             itemObject={itemObject}
+            canvasSpaceSize={canvasSpaceSize}
           />
         </div>
       </PixiGroupProvider>

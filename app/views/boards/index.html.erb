@@ -1,8 +1,27 @@
 <% content_for(:title, t('.title')) %>
-<div class="maxboard-container" style="position: relative; padding-top: 5rem; padding-bottom: 2rem;">
+<div class="maxboard-container" style="position: relative; padding-top: 5rem; padding-bottom: 6rem;">
 
 
-<div class="btn-group">
+<div class="btn-group ">
+
+
+  <div class="search-board-box-background">
+    <div class="search-board-box">
+      <%= search_form_for @q do |f| %>
+        <div class="search-form-container">
+          <div class="search-field-board">
+            <%= f.label :board_text_or_board_title_cont, "キーワード検索", style: "font-size: 1.2rem;" %><br>
+            <%= f.search_field :board_text_or_board_title_cont, class: "board-search-form" %>
+          </div>
+        </div>
+        <div class="search-actions">
+          <%= f.submit "検索", class: "board-search-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
   <div class="board-menu">
     <div style="position: absolute; top: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
     <div style="position: absolute; top: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
@@ -39,21 +58,6 @@
   
   </div>
 
-  <div class="search-board-box-background">
-    <div class="search-board-box">
-      <%= search_form_for @q do |f| %>
-        <div class="search-form-container">
-          <div class="search-field-board">
-            <%= f.label :board_text_or_board_title_cont, "キーワード検索", style: "font-size: 1.2rem;" %><br>
-            <%= f.search_field :board_text_or_board_title_cont, class: "board-search-form" %>
-          </div>
-        </div>
-        <div class="search-actions">
-          <%= f.submit "検索", class: "board-search-btn" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </div>
 
 

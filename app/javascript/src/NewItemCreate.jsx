@@ -71,9 +71,9 @@ const [panelPosition, setPanelPosition] = useState(() => {
 });
 
 
-  useEffect(() => {
-    console.log('サイズ作業', spaceSize)
-  }, []);
+  // useEffect(() => {
+  //   console.log('サイズ作業', spaceSize)
+  // }, []);
   
   
 

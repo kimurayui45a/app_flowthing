@@ -130,6 +130,23 @@ function mottomiru() {
 
 
 
+document.addEventListener("turbo:load", function() {
+  var toggles = document.querySelectorAll('.accordion-toggle-sidebar');
+  toggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+              panel.style.display = "none";
+          } else {
+              panel.style.display = "block";
+          }
+      });
+  });
+});
+
+
+
+
 //react
 let dragRoot,
     pixiTestRoot,
@@ -235,9 +252,10 @@ document.addEventListener('turbo:load', () => {
     const canvasItemChoice = editItemCanvasContainer.getAttribute('data-item-choice');
     const canvasItemEpisode = editItemCanvasContainer.getAttribute('data-item-episode');
     const canvasItemPlace = editItemCanvasContainer.getAttribute('data-item-place');
+    const spaceSize = Number(editItemCanvasContainer.getAttribute('data-space-size'));
 
     editItemCanvasRoot = createRoot(editItemCanvasContainer);
-    editItemCanvasRoot.render(<EditItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} subUserId={subUserId} canvasSaveData={canvasSaveData} canvasItemName={canvasItemName} canvasItemText={canvasItemText} canvasItemChoice={canvasItemChoice} canvasItemEpisode={canvasItemEpisode} canvasItemPlace={canvasItemPlace} canvasSizeData={canvasSizeData} />);
+    editItemCanvasRoot.render(<EditItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} subUserId={subUserId} canvasSaveData={canvasSaveData} canvasItemName={canvasItemName} canvasItemText={canvasItemText} canvasItemChoice={canvasItemChoice} canvasItemEpisode={canvasItemEpisode} canvasItemPlace={canvasItemPlace} canvasSizeData={canvasSizeData} spaceSize={spaceSize} />);
   }
 
 
@@ -245,8 +263,9 @@ document.addEventListener('turbo:load', () => {
   const newSpaceCreateContainer = document.getElementById('reactNewSpaceCreate');
   if (newSpaceCreateContainer) {
     const profileId = newSpaceCreateContainer.getAttribute('data-profile-id');
+    const spaceSize = Number(newSpaceCreateContainer.getAttribute('data-space-size'));
     newSpaceCreateRoot = createRoot(newSpaceCreateContainer);
-    newSpaceCreateRoot.render(<NewSpaceCreate profileId={profileId} />);
+    newSpaceCreateRoot.render(<NewSpaceCreate profileId={profileId} spaceSize={spaceSize} />);
   }
 
 
@@ -270,9 +289,10 @@ document.addEventListener('turbo:load', () => {
 
     const canvasSpaceName = editSpaceCanvasContainer.getAttribute('data-space-name');
     const canvasSpaceText = editSpaceCanvasContainer.getAttribute('data-space-text');
+    const spaceSize = Number(editSpaceCanvasContainer.getAttribute('data-space-size'));
 
     editSpaceCanvasRoot = createRoot(editSpaceCanvasContainer);
-    editSpaceCanvasRoot.render(<EditSpaceCanvas profileId={profileId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData}  canvasSpaceName={canvasSpaceName} canvasSpaceText={canvasSpaceText} />);
+    editSpaceCanvasRoot.render(<EditSpaceCanvas profileId={profileId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData}  canvasSpaceName={canvasSpaceName} canvasSpaceText={canvasSpaceText} spaceSize={spaceSize} />);
   }
 
   //「NewCompositeCreate」のマウント
@@ -282,8 +302,9 @@ document.addEventListener('turbo:load', () => {
     const itemAllId = JSON.parse(newCompositeCreateContainer.getAttribute('data-item-id-all'));
     const spaceAllId = JSON.parse(newCompositeCreateContainer.getAttribute('data-space-id-all'));
     const subUserAllId = JSON.parse(newCompositeCreateContainer.getAttribute('data-sub-user-id-all'));
+    const spaceSize = Number(newCompositeCreateContainer.getAttribute('data-space-size'));
     newCompositeCreateRoot = createRoot(newCompositeCreateContainer);
-    newCompositeCreateRoot.render(<NewCompositeCreate profileId={profileId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} />);
+    newCompositeCreateRoot.render(<NewCompositeCreate profileId={profileId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} spaceSize={spaceSize} />);
   }
 
 
@@ -318,8 +339,9 @@ document.addEventListener('turbo:load', () => {
     const compositeTextLode = editCompositeContainer.getAttribute('data-composite-text');
     const compositeImage = editCompositeContainer.getAttribute('data-composite-image');
     const compositeSpaceId = editCompositeContainer.getAttribute('data-composite-space-id');
+    const spaceSize = Number(editCompositeContainer.getAttribute('data-space-size'));
     editCompositeRoot = createRoot(editCompositeContainer);
-    editCompositeRoot.render(<EditComposite profileId={profileId} compositeId={compositeId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} spaceObject={spaceObject} itemObject={itemObject} compositeNameLode={compositeNameLode} compositeTextLode={compositeTextLode} compositeImage={compositeImage} compositeSpaceId={compositeSpaceId} />);
+    editCompositeRoot.render(<EditComposite profileId={profileId} compositeId={compositeId} itemAllId={itemAllId} spaceAllId={spaceAllId} subUserAllId={subUserAllId} spaceObject={spaceObject} itemObject={itemObject} compositeNameLode={compositeNameLode} compositeTextLode={compositeTextLode} compositeImage={compositeImage} compositeSpaceId={compositeSpaceId} spaceSize={spaceSize} />);
   }
 
 
@@ -344,9 +366,10 @@ document.addEventListener('turbo:load', () => {
     const profileId = editSubUserCanvasContainer.getAttribute('data-profile-id');
     const canvasSubUserName = editSubUserCanvasContainer.getAttribute('data-sub-user-name');
     const canvasSubUserText = editSubUserCanvasContainer.getAttribute('data-sub-user-text');
+    const spaceSize = Number(editSubUserCanvasContainer.getAttribute('data-space-size'));
 
     editSubUserCanvasRoot = createRoot(editSubUserCanvasContainer);
-    editSubUserCanvasRoot.render(<EditSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} />);
+    editSubUserCanvasRoot.render(<EditSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} spaceSize={spaceSize} />);
   }
 
 
@@ -358,9 +381,10 @@ document.addEventListener('turbo:load', () => {
     const canvasSubUserName = peintSubUserCanvasContainer.getAttribute('data-sub-user-name');
     const canvasSubUserText = peintSubUserCanvasContainer.getAttribute('data-sub-user-text');
     const canvasData = peintSubUserCanvasContainer.getAttribute('data-sub-user-canvas');
+    const spaceSize = Number(peintSubUserCanvasContainer.getAttribute('data-space-size'));
 
     peintSubUserCanvasRoot = createRoot(peintSubUserCanvasContainer);
-    peintSubUserCanvasRoot.render(<PeintSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} canvasData={canvasData} />);
+    peintSubUserCanvasRoot.render(<PeintSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} canvasData={canvasData} spaceSize={spaceSize} />);
   }
 
 
@@ -375,8 +399,9 @@ document.addEventListener('turbo:load', () => {
   const newNewSubUserCreate = document.getElementById('reactNewSubUserCreate');
   if (newNewSubUserCreate) {
     const profileId = newNewSubUserCreate.getAttribute('data-profile-id');
+    const spaceSize = Number(newNewSubUserCreate.getAttribute('data-space-size'));
     newNewSubUserCreateRoot = createRoot(newNewSubUserCreate);
-    newNewSubUserCreateRoot.render(<NewSubUserCreate profileId={profileId} />);
+    newNewSubUserCreateRoot.render(<NewSubUserCreate profileId={profileId} spaceSize={spaceSize} />);
   }
 
 });

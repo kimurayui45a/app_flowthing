@@ -72,7 +72,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     sizePanelVisible,
     p5DrawingEnabled,
     detailPanelVisible,
-    setP5DrawingEnabled
+    setP5DrawingEnabled,
+    setSliderUpdateTrigger
   } = useP5PanelGroupContext();
 
   //「詳細設定パラメータコンテキスト」から受け取るもの
@@ -3132,6 +3133,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
           return layer;
         }
       });
+
+      setSliderUpdateTrigger(true);
     
       setLayersInfo(updatedLayersInfo);
       p5CanvasInstanceRef.current.changeSketch(layerIndex1, layerIndex2);

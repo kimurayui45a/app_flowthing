@@ -5,31 +5,248 @@
     <div class="text-Rounded700"><h1 class="sidebar-title">ツール</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
-          <li><a href="#section1">セクション1</a></li>
-          <li><a href="#section2">セクション2</a></li>
-          <li><a href="#section3">セクション3</a></li>
+          <li><a href="#section1">基本操作</a></li>
+          
+        <li>
+            <div class="accordion-toggle-sidebar">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+            <div class="accordion-content-sidebar" id="accordion-section1">
+                <a href="#section2">パネル図解</a>
+                <a href="#section2">コンパクトパネル</a>
+                <a href="#section2">スポイト/フリーパレット</a>
+            </div>
+        </li>
+        <li><a href="#section3">カラーパレットパネル</a></li>
+        <li><a href="#section3">レイヤーパネル</a></li>
+        <li>
+          <div class="accordion-toggle-sidebar">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <a href="#section2">パネル図解</a>
+              <a href="#section2">ペン</a>
+              <a href="#section2">選択/画像</a>
+              <a href="#section2">図形/テキスト</a>
+          </div>
+        </li>
+        <li><a href="#section3">サイズパネル</a></li>
+        <li><a href="#section3">スケールパネル</a></li>
       </ul>
     </div>
 
     <div class="sidebar-design">
-      <%= image_tag('tongari.png', alt: 'ツールページの画像', class: "sidebar-image") %>
+      <%= image_tag('tongari.png', alt: 'ツールページの画像', class: "sidebar-image2") %>
     </div>
   </div>
 
   <div class="sidebar-content">
+
+    
     <section id="section1">
-    <div style="height: 5rem; width: 100px;"></div>
-      <h2>セクション1</h2>
-      <p>ここにセクション1の内容が入ります。</p>
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">基本操作</span>
+      </h2>
+      <div class="sidebar-design">
+        <%= image_tag('painttool_image.png', alt: 'ペイントツールの説明画像', class: "painttool-image") %>
+      </div>
+      <p class="explanation-section-text text-Rounded">
+        以下は大まかな基本操作です。さらなる詳細は、さらなる詳細については、該当ツールを含むコントロールパネルの項目でご確認頂けます。
+      </p>
     </section>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      コントロールパネル
+      </span>
+    </h3>
+
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem; padding: 1.5rem 5.5rem 0rem 5.5rem;">
+      本ペイントルーツは以下の6つのコントロールパネルで構成されています。
+    </p>
+
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <span style="color: #59afc7;" class="text-Rounded500">ツールパネル</span>：メイン機能を切り替えられるパネルです。右上の<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-box-arrow-in-up"></i></span>ボタンよりコンパクトパネルに切り替えることが可能です。<br>
+      <span style="color: #e19ab0;" class="text-Rounded500">カラーパレットパネル</span>：カラーに関する操作が行えるパネルです。<br>
+      <span style="color: #f49e25;" class="text-Rounded500">レイヤーパネル</span>：レイヤーに関する操作が行えるパネルです。<br>
+      <span style="color: #856eaa;" class="text-Rounded500">詳細設定パネル</span>：メイン機能に含まれる各ツールの詳細な設定を調整することができます。<br>
+      <span style="color: #c6b334;" class="text-Rounded500">サイズパネル</span>：ツールのサイズを操作できるパネルです。<br>
+      <span style="color: #7cbb72;" class="text-Rounded500">スケールパネル</span>：canvasのスケールや位置を操作できるパネルです。
+    </p>
+    
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      canvas
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      中央の白い四角形がcanvasです。この範囲にのみペイントできます。<br>
+      ペイントだけでなく画像挿入もここで行えます。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      ペイント
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      canvas内でマウスを左クリックしドラッグするとその範囲に線を引くことができます。<br>
+      ペンタブレットやペン型マウスを持っている方はそちらで操作することをお勧めします。<br>
+      カラーはコントロールパネルにあるカラーピッカーから自由に選択することが可能です。初期色は<span style="color: black;" class="text-Rounded500">「黒」</span>に設定しております。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      筆圧機能
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      一部ブラシツールは筆圧機能を搭載しています。<br>
+      本機能ではブラシサイズ・色の変化具合を手の力加減で調整できます。<br>
+    </p>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -2.5rem;">
+      <span class="red-text text-Rounded500">※</span>
+      ただし、この筆圧機能は、ペン型マウスやペンタブレットなどの特定の入力デバイスに限定されており、通常のマウスやタッチスクリーンでは利用できません。<br>
+      さらに、使用しているブラウザやその設定によっては、筆圧機能が正常に作動しない場合があります。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <span class="sub-line">
+      カラーパレット・スポイト
+      </span>
+    </h3>
+    <div class="sidebar-design">
+      <%= image_tag('picker_image.png', alt: 'カラーピッカーの画像', class: "color-picker-image") %>
+    </div>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      カラーピッカーより色を選択し自由に色を変更できます。<br>
+      カラーピッカーは<span class="red-text text-Rounded500">「円形」「四角形」</span>の2種類用意しており切り替えが可能です。<br>
+      キャンバス上の任意の色を瞬時に取得し、その色をパレットに保存することができます。<br>
+      これにより、選択した色を正確に再利用することが可能となり、一貫性のあるペイント作業が行えます。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      レイヤー
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      本ペイントツールのcanvasは13枚のレイヤーで構成されています。<br>
+      これらのレイヤーを使用して複雑な操作を使用してアイテムを作成できます。<br>
+      13枚のうち最初の1枚は「背景レイヤー」でこちらにはペイントはできません。<br>
+      「背景レイヤー」の表示をオフにすると背景色が透明になり、描画範囲のみに色がついたpngデータを出力できます。<br>
+      これにより、ペイント部分のみが浮かび上がるようなアイテムの表現が可能です。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      画像
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      ツールパネルの<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-image"></i></span>ボタンをクリックし、表示された詳細設定パネルの挿入をクリックすると画像が挿入できます。<br>
+      使用できる形式は<span class="red-text text-Rounded500">「jpeg」</span>と<span class="red-text text-Rounded500">「png」</span>になります。<br>
+      挿入した画像は変形でき必要なサイズに調整できます。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      図形・テキスト
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      <span class="red-text text-Rounded500">「四角形」「三角形」「円形」「直線」</span>など簡易的な図形を作成できます。<br>
+      また、<span class="red-text text-Rounded500">「テキスト」</span>の入力も可能です。
+      これによりちょっとした機械的なペイントを作成できます。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      取り消し（アンドゥ）・やり直し（リドゥ）
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      数回の前の最近の操作を簡単に修正することができます。<br>
+      操作を取り消したい場合や、取り消した操作を再び実行したい場合に便利です。<br>
+      この機能を使って、作業中の小さなミスを修正したり、異なるデザインの選択肢を試したりすることが可能です。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      拡大縮小
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      カーソルをcanvas内に置きマウスのホイールを回した時にcanvasを拡大縮小することが可能です。<br>
+      これにより細かなペイントが可能です。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      レイヤー保存
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      現在表示されているレイヤーのみを個別に保存することができる機能です。<br>
+      この機能は、作業中のデザインや編集途中の内容を効率的に管理したい場合に特に役立ちます。<br>
+      ツールパネルの「<i class="bi bi-flag-fill" style="color: #7FA8EB;"></i>」マークのチェックボックスよりレイヤー保存の有無を切り替えられます。<br>
+      チェックがついていない場合は12枚のレイヤー情報を1枚のレイヤーに集結して保存します。
+    </p>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -2.5rem;">
+      <span class="red-text text-Rounded500">※</span>
+      保存を行う際には保存したいレイヤーが表示状態にあることを確認してください。<br>
+      非表示に設定されているレイヤーは、保存プロセス中にデータが削除されるため、結果として保存されません。<br>
+      このため、保存したいレイヤーは必ず表示状態をオンにしてから保存ボタンを押して下さい。<br>
+      また、本機能は「<span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>」では使用できません。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      途中保存
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      保存ボタンを押しても画面遷移せずに保存できる機能です。<br>
+      保存後も作業をそのまま続行できるため作業途中で一旦データを保存したいときに便利です。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      png保存
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      作成した描画をpng形式で自身のパソコンにダウンロードすることができます。
+    </p>
+
+
+
+
+
     <section id="section2">
-      <h2>セクション2</h2>
-      <p>ここにセクション2の内容が入ります。</p>
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション2</span>
+      </h2>
+      <p class="explanation-section-text">ここにセクション2の内容が入ります。</p>
     </section>
+
     <section id="section3">
-      <h2>セクション3</h2>
-      <p>ここにセクション3の内容が入ります。</p>
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション3</span>
+      </h2>
+      <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
     </section>
+
+
   </div>
 
 </div>

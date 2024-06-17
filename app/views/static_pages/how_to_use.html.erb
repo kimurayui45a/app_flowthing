@@ -10,7 +10,8 @@
           <li><a href="#section3">Flow Thing</a></li>
           <li><a href="#section4">Screen</a></li>
           <li><a href="#section5">Flux Screen</a></li>
-          <li><a href="#section6">掲示板</a></li>
+          <li><a href="#section6">利用範囲の早見表</a></li>
+          <li><a href="#section7">掲示板</a></li>
       </ul>
     </div>
 
@@ -19,17 +20,20 @@
     </div>
   </div>
 
-  <div class="sidebar-content">
-    <section id="section1">
-      <div style="height: 7rem; width: 100px;"></div>
-      <h2>全体の流れ</h2>
+  <div class="sidebar-content text-Rounded">
 
+    <div style="height: 7rem; width: 100px;"></div>
+    <section id="section1">
+      <h2 class="explanation-section-title">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">全体の流れ</span>
+      </h2>
+    </section>
     <div>
       <div class="sidebar-design">
         <%= image_tag('how_to_use_image.png', alt: '使い方ページの説明の画像', class: "how-to-use-image") %>
       </div>
 
-      <div class="how-to-use-complete">
+      <div class="how-to-use-complete" style="margin-top: 1.5rem;">
         <div class="sidebar-design">
           <%= image_tag('how_to_use_image2.png', alt: '使い方ページの説明の完成例の画像', class: "how-to-use-image2") %>
         </div>
@@ -38,55 +42,193 @@
         </div>
       </div>
     </div>
-
-
-      <p>
-        「Flow Thing」とは「もの(Thing)」を管理するアプリです。<br>
-        お気に入りのグッズやコレクション、ペットや家族、<br>
-        実態はないけど何となくあると感じる「モノ」などを自由に表現して整理できます。<br>
-        アプリ内ではペイントツールを使用して「イラスト」「画像」「テキスト」でアイテムと背景を作成できます。<br>
-        作成したアイテムは配置ツールで「背景(Screen)」に配置でき、ちょっとしたアニメーションを付与できます。
-      </p>
-    </section>
-
+    <p class="explanation-section-text">
+      「Flow Thing」とは「もの(Thing)」を管理するアプリです。<br>
+      お気に入りのグッズやコレクション、ペットや家族、<br>
+      実態はないけど何となくあると感じる「モノ」などを自由に表現して整理できます。<br>
+      アプリ内ではペイントツールを使用して
+      <span class="red-text text-Rounded500">「イラスト」「画像」「テキスト」</span>
+      でアイテムと背景を作成できます。<br>
+      作成したアイテムは配置ツールで「背景(Screen)」に配置でき、ちょっとしたアニメーションを付与できます。
+    </p>
+      
+    <div style="height: 7rem; width: 100px;"></div>
 
     <section id="section2">
-      <h2>Sub Thing</h2>
-      <p>
-        「Sub Thing」のとは登録した「もの(Flow Thing)」の持ち主やカテゴリーとしてのような立ち位置の存在です。<br>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">
+        <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
+        </span>
+      </h2>
+      <p class="explanation-section-text">
+        「Sub Thing」のとは登録した「もの(Flow Thing)」の
+        <span class="red-text text-Rounded500">「持ち主」</span>
+        や
+        <span class="red-text text-Rounded500">「カテゴリー」</span>
+        としてのような立ち位置の存在です。<br>
         「Sub Thing」と一緒に登録することで「もの」の分類が簡単になります。<br>
-        1つの「Sub Thing」に対して「Flow Thing」は幾つでも登録可能です。<br>
-
-
-        <h3 class="text-Rounded500">「Sub Thing」カード</h3><br>
-        <div class="sample-card-container">
-          <div class="sidebar-design">
-            <%= image_tag('sample_normal_card.png', alt: 'Sub Thingカードのサンプル画像1枚目', class: "sample-card-image") %>
-          </div>
-
-          <div class="sidebar-design">
-            <%= image_tag('sample_gold_card.png', alt: 'Sub Thingカードのサンプル画像2枚目', class: "sample-card-image", style: "margin-top: -0.5rem;" ) %>
-          </div>
-        </div>
-
-        「Sub Thing」を作成するとカードが作成されます。<br>
-        このカードは紐づいている「Flow Thing」の数によって背景色と付属アイコンの数が変化します。<br>
-        またアクセス頻度も記録しており、一定時間過ぎると徐々にぼやけていきます。<br>
-        アクセスのカウントは各「Sub Thing」カードのクリックをトリガーとしています。<br>
-        ぼやけ具合で何かの判断材料になるかもしれません。<br>
-        背景色：全11種類<br>
-        アイコン数：全10種類<br>
-        アクセス頻度カウント期間：2時間〜1年の11段階<br>
-
-        「Sub Thing」のアイコンの項目で作成したものはその「Sub Thing」のアイコンとして表示されます。
+        1つの「Sub Thing」に対して「Flow Thing」は幾つでも登録可能です。
       </p>
     </section>
 
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <span class="sub-line">
+      「Sub Thing」カード
+      </span>
+    </h3>
+    <div class="sample-card-container">
+      <div class="sidebar-design">
+        <%= image_tag('sample_normal_card.png', alt: 'Sub Thingカードのサンプル画像1枚目', class: "sample-card-image") %>
+      </div>
+
+      <div class="sidebar-design">
+        <%= image_tag('sample_gold_card.png', alt: 'Sub Thingカードのサンプル画像2枚目', class: "sample-card-image", style: "margin-top: -0.5rem;" ) %>
+      </div>
+    </div>
+    <p class="explanation-section-text" style="margin-left: 0.5rem; margin-top: 1.5rem;">
+      「Sub Thing」を作成するとカードが作成されます。<br>
+      このカードは紐づいている「Flow Thing」の数によって背景色と付属アイコンの数が変化します。<br>
+      またアクセス頻度も記録しており、一定時間過ぎると徐々にぼやけていきます。<br>
+      アクセスのカウントは各「Sub Thing」カードのクリックをトリガーとしています。<br>
+      ぼやけ具合で何かの判断材料になるかもしれません。<br>
+    </p>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      カードの種類
+      </span>
+    </h4>
+    <p class="explanation-section-text" style="margin-left: 0.5rem;">
+      <span style="color: #f49e25;">背景色</span>：全11種類<br>
+      <span style="color: #f49e25;">アイコン数</span>：全10種類<br>
+      <span style="color: #f49e25;">アクセス頻度カウント期間</span>：2時間〜1年の11段階<br>
+    </p>
+    
+
+    <div style="height: 7rem; width: 100px;"></div>
 
     <section id="section3">
-      <h2>セクション3</h2>
-      <p>ここにセクション3の内容が入ります。</p>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">
+        <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+        </span>
+      </h2>
+      <p class="explanation-section-text">
+        このアプリ内ではアイテムのことを<span class="f-text text-Rounded500">「流れる(Flow)」</span><span class="t-text text-Rounded500">「もの(Thing)」</span>と名付けております。
+      </p>
     </section>
+    <h3 class="explanation-section-subtitle">
+      <span class="purple-text">
+      ...なぜ？
+      </span>
+    </h3>
+
+    <p class="explanation-section-text" style="margin-left: 0.5rem; margin-top: 0rem;">
+      「もの(Thing)」とは記憶や自己と強く結びついた存在です。<br>
+      手放すことを含め「もの(Thing)」を管理することで現在の自己の存在が揺れ動くことがあります。<br>
+      このような自己の一貫性に疑問を投げかける存在であるという意味を込めて「<span class="text-Rounded500"><span class="f-text">F</span>low <span class="t-text">T</span>hing</span></span>」と名付けております。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 1rem;">
+      <span class="red-line">
+      とはいえ...
+      </span>
+    </h3>
+    <p class="explanation-section-text" style="margin-left: 0.5rem; margin-top: 0rem;">
+      そのような難しいことは考えず、思うがまま自由な表現で身の回りの<span class="red-text text-Rounded500">「もの(Thing)」</span>を登録し空間を作成して見てください。<br>
+      もしかしたら何か面白い発見があるかもしれません。
+    </p>
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section4">
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">Screen</span>
+      </h2>
+      <p class="explanation-section-text">
+        「Flow Thing」を配置するときに背景として使用できます。<br>
+          自身の部屋や架空の空間などを写真やイラストを使用して表現しましょう。
+      </p>
+    </section>
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section5">
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">Flux Screen</span>
+      </h2>
+      <p class="explanation-section-text">
+        「Flux Screen」は作成した「背景(Screen)」に「Flow Thing」を配置できる項目です。<br>
+        配置時にちょっとしたアニメーションを付与できます。<br>
+        作成した「Flux Screen」はトップページに表示されます。<br>
+        「Flux Screen」内の「Flow Thing」をクリックするとその「Flow Thing」の詳細が表示され、さらに詳細ページにジャンプできます。
+      </p>
+    </section>
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section6">
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">利用範囲の早見表</span>
+      </h2>
+      <table class="how-to-use-table">
+        <tr class="text-Rounded">
+          <th>項目名</th>
+          <th>canvasサイズの選択</th>
+          <th>Flux Screenでの使用</th>
+          <th>レイヤーごとのセーブ</th>
+          <th>PCへのダウンロード</th>
+        </tr>
+        <tr class="how-to-use-table-td">
+          <td class="td-title">Flow Thing</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+        </tr>
+        <tr style="background-color: #f2f2f2;" class="how-to-use-table-td">
+          <td class="td-title">Sub Thing</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
+        </tr>
+        <tr class="how-to-use-table-td">
+          <td class="td-title">Screen</td>
+          <td>×</td>
+          <td>◯</td>
+          <td>◯</td>
+          <td>◯</td>
+        </tr>
+        <tr style="background-color: #f2f2f2;" class="how-to-use-table-td">
+          <td class="td-title">Flux Screen</td>
+          <td>×</td>
+          <td>−</td>
+          <td>−</td>
+          <td>×</td>
+        </tr>
+      </table>
+    </section>
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section7">
+      <h2 class="explanation-section-title" style="margin-bottom: 3rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">掲示板</span>
+      </h2>
+      <div class="sidebar-design">
+        <%= image_tag('board_sample.png', alt: '使い方ページの説明の掲示板の画像', class: "how-to-board-image") %>
+      </div>
+      <p class="explanation-section-text">
+        作成した「Flow Thing」について相談できる場所です。<br>
+        「なくなってしまった」「これ本当に必要なのかな」などなど登録した「Flow Thing」の情報を用いて相談できます。<br>
+          また、通常の「雑談」としての投稿も可能です。<br>
+          コメント数によって掲示板のマグネットの色が変わります。
+      </p>
+    </section>
+
+<div style="height: 10rem; width: 100px;"></div>
+
   </div>
 
 </div>

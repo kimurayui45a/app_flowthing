@@ -12,23 +12,35 @@
     </div>
 
     <div class="sidebar-design">
-      <%= image_tag('mirror.png', alt: 'サイドバーの画像', class: "sidebar-image") %>
+      <%= image_tag('mirror.png', alt: 'アイデアページのサイドバーの画像', class: "sidebar-image") %>
     </div>
   </div>
 
   <div class="sidebar-content">
     <section id="section1">
-      <h2>セクション1</h2>
-      <p>ここにセクション1の内容が入ります。</p>
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション1</span>
+      </h2>
+      <p class="explanation-section-text">ここにセクション1の内容が入ります。</p>
     </section>
+
     <section id="section2">
-      <h2>セクション2</h2>
-      <p>ここにセクション2の内容が入ります。</p>
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション2</span>
+      </h2>
+      <p class="explanation-section-text">ここにセクション2の内容が入ります。</p>
     </section>
+
     <section id="section3">
-      <h2>セクション3</h2>
-      <p>ここにセクション3の内容が入ります。</p>
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション3</span>
+      </h2>
+      <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
     </section>
+
   </div>
 
 </div>

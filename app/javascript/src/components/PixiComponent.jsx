@@ -7,7 +7,7 @@ import { PixiDetailPanel } from './PixiDetailPanel';
 import { usePixiGroup } from './PixiGroupContext';
 import { PixiGuidePanel } from './PixiGuidePanel';
 
-const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, itemObject, spaceObject, subUserAllId, compositeId }) => {
+const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, itemObject, spaceObject, subUserAllId, compositeId, canvasSpaceSize }) => {
   
   //データ取得確認用
   // useEffect(() => {
@@ -1079,6 +1079,8 @@ const stopSwingAnimation = (spriteId) => {
 
 
 
+
+
 //上下アニメーション
 const addContinuousVerticalSwingAnimation = (sprite, app, amplitude, period) => {
   let startTime = app.ticker.lastTime;
@@ -2014,6 +2016,13 @@ const stopCircularMove = (spriteId) => {
     // console.log('アイテムの中', itemAllId)
   };
   
+  //選択中のスプライトの詳細
+  // useEffect(() => {
+  //   if (activeSprite) {
+  //     const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+  //     console.log('選択中のスプライト情報', sprite);
+  //   }
+  // }, [activeSprite]);
 
 
   //「送信ボタン」が押された時にデータを保存
@@ -2108,8 +2117,8 @@ const stopCircularMove = (spriteId) => {
       {/* <button onClick={checkSpriteInfo}>スプライトインフォの中</button> */}
         <div
           style={{
-            width: !pixiMode ? '850px' : '1408px',
-            height: !pixiMode ? '500px' : '792px',
+            width: !pixiMode ? '850px' : `${canvasSpaceSize.width}px`,
+            height: !pixiMode ? '500px' : `${canvasSpaceSize.height}px`,
             border: !pixiMode ? 'none' : '1px solid black',
             margin: 'auto',
             display: 'flex',
@@ -2117,7 +2126,7 @@ const stopCircularMove = (spriteId) => {
             alignItems: 'center',
             overflow: 'hidden',
             position: 'relative',
-            background: 'rgb(155 198 204)',
+            background: !pixiMode ? 'rgb(155 198 204)' : '#262626',
             boxShadow: !pixiMode ? 'inset 1px 1px 3px 3px rgba(0, 0, 0, 0.4)' : 'none',
             borderRadius: '16px'
           }}

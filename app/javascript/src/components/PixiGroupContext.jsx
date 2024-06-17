@@ -6,13 +6,27 @@ const PixiGroupContext = createContext();
 export const usePixiGroup = () => useContext(PixiGroupContext);
 
 
-export const PixiGroupProvider = ({ children }) => {
+export const PixiGroupProvider = ({ children, panelPosition }) => {
 
 
   //パネルの位置を記録する
   const [listPanelPosition, setListPanelPosition] = useState({ x: 850, y: 50 });
   const [pixiDetailPanelPosition, setPixiDetailPanelPosition] = useState({ x: 200, y: 150 });
   const [customPanelPosition, setCustomPanelPosition] = useState({ x: 100, y: 100 });
+
+
+
+  useEffect(() => {
+    if (panelPosition) {
+      setListPanelPosition(panelPosition.list_panel);
+      setGuidePanelPosition(panelPosition.guide_panel);
+      setCustomPanelPosition(panelPosition.custom_panel);
+    }
+  }, [panelPosition]);
+
+
+
+
 
   //パネルの表示に関するステート
   const [customPanelVisible, setCustomPanelVisible] = useState(false);

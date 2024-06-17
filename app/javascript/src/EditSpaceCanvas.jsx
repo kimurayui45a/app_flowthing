@@ -1,13 +1,82 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, canvasSpaceName, canvasSpaceText }) => {
+const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, canvasSpaceName, canvasSpaceText, spaceSize }) => {
 
   // Canvasのサイズを状態として保持
   const [canvasSize, setCanvasSize] = useState({ width: 800, height: 450 });
 
   //canvasの外枠のサイズを決めるもの
-  const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
+  //const [canvasSpaceSize, setCanvasSpaceSize] = useState({ width: 1408, height: 792 });
+
+
+
+  const [canvasSpaceSize, setCanvasSpaceSize] = useState(() => {
+    switch (spaceSize) {
+      case 1400:
+        return { width: 1408, height: 770 };
+      case 1200:
+        return { width: 1150, height: 750 };
+      case 1000:
+        return { width: 1000, height: 1200 };
+      case 700:
+        return { width: 700, height: 933 };
+      default:
+        return { width: 1150, height: 750 }; 
+    }
+  });
+
+
+const [panelPosition, setPanelPosition] = useState(() => {
+  switch (spaceSize) {
+    case 1400:
+      return { 
+        main_pane: { x: 850, y: 50 },
+        layers_info_panel: { x: 1140, y: 300 },
+        color_palette_panel: { x: 400, y: 350 },
+        scale_panel_position: { x: 1140, y: 50 },
+        detail_panel_position: { x: 100, y: 300 },
+        size_panel_position: { x: 100, y: 50, width: 250, height: 170 }
+      };
+    case 1200:
+      return {
+        main_pane: { x: 600, y: 40 },
+        layers_info_panel: { x: 890, y: 290 },
+        color_palette_panel: { x: 330, y: 340 },
+        scale_panel_position: { x: 890, y: 40 },
+        detail_panel_position: { x: 50, y: 290 },
+        size_panel_position: { x: 50, y: 40, width: 250, height: 170 }
+      };
+    case 1000:
+      return {
+        main_pane: { x: 720, y: 310 },
+        layers_info_panel: { x: 720, y: 740 },
+        color_palette_panel: { x: 330, y: 40 },
+        scale_panel_position: { x: 650, y: 50 },
+        detail_panel_position: { x: 30, y: 450 },
+        size_panel_position: { x: 30, y: 200, width: 250, height: 170 }
+      };
+    case 700:
+      return {
+        main_pane: { x: 440, y: 250 },
+        layers_info_panel: { x: 240, y: 500 },
+        color_palette_panel: { x: 330, y: 40 },
+        scale_panel_position: { x: 330, y: 10 },
+        detail_panel_position: { x: 30, y: 330 },
+        size_panel_position: { x: 30, y: 80, width: 250, height: 170 }
+      };
+    default:
+      return {
+        main_pane: { x: 600, y: 40 },
+        layers_info_panel: { x: 890, y: 290 },
+        color_palette_panel: { x: 330, y: 340 },
+        scale_panel_position: { x: 890, y: 40 },
+        detail_panel_position: { x: 50, y: 290 },
+        size_panel_position: { x: 50, y: 40, width: 250, height: 170 }
+      };
+  }
+});
+
 
 
   //レイヤーセーブできるようにする
@@ -123,7 +192,7 @@ const EditSpaceCanvas = ({ profileId, canvasImgId, canvasData, canvasSaveData, c
 
   return (
     <div className="flex-column">
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} notLayerSave={notLayerSave} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} notLayerSave={notLayerSave} panelPosition={panelPosition} />
 
 
 
