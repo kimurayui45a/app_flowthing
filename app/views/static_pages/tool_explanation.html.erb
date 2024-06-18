@@ -265,10 +265,12 @@
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">取り消し</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-reply-fill"></i></span>：
       このボタンをクリックすると1つ前のペイントに戻ることができます。取り消しの対象はcanvas上のペイントのみに限定しております。<br>
+      macでのみショートカットキーに対応しております。コマンドは<span class="text-Rounded500" style="color: #e4816c;">「command」＋「Z」</span>です。
       </p><br>
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">やり直し</span><span class="bi-reply-fill-right panel-tool-button-right tooltip-container-right" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-reply-fill"></i></span>：
-      <span class="red-text text-Rounded500">取り消し</span>を行なった後にこのボタンをクリックすると取り消された最後のペイントを再び適用し、作業を1ステップ進めることができます。
+      <span class="red-text text-Rounded500">取り消し</span>を行なった後にこのボタンをクリックすると取り消された最後のペイントを再び適用し、作業を1ステップ進めることができます。<br>
+      macでのみショートカットキーに対応しております。コマンドは<span class="text-Rounded500" style="color: #e4816c;">「shift」＋「command」＋「Z」</span>です。
       </p><br>
       <p class="red-text text-Rounded" style="font-size: 0.85rem; margin-top: -1rem;">※
         「選択/変形」と「取り消し/やり直し」について<br>
@@ -276,7 +278,7 @@
       </p><br>
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #7f7e80;" class="text-Rounded700">コンパクトパネルへの切り替えボタン</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-box-arrow-in-up"></i></span>：
-      このボタンを押すとツールパネルのサイズが小さくなります。詳細は下記の「<a href="#section3" class="embedded-item text-Rounded500">コンパクトパネル</a>」をご確認下さい。<br>
+      このボタンを押すとツールパネルのサイズが小さくなります。<br>詳細は下記の「<a href="#section3" class="embedded-item text-Rounded500">コンパクトパネル</a>」をご確認下さい。<br>
       コンパクトパネルに切り替えてもデフォルトのツールパネルのフリーパレットに登録したカラーはリセットされません。再度デフォルトパネルに戻したらそのままご使用頂けます。
       </p><br>
 
@@ -371,11 +373,49 @@
 
     <div style="height: 7rem; width: 100px;"></div>
     <section id="section4">
-      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem; margin-bottom: 3rem;">
         <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">カラーパレットパネル</span>
       </h2>
-      <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
+      <div class="sidebar-design">
+        <%= image_tag('colorpallet_panel.png', alt: 'カラーパレットパネルの図解', class: "toolpanel-image") %>
+      </div>
     </section>
+
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+        機能解説
+        </span>
+      </h3>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+        <div class="sidebar-design">
+          <%= image_tag('picker_style.png', alt: 'カラーピッカーの画像', class: "toolpanel-image-picker") %>
+        </div>
+        <p style="margin-top: 3rem;">
+          <span style="color: #79b46f;" class="text-Rounded700">カラーピッカー</span><br>
+          ポインタ<span class="text-Rounded700 red-text">◯</span>にて自由に色を変更できます。<br>
+          カラーピッカーは<span class="red-text text-Rounded500">「円形」「四角形」</span>の2種類用意しており切り替えが可能です。
+        </p>
+        <span style="color: #F8A3B1;" class="text-Rounded500">円形カラーピッカー</span>：色相の変更をメインにしているピッカーです。下部の<span style="color: #385194;" class="text-Rounded500">カラーピッカースライダー</span>で彩度を調整できます。<br>
+        <span style="color: #59afc7;" class="text-Rounded500">四角形カラーピッカー</span>：彩度と色の値の変更をメインにしているピッカーです。下部の<span style="color: #385194;" class="text-Rounded500">カラーピッカースライダー</span>で色相を調整できます。<br>
+        </p>
+
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #c9da39;" class="text-Rounded700">白黒ボタン</span><%= image_tag('black_white_btn.png', alt: '白黒ボタン', class: "toolbtn-image") %>：
+        このボタンをクリックすると現在のカラーを「白」もしくは「黒」に変更できます。上部の黒い半円が黒ボタン、下部の半円が白ボタンとなっております。</p><br>
+
+        <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #7f7e80;" class="text-Rounded700">ツールパネルをデフォルトに戻すボタン</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-window-fullscreen"></i></span>：
+        このボタンを押すとツールパネルがデフォルトに戻ります。<br>コンパクトパネルのフリーパレットに登録されたカラーは、デフォルトのツールパネルには移行されませんが、リセットもされずに残ります。再度コンパクトパネルを開いた際には、以前に登録したカラーが表示されます。</p><br>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #da96ab;" class="text-Rounded700">色混ぜ</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-droplet-half"></i></span>：
+        canvas上の色を拾ってそのままペイントできるペンです。詳細は「詳細設定パネル」の項目にて解説します。</p><br>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #da96ab;" class="text-Rounded700">四角形</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-square"></i></span>：
+        四角形を描画できるツールです。詳細は「詳細設定パネル」の項目にて解説します。</p><br>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">ペーストボタン</span><%= image_tag('copy_btn.png', alt: 'コピーしたペイントを再度描画するボタン', class: "toolbtn-image") %>：
+        選択ツールにて「コピーモード」を選択しペイントのコピーを保持している状態の時に表示されるボタンです。コピーがない状態の時はボタンのUIは表示されません。</p><br>
+      </div>
+
 
 
   </div>

@@ -9260,6 +9260,15 @@ background-color: #d1eee6;
   object-fit: cover;
 }
 
+.toolpanel-image-picker {
+  width: 500px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-left: 7rem;
+}
+
 
 .toolbtn-image {
   width: 32px;
@@ -9434,6 +9443,15 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
   }
+
+  .toolpanel-image-picker {
+    width: 450px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-left: 5rem;
+  }
 }
 
 
@@ -9511,6 +9529,15 @@ background-color: #d1eee6;
     margin: 0px auto;
     -o-object-fit: cover;
     object-fit: cover;
+  }
+
+  .toolpanel-image-picker {
+    width: 400px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-left: 2rem;
   }
 
 
