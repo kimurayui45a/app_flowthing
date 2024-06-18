@@ -9,19 +9,19 @@
           <li><a href="#section1">基本操作</a></li>
           
         <li>
-            <div class="accordion-toggle-sidebar">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
-            <div class="accordion-content-sidebar" id="accordion-section1">
-                <a href="#section2">パネル図解</a>
-                <a href="#section2">コンパクトパネル</a>
-                <a href="#section2">スポイト/フリーパレット</a>
-            </div>
+          <div class="accordion-toggle-sidebar">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <a href="#section2">ツールパネル図解</a>
+              <a href="#section2">コンパクトパネル</a>
+              <a href="#section2">スポイト/フリーパレット</a>
+          </div>
         </li>
         <li><a href="#section3">カラーパレットパネル</a></li>
         <li><a href="#section3">レイヤーパネル</a></li>
         <li>
           <div class="accordion-toggle-sidebar">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section1">
-              <a href="#section2">パネル図解</a>
+              <a href="#section2">詳細設定パネル図解</a>
               <a href="#section2">ペン</a>
               <a href="#section2">選択/画像</a>
               <a href="#section2">図形/テキスト</a>
@@ -85,6 +85,16 @@
       ペイントだけでなく画像挿入もここで行えます。
     </p>
 
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      アクティブ状態
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      現在アクティブなツールは<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex; background-color: rgb(145, 153, 174);"><i class="bi bi-eyedropper"></i></span>のように濃いグレーで表示されます。<br>
+      <span style="color: #F8A3B1;" class="text-Rounded500">アクティブ</span>：<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex; background-color: rgb(145, 153, 174);"><i class="bi bi-eyedropper"></i></span><br>
+      <span style="color: #59afc7;" class="text-Rounded500">非アクティブ</span>：<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eyedropper"></i></span>
+    </p>
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
@@ -94,7 +104,7 @@
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
       canvas内でマウスを左クリックしドラッグするとその範囲に線を引くことができます。<br>
       ペンタブレットやペン型マウスを持っている方はそちらで操作することをお勧めします。<br>
-      カラーはコントロールパネルにあるカラーピッカーから自由に選択することが可能です。初期色は<span style="color: black;" class="text-Rounded500">「黒」</span>に設定しております。
+      カラーはコントロールパネルにあるカラーピッカーから自由に選択することが可能です。初期色は<span style="color: #7f7f7f;" class="text-Rounded500">「白」</span>に設定しております。
     </p>
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
@@ -124,7 +134,7 @@
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
       カラーピッカーより色を選択し自由に色を変更できます。<br>
       カラーピッカーは<span class="red-text text-Rounded500">「円形」「四角形」</span>の2種類用意しており切り替えが可能です。<br>
-      キャンバス上の任意の色を瞬時に取得し、その色をパレットに保存することができます。<br>
+      canvas上の任意の色を瞬時に取得し、その色をパレットに保存することができます。<br>
       これにより、選択した色を正確に再利用することが可能となり、一貫性のあるペイント作業が行えます。
     </p>
 
@@ -196,7 +206,7 @@
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
       現在表示されているレイヤーのみを個別に保存することができる機能です。<br>
       この機能は、作業中のデザインや編集途中の内容を効率的に管理したい場合に特に役立ちます。<br>
-      ツールパネルの「<i class="bi bi-flag-fill" style="color: #7FA8EB;"></i>」マークのチェックボックスよりレイヤー保存の有無を切り替えられます。<br>
+      ツールパネル上部のチェックボックス<%= image_tag('layer_save_btn.png', alt: 'レイヤー保存チェックボックス', class: "toolbtn-image-22") %>によりレイヤー保存の有無を切り替えられます。<br>
       チェックがついていない場合は12枚のレイヤー情報を1枚のレイヤーに集結して保存します。
     </p>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -2.5rem;">
@@ -228,16 +238,82 @@
     </p>
 
 
+    <div style="height: 7rem; width: 100px;"></div>
+    <h2 class="explanation-section-title" style="margin-bottom: 5rem;">
+      <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">ツールパネル</span>
+    </h2>
 
 
 
     <section id="section2">
-      <div style="height: 7rem; width: 100px;"></div>
-      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション2</span>
-      </h2>
-      <p class="explanation-section-text">ここにセクション2の内容が入ります。</p>
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+        ツールパネル図解
+        </span>
+      </h3>
+      <div class="sidebar-design">
+        <%= image_tag('tool_panel_figure.png', alt: 'ツールパネルの図解', class: "toolpanel-image") %>
+      </div>
     </section>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      各種紹介
+      </span>
+    </h4>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
+      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※
+      「ペン/消しゴム」「選択/テキスト/画像」は「詳細設定パネル」の項目にて解説します。
+      </span>
+    </p>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">全消去</span><%= image_tag('all_delete_btn.png', alt: '全消去ボタン', class: "toolbtn-image") %>：
+      このボタンをクリックすると「選択中のレイヤーの描画」が全てリセット(削除)されます。誤って押してしまっても<span class="red-text text-Rounded500">取り消し/やり直し</span>で戻すことが可能です。<br>
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">取り消し</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-reply-fill"></i></span>：
+      このボタンをクリックすると1つ前のペイントに戻ることができます。取り消しの対象はcanvas上のペイントのみに限定しております。<br>
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">やり直し</span><span class="bi-reply-fill-right panel-tool-button-right tooltip-container-right" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-reply-fill"></i></span>：
+      <span class="red-text text-Rounded500">取り消し</span>を行なった後にこのボタンをクリックすると取り消された最後のペイントを再び適用し、作業を1ステップ進めることができます。
+      </p><br>
+      <p class="red-text text-Rounded" style="font-size: 0.85rem; margin-top: -1rem;">※
+        「選択/変形」と「取り消し/やり直し」について<br>
+        変形中の操作を取り消すことはできません。「確定」を押した前後での描画の「取り消し/やり直し」は可能です。
+      </p><br>
+
+
+      <p><span style="color: #79b46f;" class="text-Rounded700">レイヤー保存</span><%= image_tag('layer_save_btn.png', alt: 'レイヤー保存チェックボックス', class: "toolbtn-image-22") %>：
+      現在表示されているレイヤーのみを個別に保存することができます。レイヤーパネル上のレイヤーUIのこのチェックボックス<%= image_tag('layer_check_btn.png', alt: 'レイヤー表示チェックボックス', class: "toolbtn-image-20") %>がオンになっているものが保存対象です。<br>
+      <span style="color: #F8A3B1;" class="text-Rounded500">保存対象</span>：<%= image_tag('layer_check_btn.png', alt: 'レイヤー表示チェックボックス', class: "toolbtn-image-20") %><br>
+      <span style="color: #59afc7;" class="text-Rounded500">保存対象外</span>：<%= image_tag('layer_checknone_btn.png', alt: 'レイヤー非表示チェックボックス', class: "toolbtn-image-20") %></p><br>
+      <p style="margin-bottom: 1rem; margin-top: -2.5rem;">
+        非表示<%= image_tag('layer_checknone_btn.png', alt: 'レイヤー非表示チェックボックス', class: "toolbtn-image-20") %>となっているレイヤーのペイント情報は保存時にデータが削除されるためご注意ください。<br>
+        チェックがついていない場合は12枚のレイヤー情報を1枚のレイヤーに集結して保存します。
+      <p>
+
+      <p style="margin-bottom: -0.8rem; margin-top: 2rem;"><span style="color: #59afc7;" class="text-Rounded700">スポイト</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eyedropper"></i></span>：
+      canvas上で取得したい色をクリックするとその色で現在のカラーを更新します。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded700">色登録</span><%= image_tag('color_save_btn.png', alt: '色登録ボタン', class: "toolbtn-image") %>：
+      このツールをアクティブにして<span class="red-text text-Rounded500">フリーパレット</span><%= image_tag('freepallet.png', alt: '色登録ボタン', class: "toolbtn-image-20") %>をクリックするとその場所に現在のカラーを登録できます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded700">色削除</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eyedropper"></i></span>：
+      <span class="red-text text-Rounded500">フリーパレット</span>に登録した色を削除できます。このツールをアクティブにして<%= image_tag('freepallet.png', alt: '色登録ボタン', class: "toolbtn-image-20") %>をクリックするとそのパレットに登録されていた色が削除されます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #e1923a;" class="text-Rounded700">フリーパレット</span><%= image_tag('freepallet.png', alt: '色登録ボタン', class: "toolbtn-image-20") %>：
+      ここに頻繁に使用する色を登録できます。登録した色は<span class="red-text text-Rounded500">スポイト</span>クリックすることで使用できます。</p>
+
+
+    </div>
+
+
+
 
     <section id="section3">
       <div style="height: 7rem; width: 100px;"></div>

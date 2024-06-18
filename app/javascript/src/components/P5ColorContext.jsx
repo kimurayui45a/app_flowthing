@@ -11,7 +11,7 @@ export const P5ColorProvider = ({ children }) => {
   
   //ベースで使用するもの
   //カラーを共有・管理するステート（RGBカラー専用）
-  const [currentColor, setCurrentColor] = useState('rgba(0, 0, 0, 1)');
+  const [currentColor, setCurrentColor] = useState('rgba(255, 255, 255, 1)');
 
   //フリーパレット
   const [paletteColors9, setPaletteColors9] = useState(Array(9).fill(''));
@@ -22,9 +22,11 @@ export const P5ColorProvider = ({ children }) => {
   const [selectColorPreview, setSelectColorPreview] = useState(true);
 
   //カラープレビューの記録
-  const [firstColorPreview, setFirstColorPreview] = useState('rgba(0, 0, 0, 1)');
-  const [secondColorPreview, setSecondColorPreview] = useState('rgba(255, 255, 255, 1)');
+  // const [firstColorPreview, setFirstColorPreview] = useState('rgba(0, 0, 0, 1)');
+  // const [secondColorPreview, setSecondColorPreview] = useState('rgba(255, 255, 255, 1)');
 
+  const [firstColorPreview, setFirstColorPreview] = useState('rgba(255, 255, 255, 1)');
+  const [secondColorPreview, setSecondColorPreview] = useState('rgba(0, 0, 0, 1)');
 
   //透明度
   //透明度を含む色を管理する

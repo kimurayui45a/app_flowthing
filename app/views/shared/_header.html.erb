@@ -100,6 +100,14 @@
                 <% if @profile.present? && !@profile.new_record? %>
                   <li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
                 <% end %>
+
+                
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール', tool_explanation_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
+                
+
+
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Sub Thing', sub_users_path, class: 'user-dropdown-link' %></li>
               
@@ -108,10 +116,6 @@
                 <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
                 <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %></li>
 
-                
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール', tool_explanation_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
 
                 <li class='user-dropdown-item'><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'user-dropdown-link' %></li>
               <ul>

@@ -2036,42 +2036,42 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
                   case 'top-middle':
                     let deltaY = p.mouseY / zoomScale - object.y;
                     newHeight = object.height - deltaY;
-                    if (newHeight > 20) {
+                    if (newHeight > 5) {
                       newY = p.mouseY / zoomScale;
                     } else {
-                      newHeight = 20;
+                      newHeight = 5;
                     }
                     break;
             
                   case 'right-middle':
                     newWidth = p.mouseX / zoomScale - object.x;
-                    if (newWidth < 20) {
-                      newWidth = 20;
+                    if (newWidth < 5) {
+                      newWidth = 5;
                     }
                     break;
             
                   case 'bottom-middle':
                     newHeight = p.mouseY / zoomScale - object.y;
-                    if (newHeight < 20) {
-                      newHeight = 20;
+                    if (newHeight < 5) {
+                      newHeight = 5;
                     }
                     break;
             
                   case 'left-middle':
                     let deltaX = p.mouseX / zoomScale - object.x;
                     newWidth = object.width - deltaX;
-                    if (newWidth > 20) {
+                    if (newWidth > 5) {
                       newX = p.mouseX / zoomScale;
                     } else {
-                      newWidth = 20;
+                      newWidth = 5;
                     }
                     break;
                   }
                 }
 
                 // 新しい幅や高さが最小サイズを下回らないように調整
-                newWidth = Math.max(newWidth, 20);
-                newHeight = Math.max(newHeight, 20);
+                newWidth = Math.max(newWidth, 5);
+                newHeight = Math.max(newHeight, 5);
 
                 // 最終的なサイズと位置をオブジェクトに適用
                 object.width = newWidth;
@@ -2157,7 +2157,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
                   const selectionHeight = Math.abs(p.mouseY / zoomScale - startY);
               
                   // selectedArea.currentの幅と高さに基づいてobjectを更新
-                  if (selectionWidth >= 20 && selectionHeight >= 20) {
+                  if (selectionWidth >= 5 && selectionHeight >= 5) {
                     // objectに読み込んだ画像に合わせた数値を定義
                     objectRef.current = { x: selectionX, y: selectionY, width: selectionWidth, height: selectionHeight, angle: 0 };
               
@@ -2920,7 +2920,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     
         // p5のloadImageを使用して画像を読み込む
         p.loadImage(url, (loadedImage) => {
-          if (loadedImage.width >= 20 && loadedImage.height >= 20) {
+          if (loadedImage.width >= 5 && loadedImage.height >= 5) {
             imgRef.current = loadedImage;
             p.selectedAreaSketch();
           } else {

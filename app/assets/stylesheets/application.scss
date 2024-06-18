@@ -3526,6 +3526,7 @@ summary {
 
 #cursorP5SaveRab {
   cursor: none;
+  user-select: none;
 }
 
 
@@ -9251,6 +9252,40 @@ background-color: #d1eee6;
   object-fit: cover;
 }
 
+.toolpanel-image {
+  width: 500px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+
+.toolbtn-image {
+  width: 32px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-left: 0.12rem;
+}
+
+.toolbtn-image-20 {
+  width: 20px;
+  display: inline-block;
+  margin: 0.2rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.toolbtn-image-22 {
+  width: 22px;
+  display: inline-block;
+  margin: 0.2rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
 
 .color-picker-image {
   width: 600px;
@@ -9284,6 +9319,15 @@ background-color: #d1eee6;
     object-fit: cover;
     width: 250px;
     margin-top: 3rem;
+  }
+
+  .sidebar-image2 {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 250px;
+    margin-top: 1.8rem;
   }
 
   .sidebar-content {
@@ -9336,6 +9380,14 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
   }
+
+  .toolpanel-image {
+    width: 450px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
 }
 
 
@@ -9357,6 +9409,15 @@ background-color: #d1eee6;
     object-fit: cover;
     width: 205px;
     margin-top: 2rem;
+  }
+
+  .sidebar-image2 {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 205px;
+    margin-top: 1.8rem;
   }
 
   .sidebar-title {
@@ -9398,6 +9459,15 @@ background-color: #d1eee6;
     object-fit: cover;
   }
 
+  .toolpanel-image {
+    width: 400px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+
   .color-picker-image {
     width: 500px;
     display: inline-block;
@@ -9432,6 +9502,15 @@ background-color: #d1eee6;
     object-fit: cover;
     width: 175px;
     margin-top: 2rem;
+  }
+
+  .sidebar-image2 {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 175px;
+    margin-top: 1.8rem;
   }
 
   .sidebar-title {
