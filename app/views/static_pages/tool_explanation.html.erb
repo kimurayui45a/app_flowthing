@@ -15,7 +15,7 @@
               <a href="#section3">コンパクトパネル</a>
           </div>
         </li>
-        <li><a href="#section3">カラーパレットパネル</a></li>
+        <li><a href="#section4">カラーパレットパネル</a></li>
         <li><a href="#section3">レイヤーパネル</a></li>
         <li>
           <div class="accordion-toggle-sidebar">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
@@ -137,7 +137,6 @@
       これにより、選択した色を正確に再利用することが可能となり、一貫性のあるペイント作業が行えます。
     </p>
 
-
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
       レイヤー
@@ -173,7 +172,6 @@
       これによりちょっとした機械的なペイントを作成できます。
     </p>
 
-
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
       取り消し（アンドゥ）・やり直し（リドゥ）
@@ -185,7 +183,6 @@
       この機能を使って、作業中の小さなミスを修正したり、異なるデザインの選択肢を試したりすることが可能です。
     </p>
 
-
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
       拡大縮小
@@ -195,7 +192,6 @@
       カーソルをcanvas内に置きマウスのホイールを回した時にcanvasを拡大縮小することが可能です。<br>
       これにより細かなペイントが可能です。
     </p>
-
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
@@ -216,7 +212,6 @@
       また、本機能は「<span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>」では使用できません。
     </p>
 
-
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
       途中保存
@@ -236,13 +231,10 @@
       作成した描画をpng形式で自身のパソコンにダウンロードすることができます。
     </p>
 
-
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title" style="margin-bottom: 5rem;">
       <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">ツールパネル</span>
     </h2>
-
-
 
     <section id="section2">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
@@ -254,7 +246,6 @@
         <%= image_tag('tool_panel_figure.png', alt: 'ツールパネルの図解', class: "toolpanel-image") %>
       </div>
     </section>
-
 
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
       <span class="point-line">
@@ -268,8 +259,6 @@
     </p>
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
-
-
       <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">全消去</span><%= image_tag('all_delete_btn.png', alt: '全消去ボタン', class: "toolbtn-image") %>：
       このボタンをクリックすると「選択中のレイヤーの描画」が全てリセット(削除)されます。誤って押してしまっても<span class="red-text text-Rounded500">取り消し/やり直し</span>で戻すことが可能です。<br>
       </p><br>
@@ -287,7 +276,9 @@
       </p><br>
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #7f7e80;" class="text-Rounded700">コンパクトパネルへの切り替えボタン</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-box-arrow-in-up"></i></span>：
-      このボタンを押すとツールパネルのサイズが小さくなります。詳細は下記の「<a href="#section3" class="embedded-item text-Rounded500">コンパクトパネル</a>」をご確認下さい。</p><br>
+      このボタンを押すとツールパネルのサイズが小さくなります。詳細は下記の「<a href="#section3" class="embedded-item text-Rounded500">コンパクトパネル</a>」をご確認下さい。<br>
+      コンパクトパネルに切り替えてもデフォルトのツールパネルのフリーパレットに登録したカラーはリセットされません。再度デフォルトパネルに戻したらそのままご使用頂けます。
+      </p><br>
 
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #7f7e80;" class="text-Rounded700">自動表示モード</span><%= image_tag('auto_panel_btn.png', alt: '自動表示モードのUI', class: "auto_btn-image") %>：
@@ -338,27 +329,50 @@
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #7f69a2;" class="text-Rounded700">スケールパネル表示ボタン</span><%= image_tag('scale_panel_btn.png', alt: 'スケールパネル表示ボタン', class: "toolbtn-image") %>：
       このボタンを押すとスケールパネルが表示されます。</p><br>
-
     </div>
 
-
-
     <section id="section3">
-      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <h3 class="explanation-section-subtitle">
         <span class="sub-line">
           コンパクトパネル
         </span>
       </h3>
       <div class="sidebar-design">
-        <%= image_tag('tool_panel_figure.png', alt: 'コンパクトパネルの図解', class: "toolpanel-image") %>
+        <%= image_tag('compact_panel.png', alt: 'コンパクトパネルの図解', class: "toolpanel-image") %>
       </div>
     </section>
 
 
-    <section id="section3">
-      <div style="height: 7rem; width: 100px;"></div>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      コンパクトパネルへの切り替えボタン<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-box-arrow-in-up"></i></span>
+      を押すとツールパネルが小さくコンパクトになります。<br>
+    </p>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      ツールパネルとの変更点
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+        <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #7f7e80;" class="text-Rounded700">ツールパネルをデフォルトに戻すボタン</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-window-fullscreen"></i></span>：
+        このボタンを押すとツールパネルがデフォルトに戻ります。<br>コンパクトパネルのフリーパレットに登録されたカラーは、デフォルトのツールパネルには移行されませんが、リセットもされずに残ります。再度コンパクトパネルを開いた際には、以前に登録したカラーが表示されます。</p><br>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #da96ab;" class="text-Rounded700">色混ぜ</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-droplet-half"></i></span>：
+        canvas上の色を拾ってそのままペイントできるペンです。詳細は「詳細設定パネル」の項目にて解説します。</p><br>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #da96ab;" class="text-Rounded700">四角形</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-square"></i></span>：
+        四角形を描画できるツールです。詳細は「詳細設定パネル」の項目にて解説します。</p><br>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">ペーストボタン</span><%= image_tag('copy_btn.png', alt: 'コピーしたペイントを再度描画するボタン', class: "toolbtn-image") %>：
+        選択ツールにて「コピーモード」を選択しペイントのコピーを保持している状態の時に表示されるボタンです。コピーがない状態の時はボタンのUIは表示されません。</p><br>
+    </div>
+      
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <section id="section4">
       <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション3</span>
+        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">カラーパレットパネル</span>
       </h2>
       <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
     </section>
