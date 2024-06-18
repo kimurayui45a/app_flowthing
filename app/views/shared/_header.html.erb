@@ -1,4 +1,6 @@
 <header>
+  
+  <div class="header-container <%= 'header-container-paint' if apply_paint_class? %>">
   <div class='header-design'>
 
     <div class='header-layout'>
@@ -105,7 +107,7 @@
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール', tool_explanation_path, class: 'user-dropdown-link' %>
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
-                
+
 
 
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
@@ -148,5 +150,6 @@
         </ul>
       </div>
     </div>
+  </div>
   </div>
 </header>

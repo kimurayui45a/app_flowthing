@@ -16,10 +16,18 @@
           </div>
         </li>
         <li><a href="#section4">カラーパレットパネル</a></li>
-        <li><a href="#section3">レイヤーパネル</a></li>
+        <li>
+          <div class="accordion-toggle-sidebar">レイヤーパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section5">レイヤーパネル図解</a>
+              <a href="#section2">ペン</a>
+              <a href="#section2">選択/画像</a>
+              <a href="#section2">図形/テキスト</a>
+          </div>
+        </li>
         <li>
           <div class="accordion-toggle-sidebar">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
-          <div class="accordion-content-sidebar" id="accordion-section1">
+          <div class="accordion-content-sidebar" id="accordion-section3">
               <a href="#section2">詳細設定パネル図解</a>
               <a href="#section2">ペン</a>
               <a href="#section2">選択/画像</a>
@@ -53,7 +61,7 @@
     </section>
 
 
-    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
       <span class="sub-line">
       コントロールパネル
       </span>
@@ -93,6 +101,19 @@
       現在アクティブなツールは<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex; background-color: rgb(145, 153, 174);"><i class="bi bi-eyedropper"></i></span>のように濃いグレーで表示されます。<br>
       <span style="color: #F8A3B1;" class="text-Rounded500">アクティブ</span>：<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex; background-color: rgb(145, 153, 174);"><i class="bi bi-eyedropper"></i></span><br>
       <span style="color: #59afc7;" class="text-Rounded500">非アクティブ</span>：<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eyedropper"></i></span>
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 1rem;">
+      <span class="sub-line">
+      パネルの表示/非表示
+      </span>
+    </h3>
+      <div class="sidebar-design">
+        <%= image_tag('close_btn.png', alt: '閉じるボタン', class: "toolpanel-image") %>
+      </div>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      ツールパネル以外のパネルは右上の「<i class="bi bi-x-lg" style="color: #F8A3B1;"></i>」より閉じる(非表示にする)ことが可能です。
     </p>
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
@@ -303,7 +324,7 @@
       作成した描画をpng形式で自身のパソコンにダウンロードすることができます。「背景レイヤー」を非表示で保存すると背景を透明にした状態で保存できます。保存されるサイズはcanvasのサイズと同じになります。</p><br>
       <p style="margin-top: -1rem;"><span class="red-text text-Rounded500">ちょっとした小技</span></p><br>
       <div class="steps-waza" style="margin-top: -2.5rem;">
-        <p>「背景レイヤー」を透明に設定して、必要なレイヤーを個別に保存します。</p>
+        <p>「背景レイヤー」を非表示にし、必要なレイヤーを個別に保存します。</p>
         <p>次に、保存したレイヤーと同じサイズの新しいアイテムを作成します。</p>
         <p>「画像を実際のサイズで挿入する」のチェックボックスを<span style="color: #59afc7;" class="text-Rounded">オフ</span>にし、保存した画像を挿入します。</p>
       </div>
@@ -399,10 +420,53 @@
         <span style="color: #59afc7;" class="text-Rounded500">四角形カラーピッカー</span>：彩度と色の値の変更をメインにしているピッカーです。下部の<span style="color: #385194;" class="text-Rounded500">カラーピッカースライダー</span>で色相を調整できます。<br>
         </p>
 
+      <p style="margin-bottom: -0.8rem;"><span style="color: #5ab8d2;" class="text-Rounded700">カラーピッカーの切り替えボタン</span><%= image_tag('change_ wheel.png', alt: 'カラーピッカーを円形に変更するボタン', class: "toolbtn-image") %><%= image_tag('change_ box.png', alt: 'カラーピッカーを四角形に変更するボタン', class: "toolbtn-image", style: "margin-left: 0.3rem;") %>：
+        カラーピッカーの種類を切り替えられるボタンです。メイン表示されているカラーピッカーに応じてボタンのアイコンが変化します。</p><br>
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #c9da39;" class="text-Rounded700">白黒ボタン</span><%= image_tag('black_white_btn.png', alt: '白黒ボタン', class: "toolbtn-image") %>：
         このボタンをクリックすると現在のカラーを「白」もしくは「黒」に変更できます。上部の黒い半円が黒ボタン、下部の半円が白ボタンとなっております。</p><br>
 
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #db7d69;" class="text-Rounded700">カラープレビュー</span><%= image_tag('color_preview.png', alt: 'カラープレビュー', class: "toolbtn-image") %>：
+        現在選択されているカラーを確認できるプレビューです。またプレビューをクリックすると現在のカラーがプレビューが示している色に変更されます。<br>
+        プレビューは2つ重なっており手前のものが<span style="color: #F8A3B1;" class="text-Rounded500">「メインプレビュー」</span>、後ろのものが<span style="color: #59afc7;" class="text-Rounded500">「サブプレビュー」</span>です。<br>
+        2つのプレビューのうち片方は必ずカラーピッカーのポインタが示す色によって随時更新されます。<br>
+        <span style="color: #F8A3B1;" class="text-Rounded500">「メインプレビュー」</span>と<span style="color: #59afc7;" class="text-Rounded500">「サブプレビュー」</span>は入れ替えボタン<%= image_tag('change_btn.png', alt: 'プレビュー入れ替えボタン', class: "toolbtn-image-20", style: "width: 15px;") %>をクリックすることで入れ替えることが可能です。<br>
+        <span style="color: #F8A3B1;" class="text-Rounded500">「メインプレビュー」</span>もしくは<span style="color: #59afc7;" class="text-Rounded500">「サブプレビュー」</span>が示している色に更新したい場合は該当のプレビューをクリックして下さい。<br>
+        <span class="red-text text-Rounded" style="font-size: 0.85rem;">※入れ替えボタン<%= image_tag('change_btn.png', alt: 'プレビュー入れ替えボタン', class: "toolbtn-image-20", style: "width: 12px;") %>をクリックしたのみでは現在のカラーの変更は起こりません。</span>
+        </p><br>
+
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #da96ab;" class="text-Rounded700">カラーコード入力フォーム</span>：
+        本ペイントツールではカラーコードの入力からでもカラーを変更することが可能です。<span style="color: #F8A3B1;" class="text-Rounded500">「RGB形式」</span>と<span style="color: #59afc7;" class="text-Rounded500">「HSV形式」</span>のどちらかで指定できます。<br>
+        また、カラーコードフォームの数値と現在選択されているカラーは連動しているため選択したカラーのカラーコードの確認としてもご使用頂けます。
+      </p>
+
+      </div>
+
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <h2 class="explanation-section-title" style="margin-bottom: 0rem; margin-bottom: 5rem;">
+      <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">レイヤーパネル</span>
+    </h2>
+  
+    <section id="section5">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          レイヤーパネル図解
+        </span>
+      </h3>
+    </section>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      通常時のレイヤーパネル
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('normal_layer_panel.png', alt: '通常時のレイヤーパネルの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
         <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #7f7e80;" class="text-Rounded700">ツールパネルをデフォルトに戻すボタン</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-window-fullscreen"></i></span>：
         このボタンを押すとツールパネルがデフォルトに戻ります。<br>コンパクトパネルのフリーパレットに登録されたカラーは、デフォルトのツールパネルには移行されませんが、リセットもされずに残ります。再度コンパクトパネルを開いた際には、以前に登録したカラーが表示されます。</p><br>
 
@@ -413,10 +477,57 @@
         四角形を描画できるツールです。詳細は「詳細設定パネル」の項目にて解説します。</p><br>
 
         <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">ペーストボタン</span><%= image_tag('copy_btn.png', alt: 'コピーしたペイントを再度描画するボタン', class: "toolbtn-image") %>：
-        選択ツールにて「コピーモード」を選択しペイントのコピーを保持している状態の時に表示されるボタンです。コピーがない状態の時はボタンのUIは表示されません。</p><br>
-      </div>
+        選択ツールにて「コピーモード」を選択しペイントのコピーを保持している状態の時に表示されるボタンです。コピーがない状態の時はボタンのUIは表示されません。</p>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      レイヤー選択機能がオンの時のレイヤーパネル
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('layer_select_panel.png', alt: 'レイヤー選択機能がオンの時のレイヤーパネルの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      レイヤーUI
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+      <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #d98e3c;" class="text-Rounded700">表示状態のレイヤー</span><%= image_tag('copy_btn.png', alt: '表示状態のレイヤー', class: "layer-ui-image") %>：
+      この状態のレイヤーはペイントができます。<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤー保存」</span>にて保存の対象レイヤーとなります。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">非表示状態のレイヤー</span><%= image_tag('copy_btn.png', alt: '非表示状態のレイヤー', class: "layer-ui-image") %>：
+      この状態のレイヤーにはペイントはできません。<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤー保存」</span>では保存の対象外となります。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">描画レイヤー</span><%= image_tag('copy_btn.png', alt: '描画レイヤー', class: "layer-ui-image") %>：
+      この状態のレイヤーが現在<span style="color: #F8A3B1;" class="text-Rounded500">「ペイントできるレイヤー」</span>になります。作成したペイントはこの状態のレイヤーにのみ描画されます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">選択レイヤー</span><%= image_tag('copy_btn.png', alt: '選択レイヤー', class: "layer-ui-image") %>：
+      「レイヤー選択機能」がオンの時に描画レイヤー以外のレイヤーを選択するとそのレイヤーは「選択レイヤー」となります。<br>
+      この状態のレイヤーは<span style="color: #F8A3B1;" class="text-Rounded500">「「レイヤーの入れ替え」「転写」「複製」の操作の対象レイヤー</span>となります。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">背景レイヤー</span><%= image_tag('copy_btn.png', alt: '背景レイヤー', class: "layer-ui-image") %>：
+      一番下に位置するレイヤーで初期状態時からcanvasサイズと同じだけ白一色で塗りつぶされています。このレイヤーの表示をオフにすると背景色が透明になり他レイヤーでペイントしている範囲のみが表示されます。<br>
+      <span class="red-text">※このレイヤーにはペイントはできません。</span>
+      </p><br>
 
 
+    </div>
+
+
+
+
+      <span style="color: #F8A3B1;" class="text-Rounded500">保存対象</span>：<%= image_tag('layer_check_btn.png', alt: 'レイヤー表示チェックボックス', class: "toolbtn-image-20") %><br>
+      <span style="color: #59afc7;" class="text-Rounded500">保存対象外</span>：<%= image_tag('layer_checknone_btn.png', alt: 'レイヤー非表示チェックボックス', class: "toolbtn-image-20") %></p><br>
+      <p style="margin-bottom: 1rem; margin-top: -2.5rem;">
+        非表示<%= image_tag('layer_checknone_btn.png', alt: 'レイヤー非表示チェックボックス', class: "toolbtn-image-20") %>となっているレイヤーのペイント情報は保存時にデータが削除されるためご注意ください。<br>
+        チェックがついていない場合は12枚のレイヤー情報を1枚のレイヤーに集結して保存します。
+      <p>
 
   </div>
 

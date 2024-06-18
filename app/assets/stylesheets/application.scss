@@ -38,15 +38,15 @@ ul {
   list-style: none;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  // background-color: #fff; /* 背景色を設定 */
-  z-index: 2000; /* 他のコンテンツより前面に表示 */
-  // box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 影を付けるとより一層際立つ */
-}
+// header {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   // background-color: #fff; /* 背景色を設定 */
+//   z-index: 2000; /* 他のコンテンツより前面に表示 */
+//   // box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 影を付けるとより一層際立つ */
+// }
 
 html {
   scroll-behavior: smooth;
@@ -62,6 +62,24 @@ html {
 
 #content-wrap {
   flex: 1; /* コンテンツが伸縮して空間を埋める */
+}
+
+
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+}
+
+
+.header-container-paint {
+  position: static;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // z-index: 2000;
 }
 
 
@@ -9277,6 +9295,16 @@ background-color: #d1eee6;
   -o-object-fit: cover;
   object-fit: cover;
   margin-left: 0.12rem;
+}
+
+.layer-ui-image {
+  width: 232px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
 }
 
 .toolbtn-image-20 {

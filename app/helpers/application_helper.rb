@@ -117,6 +117,22 @@ module ApplicationHelper
     day_names = ["日", "月", "火", "水", "木", "金", "土"]
     day_names[Date.today.wday]
   end
+
+
+
+  def apply_paint_class?
+    # コントローラとアクションのペアをリストで管理
+    paint_classes = {
+      'items' => ['new_canvas', 'canvas_edit'],
+      'sub_users' => ['new', 'peint_edit'],
+      'spaces' => ['new', 'edit'],
+      'composites' => ['new', 'edit']
+    }
+
+    # 現在のコントローラがリストに含まれているか、及び現在のアクションが該当するかをチェック
+    paint_classes.any? { |controller, actions| controller_name == controller && actions.include?(action_name) }
+  end
+
   
 end
 
