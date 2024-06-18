@@ -152,7 +152,7 @@ const TopLineBlock = () => {
               onTouchStart={toggleDetailPanelVisible}
             >
               <i className="bi bi-gear-fill"></i>
-              <span className="tooltip-text">詳細パネルを表示</span>
+              <span className="tooltip-text">詳細設定パネルを表示</span>
             </div>
           )} 
         </div>

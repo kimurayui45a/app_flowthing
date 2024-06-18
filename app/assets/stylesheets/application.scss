@@ -9286,6 +9286,22 @@ background-color: #d1eee6;
   object-fit: cover;
 }
 
+.auto_btn-image {
+  width: 35px;
+  display: inline-block;
+  margin: 0.2rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.auto_none_image {
+  width: 200px;
+  display: inline-block;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin: 0px auto;
+  margin-left: 10rem;
+}
 
 .color-picker-image {
   width: 600px;
@@ -9300,6 +9316,36 @@ background-color: #d1eee6;
   margin-left: 0.3rem;
   margin-right: -0.3rem;
 }
+
+
+.embedded-item {
+  color: #5395ca;
+}
+
+.embedded-item:hover {
+  color: #1f5a89;
+}
+
+.steps-waza p {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+.steps-waza p::before {
+  content: counter(step); /* カウンタの値を表示 */
+  counter-increment: step; /* カウンタを増加 */
+  position: absolute;
+  left: 0; /* 番号を左端に配置 */
+  top: 0; /* 上端に揃える */
+  font-weight: bold; /* 番号を太字に */
+  color: #3a559d;
+}
+
+.steps-waza {
+  counter-reset: step; /* カウンタ 'step' を0にリセット */
+}
+
 
 //メディア対応
 @media (max-width: 1199px) {
@@ -9474,6 +9520,15 @@ background-color: #d1eee6;
     margin: 0px auto;
     -o-object-fit: cover;
     object-fit: cover;
+  }
+
+  .auto_none_image {
+    width: 200px;
+    display: inline-block;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin: 0px auto;
+    margin-left: 5rem;
   }
 }
 
