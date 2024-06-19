@@ -21,7 +21,7 @@
           <div class="accordion-content-sidebar" id="accordion-section2">
               <a href="#section5">レイヤーとは？</a>
               <a href="#section6">レイヤーパネル図解</a>
-              <a href="#section2">ペン</a>
+              <a href="#section7">ブレンドモード早見表</a>
               <a href="#section2">選択/画像</a>
               <a href="#section2">図形/テキスト</a>
           </div>
@@ -566,81 +566,85 @@
       <p>ペイントの透明度を操作できるスライダーです。100%が透明度なしの状態で数値が下がるにつれてペイントに透明度が付きます。<br>
         <br>
       </p>
-
-
       <p><span style="color: #79b46f;" class="text-Rounded700">ブレンドモード</span><%= image_tag('blendmode_select.png', alt: 'ブレンドモードのドロップダウンの画像', class: "explanation-image", style: "width: 100px;") %><br></p>
-<div style="margin-left: 3rem;">
-<table class="blendmode-table">
-  <thead>
-    <tr>
-      <th>ブレンドモード</th>
-      <th>効果</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>通常</td>
-      <td><%= image_tag('blendmode_normal.png', alt: 'ブレンドモードの通常', class: "explanation-image", style: "width: 100px;") %></td>
-    </tr>
-    <tr>
-      <td>比較(暗)</td>
-      <td><%= image_tag('blendmode_dark.png', alt: '比較(暗)', class: "explanation-image", style: "width: 100px;") %></td>
-    </tr>
-    <tr>
-      <td>比較(明)</td>
-      <td><%= image_tag('blendmode_lite.png', alt: '比較(明)', class: "explanation-image", style: "width: 100px;") %></td>
-    </tr>
-    <tr>
-      <td>色彩対比</td>
-      <td><%= image_tag('blendmode_diff.png', alt: '色彩対比', class: "explanation-image", style: "width: 100px;") %></td>
-    </tr>
-    <tr>
-      <td>乗算</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>除外</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>スクリーン</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>オーバーレイ</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>ハードライト</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>ソフトライト</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>覆い焼き</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>焼き込み</td>
-      <td>可</td>
-    </tr>
-    <tr>
-      <td>発光</td>
-      <td>可</td>
-    </tr>
-  </tbody>
-</table>
-
-      
-      <p>ペイントの透明度を操作できるスライダーです。100%が透明度なしの状態で数値が下がるにつれてペイントに透明度が付きます。<br>
-        <br>
+        <p>ペイントのブレンドモードを選択できるドロップダウンです。効果の詳細は下記の<span style="color: #F8A3B1;" class="text-Rounded500">「ブレンドモード早見表」</span>をご確認下さい。<br>
+          <br>
       </p>
-
-
     </div>
 
+    <section id="section7">
+      <h6 class="explanation-section-pointtitle" style="margin-bottom: 0rem; font-size: 1rem;">
+        <span class="orange-line">
+        ブレンドモード早見表
+        </span>
+      </h6>
+    </section>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <table class="blendmode-table">
+        <thead>
+          <tr>
+            <th>ブレンドモード</th>
+            <th>効果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>通常</td>
+            <td><%= image_tag('blendmode_normal.png', alt: 'ブレンドモードの通常', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>比較(暗)</td>
+            <td><%= image_tag('blendmode_dark.png', alt: 'ブレンドモードの比較(暗)', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>比較(明)</td>
+            <td><%= image_tag('blendmode_lite.png', alt: 'ブレンドモードの比較(明)', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>色彩対比</td>
+            <td><%= image_tag('blendmode_diff.png', alt: 'ブレンドモードの色彩対比', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>乗算</td>
+            <td><%= image_tag('blendmode_mult.png', alt: 'ブレンドモードの乗算', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>除外</td>
+            <td><%= image_tag('blendmode_excl.png', alt: 'ブレンドモードの除外', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>スクリーン</td>
+            <td><%= image_tag('blendmode_screen.png', alt: 'ブレンドモードのスクリーン', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>オーバーレイ</td>
+            <td><%= image_tag('blendmode_over.png', alt: 'ブレンドモードのオーバーレイ', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>ハードライト</td>
+            <td><%= image_tag('blendmode_hard.png', alt: 'ブレンドモードのハードライト', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>ソフトライト</td>
+            <td><%= image_tag('blendmode_soft.png', alt: 'ブレンドモードのソフトライト', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>覆い焼き</td>
+            <td><%= image_tag('blendmode_dodge.png', alt: 'ブレンドモードの覆い焼き', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>焼き込み</td>
+            <td><%= image_tag('blendmode_burn.png', alt: 'ブレンドモードの焼き込み', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+          <tr>
+            <td>発光</td>
+            <td><%= image_tag('blendmode_add.png', alt: 'ブレンドモードの発光', class: "explanation-image", style: "width: 100px;") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
 
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
       <span class="orange-line">
