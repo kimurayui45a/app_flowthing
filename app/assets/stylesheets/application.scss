@@ -9295,10 +9295,10 @@ background-color: #d1eee6;
 .toolbtn-image {
   width: 32px;
   display: inline-block;
-  margin: 0px auto;
+  // margin: 0px auto;
   -o-object-fit: cover;
   object-fit: cover;
-  margin-left: 0.12rem;
+  margin: 0.12rem;
 }
 
 .layer-ui-image {
@@ -9732,4 +9732,21 @@ background-color: #d1eee6;
 
 .accordion-content-sidebar a:hover {
   color: #726c86;
+}
+
+
+.blendmode-table {
+  // width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.blendmode-table th, .blendmode-table td {
+  border: 1px solid #ccc;
+  // padding: 8px 12px;
+}
+
+.blendmode-table th {
+  background-color: #f2f2f2;
+  width: 6rem;
 }

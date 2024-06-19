@@ -19,7 +19,8 @@
         <li>
           <div class="accordion-toggle-sidebar">レイヤーパネル<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
-              <a href="#section5">レイヤーパネル図解</a>
+              <a href="#section5">レイヤーとは？</a>
+              <a href="#section6">レイヤーパネル図解</a>
               <a href="#section2">ペン</a>
               <a href="#section2">選択/画像</a>
               <a href="#section2">図形/テキスト</a>
@@ -355,7 +356,7 @@
     </div>
 
     <section id="section3">
-      <h3 class="explanation-section-subtitle">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 2rem">
         <span class="sub-line">
           コンパクトパネル
         </span>
@@ -453,12 +454,34 @@
     <section id="section5">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
+          レイヤーとは？
+        </span>
+      </h3>
+    </section>
+      <div class="sidebar-design">
+        <%= image_tag('layer_number.png', alt: 'レイヤーの解説', class: "toolpanel-image") %>
+      </div>
+      <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+        ペイントツールにおいて、「レイヤー」とは、透明な紙のようなものです。<br>
+        これにより、画像を層別に分けて編集することが可能になります。<br>
+        各レイヤーには番号が振られており、<span style="color: #F8A3B1;" class="text-Rounded500">番号が大きいレイヤーほど上位</span>に表示されます。<br>
+        このペイントツールでは、合計で13枚のレイヤーが用意されています。<br>
+        この中で、最初の1枚（レイヤー番号0番）は<span style="color: #F8A3B1;" class="text-Rounded500">「背景レイヤー」</span>と呼ばれ、これは固定されており操作することはできません。<br>
+        背景レイヤーを除く残りの<span style="color: #F8A3B1;" class="text-Rounded500">12枚</span>は自由にペイントして使用することができます。<br>
+        これにより、背景を保持しつつ、その上に様々な画像や効果を加えることができるため、複雑な作品も容易に作成することが可能です。<br>
+        この構造を利用することで、自由なペインティングや詳細な画像編集をお楽しみ頂けます。
+      </p>
+
+
+    <section id="section6">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
           レイヤーパネル図解
         </span>
       </h3>
     </section>
 
-    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem;">
       <span class="point-line">
       通常時のレイヤーパネル
       </span>
@@ -467,31 +490,49 @@
       <%= image_tag('normal_layer_panel.png', alt: '通常時のレイヤーパネルの図解', class: "toolpanel-image") %>
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
-      <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
-        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※
-        レイヤー関連の機能については「レイヤーUI」の項目にて解説します。
-        </span>
-      </p>
-        <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #e4816c;" class="text-Rounded700">描画レイヤー名の表示/変更</span><%= image_tag('layer_form.png', alt: 'レイヤー名を入力するフォーム', class: "explanation-image", style: "width: 100px;") %>：
-        ここに現在選択されているレイヤーの名前が表示されます。また、このフォームからレイヤー名の変更が可能です。</p><br>
+      <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #e4816c;" class="text-Rounded700">描画レイヤー名の表示/変更</span><%= image_tag('layer_form.png', alt: 'レイヤー名を入力するフォーム', class: "explanation-image", style: "width: 100px;") %>：
+      ここに現在選択されているレイヤーの名前が表示されます。また、このフォームからレイヤー名の変更が可能です。</p><br>
 
-        <p><span style="color: #d98e3c;" class="text-Rounded700">プレビュー更新</span><%= image_tag('preview_reload_btn.png', alt: 'レイヤーのプレビューを更新するボタン', class: "toolbtn-image") %>：
-        レイヤーごとの個別プレビューと全体のプレビューが更新されます。個別プレビューは後述の<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤーUIの基本構成」</span>にて解説いたします。<br>
-        全体プレビューについては「<a href="#section3" class="embedded-item text-Rounded500">スケールパネル</a>」をご確認ください。<br></p>
+      <p><span style="color: #c1d141;" class="text-Rounded700">プレビュー更新</span><%= image_tag('preview_reload_btn.png', alt: 'レイヤーのプレビューを更新するボタン', class: "toolbtn-image") %>：
+      レイヤーごとの個別プレビューと全体のプレビューが更新されます。個別プレビューは後述の<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤーUIの基本構成」</span>にて解説いたします。<br>
+      全体プレビューについては「<a href="#section3" class="embedded-item text-Rounded500">スケールパネル</a>」をご確認ください。<br></p>
 
-        <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">レイヤー選択機能をオンにするボタン</span><%= image_tag('second_layer_btn.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>：
-        このボタンを押すとレイヤー選択機能がオン<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>になり、レイヤーパネルの状態が下記の「<span class="text-Rounded500 point-line">レイヤー選択機能がオンの時のレイヤーパネル</span>」のものに変化します。<br></p>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">レイヤー選択機能をオンにするボタン</span><%= image_tag('second_layer_btn.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>：
+      このボタンを押すとレイヤー選択機能がオン<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>になり、レイヤーパネルの状態が下記の「<span class="text-Rounded500 point-line">レイヤー選択機能がオンの時のレイヤーパネル</span>」のものに変化します。<br></p>
     </div>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
+      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※
+      レイヤー関連の機能については「レイヤーUI」の項目にて解説します。
+      </span>
+    </p>
 
-    <h4 class="explanation-section-pointtitle" style="margin-top: 5rem;">
+    <h4 class="explanation-section-pointtitle" style="margin-top: 5rem; margin-bottom: 3rem">
       <span class="point-line">
-      レイヤー選択機能がオンの時のレイヤーパネル
+      レイヤー選択機能がオン<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image", style: "margin-bottom: 1rem;") %>の時のレイヤーパネル
       </span>
     </h4>
     <div class="sidebar-design">
       <%= image_tag('layer_select_panel.png', alt: 'レイヤー選択機能がオンの時のレイヤーパネルの図解', class: "toolpanel-image") %>
     </div>
-    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: 3rem;">
+
+      <p><span style="color: #7f7e80;" class="text-Rounded700">選択レイヤー名</span><%= image_tag('selectlayer_name.png', alt: '選択レイヤーの名前を表示する項目', class: "explanation-image", style: "width: 100px;") %>：
+      ここに選択中のレイヤーの名前が表示されます。選択レイヤーがない場合は<span style="color: #59afc7;" class="text-Rounded500">「未選択」</span>と表示されます。<br></p>
+
+      <p><span style="color: #e4816c;" class="text-Rounded700">「レイヤー選択機能」の解除</span><%= image_tag('selectlayer_delete.png', alt: '選択レイヤーを解除するボタン', class: "explanation-image", style: "width: 100px;") %>：
+      このボタンを押すと「レイヤー選択機能」がオフになります。また<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>を押しても「レイヤー選択機能」をオフにすることができます。<br></p>
+
+      <p><span style="color: #da96ab;" class="text-Rounded700">レイヤーの入れ替え</span><%= image_tag('layer_change_btn.png', alt: 'レイヤーのペイントを入れ替えるボタン', class: "toolbtn-image") %>：
+      選択レイヤーがある状態でこのボタンを押すと、<span style="color: #F8A3B1;" class="text-Rounded500">「描画レイヤー」</span>と<span style="color: #59afc7;" class="text-Rounded500">「選択レイヤー」</span>を入れ替えることができます。<br>
+      ペイントだけでなくブレンドモードや透明度を含め<span style="color: #F8A3B1;" class="text-Rounded500">全ての情報を入れ替え</span>ます。<br></p>
+
+      <p><span style="color: #da96ab;" class="text-Rounded700">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>：
+      選択レイヤーがある状態でこのボタンを押すと、<span style="color: #F8A3B1;" class="text-Rounded500">「描画レイヤー」</span>のペイントを<span style="color: #59afc7;" class="text-Rounded500">「選択レイヤー」</span>に移動します。<br>
+      <span class="red-text text-Rounded500">※</span>この機能ではブレンドモードや透明度は追従しません。そのため、ブレンドモードや透明度の効果がかかっていない状態で<span style="color: #F8A3B1;" class="text-Rounded500">ペイントのみが移動</span>します。<br></p>
+
+      <p><span style="color: #da96ab;" class="text-Rounded700">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>：
+      選択レイヤーがある状態でこのボタンを押すと、<span style="color: #F8A3B1;" class="text-Rounded500">「描画レイヤー」</span>のペイントを<span style="color: #59afc7;" class="text-Rounded500">「選択レイヤー」</span>にコピーして描画します。<br>
+      <span class="red-text text-Rounded500">※</span>この機能ではブレンドモードや透明度は追従しません。そのため、ブレンドモードや透明度の効果がかかっていない状態で<span style="color: #F8A3B1;" class="text-Rounded500">ペイントのみが移動</span>します。<br></p>
     </div>
 
     <h4 class="explanation-section-pointtitle" style="margin-top: 5rem;">
@@ -499,11 +540,114 @@
       レイヤーUI
       </span>
     </h4>
-    <h5 class="explanation-section-pointtitle" style="margin-bottom: 0rem; font-size: 1rem;">
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
       <span class="orange-line">
       レイヤーUIの基本構造
       </span>
     </h5>
+    <div class="sidebar-design">
+      <%= image_tag('layer_explanation_image.png', alt: 'レイヤーUIの基本構造', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: 3rem;">
+      <p style="margin-bottom: 3rem;"><span style="color: #5ab8d2;" class="text-Rounded700">レイヤーの表示切り替え</span><%= image_tag('layer_check_btn.png', alt: 'レイヤー表示チェックボックス', class: "toolbtn-image-20") %>：
+      レイヤーの表示状態を切り替えるチェックボックスです。このボックスに<span style="color: #59afc7;" class="text-Rounded500"><i class="bi bi-vector-pen"></i></span>マークがあるレイヤーにペイントできます。<br>
+      また<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤー保存」</span>にて保存の対象レイヤーとなります。<br>
+      </p>
+
+      <p><span style="color: #d98e3c;" class="text-Rounded700">レイヤー個別プレビュー</span><%= image_tag('layer_preview.png', alt: 'レイヤー表示チェックボックス', class: "explanation-image", style: "width: 50px;") %><br></p>
+      <p style="margin-left: 3rem;"><%= image_tag('layer_preview_sample.png', alt: 'レイヤー個別プレビューのサンプル', class: "explanation-image", style: "width: 237px;") %></p>
+      <p>レイヤーのペイント状態を個別に表示するプレビューです。レイヤーの表示<%= image_tag('layer_check_btn.png', alt: 'レイヤー表示チェックボックス', class: "toolbtn-image-20") %>に関係なく記録しているため、ここに表示があるレイヤーにはペイントがあります。<br>
+        リアルタイム更新ではないため最新の状態を確認したい場合は<%= image_tag('preview_reload_btn.png', alt: 'レイヤーのプレビューを更新するボタン', class: "toolbtn-image") %>を押して手動更新して下さい。<br>
+        <br>
+      </p>
+
+      <p><span style="color: #da96ab;" class="text-Rounded700">透明度調整スライダー</span><%= image_tag('alpha_slider.png', alt: '透明度調整スライダー', class: "explanation-image", style: "width: 150px;") %><br></p>
+      <p style="margin-left: 3rem;"><%= image_tag('alpha_slider_image.png', alt: '透明度調整スライダーのサンプル', class: "explanation-image", style: "width: 500px;") %></p>
+      <p>ペイントの透明度を操作できるスライダーです。100%が透明度なしの状態で数値が下がるにつれてペイントに透明度が付きます。<br>
+        <br>
+      </p>
+
+
+      <p><span style="color: #79b46f;" class="text-Rounded700">ブレンドモード</span><%= image_tag('blendmode_select.png', alt: 'ブレンドモードのドロップダウンの画像', class: "explanation-image", style: "width: 100px;") %><br></p>
+<div style="margin-left: 3rem;">
+<table class="blendmode-table">
+  <thead>
+    <tr>
+      <th>ブレンドモード</th>
+      <th>効果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>通常</td>
+      <td><%= image_tag('blendmode_normal.png', alt: 'ブレンドモードの通常', class: "explanation-image", style: "width: 100px;") %></td>
+    </tr>
+    <tr>
+      <td>比較(暗)</td>
+      <td><%= image_tag('blendmode_dark.png', alt: '比較(暗)', class: "explanation-image", style: "width: 100px;") %></td>
+    </tr>
+    <tr>
+      <td>比較(明)</td>
+      <td><%= image_tag('blendmode_lite.png', alt: '比較(明)', class: "explanation-image", style: "width: 100px;") %></td>
+    </tr>
+    <tr>
+      <td>色彩対比</td>
+      <td><%= image_tag('blendmode_diff.png', alt: '色彩対比', class: "explanation-image", style: "width: 100px;") %></td>
+    </tr>
+    <tr>
+      <td>乗算</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>除外</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>スクリーン</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>オーバーレイ</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>ハードライト</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>ソフトライト</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>覆い焼き</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>焼き込み</td>
+      <td>可</td>
+    </tr>
+    <tr>
+      <td>発光</td>
+      <td>可</td>
+    </tr>
+  </tbody>
+</table>
+
+      
+      <p>ペイントの透明度を操作できるスライダーです。100%が透明度なしの状態で数値が下がるにつれてペイントに透明度が付きます。<br>
+        <br>
+      </p>
+
+
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
+      <span class="orange-line">
+      レイヤーUIの状態説明
+      </span>
+    </h5>
+
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
       <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #d98e3c;" class="text-Rounded700">表示状態のレイヤー</span><%= image_tag('layer_ui.png', alt: '表示状態のレイヤー', class: "layer-ui-image") %>：
       この状態のレイヤーはペイントができます。<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤー保存」</span>にて保存の対象レイヤーとなります。</p><br>
@@ -516,7 +660,7 @@
 
       <p style="margin-bottom: -0.8rem; margin-top: 1.2rem;"><span style="color: #d98e3c;" class="text-Rounded700">選択レイヤー</span><%= image_tag('layer_ui_select.png', alt: '選択レイヤー', class: "layer-ui-image") %>：
       「レイヤー選択機能」がオンの時に描画レイヤー以外のレイヤーを選択するとそのレイヤーは「選択レイヤー」となります。<br>
-      この状態のレイヤーは<span style="color: #F8A3B1;" class="text-Rounded500">「「レイヤーの入れ替え」「転写」「複製」の操作の対象レイヤー</span>となります。
+      この状態のレイヤーは<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤーの入れ替え」「転写」「複製」の操作の対象レイヤー</span>となります。
       </p><br>
 
       <p style="margin-bottom: -0.8rem; margin-top: 1.2rem;"><span style="color: #d98e3c;" class="text-Rounded700">背景レイヤー</span><%= image_tag('layer_ui_background.png', alt: '背景レイヤー', class: "layer-ui-image") %>：
