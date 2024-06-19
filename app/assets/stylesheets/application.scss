@@ -9253,6 +9253,10 @@ background-color: #d1eee6;
   background: linear-gradient(transparent 60%, #F8A3B1 0%);
 }
 
+.orange-line {
+  background: linear-gradient(transparent 60%, #F6E4C5 0%);
+}
+
 
 .how-to-board-image {
   display: inline-block;
@@ -9299,6 +9303,15 @@ background-color: #d1eee6;
 
 .layer-ui-image {
   width: 232px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+}
+
+.explanation-image {
   display: inline-block;
   margin: 0px auto;
   -o-object-fit: cover;

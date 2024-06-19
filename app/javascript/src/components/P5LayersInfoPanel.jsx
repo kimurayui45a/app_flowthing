@@ -841,7 +841,6 @@ const P5LayersInfoPanel = () => {
                     <option value="MULTIPLY">乗算</option>
                     <option value="EXCLUSION">除外</option>
                     <option value="SCREEN">スクリーン</option>
-                    <option value="REPLACE">置換</option>
                     <option value="OVERLAY">オーバーレイ</option>
                     <option value="HARD_LIGHT">ハードライト</option>
                     <option value="SOFT_LIGHT">ソフトライト</option>
