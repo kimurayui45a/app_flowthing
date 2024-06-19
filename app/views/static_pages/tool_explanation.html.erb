@@ -2,14 +2,15 @@
 <div class='p5canvas-container'>
 
   <% profile = current_user.profile if user_signed_in? %>
-  <div class="sidebar" style="background-color: <%= user_signed_in? ? profile.color_code : '#acd3dd' %>;">
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
     <div class="text-Rounded700"><h1 class="sidebar-title">ツール</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
           <li><a href="#section1">基本操作</a></li>
           
         <li>
-          <div class="accordion-toggle-sidebar">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section1">
               <a href="#section2">ツールパネル図解</a>
               <a href="#section3">コンパクトパネル</a>
@@ -17,20 +18,18 @@
         </li>
         <li><a href="#section4">カラーパレットパネル</a></li>
         <li>
-          <div class="accordion-toggle-sidebar">レイヤーパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">レイヤーパネル<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
               <a href="#section5">レイヤーとは？</a>
               <a href="#section6">レイヤーパネル図解</a>
               <a href="#section7">ブレンドモード早見表</a>
-              <a href="#section2">選択/画像</a>
-              <a href="#section2">図形/テキスト</a>
           </div>
         </li>
         <li>
-          <div class="accordion-toggle-sidebar">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section3">
-              <a href="#section2">詳細設定パネル図解</a>
-              <a href="#section2">ペン</a>
+              <%= link_to '詳細設定パネルの基本構造', tool_explanation_second_path + '#section1' %>
+              <%= link_to 'ペン', tool_explanation_second_path + '#section2' %>
               <a href="#section2">選択/画像</a>
               <a href="#section2">図形/テキスト</a>
           </div>
@@ -47,11 +46,10 @@
 
   <div class="sidebar-content">
 
-    
     <section id="section1">
       <div style="height: 7rem; width: 100px;"></div>
       <h2 class="explanation-section-title">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">基本操作</span>
+        <span class="text-line">基本操作</span>
       </h2>
       <div class="sidebar-design">
         <%= image_tag('painttool_image.png', alt: 'ペイントツールの説明画像', class: "painttool-image") %>
@@ -255,7 +253,7 @@
 
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title" style="margin-bottom: 5rem;">
-      <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">ツールパネル</span>
+      <span class="text-line">ツールパネル</span>
     </h2>
 
     <section id="section2">
@@ -276,7 +274,7 @@
     </h4>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
       <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※
-      「ペン/消しゴム」「選択/テキスト/画像」は「詳細設定パネル」の項目にて解説します。
+      「ペン」「選択/テキスト/画像」は「<%= link_to '詳細設定パネル', tool_explanation_second_path + '#section1', class: "embedded-item text-Rounded500" %>」の項目にて解説します。
       </span>
     </p>
 
@@ -332,6 +330,9 @@
       <span class="text-Rounded">この方法を利用すると、画像は元のレイヤーと完全に同じ位置に挿入されます。<br>これにより、異なるアイテム間でレイヤーを簡単に移動させたり、共有したりすることが可能です。</span>
       <br>
 
+
+      <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #c9da39;" class="text-Rounded700">消しゴム</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eraser-fill"></i></span>：
+      canvas上でクリック&ドラッグされた範囲のペイントを削除します。ブラシサイズはサイズパネルで選択されているサイズと連動しております。</p><br>
 
       <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #59afc7;" class="text-Rounded700">スポイト</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eyedropper"></i></span>：
       canvas上で取得したい色をクリックするとその色で現在のカラーを更新します。</p><br>
@@ -396,7 +397,7 @@
     <div style="height: 7rem; width: 100px;"></div>
     <section id="section4">
       <h2 class="explanation-section-title" style="margin-bottom: 0rem; margin-bottom: 3rem;">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">カラーパレットパネル</span>
+        <span class="text-line">カラーパレットパネル</span>
       </h2>
       <div class="sidebar-design">
         <%= image_tag('colorpallet_panel.png', alt: 'カラーパレットパネルの図解', class: "toolpanel-image") %>
@@ -448,7 +449,7 @@
 
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title" style="margin-bottom: 5rem;">
-      <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">レイヤーパネル</span>
+      <span class="text-line">レイヤーパネル</span>
     </h2>
   
     <section id="section5">
@@ -567,20 +568,22 @@
         <br>
       </p>
       <p><span style="color: #79b46f;" class="text-Rounded700">ブレンドモード</span><%= image_tag('blendmode_select.png', alt: 'ブレンドモードのドロップダウンの画像', class: "explanation-image", style: "width: 100px;") %><br></p>
-        <p>ペイントのブレンドモードを選択できるドロップダウンです。効果の詳細は下記の<span style="color: #F8A3B1;" class="text-Rounded500">「ブレンドモード早見表」</span>をご確認下さい。<br>
-          <br>
+        <p>ペイントのブレンドモードを選択できるドロップダウンです。<br>
+        ブレンドモードとは画像編集やデジタルアートで用いられる機能で、2つ以上の画像や色を重ね合わせた時の色の混合方法を決定します。<br>
+        効果の詳細は下記の<span style="color: #F8A3B1;" class="text-Rounded500">「ブレンドモード早見表」</span>をご確認下さい。<br>
+        <br>
       </p>
     </div>
 
     <section id="section7">
-      <h6 class="explanation-section-pointtitle" style="margin-bottom: 0rem; font-size: 1rem;">
-        <span class="orange-line">
+      <h6 class="explanation-section-pointtitle" style="margin-top: -1rem; font-size: 0.9rem;">
+        <span class="sakura-line">
         ブレンドモード早見表
         </span>
       </h6>
     </section>
 
-    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9; margin-top: -1rem;">
       <table class="blendmode-table">
         <thead>
           <tr>
@@ -653,27 +656,48 @@
     </h5>
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
-      <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #d98e3c;" class="text-Rounded700">表示状態のレイヤー</span><%= image_tag('layer_ui.png', alt: '表示状態のレイヤー', class: "layer-ui-image") %>：
+      <p style="margin-bottom: -0.5rem;"><span style="color: #d98e3c;" class="text-Rounded700">表示状態のレイヤー</span><%= image_tag('layer_ui.png', alt: '表示状態のレイヤー', class: "layer-ui-image") %>：
       この状態のレイヤーはペイントができます。<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤー保存」</span>にて保存の対象レイヤーとなります。</p><br>
 
-      <p style="margin-bottom: -0.8rem; margin-top: 1.2rem;"><span style="color: #d98e3c;" class="text-Rounded700">非表示状態のレイヤー</span><%= image_tag('layer_ui_noactive.png', alt: '非表示状態のレイヤー', class: "layer-ui-image") %>：
+      <p style="margin-bottom: -0.5rem;"><span style="color: #d98e3c;" class="text-Rounded700">非表示状態のレイヤー</span><%= image_tag('layer_ui_noactive.png', alt: '非表示状態のレイヤー', class: "layer-ui-image") %>：
       この状態のレイヤーにはペイントはできません。<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤー保存」</span>では保存の対象外となります。</p><br>
 
-      <p style="margin-bottom: -0.8rem; margin-top: 1.2rem;"><span style="color: #d98e3c;" class="text-Rounded700">描画レイヤー</span><%= image_tag('layer_ui_active.png', alt: '描画レイヤー', class: "layer-ui-image") %>：
+      <p style="margin-bottom: -0.5rem;"><span style="color: #d98e3c;" class="text-Rounded700">描画レイヤー</span><%= image_tag('layer_ui_active.png', alt: '描画レイヤー', class: "layer-ui-image") %>：
       この状態のレイヤーが現在<span style="color: #F8A3B1;" class="text-Rounded500">「ペイントできるレイヤー」</span>になります。作成したペイントはこの状態のレイヤーにのみ描画されます。</p><br>
 
-      <p style="margin-bottom: -0.8rem; margin-top: 1.2rem;"><span style="color: #d98e3c;" class="text-Rounded700">選択レイヤー</span><%= image_tag('layer_ui_select.png', alt: '選択レイヤー', class: "layer-ui-image") %>：
+      
+      <p class="red-text text-Rounded500">※レイヤーUIのクリック判定について</p><br>
+      <div style="margin-top: -2.5rem;"><%= image_tag('layer_click_area.png', alt: '※レイヤーUIのクリック判定に関する画像', class: "layer-ui-image") %></div>
+      <p style="margin-top: -1rem; margin-bottom: 2.5rem;">上記の赤枠の部分がクリックで描画/選択レイヤーを切り替えられる判定部分になります。<br>
+      その他の部分をクリックしても切り替えは発生しません。</p>
+
+
+      <p style="margin-bottom: -0.5rem;"><span style="color: #d98e3c;" class="text-Rounded700">選択レイヤー</span><%= image_tag('layer_ui_select.png', alt: '選択レイヤー', class: "layer-ui-image") %>：
       「レイヤー選択機能」がオンの時に描画レイヤー以外のレイヤーを選択するとそのレイヤーは「選択レイヤー」となります。<br>
       この状態のレイヤーは<span style="color: #F8A3B1;" class="text-Rounded500">「レイヤーの入れ替え」「転写」「複製」の操作の対象レイヤー</span>となります。
       </p><br>
 
-      <p style="margin-bottom: -0.8rem; margin-top: 1.2rem;"><span style="color: #d98e3c;" class="text-Rounded700">背景レイヤー</span><%= image_tag('layer_ui_background.png', alt: '背景レイヤー', class: "layer-ui-image") %>：
+      <p><span style="color: #d98e3c;" class="text-Rounded700">背景レイヤー</span><%= image_tag('layer_ui_background.png', alt: '背景レイヤー', class: "layer-ui-image") %>：
       一番下に位置するレイヤーで初期状態時からcanvasサイズと同じだけ白一色で塗りつぶされています。このレイヤーの表示をオフにすると背景色が透明になり他レイヤーでペイントしている範囲のみが表示されます。<br>
-      <span class="red-text">※このレイヤーにはペイントはできません。</span>
+      <span style="color: #F8A3B1;">このレイヤーにはペイントはできません。</span>
       </p><br>
 
+      <div class="flex-between" style="width: 500px; margin-top: -0.5rem;">
+        <div class="flex-start-start-flex-column">
+          <span>背景レイヤー<span style="color: #F8A3B1;" class="text-Rounded500">表示</span></span>
+          <div><%= image_tag('layer_ui_background.png', alt: '表示状態の背景レイヤー', class: "layer-ui-image") %></div>
+          <div><%= image_tag('background_white.png', alt: '背景レイヤーが表示状態の画像', class: "explanation-image", style: "width: 150px;") %></div>
+        </div>
 
+        <div class="flex-start-start-flex-column">
+          <span>背景レイヤー<span style="color: #59afc7;" class="text-Rounded500">非表示</span></span>
+          <div><%= image_tag('background_layer_none.png', alt: '非表示状態の背景レイヤー', class: "layer-ui-image") %></div>
+          <div><%= image_tag('background_none.png', alt: '背景レイヤーが非表示状態の画像', class: "explanation-image", style: "width: 150px;") %></div>
+        </div>
+      </div>
     </div>
+
+    <div style="height: 10rem; width: 100px;"></div>
 
 
   </div>

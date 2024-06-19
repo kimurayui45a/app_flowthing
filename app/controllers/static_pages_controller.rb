@@ -89,6 +89,8 @@ class StaticPagesController < ApplicationController
 
   def tool_explanation; end
 
+  def tool_explanation_second; end
+
   def idea_page; end
   
 end

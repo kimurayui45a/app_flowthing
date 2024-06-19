@@ -308,7 +308,7 @@ useEffect(() => {
                     <rect className="nofill-icon-cls-2" x="7.87" y="8.75" width="16.6" height="16.6" rx="1.22" ry="1.22"/>
                     <rect className="nofill-icon-cls-1" x="5.58" y="6.47" width="21.18" height="21.18" rx="1.12" ry="1.12"/>
                   </svg>
-                  <span className="tooltip-text">線も内部も塗る</span>
+                  <span className="tooltip-text">内部のみ塗る</span>
                 </div>
 
                 {/* 輪郭も中も塗りつぶす */}
@@ -341,7 +341,7 @@ useEffect(() => {
                     <rect className="allpaint-icon-cls-1" x="5.58" y="6.47" width="21.18" height="21.18" rx="1.12" ry="1.12"/>
                     <rect className="allpaint-icon-cls-2" x="7.87" y="8.75" width="16.6" height="16.6" rx="1.22" ry="1.22"/>
                   </svg>
-                  <span className="tooltip-text">図形の中を塗りつぶす</span>
+                  <span className="tooltip-text">線も内部も塗る</span>
                 </div>
               </div>
             </>

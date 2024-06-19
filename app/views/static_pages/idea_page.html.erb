@@ -1,7 +1,7 @@
 <div class='p5canvas-container'>
 
   <% profile = current_user.profile if user_signed_in? %>
-  <div class="sidebar" style="background-color: <%= user_signed_in? ? profile.color_code : '#acd3dd' %>;">
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
     <div class="text-Rounded700"><h1 class="sidebar-title">アイデア</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
@@ -20,7 +20,7 @@
     <section id="section1">
       <div style="height: 7rem; width: 100px;"></div>
       <h2 class="explanation-section-title">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション1</span>
+        <span class="text-line">セクション1</span>
       </h2>
       <p class="explanation-section-text">ここにセクション1の内容が入ります。</p>
     </section>
@@ -28,7 +28,7 @@
     <section id="section2">
       <div style="height: 7rem; width: 100px;"></div>
       <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション2</span>
+        <span class="text-line">セクション2</span>
       </h2>
       <p class="explanation-section-text">ここにセクション2の内容が入ります。</p>
     </section>
@@ -36,7 +36,7 @@
     <section id="section3">
       <div style="height: 7rem; width: 100px;"></div>
       <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line" style="background: linear-gradient(transparent 60%, <%= user_signed_in? ? profile.color_code : '#acd3dd' %> 0%);">セクション3</span>
+        <span class="text-line">セクション3</span>
       </h2>
       <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
     </section>

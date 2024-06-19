@@ -9098,6 +9098,7 @@ background-color: #d1eee6;
 
 .text-line {
   text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  background: linear-gradient(transparent 60%, #F8A3B1 0%);
 }
 
 .how-to-use-image {
@@ -9161,7 +9162,7 @@ background-color: #d1eee6;
 }
 
 .how-to-use-table th {
-  background-color: #f2f2f2; /* 見出し行の背景色 */
+  background-color: #d6edf9; /* 見出し行の背景色 */
   // color: black;
 }
 
@@ -9257,6 +9258,10 @@ background-color: #d1eee6;
   background: linear-gradient(transparent 60%, #F6E4C5 0%);
 }
 
+.sakura-line {
+  background: linear-gradient(transparent 60%, #F6D0EB 0%);
+}
+
 
 .how-to-board-image {
   display: inline-block;
@@ -9282,6 +9287,15 @@ background-color: #d1eee6;
   object-fit: cover;
 }
 
+.detail_panel-list_image {
+  width: 600px;
+  display: inline-block;
+  margin-left: -7rem;
+  margin-top: 2rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
 .toolpanel-image-picker {
   width: 500px;
   display: inline-block;
@@ -9302,7 +9316,7 @@ background-color: #d1eee6;
 }
 
 .layer-ui-image {
-  width: 232px;
+  width: 200px;
   display: inline-block;
   margin: 0px auto;
   -o-object-fit: cover;
@@ -9318,6 +9332,16 @@ background-color: #d1eee6;
   object-fit: cover;
   // margin-left: 0.12rem;
   margin: 0.2rem;
+}
+
+.brush-sample-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 100px;
 }
 
 .toolbtn-image-20 {
@@ -9493,6 +9517,15 @@ background-color: #d1eee6;
     object-fit: cover;
     margin-left: 5rem;
   }
+
+  .detail_panel-list_image {
+    width: 500px;
+    display: inline-block;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-left: -6rem;
+    margin-top: 2rem;
+  }
 }
 
 
@@ -9581,6 +9614,14 @@ background-color: #d1eee6;
     margin-left: 2rem;
   }
 
+  .detail_panel-list_image {
+    width: 450px;
+    display: inline-block;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-left: -5rem;
+    margin-top: 2rem;
+  }
 
   .color-picker-image {
     width: 500px;
@@ -9597,6 +9638,16 @@ background-color: #d1eee6;
     object-fit: cover;
     margin: 0px auto;
     margin-left: 5rem;
+  }
+
+  .brush-sample-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    // margin-left: 0.12rem;
+    margin: 0.2rem;
+    width: 90px;
   }
 }
 
@@ -9702,6 +9753,25 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
   }
+
+  .detail_panel-list_image {
+    width: 400px;
+    display: inline-block;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-left: -4rem;
+    margin-top: 2rem;
+  }
+
+  .brush-sample-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    // margin-left: 0.12rem;
+    margin: 0.2rem;
+    width: 70px;
+  }
 }
 
 
@@ -9736,9 +9806,10 @@ background-color: #d1eee6;
 
 
 .blendmode-table {
-  width: 210px;
+  width: 205px;
   border-collapse: collapse;
-  text-align: left;
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 .blendmode-table th, .blendmode-table td {
@@ -9749,4 +9820,31 @@ background-color: #d1eee6;
 .blendmode-table th {
   background-color: #f2f2f2;
   width: 6rem;
+}
+
+
+.pen-type-table {
+  // width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.pen-type-table th, .pen-type-table td {
+  border: 1px solid #ccc;
+  padding: 0.2rem;
+}
+
+.pen-type-table th {
+  background-color: #d6edf9;
+}
+
+.pen-type-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.pen-type-table-text {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  text-align: left;
 }

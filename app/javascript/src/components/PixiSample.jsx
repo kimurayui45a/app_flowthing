@@ -58,7 +58,12 @@ const PixiSample = ({ canvasP5ToPixi, updateTrigger }) => {
 
       pixiContainer.current.appendChild(app.view);
       appRef.current = app;
-      app.stage.interactive = true;
+
+
+      //7.2.0からinteractiveが非推奨になったらしいので下記にした
+      //app.stage.interactive = true;
+      app.stage.eventMode = 'dynamic';
+
       app.stage.hitArea = app.screen;
 
       let spriteSpace = Texture.from(sampleRoomSpace);
@@ -89,7 +94,11 @@ const PixiSample = ({ canvasP5ToPixi, updateTrigger }) => {
     sprite.anchor.set(0.5);
     sprite.x = 100;
     sprite.y = 100;
-    sprite.interactive = true;
+
+    //7.2.0からinteractiveが非推奨になったらしいので下記にした
+    //sprite.interactive = true;
+    sprite.eventMode = 'dynamic';
+
     sprite.buttonMode = true;
     sprite.cursor = 'pointer';
   

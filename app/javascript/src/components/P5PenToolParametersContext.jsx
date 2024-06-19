@@ -34,15 +34,15 @@ export const P5PenToolParametersProvider = ({ children }) => {
 
   //「ペンツール」のbool値判定（ぼかし）
   //「ペンツール」のbool値判定（ミリペン）
-  const [mmBlur, setMmBlur] = useState(true);
+  const [mmBlur, setMmBlur] = useState(false);
   //「ペンツール」のbool値判定（水彩ペン）
-  const [watercolorBlur, setWatercolorBlur] = useState(true);
+  const [watercolorBlur, setWatercolorBlur] = useState(false);
   //「ペンツール」のbool値判定（エアブラシ）
-  const [pencilBlur, setPencilBlur] = useState(true);
+  const [pencilBlur, setPencilBlur] = useState(false);
   //「ペンツール」のbool値判定（厚塗りペン）
-  const [oilBlur, setOilBlur] = useState(true);
+  const [oilBlur, setOilBlur] = useState(false);
   //「ペンツール」のbool値判定（色混ぜ）
-  const [mixBlur, setMixBlur] = useState(true);
+  const [mixBlur, setMixBlur] = useState(false);
 
   //「ペンツール」のbool値判定（その他）
   const [pressurePen, setPressurePen] = useState(true);

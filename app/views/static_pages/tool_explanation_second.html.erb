@@ -1,0 +1,226 @@
+<div class='p5canvas-container'>
+
+  <% profile = current_user.profile if user_signed_in? %>
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+    <div class="text-Rounded700"><h1 class="sidebar-title">ツール</h1></div>
+    <div class="menu-sidebar text-Rounded500">
+      <ul>
+          <li><%= link_to '基本操作', tool_explanation_path + '#section1' %></li>
+          
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <%= link_to 'ツールパネル図解', tool_explanation_path + '#section2' %>
+              <%= link_to 'コンパクトパネル', tool_explanation_path + '#section3' %>
+          </div>
+        </li>
+        <li><%= link_to 'カラーパレットパネル', tool_explanation_path + '#section4' %></li>
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">レイヤーパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <%= link_to 'レイヤーとは？', tool_explanation_path + '#section5' %>
+              <%= link_to 'レイヤーパネル図解', tool_explanation_path + '#section6' %>
+              <%= link_to 'ブレンドモード早見表', tool_explanation_path + '#section7' %>
+          </div>
+        </li>
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section3">
+              <a href="#section">詳細設定パネルの基本構造</a>
+              <a href="#section2">ペン</a>
+              <a href="#section3">選択/画像</a>
+              <a href="#section2">図形/テキスト</a>
+          </div>
+        </li>
+        <li><a href="#section3">サイズパネル</a></li>
+        <li><a href="#section3">スケールパネル</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-design">
+      <%= image_tag('tongari.png', alt: 'ツールページの画像', class: "sidebar-image2") %>
+    </div>
+  </div>
+
+  <div class="sidebar-content">
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <h2 class="explanation-section-title">
+      <span class="text-line">詳細設定パネル</span>
+    </h2>
+    <section id="section1">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          詳細設定パネルの基本構造
+        </span>
+      </h3>
+    </section>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+    <p>「詳細設定パネル」は<span style="color: #F8A3B1;" class="text-Rounded500">「ペン」「選択」「図形」「画像」</span>機能のいずれかを選択した際に表示されるパネルです。<br>
+    自動表示モードをオフ<%= image_tag('auto_panel_none_btn.png', alt: '自動表示モードがオフの時のUI', class: "auto_btn-image") %>にしている場合は
+    <span style="color: #59afc7;" class="text-Rounded500"><i class="bi bi-gear-fill"></i></span>アイコンをクリックすると表示されます。<br>
+    パネル内の内容は選択されているツールに合わせて変化します。
+    </p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      各種紹介
+      </span>
+    </h4>
+      <div class="sidebar-design">
+        <%= image_tag('detail_panel_list.png', alt: '詳細設定パネルの種類', class: "detail_panel-list_image") %>
+      </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;">「詳細設定パネル」は大きく分けて4種類あります。</p><br>
+        <span style="color: #59afc7;" class="text-Rounded500">ペン</span>：ペン機能についての詳細設定を調整するためのパネルです。<br>
+        <span style="color: #59afc7;" class="text-Rounded500">筆圧設定</span>：筆圧機能についての詳細設定を調整するためのパネルです。ペン機能を選択している時にのみパネル上部の<span style="color: #e19ab0;" class="text-Rounded500">「切り替えタブ」</span>から表示できます。<br>
+        <span style="color: #59afc7;" class="text-Rounded500">選択/画像</span>：選択機能もしくは画像機能を選択している時に表示されるパネルです。<br>
+        <span style="color: #59afc7;" class="text-Rounded500">図形/テキスト</span>：図形機能もしくはテキスト機能を選択している時に表示されるパネルです。
+    </div>
+
+
+
+    <section id="section2">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          ペン
+        </span>
+      </h3>
+      </section>
+      <div class="sidebar-design">
+        <%= image_tag('pen_normal_panel.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image") %>
+      </div>
+
+
+      <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+        <span class="point-line">
+        基本機能の紹介
+        </span>
+      </h4>
+
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;"><span style="color: #3a559d;" class="text-Rounded700">ペンの種類の切り替えボタン</span><%= image_tag('pen_btn_list.png', alt: 'ペンの種類の切り替えボタン', class: "explanation-image", style: "width: 200px;") %><br>
+      ペンの種類を切り替えられるボタンです。ペンの種類は<span style="color: #F8A3B1;" class="text-Rounded500">7種類</span>あります。各ペンの特色は後述します。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #c9da39;" class="text-Rounded700">ペンのプレビュー</span><%= image_tag('pen_preview.png', alt: 'ペンのプレビュー', class: "explanation-image", style: "width: 50px;") %>：
+      ペンの断面図を確認できるプレビューです。プレビューは「ブラシサイズ」「カラー」「ぼかし」によって変動します。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #5ab8d2;" class="text-Rounded700">概要欄</span>：
+      選択中のペンの説明が表示されます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #da96ab;" class="text-Rounded700">お気に入りペンの設定</span><%= image_tag('favorite_pen.png', alt: 'お気に入りペンを設定できるチェックボックス', class: "explanation-image", style: "width: 38px;") %>：
+      各ペンの詳細設定パネルに用意されているこのチェックボックスにチェックをつけるとそのペンをお気に入りとして<span style="color: #F8A3B1;" class="text-Rounded500">ツールパネル</span>に設定できます。<br>
+      <%= image_tag('favorite_pen_image.png', alt: 'お気に入りペンの設定の図解', class: "explanation-image", style: "width: 250px;") %><br>
+      設定できるペンは2つまでで、同じペンと<span style="color: #F8A3B1;" class="text-Rounded500">色混ぜ</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-droplet-half"></i></span>を設定することはできません。<br>
+      <span style="color: #F8A3B1;" class="text-Rounded500">１つ目のお気に入りペン</span>：<%= image_tag('favorite_first.png', alt: '１つ目のお気に入りペンを決めるチェックボックス', class: "explanation-image", style: "width: 18px;") %><br>
+      <span style="color: #59afc7;" class="text-Rounded500">2つ目のお気に入りペン</span>：<%= image_tag('second_favorite.png', alt: '2つ目のお気に入りペンを決めるチェックボックス', class: "explanation-image", style: "width: 18px;") %></p><br>
+      </p><br>
+      </div>
+
+    
+      <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+        <span class="point-line">
+        ペンの種類早見表
+        </span>
+      </h4>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+        <table class="pen-type-table">
+          <thead>
+            <tr>
+              <th>ペンの種類</th>
+              <th>ペンの特徴</th>
+              <th>筆圧感知機能</th>
+              <th>ぼかし機能</th>
+              <th>試し書き</th>
+              <th>試し書き(ぼかし差分)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ベタ塗りペン<%= image_tag('pen_beta_btn.png', alt: 'ベタ塗りペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">一番シンプルなペン。<br>一定の太さで描画できる。</td>
+              <td>×</td>
+              <td>×</td>
+              <td><%= image_tag('beta_image.png', alt: 'ベタ塗りペン試し書き', class: "brush-sample-image") %></td>
+              <td>−</td>
+            </tr>
+            <tr>
+              <td>ミリペン<%= image_tag('pen_miri_btn.png', alt: 'ミリペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">ベタ塗りペンにぼかし機能がついたペン。<br>一定の太さで描画できる。</td>
+              <td>×</td>
+              <td>◯</td>
+              <td><%= image_tag('miri_image.png', alt: 'ミリペン試し書き', class: "brush-sample-image") %></td>
+              <td><%= image_tag('miri_blur.png', alt: 'ぼかし機能付きミリペン試し書き', class: "brush-sample-image") %></td>
+            </tr>
+            <tr>
+              <td>インクペン<%= image_tag('pen_ink_btn.png', alt: 'インクペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">筆圧を感知するペン。<br>手の加減で多彩なペイントが可能。</td>
+              <td>◯</td>
+              <td>×</td>
+              <td><%= image_tag('ink_image.png', alt: 'インクペン試し書き', class: "brush-sample-image") %></td>
+              <td>−</td>
+            </tr>
+            <tr>
+              <td>水彩ペン<%= image_tag('pen_water_btn.png', alt: '水彩ペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">インクペンにぼかし機能がついたペン。<br>手の加減で多彩なペイントが可能。</td>
+              <td>◯</td>
+              <td>◯</td>
+              <td><%= image_tag('water_image.png', alt: '水彩ペン試し書き', class: "brush-sample-image") %></td>
+              <td><%= image_tag('water_blur.png', alt: 'ぼかし機能付き水彩ペン試し書き', class: "brush-sample-image") %></td>
+            </tr>
+            <tr>
+              <td>エアブラシ<%= image_tag('pen_pencil_btn.png', alt: 'エアブラシペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">ドットの集合体で構成されているペン。<br>鉛筆のようなペイントが可能。</td>
+              <td>◯</td>
+              <td>◯</td>
+              <td><%= image_tag('pencil_image.png', alt: 'エアブラシペン試し書き', class: "brush-sample-image") %></td>
+              <td><%= image_tag('pencil_blur.png', alt: 'ぼかし機能付きエアブラシペン試し書き', class: "brush-sample-image") %></td>
+            </tr>
+            <tr>
+              <td>厚塗りペン<%= image_tag('pen_oil_btn.png', alt: '厚塗りペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">ドットの集合体で構成されているペン。<br>ベタっとしたペイントが可能。</td>
+              <td>◯</td>
+              <td>◯</td>
+              <td><%= image_tag('oil_image.png', alt: '厚塗りペン試し書き', class: "brush-sample-image") %></td>
+              <td><%= image_tag('oil_blur.png', alt: 'ぼかし機能付き厚塗りペン試し書き', class: "brush-sample-image") %></td>
+            </tr>
+            <tr>
+              <td>色混ぜ<%= image_tag('pen_mix_btn.png', alt: '色混ぜペンボタン', class: "toolbtn-image") %></td>
+              <td class="pen-type-table-text">canvas内の色を取得し、その色でペイントするペン。<br>手の加減次第で周辺と色が混ざる。</td>
+              <td>◯</td>
+              <td>◯</td>
+              <td>可</td>
+              <td>可</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
+      <span class="orange-line">
+      レイヤーUIの基本構造
+      </span>
+    </h5>
+
+
+
+    <section id="section3">
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+        <span class="text-line">セクション3</span>
+      </h2>
+      <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
+    </section>
+
+  </div>
+
+</div>

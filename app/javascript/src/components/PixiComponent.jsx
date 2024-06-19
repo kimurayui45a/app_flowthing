@@ -162,8 +162,14 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
 
       pixiContainer.current.appendChild(app.view);
       appRef.current = app;
-      app.stage.interactive = true;
+
+      //7.2.0からinteractiveが非推奨になったらしいので下記にした
+      //app.stage.interactive = true;
+      app.stage.eventMode = 'dynamic';
+
       app.stage.hitArea = app.screen;
+
+      
 
       //初期の背景処理
       // 透明なグラフィックスオブジェクトを作成
@@ -715,7 +721,12 @@ if (direction === 'change') {
     sprite.anchor.set(0.5);
     sprite.x = x;
     sprite.y = y;
-    sprite.interactive = true;
+
+    //7.2.0からinteractiveが非推奨になったらしいので下記にした
+    //sprite.interactive = true;
+    sprite.eventMode = 'dynamic';
+
+
     sprite.buttonMode = true;
     sprite.cursor = 'pointer';
     sprite.rotation = angleDegrees * (Math.PI / 180);

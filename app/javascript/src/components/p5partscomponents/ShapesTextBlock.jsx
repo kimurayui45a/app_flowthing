@@ -472,16 +472,14 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
                 className="flex"
                 style={{
                   ...textStyle,
-                  color: `${shapesFillChange !== 'nofill' ? currentAlphaColor : 'transparent'}`,
+                  color: shapesFillChange === 'nofill' ? 'white' : 'black',
                   fontFamily: `"${shapesTextFont}", "Noto Sans JP", serif`,
                   fontSize: `${toolSize}px`,
-                  textShadow: `
-                    -${shapesTextStroke}px -${shapesTextStroke}px 0 ${secondAlphaColor},
-                    ${shapesTextStroke}px -${shapesTextStroke}px 0 ${secondAlphaColor},
-                    -${shapesTextStroke}px ${shapesTextStroke}px 0 ${secondAlphaColor},
-                    ${shapesTextStroke}px ${shapesTextStroke}px 0 ${secondAlphaColor}
-                  `
+                  textShadow: shapesFillChange === 'nostroke'
+                  ? 'none'  // 'nostroke' の場合、textShadowを非表示にします
+                  : '-1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black'  // それ以外の場合、シャドウの色を黒にします
                 }}
+                
               >
                 あ
               </div>
