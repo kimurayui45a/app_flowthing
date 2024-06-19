@@ -1,7 +1,5 @@
 <header>
-  
-  <%# <div class="header-container <%= 'header-container-paint' if apply_paint_class? %>"
-  <div class='header-container'>
+<div class="header-container <%= 'header-container-paint' if apply_paint_class? %>">
   <div class='header-design'>
 
     <div class='header-layout'>
@@ -96,13 +94,20 @@
                   <i class="bi bi-person"></i>
                 <% end %>
               </button>
+              <% else %>
+              <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person"></i>
+                </button>
             <% end %>
 
             <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
               <ul class='user-dropdown-list'>
                 <% if @profile.present? && !@profile.new_record? %>
                   <li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
+                  <% else %>
+                  <li class='user-dropdown-item'><%= link_to 'プロフィール', new_profile_path, class: 'user-dropdown-link' %></li>
                 <% end %>
+
 
                 
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>

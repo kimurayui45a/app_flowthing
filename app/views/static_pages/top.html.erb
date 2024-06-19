@@ -3,6 +3,8 @@
 
 
 <% if user_signed_in? %>
+<% if current_user.profile&.color_code.present? %>
+
 <div class='p5canvas-container'>
     <div id="reactAllComposite"
       data-composite-id-all="<%= @composites.to_json %>"
@@ -13,6 +15,9 @@
     >
     </div>
     </div>
+     <% else %>
+     <div>ない</div>
+     <% end %>
   <% else %>
   <div class='p5canvas-container how-to-use-container'>
 
