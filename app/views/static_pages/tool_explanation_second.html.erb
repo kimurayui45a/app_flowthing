@@ -121,7 +121,7 @@
       </div>
 
     
-      <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <h4 class="explanation-section-pointtitle" style="margin-top: -0.5rem;">
         <span class="point-line">
         ペンの種類早見表
         </span>
@@ -192,24 +192,128 @@
               <td class="pen-type-table-text">canvas内の色を取得し、その色でペイントするペン。<br>手の加減次第で周辺と色が混ざる。</td>
               <td>◯</td>
               <td>◯</td>
-              <td>可</td>
-              <td>可</td>
+              <td><%= image_tag('mix_image.png', alt: '色混ぜペン試し書き', class: "brush-sample-image") %></td>
+              <td><%= image_tag('mix_blur.png', alt: 'ぼかし機能付き色混ぜペン試し書き', class: "brush-sample-image") %></td>
             </tr>
           </tbody>
         </table>
       </div>
 
 
+    
+      <h4 class="explanation-section-pointtitle" style="margin-top: 5rem;">
+        <span class="point-line">
+        ペンの紹介
+        </span>
+      </h4>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>本ペイントツールのペンのブラシサイズは<span style="color: #F8A3B1;" class="text-Rounded500">「0.3〜100」</span>までの間で選択可能です。<br>
+      「ぼかし機能」は対象のペンの詳細パネルでチェックボックスにチェックを入れることで使用できます。ぼかし具合は「色混ぜ」以外は固定値で構成しております。<br>
+      「ぼかし機能」を使用すると指定したペンサイズよりペンが少し大きくなることがございます。</p>
+        
+        <p>「筆圧感知機能」については、一部の対象のペンでその機能をご使用頂けます。<br>
+          この機能により手の力加減で<span style="color: #F8A3B1;" class="text-Rounded500">「ブラシサイズ」「色の彩度」「色の明度」</span>を調整することが可能です。<br>
+          さらに「筆圧感知機能」は細かく設定することができ、力加減で出せるブラシサイズと色調をカスタマイズできます。
+        </p>
+
+        <p>
+          <span class="red-text text-Rounded500">※注意点</span><br>
+          「お使いのデバイスの状況」「ブラシサイズの大きさ」「ぼかし機能」によってペイント速度に遅延が発生する可能性があります。<br>
+          また「お使いのブラウザの設定」で「筆圧感知機能」が使用できないことがございます。
+        </p>
+      </div>
+    
+      
+
+
+      <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
+        <span class="sakura-line">
+        「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」という項目について
+        </span>
+      </h5>
+      <div class="sidebar-design">
+        <%= image_tag('dpen_ensity.png', alt: 'ペンの密度のサンプル', class: "explanation-image", style: "width: 450px; margin-left: -4rem;") %>
+      </div>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+        <p>
+          本ペイントツールでは、静的な点を動的に連結して線を形成しています。<br>
+          このため、ペイントの速度によっては、一部のペンで線が途切れることがあります。<br>
+          この現象は「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」という設定を調整することで、影響の程度を変更することが可能です。<br>
+          調整次第ではペンの速さに応じて途切れるペンを使用することができます。<br>
+          各ペンタイプには個別の調整項目があり、使用者はそれぞれのペンに合わせて密度を調整できます。<br>
+          滑らかになる調整値(上限付近まで)に設定した場合ペイント速度に遅延が発生する可能性があります。<br>
+          <span style="color: #F8A3B1;" class="text-Rounded500">ベタ塗りペン</span>は内部構造が異なるため、この設定項目は存在しません。
+        </p>
+      </div>
 
 
 
+      <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
+        <span class="orange-line">
+        ベタ塗りペン<%= image_tag('pen_beta_btn.png', alt: 'ベタ塗りペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>
+        </span>
+      </h5>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9; margin-top: -4rem;">
+        <p>
+          一番シンプルなペンです。一定の太さで描画できます<br>
+          このペンには「ぼかし」「筆圧」機能はついていません。<br>
+          ペンの中で一番動作の遅延が発生しにくいため扱いやすいです。
+        </p>
+      </div>
 
 
-    <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
-      <span class="orange-line">
-      レイヤーUIの基本構造
-      </span>
-    </h5>
+      <h5 class="explanation-section-pointtitle" font-size: 1rem;">
+        <span class="orange-line">
+        ミリペン<%= image_tag('pen_miri_btn.png', alt: 'ミリペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>
+        </span>
+      </h5>
+      <div class="sidebar-design">
+        <%= image_tag('pen_miri_panel.png', alt: 'ミリペンの詳細設定パネルの図解', class: "toolpanel-image") %>
+      </div>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+        <p>
+          「ぼかし」機能がついたペンです。<br>
+          このペンには「筆圧」機能はついていません。<br>
+          ベタ塗りペンと同様に一定の太さで描画できます。<br>
+          「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」は0.01〜100の間で調整でき、値を大きくすると滑らかに、小さくすると途切れた線になります。<br>
+        </p>
+      </div>
+
+
+      <h5 class="explanation-section-pointtitle" style="font-size: 1rem;">
+        <span class="orange-line">
+        インクペン<%= image_tag('pen_ink_btn.png', alt: 'インクペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>
+        </span>
+      </h5>
+      <div class="sidebar-design">
+        <%= image_tag('pen_ink_panel.png', alt: 'インクペンの詳細設定パネルの図解', class: "toolpanel-image") %>
+      </div>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+        <p>
+          筆圧を感知し、それに応じて多彩な表現ができるペンです<br>
+          このペンには「ぼかし」機能はついていません。<br>
+          筆圧を感知するペンの中では動作の遅延が発生しにくいため扱いやすいです。<br>
+          「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」は0.01〜100の間で調整でき、値を大きくすると滑らかに、小さくすると途切れた線になります。
+        </p>
+      </div>
+
+
+      <h5 class="explanation-section-pointtitle" style="font-size: 1rem;">
+        <span class="orange-line">
+        水彩ペン<%= image_tag('pen_water_btn.png', alt: '水彩ペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>
+        </span>
+      </h5>
+      <div class="sidebar-design">
+        <%= image_tag('pen_water_panel.png', alt: '水彩ペンの詳細設定パネルの図解', class: "toolpanel-image") %>
+      </div>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+        <p>
+          筆圧を感知し、それに応じて多彩な表現ができるペンです<br>
+          このペンには「筆圧」と「ぼかし」機能が両方ついています。<br>
+          「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」は0.005〜9999の間で調整でき、値を<span style="color: #F8A3B1;">小さく</span>すると滑らかに、<span style="color: #F8A3B1;">大きく</span>すると途切れた線になります。<br>
+          <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※状況次第ではペイント速度に遅延が発生する可能性があります。</span>
+        </p>
+      </div>
 
 
 
