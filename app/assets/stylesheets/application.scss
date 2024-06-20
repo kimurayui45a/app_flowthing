@@ -9287,6 +9287,38 @@ background-color: #d1eee6;
   object-fit: cover;
 }
 
+
+
+.dot-pen-paint-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 250px;
+}
+
+
+
+.dot-pen-table-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 180px;
+}
+
+.dotpen_panel-image {
+  width: 600px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
 .detail_panel-list_image {
   width: 600px;
   display: inline-block;
@@ -9304,6 +9336,7 @@ background-color: #d1eee6;
   object-fit: cover;
   margin-left: 7rem;
 }
+
 
 
 .toolbtn-image {
@@ -9509,6 +9542,37 @@ background-color: #d1eee6;
     object-fit: cover;
   }
 
+
+  .dot-pen-table-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    // margin-left: 0.12rem;
+    margin: 0.2rem;
+    width: 150px;
+  }
+
+
+.dot-pen-paint-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 220px;
+}
+
+
+  .dotpen_panel-image {
+    width: 550px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
   .toolpanel-image-picker {
     width: 450px;
     display: inline-block;
@@ -9599,6 +9663,36 @@ background-color: #d1eee6;
 
   .toolpanel-image {
     width: 400px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+
+.dot-pen-table-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 120px;
+}
+
+
+.dot-pen-paint-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 200px;
+}
+
+  .dotpen_panel-image {
+    width: 500px;
     display: inline-block;
     margin: 0px auto;
     -o-object-fit: cover;
@@ -9772,6 +9866,27 @@ background-color: #d1eee6;
     margin: 0.2rem;
     width: 70px;
   }
+
+  .dot-pen-table-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    // margin-left: 0.12rem;
+    margin: 0.2rem;
+    width: 100px;
+  }
+  
+  
+  .dot-pen-paint-image {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    // margin-left: 0.12rem;
+    margin: 0.2rem;
+    width: 150px;
+  }
 }
 
 
@@ -9848,3 +9963,29 @@ background-color: #d1eee6;
   line-height: 1.5;
   text-align: left;
 }
+
+
+.dot-sample-table {
+  // width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.8rem;
+  table-layout: fixed; /* 列の幅を均一に設定 */
+}
+
+.dot-sample-table th, .dot-sample-table td {
+  border: 1px solid #ccc;
+  padding: 0.2rem;
+}
+
+.dot-sample-table th {
+  background-color: #d6edf9;
+}
+
+.dot-sample-table td {
+  background-color: #fff;
+}
+
+// .dot-sample-table tbody tr:hover {
+//   background-color: #f9f9f9; /* マウスオーバーで背景色を変更 */
+// }
