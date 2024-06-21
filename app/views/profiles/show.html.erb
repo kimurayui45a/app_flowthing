@@ -1,5 +1,17 @@
 <% content_for(:title, t('.title')) %>
-<div class="max767-container">
+
+
+
+
+<% profile = current_user.profile if user_signed_in? %>
+<div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+<div class="info-container flex-column">
+
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
+
+  
   <div class="item-show-space">
     <h1 class="section-title user-show-contents">
       <span class="f-text">プロフィール</span>
@@ -8,15 +20,24 @@
     <div class="profile-icon-frame">
       <% if current_user && current_user.profile %>
         <% profile = current_user.profile %>
-          <% if profile.image_icon.present? %>
-            <%= image_tag profile.image_icon.url, class: "user-profileicon" %>
-          <% elsif profile.color_code.present? %>
-            <div style="background-color: <%= profile.color_code %>;" class="user-profileicon"></div>
+          <% if profile.profile_icon? %>
+            <% if profile.profile_canvas.present? %>
+              <img src="<%= profile.profile_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="profileicon-paint">
+            <% else %>
+              <div class="no-canvas-icon">
+                <span>下記のPeint Iconより<br>アイコンを作ってみましょう</span>
+              </div>
+
+            <% end %>
           <% else %>
-            No
+            <div style="background-color: <%= profile.color_code %>;" class="profileicon-big">
+              <%= image_tag('small_chara_icon.png', alt: 'デフォルトのアイコン', class: "userdefault-icon-profile") %>
+            </div>
           <% end %>
       <% end %>
+
     </div>
+
 
     <div class="user-show-name-contents">
       <span class="f-text"><%= @profile.name %></span>
@@ -82,6 +103,42 @@
       <% end %>
 
 
+<% if @profile.profile_canvas.present? %>
+      <%= link_to icon_edit_canvas_profile_path(@profile), class: 'balloon-botann tooltip-container' do %>  
+        <div>
+          <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
+        </div>
+        <div class="balloon-botann-text">
+          Edit<br>
+          Icon
+        </div>
+        <span class="tooltip-text" style="text-align: start;">プロフィールのアイコンを編集できます。</span>
+      <% end %>
+<% else %>
+
+      <%= link_to icon_edit_profile_path(@profile), class: 'balloon-botann tooltip-container' do %>  
+        <div>
+          <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
+        </div>
+        <div class="balloon-botann-text">
+          Paint<br>
+          Icon
+        </div>
+        <span class="tooltip-text" style="text-align: start;">プロフィールのアイコンを作成しましょう。</span>
+      <% end %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
 
       <% if user_signed_in? && @profile.user_id == current_user.id %>
         <%= link_to user_path(current_user), data: { turbo_method: :delete, turbo_confirm: t('.withdrawal') }, class: 'balloon-botann' do %>
@@ -92,4 +149,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>

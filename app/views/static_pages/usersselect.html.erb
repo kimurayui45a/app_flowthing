@@ -1,53 +1,23 @@
 <% content_for(:title, t('.title')) %>
-<div class="max767-container">
-  <div>
 
-      <div class="flex-end-center" style="margin-top: 2rem;">   
-        <div class="create-usersselect-card-title"><span class="red-text">新</span><span class="gray-text">しい</span></div>
+<% profile = current_user.profile if user_signed_in? %>
+<div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-          <div class="section-title logo-transform-form-card">
-            <div class="app-logo">
-              <div class="flex flex-animated-text">
-                <div class="flex-between flex-animated-text-absolute logo-blur-05">
-                  <div class="animated-text">
-                    <span class='zen-antique logo-setting'>F</span>
-                    <span class='sawarabi-mincho logo-setting'>l</span>
-                    <span class="logo-setting">o</span>
-                    <span class='dotgothic16'>w</span>
+<div class="info-container flex-column">
 
-                    <span class='potta-one logo-setting-t logo-setting'>T</span>
-                    <span class='rocknroll-one logo-setting-hi'>h</span>
-                    <span class='yuji-mai logo-setting-hi'>i</span>
-                    <span class='yuji-syuku logo-setting-n'>n</span>
-                  </div>
-                  <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-                </div>
-
-                <div class="flex-between logo-blur-15">
-                  <div class="animated-text">
-                    <span class='zen-antique logo-setting'>F</span>
-                    <span class='sawarabi-mincho logo-setting'>l</span>
-                    <span class="logo-setting">o</span>
-                    <span class='dotgothic16'>w</span>
-
-                    <span class='potta-one logo-setting-t logo-setting'>T</span>
-                    <span class='rocknroll-one logo-setting-hi'>h</span>
-                    <span class='yuji-mai logo-setting-hi'>i</span>
-                    <span class='yuji-syuku logo-setting-n'>n</span>
-                  </div>
-                  <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <div class="create-usersselect-card-title-left">
-          <span class="gray-text">を</span><span class="light-blue-text">作成</span></div>
-      </div>
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
 
 
-    
+    <% if @sub_users.blank? %>
+    <div class="section-title">
+      まずは<span class="light-blue-text">S</span>ub <span class="red-text">T</span>hingを作成してみましょう。</span>
+    </div>
+<% end %>
 
+    <div class="section-title">
+      <span class="red-text">新規作成</span>メニュー
+    </div>
 
     <div class="create-usersselect-card">
       <div class="create-usersselect-background flex-start-start-flex-center">
@@ -56,17 +26,30 @@
           <%= link_to new_sub_user_path, class: 'tooltip-container' do %>
             <div class="flex create-usersselect-container">
               <div><i class="bi bi-pencil-square" style="font-size: 2rem;"></i></div>
-              <div class="newcontents_text"><span>新規作成<span></div>
+              <div class="newcontents_text"><span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing<span>を新規作成<span></div>
             </div>
             <span class="tooltip-text" style="text-align: start;">新しくSub Thingを作成します。</span>
           <% end %>
-          <%= link_to sub_users_path, class: 'tooltip-container' do %>
-            <div class="flex create-usersselect-container">
-              <div><i class="bi bi-people-fill" style="font-size: 2rem;"></i></div>
-                <div class="newcontents_text"><span>既存のSub Thingに追加する<span></div>
+
+
+          <% if @sub_users.present? %>
+            <%= link_to sub_users_path, class: 'tooltip-container' do %>
+              <div class="flex create-usersselect-container">
+                <div><i class="bi bi-people-fill" style="font-size: 2rem;"></i></div>
+                  <div class="newcontents_text"><span><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>を作成する<span></div>
+                </div>
+              <span class="tooltip-text" style="text-align: start;">既存のSub ThingにFlow Thingを作成します。</span>
+            <% end %>
+          <% else %>
+              <div class="tooltip-container">
+                <div class="flex create-usersselect-container-no-user">
+                  <div><i class="bi bi-people-fill" style="font-size: 2rem;"></i></div>
+                  <div class="newcontents_text"><span>Flow Thingを作成する</span></div>
+                </div>
+                <span class="tooltip-text" style="text-align: start;">はじめにSub Thingを「新規作成」して下さい。</span>
               </div>
-            <span class="tooltip-text" style="text-align: start;">既存のSub ThingからFlow Thingを作成します。</span>
           <% end %>
+
           
           <%= link_to spaces_path, class: 'tooltip-container' do %>
             <div class="flex create-usersselect-container">
@@ -76,13 +59,29 @@
             </div>
           <% end %>
 
-          <%= link_to composites_path, class: 'tooltip-container' do %>
-            <div class="flex create-usersselect-container">
-              <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
-              <div class="newcontents_text"><span>Flow Thingを配置する<span></div>
-              <span class="tooltip-text" style="text-align: start;">作成したScreenにFlow Thingを配置できます。</span>
-            </div>
+
+
+
+
+          <% if @spaces.present? %>
+            <%= link_to composites_path, class: 'tooltip-container' do %>
+              <div class="flex create-usersselect-container">
+                <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
+                <div class="newcontents_text"><span><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>を配置する</span></div>
+                <span class="tooltip-text" style="text-align: start;">作成したScreenにFlow Thingを配置できます。</span>
+              </div>
+            <% end %>
+          <% else %>
+              <div class="tooltip-container">
+                <div class="flex create-usersselect-container-no-user">
+                  <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
+                  <div class="newcontents_text"><span>Flow Thingを配置する<span></div>
+                </div>
+                <span class="tooltip-text" style="text-align: start;">はじめにSub Thingを「新規作成」して下さい。</span>
+              </div>
           <% end %>
+
+
         </div>
       </div>
     </div>

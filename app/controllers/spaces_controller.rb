@@ -9,7 +9,8 @@ class SpacesController < ApplicationController
   def index
     if @profile.present?
       @q = @profile.spaces.ransack(params[:q])
-      sort_order = params[:q]&.fetch(:s, 'spaces.updated_at desc')
+      # sort_order = params[:q]&.fetch(:s, 'spaces.updated_at desc')
+      sort_order = params.dig(:q, :s) || 'spaces.updated_at desc'
       @spaces = @q.result
                     .order(sort_order)
                     .page(params[:page]).per(12)

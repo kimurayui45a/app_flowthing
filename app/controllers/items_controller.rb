@@ -6,7 +6,8 @@ class ItemsController < ApplicationController
       @sub_user = SubUser.find(params[:sub_user_id]) if params[:sub_user_id]
 
       @q = Item.ransack(params[:q])
-      sort_order = params[:q]&.fetch(:s, 'items.updated_at desc')
+      # sort_order = params[:q]&.fetch(:s, 'items.updated_at desc')
+      sort_order = params.dig(:q, :s) || 'items.updated_at desc'
       @items = @q.result.includes(:sub_user)
                  .where(sub_users: { profile_id: @profile.id })
                  .order(sort_order)
@@ -15,6 +16,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
+
   
   
 

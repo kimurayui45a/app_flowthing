@@ -20,7 +20,7 @@
                     <%= image_tag board.item.item_image.url, class: "board-icon" %>
                   </div>
                 <% else %>
-                  <div class="no-image-icon">No Image</div>
+                  <div class="no-image-icon">ここの画像が削除されました</div>
                 <% end %>
               <% when 'item_canvas' %>
                 <% if board.item.item_canvas.present? %>
@@ -28,7 +28,7 @@
                     <img src="<%= board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="board-icon" >
                   </div>
                 <% else %>
-                  <div class="no-image-icon">No Image</div>
+                  <div class="no-image-icon">ここの画像が削除されました</div>
                 <% end %>
               <% else %>
                 <div class="no-image-icon">No Image</div>

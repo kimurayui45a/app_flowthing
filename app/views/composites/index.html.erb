@@ -1,9 +1,20 @@
 <% content_for(:title, t('.title')) %>
-<div class="index-container screen-container">
+
+
+
+<% profile = current_user.profile if user_signed_in? %>
+<div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+<div class="info-container">
+
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+
+
+
 
   <div class="flux-screen-plate">
     <div class="flux-screen-plate-second">
-<h1 class="screen-title">
+<h1 class="screen-title" style="margin-top: 4rem;">
   <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
   <span>Flux Screen</span>
 </h1>
@@ -24,11 +35,11 @@
 
 
 <div class="flex-end-end">
-  <% if Item.where.not(item_canvas: nil).exists? && Space.where.not(space_canvas: nil).exists? %>
+  <% if @spaces.present? %>
           <%= link_to new_composite_path, class: 'tooltip-container' do %>
             <div class="flex create-usersselect-container" style="background-color: white;">
               <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
-              <div class="newcontents_text"><span>Flow Thingを配置する<span></div>
+              <div class="newcontents_text"><span><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>を配置する<span></div>
               <span class="tooltip-text" style="text-align: start;">作成したScreenにFlow Thingを配置できます。</span>
             </div>
           <% end %>
@@ -56,4 +67,5 @@
 
 
 
+</div>
 </div>

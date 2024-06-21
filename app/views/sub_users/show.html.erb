@@ -1,10 +1,20 @@
 <% content_for(:name, @sub_user.sub_name) %>
-<div class="max767-container"> 
+
+<% profile = current_user.profile if user_signed_in? %>
+<div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+<div class="info-container flex-column">
+
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+
+
+
+
   <div class="user-show-space">
 
   <div class="user-show-name-contents">
 
- 
+
     <div class="section-title">
       <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
     </div>
@@ -193,4 +203,5 @@
       </div>
     <% end %>
   </div> 
+</div>
 </div>

@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
   root "static_pages#top"
-  resources :profiles, only: %i[new create show edit update]
+
+
+
+  resources :profiles, only: %i[new create show edit update] do
+    member do
+      get 'icon_edit', as: 'icon_edit'
+      get 'icon_edit_canvas', as: 'icon_edit_canvas'
+      patch 'update_icon'
+    end
+  end
+
+  
   get 'static_pages/usersselect', to: 'static_pages#usersselect', as: 'usersselect'
   get 'static_pages/newcontents', to: 'static_pages#newcontents', as: 'newcontents'
   post 'static_pages/create_all', to: 'static_pages#create_all', as: 'create_all'
@@ -9,6 +20,9 @@ Rails.application.routes.draw do
       get :confirm_delete
     end
   end
+  
+
+  
   get 'sub_users/canvas_edit/:id', to: 'sub_users#canvas_edit', as: 'canvas_edit_sub_user'
   get 'sub_users/peint_edit/:id', to: 'sub_users#peint_edit', as: 'peint_edit_sub_user'
   get 'items/episode_list', to: 'items#episode_list', as: 'episode_list'

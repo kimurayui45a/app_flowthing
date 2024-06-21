@@ -1,6 +1,18 @@
 <% content_for(:title, t('.title')) %>
-<div class="index-container">
-  <h1 class="midasi-title">
+
+
+
+<% profile = current_user.profile if user_signed_in? %>
+<div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+<div class="info-container">
+
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+
+
+
+
+  <h1 class="midasi-title" style="margin-top: 4rem;">
     <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
     <span>Screen</span>
   </h1>
@@ -33,4 +45,5 @@
     <%= paginate @spaces %>
   </div>
 
+</div>
 </div>

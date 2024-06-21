@@ -1,5 +1,55 @@
 <% content_for(:title, t('.title')) %>
 <div class="maxboard-container flex-column">
+
+
+
+
+
+<div class="question-btn-group">
+  <div class="board-menu">
+    <div style="position: absolute; top: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+    <div style="position: absolute; top: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+    <div style="position: absolute; bottom: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+    <div style="position: absolute; bottom: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+  <div>
+    <%= link_to new_board_path do %>
+        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">掲示板を作成</span></div>
+    <% end %>
+  </div>
+
+    <div class="board-menu-text">
+    
+      <%= link_to boards_path do %>
+        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">全体掲示板</span></div>
+      <% end %>
+
+    </div>
+    <div>
+      <%= link_to free_boards_path do %>
+        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">自由掲示板</span></div>
+      <% end %>  
+    
+    </div>
+
+    <div>
+      <%= link_to question_boards_path do %>
+        <div><span class="board-menu-text" style="margin-bottom: 2rem;">質問掲示板</span></div>
+      <% end %>
+    </div>
+    
+  
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
   <%# <div>
       <%= link_to '掲示板', boards_path, class: 'board-btn' %>
   

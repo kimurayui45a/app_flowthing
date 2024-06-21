@@ -1,3 +1,5 @@
+<% content_for(:title, t('.title')) %>
+
 <div class='p5canvas-container'>
 
   <% profile = current_user.profile if user_signed_in? %>
@@ -211,6 +213,13 @@
           <td>−</td>
           <td>−</td>
           <td>×</td>
+        </tr>
+        <tr class="how-to-use-table-td">
+          <td class="td-title">プロフィール</td>
+          <td>×</td>
+          <td>×</td>
+          <td>×</td>
+          <td>◯</td>
         </tr>
       </table>
     </section>

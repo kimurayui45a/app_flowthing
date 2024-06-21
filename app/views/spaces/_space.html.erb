@@ -1,6 +1,6 @@
 <article id="space_<%= space.id %>", class="space-card-user-card-container">
     <details class="details-box">
-      <summary class="space-summary-style"><%= space.space_name.present? ? space.space_name : 'No Name' %></summary>
+      <summary class="space-summary-style-text"><%= space.space_name.present? ? space.space_name : 'No Name' %></summary>
       <span><%= space.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
 

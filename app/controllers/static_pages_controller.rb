@@ -13,7 +13,11 @@ class StaticPagesController < ApplicationController
 
   def info; end
 
-  def usersselect; end
+  def usersselect
+    @sub_users = @profile.sub_users
+    @spaces = @profile.spaces
+    @items = @profile.items
+  end
 
   def newcontents
     @sub_user = SubUser.new

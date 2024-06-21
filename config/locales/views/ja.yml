@@ -6,6 +6,14 @@ ja:
       title: 新しいFlow Thingを作成
     info:
       title: Flow Thingとは？
+    how_to_use:
+      title: 使い方
+    tool_explanation:
+      title: ツール
+    tool_explanation_second:
+      title: ツール
+    idea_page:
+      title: アイデア
   users:
     sessions:
       new:

@@ -28,6 +28,8 @@ import EditSubUserCanvas from './src/EditSubUserCanvas';
 import PeintSubUserCanvas from './src/PeintSubUserCanvas';
 import SampleRoom from './src/SampleRoom';
 import NewSubUserCreate from './src/NewSubUserCreate';
+import NewProfileCanvas from './src/NewProfileCanvas';
+import EditProfileCanvas from './src/EditProfileCanvas';
 
 // document.addEventListener("turbo:load", function() {
 //   if (document.querySelector('.fabicon')) {
@@ -164,7 +166,9 @@ let dragRoot,
     editSubUserCanvasRoot,
     peintSubUserCanvasRoot,
     sampleRoomRoot,
-    newNewSubUserCreateRoot;
+    newNewSubUserCreateRoot,
+    newProfileCanvasRoot,
+    editProfileCanvasRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -404,6 +408,27 @@ document.addEventListener('turbo:load', () => {
     newNewSubUserCreateRoot.render(<NewSubUserCreate profileId={profileId} spaceSize={spaceSize} />);
   }
 
+
+  //「NewProfileCanvas」のマウント
+  const newProfileCanvasContainer = document.getElementById('reactProfileCanvas');
+  if (newProfileCanvasContainer) {
+    const canvasImgId = newProfileCanvasContainer.getAttribute('data-profile-id');
+    const spaceSize = Number(newProfileCanvasContainer.getAttribute('data-space-size'));
+    newProfileCanvasRoot = createRoot(newProfileCanvasContainer);
+    newProfileCanvasRoot.render(<NewProfileCanvas spaceSize={spaceSize} canvasImgId={canvasImgId} />);
+  }
+
+
+  //「EditProfileCanvas」のマウント
+  const editProfileCanvasContainer = document.getElementById('reactEditProfileCanvas');
+  if (editProfileCanvasContainer) {
+    const canvasData = editProfileCanvasContainer.getAttribute('data-profile-canvas');
+    const spaceSize = Number(editProfileCanvasContainer.getAttribute('data-space-size'));
+    const canvasImgId = editProfileCanvasContainer.getAttribute('data-profile-id');
+    editProfileCanvasRoot = createRoot(editProfileCanvasContainer);
+    editProfileCanvasRoot.render(<EditProfileCanvas spaceSize={spaceSize} canvasImgId={canvasImgId} canvasData={canvasData} />);
+  }
+
 });
 
 document.addEventListener('turbo:before-cache', () => {
@@ -523,6 +548,20 @@ document.addEventListener('turbo:before-cache', () => {
   if (newNewSubUserCreateRoot) {
     newNewSubUserCreateRoot.unmount();
     newNewSubUserCreateRoot = null;
+  }
+
+
+  //「NewProfileCanvas」のアンマウント
+  if (newProfileCanvasRoot) {
+    newProfileCanvasRoot.unmount();
+    newProfileCanvasRoot = null;
+  }
+
+
+  //「EditProfileCanvas」のアンマウント
+  if (editProfileCanvasRoot) {
+    editProfileCanvasRoot.unmount();
+    editProfileCanvasRoot = null;
   }
 
 });

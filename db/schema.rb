@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_16_133156) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_20_201934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_16_133156) do
     t.string "selected_option"
     t.datetime "deleted_at"
     t.integer "space_size"
+    t.jsonb "profile_canvas"
+    t.boolean "profile_icon", default: false
     t.index ["deleted_at"], name: "index_profiles_on_deleted_at"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

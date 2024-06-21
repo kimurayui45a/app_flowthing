@@ -9,10 +9,12 @@ class CompositesController < ApplicationController
   def index
     if @profile.present?
       @q = @profile.composites.ransack(params[:q])
-      sort_order = params[:q]&.fetch(:s, 'composites.updated_at desc')
+      # sort_order = params[:q]&.fetch(:s, 'composites.updated_at desc')
+      sort_order = params.dig(:q, :s) || 'composites.updated_at desc'
       @composites = @q.result
                     .order(sort_order)
                     .page(params[:page]).per(12)
+      @spaces = @profile.spaces
     else
       redirect_to root_path
     end

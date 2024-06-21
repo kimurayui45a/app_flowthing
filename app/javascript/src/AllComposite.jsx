@@ -1,10 +1,51 @@
 
 import React, { useState, useEffect } from 'react';
 import { PixiSet } from './components/PixiSet';
-import PixiTest from './PixiTest';
+// import PixiTest from './PixiTest';
+import SampleRoom from './SampleRoom';
 
 const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profileId }) => {
     
+
+
+
+  const [itemNameSearch, setItemNameSearch] = useState('');
+  const [foundItems, setFoundItems] = useState([]);
+  const [foundComposites, setfoundComposites] = useState([]);
+
+//検索フォームから検索できるアイテム item or composite
+const [selectedSearchTarget, setSelectedSearchTarget] = useState('item');
+
+
+  
+  // const handleSearch = () => {
+  //   let targets;
+  //   if (selectedSearchTarget === 'item') {
+  //     targets = itemAllId.filter(target => target.item_name === itemNameSearch);
+  //     setFoundItems(targets.length > 0 ? targets : null);
+  //   } else {
+  //     targets = allComposite.filter(target => target.composite_name === itemNameSearch);
+  //     setfoundComposites(targets.length > 0 ? targets : null);
+  //   }
+  // };
+
+  const handleSearch = () => {
+    let targets;
+    if (selectedSearchTarget === 'item') {
+      targets = itemAllId.filter(target => 
+        target.item_name.toLowerCase().includes(itemNameSearch.toLowerCase())
+      );
+      setFoundItems(targets.length > 0 ? targets : null);
+    } else {
+      targets = allComposite.filter(target => 
+        target.composite_name.toLowerCase().includes(itemNameSearch.toLowerCase())
+      );
+      setfoundComposites(targets.length > 0 ? targets : null);
+    }
+  };
+
+
+
   //「編集・作成」なのか「再描画」なのかを知らせるステート
   const [pixiMode, setPixiMode] = useState(false);
   const [spaceObject, setSpaceObject] = useState();
@@ -21,29 +62,29 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
   // const [randomEpisodes, setRandomEpisodes] = useState([]);
 
 
-  useEffect(() => {
-    if (itemAllId.length > 0 && subUserAllId.length > 0) {
-      // subUserAllId を ID をキーとするオブジェクトに変換して高速アクセスを可能にする
-      const subUserIndex = subUserAllId.reduce((acc, subUser) => {
-        acc[subUser.id] = subUser;
-        return acc;
-      }, {});
+  // useEffect(() => {
+  //   if (itemAllId.length > 0 && subUserAllId.length > 0) {
+  //     // subUserAllId を ID をキーとするオブジェクトに変換して高速アクセスを可能にする
+  //     const subUserIndex = subUserAllId.reduce((acc, subUser) => {
+  //       acc[subUser.id] = subUser;
+  //       return acc;
+  //     }, {});
   
-      // item.episode と対応する sub_user の last_accessed_at を抽出
-      const episodesWithAccessInfo = itemAllId.map(item => {
-        const subUser = subUserIndex[item.sub_user_id];
-        return {
-          id: item.item_id,
-          episode: item.episode,
-          lastAccessedAt: subUser ? subUser.last_accessed_at : 'Unknown'
-        };
-      });
+  //     // item.episode と対応する sub_user の last_accessed_at を抽出
+  //     const episodesWithAccessInfo = itemAllId.map(item => {
+  //       const subUser = subUserIndex[item.sub_user_id];
+  //       return {
+  //         id: item.item_id,
+  //         episode: item.episode,
+  //         lastAccessedAt: subUser ? subUser.last_accessed_at : 'Unknown'
+  //       };
+  //     });
   
-      // シャッフル関数を適用
-      // const shuffledEpisodes = shuffleArray(episodesWithAccessInfo);
-      // setRandomEpisodes(shuffledEpisodes);
-    }
-  }, [itemAllId, subUserAllId]);  // subUserAllId 依存関係にも注意
+  //     // シャッフル関数を適用
+  //     // const shuffledEpisodes = shuffleArray(episodesWithAccessInfo);
+  //     // setRandomEpisodes(shuffledEpisodes);
+  //   }
+  // }, [itemAllId, subUserAllId]);  // subUserAllId 依存関係にも注意
   
   // // Fisher-Yates Shuffle Algorithm
   // function shuffleArray(array) {
@@ -141,8 +182,111 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
   
 
 
+  const handleTargetSearch = (target) => {
+    setSelectedSearchTarget(target);  // 選択された値でステートを更新
+  };
+
+
+  // エンターキーでのフォーム送信を防ぐための関数
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="flex-column top-container">
+
+
+
+<div className="flex">
+    <div>
+      <div  style={{ width: '200px', textAlign: 'left' }}>
+      <div><span className="midasi-t-five">探し物をする</span></div>
+        <input
+          type="text"
+          value={itemNameSearch}
+          onChange={(e) => setItemNameSearch(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className='form-control board-item-form'
+        />
+      </div>
+
+
+      <div
+        className="select-confirm-btn"
+        onClick={handleSearch}
+        onTouchStart={handleSearch}
+        style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+        >
+        決定
+      </div>
+
+
+      <div className="flex">
+        <div
+          className="select-confirm-btn"
+          onClick={() => handleTargetSearch('item')}
+          onTouchStart={() => handleTargetSearch('item')}  
+          style={{ width: 'auto', height: 'auto', padding: '2px 12px', margin: '5px', backgroundColor: selectedSearchTarget === 'item' ? '#9199AE' : '#c2c1c1', borderRadius: '2px'}}
+          >
+          Flow Thing
+        </div>
+
+        <div
+          className="select-confirm-btn"
+          onClick={() => handleTargetSearch('composite')}
+          onTouchStart={() => handleTargetSearch('composite')}
+          style={{ width: 'auto', height: 'auto', padding: '2px 12px', margin: '5px', backgroundColor: selectedSearchTarget === 'composite' ? '#9199AE' : '#c2c1c1', borderRadius: '2px' }}
+          >
+          Flux Screen
+        </div>
+      </div>
+    </div>
+
+
+
+{selectedSearchTarget === 'item' && (
+  foundItems ? (
+    foundItems.map((target, index) => (
+      <div key={index}>
+        <a href={`/items/${target.id}`}>
+        <img src={target.item_canvas} alt="Canvas Image" style={{ width: '50px' }}  />
+        </a>
+      </div>
+    ))
+  ) : (
+    <span>検索アイテムがありません</span>
+  )
+)}
+
+
+
+{selectedSearchTarget === 'composite' && (
+  foundComposites ? (
+    foundComposites.map((target, index) => (
+      <div key={index}>
+                  <div onClick={() => handleCompositeChange(target.id)} onTouchStart={() => handleCompositeChange(target.id)} style={{ cursor: 'pointer' }}>
+            <img src={target.composite_image} alt="Canvas Image" style={{ width: '100px' }} />
+          </div>
+      </div>
+    ))
+  ) : (
+    <span>検索アイテムがありません</span>
+  )
+)}
+
+</div>
+
+
+
+
+
+
+
+
+
+      
       <div className="flux-screen-show-third">
         <div className="flux-screen-show-frame">
           <div className="flux-screen-show-frame-second">
@@ -166,17 +310,9 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
               <>
                 {/* <PixiTest /> */}
                 <div className="info-btn-fram flex">
-                <a href="/info">
-                <div className="info-botann">
-                <div className="wave wave1"></div>
-                  <div className="wave wave2"></div>
-                  <div className="wave wave3"></div>
-                  <div className="wave wave4"></div>
-                <div className="info-botann-text">
-                    <span className="f-text">F</span>low <span className="t-text">T</span>hing<span className="gray-text">とは？</span>
-                </div>
-                </div>
-                </a>
+
+                <SampleRoom />
+
                 </div>
               </>
             )}
@@ -213,9 +349,9 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
                   <div className="wave wave3"></div>
                   <div className="wave wave4"></div>
                   <div className="info-botann-text">
-                    <span className="f-text">F</span>low 
-                    <span className="t-text">T</span>hing
-                    <span className="gray-text">とは？</span>
+                    <span className="f-text">サンプル</span> 
+                    <span className="t-text">ルーム</span>
+                    {/* <span className="gray-text">とは？</span> */}
                   </div>
                 </div>
               </div>
@@ -227,11 +363,16 @@ const AllComposite = ({ allComposite, itemAllId, spaceAllId, subUserAllId, profi
           <div style={{ width: '178px', height: '51px', marginRight: '8px'}}></div>
           <div style={{ overflowX: 'auto', height: 'auto', display: 'flex', width:'725px' }}>
             <div className="flex-start-center">
-              {allComposite.map((composite, index) => (
+
+            {allComposite
+              .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)) // 更新日時で降順にソート
+              .slice(0, 4) // 最新の6つの要素を取得
+              .map((composite, index) => (
+
                 <div key={index} className="flex">
                   <div className="flux-screen-show-third-mini">
                     <div className="flux-screen-show-frame-mini">
-                      <div className="flux-screen-show-frame-second-mini">
+                      <div>
                         <div className="mini-top-canvas">
                           <div style={{ margin: '2.5px' }}>
                             <div

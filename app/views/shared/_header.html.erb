@@ -63,6 +63,7 @@
           </li>
 
 
+<% if @profile.present? && !@profile.new_record? %>
           <li class="header-main-none">
             <%= link_to 'Flow Thing', items_path, class: "text-Rounded500 header-text-Rounded500" %>
           </li>
@@ -78,25 +79,40 @@
           <li class="header-main-none">
             <%= link_to 'Flux Screen', composites_path, class: "text-Rounded500 header-text-Rounded500" %>
           </li>
+          <% end %>
 
           <li  class="user-dropdown">
+
+
+
+
+
+
 
             <% if current_user && current_user.profile %>
               <% profile = current_user.profile %>
               <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <% if profile.image_icon.present? %>
-                  <%= image_tag profile.image_icon.url, class: "user-headericon" %>
-                <% elsif profile.color_code.present? %>
-                  <div style="background-color: <%= profile.color_code %>;" class="user-headericon">
-                  <%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "userdefault-icon-header") %>
-                  </div>
+
+                <% if profile.profile_icon? %>
+
+                  <% if profile.profile_canvas.present? %>
+                    <img src="<%= profile.profile_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-headericon">
+                  <% else %>
+                    <div class="header-no-canvas-icon">
+                      <span>No Image</span>
+                    </div>
+                  <% end %>
+
                 <% else %>
-                  <i class="bi bi-person"></i>
+                  <div style="background-color: <%= profile.color_code %>;" class="user-headericon">
+                    <%= image_tag('small_chara_icon.png', alt: 'デフォルトのアイコン', class: "userdefault-icon-header") %>
+                  </div>
                 <% end %>
+
               </button>
               <% else %>
               <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person"></i>
+                <i class="bi bi-person" style="font-size: 2rem;"></i>
                 </button>
             <% end %>
 
@@ -114,15 +130,21 @@
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール', tool_explanation_path, class: 'user-dropdown-link' %>
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
 
-
+<% if @profile.present? && !@profile.new_record? %>
 
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Sub Thing', sub_users_path, class: 'user-dropdown-link' %></li>
               
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Screen', spaces_path, class: 'user-dropdown-link' %></li>
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flux Screen', composites_path, class: 'user-dropdown-link' %></li>
+
                 <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
-                <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %></li>
+
+                
+                  <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %></li>
+                <% end %>
+
+                
 
 
                 <li class='user-dropdown-item'><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'user-dropdown-link' %></li>
@@ -131,6 +153,7 @@
 
           </li>
 
+<% if @profile.present? && !@profile.new_record? %>
           <li>
             <%= link_to usersselect_path do %>
               <div class="header-button header-button:hover">
@@ -138,6 +161,7 @@
               </div>
             <% end %>
           </li>
+<% end %>
 
           <%# <li class="room-dropdown">
             <div class='room-container'>

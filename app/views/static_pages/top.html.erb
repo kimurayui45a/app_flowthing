@@ -5,7 +5,14 @@
 <% if user_signed_in? %>
 <% if current_user.profile&.color_code.present? %>
 
-<div class='p5canvas-container'>
+  <div class='p5canvas-container how-to-use-container' style="background-color: <%= current_user.profile.color_code %>;">
+
+  <div class="info-container">
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
+
+
+
     <div id="reactAllComposite"
       data-composite-id-all="<%= @composites.to_json %>"
       data-item-id-all="<%= @items.to_json %>"
@@ -14,10 +21,26 @@
       data-profile-id="<%= @profile.to_json %>"
     >
     </div>
+</div>
+
     </div>
-     <% else %>
-     <div>ない</div>
-     <% end %>
+
+
+    <% else %>
+
+  <div class='p5canvas-container how-to-use-container'>
+
+    <div class="login-container" style="height: 100rem;">
+      <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+      <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
+        
+      <p style="margin-top: 5rem;">まだ<span class="red-text">新規アカウント登録</span>が完了しておりません。<br>下記より登録手続きを完了して下さい。</p><br>
+      <%= link_to '新規アカウント登録を完了する', new_profile_path, class: "text-Rounded500 no-profile-btn" %>
+
+    </div>
+  </div>
+
+    <% end %>
   <% else %>
   <div class='p5canvas-container how-to-use-container'>
 

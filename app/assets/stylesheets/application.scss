@@ -1144,6 +1144,9 @@ html {
   width: 5rem;
   height: 5rem;
   color: #5395ca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-dropdown-btn:hover {
@@ -1399,9 +1402,43 @@ html {
 .user-profileicon {
   width: 120px;
   height: 120px;
-  // border-radius: 50%;
+  border-radius: 50%;
   display: inline-block;
   margin: 0px auto;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.profileicon-big {
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.userdefault-icon-profile {
+  width: 7rem;
+  display: inline-block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.profileicon-paint {
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -1414,6 +1451,7 @@ html {
   height: 250px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .withdrawal-image-container {
@@ -3089,7 +3127,11 @@ summary {
 
 .search-actions {
   margin-top: 0.8rem;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
+}
+
+.search-actions-board {
+  padding: 1rem;
 }
 
 .search-text {
@@ -7608,7 +7650,7 @@ background-color: #d1eee6;
   //background-color: #b5ada3;
   // box-shadow: rgb(90, 86, 86) 1px 20px 40px inset;
   padding-bottom: 10rem;
-  padding-top: 8rem;
+  // padding-top: 8rem;
 }
 
 .nameplate-white {
@@ -7765,7 +7807,7 @@ background-color: #d1eee6;
 }
 
 .flux-screen-show-third-mini {
-  background: linear-gradient(140deg, #79756e, #625d53, #443f35, #332f26, #2e271a);
+  background: linear-gradient(140deg, #5fc9f5, #2fa0e8, #1481ee, #0a71e4, #20a6e1);
     box-shadow: 1.5px 4px 4px rgba(0, 0, 0, 0.7);
     /* box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 3px inset; */
     /* box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px 3px inset; */
@@ -7782,7 +7824,7 @@ background-color: #d1eee6;
 
 .flux-screen-show-frame-mini {
   box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
-  background: linear-gradient(140deg, #7f7d79, #48433a, #413b30, #3a352c, #2c2318);
+  background: linear-gradient(140deg, #4782c0, #6394c2, #73a8da, #3a78c3, #296291);
   border-radius: 0.2rem;
   /* border: 1px solid #887f79; */
   box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 1px inset;
@@ -7794,7 +7836,7 @@ background-color: #d1eee6;
 }
 
 .flux-screen-show-frame-second-mini {
-  background: linear-gradient(140deg, #545351, #565146, #3c3831, #2e2920, #1e170e);
+  background: linear-gradient(140deg, #4782c0, #6394c2, #73a8da, #3a78c3, #296291);
   box-shadow: rgba(0, 0, 0, 0.3) 1px 0.5px 1px 1px inset;
   border-radius: 0.2rem;
   /* margin: 3px; */
@@ -8011,6 +8053,18 @@ background-color: #d1eee6;
   font-style: normal;
   color: #dfded6;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2), -0.8px -0.5px 0.5px rgba(0, 0, 0, 0.8);
+}
+
+.space-summary-style-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 5px;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #7f7f7f;
+  // text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2), -0.8px -0.5px 0.5px rgba(0, 0, 0, 0.8);
 }
 
 .space-item-shadow {
@@ -8327,8 +8381,8 @@ background-color: #d1eee6;
 
 .info-wave-logo {
   position: absolute;
-  top: -1rem;
-  left: -1rem;
+  top: 0rem;
+  left: 0rem;
 }
 
 .info-wave3-logo {
@@ -8477,8 +8531,8 @@ background-color: #d1eee6;
   
   .info-wave-logo {
     position: absolute;
-    top: -0.8rem;
-    left: -0.8rem;
+    top: 0rem;
+    left: 0rem;
   }
 
   .info-wave3-logo {
@@ -8959,7 +9013,7 @@ background-color: #d1eee6;
 
 .profile-input-container {
   margin: 2rem;
-  width: 38rem;
+  width: 42rem;
   padding: 1rem;
   // border: 2rem solid #5395ca;
   border-radius: 0.5rem;
@@ -8987,6 +9041,11 @@ background-color: #d1eee6;
   box-sizing: border-box;
 }
 
+.tool-space-custom {
+  text-align: left;
+  padding: 1.5rem;
+  color: #7f7f7f;
+}
 
 .profile-input-container3 {
   border-radius: 0.5rem;
@@ -8996,10 +9055,10 @@ background-color: #d1eee6;
 
   border-radius: 0.5rem;
   /* padding: 1.5rem; */
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 3rem 1rem 2rem 1rem;
   background: #fff;
   box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;
-  width: 36rem;
+  width: 40rem;
   // height: auto;
   // display: flex;
   // flex-direction: column;
@@ -9989,3 +10048,81 @@ background-color: #d1eee6;
 // .dot-sample-table tbody tr:hover {
 //   background-color: #f9f9f9; /* マウスオーバーで背景色を変更 */
 // }
+
+
+
+.alert-message-all {
+  position: absolute;
+  top: 7rem;
+  left: 2rem;
+  z-index: 50;
+}
+
+.search-item-container {
+  width: 500px;
+  background-color: #FBC8C3;
+}
+
+.searc-target-container {
+  margin-left: 10rem ;
+}
+
+.create-usersselect-container-no-user {
+  height: auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  // box-shadow: 5px 5px 8px 1px #c6c6c6;
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  width: 17rem;
+  background-color: #e0e0e0;
+}
+
+.no-profile-btn {
+  border: 3px solid red;
+  color: red;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(83, 83, 83, 0.2);
+}
+
+.no-profile-btn:hover {
+  background-color: gainsboro;
+}
+
+.header-no-canvas-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px dashed #7f7f7f;
+  font-size: 0.6rem;
+}
+
+.no-canvas-icon {
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px dashed #7f7f7f;
+  font-size: 0.8rem;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}

@@ -1,10 +1,11 @@
 class SubUsersController < ApplicationController
   before_action :set_sub_user, only: [:show, :edit, :update, :destroy]
 
+
   def index
     if @profile.present?
       @q = @profile.sub_users.ransack(params[:q])
-      sort_order = params[:q]&.fetch(:s, 'sub_users.updated_at desc')
+      sort_order = params.dig(:q, :s) || 'sub_users.updated_at desc'
       @sub_users = @q.result
                     .order(sort_order)
                     .page(params[:page]).per(12)
