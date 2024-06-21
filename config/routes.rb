@@ -77,10 +77,10 @@ Rails.application.routes.draw do
   end
 
   #サンプルページ
-  get 'new_sample', to: 'static_pages#new_sample'
-  get 'sub_sample', to: 'static_pages#sub_sample'
-  get 'flow_sample', to: 'static_pages#flow_sample'
-  get 'episode_sample', to: 'static_pages#episode_sample'
+  # get 'new_sample', to: 'static_pages#new_sample'
+  # get 'sub_sample', to: 'static_pages#sub_sample'
+  # get 'flow_sample', to: 'static_pages#flow_sample'
+  # get 'episode_sample', to: 'static_pages#episode_sample'
 
   #説明ページ
   get 'how_to_use', to: 'static_pages#how_to_use'

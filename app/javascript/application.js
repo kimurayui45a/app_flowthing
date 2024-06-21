@@ -14,11 +14,11 @@ import { createRoot } from 'react-dom/client';
 import DraggableArea from './src/DraggableArea';
 import PixiTest from './src/PixiTest';
 import NewItemCreate from './src/NewItemCreate';
-import LordItemCanvas from './src/LordItemCanvas';
-import LordItemSubUserShow from './src/LordItemSubUserShow';
+// import LordItemCanvas from './src/LordItemCanvas';
+// import LordItemSubUserShow from './src/LordItemSubUserShow';
 import EditItemCanvas from './src/EditItemCanvas';
 import NewSpaceCreate from './src/NewSpaceCreate';
-import LordSpaceCanvas from './src/LordSpaceCanvas';
+// import LordSpaceCanvas from './src/LordSpaceCanvas';
 import EditSpaceCanvas from './src/EditSpaceCanvas';
 import NewCompositeCreate from './src/NewCompositeCreate';
 import { LoadComposite } from './src/LoadComposite';
@@ -153,11 +153,11 @@ document.addEventListener("turbo:load", function() {
 let dragRoot,
     pixiTestRoot,
     newItemCreateRoot,
-    lordItemCanvasRoot,
-    lordItemSubUserShowRoot,
+    // lordItemCanvasRoot,
+    // lordItemSubUserShowRoot,
     editItemCanvasRoot,
     newSpaceCreateRoot,
-    lordSpaceCanvasRoot,
+    // lordSpaceCanvasRoot,
     editSpaceCanvasRoot,
     newCompositeCreateRoot,
     loadCompositeRoot,
@@ -219,25 +219,25 @@ document.addEventListener('turbo:load', () => {
   }
 
 
-  //「LordItemCanvas」のマウント
-  const lordItemCanvasContainer = document.getElementById('reactLordItemCanvas');
-  if (lordItemCanvasContainer) {
-    const canvasImgId = lordItemCanvasContainer.getAttribute('data-item-id');
-    const canvasData = lordItemCanvasContainer.getAttribute('data-canvas-data');
-    lordItemCanvasRoot = createRoot(lordItemCanvasContainer);
-    lordItemCanvasRoot.render(<LordItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} />);
-  }
+  // //「LordItemCanvas」のマウント
+  // const lordItemCanvasContainer = document.getElementById('reactLordItemCanvas');
+  // if (lordItemCanvasContainer) {
+  //   const canvasImgId = lordItemCanvasContainer.getAttribute('data-item-id');
+  //   const canvasData = lordItemCanvasContainer.getAttribute('data-canvas-data');
+  //   lordItemCanvasRoot = createRoot(lordItemCanvasContainer);
+  //   lordItemCanvasRoot.render(<LordItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} />);
+  // }
 
 
-  //「LordItemSubUserShow」のマウント
-  const lordItemSubUserShowContainers = document.querySelectorAll('[id^="reactLordItemSubUserShow_"]');
+  // //「LordItemSubUserShow」のマウント
+  // const lordItemSubUserShowContainers = document.querySelectorAll('[id^="reactLordItemSubUserShow_"]');
 
-  lordItemSubUserShowContainers.forEach(container => {
-    const canvasImgId = container.getAttribute('data-item-id');
-    const canvasData = container.getAttribute('data-canvas-data');
-    const lordItemSubUserShowRoot = createRoot(container);
-    lordItemSubUserShowRoot.render(<LordItemSubUserShow canvasImgId={canvasImgId} canvasData={canvasData} />);
-  });
+  // lordItemSubUserShowContainers.forEach(container => {
+  //   const canvasImgId = container.getAttribute('data-item-id');
+  //   const canvasData = container.getAttribute('data-canvas-data');
+  //   const lordItemSubUserShowRoot = createRoot(container);
+  //   lordItemSubUserShowRoot.render(<LordItemSubUserShow canvasImgId={canvasImgId} canvasData={canvasData} />);
+  // });
 
 
   //「EditItemCanvas」のマウント
@@ -273,14 +273,14 @@ document.addEventListener('turbo:load', () => {
   }
 
 
-  //「LordSpaceCanvas」のマウント
-  const lordSpaceCanvasContainer = document.getElementById('reactLordSpaceCanvas');
-  if (lordSpaceCanvasContainer) {
-    const canvasImgId = lordSpaceCanvasContainer.getAttribute('data-space-id');
-    const canvasData = lordSpaceCanvasContainer.getAttribute('data-canvas-data');
-    lordSpaceCanvasRoot = createRoot(lordSpaceCanvasContainer);
-    lordSpaceCanvasRoot.render(<LordSpaceCanvas canvasImgId={canvasImgId} canvasData={canvasData} />);
-  }
+  // //「LordSpaceCanvas」のマウント
+  // const lordSpaceCanvasContainer = document.getElementById('reactLordSpaceCanvas');
+  // if (lordSpaceCanvasContainer) {
+  //   const canvasImgId = lordSpaceCanvasContainer.getAttribute('data-space-id');
+  //   const canvasData = lordSpaceCanvasContainer.getAttribute('data-canvas-data');
+  //   lordSpaceCanvasRoot = createRoot(lordSpaceCanvasContainer);
+  //   lordSpaceCanvasRoot.render(<LordSpaceCanvas canvasImgId={canvasImgId} canvasData={canvasData} />);
+  // }
 
   //「EditSpaceCanvas」のマウント
   const editSpaceCanvasContainer = document.getElementById('reactEditSpaceCanvas');
@@ -462,17 +462,17 @@ document.addEventListener('turbo:before-cache', () => {
   }
 
 
-  //「LordItemCanvas」のアンマウント
-  if (lordItemCanvasRoot) {
-    lordItemCanvasRoot.unmount();
-    lordItemCanvasRoot = null;
-  }
+  // //「LordItemCanvas」のアンマウント
+  // if (lordItemCanvasRoot) {
+  //   lordItemCanvasRoot.unmount();
+  //   lordItemCanvasRoot = null;
+  // }
 
-  //「LordItemSubUserShow」のアンマウント
-  if (lordItemSubUserShowRoot) {
-    lordItemSubUserShowRoot.unmount();
-    lordItemSubUserShowRoot = null;
-  }
+  // //「LordItemSubUserShow」のアンマウント
+  // if (lordItemSubUserShowRoot) {
+  //   lordItemSubUserShowRoot.unmount();
+  //   lordItemSubUserShowRoot = null;
+  // }
 
   //「EditItemCanvas」のアンマウント
   if (editItemCanvasRoot) {
@@ -486,11 +486,11 @@ document.addEventListener('turbo:before-cache', () => {
     newSpaceCreateRoot = null;
   }
   
-  //「NewSpaceCreate」のアンマウント
-  if (lordSpaceCanvasRoot) {
-    lordSpaceCanvasRoot.unmount();
-    lordSpaceCanvasRoot = null;
-  }
+  // //「NewSpaceCreate」のアンマウント
+  // if (lordSpaceCanvasRoot) {
+  //   lordSpaceCanvasRoot.unmount();
+  //   lordSpaceCanvasRoot = null;
+  // }
 
   //「EditSpaceCanvas」のアンマウント
   if (editSpaceCanvasRoot) {

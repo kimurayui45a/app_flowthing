@@ -81,13 +81,13 @@ class StaticPagesController < ApplicationController
     params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place)
   end
 
-  def new_sample; end
+  # def new_sample; end
 
-  def sub_sample; end
+  # def sub_sample; end
 
-  def flow_sample; end
+  # def flow_sample; end
 
-  def episode_sample; end
+  # def episode_sample; end
 
   def how_to_use; end
 
