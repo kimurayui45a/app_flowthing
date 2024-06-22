@@ -641,7 +641,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
             <div className="flex-between" style={{ width: '150px', marginTop: '8px' }}>
               <div className="flex-column">
                 <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>最小補間率</span>
-                <div>
+                <div className='tooltip-container'>
                   <input
                     className="no-drag form-select-value"
                     type="number"
@@ -656,13 +656,14 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                     onMouseEnter={() => handleDescriptionMouseEnter('最小補間率', '筆圧がゆっくり変化する時のペンの反応速度。値が小さいほど滑らかに、大きいほど直接的に反応します。')}
                     onTouchStart={() => handleDescriptionMouseEnter('最小補間率', '筆圧がゆっくり変化する時のペンの反応速度。値が小さいほど滑らかに、大きいほど直接的に反応します。')}
                   />
+                  <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜1</span>
                 </div>
               </div>
 
               {/* 「筆圧変動が早い時の補間率」フォーム */}
               <div className="flex-column">
                 <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>最大補間率</span>
-                  <div>
+                  <div className='tooltip-container'>
                     <input
                       className="no-drag form-select-value"
                       type="number"
@@ -677,6 +678,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                       onMouseEnter={() => handleDescriptionMouseEnter('最大補間率', '筆圧が急激に変化する時のペンの反応速度。値が小さいほど滑らかに、大きいほど即座に反応します。')}
                       onTouchStart={() => handleDescriptionMouseEnter('最大補間率', '筆圧が急激に変化する時のペンの反応速度。値が小さいほど滑らかに、大きいほど即座に反応します。')}
                     />
+                    <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜1</span>
                   </div>
               </div>
             </div>
@@ -821,7 +823,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                 {/* 「サイズ補間率」フォーム */}
                 <div className="flex" style={{ marginTop: '8px' }}>
                   <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>サイズの補間率：</span>
-                  <div>
+                  <div className='tooltip-container'>
                     <input
                       className="no-drag form-select-value"
                       type="number"
@@ -836,6 +838,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                       onMouseEnter={() => handleDescriptionMouseEnter('サイズの補間率', '筆圧が変化する時のサイズの補間率を調整します。')}
                       onTouchStart={() => handleDescriptionMouseEnter('サイズの補間率', '筆圧が変化する時のサイズの補間率を調整します。')}
                     />
+                    <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜1</span>
                   </div>
                 </div>
 

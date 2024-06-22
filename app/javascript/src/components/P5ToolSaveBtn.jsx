@@ -75,7 +75,8 @@ const P5ToolSaveBtn = ({ profileId }) => {
   } = useP5PenToolParametersContext();
 
   const {
-    toolSize
+    toolSize,
+    minSize
   } = useP5CanvasCoreShare();
 
 
@@ -103,7 +104,8 @@ const P5ToolSaveBtn = ({ profileId }) => {
       //p5コアに送るもの(useP5CanvasCoreShare)
       p5Core: {
       //ツールサイズ
-      toolSize: toolSize
+      toolSize: toolSize,
+      minSize: minSize
       },
   
       //カラーに送るもの(useP5Color)

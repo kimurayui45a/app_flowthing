@@ -241,6 +241,7 @@ useEffect(() => {
       const toolSizeData = toolData.p5Core;
       // console.log('ツールサイズデータ', toolSizeData);
       setToolSize(toolSizeData.toolSize);
+      setMinSize(toolSizeData.minSize);
     }
   }
 }, [toolDateParameters]);
@@ -250,8 +251,10 @@ useEffect(() => {
   }, [minSize]);
 
   useEffect(() => {
-    setMinSize(toolSize / 2);
-    setInputMinValue(String(toolSize / 2));
+    if (minSize > toolSize) {
+      setMinSize(toolSize / 2);
+    }
+    //setInputMinValue(String(toolSize / 2));
   }, [toolSize]);
 
   //minSizeの内部処理は外部に飛ばすためminSizeの更新とRefが完全に同期するように記述

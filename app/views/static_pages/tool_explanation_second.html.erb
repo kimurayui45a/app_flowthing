@@ -79,10 +79,10 @@
       </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p style="margin-bottom: -1rem;">「詳細設定パネル」は大きく分けて4種類あります。</p><br>
-        <span style="color: #59afc7;" class="text-Rounded500">ペン</span>：ペン機能についての詳細設定を調整するためのパネルです。<br>
-        <span style="color: #59afc7;" class="text-Rounded500">筆圧設定</span>：筆圧機能についての詳細設定を調整するためのパネルです。ペン機能を選択している時にのみパネル上部の<span style="color: #e19ab0;" class="text-Rounded500">「切り替えタブ」</span>から表示できます。<br>
-        <span style="color: #59afc7;" class="text-Rounded500">選択/画像</span>：選択機能もしくは画像機能を選択している時に表示されるパネルです。<br>
-        <span style="color: #59afc7;" class="text-Rounded500">図形/テキスト</span>：図形機能もしくはテキスト機能を選択している時に表示されるパネルです。
+      <p><span style="color: #E19AB0;" class="text-Rounded500">ペン</span>：ペン機能についての詳細設定を調整するためのパネルです。<br></p>
+      <p><span style="color: #59afc7;" class="text-Rounded500">筆圧設定</span>：筆圧機能についての詳細設定を調整するためのパネルです。ペン機能を選択している時にのみパネル上部の<span style="color: #e19ab0;" class="text-Rounded500">「切り替えタブ」</span>から表示できます。<br></p>
+      <p><span style="color: #7CBB72;" class="text-Rounded500">選択/画像</span>：選択機能もしくは画像機能を選択している時に表示されるパネルです。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">図形/テキスト</span>：図形機能もしくはテキスト機能を選択している時に表示されるパネルです。</p>
     </div>
 
 
@@ -363,7 +363,6 @@
         設定できるサイズは<span style="color: #59afc7;" class="text-Rounded500">「0.5〜現在選択しているブラシサイズの半分の値まで」</span>になります。<br>
         </p>
 
-
     
         <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">ドットの数</span></p><br>
         <div>
@@ -500,19 +499,60 @@
       </h3>
     </section>
     <div class="sidebar-design">
-      <%= image_tag('pen_normal_panel.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image") %>
-    </div>
-    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
-    <p>「詳細設定パネル」は<span style="color: #F8A3B1;" class="text-Rounded500">「ペン」「選択」「図形」「画像」</span>機能のいずれかを選択した際に表示されるパネルです。<br>
-    自動表示モードをオフ<%= image_tag('auto_panel_none_btn.png', alt: '自動表示モードがオフの時のUI', class: "auto_btn-image") %>にしている場合は
-    <span style="color: #59afc7;" class="text-Rounded500"><i class="bi bi-gear-fill"></i></span>アイコンをクリックすると表示されます。<br>
-    パネル内の内容は選択されているツールに合わせて変化します。
-    </p>
+      <%= image_tag('pen_pressure_panel.png', alt: '筆圧の詳細設定パネルの図解', class: "toolpanel-image") %>
     </div>
 
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      設定項目の紹介
+      </span>
+    </h4>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;">本ペイントツールでは、<span style="color: #e19ab0;" class="text-Rounded500">「サイズ」「彩度（S値）」「明度（V値）」</span>の3つの要素に対して、それぞれ筆圧による補正を加えることができます。<br>
+      筆圧設定パネルの左端の<span style="color: #59afc7;" class="text-Rounded500">メニューバー</span>より各項目の場所にジャンプできます。
+      </p><br>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">筆圧の補間率調整</span>：実際の筆圧に対して、強弱の補助値を加えることができます。これにより、使用者の手の力加減に応じて、より自由な強さでペイントが可能になります。<br></p>
+      <p><span style="color: #59afc7;" class="text-Rounded500">サイズに筆圧をつける</span>：筆圧に応じてペンのサイズを動的に変更することができます。これにより、細かい線から太い線まで、筆圧を変えるだけで自在に描画できます。<br></p>
+      <p><span style="color: #7CBB72;" class="text-Rounded500">S値に筆圧をつける</span>：彩度に筆圧を加えることで、手の力加減だけで色の濃淡を調整できます。薄い色から濃い色まで、自然な変化を表現することができます。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">V値に筆圧をつける</span>：明度に筆圧を加えることで、明るい色から暗い色まで、手の力加減で自由に変更できます。</p>
+    </div>
+    
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      筆圧の補間率調整
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('pen_pressure_base.png', alt: '筆圧の補間率調整の項目の説明', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;"><span style="color: #E19AB0;" class="text-Rounded500">「筆圧の補間率調整」</span>の項目では基準となる筆圧調整の設定ができます。
+      </p><br>
+      <p><span style="color: #59afc7;" class="text-Rounded500">最小補間率</span>：描画中に筆圧が<span style="color: #59afc7;" class="text-Rounded500">ゆっくり変化</span>する時の反応具合を調整する項目です。設定値が小さいほど緩やかに変化し、大きいほど瞬時に変化します。<br></p>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">最大補間率</span>：描画中に筆圧が<span style="color: #e19ab0;" class="text-Rounded500">急激に変化</span>する時の反応具合を調整する項目です。設定値が小さいほど緩やかに変化し、大きいほど瞬時に変化します。<br></p>
+      <p><span style="color: #7CBB72;" class="text-Rounded500">筆圧調整値</span>：通常の筆圧に対して強弱の補助値を加えることができる設定できる項目です。これにより弱い筆圧で筆圧が強い時の線が、また強い筆圧で弱い筆圧の時の線が引けるようになります。<br></p>
+    </div>
 
 
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      サイズに筆圧をつける
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('pen_pressure_size.png', alt: 'サイズに筆圧をつけるの項目の説明', class: "toolpanel-image") %>
+    </div>
 
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;">この項目ではサイズに筆圧をつけるか選択でき、さらにそれに関する詳細を設定することができます。
+      </p><br>
+      <p><span style="color: #59afc7;" class="text-Rounded500">サイズに筆圧をつける</span>：ここで筆圧に応じてサイズを変更するかどうかを選択できます。チェックボックスにチェックを入れると<span style="color: #e19ab0;" class="text-Rounded500">オン</span>になり、選択しているツールサイズを最大値にそれを超えない範囲で筆圧によってペンのサイズが変わります。<br>チェックを外すと<span style="color: #59afc7;" class="text-Rounded500">オフ</span>になり均一な線になります。<br></p>
+      <p><span style="color: #bfad28;" class="text-Rounded500">サイズの変動具合を調整する</span>：<span style="color: #59afc7;" class="text-Rounded500">「サイズに筆圧をつける」</span>の項目にチェックが入っている場合のみさらに詳細な設定を加えるか選択できる項目です。サイズの変動具合や最小値を設定できます。<br></p>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">サイズの補間率</span>：サイズの変動具合を調整できます。0から1の範囲でサイズがどれくらいの速度で変動するかを細かく設定可能です。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">最小ペンサイズ</span>：筆圧によって変動するペンの最小サイズを設定できます。筆圧のかかるペンは<span style="color: #e19ab0;" class="text-Rounded500">選択中のツールサイズを最大値</span>に、<span style="color: #59afc7;" class="text-Rounded500">最小ペンサイズを最小値</span>にした範囲で変動します。サイズ変更時に新しく選択したものが最小サイズより小さかった場合はこの値は選択したツールサイズの半分の値に自動で更新されます。<br></p>
+    </div>
 
 
 

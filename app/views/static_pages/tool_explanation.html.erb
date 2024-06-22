@@ -31,6 +31,7 @@
           <div class="accordion-content-sidebar" id="accordion-section3">
               <%= link_to '詳細設定パネルの基本構造', tool_explanation_second_path + '#section1' %>
               <%= link_to 'ペン', tool_explanation_second_path + '#section2' %>
+              <%= link_to '筆圧設定', tool_explanation_second_path + '#section3' %>
               <a href="#section2">選択/画像</a>
               <a href="#section2">図形/テキスト</a>
           </div>
@@ -61,7 +62,7 @@
     </section>
 
 
-    <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+    <h3 class="explanation-section-subtitle">
       <span class="sub-line">
       コントロールパネル
       </span>
@@ -252,6 +253,17 @@
       作成した描画をpng形式で自身のパソコンにダウンロードすることができます。
     </p>
 
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      ツール情報の保存
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      ツールサイズやカラーパレットの情報などが保存できます。<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-hdd-fill"></i></span>ボタンによる手動保存になります。
+    </p>
+
+
+
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title" style="margin-bottom: 5rem;">
       <span class="text-line">ツールパネル</span>
@@ -355,6 +367,9 @@
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #7f69a2;" class="text-Rounded700">スケールパネル表示ボタン</span><%= image_tag('scale_panel_btn.png', alt: 'スケールパネル表示ボタン', class: "toolbtn-image") %>：
       このボタンを押すとスケールパネルが表示されます。</p><br>
+
+      <p style="margin-bottom: -0.8rem; margin-top: 3rem;"><span style="color: #58B497;" class="text-Rounded700">ツール保存</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-hdd-fill"></i></span>：
+      ツールサイズやフリーパレットに登録されているカラーなどペイントツール上の設定情報を保存します。<br>このボタンを押すまではツールの情報の保存・更新は行われませんのでご注意ください。</p><br>
     </div>
 
     <section id="section3">
