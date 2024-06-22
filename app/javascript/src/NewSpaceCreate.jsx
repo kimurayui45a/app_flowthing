@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const NewSpaceCreate = ({ profileId, spaceSize }) => {
+const NewSpaceCreate = ({ profileId, spaceSize, toolDateParameters }) => {
 
   // Canvasのサイズを状態として保持
   const [canvasSize, setCanvasSize] = useState({ width: 800, height: 450 });
@@ -79,6 +79,10 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
   //レイヤーセーブできるようにする
   const [notLayerSave, setNotLayerSave] = useState(true);
+
+
+  //ツールをセーブできるようにする
+  const [activeSave, setActiveSave] = useState(true);
 
   // 描画データを受け取るための状態
   const [getData, setGetData] = useState(null);
@@ -177,7 +181,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
   return (
     <div className="flex-column">
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} toolDateParameters={toolDateParameters} profileId={profileId} activeSave={activeSave} />
 
       {alertToast && (
           <div

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useP5Color } from '../P5ColorContext';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { PenToolShareValueComponent } from './PenToolShareValueComponent';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
 import { useP5ToolModeContext } from '../P5ModeContext';
+// import { useP5Color } from '../P5ColorContext';
+// import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 
 
@@ -15,167 +15,13 @@ const DetailSmoothPenBlock = () => {
   } = useP5ToolModeContext();
 
   const {
-    //概要説明
-    description,
-    setDescription,
-    handleDescriptionMouseEnter,
-
-    //詳細パネル（ペンツール...筆圧とSとVのMAX）
-    pressureAdjustment,
-    setPressureAdjustment,
-    userCustomS,
-    setUserCustomS,
-    sMin,
-    setSMin,
-    userCustomV,
-    setUserCustomV,
-    vMax,
-    setVMax,
-
-    //詳細パネル（ペンツール...各設定のbool値）
-    blur,
-    setBlur,
-    pressurePen,
-    setPressurePen,
-    sizeCustomBool,
-    setSizeCustomBool,
-    activeS,
-    setActiveS,
-    maxChangeSBool,
-    setMaxChangeSBool,
-    maxChangeVBool,
-    setMaxChangeVBool,
-    activeV,
-    setActiveV,
-    alphaDecayBool,
-    setAlphaDecayBool,
-
-    //詳細パネル（ペンツール...ぼかし）
-    blurValue,
-    setBlurValue,
-    inputBlurValue,
-    setInputBlurValue,
-    blurValueMax,
-    setBlurValueMax,
-
-    //詳細パネル（ペンツール...インクペン滑らかさ）
-    densityValue,
-    setDensityValue,
-    inputDensityValue,
-    setInputDensityValue,
-
-    //詳細パネル（ペンツール...筆圧変動に関する補間率）
-    lerpRateMin,
-    setLerpRateMin,
-    lerpRateMax,
-    setLerpRateMax,
-    inputLerpRateMin,
-    setInputLerpRateMin,
-    inputLerpRateMax,
-    setInputLerpRateMax,
-
-    //詳細パネル（ペンツール...サイズに関する補間率）
-    rateSize,
-    setRateSize,
-    inputRateSize,
-    setInputRateSize,
-
-    //詳細パネル（ペンツール...S値に関する補間率）
-    maxChangeS,
-    setMaxChangeS,
-    rateS,
-    setRateS,
-    inputRateS,
-    setInputRateS,
-
-    //詳細パネル（ペンツール...V値に関する補間率）
-    maxChangeV,
-    setMaxChangeV,
-    rateV,
-    setRateV,
-    inputRateV,
-    setInputRateV,
-
-    //詳細パネル（ペンツール...指先・色混ぜツール）
-    alphaRate,
-    setAlphaRate,
-    inputAlphaRate,
-    setInputAlphaRate,
-    alphaDecayRate,
-    setAlphaDecayRate,
-    inputAlphaDecayRate,
-    setInputAlphaDecayRate,
-
-    //詳細パネル（ペンツール...エアブラシツール）
-    pencilLerpStep,
-    setPencilLerpStep,
-    inputPencilLerpStep,
-    setInputPencilLerpStep,
-    pencilNumPoints,
-    setPencilNumPoints,
-    inputPencilNumPoints,
-    setInputPencilNumPoints,
-    pencilHeightDot,
-    setPencilHeightDot,
-    inputPencilHeightDot,
-    setInputPencilHeightDot,
-    pencilWidthDot,
-    setPencilWidthDot,
-    inputPencilWidthDot,
-    setInputPencilWidthDot,
-    pencilAlpha,
-    setPencilAlpha,
-    inputPencilAlpha,
-    setInputPencilAlpha,
-
-    //詳細パネル（ペンツール...厚塗りペンツール）
-    oilLerpStep,
-    setOilLerpStep,
-    inputOilLerpStep,
-    setInputOilLerpStep,
-    oilNumPoints,
-    setOilNumPoints,
-    inputOilNumPoints,
-    setInputOilNumPoints,
-    oilHeightDot,
-    setOilHeightDot,
-    inputOilHeightDot,
-    setInputOilHeightDot,
-    oilWidthDot,
-    setOilWidthDot,
-    inputOilWidthDot,
-    setInputOilWidthDot,
-    oilAlpha,
-    setOilAlpha,
-    inputOilAlpha,setInputOilAlpha,
-
     //滑らかさ調整(ミリペン, 水彩ペン, 厚塗りペン, 色混ぜペン)
-    mmDensityValue,
-    setMmDensityValue,
     inputMmDensityValue,
-    setInputMmDensityValue,
-    waterDensityValue,
-    setWaterDensityValue,
     inputWaterDensityValue,
-    setInputWaterDensityValue,
-    oilDensityValue,
-    setOilDensityValue,
-    inputOilDensityValue,
-    setInputOilDensityValue,
-    mixDensityValue,
-    setMixDensityValue,
-    inputMixDensityValue,
-    setInputMixDensityValue,
-    inputMmBlurValue,
-    mmBlurValueMax,
     mmBlur,
     setMmBlur,
-    inputWatercolorBlurValue,
-    watercolorBlurValueMax,
     watercolorBlur,
     setWatercolorBlur,
-    mmBlurValue,
-    watercolorBlurValue,
     setMmPenDescription,
     handlePenToolDescription,
     setWatercolorDescription,

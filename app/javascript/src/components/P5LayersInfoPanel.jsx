@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useP5ToolModeContext } from './P5ModeContext';
 import { useP5PanelGroupContext } from './P5PanelGroupContext';
 import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';

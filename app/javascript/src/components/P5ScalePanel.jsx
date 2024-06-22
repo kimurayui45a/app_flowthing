@@ -10,7 +10,6 @@ const P5ScalePanel = () => {
     scalePanelVisible,
     setP5DrawingEnabled,
     handlePanelDragStop,
-    toggleScalePanelVisible,
     scalePanelPosition,
     setScalePanelPosition,
     colorPaletteDrag,
@@ -19,7 +18,7 @@ const P5ScalePanel = () => {
 
   const { toolMode, handleToolChange } = useP5ToolModeContext();
 
-  const { scaleFactor, setScaleFactor, handleScaleChange, getLayersInfoData, dateAllCanvas, handleScaleChangeSlider } = useP5CanvasCoreShare();
+  const { scaleFactor, handleScaleChange, getLayersInfoData, dateAllCanvas, handleScaleChangeSlider } = useP5CanvasCoreShare();
 
   const updateScaleBtn = (change) => {
     let updatedValue = Math.min(5, Math.max(0.5, scaleFactor + change));

@@ -1,91 +1,61 @@
 import React, { useRef } from 'react';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
-import { useP5ToolModeContext } from '../P5ModeContext';
-import { SelectToolComponent } from './SelectToolComponent';
-import { ShapesPartsComponent } from './ShapesPartsComponent';
-import { SelectModeDetail } from './SelectModeDetail';
-import { AlphaColorPicker } from './AlphaColorPicker';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
-import { useP5Color } from '../P5ColorContext';
+// import { useP5Color } from '../P5ColorContext';
+// import { SelectToolComponent } from './SelectToolComponent';
+// import { ShapesPartsComponent } from './ShapesPartsComponent';
+// import { SelectModeDetail } from './SelectModeDetail';
+// import { AlphaColorPicker } from './AlphaColorPicker';
+//import { useP5ToolModeContext } from '../P5ModeContext';
+//import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 
 const ShapesTextBlock = ({ShapesTextParts}) => {
 
-  const { handleImage, copyLayerActive, handleCopyLayerConfirm, getLayersInfoData, toolSize } = useP5CanvasCoreShare();
+  const { toolSize } = useP5CanvasCoreShare();
 
 
   //「カラーコンテキスト」から受け取るもの
-  const {
-    currentColor,
-    setCurrentColor,
-    currentAlphaColor,
-    secondAlphaColor,
-    selectAlphaColorPreview,
-    h,
-    s,
-    v,
-  } = useP5Color();
+  // const {
+  //   currentColor,
+  //   setCurrentColor,
+  //   currentAlphaColor,
+  //   secondAlphaColor,
+  //   selectAlphaColorPreview,
+  //   h,
+  //   s,
+  //   v,
+  // } = useP5Color();
 
-  const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-  } = useP5PanelGroupContext();
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  // } = useP5PanelGroupContext();
 
-  const { 
-    isImageInsertionActive,
-    handleToolChange,
-    toolMode,
-    setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
-    handleAlertMessage,
-    favoritePen,
-    favoritePenSecond
-  } = useP5ToolModeContext();
+  // const { 
+  //   isImageInsertionActive,
+  //   handleToolChange,
+  //   toolMode,
+  //   setToolMode,
+  //   penDetailGroup,
+  //   selectDetailGroup,
+  //   detailGroup,
+  //   setDetailGroup,
+  //   handleAlertMessage,
+  //   favoritePen,
+  //   favoritePenSecond
+  // } = useP5ToolModeContext();
 
 
   const {
     //図形ツールのパラメータ
     shapesFillChange,
-    setShapesFillChange,
-    shapesWidthSize,
-    setShapesWidthSize,
-    inputShapesWidthSize,
-    setInputShapesWidthSize,
-    shapesHeightSize,
-    setShapesHeightSize,
-    inputShapesHeightSize,
-    setInputShapesHeightSize,
-
-
-    //図形の角を丸めるかどうかのステート
-    cornerChange,
-    setCornerChange,
-    upperLeft,
-    setUpperLeft,
-    inputUpperLeft,
-    setInputUpperLeft,
-    upperRight,
-    setUpperRight,
-    inputUpperRight,
-    setInputUpperRight,
-    lowerRight,
-    setLowerRight,
-    inputLowerRight,
-    setInputLowerRight,
-    lowerLeft,
-    setLowerLeft,
-    inputLowerLeft,
-    setInputLowerLeft,
 
     //テキスト関係
     shapesText,
@@ -102,10 +72,6 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
     setShapesTextStyle,
     shapesTextAlign,
     setShapesTextAlign,
-    shapesTextAlignVertical,
-    setShapesTextAlignVertical,
-    shapesTextFill,
-    setShapesTextFill,
     shapesTextStroke,
     setShapesTextStroke,
     inputShapesTextStroke,

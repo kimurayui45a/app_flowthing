@@ -13,27 +13,17 @@ const WheelColorPicker = () => {
     setCurrentColor,
 
     //RGBフォーム
-    r,
     setR,
-    g,
     setG,
-    b,
     setB,
-    a,
     setA,
 
     //HSVフォーム
-    h,
     setH,
-    s,
     setS,
-    v,
     setV,
-    inputH,
     setInputH,
-    inputS,
     setInputS,
-    inputV,
     setInputV
   } = useP5Color();
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const NewProfileCanvas = ({ spaceSize, canvasImgId, canvasData  }) => {
+const NewProfileCanvas = ({ spaceSize, profileId, canvasData, toolDateParameters  }) => {
 
   // Canvasのサイズを状態として保持
   const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
@@ -79,10 +79,9 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
 
 
-
-
-
-
+  //ツールをセーブできるようにする
+  const [activeSave, setActiveSave] = useState(true);
+  
 
   //レイヤーセーブできないようにする
   const [notLayerSave, setNotLayerSave] = useState(false);
@@ -120,7 +119,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
   
 
     try {
-      const response = await fetch(`/profiles/${canvasImgId}/update_icon`, {
+      const response = await fetch(`/profiles/${profileId}/update_icon`, {
         method: 'PATCH',
         body: formData,
         headers: {
@@ -176,7 +175,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
   return (
     <div className="flex-column">
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} canvasData={canvasData} toolDateParameters={toolDateParameters} profileId={profileId} activeSave={activeSave} />
 
       {alertToast && (
           <div

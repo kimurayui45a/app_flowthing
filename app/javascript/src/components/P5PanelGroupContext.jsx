@@ -6,13 +6,17 @@ const P5PanelGroupContext = createContext();
 export const useP5PanelGroupContext = () => useContext(P5PanelGroupContext);
 
 
-export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) => {
+export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition, toolDateParameters, activeSave }) => {
 
   //レイヤーセーブに関するステート
   const [layerSave, setLayerSave] = useState(true);
 
+  //ペイントツールのセーブボタンの表示
+  const [toolSaveActive, setToolSaveActive] = useState(false);
+
   useEffect(() => {
     setLayerSave(notLayerSave)
+    setToolSaveActive(activeSave)
   }, []);
 
   //描画の有効/無効状態を管理
@@ -20,6 +24,15 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) 
 
   //パネルドラッグの有効/無効状態を管理
   const [isDraggablePanel, setIsDraggablePanel] = useState(true);
+
+
+  //レイヤーのスクロールを記録する
+  // useEffect(() => {
+  //   console.log('描画の有効/無効状態を管理', p5DrawingEnabled);
+  // console.log('パネルドラッグの有効/無効状態', isDraggablePanel);
+  // }, [isDraggablePanel, p5DrawingEnabled]);
+
+
 
   //メインパネルの表示切り替え
   const [mainPanelMode, setMainPanelMode] = useState(true);
@@ -108,6 +121,24 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) 
   // useEffect(() => {
   //   console.log('canvasはアクティブ？', p5DrawingEnabled);
   // }, [p5DrawingEnabled]);
+
+
+//データ読み込み
+  useEffect(() => {
+    if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
+      // JSON文字列をオブジェクトに解析
+      const toolData = JSON.parse(toolDateParameters);
+  
+      // toolDataがオブジェクトであることを確認し、'p5PanelGroup'プロパティにアクセス
+      if (toolData && typeof toolData === 'object' && toolData.p5PanelGroup) {
+        const toolDataPanel = toolData.p5PanelGroup;
+  
+        //console.log(toolDataPanel);
+        setAutomaticMode(toolDataPanel.automaticMode);
+
+      }
+    }
+  }, [toolDateParameters]);
 
 
   // ツールサイズパネルのリサイズ操作終了時にサイズを保存
@@ -278,7 +309,9 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition }) 
     layerSave,
     meinPicker,
     sliderUpdateTrigger,
-    setSliderUpdateTrigger
+    setSliderUpdateTrigger,
+    toolSaveActive,
+    setToolSaveActive
   };
 
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
 
-const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, canvasItemName, canvasItemText, canvasItemChoice, canvasItemEpisode, canvasItemPlace, canvasSizeData, spaceSize }) => {
+const EditItemCanvas = ({ subUserId, canvasImgId, canvasData, canvasSaveData, canvasItemName, canvasItemText, canvasItemChoice, canvasItemEpisode, canvasItemPlace, canvasSizeData, spaceSize, toolDateParameters, profileId }) => {
 
   const defaultSize = { width: 400, height: 400 };
 
@@ -136,6 +136,9 @@ const [panelPosition, setPanelPosition] = useState(() => {
   //レイヤーセーブできるようにする
   const [notLayerSave, setNotLayerSave] = useState(true);
 
+  //ツールをセーブできるようにする
+  const [activeSave, setActiveSave] = useState(true);
+
 
   //アラートメッセージ
   const [alertToast, setAlertToast] = useState(false);
@@ -254,7 +257,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
   return (
     <div className="flex-column">
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} notLayerSave={notLayerSave} panelPosition={panelPosition} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData} notLayerSave={notLayerSave} panelPosition={panelPosition} toolDateParameters={toolDateParameters} profileId={profileId} activeSave={activeSave} />
 
         {/* 選択背景がない場合のアラートメッセージ */}
         {alertToast && (

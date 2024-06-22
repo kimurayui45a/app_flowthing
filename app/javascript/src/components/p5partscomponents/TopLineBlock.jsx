@@ -2,16 +2,16 @@ import React from 'react';
 import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { SelectModeDetail } from './SelectModeDetail';
+import { P5ToolSaveBtn } from '../P5ToolSaveBtn';
 
 
-const TopLineBlock = () => {
+const TopLineBlock = ({ profileId }) => {
 
   const {
     handleUndo,
     handleRedo,
     handleSelectLayerClear,
     saveLayersBool,
-    setSaveLayersBool,
     toggleLayersSaveCheck,
     savePc
   } = useP5CanvasCoreShare();
@@ -25,7 +25,8 @@ const TopLineBlock = () => {
     toggleDetailPanelVisible,
     detailPanelVisible,
     sizePanelVisible,
-    layerSave
+    layerSave,
+    toolSaveActive
   } = useP5PanelGroupContext();
   
   return (
@@ -37,6 +38,7 @@ const TopLineBlock = () => {
 
         {/* PCに保存する */}
         {mainPanelMode && (
+          <>
           <div
             className="panel-tool-button tooltip-container"
             onClick={savePc}
@@ -46,7 +48,12 @@ const TopLineBlock = () => {
             <i className="bi bi-download"></i>
             <span className="tooltip-text" style={{ textAlign: 'left' }}>作成された描画をお客様のPCに「png」で保存できます。</span>
           </div>
+
+          {toolSaveActive && <P5ToolSaveBtn profileId={profileId} />}
+          </>
         )}
+
+        
 
 
         {/* アンドゥ */}

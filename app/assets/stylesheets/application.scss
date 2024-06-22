@@ -1402,7 +1402,7 @@ html {
 .user-profileicon {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  // border-radius: 50%;
   display: inline-block;
   margin: 0px auto;
   object-fit: cover;
@@ -1435,7 +1435,7 @@ html {
 .profileicon-paint {
   width: 12.5rem;
   height: 12.5rem;
-  border-radius: 50%;
+  //border-radius: 50%;
   display: inline-block;
   margin: 0px auto;
   -o-object-fit: cover;
@@ -2310,7 +2310,7 @@ summary {
 .user-show-imageicon {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  //border-radius: 50%;
   display: inline-block;
   margin: 0px auto;
   object-fit: cover;
@@ -9149,6 +9149,15 @@ background-color: #d1eee6;
   margin-top: 1.8rem;
 }
 
+.sidebar-image3 {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 280px;
+  margin-top: 3.2rem;
+}
+
 .sidebar-title {
   font-size: 1.5rem;
   color: #7f7f7f;
@@ -9542,6 +9551,15 @@ background-color: #d1eee6;
     margin-top: 1.8rem;
   }
 
+  .sidebar-image3 {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 250px;
+    margin-top: 3.2rem;
+  }
+
   .sidebar-content {
     margin-left: 18rem;
     // padding: 20px;
@@ -9679,6 +9697,15 @@ background-color: #d1eee6;
     object-fit: cover;
     width: 205px;
     margin-top: 1.8rem;
+  }
+
+  .sidebar-image3 {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 205px;
+    margin-top: 3.2rem;
   }
 
   .sidebar-title {
@@ -9839,6 +9866,16 @@ background-color: #d1eee6;
     width: 175px;
     margin-top: 1.8rem;
   }
+
+  .sidebar-image3 {
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 175px;
+    margin-top: 3.2rem;
+  }
+
 
   .sidebar-title {
     font-size: 1rem;

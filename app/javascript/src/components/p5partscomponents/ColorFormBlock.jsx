@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useP5Color } from '../P5ColorContext';
 
 
 const ColorFormBlock = () => {
 
   const {
-    currentColor,
     setCurrentColor,
 
     //RGBフォーム
@@ -16,14 +15,12 @@ const ColorFormBlock = () => {
     b,
     setB,
     a,
-    setA,
     inputR,
     setInputR,
     inputG,
     setInputG,
     inputB,
     setInputB,
-    inputA,
     setInputA,
 
     //HSVフォーム

@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 
 //ツールモードを管理するコンテキスト
 const P5ToolModeContext = createContext();
 export const useP5ToolModeContext = () => useContext(P5ToolModeContext);
 
-export const P5ToolModeProvider = ({ children }) => {
+export const P5ToolModeProvider = ({ children, toolDateParameters }) => {
 
   //初期ツール
   const [toolMode, setToolMode] = useState('betaPen');
@@ -26,7 +26,7 @@ export const P5ToolModeProvider = ({ children }) => {
   const [favoritePen, setFavoritePen] = useState('betaPen');
 
   //お気に入りペン2
-  const [favoritePenSecond, setSavoritePenSecond] = useState('inkPen');
+  const [favoritePenSecond, setFavoritePenSecond] = useState('inkPen');
 
   //選択モード内のステータス「selectMove」「selectCopy」「selectBlur」「selectFillColor」「selectAreaDelete」
   const [selectArrangeMode, setSelectArrangeMode] = useState('selectMove');
@@ -58,6 +58,25 @@ export const P5ToolModeProvider = ({ children }) => {
 
   //「図形」グループ
   const shapesTool = new Set(['rectTool', 'circleTool', 'triangleTool', 'lineTool', 'textTool']);
+
+  useEffect(() => {
+    if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
+      // JSON文字列をオブジェクトに解析
+      const toolData = JSON.parse(toolDateParameters);
+  
+      // toolDataがオブジェクトであることを確認し、'p5ToolMode'プロパティにアクセス
+      if (toolData && typeof toolData === 'object' && toolData.p5ToolMode) {
+        const toolDataMode = toolData.p5ToolMode;
+  
+        //console.log(toolDataMode);
+        setFavoritePen(toolDataMode.favoritePen);
+        setToolMode(toolDataMode.favoritePen);
+        setFavoritePenSecond(toolDataMode.favoritePenSecond);
+
+      }
+    }
+  }, [toolDateParameters]);
+  
 
   //画像挿入モード中は他のツールへの切り替えを無効にする（詳細パネルのないものに当てはまる関数）
   const handleToolChange = (newToolMode, e) => {
@@ -118,7 +137,7 @@ export const P5ToolModeProvider = ({ children }) => {
     favoritePen,
     setFavoritePen,
     favoritePenSecond,
-    setSavoritePenSecond,
+    setFavoritePenSecond,
     selectArrangeMode,
     setSelectArrangeMode,
     mouseModes,

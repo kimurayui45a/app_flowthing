@@ -214,8 +214,10 @@ document.addEventListener('turbo:load', () => {
   if (newItemCreateContainer) {
     const subUserId = newItemCreateContainer.getAttribute('data-user-id');
     const spaceSize = Number(newItemCreateContainer.getAttribute('data-space-size'));
+    const toolDateParameters = newItemCreateContainer.getAttribute('data-tool-parameters');
+    const profileId = newItemCreateContainer.getAttribute('data-profile-id');
     newItemCreateRoot = createRoot(newItemCreateContainer);
-    newItemCreateRoot.render(<NewItemCreate subUserId={subUserId} spaceSize={spaceSize} />);
+    newItemCreateRoot.render(<NewItemCreate subUserId={subUserId} spaceSize={spaceSize} toolDateParameters={toolDateParameters} profileId={profileId} />);
   }
 
 
@@ -257,9 +259,11 @@ document.addEventListener('turbo:load', () => {
     const canvasItemEpisode = editItemCanvasContainer.getAttribute('data-item-episode');
     const canvasItemPlace = editItemCanvasContainer.getAttribute('data-item-place');
     const spaceSize = Number(editItemCanvasContainer.getAttribute('data-space-size'));
+    const toolDateParameters = editItemCanvasContainer.getAttribute('data-tool-parameters');
+    const profileId = editItemCanvasContainer.getAttribute('data-profile-id');
 
     editItemCanvasRoot = createRoot(editItemCanvasContainer);
-    editItemCanvasRoot.render(<EditItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} subUserId={subUserId} canvasSaveData={canvasSaveData} canvasItemName={canvasItemName} canvasItemText={canvasItemText} canvasItemChoice={canvasItemChoice} canvasItemEpisode={canvasItemEpisode} canvasItemPlace={canvasItemPlace} canvasSizeData={canvasSizeData} spaceSize={spaceSize} />);
+    editItemCanvasRoot.render(<EditItemCanvas canvasImgId={canvasImgId} canvasData={canvasData} subUserId={subUserId} canvasSaveData={canvasSaveData} canvasItemName={canvasItemName} canvasItemText={canvasItemText} canvasItemChoice={canvasItemChoice} canvasItemEpisode={canvasItemEpisode} canvasItemPlace={canvasItemPlace} canvasSizeData={canvasSizeData} spaceSize={spaceSize} toolDateParameters={toolDateParameters} profileId={profileId} />);
   }
 
 
@@ -268,8 +272,9 @@ document.addEventListener('turbo:load', () => {
   if (newSpaceCreateContainer) {
     const profileId = newSpaceCreateContainer.getAttribute('data-profile-id');
     const spaceSize = Number(newSpaceCreateContainer.getAttribute('data-space-size'));
+    const toolDateParameters = newSpaceCreateContainer.getAttribute('data-tool-parameters');
     newSpaceCreateRoot = createRoot(newSpaceCreateContainer);
-    newSpaceCreateRoot.render(<NewSpaceCreate profileId={profileId} spaceSize={spaceSize} />);
+    newSpaceCreateRoot.render(<NewSpaceCreate profileId={profileId} spaceSize={spaceSize} toolDateParameters={toolDateParameters} />);
   }
 
 
@@ -294,9 +299,10 @@ document.addEventListener('turbo:load', () => {
     const canvasSpaceName = editSpaceCanvasContainer.getAttribute('data-space-name');
     const canvasSpaceText = editSpaceCanvasContainer.getAttribute('data-space-text');
     const spaceSize = Number(editSpaceCanvasContainer.getAttribute('data-space-size'));
+    const toolDateParameters = editSpaceCanvasContainer.getAttribute('data-tool-parameters');
 
     editSpaceCanvasRoot = createRoot(editSpaceCanvasContainer);
-    editSpaceCanvasRoot.render(<EditSpaceCanvas profileId={profileId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData}  canvasSpaceName={canvasSpaceName} canvasSpaceText={canvasSpaceText} spaceSize={spaceSize} />);
+    editSpaceCanvasRoot.render(<EditSpaceCanvas profileId={profileId} canvasImgId={canvasImgId} canvasData={canvasData} canvasSaveData={canvasSaveData}  canvasSpaceName={canvasSpaceName} canvasSpaceText={canvasSpaceText} spaceSize={spaceSize} toolDateParameters={toolDateParameters} />);
   }
 
   //「NewCompositeCreate」のマウント
@@ -371,9 +377,9 @@ document.addEventListener('turbo:load', () => {
     const canvasSubUserName = editSubUserCanvasContainer.getAttribute('data-sub-user-name');
     const canvasSubUserText = editSubUserCanvasContainer.getAttribute('data-sub-user-text');
     const spaceSize = Number(editSubUserCanvasContainer.getAttribute('data-space-size'));
-
+    const toolDateParameters = editSubUserCanvasContainer.getAttribute('data-tool-parameters');
     editSubUserCanvasRoot = createRoot(editSubUserCanvasContainer);
-    editSubUserCanvasRoot.render(<EditSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} spaceSize={spaceSize} />);
+    editSubUserCanvasRoot.render(<EditSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} spaceSize={spaceSize} toolDateParameters={toolDateParameters} />);
   }
 
 
@@ -386,9 +392,9 @@ document.addEventListener('turbo:load', () => {
     const canvasSubUserText = peintSubUserCanvasContainer.getAttribute('data-sub-user-text');
     const canvasData = peintSubUserCanvasContainer.getAttribute('data-sub-user-canvas');
     const spaceSize = Number(peintSubUserCanvasContainer.getAttribute('data-space-size'));
-
+    const toolDateParameters = peintSubUserCanvasContainer.getAttribute('data-tool-parameters');
     peintSubUserCanvasRoot = createRoot(peintSubUserCanvasContainer);
-    peintSubUserCanvasRoot.render(<PeintSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} canvasData={canvasData} spaceSize={spaceSize} />);
+    peintSubUserCanvasRoot.render(<PeintSubUserCanvas profileId={profileId} canvasImgId={canvasImgId} canvasSubUserName={canvasSubUserName} canvasSubUserText={canvasSubUserText} canvasData={canvasData} spaceSize={spaceSize} toolDateParameters={toolDateParameters} />);
   }
 
 
@@ -404,18 +410,20 @@ document.addEventListener('turbo:load', () => {
   if (newNewSubUserCreate) {
     const profileId = newNewSubUserCreate.getAttribute('data-profile-id');
     const spaceSize = Number(newNewSubUserCreate.getAttribute('data-space-size'));
+    const toolDateParameters = newNewSubUserCreate.getAttribute('data-tool-parameters');
     newNewSubUserCreateRoot = createRoot(newNewSubUserCreate);
-    newNewSubUserCreateRoot.render(<NewSubUserCreate profileId={profileId} spaceSize={spaceSize} />);
+    newNewSubUserCreateRoot.render(<NewSubUserCreate profileId={profileId} spaceSize={spaceSize} toolDateParameters={toolDateParameters} />);
   }
 
 
   //「NewProfileCanvas」のマウント
   const newProfileCanvasContainer = document.getElementById('reactProfileCanvas');
   if (newProfileCanvasContainer) {
-    const canvasImgId = newProfileCanvasContainer.getAttribute('data-profile-id');
+    const profileId = newProfileCanvasContainer.getAttribute('data-profile-id');
     const spaceSize = Number(newProfileCanvasContainer.getAttribute('data-space-size'));
+    const toolDateParameters = newProfileCanvasContainer.getAttribute('data-tool-parameters');
     newProfileCanvasRoot = createRoot(newProfileCanvasContainer);
-    newProfileCanvasRoot.render(<NewProfileCanvas spaceSize={spaceSize} canvasImgId={canvasImgId} />);
+    newProfileCanvasRoot.render(<NewProfileCanvas spaceSize={spaceSize} profileId={profileId} toolDateParameters={toolDateParameters} />);
   }
 
 
@@ -424,9 +432,10 @@ document.addEventListener('turbo:load', () => {
   if (editProfileCanvasContainer) {
     const canvasData = editProfileCanvasContainer.getAttribute('data-profile-canvas');
     const spaceSize = Number(editProfileCanvasContainer.getAttribute('data-space-size'));
-    const canvasImgId = editProfileCanvasContainer.getAttribute('data-profile-id');
+    const profileId = editProfileCanvasContainer.getAttribute('data-profile-id');
+    const toolDateParameters = editProfileCanvasContainer.getAttribute('data-tool-parameters');
     editProfileCanvasRoot = createRoot(editProfileCanvasContainer);
-    editProfileCanvasRoot.render(<EditProfileCanvas spaceSize={spaceSize} canvasImgId={canvasImgId} canvasData={canvasData} />);
+    editProfileCanvasRoot.render(<EditProfileCanvas spaceSize={spaceSize} profileId={profileId} canvasData={canvasData} toolDateParameters={toolDateParameters} />);
   }
 
 });

@@ -1,29 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useP5ToolModeContext } from './P5ModeContext';
 import { useP5PanelGroupContext } from './P5PanelGroupContext';
-import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';
 import { Rnd } from 'react-rnd';
 import { WheelColorPicker } from './p5partscomponents/WheelColorPicker';
 import { BoxColorPicker } from './p5partscomponents/BoxColorPicker';
 import { useP5Color } from './P5ColorContext';
 import { TopLineBlock } from './p5partscomponents/TopLineBlock';
 import { CenterLineBlock } from './p5partscomponents/CenterLineBlock';
+//import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';
 
-const P5DefaultPanel = () => {
+const P5DefaultPanel = ({ profileId }) => {
   const { 
-    toggleLayersInfoPanelVisible,
-    layersInfoPanelVisible,
-    toggleMainPanelMode,
     mainPanelPosition,
     setP5DrawingEnabled,
-    showSizeAndDetailPenPanels,
-    toggleColorPalettePanelVisible,
     boxPickerChange,
     handleBoxPickerChange,
     isDraggablePanel,
     handlePanelDragStop,
-    setMainPanelPosition,
-    showSizeAndDetailPanels
+    setMainPanelPosition
   } = useP5PanelGroupContext();
 
   const {
@@ -34,11 +28,8 @@ const P5DefaultPanel = () => {
     setWhiteButton,
     setBlackButton,
     selectColorPreview,
-    setSelectColorPreview,
     firstColorPreview,
-    setFirstColorPreview,
     secondColorPreview,
-    setSecondColorPreview,
     toggleFirstPreviewMode,
     toggleSecondPreviewMode,
     setColorPreviewButton,
@@ -102,8 +93,9 @@ const P5DefaultPanel = () => {
 
     <div className="panel-tool-group">
       {/* トップブロック */}
-      <TopLineBlock />
+      <TopLineBlock profileId={profileId} />
 
+      
       {/* カラーピッカブロック */}
       <div className="color-picker-container">
         {/* カラーピッカー */}

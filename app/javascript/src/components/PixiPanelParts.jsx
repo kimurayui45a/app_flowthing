@@ -691,7 +691,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                   type="number"
                   min={minValue}
                   max={maxValue}
-                  step="1"
+                  step="0.01"
                   style={{ width: '60px', fontSize: '14px' }}
                   value={inputValue}
                   onChange={(e) => handleSpriteFormChange(e, type)}

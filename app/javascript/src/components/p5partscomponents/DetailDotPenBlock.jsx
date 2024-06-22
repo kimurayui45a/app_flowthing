@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useP5Color } from '../P5ColorContext';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { PenToolShareValueComponent } from './PenToolShareValueComponent';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
 import { useP5ToolModeContext } from '../P5ModeContext';
-import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { DotPenPartsComponent } from './DotPenPartsComponent';
-
+//import { useP5Color } from '../P5ColorContext';
+//import { useP5PanelGroupContext } from '../P5PanelGroupContext';
+//import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 
 
 const DetailDotPenBlock = () => {
@@ -16,215 +15,52 @@ const DetailDotPenBlock = () => {
     toolMode
   } = useP5ToolModeContext();
 
-  const { 
-  //詳細パネル（ペンツール...minSize：筆圧で変動する最小サイズ）
-  minSize,
-  setMinSize,
-  inputMinValue,
-  setInputMinValue,
-  toolSize
-  } = useP5CanvasCoreShare();
+  // const { 
+  // //詳細パネル（ペンツール...minSize：筆圧で変動する最小サイズ）
+  // minSize,
+  // setMinSize,
+  // inputMinValue,
+  // setInputMinValue,
+  // toolSize
+  // } = useP5CanvasCoreShare();
 
   //「カラーコンテキスト」から受け取るもの
-  const {
-    currentColor,
-    setCurrentColor,
-    currentAlphaColor,
-    secondAlphaColor,
-    selectAlphaColorPreview,
-    h,
-    s,
-    v,
-    inputS,
-    inputV
-  } = useP5Color();
+  // const {
+  //   currentColor,
+  //   setCurrentColor,
+  //   currentAlphaColor,
+  //   secondAlphaColor,
+  //   selectAlphaColorPreview,
+  //   h,
+  //   s,
+  //   v,
+  //   inputS,
+  //   inputV
+  // } = useP5Color();
 
   const {
-    //概要説明
-    description,
-    setDescription,
-    handleDescriptionMouseEnter,
-
-    //詳細パネル（ペンツール...筆圧とSとVのMAX）
-    pressureAdjustment,
-    setPressureAdjustment,
-    userCustomS,
-    setUserCustomS,
-    sMin,
-    setSMin,
-    userCustomV,
-    setUserCustomV,
-    vMax,
-    setVMax,
-
-    //詳細パネル（ペンツール...各設定のbool値）
-    pressurePen,
-    setPressurePen,
-    sizeCustomBool,
-    setSizeCustomBool,
-    activeS,
-    setActiveS,
-    maxChangeSBool,
-    setMaxChangeSBool,
-    maxChangeVBool,
-    setMaxChangeVBool,
-    activeV,
-    setActiveV,
-    alphaDecayBool,
-    setAlphaDecayBool,
-
-    //詳細パネル（ペンツール...ぼかし、ミリペン、水彩ペン、エアブラシ、厚塗りペン、色混ぜ）
-    mmBlurValue,
-    setMmBlurValue,
-    inputMmBlurValue,
-    setInputMmBlurValue,
-    mmBlurValueMax,
-    setMmBlurValueMax,
-    watercolorBlurValue,
-    setWatercolorBlurValue,
-    inputWatercolorBlurValue,
-    setInputWatercolorBlurValue,
-    watercolorBlurValueMax,
-    setWatercolorBlurValueMax,
-    pencilBlurValue,
-    setPencilBlurValue,
-    inputPencilBlurValue,
-    setInputPencilBlurValue,
-    pencilBlurValueMax,
-    setPencilBlurValueMax,
-    oilBlurValue,
-    setOilBlurValue,
-    inputOilBlurValue,
-    setInputOilBlurValue,
-    oilBlurValueMax,
-    setOilBlurValueMax,
-    mixBlurValue,
-    setMixBlurValue,
-    inputMixBlurValue, 
-    setInputMixBlurValue,
-    mixBlurValueMax,
-    setMixBlurValueMax,
-  
-    //詳細パネル（ペンツール...インクペンの滑らかさ）
-    densityValue,
-    setDensityValue,
-    inputDensityValue,
-    setInputDensityValue,
-
-    //詳細パネル（ペンツール...筆圧変動に関する補間率）
-    lerpRateMin,
-    setLerpRateMin,
-    lerpRateMax,
-    setLerpRateMax,
-    inputLerpRateMin,
-    setInputLerpRateMin,
-    inputLerpRateMax,
-    setInputLerpRateMax,
-
-    //詳細パネル（ペンツール...サイズに関する補間率）
-    rateSize,
-    setRateSize,
-    inputRateSize,
-    setInputRateSize,
-
-    //詳細パネル（ペンツール...S値に関する補間率）
-    maxChangeS,
-    setMaxChangeS,
-    rateS,
-    setRateS,
-    inputRateS,
-    setInputRateS,
-
-    //詳細パネル（ペンツール...V値に関する補間率）
-    maxChangeV,
-    setMaxChangeV,
-    rateV,
-    setRateV,
-    inputRateV,
-    setInputRateV,
-
-    //詳細パネル（ペンツール...指先・色混ぜツール）
-    alphaRate,
-    setAlphaRate,
-    inputAlphaRate,
-    setInputAlphaRate,
-    alphaDecayRate,
-    setAlphaDecayRate,
-    inputAlphaDecayRate,
-    setInputAlphaDecayRate,
-
     //詳細パネル（ペンツール...エアブラシツール）
-    pencilLerpStep,
-    setPencilLerpStep,
     inputPencilLerpStep,
-    setInputPencilLerpStep,
-    pencilNumPoints,
-    setPencilNumPoints,
     inputPencilNumPoints,
-    setInputPencilNumPoints,
-    pencilHeightDot,
-    setPencilHeightDot,
     inputPencilHeightDot,
-    setInputPencilHeightDot,
-    pencilWidthDot,
-    setPencilWidthDot,
     inputPencilWidthDot,
-    setInputPencilWidthDot,
-    pencilAlpha,
-    setPencilAlpha,
     inputPencilAlpha,
-    setInputPencilAlpha,
 
     //詳細パネル（ペンツール...厚塗りペンツール）
-    oilLerpStep,
-    setOilLerpStep,
     inputOilLerpStep,
-    setInputOilLerpStep,
-    oilNumPoints,
-    setOilNumPoints,
     inputOilNumPoints,
-    setInputOilNumPoints,
-    oilHeightDot,
-    setOilHeightDot,
     inputOilHeightDot,
-    setInputOilHeightDot,
-    oilWidthDot,
-    setOilWidthDot,
     inputOilWidthDot,
-    setInputOilWidthDot,
-    oilAlpha,
-    setOilAlpha,
-    inputOilAlpha,setInputOilAlpha,
+    inputOilAlpha,
 
     //滑らかさ調整(ミリペン, 水彩ペン, 厚塗りペン, 色混ぜペン)
-    mmDensityValue,
-    setMmDensityValue,
-    inputMmDensityValue,
-    setInputMmDensityValue,
-    waterDensityValue,
-    setWaterDensityValue,
-    inputWaterDensityValue,
-    setInputWaterDensityValue,
-    oilDensityValue,
-    setOilDensityValue,
     inputOilDensityValue,
-    setInputOilDensityValue,
-    mixDensityValue,
-    setMixDensityValue,
-    inputMixDensityValue,
-    setInputMixDensityValue,
 
     //「ペンツール」のbool値判定（ぼかし）
-    mmBlur,
-    setMmBlur,
-    watercolorBlur,
-    setWatercolorBlur,
     pencilBlur,
     setPencilBlur,
     oilBlur,
     setOilBlur,
-    mixBlur,
-    setMixBlur,
     setPencilDescription,
     handlePenToolDescription,
     setOilPenDescription

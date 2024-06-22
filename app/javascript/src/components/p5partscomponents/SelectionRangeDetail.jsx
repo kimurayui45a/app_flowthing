@@ -1,63 +1,46 @@
 import React, { useRef } from 'react';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { useP5ToolModeContext } from '../P5ModeContext';
 import { SelectToolComponent } from './SelectToolComponent';
 import { SelectModeDetail } from './SelectModeDetail';
 import { AlphaColorPicker } from './AlphaColorPicker';
 import { ShapesPartsComponent } from './ShapesPartsComponent';
+//import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 const SelectionRangeDetail = () => {
 
   const {
     handleImage,
-    copyLayerActive,
-    handleCopyLayerConfirm,
-    getLayersInfoData,
     handleConfirmCancel,
     isGraphicsCreated,
     handleConfirm,
     selectedAreaCanvas,
     handleConfirmTransform,
-    handleCancelSecondLayer,
     selectSecondLayerInfo,
     selectedLayerInfo,
     selectSecondLayer,
-    defaultScaleMode,
-    setDefaultScaleMode,
-    handleInversionClickChange,
-    selectDeleteInversion,
-    setSelectDeleteInversion,
     handleSelectLayerClear,
     selectedAreaShow,
     setSelectedAreaShow
   } = useP5CanvasCoreShare();
 
-  const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-  } = useP5PanelGroupContext();
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  // } = useP5PanelGroupContext();
 
   const { 
     isImageInsertionActive,
-    handleToolChange,
     toolMode,
     setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
     handleAlertMessage,
-    favoritePen,
-    favoritePenSecond,
-    selectArrangeMode,
-    setSelectArrangeMode
+    selectArrangeMode
   } = useP5ToolModeContext();
 
 

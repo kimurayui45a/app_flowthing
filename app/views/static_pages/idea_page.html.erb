@@ -7,33 +7,111 @@
     <div class="text-Rounded700"><h1 class="sidebar-title">アイデア</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
-          <li><a href="#section1">セクション1</a></li>
-          <li><a href="#section2">セクション2</a></li>
-          <li><a href="#section3">セクション3</a></li>
+
+          <li><a href="#section1">空間を作ってみよう</a></li>
+          <li><a href="#section2">左右対称なペイント</a></li>
+          
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <a href="#section1">切り取り方</a>
+              <a href="#section2">ペイントを入れてみよう</a>
+              <a href="#section3">影をつけてみよう</a>
+              <a href="#section3">ししゃもを吊るしてみよう</a>
+          </div>
+        </li>
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで作成しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <a href="#section1">イラスト作りの基本構造</a>
+              <a href="#section2">色塗りとレイヤー</a>
+              <a href="#section3">グラデーションを使ってみよう</a>
+              <a href="#section3">少し光っている表現</a>
+              <a href="#section3">色味を調整しよう</a>
+          </div>
+        </li>
+
+        <li><a href="#section3">アイテムを配置しよう</a></li>
+
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">キャラクターを作ってみよう</a>
+              <a href="#section2">構想</a>
+              <a href="#section3">ラフ(下書き)</a>
+              <a href="#section2">カラーリング</a>
+              <a href="#section2">線画</a>
+              <a href="#section2">下塗り</a>
+              <a href="#section2">塗り込む/完成</a>
+          </div>
+        </li>
+
       </ul>
     </div>
 
     <div class="sidebar-design">
-      <%= image_tag('mirror.png', alt: 'アイデアページのサイドバーの画像', class: "sidebar-image") %>
+      <%= image_tag('mirror.png', alt: 'アイデアページのサイドバーの画像', class: "sidebar-image3") %>
     </div>
   </div>
 
+
+
   <div class="sidebar-content">
+
+
+
     <section id="section1">
       <div style="height: 7rem; width: 100px;"></div>
       <h2 class="explanation-section-title">
-        <span class="text-line">セクション1</span>
+        <span class="text-line">空間を作ってみよう</span>
       </h2>
-      <p class="explanation-section-text">ここにセクション1の内容が入ります。</p>
+      <p class="explanation-section-text">
+        ここでは、実際にツールを使用してどのようなことができるかを、サンプルルームを例にして一緒に紹介します。<br>
+        <span class="red-text text-Rounded700">この通りに作成する必要は全くございません!!</span>
+      </p>
     </section>
+
+    <div class="sidebar-design">
+      <%= image_tag('sampleroom_rahu.png', alt: 'サンプルページのラフの画像', class: "explanation-image", style: "width: 500px;") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: 2rem;">
+      <p>
+        まず<span style="color: #59afc7;" class="text-Rounded500">「Flow Thing」</span>か<span style="color: #59afc7;" class="text-Rounded500">「Screen」</span>のレイヤー保存できるペイントツールを活用して構想(ラフ)を作成しましょう。<br>
+        配置したいアイテムを簡単に描いてみましょう。<br>
+        例に挙げているサンプルルームは、動かすことを考慮して遠近感をあえて単純化し、それに基づいて作成しました。2DのRPGなどで使用されている仕法です。<br>
+        本当は天井から見下ろしている空間ですが、パースを取り除きあえて全てのアイテムを均一に表現します。
+      </p><br>
+
+      <p>
+        例えば筒状のポテトチップスなら詳細なパースを取り、単純な筒で表現します。<br>
+        <%= image_tag('potatochip.png', alt: 'ポテトチップスの画像', class: "explanation-image", style: "width: 150px;") %><br>
+      </p><br>
+      <p>
+        <span class="text-Rounded500 red-text" style="font-size: 1.3rem;">構想が決まったら各アイテムごとに<span style="color: #59afc7;" class="text-Rounded500">「Flow Thing」</span>と<span style="color: #59afc7;" class="text-Rounded500">「Screen」</span>を作成し、アイテムの写真やペイントを作成しましょう。</span><br>
+      </p>
+    </div>
+
 
     <section id="section2">
       <div style="height: 7rem; width: 100px;"></div>
       <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line">セクション2</span>
+        <span class="text-line">左右対称なペイント</span>
       </h2>
       <p class="explanation-section-text">ここにセクション2の内容が入ります。</p>
     </section>
+
+
+
+
+
+
+
+
+
+
 
     <section id="section3">
       <div style="height: 7rem; width: 100px;"></div>

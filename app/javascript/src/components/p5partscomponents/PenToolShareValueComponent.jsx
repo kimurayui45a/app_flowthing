@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useP5ToolModeContext } from '../P5ModeContext';
+import React, { useEffect } from 'react';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
 import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { useP5Color } from '../P5ColorContext';
 import { DotPenPartsComponent } from './DotPenPartsComponent';
+//import { useP5ToolModeContext } from '../P5ModeContext';
 
 
 const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minValue, maxValue, blurBool, setBlurBool, selectBlurValue}) => {
 
-  const { 
-    toolMode
-  } = useP5ToolModeContext();
+  // const { 
+  //   toolMode
+  // } = useP5ToolModeContext();
 
   const { 
   //詳細パネル（ペンツール...minSize：筆圧で変動する最小サイズ）
@@ -18,18 +18,12 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
   setMinSize,
   inputMinValue,
   setInputMinValue,
-  toolSize,
-  updatetReductionDetail
+  toolSize
   } = useP5CanvasCoreShare();
 
   //「カラーコンテキスト」から受け取るもの
   const {
     currentColor,
-    setCurrentColor,
-    currentAlphaColor,
-    secondAlphaColor,
-    selectAlphaColorPreview,
-    h,
     s,
     v,
     inputS,
@@ -38,8 +32,6 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
 
   const {
     //概要説明
-    description,
-    setDescription,
     handleDescriptionMouseEnter,
 
     //詳細パネル（ペンツール...筆圧とSとVのMAX）
@@ -67,40 +59,6 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
     setMaxChangeVBool,
     activeV,
     setActiveV,
-    alphaDecayBool,
-    setAlphaDecayBool,
-
-    //詳細パネル（ペンツール...ぼかし、ミリペン、水彩ペン、エアブラシ、厚塗りペン、色混ぜ）
-    mmBlurValue,
-    setMmBlurValue,
-    inputMmBlurValue,
-    setInputMmBlurValue,
-    mmBlurValueMax,
-    setMmBlurValueMax,
-    watercolorBlurValue,
-    setWatercolorBlurValue,
-    inputWatercolorBlurValue,
-    setInputWatercolorBlurValue,
-    watercolorBlurValueMax,
-    setWatercolorBlurValueMax,
-    pencilBlurValue,
-    setPencilBlurValue,
-    inputPencilBlurValue,
-    setInputPencilBlurValue,
-    pencilBlurValueMax,
-    setPencilBlurValueMax,
-    oilBlurValue,
-    setOilBlurValue,
-    inputOilBlurValue,
-    setInputOilBlurValue,
-    oilBlurValueMax,
-    setOilBlurValueMax,
-    mixBlurValue,
-    setMixBlurValue,
-    inputMixBlurValue, 
-    setInputMixBlurValue,
-    mixBlurValueMax,
-    setMixBlurValueMax,
 
     //詳細パネル（ペンツール...インクペン滑らかさ）
     densityValue,
@@ -140,88 +98,19 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
     inputRateV,
     setInputRateV,
 
-    //詳細パネル（ペンツール...指先・色混ぜツール）
-    alphaRate,
-    setAlphaRate,
-    inputAlphaRate,
-    setInputAlphaRate,
-    alphaDecayRate,
-    setAlphaDecayRate,
-    inputAlphaDecayRate,
-    setInputAlphaDecayRate,
-
-    //詳細パネル（ペンツール...エアブラシツール）
-    pencilLerpStep,
-    setPencilLerpStep,
-    inputPencilLerpStep,
-    setInputPencilLerpStep,
-    pencilNumPoints,
-    setPencilNumPoints,
-    inputPencilNumPoints,
-    setInputPencilNumPoints,
-    pencilHeightDot,
-    setPencilHeightDot,
-    inputPencilHeightDot,
-    setInputPencilHeightDot,
-    pencilWidthDot,
-    setPencilWidthDot,
-    inputPencilWidthDot,
-    setInputPencilWidthDot,
-    pencilAlpha,
-    setPencilAlpha,
-    inputPencilAlpha,
-    setInputPencilAlpha,
-
-    //詳細パネル（ペンツール...厚塗りペンツール）
-    oilLerpStep,
-    setOilLerpStep,
-    inputOilLerpStep,
-    setInputOilLerpStep,
-    oilNumPoints,
-    setOilNumPoints,
-    inputOilNumPoints,
-    setInputOilNumPoints,
-    oilHeightDot,
-    setOilHeightDot,
-    inputOilHeightDot,
-    setInputOilHeightDot,
-    oilWidthDot,
-    setOilWidthDot,
-    inputOilWidthDot,
-    setInputOilWidthDot,
-    oilAlpha,
-    setOilAlpha,
-    inputOilAlpha,setInputOilAlpha,
-
     //滑らかさ調整(ミリペン, 水彩ペン, 厚塗りペン, 色混ぜペン)
     mmDensityValue,
     setMmDensityValue,
-    inputMmDensityValue,
     setInputMmDensityValue,
     waterDensityValue,
     setWaterDensityValue,
-    inputWaterDensityValue,
     setInputWaterDensityValue,
     oilDensityValue,
     setOilDensityValue,
-    inputOilDensityValue,
     setInputOilDensityValue,
     mixDensityValue,
     setMixDensityValue,
-    inputMixDensityValue,
-    setInputMixDensityValue,
-
-    //「ペンツール」のbool値判定（ぼかし）
-    mmBlur,
-    setMmBlur,
-    watercolorBlur,
-    setWatercolorBlur,
-    pencilBlur,
-    setPencilBlur,
-    oilBlur,
-    setOilBlur,
-    mixBlur,
-    setMixBlur
+    setInputMixDensityValue
   } = useP5PenToolParametersContext();
 
 
@@ -1101,6 +990,23 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                     <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>最小彩度設定</span>
                     <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>(現在の最大値：{inputS})</span>
                   <div className="flex">
+
+
+                  <div
+                      className="pen-panel-button tooltip-container"
+                      style={{ borderRadius: '50%', width: '18px', height: '18px', fontSize: '10px' }}
+                      onClick={() => updateValueS(10)}
+                      onMouseEnter={() => handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。')}
+                      onTouchStart={() => {
+                        updateValueS(10);
+                        handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。');
+                      }}
+                    >
+                      
+                      <i className="bi bi-chevron-double-left"></i>
+                      <span className="tooltip-text">-10</span>
+                    </div>
+
                     <div
                       className="pen-panel-button tooltip-container"
                       style={{ borderRadius: '50%', width: '18px', height: '18px', fontSize: '10px' }}
@@ -1111,38 +1017,13 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                         handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。');
                       }}
                     >
-                      <i className="bi bi-chevron-double-left"></i>
+                      <i className="bi bi-chevron-left"></i>
                       <span className="tooltip-text">-5</span>
                     </div>
 
-                    <div
-                      className="pen-panel-button tooltip-container"
-                      style={{ borderRadius: '50%', width: '18px', height: '18px', fontSize: '10px' }}
-                      onClick={() => updateValueS(10)}
-                      onMouseEnter={() => handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。')}
-                      onTouchStart={() => {
-                        updateValueS(10);
-                        handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。');
-                      }}
-                    >
-                      <i className="bi bi-chevron-left"></i>
-                      <span className="tooltip-text">-10</span>
-                    </div>
-                    <span className="text-Rounded" style={{ fontSize: '12px', width: '40px', color: '#7FA8EB' }}>{Math.floor(sMin)}</span>
-                    <div
-                      className="pen-panel-button tooltip-container"
-                      style={{ borderRadius: '50%', width: '18px', height: '18px', fontSize: '10px' }}
-                      onClick={() => updateValueS(-10)}
-                      onMouseEnter={() => handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。')}
-                      onTouchStart={() => {
-                        updateValueS(-10);
-                        handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。');
-                      }}
-                    >
-                      <i className="bi bi-chevron-right"></i>
-                      <span className="tooltip-text">+10</span>
-                    </div>
 
+                    <span className="text-Rounded" style={{ fontSize: '12px', width: '40px', color: '#7FA8EB' }}>{Math.floor(sMin)}</span>
+                    
                     <div
                       className="pen-panel-button tooltip-container"
                       style={{ borderRadius: '50%', width: '18px', height: '18px', fontSize: '10px' }}
@@ -1153,9 +1034,26 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                         handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。');
                       }}
                     >
-                      <i className="bi bi-chevron-double-right"></i>
+                      
+                      <i className="bi bi-chevron-right"></i>
                       <span className="tooltip-text">+5</span>
                     </div>
+                    
+                    
+                    <div
+                      className="pen-panel-button tooltip-container"
+                      style={{ borderRadius: '50%', width: '18px', height: '18px', fontSize: '10px' }}
+                      onClick={() => updateValueS(-10)}
+                      onMouseEnter={() => handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。')}
+                      onTouchStart={() => {
+                        updateValueS(-10);
+                        handleDescriptionMouseEnter('最小彩度設定', '筆圧が最も軽い時に適用される彩度の値を設定します。筆圧に応じて彩度はこの最小値から設定された彩度範囲内で増減します。筆圧が弱い時にも一定の彩度を保つことができます。');
+                      }}
+                    >
+                      <i className="bi bi-chevron-double-right"></i>
+                      <span className="tooltip-text">+10</span>
+                    </div>
+
                   </div>
                 </div>
 

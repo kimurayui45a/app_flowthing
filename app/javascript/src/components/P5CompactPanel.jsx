@@ -12,13 +12,10 @@ const P5CompactPanel = () => {
   const { 
     toggleLayersInfoPanelVisible,
     layersInfoPanelVisible,
-    toggleMainPanelMode,
     mainPanelPosition,
     setP5DrawingEnabled,
     handlePanelDragStop,
     setMainPanelPosition,
-    showSizeAndDetailPenPanels,
-    showSizeAndDetailPanels,
     toggleColorPalettePanelVisible,
     toggleScalePanelVisible,
     scalePanelVisible,
@@ -35,18 +32,14 @@ const P5CompactPanel = () => {
     setWhiteButton,
     setBlackButton,
     selectColorPreview,
-    setSelectColorPreview,
     firstColorPreview,
-    setFirstColorPreview,
     secondColorPreview,
-    setSecondColorPreview,
     toggleFirstPreviewMode,
     toggleSecondPreviewMode,
-    setColorPreviewButton,
-    toggleColorPreviewChange
+    setColorPreviewButton
   } = useP5Color();
 
-  const { toolMode, handleToolChange, selectArrangeMode } = useP5ToolModeContext();
+  const { toolMode, selectArrangeMode } = useP5ToolModeContext();
 
   //フリーパレット(9色)の色を更新または削除する関数
   const updatePaletteColor9 = (index, color) => {

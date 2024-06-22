@@ -1,6 +1,4 @@
 import React, { useRef } from 'react';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
-import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { useP5ToolModeContext } from '../P5ModeContext';
 import { SelectToolComponent } from './SelectToolComponent';
 import { ShapesPartsComponent } from './ShapesPartsComponent';
@@ -8,72 +6,44 @@ import { SelectModeDetail } from './SelectModeDetail';
 import { AlphaColorPicker } from './AlphaColorPicker';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
 import { ShapesTextBlock } from './ShapesTextBlock';
+// import { useP5PanelGroupContext } from '../P5PanelGroupContext';
+// import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 
 
 const ShapesDetail = () => {
 
-  const { handleImage, copyLayerActive, handleCopyLayerConfirm, getLayersInfoData } = useP5CanvasCoreShare();
+  //const { handleImage, copyLayerActive, handleCopyLayerConfirm, getLayersInfoData } = useP5CanvasCoreShare();
 
 
-  const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-  } = useP5PanelGroupContext();
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  // } = useP5PanelGroupContext();
 
   const { 
     isImageInsertionActive,
-    handleToolChange,
     toolMode,
     setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
-    handleAlertMessage,
-    favoritePen,
-    favoritePenSecond
+    handleAlertMessage
   } = useP5ToolModeContext();
 
 
   const {
     //図形ツールのパラメータ
-    shapesFillChange,
-    setShapesFillChange,
-    shapesWidthSize,
-    setShapesWidthSize,
     inputShapesWidthSize,
-    setInputShapesWidthSize,
-    shapesHeightSize,
-    setShapesHeightSize,
     inputShapesHeightSize,
-    setInputShapesHeightSize,
-
 
     //図形の角を丸めるかどうかのステート
-    cornerChange,
-    setCornerChange,
-    upperLeft,
-    setUpperLeft,
     inputUpperLeft,
-    setInputUpperLeft,
-    upperRight,
-    setUpperRight,
     inputUpperRight,
-    setInputUpperRight,
-    lowerRight,
-    setLowerRight,
     inputLowerRight,
-    setInputLowerRight,
-    lowerLeft,
-    setLowerLeft,
     inputLowerLeft,
-    setInputLowerLeft,
     setShapesInstallation
   } = useP5PenToolParametersContext();
 
@@ -92,6 +62,22 @@ const ShapesDetail = () => {
     }
   };
 
+
+
+  // //もしも図形ツールの切り替え時に描画モードをオンにするなら
+  // const toolChangeShapes = (newToolMode, e) => {
+  //   if (isImageInsertionActive) {
+  //     handleAlertMessage(e);
+  //     return;
+  //   } else {
+  //     setToolMode(newToolMode);
+  //     if (newToolMode === 'textTool') {
+  //       setShapesInstallation(true);
+  //     } else {
+  //       setShapesInstallation(false);
+  //     }
+  //   }
+  // };
 
 
   //プレビューの切り替え

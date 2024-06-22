@@ -10,13 +10,8 @@ import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
 const CenterLineBlock = () => {
 
   const {
-    handleImage,
     copyLayerActive,
-    handleCopyLayerConfirm,
-    getLayersInfoData,
-    // updateBrushChange,
-    // updateMixBrushChange,
-    // updateHsvBrushChange
+    getLayersInfoData
   } = useP5CanvasCoreShare();
 
   const { 
@@ -38,7 +33,6 @@ const CenterLineBlock = () => {
     setToolMode,
     penDetailGroup,
     selectDetailGroup,
-    detailGroup,
     setDetailGroup,
     handleAlertMessage,
     favoritePen,

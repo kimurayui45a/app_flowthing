@@ -7,7 +7,7 @@ const P5ColorContext = createContext();
 export const useP5Color = () => useContext(P5ColorContext);
 
 // コンテキストプロバイダコンポーネント
-export const P5ColorProvider = ({ children }) => {
+export const P5ColorProvider = ({ children, toolDateParameters }) => {
   
   //ベースで使用するもの
   //カラーを共有・管理するステート（RGBカラー専用）
@@ -17,6 +17,13 @@ export const P5ColorProvider = ({ children }) => {
   const [paletteColors9, setPaletteColors9] = useState(Array(9).fill(''));
   const [paletteColors18, setPaletteColors18] = useState(Array(18).fill(''));
   const [paletteColors27, setPaletteColors27] = useState(Array(27).fill(''));
+
+  // useEffect(() => {
+  //   const color = ['rgba(194, 163, 255, 1)', 'rgba(125, 255, 209, 1)', 'rgba(255, 208, 107, 1)', '', '', '', '', '', '', '', '', '', '', '', '', 'rgba(155, 105, 255, 1)', '', '']
+  //   setPaletteColors18(color);
+
+  // }, []);
+
 
   //カラープレビューの選択
   const [selectColorPreview, setSelectColorPreview] = useState(true);
@@ -76,6 +83,30 @@ export const P5ColorProvider = ({ children }) => {
     setInputS(String(inputS));
     setInputV(String(inputV));
   }, [inputH, inputS, inputV]);
+
+
+
+//データをロード
+useEffect(() => {
+  if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
+    // JSON文字列をオブジェクトに解析
+    const toolData = JSON.parse(toolDateParameters);
+
+    // toolDataがオブジェクトであることを確認し、'p5Color'プロパティにアクセス
+    if (toolData && typeof toolData === 'object' && toolData.p5Color) {
+      const toolDataColor = toolData.p5Color;
+      // console.log('カラーデータ', toolDataColor);
+      setCurrentColor(toolDataColor.currentColor);
+      setSecondColorPreview(toolDataColor.secondColorPreview);
+      setPaletteColors9(toolDataColor.paletteColors9);
+      setPaletteColors18(toolDataColor.paletteColors18);
+      setPaletteColors27(toolDataColor.paletteColors27);
+    }
+  }
+}, [toolDateParameters]);
+
+
+
 
 
   // 白色に設定する関数

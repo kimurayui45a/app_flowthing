@@ -18,14 +18,17 @@ const P5CanvasSet = ({
   canvasP5ToPixi,
   panelPosition,
   updateTrigger,
-  setUpdateTrigger
+  setUpdateTrigger,
+  toolDateParameters,
+  profileId,
+  activeSave
 }) => {
   return (
     <div>
-      <P5PanelGroupProvider notLayerSave={notLayerSave} panelPosition={panelPosition}>
-        <P5ToolModeProvider>
-          <P5ColorProvider>
-            <P5PenToolParametersProvider>
+      <P5PanelGroupProvider notLayerSave={notLayerSave} panelPosition={panelPosition} toolDateParameters={toolDateParameters} activeSave={activeSave}>
+        <P5ToolModeProvider toolDateParameters={toolDateParameters}>
+          <P5ColorProvider toolDateParameters={toolDateParameters}>
+            <P5PenToolParametersProvider toolDateParameters={toolDateParameters}>
             
               <div>
                 <P5CanvasCore
@@ -40,6 +43,8 @@ const P5CanvasSet = ({
                   canvasP5ToPixi={canvasP5ToPixi}
                   updateTrigger={updateTrigger}
                   setUpdateTrigger={setUpdateTrigger}
+                  toolDateParameters={toolDateParameters}
+                  profileId={profileId}
                 />
               </div>
 

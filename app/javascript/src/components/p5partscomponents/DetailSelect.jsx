@@ -1,40 +1,32 @@
 import React, { useRef } from 'react';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
-import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
+
 import { useP5ToolModeContext } from '../P5ModeContext';
-import { SelectToolComponent } from './SelectToolComponent';
 import { SelectionRangeDetail } from './SelectionRangeDetail';
 import { ShapesDetail } from './ShapesDetail';
+// import { useP5PanelGroupContext } from '../P5PanelGroupContext';
+// import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
+//import { SelectToolComponent } from './SelectToolComponent';
 
 
 const DetailSelect = () => {
 
-  const { handleImage, copyLayerActive, handleCopyLayerConfirm, getLayersInfoData } = useP5CanvasCoreShare();
+  // const { handleImage, copyLayerActive, handleCopyLayerConfirm, getLayersInfoData } = useP5CanvasCoreShare();
 
+
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  // } = useP5PanelGroupContext();
 
   const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-  } = useP5PanelGroupContext();
-
-  const { 
-    isImageInsertionActive,
-    handleToolChange,
     toolMode,
     setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
-    handleAlertMessage,
-    favoritePen,
-    favoritePenSecond,
     shapesTool,
     selectionRangeTool
   } = useP5ToolModeContext();

@@ -1,27 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
+import React, { useEffect, useState } from 'react';
 import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { useP5ToolModeContext } from '../P5ModeContext';
 import { SelectToolComponent } from './SelectToolComponent';
 import { useP5Color } from '../P5ColorContext';
+//import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 
 const SelectModeDetail = ({selectToolPanelParts, previewClassName, fastPreviewClassName, secondPreviewClassName}) => {
 
   const {
-    handleImage,
     copyLayerActive,
-    handleCopyLayerConfirm,
-    getLayersInfoData,
-    handleConfirmCancel,
     isGraphicsCreated,
-    handleConfirm,
-    selectedAreaCanvas,
-    handleConfirmTransform,
-    handleCancelSecondLayer,
-    selectSecondLayerInfo,
-    selectedLayerInfo,
-    selectSecondLayer,
     defaultScaleMode,
     setDefaultScaleMode,
     handleSelectAllArea,
@@ -32,48 +21,35 @@ const SelectModeDetail = ({selectToolPanelParts, previewClassName, fastPreviewCl
     selectToolBlurBool,
     setSelectToolBlurBool,
     handleSelectLayerBlurDecision,
-    handleSelectLayerClear,
     selectDeleteInversion,
     setSelectDeleteInversion,
     handleSelectFillColorChange
   } = useP5CanvasCoreShare();
 
-  const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-  } = useP5PanelGroupContext();
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  // } = useP5PanelGroupContext();
 
   const { 
     isImageInsertionActive,
-    handleToolChange,
     toolMode,
     setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
     handleAlertMessage,
-    favoritePen,
-    favoritePenSecond,
     selectArrangeMode,
     setSelectArrangeMode
   } = useP5ToolModeContext();
 
   const {
-    currentColor,
-    setCurrentColor,
     currentAlphaColor,
-    setCurrentAlphaColor,
     secondAlphaColor,
-    setSecondAlphaColor,
     selectAlphaColorPreview,
-    setSelectAlphaColorPreview,
     toggleAlphaPreviewMode,
     toggleSecondAlphaPreviewMode,
     toggleAlphaColorPreviewChange

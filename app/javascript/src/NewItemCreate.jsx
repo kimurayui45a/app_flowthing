@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const NewItemCreate = ({ subUserId, spaceSize }) => {
+const NewItemCreate = ({ subUserId, spaceSize, toolDateParameters, profileId }) => {
 
 
   const [canvasSpaceSize, setCanvasSpaceSize] = useState(() => {
@@ -111,8 +111,9 @@ const [panelPosition, setPanelPosition] = useState(() => {
   // });
 
 
-  //レイヤーセーブできるようにする
+  //レイヤーとツールをセーブできるようにする
   const [notLayerSave, setNotLayerSave] = useState(true);
+  const [activeSave, setActiveSave] = useState(true);
 
 
 
@@ -325,7 +326,7 @@ const handleCanvasSizeButton = () => {
 
 
       {canvasToolSet ? ( 
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} toolDateParameters={toolDateParameters} profileId={profileId} activeSave={activeSave} />
     ) : (
       <>
 

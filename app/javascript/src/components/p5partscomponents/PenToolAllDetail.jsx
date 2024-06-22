@@ -1,42 +1,37 @@
 import React, { useRef, useState } from 'react';
 import { PenToolComponent } from './PenToolComponent';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { useP5ToolModeContext } from '../P5ModeContext';
 import { DetailMixPenBlock } from './DetailMixPenBlock';
 import { DetailDotPenBlock } from './DetailDotPenBlock';
 import { DetailSmoothPenBlock } from './DetailSmoothPenBlock';
 import { PenToolShareValueComponent } from './PenToolShareValueComponent';
-import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
+// import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
+// import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 const PenToolAllDetail = () => {
 
-  const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-    toggleDetailPanelVisible
-  } = useP5PanelGroupContext();
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  //   toggleDetailPanelVisible
+  // } = useP5PanelGroupContext();
 
   const { 
     isImageInsertionActive,
-    handleToolChange,
     toolMode,
     setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
     handleAlertMessage,
     favoritePen,
     favoritePenSecond,
     setFavoritePen,
-    setSavoritePenSecond,
+    setFavoritePenSecond
   } = useP5ToolModeContext();
 
   const { 
@@ -78,7 +73,7 @@ const PenToolAllDetail = () => {
   
   const handleFavoritePenSecondChange = () => {
     if ((toolMode !== favoritePen) && (toolMode !== favoritePenSecond)) {
-      setSavoritePenSecond(toolMode);
+      setFavoritePenSecond(toolMode);
     } else {
       return;
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { P5CanvasSet } from './components/P5CanvasSet';
 
-const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSubUserText, spaceSize }) => {
+const EditSubUserCanvas = ({ profileId, canvasImgId, canvasSubUserName, canvasSubUserText, spaceSize, toolDateParameters }) => {
 
 
 
@@ -98,6 +98,9 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
   //レイヤーセーブできないようにする
   const [notLayerSave, setNotLayerSave] = useState(false);
+
+  //ツールをセーブできるようにする
+  const [activeSave, setActiveSave] = useState(true);
 
   //非同期保存
   const [isAsync, setIsAsync] = useState(false);
@@ -204,7 +207,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
   return (
     <div className="flex-column">
-      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} notLayerSave={notLayerSave} panelPosition={panelPosition} />
+      <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} key={canvasImgId} canvasImgId={canvasImgId} notLayerSave={notLayerSave} panelPosition={panelPosition} toolDateParameters={toolDateParameters} profileId={profileId} activeSave={activeSave} />
 
         {alertToast && (
           <div

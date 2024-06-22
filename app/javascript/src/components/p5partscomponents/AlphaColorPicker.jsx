@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useP5Color } from '../P5ColorContext';
 import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import iro from '@jaames/iro';
@@ -8,13 +8,10 @@ const AlphaColorPicker = () => {
 
   const {
     currentColor,
-    setCurrentColor,
     currentAlphaColor,
     setCurrentAlphaColor,
-    secondAlphaColor,
     setSecondAlphaColor,
-    selectAlphaColorPreview,
-    setSelectAlphaColorPreview
+    selectAlphaColorPreview
   } = useP5Color();
 
   const { colorPaletteDrag, colorPaletteDragEnd } = useP5PanelGroupContext();

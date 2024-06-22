@@ -14,20 +14,12 @@ const DetailPen = () => {
     //概要説明
     description,
     betaDescription,
-    setbetaDescription,
     mmPenDescription,
-    setMmPenDescription,
     inkPenDescription,
-    setInkPenDescription,
     watercolorDescription,
-    setWatercolorDescription,
     pencilDescription,
-    setPencilDescription,
     oilPenDescription,
-    setOilPenDescription,
-    mixPenDescription,
-    setMixPenDescription,
-    handlePenToolDescription
+    mixPenDescription
   } = useP5PenToolParametersContext();
 
   const { 

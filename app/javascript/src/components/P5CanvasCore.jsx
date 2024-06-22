@@ -15,7 +15,7 @@ import { P5SizePanel } from './P5SizePanel';
 import { useP5Color } from './P5ColorContext';
 import { useP5PenToolParametersContext } from './P5PenToolParametersContext';
 
-const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, setCanvasP5ToPixi, canvasP5ToPixi, updateTrigger, setUpdateTrigger }) => {
+const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onDataFromGrandchild, canvasSpaceSize, setCanvasP5ToPixi, canvasP5ToPixi, updateTrigger, setUpdateTrigger, toolDateParameters, profileId }) => {
   
   //canvas全体の情報に関するRef
   const sketchRef = useRef();
@@ -25,25 +25,18 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
   //「ツールモードコンテキスト」から受け取るもの
   const {
-    penGroup,
     toolMode,
     setToolMode,
-    handleToolChange,
     isImageInsertionActive,
     setIsImageInsertionActive,
     setDetailGroup,
     toast,
-    setToast,
     message,
-    setMessage,
     position,
-    setPosition,
     handleAlertMessage,
     selectArrangeMode,
-    setSelectArrangeMode,
     mouseModes,
     pressureModes,
-    penDetailGroup,
     customBrushModes,
     shapesTool,
     handleAlertLayerMessage,
@@ -60,7 +53,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     selectAlphaColorPreview,
     h,
     s,
-    v,
+    v
   } = useP5Color();
 
   //「パネル」コンテキスト
@@ -73,7 +66,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     p5DrawingEnabled,
     detailPanelVisible,
     setP5DrawingEnabled,
-    setSliderUpdateTrigger
+    setSliderUpdateTrigger,
+    setIsDraggablePanel
   } = useP5PanelGroupContext();
 
   //「詳細設定パラメータコンテキスト」から受け取るもの
@@ -99,7 +93,6 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     maxChangeSBool,
     maxChangeVBool,
     activeV,
-    alphaDecayBool,
 
     //詳細パネル（ペンツール...ぼかし、ミリペン、水彩ペン、エアブラシ、厚塗りペン、色混ぜ）
     mmBlurValue,
@@ -136,7 +129,6 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     alphaRate,
     alphaDecayRate,
     activeMixAlpha,
-    setActiveMixAlpha,
 
     //詳細パネル（ペンツール...エアブラシツール）
     pencilLerpStep,
@@ -158,19 +150,14 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
     //図形ツールのパラメータ
     shapesFillChange,
-    setShapesFillChange,
     shapesWidthSize,
     shapesHeightSize,
     shapesInstallation,
-    setShapesInstallation,
     lineDirection,
-    setLineDirection,
     shapesGradation,
-    setShapesGradation,
 
     //図形の角を丸めるかどうかのステート
     cornerChange,
-    setCornerChange,
     upperLeft,
     upperRight,
     lowerRight,
@@ -180,11 +167,8 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     shapesText,
     shapesTextLeading,
     shapesTextFont,
-    setShapesTextFont,
     shapesTextStyle,
-    setShapesTextStyle,
     shapesTextAlign,
-    setShapesTextAlign,
     shapesTextAlignVertical,
     shapesTextStroke
   } = useP5PenToolParametersContext();
@@ -245,6 +229,21 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   useEffect(() => {
     toolSizeRef.current = toolSize;
   }, [toolSize]);
+
+  //データをロード
+useEffect(() => {
+  if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
+    // JSON文字列をオブジェクトに解析
+    const toolData = JSON.parse(toolDateParameters);
+
+    // toolDataがオブジェクトであることを確認し、'p5Core'プロパティにアクセス
+    if (toolData && typeof toolData === 'object' && toolData.p5Core) {
+      const toolSizeData = toolData.p5Core;
+      // console.log('ツールサイズデータ', toolSizeData);
+      setToolSize(toolSizeData.toolSize);
+    }
+  }
+}, [toolDateParameters]);
 
   useEffect(() => {
     setInputMinValue(String(minSize));
@@ -793,9 +792,16 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
   //ツールサイズが更新されたらエアブラシのドットのサイズを初期値に戻す
   useEffect(() => {
-    setPencilHeightDot(1);
-    setPencilWidthDot(1);
+
+    if (pencilHeightDot > toolSize / 2 || pencilWidthDot > toolSize / 2) {
+      setPencilHeightDot(1);
+      setPencilWidthDot(1);
+    }
   }, [toolSize]);
+  // useEffect(() => {
+  //   setPencilHeightDot(1);
+  //   setPencilWidthDot(1);
+  // }, [toolSize]);
 
 
   //油絵の具ツール
@@ -842,15 +848,21 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   }, [toolSize]);
 
 
-  //S値に変動具合をつける、S値が更新されるたびに初期値「10」にリセットする
+  //S値に変動具合をつける、S値が更新され時にmaxChangeSがs値を超えないようにする
   useEffect(() => {
-    setMaxChangeS(0);
+    //setMaxChangeS(0);
+    if (maxChangeS > s) {
+      setMaxChangeS(s);
+    }
   }, [s]);
 
-  //V値に変動具合をつける、V値が更新されるたびに初期値「10」にリセットする
+  //V値に変動具合をつける、V値が更新されるたびにvMax(最大明度)を超えないようにする
   useEffect(() => {
-    setMaxChangeV(10);
-  }, [v]);
+    //setMaxChangeV(10);
+    if (maxChangeV > vMax) {
+      setMaxChangeV(vMax);
+    }
+  }, [v, vMax]);
 
   //ツールサイズが更新されたら「カスタムブラシ」のバッファを作成しなおす
   useEffect(() => {
@@ -3640,6 +3652,11 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     }
   };
 
+  //もしパネルが動かなかったときに押すボタン
+  // const rescuePanel = () => {
+  //   setIsDraggablePanel(true);
+  //   console.log('うご');
+  // };
 
 
   //「共有」
@@ -3738,6 +3755,13 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
     <div className="flex-column">
 
 
+{/* <div
+        className="select-confirm-btn"
+        onClick={rescuePanel}
+        onTouchStart={rescuePanel}
+        >
+        もしパネルが動かなくなったらクリック
+      </div> */}
 
 {/* 
 <div
@@ -3805,7 +3829,7 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
 
           <P5Cursor />
           {colorPalettePanelVisible && <P5ColorPalettePanel />}
-          {mainPanelMode ? <P5DefaultPanel /> : <P5CompactPanel />}
+          {mainPanelMode ? <P5DefaultPanel profileId={profileId} /> : <P5CompactPanel />}
           {layersInfoPanelVisible && <P5LayersInfoPanel />}
           {detailPanelVisible && <P5DetailPanel />}
 

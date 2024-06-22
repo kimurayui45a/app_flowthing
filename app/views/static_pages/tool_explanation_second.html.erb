@@ -30,8 +30,9 @@
           <div class="accordion-content-sidebar" id="accordion-section3">
               <a href="#section1">詳細設定パネルの基本構造</a>
               <a href="#section2">ペン</a>
-              <a href="#section3">選択/画像</a>
-              <a href="#section2">図形/テキスト</a>
+              <a href="#section3">筆圧設定</a>
+              <a href="#section4">選択/画像</a>
+              <a href="#section5">図形/テキスト</a>
           </div>
         </li>
         <li><a href="#section3">サイズパネル</a></li>
@@ -50,6 +51,8 @@
     <h2 class="explanation-section-title">
       <span class="text-line">詳細設定パネル</span>
     </h2>
+
+    
     <section id="section1">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
@@ -90,10 +93,10 @@
           ペン
         </span>
       </h3>
-      </section>
-      <div class="sidebar-design">
-        <%= image_tag('pen_normal_panel.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image") %>
-      </div>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('pen_normal_panel.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image") %>
+    </div>
 
 
       <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
@@ -321,6 +324,7 @@
         エアブラシ<%= image_tag('pen_pencil_btn.png', alt: 'エアブラシペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>/厚塗りペン<%= image_tag('pen_oil_btn.png', alt: '厚塗りペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>
         </span>
       </h5>
+
       <div class="sidebar-design">
         <%= image_tag('pen_pencil_panel.png', alt: 'エアブラシペンと厚塗りペンの詳細設定パネルの図解', class: "dotpen_panel-image") %>
       </div>
@@ -328,125 +332,184 @@
         <p>
           エアブラシと厚塗りペンは<span style="color: #F8A3B1;" class="text-Rounded500">円形の点(ドット)</span>が集まって構成されるペンです。<br>
           ドットの形状は変更することが可能であり、アーティステックなペイントが可能です。<br>
-          また、この2つのペンも筆圧」と「ぼかし」機能が両方ついています。<br>
+          また、この2つのペンも「筆圧」と「ぼかし」機能が両方ついています。<br>
           <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※「ドット形状」「ブラシサイズ」「ペンの密度」の状況次第ではペイント速度に遅延が発生する可能性があります。</span>
         </p>
       </div>
 
-        <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
-  
-      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">ドットの形状</span></p><br>
-      <div>
-        <table class="dot-sample-table">
-          <thead>
-            <tr>
-              <th>ドットの横幅を加算</th>
-              <th>ドットの縦幅を加算</th>
-              <th>縦横を同じだけ加算</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= image_tag('dot_width.png', alt: 'ドットの横幅を加算サンプル', class: "dot-pen-table-image") %></td>
-              <td><%= image_tag('dot_height.png', alt: 'ドットの縦幅を加算したサンプル', class: "dot-pen-table-image") %></td>
-              <td><%= image_tag('dot_big.png', alt: '縦横を同じだけ加算サンプル', class: "dot-pen-table-image") %></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+    
+        <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">ドットの形状</span></p><br>
+        <div>
+          <table class="dot-sample-table">
+            <thead>
+              <tr>
+                <th>ドットの横幅を加算</th>
+                <th>ドットの縦幅を加算</th>
+                <th>縦横を同じだけ加算</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= image_tag('dot_width.png', alt: 'ドットの横幅を加算サンプル', class: "dot-pen-table-image") %></td>
+                <td><%= image_tag('dot_height.png', alt: 'ドットの縦幅を加算したサンプル', class: "dot-pen-table-image") %></td>
+                <td><%= image_tag('dot_big.png', alt: '縦横を同じだけ加算サンプル', class: "dot-pen-table-image") %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※例としてエアブラシを使用しています。</span><br>
+        <p style="margin-bottom: 3rem;">詳細設定パネルのフォームより<span style="color: #F8A3B1;" class="text-Rounded500">「横幅」</span>と<span style="color: #F8A3B1;" class="text-Rounded500">「縦幅」</span>を設定してドットの形状を変えることができます。<br>
+        設定できるサイズは<span style="color: #59afc7;" class="text-Rounded500">「0.5〜現在選択しているブラシサイズの半分の値まで」</span>になります。<br>
+        </p>
+
+
+    
+        <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">ドットの数</span></p><br>
+        <div>
+          <table class="dot-sample-table">
+            <thead>
+              <tr>
+                <th>ドット数1個</th>
+                <th>ドット数999個</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= image_tag('dot_1.png', alt: 'ドット数1個のサンプル', class: "dot-pen-table-image") %></td>
+                <td><%= image_tag('dot_999.png', alt: 'ドット数999個のサンプル', class: "dot-pen-table-image") %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※例としてエアブラシを使用しています。</span><br>
+        <p style="margin-bottom: 3rem;">詳細設定パネルのフォームより1回あたりのクリック(フレーム)で描画されるドットの数を調整できます。<br>
+          調整可能範囲は<span style="color: #59afc7;" class="text-Rounded500">「1〜999」</span>までとなります。
+        </p>
+
+          
+        <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">透明度の調整</span></p><br>
+        <span>このブラシは実は四角い形状をしており、外枠のピクセルに透明度をつけることでペンの形状を円形にしております。<br>
+        そのためその透明度の調整次第でペンの形状を変えることが可能となっています。</span><br>
+        <div>
+          <table class="dot-sample-table">
+            <thead>
+              <tr>
+                <th>透明度0</th>
+                <th>透明度100</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= image_tag('dot_alpha0.png', alt: '透明度0のサンプル', class: "dot-pen-table-image") %></td>
+                <td><%= image_tag('dot_rect.png', alt: '透明度100のサンプル', class: "dot-pen-table-image") %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※例としてエアブラシを使用しています。</span><br>
+        <p style="margin-bottom: 3rem;">
+          調整可能範囲は<span style="color: #59afc7;" class="text-Rounded500">「0〜100」</span>までとなり、「0で完全な円形」「100で完全な四角形」になります。
+        </p>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">エアブラシと厚塗りペンの違い</span></p><br>
+        <div>
+          <table class="dot-sample-table">
+            <thead>
+              <tr>
+                <th>エアブラシ</th>
+                <th>厚塗りペン</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= image_tag('pencil_paint.png', alt: 'エアブラシのサンプル', class: "dot-pen-paint-image") %></td>
+                <td><%= image_tag('oil_paint.png', alt: '厚塗りペンのサンプル', class: "dot-pen-paint-image") %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-bottom: 3rem;">
+        主に、ペンを走らせたときに描画されたドットが次のドットと連携するかどうかで書き味を変化させています。<br>
+        <span class="sakura-line">次のドットと連携せずドットの形状が目立つものが「エアブラシ」</span>、<br><span class="sub-line">次のドットと連携しドットの形状がわかりにくいものが「厚塗りペン」</span>となります。<br>
+        この違いからエアブラシは調整具合次第では掠れたペイントになり、厚塗りペンはベタついた絵の具のようなアナログチックなペイントになります。<br>
+        </p>
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">補間調整値</span></p><br>
+        <p style="margin-bottom: 3rem;">
+        線を引く際の点の配置感覚を調整する項目です。
+        調整可能範囲は<span style="color: #59afc7;" class="text-Rounded500">「0〜100」</span>までとなり、<br>
+        値を小さくするとより多くの点が補完され線が滑らかに、値を大きくすると点の感覚が広がり線に切れが生じやすくなります。<br>
+        「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」と似たような項目でペンの速さに依存するため効果を実感しにくい場合がございます。
+        </p>
+
+
+        <p style="margin-bottom: -0.8rem;"><span style="color: #5AC2DE;" class="text-Rounded700">ペンの密度</span></p><br>
+        <p style="margin-bottom: 3rem;">
+        今回「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」は<span style="color: #F8A3B1;" class="text-Rounded500">厚塗りペン</span>にのみ設けております。
+        調整可能範囲は0.01〜100の間で、値を大きくすると滑らかに、小さくすると途切れた線になります。
+        </p>
       </div>
-      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※例としてエアブラシを使用しています。</span><br>
-      <p style="margin-bottom: 3rem;">詳細設定パネルのフォームより<span style="color: #F8A3B1;" class="text-Rounded500">「横幅」</span>と<span style="color: #F8A3B1;" class="text-Rounded500">「縦幅」</span>を設定してドットの形状を変えることができます。<br>
-      設定できるサイズは<span style="color: #59afc7;" class="text-Rounded500">「0.5〜現在選択しているブラシサイズの半分の値まで」</span>になります。<br>
-      </p>
 
 
-  
-      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">ドットの数</span></p><br>
-      <div>
-        <table class="dot-sample-table">
-          <thead>
-            <tr>
-              <th>ドット数1個</th>
-              <th>ドット数999個</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= image_tag('dot_1.png', alt: 'ドット数1個のサンプル', class: "dot-pen-table-image") %></td>
-              <td><%= image_tag('dot_999.png', alt: 'ドット数999個のサンプル', class: "dot-pen-table-image") %></td>
-            </tr>
-          </tbody>
-        </table>
+      <h5 class="explanation-section-pointtitle" style="font-size: 1rem;">
+        <span class="orange-line">
+        色混ぜ<%= image_tag('pen_mix_btn.png', alt: '色混ぜペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>
+        </span>
+      </h5>
+      <div class="sidebar-design">
+        <%= image_tag('pen_mix_panel.png', alt: '色混ぜペンの詳細設定パネルの図解', class: "toolpanel-image") %>
       </div>
-      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※例としてエアブラシを使用しています。</span><br>
-      <p style="margin-bottom: 3rem;">詳細設定パネルのフォームより1回あたりのクリック(フレーム)で描画されるドットの数を調整できます。<br>
-        調整可能範囲は<span style="color: #59afc7;" class="text-Rounded500">「1〜999」</span>までとなります。
-      </p>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+        <p>
+          canvas上で触った部分のピクセルに塗られている色を取得し、その色でペイントできるペンです。<br>
+          このペンは色を持たず、クリックしてリリースするまでの間、取得した色で描画が可能です。
+        </p><br>
 
-        
-      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">透明度の調整</span></p><br>
-      <span>このブラシは実は四角い形状をしており、外枠のピクセルに透明度をつけることでペンの形状を円形にしております。<br>
-      そのためその透明度の調整次第でペンの形状を変えることが可能となっています。</span><br>
-      <div>
-        <table class="dot-sample-table">
-          <thead>
-            <tr>
-              <th>透明度0</th>
-              <th>透明度100</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= image_tag('dot_alpha0.png', alt: '透明度0のサンプル', class: "dot-pen-table-image") %></td>
-              <td><%= image_tag('dot_rect.png', alt: '透明度100のサンプル', class: "dot-pen-table-image") %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※例としてエアブラシを使用しています。</span><br>
-      <p style="margin-bottom: 3rem;">
-        調整可能範囲は<span style="color: #59afc7;" class="text-Rounded500">「0〜100」</span>までとなり、「0で完全な円形」「100で完全な四角形」になります。
-      </p>
+        <p>
+          色の取得は現在の描画レイヤーに限られ、他のレイヤーからは色を取得できません。<br>
+          描画レイヤーにペイントがない部分をクリックし、ペイントのある部分へドラッグすると、消しゴムのように色情報を消去することができます。<br>
+          このペンも「ぼかし」と「筆圧」機能が両方ついています。
+          「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」は0.01〜100の間で調整でき、値を大きくすると滑らかに、小さくすると途切れた線になります。<br>
+          <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※状況次第ではペイント速度に遅延が発生する可能性があります。</span>
+        </p><br>
 
-      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">エアブラシと厚塗りペンの違い</span></p><br>
-      <div>
-        <table class="dot-sample-table">
-          <thead>
-            <tr>
-              <th>エアブラシ</th>
-              <th>厚塗りペン</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><%= image_tag('pencil_paint.png', alt: 'エアブラシのサンプル', class: "dot-pen-paint-image") %></td>
-              <td><%= image_tag('oil_paint.png', alt: '厚塗りペンのサンプル', class: "dot-pen-paint-image") %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="margin-bottom: 3rem;">
-      主に、ペンを走らせたときに描画されたドットが次のドットと連携するかどうかで書き味を変化させています。<br>
-      <span class="sakura-line">次のドットと連携せずドットの形状が目立つものが「エアブラシ」</span>、<br><span class="sub-line">次のドットと連携しドットの形状がわかりにくいものが「厚塗りペン」</span>となります。<br>
-      この違いからエアブラシは調整具合次第では掠れたペイントになり、厚塗りペンはベタついた絵の具のようなアナログチックなペイントになります。<br>
-      </p>
+        <p style="margin-bottom: -0.8rem; margin-top: 1.5rem;"><span style="color: #7CBB72;" class="text-Rounded700">ペンにぼかしをつける</span>：
+        「ぼかし」は<span style="color: #59afc7;" class="text-Rounded500">「0〜5」</span>の範囲で程度を選択でき、数値が大きいほどぼかし度合いが大きくなります。<br>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※しかし、あまり性能は良くなく、さらにペイント速度に遅延が発生する可能性があります。</span>
+        </p><br>
 
-      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">補間調整値</span></p><br>
-      <p style="margin-bottom: 3rem;">
-      線を引く際の点の配置感覚を調整する項目です。
-      調整可能範囲は<span style="color: #59afc7;" class="text-Rounded500">「0〜100」</span>までとなり、<br>
-      値を小さくするとより多くの点が補完され線が滑らかに、値を大きくすると点の感覚が広がり線に切れが生じやすくなります。<br>
-      「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」と似たような項目でペンの速さに依存するため効果を実感しにくい場合がございます。
-      </p>
-
-
-      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded700">ペンの密度</span></p><br>
-      <p style="margin-bottom: 3rem;">
-      今回「<span style="color: #59afc7;" class="text-Rounded500">ペンの密度</span>」は<span style="color: #F8A3B1;" class="text-Rounded500">厚塗りペン</span>にのみ設けております。
-      調整可能範囲は0.01〜100の間で、値を大きくすると滑らかに、小さくすると途切れた線になります。
-      </p>
+        <p style="margin-bottom: -0.8rem;"><span style="color: #EA9637;" class="text-Rounded700">透明度に筆圧をつける</span>：
+          このペンはサイズと色の他に透明度にも筆圧をかけることができます。<br>
+          そのため、取得色と全く同じ色ではなく<span style="color: #59afc7;" class="text-Rounded500">彩度・明度・透明度</span>が操作された色でペイントできます。<br>
+          透明度の最大値は<span style="color: #59afc7;" class="text-Rounded500">「0〜100」</span>の範囲で選択でき、その最大値を超えない範囲で筆圧によって色を調整できます。<br>
+          これらにより取得した色とは異なる色調で描画することができます。
+        </p><br>
 
       </div>
+
+
+
+
+
+    <section id="section3">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          筆圧設定
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('pen_normal_panel.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: -2rem;">
+    <p>「詳細設定パネル」は<span style="color: #F8A3B1;" class="text-Rounded500">「ペン」「選択」「図形」「画像」</span>機能のいずれかを選択した際に表示されるパネルです。<br>
+    自動表示モードをオフ<%= image_tag('auto_panel_none_btn.png', alt: '自動表示モードがオフの時のUI', class: "auto_btn-image") %>にしている場合は
+    <span style="color: #59afc7;" class="text-Rounded500"><i class="bi bi-gear-fill"></i></span>アイコンをクリックすると表示されます。<br>
+    パネル内の内容は選択されているツールに合わせて変化します。
+    </p>
+    </div>
+
 
 
 

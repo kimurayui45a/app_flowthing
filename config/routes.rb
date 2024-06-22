@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'icon_edit', as: 'icon_edit'
       get 'icon_edit_canvas', as: 'icon_edit_canvas'
       patch 'update_icon'
+      patch 'update_tool'
     end
   end
 
@@ -87,4 +88,7 @@ Rails.application.routes.draw do
   get 'idea_page', to: 'static_pages#idea_page'
   get 'tool_explanation', to: 'static_pages#tool_explanation'
   get 'tool_explanation_second', to: 'static_pages#tool_explanation_second'
+
+  #ペイントツールヘルプ
+  get 'paint_help', to: 'static_pages#paint_help'
 end

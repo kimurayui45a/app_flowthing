@@ -80,16 +80,42 @@ class ProfilesController < ApplicationController
 
 
 
+  def update_tool
+    @profile = current_user.profile
+
+    if @profile.update(profile_tool_params)
+      if request.headers['X-React-App'] == 'true'
+        render json: { redirect_url: profile_path(@profile) }, status: :ok
+      else
+        redirect_to profile_path(@profile), notice: t('defaults.flash_message.updated', profile: Profile.model_name.human)
+      end
+    else
+      if request.headers['X-React-App'] == 'true'
+        render json: @profile.errors, status: :unprocessable_entity
+      else
+        flash.now[:danger] = t('defaults.flash_message.not_updated', profile: Profile.model_name.human)
+        render :edit, status: :unprocessable_entity
+      end
+    end
+  end
+
+
+
 
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :image_icon, :color_code, :profile_text, :selected_option, :space_size, :profile_canvas, :profile_icon)
+    params.require(:profile).permit(:name, :image_icon, :color_code, :profile_text, :selected_option, :space_size, :profile_canvas, :profile_icon, :tool_data)
   end
 
 
   def profile_icon_params
     params.require(:profile).permit(:profile_canvas)
+  end
+
+
+  def profile_tool_params
+    params.require(:profile).permit(:tool_data)
   end
 
 

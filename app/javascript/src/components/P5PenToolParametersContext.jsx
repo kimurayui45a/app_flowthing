@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const P5PenToolParametersContext = createContext();
 export const useP5PenToolParametersContext = () => useContext(P5PenToolParametersContext);
 
-export const P5PenToolParametersProvider = ({ children }) => {
+export const P5PenToolParametersProvider = ({ children, toolDateParameters }) => {
 
   //概要説明
   const [description, setDescription] = useState({ title: '概要欄', desc: '' });
@@ -226,6 +226,94 @@ export const P5PenToolParametersProvider = ({ children }) => {
   //テキストの枠線の太さ
   const [shapesTextStroke, setShapesTextStroke] = useState(2);
   const [inputShapesTextStroke, setInputShapesTextStroke] = useState(String(shapesTextStroke));
+
+
+
+
+  //データをロード
+  useEffect(() => {
+    if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
+      // JSON文字列をオブジェクトに解析
+      const toolData = JSON.parse(toolDateParameters);
+  
+      // toolDataがオブジェクトであることを確認し、'p5ToolParameters'プロパティにアクセス
+      if (toolData && typeof toolData === 'object' && toolData.p5ToolParameters) {
+        const toolParametersData = toolData.p5ToolParameters;
+        // console.log('ツールサイズデータ', toolParametersData);
+
+        //筆圧
+        setPressureAdjustment(toolParametersData.pressureAdjustment);
+
+        //s値
+        setUserCustomS(toolParametersData.userCustomS);
+        setMaxChangeS(toolParametersData.maxChangeS);
+        setRateS(toolParametersData.rateS);
+        setSMin(toolParametersData.sMin);
+
+        //v値
+        setUserCustomV(toolParametersData.userCustomV);
+        setMaxChangeV(toolParametersData.maxChangeV);
+        setRateV(toolParametersData.rateV);
+        setVMax(toolParametersData.vMax);
+
+        //「ペンツール」のぼかしbool値
+        setMmBlur(toolParametersData.mmBlur);
+        setWatercolorBlur(toolParametersData.watercolorBlur);
+        setPencilBlur(toolParametersData.pencilBlur);
+        setOilBlur(toolParametersData.oilBlur);
+        setMixBlur(toolParametersData.mixBlur);
+
+        //「ペンツール」のbool値判定（その他）
+        setPressurePen(toolParametersData.pressurePen);
+        setSizeCustomBool(toolParametersData.sizeCustomBool);
+        setActiveS(toolParametersData.activeS);
+        setMaxChangeSBool(toolParametersData.maxChangeSBool);
+        setMaxChangeVBool(toolParametersData.maxChangeVBool);
+        setActiveV(toolParametersData.activeV);
+        setAlphaDecayBool(toolParametersData.alphaDecayBool);
+
+        //滑らかさ調整
+        setDensityValue(toolParametersData.densityValue);
+        setMmDensityValue(toolParametersData.mmDensityValue);
+        setWaterDensityValue(toolParametersData.waterDensityValue);
+        setOilDensityValue(toolParametersData.oilDensityValue);
+        setMixDensityValue(toolParametersData.mixDensityValue);
+
+        //ペンの補間率(筆圧)
+        setLerpRateMin(toolParametersData.lerpRateMin);
+        setLerpRateMax(toolParametersData.lerpRateMax);
+        setRateSize(toolParametersData.rateSize);
+
+        //色混ぜ
+        setActiveMixAlpha(toolParametersData.activeMixAlpha);
+        setAlphaRate(toolParametersData.alphaRate);
+        setAlphaDecayRate(toolParametersData.alphaDecayRate);
+        setMixBlurValue(toolParametersData.mixBlurValue);
+
+        //エアブラシ
+        setPencilLerpStep(toolParametersData.pencilLerpStep);
+        setPencilNumPoints(toolParametersData.pencilNumPoints);
+        setPencilHeightDot(toolParametersData.pencilHeightDot);
+        setPencilWidthDot(toolParametersData.pencilWidthDot);
+        setPencilAlpha(toolParametersData.pencilAlpha);
+
+        //厚塗りペン
+        setOilLerpStep(toolParametersData.oilLerpStep);
+        setOilNumPoints(toolParametersData.oilNumPoints);
+        setOilHeightDot(toolParametersData.oilHeightDot);
+        setOilWidthDot(toolParametersData.oilWidthDot);
+        setOilAlpha(toolParametersData.oilAlpha);
+
+        //図形ツール(縦横)
+        setShapesWidthSize(toolParametersData.shapesWidthSize);
+        setShapesHeightSize(toolParametersData.shapesHeightSize);
+
+      }
+    }
+  }, [toolDateParameters]);
+
+
+
 
 
   //フォームの仮入力と実際の値との同期(Input関係)

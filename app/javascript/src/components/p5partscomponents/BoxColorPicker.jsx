@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useP5Color } from '../P5ColorContext';
 import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import iro from '@jaames/iro';
@@ -13,27 +13,17 @@ const BoxColorPicker = () => {
     setCurrentColor,
 
     //RGBフォーム
-    r,
     setR,
-    g,
     setG,
-    b,
     setB,
-    a,
     setA,
 
     //HSVフォーム
-    h,
     setH,
-    s,
     setS,
-    v,
     setV,
-    inputH,
     setInputH,
-    inputS,
     setInputS,
-    inputV,
     setInputV
   } = useP5Color();
 

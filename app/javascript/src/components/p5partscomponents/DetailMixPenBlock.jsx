@@ -1,36 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useP5Color } from '../P5ColorContext';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 import { PenToolShareValueComponent } from './PenToolShareValueComponent';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
-import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
+//import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
+// import { useP5Color } from '../P5ColorContext';
+// import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 
 const DetailMixPenBlock = () => {
 
-  const { 
-    //詳細パネル（ペンツール...minSize：筆圧で変動する最小サイズ）
-    toolSize
-    } = useP5CanvasCoreShare();
+  // const { 
+  //   //詳細パネル（ペンツール...minSize：筆圧で変動する最小サイズ）
+  //   toolSize
+  //   } = useP5CanvasCoreShare();
 
   const {
-    //詳細パネル（ペンツール...各設定のbool値）
-    alphaDecayBool,
-    setAlphaDecayBool,
-
     //詳細パネル（ペンツール...ぼかし、ミリペン、水彩ペン、エアブラシ、厚塗りペン、色混ぜ）
     inputMixBlurValue, 
-    mixBlurValueMax,
 
     //詳細パネル（ペンツール...指先・色混ぜツール）
     alphaRate,
     setAlphaRate,
     inputAlphaRate,
     setInputAlphaRate,
-    alphaDecayRate,
     setAlphaDecayRate,
-    inputAlphaDecayRate,
-    setInputAlphaDecayRate,
     inputMixDensityValue,
     setMixPenDescription,
     handlePenToolDescription,

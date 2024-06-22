@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useP5ToolModeContext } from './P5ModeContext';
-// import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';
 import { useP5PanelGroupContext } from './P5PanelGroupContext';
 import { Rnd } from 'react-rnd';
 import { DetailPen } from './p5partscomponents/DetailPen';
 import { DetailSelect } from './p5partscomponents/DetailSelect';
+// import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';
 
 const P5DetailPanel = () => {
 
@@ -19,8 +19,7 @@ const P5DetailPanel = () => {
   } = useP5PanelGroupContext();
 
   const {
-    detailGroup,
-    setDetailGroup
+    detailGroup
   } = useP5ToolModeContext();
 
   const handleBackgroundTouch = (e) => {

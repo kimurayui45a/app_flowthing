@@ -1,32 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useP5PanelGroupContext } from '../P5PanelGroupContext';
+import React, { useEffect, useState } from 'react';
 import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
-import { useP5ToolModeContext } from '../P5ModeContext';
 import { useP5PenToolParametersContext } from '../P5PenToolParametersContext';
 import { useP5Color } from '../P5ColorContext';
-
+//import { useP5ToolModeContext } from '../P5ModeContext';
+//import { useP5PanelGroupContext } from '../P5PanelGroupContext';
 
 const ShapesPartsComponent = ({ShapesFormParts, direction, inputValue, formTitle}) => {
 
   const {
-    handleImage,
-    copyLayerActive,
-    handleCopyLayerConfirm,
-    getLayersInfoData,
     handleInversionClickChange,
     toolSize
   } = useP5CanvasCoreShare();
 
   //「カラーコンテキスト」から受け取るもの
   const {
-    currentColor,
-    setCurrentColor,
     currentAlphaColor,
-    secondAlphaColor,
-    selectAlphaColorPreview,
-    h,
-    s,
-    v,
+    secondAlphaColor
   } = useP5Color();
 
   const {
@@ -35,11 +24,9 @@ const ShapesPartsComponent = ({ShapesFormParts, direction, inputValue, formTitle
     setShapesFillChange,
     shapesWidthSize,
     setShapesWidthSize,
-    inputShapesWidthSize,
     setInputShapesWidthSize,
     shapesHeightSize,
     setShapesHeightSize,
-    inputShapesHeightSize,
     setInputShapesHeightSize,
     shapesInstallation,
     setShapesInstallation,
@@ -51,49 +38,45 @@ const ShapesPartsComponent = ({ShapesFormParts, direction, inputValue, formTitle
     setCornerChange,
     upperLeft,
     setUpperLeft,
-    inputUpperLeft,
     setInputUpperLeft,
     upperRight,
     setUpperRight,
-    inputUpperRight,
     setInputUpperRight,
     lowerRight,
     setLowerRight,
-    inputLowerRight,
     setInputLowerRight,
     lowerLeft,
     setLowerLeft,
-    inputLowerLeft,
     setInputLowerLeft,
     shapesGradation,
     setShapesGradation,
   } = useP5PenToolParametersContext();
 
 
-  const { 
-    showSizeAndDetailPanels,
-    toggleColorPalettePanelVisible,
-    toggleLayersInfoPanelVisible,
-    toggleScalePanelVisible,
-    layersInfoPanelVisible,
-    scalePanelVisible,
-    colorPalettePanelVisible,
-    mainPanelMode,
-  } = useP5PanelGroupContext();
+  // const { 
+  //   showSizeAndDetailPanels,
+  //   toggleColorPalettePanelVisible,
+  //   toggleLayersInfoPanelVisible,
+  //   toggleScalePanelVisible,
+  //   layersInfoPanelVisible,
+  //   scalePanelVisible,
+  //   colorPalettePanelVisible,
+  //   mainPanelMode,
+  // } = useP5PanelGroupContext();
 
-  const { 
-    isImageInsertionActive,
-    handleToolChange,
-    toolMode,
-    setToolMode,
-    penDetailGroup,
-    selectDetailGroup,
-    detailGroup,
-    setDetailGroup,
-    handleAlertMessage,
-    favoritePen,
-    favoritePenSecond
-  } = useP5ToolModeContext();
+  // const { 
+  //   isImageInsertionActive,
+  //   handleToolChange,
+  //   toolMode,
+  //   setToolMode,
+  //   penDetailGroup,
+  //   selectDetailGroup,
+  //   detailGroup,
+  //   setDetailGroup,
+  //   handleAlertMessage,
+  //   favoritePen,
+  //   favoritePenSecond
+  // } = useP5ToolModeContext();
 
 // プレビュー縮小ステート
 const [scaleRatioPreview, setScaleRatioPreview] = useState(1);

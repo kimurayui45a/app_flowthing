@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { useP5ToolModeContext } from './P5ModeContext';
-// import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';
 import { useP5PanelGroupContext } from './P5PanelGroupContext';
 import { Rnd } from 'react-rnd';
 import { WheelColorPicker } from './p5partscomponents/WheelColorPicker';
@@ -8,6 +6,8 @@ import { BoxColorPicker } from './p5partscomponents/BoxColorPicker';
 import { useP5Color } from './P5ColorContext';
 import { ColorFormBlock } from './p5partscomponents/ColorFormBlock';
 import { useP5ToolModeContext } from './P5ModeContext';
+// import { useP5ToolModeContext } from './P5ModeContext';
+// import { useP5CanvasCoreShare } from './P5CanvasCoreShareContext';
 
 
 const P5ColorPalettePanel = () => {
@@ -17,7 +17,6 @@ const P5ColorPalettePanel = () => {
     handlePanelDragStop,
     colorPalettePanelPosition,
     setColorPalettePanelPosition,
-    boxPickerChange,
     handleBoxPickerChange,
     colorPalettePanelPickerChange,
     toggleColorPalettePanelClose,
@@ -31,11 +30,8 @@ const P5ColorPalettePanel = () => {
     setWhiteButton,
     setBlackButton,
     selectColorPreview,
-    setSelectColorPreview,
     firstColorPreview,
-    setFirstColorPreview,
     secondColorPreview,
-    setSecondColorPreview,
     toggleFirstPreviewMode,
     toggleSecondPreviewMode,
     setColorPreviewButton,
