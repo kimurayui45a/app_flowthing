@@ -548,12 +548,87 @@
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p style="margin-bottom: -1rem;">この項目ではサイズに筆圧をつけるか選択でき、さらにそれに関する詳細を設定することができます。
       </p><br>
-      <p><span style="color: #59afc7;" class="text-Rounded500">サイズに筆圧をつける</span>：ここで筆圧に応じてサイズを変更するかどうかを選択できます。チェックボックスにチェックを入れると<span style="color: #e19ab0;" class="text-Rounded500">オン</span>になり、選択しているツールサイズを最大値にそれを超えない範囲で筆圧によってペンのサイズが変わります。<br>チェックを外すと<span style="color: #59afc7;" class="text-Rounded500">オフ</span>になり均一な線になります。<br></p>
-      <p><span style="color: #bfad28;" class="text-Rounded500">サイズの変動具合を調整する</span>：<span style="color: #59afc7;" class="text-Rounded500">「サイズに筆圧をつける」</span>の項目にチェックが入っている場合のみさらに詳細な設定を加えるか選択できる項目です。サイズの変動具合や最小値を設定できます。<br></p>
+      <p><span style="color: #59afc7;" class="text-Rounded500">サイズに筆圧をつける</span>：筆圧に応じてサイズを変更するかどうかを選択できます。チェックボックスにチェックを入れると<span style="color: #e19ab0;" class="text-Rounded500">オン</span>になり、選択しているツールサイズを最大値にそれを超えない範囲で筆圧によってペンのサイズが変わります。<br>チェックを外すと<span style="color: #59afc7;" class="text-Rounded500">オフ</span>になり均一な線になります。<br></p>
+      <p><span style="color: #bfad28;" class="text-Rounded500">サイズの変動具合を調整する</span>：<span style="color: #59afc7;" class="text-Rounded500">「サイズに筆圧をつける」</span>の項目にチェックが入っている場合のみさらに詳細な設定を加えるか選択できる項目です。<span style="color: #e19ab0;" class="text-Rounded500">オン</span>にするとサイズの変動具合や最小値を設定できます。<br></p>
       <p><span style="color: #E19AB0;" class="text-Rounded500">サイズの補間率</span>：サイズの変動具合を調整できます。0から1の範囲でサイズがどれくらいの速度で変動するかを細かく設定可能です。<br></p>
       <p><span style="color: #f49e25;" class="text-Rounded500">最小ペンサイズ</span>：筆圧によって変動するペンの最小サイズを設定できます。筆圧のかかるペンは<span style="color: #e19ab0;" class="text-Rounded500">選択中のツールサイズを最大値</span>に、<span style="color: #59afc7;" class="text-Rounded500">最小ペンサイズを最小値</span>にした範囲で変動します。サイズ変更時に新しく選択したものが最小サイズより小さかった場合はこの値は選択したツールサイズの半分の値に自動で更新されます。<br></p>
     </div>
 
+
+    <h4 class="explanation-section-pointtitle">
+      <span class="point-line">
+      彩度と明度について
+      </span>
+    </h4>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;"><span style="color: #7CBB72;" class="text-Rounded500">「S値に筆圧をつける」</span>と<span style="color: #f49e25;" class="text-Rounded500">「V値に筆圧をつける」</span>の項目の解説の前に彩度と明度についての補足をします。<br>
+      まず、このペイントツールの筆圧機能は<span style="color: #59afc7;" class="text-Rounded500">「HSV形式」</span>でカラーを取得して操作しております。<br>
+      「HSV形式」とは色を表現する方法の一つで、<span style="color: #59afc7;" class="text-Rounded500">色相(Hue)</span>、<span style="color: #7CBB72;" class="text-Rounded500">彩度(Saturation)</span>、<span style="color: #f49e25;" class="text-Rounded500">明度(Value)</span>の三つの要素で色を定義します。<br>
+      この形式では、<span style="color: #59afc7;" class="text-Rounded500">色相(Hue)</span>は色の種類を示し、0度から360度の範囲で表されます。</p><br>
+      <p><span style="color: #7CBB72;" class="text-Rounded500">彩度(Saturation)</span>は色の鮮やかさを表し、0%(無彩色)から100%(純色)までの範囲で設定されます。<br>
+      <span style="color: #f49e25;" class="text-Rounded500">明度(Value)</span>は色の明るさを示し、0%(完全な黒)から100%(完全な白)まで調整が可能です。</p><br>
+
+      <p><span style="color: #7CBB72;" class="text-Rounded500">彩度(Saturation)</span>が0の場合は<span style="color: #59afc7;" class="text-Rounded500">色相(Hue)</span>でどのような色を選んでも影響がなく、白・グレー・黒のみを含む<span class="sakura-line">モノクロの範囲で変化</span>します。<br>
+      また、<span style="color: #f49e25;" class="text-Rounded500">明度(Value)</span>が0の場合は<span class="sakura-line">他の値がどんな数値であろうと黒</span>になります。<br>
+      このツールのカラーピッカーを例に取ると、円形のカラーピッカーは色相(H値)に特化しており、四角形のカラーピッカーは彩度(S値)と明度(V値)の調整を得意としています。
+      </p><br>
+      <div class="sidebar-design" style="margin-top: -1.5rem;">
+        <%= image_tag('hsv_graph.png', alt: 'hsv値の説明', class: "toolpanel-image") %>
+      </div>
+      <p style="margin-top: 3rem;">
+        この「HSV形式」のカラーコード使用して、値を筆圧で調整できるようにしたものが本ペイントツールの筆圧機能です。
+      </p><br>
+    </div>
+
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      S値に筆圧をつける
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('pen_pressure_svalue.png', alt: 'S値に筆圧をつけるの項目の説明', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;">筆圧を利用して彩度（S値）を調整する場合、<span class="sakura-line">筆圧が弱いほど彩度の数値が小さく</span>なり、色は白に近い薄い色調になります。<br>
+      逆に、<span class="sakura-line">強く押すほど彩度の数値が大きく</span>なり、より鮮やかで色彩豊かな色になります。<br>
+      これにより、筆圧の強さに応じて色の鮮やかさを自然にコントロールすることができます。
+      </p><br>
+      <p><span style="color: #59afc7;" class="text-Rounded500">S値に筆圧をつける</span>：筆圧に応じてS値を変更するかどうかを選択できます。チェックボックスにチェックを入れると<span style="color: #e19ab0;" class="text-Rounded500">オン</span>になり、選択している色相で筆圧に応じて彩度が変動します。<br>チェックを外すと<span style="color: #59afc7;" class="text-Rounded500">オフ</span>になり選択しているカラーで統一されたペイントになります。<br></p>
+      <p><span style="color: #bfad28;" class="text-Rounded500">S値の変動具合を調整する</span>：<span style="color: #59afc7;" class="text-Rounded500">「S値に筆圧をつける」</span>の項目にチェックが入っている場合のみさらに詳細な設定を加えるか選択できる項目です。<span style="color: #e19ab0;" class="text-Rounded500">オン</span>にするとS値の変動具合や最小値を設定できます。<br></p>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">S値の補間率</span>：S値の変動具合を調整できます。0から1の範囲でS値がどれくらいの速度で変動するかを細かく設定可能です。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">最小彩度設定</span>：筆圧によって変動するS値の最小値を設定できます。0〜現在選択しているカラーの範囲で設定できます。<br>この値を小さくするほど筆圧が軽い時に白に近い色になり、大きくするほどあまり変動範囲が小さくなり均一なペイントに近づきます。<br>
+      <span class="red-text text-Rounded500">※</span>現在選択しているカラーが完全な白・グレー・黒の場合、S値は0であるためこの値を操作することはできません。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">S値の最大変化量</span>：1度の描画アクション中に許可されるS値の変動幅を設定できます。0〜現在選択しているカラーの範囲で設定できます。<br>この値が大きいほど1度の描画でより広範囲の彩度変化を行うことができます。<br></p>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      V値に筆圧をつける
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('pen_pressure_size.png', alt: 'サイズに筆圧をつけるの項目の説明', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;">筆圧を利用して明度（V値）を調整する場合、<span class="sakura-line" style="color: #59afc7;">筆圧が弱いほど明度の数値が大きく</span>なり、色は明るく選択しているカラーに近い色調になります。<br>
+      逆に<span class="sakura-line" style="color: #59afc7;">強く押すほど明度の数値が小さく</span>なり、色はより暗くなります。<br>
+      これにより、筆圧の強さに応じて色の明るさを自然にコントロールすることができます。<br>
+      <span class="red-text text-Rounded500">※</span>V値では、筆圧が弱いときに数値が上がり、強いときに数値が下がるため、彩度(S値)とは異なる挙動に注意してください。
+      </p><br>
+
+      <p><span style="color: #59afc7;" class="text-Rounded500">V値に筆圧をつける</span>：筆圧に応じてV値を変更するかどうかを選択できます。チェックボックスにチェックを入れると<span style="color: #e19ab0;" class="text-Rounded500">オン</span>になり、選択している色相で筆圧に応じて彩度が変動します。<br>チェックを外すと<span style="color: #59afc7;" class="text-Rounded500">オフ</span>になり選択しているカラーで統一されたペイントになります。<br></p>
+      <p><span style="color: #bfad28;" class="text-Rounded500">V値の変動具合を調整する</span>：<span style="color: #59afc7;" class="text-Rounded500">「V値に筆圧をつける」</span>の項目にチェックが入っている場合のみさらに詳細な設定を加えるか選択できる項目です。<span style="color: #e19ab0;" class="text-Rounded500">オン</span>にするとV値の変動具合や最大値を設定できます。<br></p>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">V値の補間率</span>V値の変動具合を調整できます。0から1の範囲でV値がどれくらいの速度で変動するかを細かく設定可能です。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">最大明度設定</span>：現在選択しているカラー〜0の範囲で筆圧が最も強い時に適応させる明度の値を設定できます。<br>
+      この値を小さくするほどカラーは暗い色調の範囲で変動し、大きくするほど筆圧が弱い時に明るい色が現れます。<br>
+      <span class="red-text text-Rounded500">※</span>現在選択しているカラーのV値が100である場合、現在選択できる最小値も100になるためこの値を操作することはできません。</p><br>
+      <p><span style="color: #f49e25;" class="text-Rounded500">V値の最大変化量</span>：1度の描画アクション中に許可されるV値の変動幅を設定できます。現在選択しているカラー〜0の範囲で設定できます。<br>この値が大きいほど1度の描画でより広範囲の明度変化を行うことができます。<br></p>
+    </div>
 
 
 

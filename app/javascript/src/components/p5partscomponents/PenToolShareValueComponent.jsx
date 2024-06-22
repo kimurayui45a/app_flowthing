@@ -970,7 +970,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                 {/* 「S値補間率」フォーム */}
                 <div className="flex" style={{ marginTop: '8px' }}>
                   <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>S値の補間率：</span>
-                  <div>
+                  <div className='tooltip-container'>
                     <input
                       className="no-drag form-select-value"
                       type="number"
@@ -985,6 +985,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                       onMouseEnter={() => handleDescriptionMouseEnter('S値の補間率', '彩度が筆圧に応じてどれくらい速く変化するかをコントロールします。\n低い値ではゆっくりと変化し、高い値では急速に変化します。')}
                       onTouchStart={() => handleDescriptionMouseEnter('S値の補間率', '彩度が筆圧に応じてどれくらい速く変化するかをコントロールします。\n低い値ではゆっくりと変化し、高い値では急速に変化します。')}
                     />
+                    <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜1</span>
                   </div>
                 </div>
 
@@ -1283,7 +1284,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
               <>
                 <div className="flex-column-end">
                   {/* 「V値補間率」フォーム */}
-                  <div className="flex" style={{ marginTop: '8px' }}>
+                  <div className="flex tooltip-container" style={{ marginTop: '8px' }}>
                     <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>V値の補間率：</span>
                     <input
                     className="no-drag form-select-value"
@@ -1299,6 +1300,7 @@ const PenToolShareValueComponent = ({penToolShareParts, tool, inputValue, minVal
                       onMouseEnter={() => handleDescriptionMouseEnter('V値の補間率', '明度が筆圧に応じてどれくらい速く変化するかを設定します。速度が高いほど、小さな筆圧の変化で大きく明度は変化し、速度が低いと筆圧の変化に対して明度がゆっくりと変化します。')}
                       onTouchStart={() => handleDescriptionMouseEnter('V値の補間率', '明度が筆圧に応じてどれくらい速く変化するかを設定します。速度が高いほど、小さな筆圧の変化で大きく明度は変化し、速度が低いと筆圧の変化に対して明度がゆっくりと変化します。')}
                     />
+                    <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：0〜1</span>
                   </div>
 
                   {/* V値のユーザーカスタム値UI（色変化の最大値） */}

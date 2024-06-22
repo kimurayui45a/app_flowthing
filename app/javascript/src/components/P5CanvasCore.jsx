@@ -214,21 +214,22 @@ const P5CanvasCore = ({ canvasImgId, canvasData, canvasSaveData, canvasSize, onD
   //ツールモードの管理
   const toolModeRef = useRef(toolMode);
 
-  useEffect(() => {
-    toolModeRef.current = toolMode;
-  }, [toolMode]);
+  // useEffect(() => {
+  //   toolModeRef.current = toolMode;
+  // }, [toolMode]);
 
   //「ツールサイズ」
   //「toolSize：通常ツールサイズ」、「minSize：筆圧で変動する最小サイズ」
   const [toolSize, setToolSize] = useState(5);
+  const [inputValue, setInputValue] = useState(String(toolSize));
   const [minSize, setMinSize] = useState(2.5);
   const toolSizeRef = useRef(toolSize);
   const minSizeRef = useRef(minSize);
   const [inputMinValue, setInputMinValue] = useState(String(minSize));
 
-  useEffect(() => {
-    toolSizeRef.current = toolSize;
-  }, [toolSize]);
+  // useEffect(() => {
+  //   toolSizeRef.current = toolSize;
+  // }, [toolSize]);
 
   //データをロード
 useEffect(() => {
@@ -250,12 +251,12 @@ useEffect(() => {
     setInputMinValue(String(minSize));
   }, [minSize]);
 
-  useEffect(() => {
-    if (minSize > toolSize) {
-      setMinSize(toolSize / 2);
-    }
-    //setInputMinValue(String(toolSize / 2));
-  }, [toolSize]);
+  // useEffect(() => {
+  //   if (minSize > toolSize) {
+  //     setMinSize(toolSize / 2);
+  //   }
+  //   //setInputMinValue(String(toolSize / 2));
+  // }, [toolSize]);
 
   //minSizeの内部処理は外部に飛ばすためminSizeの更新とRefが完全に同期するように記述
   useEffect(() => {
@@ -794,17 +795,38 @@ useEffect(() => {
   }, [pencilAlpha]);
 
   //ツールサイズが更新されたらエアブラシのドットのサイズを初期値に戻す
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (pencilHeightDot > toolSize / 2 || pencilWidthDot > toolSize / 2) {
-      setPencilHeightDot(1);
-      setPencilWidthDot(1);
-    }
-  }, [toolSize]);
+  //   if (pencilHeightDot > toolSize / 2 || pencilWidthDot > toolSize / 2) {
+  //     setPencilHeightDot(1);
+  //     setPencilWidthDot(1);
+  //   }
+  // }, [toolSize]);
   // useEffect(() => {
   //   setPencilHeightDot(1);
   //   setPencilWidthDot(1);
   // }, [toolSize]);
+
+  useEffect(() => {
+    toolSizeRef.current = toolSize;
+    setInputValue(String(toolSize));
+    // ツールサイズが小さい場合、最小サイズをツールサイズの半分に設定
+    if (minSize > toolSize) {
+      setMinSize(toolSize / 2);
+    }
+  
+    // ツールサイズが更新されたらエアブラシのドットのサイズを初期値に戻す
+    if (pencilHeightDot > toolSize / 2 || pencilWidthDot > toolSize / 2) {
+      setPencilHeightDot(1);
+      setPencilWidthDot(1);
+    }
+
+    if (oilHeightDot > toolSize / 2 || oilWidthDot > toolSize / 2) {
+      setOilHeightDot(1);
+      setOilWidthDot(1);
+    }
+  }, [toolSize]);
+  
 
 
   //油絵の具ツール
@@ -845,10 +867,10 @@ useEffect(() => {
   }, [oilAlpha]);
 
   //ツールサイズが更新されたら厚塗りペンのドットのサイズを初期値に戻す
-  useEffect(() => {
-    setOilHeightDot(1);
-    setOilWidthDot(1);
-  }, [toolSize]);
+  // useEffect(() => {
+  //   setOilHeightDot(1);
+  //   setOilWidthDot(1);
+  // }, [toolSize]);
 
 
   //S値に変動具合をつける、S値が更新され時にmaxChangeSがs値を超えないようにする
@@ -881,6 +903,7 @@ useEffect(() => {
 
   //「筆圧カスタムペン」と通常のペンの切り替え処理
   useEffect(() => {
+    toolModeRef.current = toolMode;
     // penModeが変更されたときにtogglePenMode関数を呼び出す
     if (p5CanvasInstanceRef.current) {
       if (pressureModes.has(toolMode)) {
@@ -1151,6 +1174,7 @@ useEffect(() => {
 
       p.setup = () => {
         canvasRef.current = p.createCanvas(canvasSize.width, canvasSize.height);
+        //canvasRef.current.elt.setAttribute('willReadFrequently', 'true');
         p.smooth();
 
         //背景レイヤー
@@ -3712,6 +3736,8 @@ useEffect(() => {
     //サイズパネル
     toolSize,
     setToolSize,
+    inputValue,
+    setInputValue,
     // updatetToolDetail,
 
     //詳細パネル（ペンツール...minSize：筆圧で変動する最小サイズ）

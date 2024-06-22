@@ -20,7 +20,9 @@ const P5SizePanel = () => {
     setToolSize,
     updatetReductionDetail,
     getPencilParameters,
-    getOilPenParameters
+    getOilPenParameters,
+    inputValue,
+    setInputValue
   } = useP5CanvasCoreShare();
 
   //「ツールモードコンテキスト」から受け取るもの
@@ -36,7 +38,7 @@ const P5SizePanel = () => {
     }
   };
 
-  const [inputValue, setInputValue] = useState(String(toolSize));
+  //const [inputValue, setInputValue] = useState(String(toolSize));
   const [selectedSize, setSelectedSize] = useState(toolSize);
 
   // サイズボタンの選択をハンドルする関数
@@ -94,9 +96,9 @@ const P5SizePanel = () => {
     }
   };
   
-  useEffect(() => {
-    setInputValue(String(toolSize));
-  }, [toolSize]);
+  // useEffect(() => {
+  //   setInputValue(String(toolSize));
+  // }, [toolSize]);
   
   useEffect(() => {
     const sizeButtons = document.querySelectorAll('.sizeBtn');
