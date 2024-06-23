@@ -329,55 +329,53 @@ const handleCanvasSizeButton = () => {
       <P5CanvasSet canvasSize={canvasSize} onDataFromGrandchild={handleDataFromGrandchild} canvasSpaceSize={canvasSpaceSize} notLayerSave={notLayerSave} panelPosition={panelPosition} toolDateParameters={toolDateParameters} profileId={profileId} activeSave={activeSave} />
     ) : (
       <>
+        <div className="canvas-select flex-column">
+          <div className="canvas-select-title"><span>canvasサイズ選択</span></div>
 
+          <div className="flex-between"  style={{ width: '200px', margin: '20px' }}>
+            <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+              <span className="text-Rounded" style={{ fontSize: '16px', color: '#7f7f7f' }}>横幅</span>
+              <input
+                className="no-drag form-select-value"
+                type="number"
+                min="50"
+                max="700"
+                step="1"
+                style={{ width: '60px', fontSize: '14px' }}
+                value={inputCanvasSizeWidth}
+                onChange={(e) => handleCanvasSizeChange(e, 'width')}
+                onBlur={() => handleCanvasSize(inputCanvasSizeWidth, 'width')}
+              />
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：50〜700</span>
+            </div>
 
-
-
-  <div><span>canvasサイズ選択</span></div>
-
-        <div className="flex">
-          <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
-            <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>横幅</span>
-            <input
-              className="no-drag form-select-value"
-              type="number"
-              min="50"
-              max="700"
-              step="1"
-              style={{ width: '60px', fontSize: '14px' }}
-              value={inputCanvasSizeWidth}
-              onChange={(e) => handleCanvasSizeChange(e, 'width')}
-              onBlur={() => handleCanvasSize(inputCanvasSizeWidth, 'width')}
-            />
-            <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：50〜700</span>
+            <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+              <span className="text-Rounded" style={{ fontSize: '16px', color: '#7f7f7f' }}>縦幅</span>
+              <input
+                className="no-drag form-select-value"
+                type="number"
+                min="50"
+                max="700"
+                step="1"
+                style={{ width: '60px', fontSize: '14px' }}
+                value={inputCanvasSizeHeight}
+                onChange={(e) => handleCanvasSizeChange(e, 'height')}
+                onBlur={() => handleCanvasSize(inputCanvasSizeHeight, 'height')}
+              />
+              <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：50〜700</span>
+            </div>
           </div>
-
-          <div className="flex-column-start tooltip-container" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
-            <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>縦幅</span>
-            <input
-              className="no-drag form-select-value"
-              type="number"
-              min="50"
-              max="700"
-              step="1"
-              style={{ width: '60px', fontSize: '14px' }}
-              value={inputCanvasSizeHeight}
-              onChange={(e) => handleCanvasSizeChange(e, 'height')}
-              onBlur={() => handleCanvasSize(inputCanvasSizeHeight, 'height')}
-            />
-            <span className="tooltip-text" style={{ textAlign: 'left' }}>調整範囲：50〜700</span>
-          </div>
-        </div>
 
           {/* 決定ボタン */}
           <div
             className="select-confirm-btn"
             onClick={handleCanvasSizeButton}
             onTouchStart={handleCanvasSizeButton}
-            style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+            style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '10px' }}
           >
             決定
           </div>
+        </div>
       </>
     )}
 

@@ -604,7 +604,7 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
                 <div>
                 <i className="bi bi-arrow-counterclockwise"></i>
                 </div>
-                <span className="tooltip-text">反時計回り</span>
+                <span className="tooltip-text" style={{ left: '-50px' }}>反時計回り</span>
               </div>
             </div>
           </>

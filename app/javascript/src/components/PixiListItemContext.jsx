@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
-import { PixiPanelParts } from './PixiPanelParts';
+// import { PixiPanelParts } from './PixiPanelParts';
+// import { Rnd } from 'react-rnd';
 
 
 
@@ -10,11 +10,9 @@ const PixiListItemContext = ({ itemAllId }) => {
 
 
   const {
-    listPanelPosition,
-    setListPanelPosition,
-    handlePixiPanelDragStop,
     toggleCustomPanelVisible,
-    toggleGuidePanelVisible
+    toggleGuidePanelVisible,
+    toggleDetailsPanelVisible
   } = usePixiGroup();
 
 
@@ -50,16 +48,27 @@ const PixiListItemContext = ({ itemAllId }) => {
       </div>
 
 
+
+    <div
+      className="panel-tool-button tooltip-container"
+      onClick={toggleDetailsPanelVisible}
+      onTouchStart={toggleDetailsPanelVisible}
+      style={{ position: 'absolute', top: '12px', left: '82px' }}
+    >
+      <i className="bi bi-geo-fill"></i>
+      <span className="tooltip-text">詳細表示パネルを表示する</span>
+    </div>
+
+
     <div
       className="panel-tool-button tooltip-container"
       onClick={toggleGuidePanelVisible}
       onTouchStart={toggleGuidePanelVisible}
-      style={{ position: 'absolute', top: '12px', left: '82px' }}
+      style={{ position: 'absolute', top: '12px', left: '119px' }}
     >
       <i className="bi bi-question-circle-fill"></i>
       <span className="tooltip-text">ガイドパネルを表示する</span>
     </div>
-
 
       <div className="bi-arrow-position"><i className="bi bi-arrow-down-up"></i></div>
 

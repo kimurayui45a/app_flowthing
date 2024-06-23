@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
 import { PixiPanelParts } from './PixiPanelParts';
+//import { Rnd } from 'react-rnd';
 
 
 
@@ -11,24 +11,10 @@ const PixiCustomSimple = () => {
 
 
   const {
-    leftRightAmplitude,
-    setLeftRightAmplitude,
     inputLeftRightAmplitude,
-    setInputLeftRightAmplitude,
-    leftRightPeriod,
-    setLeftRightPeriod,
     inputLeftRightPeriod,
-    setInputLeftRightPeriod,
-    topBottomAmplitude,
-    setTopBottomAmplitude,
     inputTopBottomAmplitude,
-    setInputTopBottomAmplitude,
-    topBottomPeriod,
-    setTopBottomPeriod,
     inputTopBottomPeriod,
-    setInputTopBottomPeriod,
-    pixiItemListTab,
-    setPixiItemListTab,
     rotationTypeTab,
     inputRotationSpeed,
     inputPendulumPeriod,
@@ -39,11 +25,8 @@ const PixiCustomSimple = () => {
   } = usePixiGroup();
 
   const { 
-    activeSprite,
-    spriteInfo,
     handleVerticalSwingById,
     handleHorizontalSwingById,
-    handleHorizontalStopById,
     handleRotationAnimation,
     handleSwingPendulumBtn,
     handleScaleAnimationById

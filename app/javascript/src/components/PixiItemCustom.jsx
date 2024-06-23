@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
-import { usePixiComponentShare } from './PixiComponentShareContext';
-import { PixiPanelParts } from './PixiPanelParts';
 import { PixiCustomStyle } from './PixiCustomStyle';
 import { PixiCustomSimple } from './PixiCustomSimple';
 import { PixiCustomSpecial } from './PixiCustomSpecial';
+// import { PixiPanelParts } from './PixiPanelParts';
+// import { Rnd } from 'react-rnd';
+//import { usePixiComponentShare } from './PixiComponentShareContext';
 
 
 
@@ -14,35 +14,18 @@ const PixiItemCustom = () => {
 
 
   const {
-    //上下左右アニメーション
-    leftRightAmplitude,
-    setLeftRightAmplitude,
-    inputLeftRightAmplitude,
-    setInputLeftRightAmplitude,
-    leftRightPeriod,
-    setLeftRightPeriod,
-    inputLeftRightPeriod,
-    setInputLeftRightPeriod,
-    topBottomAmplitude,
-    setTopBottomAmplitude,
-    inputTopBottomAmplitude,
-    setInputTopBottomAmplitude,
-    topBottomPeriod,
-    setTopBottomPeriod,
-    inputTopBottomPeriod,
-    setInputTopBottomPeriod,
     pixiItemListTab,
     setPixiItemListTab
   } = usePixiGroup();
 
-  const { 
-    activeSprite,
-    spriteInfo,
-    handleVerticalSwingById,
-    handleVerticalSwingAnimationStop,
-    handleHorizontalSwingById,
-    handleHorizontalStopById
-  } = usePixiComponentShare();
+  // const { 
+  //   activeSprite,
+  //   spriteInfo,
+  //   handleVerticalSwingById,
+  //   handleVerticalSwingAnimationStop,
+  //   handleHorizontalSwingById,
+  //   handleHorizontalStopById
+  // } = usePixiComponentShare();
 
 
   const renderCustom = (group) => {
@@ -68,6 +51,9 @@ const PixiItemCustom = () => {
 
 <>
 <div className="select-arrange-btn-block">
+
+
+
 {/* スタイル */}
 <div
   className="select-arrange-btn arrange-btn-left tooltip-container"
@@ -78,8 +64,6 @@ const PixiItemCustom = () => {
     width: '55px'
     }}
 >
-
-    
 <span className="text-Rounded" style={{ fontSize: '12px', color: '#ececec' }}>スタイル</span>
       <span className="tooltip-text">スタイル</span>
     

@@ -633,12 +633,31 @@
 
 
     <section id="section4">
-      <div style="height: 7rem; width: 100px;"></div>
-      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line">セクション3</span>
-      </h2>
-      <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          選択/画像
+        </span>
+      </h3>
     </section>
+    <div class="sidebar-design">
+      <%= image_tag('pen_pressure_panel.png', alt: '選択/画像の詳細設定パネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      選択/画像の詳細設定パネルの共通基本動作
+      </span>
+    </h4>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -1rem;">本ペイントツールでは、<span style="color: #e19ab0;" class="text-Rounded500">「サイズ」「彩度（S値）」「明度（V値）」</span>の3つの要素に対して、それぞれ筆圧による補正を加えることができます。<br>
+      筆圧設定パネルの左端の<span style="color: #59afc7;" class="text-Rounded500">メニューバー</span>より各項目の場所にジャンプできます。
+      </p><br>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">筆圧の補間率調整</span>：実際の筆圧に対して、強弱の補助値を加えることができます。これにより、使用者の手の力加減に応じて、より自由な強さでペイントが可能になります。<br></p>
+      <p><span style="color: #59afc7;" class="text-Rounded500">サイズに筆圧をつける</span>：筆圧に応じてペンのサイズを動的に変更することができます。これにより、細かい線から太い線まで、筆圧を変えるだけで自在に描画できます。<br></p>
+      <p><span style="color: #7CBB72;" class="text-Rounded500">S値に筆圧をつける</span>：彩度に筆圧を加えることで、手の力加減だけで色の濃淡を調整できます。薄い色から濃い色まで、自然な変化を表現することができます。<br></p>
+      <p><span style="color: #f49e25;" class="text-Rounded500">V値に筆圧をつける</span>：明度に筆圧を加えることで、明るい色から暗い色まで、手の力加減で自由に変更できます。</p>
+    </div>
 
   </div>
 

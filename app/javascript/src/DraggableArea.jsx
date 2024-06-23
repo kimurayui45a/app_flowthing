@@ -66,7 +66,7 @@ const DraggableArea = () => {
           <div className="section1-container-title">
 
             <div className="small-icon">
-              <svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.87 21.55" width="28.87" height="21.55">
+              <svg id="_レイヤー_2" data-name="レイヤー 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.87 21.55" width="28.87" height="21.55" style={{ marginTop: '-10px' }}>
                 <defs>
                   <style>
                   {`
@@ -122,7 +122,7 @@ const DraggableArea = () => {
                 className="select-confirm-btn tooltip-container"
                 onClick={() => handleCanvasSizeChangeButton(1000)}
                 onTouchStart={() => handleCanvasSizeChangeButton(1000)}
-                style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+                style={{ width: 'auto', height: 'auto', padding: '2px 12px', margin: '5px' }}
               >
                 <i className="bi bi-box-arrow-in-up-left"></i>大
                 <span className="tooltip-text" style={{ textAlign: 'left' }}>作業スペースを大きくします。<br />横幅1100px以上のブラウザを推奨。</span>
@@ -131,7 +131,7 @@ const DraggableArea = () => {
                 className="select-confirm-btn tooltip-container"
                 onClick={() => handleCanvasSizeChangeButton(700)}
                 onTouchStart={() => handleCanvasSizeChangeButton(700)}
-                style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px' }}
+                style={{ width: 'auto', height: 'auto', padding: '2px 12px', margin: '5px' }}
               >
                 <i className="bi bi-box-arrow-in-down-right"></i>小
                 <span className="tooltip-text" style={{ textAlign: 'left' }}>作業スペースを小さくします。<br />横幅1100px以下のブラウザを推奨。</span>
@@ -170,7 +170,7 @@ const DraggableArea = () => {
           <div className="section1-container-title">
 
 <div className="small-icon">
-<svg id="_レイヤー_3" data-name="レイヤー 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.87 21.55" width="28.87" height="21.55">
+<svg id="_レイヤー_3" data-name="レイヤー 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.87 21.55" width="28.87" height="21.55" style={{ marginTop: '-10px' }}>
   <defs>
     <style>
     {`

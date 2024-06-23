@@ -242,7 +242,19 @@ const handleRandomMoveSample = () => {
 
   return (
 <>
-<button onClick={handleRandomMoveSample}>アニメ</button>
+
+
+
+<div
+        className="select-confirm-btn"
+        onClick={handleRandomMoveSample}
+        onTouchStart={handleRandomMoveSample}
+        style={{ width: 'auto', height: 'auto', padding: '2px 12px', marginTop: '5px', fontSize: '20px' }}
+        >
+        <i className="bi bi-collection-play"></i>アニメをつける
+      </div>
+      <div style={{ textAlign: 'right', color: '#7f7f7f', marginTop: '10px' }} className="text-Rounded">アプリ内にはこの他にも色んなアニメーションがあります。</div>
+
 <div className="flux-screen-show-third">
           <div className="flux-screen-show-frame">
             <div>

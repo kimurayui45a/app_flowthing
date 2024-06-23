@@ -10163,3 +10163,37 @@ background-color: #d1eee6;
   font-weight: 500;
   font-style: normal;
 }
+
+.canvas-select {
+  border: 5px solid #fd6969;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  margin: 2rem;
+  width: 400px;
+}
+
+.canvas-select-title {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 1.8rem;
+  color: #fd6969;
+  margin-bottom: 0.8rem;
+}
+
+.detail-text {
+  font-size: 0.75rem;
+  color: #ECECEC;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  // text-align: center;
+}
+
+// .select-detail-tool-group .detail-arrow {
+//   position: absolute;
+//   top: 50px;
+//   right: 6px;
+//   font-size: 12px;
+//   color: #ececec;
+// }

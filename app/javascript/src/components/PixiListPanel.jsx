@@ -63,7 +63,7 @@ const PixiListPanel = ({ itemAllId, spaceAllId }) => {
       }}
       onDragStop={(e, d) => handlePixiPanelDragStop(setListPanelPosition, e, d)}
       size={{ width: 250, height: 400 }}
-      style={{ position: 'absolute', zIndex: 36 }}
+      style={{ position: 'absolute', zIndex: 40 }}
       // disableDragging={!isDraggablePanel}
       cancel=".no-drag"
     >

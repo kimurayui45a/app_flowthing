@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
 import { PixiPanelParts } from './PixiPanelParts';
+// import { Rnd } from 'react-rnd';
 
 
 
@@ -11,41 +11,17 @@ const PixiCustomStyle = () => {
 
 
   const {
-    //上下左右アニメーション
-    leftRightAmplitude,
-    setLeftRightAmplitude,
-    inputLeftRightAmplitude,
-    setInputLeftRightAmplitude,
-    leftRightPeriod,
-    setLeftRightPeriod,
-    inputLeftRightPeriod,
-    setInputLeftRightPeriod,
-    topBottomAmplitude,
-    setTopBottomAmplitude,
-    inputTopBottomAmplitude,
-    setInputTopBottomAmplitude,
-    topBottomPeriod,
-    setTopBottomPeriod,
-    inputTopBottomPeriod,
-    setInputTopBottomPeriod,
-    pixiItemListTab,
-    setPixiItemListTab,
     inputScaleSprite,
     inputAlphaSprite,
     inputAngleSprite
   } = usePixiGroup();
 
   const { 
-    activeSprite,
-    spriteInfo,
-    handleVerticalSwingById,
-    handleVerticalSwingAnimationStop,
-    handleHorizontalSwingById,
-    handleHorizontalStopById,
     changeNewScale,
     changeNewAlpha,
     changeNewAngle
   } = usePixiComponentShare();
+
 
 
 
@@ -83,6 +59,7 @@ const PixiCustomStyle = () => {
           <span className="tooltip-text" style={{ textAlign: 'left' }}>選択中のFlow Thing及び<br />以降の追加Flow Thingの角度を選択値に変更</span>
         </div>
       </div>
+
 
     </>
   );

@@ -6,6 +6,7 @@ import { PixiCustomPanel } from './PixiCustomPanel';
 import { PixiDetailPanel } from './PixiDetailPanel';
 import { usePixiGroup } from './PixiGroupContext';
 import { PixiGuidePanel } from './PixiGuidePanel';
+import { PixiCustomCurrentDetails } from './PixiCustomCurrentDetails';
 
 const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, itemObject, spaceObject, subUserAllId, compositeId, canvasSpaceSize }) => {
   
@@ -56,7 +57,8 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
     spaceAnimeDirection,
     intervalTime,
     setIntervalTime,
-    pixiGuidePanelVisible
+    pixiGuidePanelVisible,
+    pixiDetailsPanelVisible
   } = usePixiGroup();
 
 
@@ -102,6 +104,9 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
   const [activeSprite, setActiveSprite] = useState(null);
   const activeSpriteRef = useRef(activeSprite);
 
+  //選択されているスプライトの詳細
+  const [activeSpriteDetail, setActiveSpriteDetail] = useState(null);
+
   //選択しているスプライトの周りにつける枠
   const borderRef = useRef(null);
 
@@ -115,6 +120,16 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
   useEffect(() => {
     activeSpriteRef.current = activeSprite;
   }, [activeSprite]);
+
+  useEffect(() => {
+    if (activeSprite) {
+      const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+      setActiveSpriteDetail(sprite)
+    } else {
+      setActiveSpriteDetail(null);
+    }
+  }, [activeSprite, spriteInfo]);
+
 
   //クリックされた座標を保管する
   const [clickPositionApp, setClickPositionApp] = useState({x: 0, y: 0});
@@ -199,6 +214,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
         borderRef.current.clear(); // 直接枠をクリア
       }
       setActiveSprite(null);
+      setActiveSpriteDetail(null);
       // クリックされた座標を保存
       const position = event.data.global;
       setClickPositionApp({ x: position.x, y: position.y });
@@ -977,6 +993,7 @@ if (direction === 'change') {
         borderRef.current.clear(); // 枠をクリア
       }
       setActiveSprite(null); // アクティブスプライトをリセット
+      setActiveSpriteDetail(null);
   
       setSpriteInfo(prevSprites => 
         prevSprites.filter(sprite => sprite.sprite_id !== activeId)
@@ -1708,7 +1725,7 @@ const handleMoveClickDeleteAll = () => {
 };
 
 
-//指定範囲内の移動
+//指定範囲内の移動(四角形)
 const addBoundaryAnimation = (app, sprite, boundary) => {
   let side = 0; // 0: 上辺, 1: 右辺, 2: 下辺, 3: 左辺
   let progress = 0; // 0から1までの進行状況
@@ -1826,6 +1843,7 @@ const stopBoundaryAnimation = (spriteId) => {
 }
 
 
+//指定範囲内の移動(円形)
 const addCircularAnimation = (app, sprite, centerX, centerY, radius, speed) => {
 
   let angle = 0;
@@ -2028,12 +2046,12 @@ const stopCircularMove = (spriteId) => {
   };
   
   //選択中のスプライトの詳細
-  // useEffect(() => {
-  //   if (activeSprite) {
-  //     const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
-  //     console.log('選択中のスプライト情報', sprite);
-  //   }
-  // }, [activeSprite]);
+  useEffect(() => {
+    if (activeSprite) {
+      const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+      console.log('選択中のスプライト情報', sprite);
+    }
+  }, [activeSprite]);
 
 
   //「送信ボタン」が押された時にデータを保存
@@ -2120,7 +2138,8 @@ const stopCircularMove = (spriteId) => {
     setSpaceAnimMode,
     updateSimpleSpace,
     handleRemoveSprite,
-    maxSpaceSprites
+    maxSpaceSprites,
+    activeSpriteDetail
   }
 
   return (
@@ -2170,6 +2189,9 @@ const stopCircularMove = (spriteId) => {
 
         {/* ガイドパネル(作業専用) */}
         {pixiMode && pixiGuidePanelVisible && <PixiGuidePanel />}
+
+        {/* 詳細表示パネル(作業専用) */}
+        {pixiMode && pixiDetailsPanelVisible && <PixiCustomCurrentDetails />}
 
         {/* 詳細パネル(再描画専用) */}
         {!pixiMode && pixiDetailPanelVisible && <PixiDetailPanel itemAllId={itemAllId} subUserAllId={subUserAllId} />}

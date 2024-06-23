@@ -2,11 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Rnd } from 'react-rnd';
 import { usePixiGroup } from './PixiGroupContext';
 import { usePixiComponentShare } from './PixiComponentShareContext';
-import { PixiListSpaceContext } from './PixiListSpaceContext';
-import { PixiListItemContext } from './PixiListItemContext';
+// import { PixiListSpaceContext } from './PixiListSpaceContext';
+// import { PixiListItemContext } from './PixiListItemContext';
 
 
-const PixiGuidePanel = ({ itemAllId, spaceAllId }) => {
+const PixiGuidePanel = () => {
 
 
   // useEffect(() => {
@@ -19,19 +19,16 @@ const PixiGuidePanel = ({ itemAllId, spaceAllId }) => {
   // }, []);
 
   const {
-    pixiGuidePanelVisible,
-    setPixiGuidePanelVisible,
     guidePanelPosition,
     setGuidePanelPosition,
-    toggleGuidePanelVisible,
     toggleGuidePanelClose,
     handlePixiPanelDragStop
   } = usePixiGroup();
 
 
-  const {
-    handleAddSprite
-  } = usePixiComponentShare();
+  // const {
+  //   handleAddSprite
+  // } = usePixiComponentShare();
 
 
     // コンテナ内で特定の位置にスクロールする関数

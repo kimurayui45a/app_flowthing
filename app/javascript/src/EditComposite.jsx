@@ -28,41 +28,46 @@ const EditComposite = ({ profileId, itemAllId, spaceAllId, subUserAllId, spaceOb
   });
 
 
-const [panelPosition, setPanelPosition] = useState(() => {
-  switch (spaceSize) {
-    case 1400:
-      return { 
-        list_panel: { x: 850, y: 50 },
-        guide_panel: { x: 50, y: 50 },
-        custom_panel: { x: 100, y: 100 }
-      };
-    case 1200:
-      return {
-        list_panel: { x: 850, y: 50 },
-        guide_panel: { x: 50, y: 50 },
-        custom_panel: { x: 100, y: 100 }
-      };
-    case 1000:
-      return {
-        list_panel: { x: 650, y: 50 },
-        guide_panel: { x: 100, y: 100 },
-        custom_panel: { x: 200, y: 150 }
-      };
-    case 700:
-      return {
-        list_panel: { x: 450, y: 50 },
-        guide_panel: { x: 100, y: 100 },
-        custom_panel: { x: 150, y: 150 }
-      };
-    default:
-      return {
-        list_panel: { x: 850, y: 50 },
-        guide_panel: { x: 50, y: 50 },
-        custom_panel: { x: 100, y: 100 }
-      };
-  }
-});
 
+  const [panelPosition, setPanelPosition] = useState(() => {
+    switch (spaceSize) {
+      case 1400:
+        return { 
+          list_panel: { x: 850, y: 50 },
+          guide_panel: { x: 220, y: 50 },
+          custom_panel: { x: 100, y: 100 },
+          details_panel: { x: 1120, y: 100 }
+        };
+      case 1200:
+        return {
+          list_panel: { x: 850, y: 50 },
+          guide_panel: { x: 220, y: 50 },
+          custom_panel: { x: 100, y: 100 },
+          details_panel: { x: 355, y: 200 }
+        };
+      case 1000:
+        return {
+          list_panel: { x: 650, y: 50 },
+          guide_panel: { x: 100, y: 100 },
+          custom_panel: { x: 200, y: 150 },
+          details_panel: { x: 650, y: 480 }
+        };
+      case 700:
+        return {
+          list_panel: { x: 450, y: 50 },
+          guide_panel: { x: 100, y: 100 },
+          custom_panel: { x: 150, y: 150 },
+          details_panel: { x:450, y: 470 }
+        };
+      default:
+        return {
+          list_panel: { x: 850, y: 50 },
+          guide_panel: { x: 220, y: 50 },
+          custom_panel: { x: 100, y: 100 },
+          details_panel: { x: 355, y: 200 }
+        };
+    }
+  });
 
 
 

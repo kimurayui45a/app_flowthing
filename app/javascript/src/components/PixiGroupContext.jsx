@@ -21,6 +21,7 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
       setListPanelPosition(panelPosition.list_panel);
       setGuidePanelPosition(panelPosition.guide_panel);
       setCustomPanelPosition(panelPosition.custom_panel);
+      setDetailsPanelPosition(panelPosition.details_panel);
     }
   }, [panelPosition]);
 
@@ -35,7 +36,12 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
 
   //ガイドパネル
   const [pixiGuidePanelVisible, setPixiGuidePanelVisible] = useState(false);
-  const [guidePanelPosition, setGuidePanelPosition] = useState({ x: 50, y: 50 });
+  const [guidePanelPosition, setGuidePanelPosition] = useState({ x: 250, y: 50 });
+
+
+  //詳細表示パネル
+  const [pixiDetailsPanelVisible, setPixiDetailsPanelVisible] = useState(false);
+  const [detailsPanelPosition, setDetailsPanelPosition] = useState({ x: 1120, y: 100 });
 
 
   //タブの切り替え
@@ -361,6 +367,17 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
   };
 
 
+  //「詳細表示パネル」を表示する関数
+  const toggleDetailsPanelVisible = () => {
+    setPixiDetailsPanelVisible(true);
+  };
+
+  //「詳細表示パネル」を閉じる関数
+  const toggleDetailsPanelClose = () => {
+    setPixiDetailsPanelVisible(false);
+  };
+
+
 
   //「カスタムパネル」を表示する関数
   const toggleCustomPanelVisible = () => {
@@ -558,7 +575,15 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
     guidePanelPosition,
     setGuidePanelPosition,
     toggleGuidePanelVisible,
-    toggleGuidePanelClose
+    toggleGuidePanelClose,
+
+    //ディテールパネル
+    pixiDetailsPanelVisible,
+    setPixiDetailsPanelVisible,
+    detailsPanelPosition,
+    setDetailsPanelPosition,
+    toggleDetailsPanelVisible,
+    toggleDetailsPanelClose
   }
 
 
