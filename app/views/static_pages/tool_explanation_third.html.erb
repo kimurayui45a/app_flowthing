@@ -58,11 +58,8 @@
 
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title">
-      <span class="text-line">詳細設定パネル2</span>
+      <span class="text-line">詳細設定パネル2(選択/画像/図形/テキスト)</span>
     </h2>
-
-  
-
 
     <section id="section1">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
@@ -159,7 +156,7 @@
       <p>
         この変形ツールでは、表示される四角形や円形のハンドルをクリック&ドラッグすることで操作できます。<br>
         また、点線の枠内をクリック&ドラッグすることで、選択範囲/挿入画像を移動できます。<br>
-        さらに、拡大縮小（上下左右の角のハンドル）や回転（上部の円形のハンドル）を行う前に<span style="color: #F8A3B1;" class="text-Rounded500">「Shift」キー</span>を押してからハンドルを掴むことで、<span class="sakura-line">均一な拡大縮小や90度ごとの回転</span>が可能になります。
+        さらに、拡大縮小（上下左右の角のハンドル）や回転（上部の円形のハンドル）を行う前に<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">「Shift」キー</span></span>を押してからハンドルを掴むことで、<span class="sakura-line">均一な拡大縮小や90度ごとの回転</span>が可能になります。
       </p>
       <p>
         <span class="red-text text-Rounded500">※「変形ツール」と「取り消し」「やり直し」に関する注意点</span><br>
@@ -175,7 +172,7 @@
       </span>
     </h5>
     <div class="sidebar-design">
-      <%= image_tag('select_confirm_before.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image-600") %>
+      <%= image_tag('select_confirm_before.png', alt: 'レイヤー選択と操作完了の解説', class: "toolpanel-image-600") %>
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p style="margin-bottom: -0.8rem;">
@@ -281,10 +278,6 @@
         <span><%= image_tag('copy_btn.png', alt: 'ペーストボタン', class: "toolbtn-image") %>：ペーストボタン。押す度にコピーしたペイントを何度でもペーストできます。</span>
       </p>
     </div>
-
-
-
-
   
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
       <span class="orange-line">
@@ -298,7 +291,7 @@
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
-        このモードでは、選択範囲のペイントにぼかし加工を施すことができます。<br>
+        選択範囲のペイントにぼかし加工を付与するモードです。<br>
         ぼかしの度合いは<span style="color: #59afc7;" class="text-Rounded500">0〜30</span>の範囲で調整可能で、オプション内の「実行ボタン」を押すたびに効果を重ねがけすることができます。<br>
         ぼかしの効果は<span style="color: #E19AB0;" class="text-Rounded500">「サンプル」</span>で確認することができます。
       </p><br>
@@ -310,6 +303,62 @@
       <p>
         原本をコピーしてから操作を行いたい場合、コピーの項目にチェックをいれるタイミングは決定ボタン<%= image_tag('select_decision_btn.png', alt: '選択ツールの決定ボタン', class: "explanation-image", style: "width: 70px;") %>を押す前に行なって下さい。<br>
         また、範囲選択後に確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押してしまうと、ぼかし加工は適用されないので注意してください。
+      </p>
+    </div>
+
+  
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+      <span class="orange-line">
+      塗りつぶし/グラデーション<%= image_tag('select_fill_btn.png', alt: '塗りつぶしモードのボタン', class: "toolbtn-image", style: "margin-bottom: 1.6rem;") %>
+      </span>
+    </h5>
+
+      <div class="sidebar-design">
+      <%= image_tag('select_fill_panel.png', alt: '選択ツールの塗りつぶしモードのパネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p  style="margin-bottom: -0.8rem;">
+        選択範囲を塗りつぶすモードです。<br>
+        塗りつぶしは<span style="color: #E19AB0;" class="text-Rounded500">単色</span>または<span style="color: #E19AB0;" class="text-Rounded500">2色のグラデーション</span>で行うことが可能です。<br>
+        さらに、塗りつぶしの際には透明度を含むカラーの選択も可能です。
+      </p><br>
+      <p  style="margin-bottom: 3rem;">
+        単色塗りつぶしを行う場合、設定されたカラーの中から<span style="color: #3A559D;" class="text-Rounded500">青い枠</span><%= image_tag('fill_select_btn.png', alt: '塗りつぶしツールの選択カラー', class: "explanation-image", style: "width: 20px;") %>で囲まれたカラーで塗りつぶされます。<br>
+        グラデーションを適用する場合は、オプション内の<span style="color: #7f69a2;" class="text-Rounded500">塗りつぶしメニュー</span>から<%= image_tag('select_fill_picker.png', alt: 'グラデーションの選択カラー', class: "explanation-image", style: "width: 80px;") %>でカラーを選択し、方向ボタン<%= image_tag('fill_vertical_btn.png', alt: '塗りつぶしツールの垂直ボタン', class: "explanation-image", style: "width: 55px;") %><%= image_tag('fill_horizontal_btn.png', alt: '塗りつぶしツールの水平ボタン', class: "explanation-image", style: "width: 55px;") %>で方向を決めます。<br>
+        <%= image_tag('select_fill_picker.png', alt: 'グラデーションの選択カラー', class: "explanation-image", style: "width: 80px;") %>の中央にある「<span style="color: #E19AB0;" class="text-Rounded500"><i class="bi bi-arrow-left-right"></i></span>」で塗りつぶしカラーにセットされているカラーの入れ変えを行えます。<br>
+        このモードは確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押すまで何度でも操作の調整を行えます。
+      </p>
+
+      <p>
+        <span><%= image_tag('select_fill_slider.png', alt: '透明度スライダー', class: "explanation-image", style: "width: 170px;") %>：選択しているカラーの透明度を調整できます。</span><br>
+      </p>
+    </div>
+
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
+      <span class="point-line">
+      画像ツール
+      </span>
+    </h4>
+
+    <div class="sidebar-design">
+      <%= image_tag('select_image_panel.png', alt: '画像ツールのパネルの図解', class: "toolpanel-image-600") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        <span class="red-text text-Rounded500">「jpeg」</span><span class="red-text text-Rounded500">「png」</span>のファイル形式の画像をcanvas上に挿入できるツールです。<br>
+        挿入ボタンを押す前に、オプションで<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">「画像を実際のサイズで挿入する」</span></span>を選択することが可能です。
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+        本ペイントツールでは初期設定で挿入画像がcanvasよりも大きい場合に<span style="color: #E19AB0;" class="text-Rounded500">自動でcanvasにフィットするサイズに縮小</span>する仕様になっています。<br>
+        そのため挿入画像がcanvasよりも大きい場合でも実際のサイズで挿入したい場合は事前にオプション項目の<span style="color: #59afc7;" class="text-Rounded500">「画像を実際のサイズで挿入する」</span>にチェックを入れてから挿入ボタン<%= image_tag('image_btn.png', alt: '画像挿入ボタン', class: "explanation-image", style: "width: 70px;") %>を押して下さい。<br>
+        挿入後、画像は「変形ツール」を使用して手動でサイズ調整と変形が行えます。
+      </p><br>
+      <p>
+        尚、挿入画像がcanvasの<span class="red-text text-Rounded500">2倍以上</span>のサイズである場合、<span style="color: #59afc7;" class="text-Rounded500">「画像を実際のサイズで挿入する」</span>オプションにチェックが入っていても、画像は自動的に縮小され、canvasにフィットするように挿入されます。
       </p>
     </div>
 
