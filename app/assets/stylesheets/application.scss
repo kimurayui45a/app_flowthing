@@ -9355,6 +9355,14 @@ background-color: #d1eee6;
   object-fit: cover;
 }
 
+.toolpanel-image-600 {
+  width: 600px;
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
 
 
 .dot-pen-paint-image {
@@ -9404,6 +9412,8 @@ background-color: #d1eee6;
   object-fit: cover;
   margin-left: 7rem;
 }
+
+
 
 
 
@@ -9611,8 +9621,17 @@ background-color: #d1eee6;
     object-fit: cover;
   }
 
+
   .toolpanel-image {
     width: 450px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .toolpanel-image-600 {
+    width: 550px;
     display: inline-block;
     margin: 0px auto;
     -o-object-fit: cover;
@@ -9754,6 +9773,15 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
   }
+
+  .toolpanel-image-600 {
+    width: 500px;
+    display: inline-block;
+    margin: 0px auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
 
 
 .dot-pen-table-image {
