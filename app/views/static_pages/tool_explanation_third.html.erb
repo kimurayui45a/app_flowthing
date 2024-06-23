@@ -1,0 +1,321 @@
+<% content_for(:title, t('.title')) %>
+<div class='p5canvas-container'>
+
+  <% profile = current_user.profile if user_signed_in? %>
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+    <div class="text-Rounded700"><h1 class="sidebar-title">ツール</h1></div>
+    <div class="menu-sidebar text-Rounded500">
+      <ul>
+          <li><%= link_to '基本操作', tool_explanation_path + '#section1' %></li>
+          
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ツールパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <%= link_to 'ツールパネル図解', tool_explanation_path + '#section2' %>
+              <%= link_to 'コンパクトパネル', tool_explanation_path + '#section3' %>
+          </div>
+        </li>
+        <li><%= link_to 'カラーパレットパネル', tool_explanation_path + '#section4' %></li>
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">レイヤーパネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <%= link_to 'レイヤーとは？', tool_explanation_path + '#section5' %>
+              <%= link_to 'レイヤーパネル図解', tool_explanation_path + '#section6' %>
+              <%= link_to 'ブレンドモード早見表', tool_explanation_path + '#section7' %>
+          </div>
+        </li>
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル1<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section3">
+              <%= link_to '詳細設定パネルの基本構造', tool_explanation_second_path + '#section1' %>
+              <%= link_to 'ペン', tool_explanation_second_path + '#section2' %>
+              <%= link_to '筆圧設定', tool_explanation_second_path + '#section3' %>
+          </div>
+        </li>
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル2<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section4">
+              <a href="#section1">選択/画像</a>
+              <a href="#section2">図形/テキスト</a>
+          </div>
+        </li>
+        <li><a href="#section6">サイズパネル</a></li>
+        <li><a href="#section7">スケールパネル</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-design">
+      <%= image_tag('tongari.png', alt: 'ツールページの画像', class: "sidebar-image2") %>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="sidebar-content">
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <h2 class="explanation-section-title">
+      <span class="text-line">詳細設定パネル2</span>
+    </h2>
+
+  
+
+
+    <section id="section1">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          選択/画像
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('select_panel.png', alt: '選択/画像の詳細設定パネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      選択/画像の詳細設定パネルの共通基本項目
+      </span>
+    </h4>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">選択ツールのモードを切り替えるボタン</span><%= image_tag('select_mode_btnlist.png', alt: '選択ツールのモード切り替えのボタン', class: "explanation-image", style: "width: 150px;") %><br>
+      選択ツールのモードを切り替えられるボタンです。選択ツールには<span style="color: #F8A3B1;" class="text-Rounded500">「選択範囲を削除」「移動」「コピー」「選択範囲をぼかす」「選択範囲を塗りつぶす」</span>の5つのモードがあります。各モードの詳細は後述します。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #B9A82C;" class="text-Rounded500">画像挿入ツールに切り替え</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-image"></i></span>：画像挿入ツールに切り替わります。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #3A559D;" class="text-Rounded500">プレビュー</span><%= image_tag('select_preview.png', alt: '選択ツールのプレビュー', class: "explanation-image", style: "width: 50px;") %>：編集対象の描画を確認できます。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59BC9D;" class="text-Rounded500">実行/キャンセル</span><%= image_tag('select_decision_btn.png', alt: '選択ツールの決定ボタン', class: "explanation-image", style: "width: 70px;") %><%= image_tag('select_cancel_btn.png', alt: '選択ツールのキャンセルボタン', class: "explanation-image", style: "width: 70px;") %>：選択範囲/画像の挿入に対して操作できるボタンです。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded500">オプション</span>：詳細な設定が必要なモードは、この部分に追加項目が表示されます。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">回転/反転</span><%= image_tag('transform_btn.png', alt: '回転と反転のボタン', class: "explanation-image", style: "width: 100px;") %><br>
+      <span>
+        このボタンは、canvas内のペイントを回転または反転させます。<br>
+        選択範囲が指定されていない場合はcanvas全体が対象となりますが、選択範囲がある場合は、その範囲内のみ回転/反転が適用されます。<br>
+        操作は描画レイヤーのペイントにのみ影響します。</span></p><br>
+      <p>
+        <span><%= image_tag('counterclockwise_btn.png', alt: '反時計回りに回転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #B9A82C;" class="text-Rounded500">反時計回り</span>に90度回転させるボタンです。</span><br>
+        <span><%= image_tag('clockwise_btn.png', alt: '時計回りに回転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #3A559D;" class="text-Rounded500">時計回り</span>に90度回転させるボタンです。</span><br>
+        <span><%= image_tag('flip_horizontal_btn.png', alt: '左右反転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #59afc7;" class="text-Rounded500">左右</span>に反転させるボタンです。</span><br>
+        <span><%= image_tag('flip_upside_down_btn.png', alt: '上下反転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #E19AB0;" class="text-Rounded500">上下</span>に反転させるボタンです。</span>
+      </p>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem; margin-top: 4rem;">
+      <span class="point-line">
+      選択/画像ツールの「基本操作」の説明
+      </span>
+    </h4>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      編集したい範囲を選択する
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('select_image1.png', alt: '選択ツールを使用している画像', class: "explanation-image", style: "width: 400px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">まず選択ツール<%= image_tag('select_tool_btn.png', alt: '選択ツールのボタン', class: "toolbtn-image") %>を選択して編集したい範囲をクリック&ドラッグで出現する四角で囲みます。<br>
+        <span class="red-text text-Rounded500">※</span>画像ツールの場合はこの操作は不要です。
+      </p><br>
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: -0.5rem; font-size: 1rem;">
+      <span class="sakura-line">
+      決定ボタン/挿入ボタンを押す
+      </span>
+    </h5>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        編集したい範囲を選択すると<%= image_tag('select_decision_btn.png', alt: '選択ツールの決定ボタン', class: "explanation-image", style: "width: 70px;") %>がアクティブになるのでそれを押します。<br>
+        <%= image_tag('select_cancel_btn.png', alt: '選択ツールのキャンセルボタン', class: "explanation-image", style: "width: 70px;") %>を押すと選択した範囲がリセットされます。<br>
+        画像ツールの場合は選択範囲を指定する操作は不要なので<%= image_tag('image_btn.png', alt: '画像挿入ボタン', class: "explanation-image", style: "width: 70px;") %>を押し、開いたファイル選択画面から挿入したいファイルを選択して下さい。<br>
+        本ペイントツールで挿入できる画像ファイルの形式は<span class="red-text text-Rounded500">「jpeg」</span>と<span class="red-text text-Rounded500">「png」</span>になります。<br>
+      </p><br>
+      <p>
+        <span class="red-text text-Rounded500">※選択できる範囲に関する注意点</span><br>
+        canvas上で選択できる最小サイズは縦横<span class="red-text text-Rounded500">「5px以上」</span>です。<br>
+        そのため、選択範囲が5px以下の場合、決定ボタンはアクティブになりません。
+      </p>
+    </div>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      選択範囲/挿入画像を編集する
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('transform_image.png', alt: '変形ツールの説明', class: "explanation-image", style: "width: 500px;") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        <%= image_tag('image_btn.png', alt: '画像挿入ボタン', class: "explanation-image", style: "width: 70px;") %>を押すと
+        選択範囲/挿入画像の周りに<span style="color: #F8A3B1;" class="text-Rounded500">「変形ツール」</span>が表示されます。<br>
+        このツールは対象のオブジェクト(選択範囲/挿入画像)を<span style="color: #59afc7;" class="text-Rounded500">拡大・縮小/回転/伸縮</span>によって変形できる機能です。
+      </p><br>
+      <p>
+        この変形ツールでは、表示される四角形や円形のハンドルをクリック&ドラッグすることで操作できます。<br>
+        また、点線の枠内をクリック&ドラッグすることで、選択範囲/挿入画像を移動できます。<br>
+        さらに、拡大縮小（上下左右の角のハンドル）や回転（上部の円形のハンドル）を行う前に<span style="color: #F8A3B1;" class="text-Rounded500">「Shift」キー</span>を押してからハンドルを掴むことで、<span class="sakura-line">均一な拡大縮小や90度ごとの回転</span>が可能になります。
+      </p>
+      <p>
+        <span class="red-text text-Rounded500">※「変形ツール」と「取り消し」「やり直し」に関する注意点</span><br>
+        本ペイントツールでは「変形ツール」の操作は「取り消し」「やり直し」の対象外になっております。<br>
+        そのため操作を取り消したい場合は一度<%= image_tag('select_cancel_btn.png', alt: '選択ツールのキャンセルボタン', class: "explanation-image", style: "width: 70px;") %>を押して最初から操作をやり直して下さい。
+      </p>
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 4rem; font-size: 1rem;">
+      <span class="sakura-line">
+      レイヤー選択/操作完了
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('select_confirm_before.png', alt: 'ペンの詳細設定パネルの図解', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        「選択ツール」では変形ツールの起動段階に入ると自動でレイヤー選択機能がオン<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>になります。</p><br>
+      <p style="margin-bottom: -0.8rem;">
+      一方、「画像ツール」では、画像を挿入後に変形ツールを起動してもレイヤー選択機能はオンになりませんが、操作が確定するまで描画先レイヤーは自動的に追従します。<br>
+      また、挿入操作中の画像の透明度は、描画先レイヤーの透明度設定に従い調整が可能です。
+      </p><br>
+
+        <p>
+        これらの仕様により選択範囲/挿入画像の描画先レイヤーを自由に選択することが可能です。<br>
+        レイヤーを移動する必要がない場合は他のレイヤーを選択せずに描画レイヤーにて操作を行なって下さい。<br>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※「選択ツール」「画像ツール」の操作中は、レイヤー選択機能をオンにしても挿入操作が完了するまでレイヤーの入れ替えなどの通常機能は利用できません。</span>
+        </p><br>
+
+      <p>変形作業が完了しましたら、確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %><%= image_tag('image_confirm_btn.png', alt: '画像ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押して操作を終了できます。
+        挿入された画像は挿入後は他のペイントと同じcanvasに張り付いたものとなりますので、再び編集したい場合は選択ツールにて範囲選択して下さい。
+      </p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      選択ツールのモード紹介
+      </span>
+    </h4>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 3rem; font-size: 1rem;">
+      <span class="orange-line">
+      選択範囲を削除<%= image_tag('select_delete_btn.png', alt: '選択範囲を削除モードのボタン', class: "explanation-image", style: "width: 60px; margin-bottom: 1.4rem;") %>
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('select_delete_panel.png', alt: '選択ツールの選択範囲を削除のモードのパネルの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        選択範囲のみを削除するモードです。<br>
+        このモードには決定/確定ボタンはなく、範囲選択後<%= image_tag('select_delete_btn_confirm.png', alt: '選択範囲削除ボタン', class: "explanation-image", style: "width: 70px;") %>ボタンを押すと選択された範囲のみが削除されます。<br>
+        また、<%= image_tag('select_delete_outside_btn.png', alt: '選択範囲外を削除するボタン', class: "toolbtn-image") %><span class="sakura-line">をアクティブにすると<span style="color: #59afc7;" class="text-Rounded500">選択範囲外</span>が削除</span>され選択範囲の中の描画だけが残ります。
+      </p><br>
+      <p>
+        <span><%= image_tag('select_delete_whitebtn.png', alt: '選択範囲を削除するボタン', class: "toolbtn-image") %>：選択範囲の中を削除するモード。</span><br>
+        <span><%= image_tag('select_delete_outside_whitebtn.png', alt: '選択範囲外を削除するボタン', class: "toolbtn-image") %>：選択範囲の外を削除するモード。</span><br>
+        <span><%= image_tag('select_delete_allbtn.png', alt: 'canvas内全てを削除するボタン', class: "toolbtn-image") %>：描画レイヤーのペイントを全て削除するボタン。</span>
+      </p>
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+      <span class="orange-line">
+      移動<%= image_tag('select_move_btn.png', alt: '移動モードのボタン', class: "toolbtn-image", style: "margin-bottom: 1.6rem;") %>
+      </span>
+    </h5>
+      <div class="sidebar-design">
+      <%= image_tag('select_move_panel.png', alt: '選択ツールの移動モードのパネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        選択範囲を切り取って移動するモードです。<br>
+        描画レイヤー内のみではなくレイヤーを跨いで移動できるため、ピンポイントで転写する機能としても活用できます。<br>
+        <span><%= image_tag('background_active.png', alt: '選択範囲の表示切り替えボタン', class: "explanation-image", style: "width: 18px;") %>を押すと選択範囲の表示を切り替えられ、非表示にすると選択範囲のみ表示が消えます。これは削除された訳ではなくレイヤーの表示/非表示機能と同じで一時的に消えているだけのため再度<%= image_tag('background_active.png', alt: '選択範囲の表示切り替えボタン', class: "explanation-image", style: "width: 18px;") %>にチェックを入れると表示されます。<br>
+        <%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>は描画レイヤーのペイントを<span style="color: #E19AB0;" class="text-Rounded500">全て(canvas全体)選択</span>するボタンです。このボタンを使用すると、canvas上の描画全体を簡単に移動や変形ができます。
+        
+      </p>
+      <p>
+        <span>下記2つの機能は<span style="color: #F8A3B1;" class="text-Rounded500">「移動」「コピー」「ぼかし」「塗りつぶし」</span>の操作で使用可能です。</span><br>
+        <span><%= image_tag('background_active.png', alt: '選択範囲の表示切り替えボタン', class: "explanation-image", style: "width: 18px;") %>：選択範囲の表示切り替え。</span><br>
+        <span><%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>：全選択ボタン。</span>
+      </p>
+    </div>
+
+
+    <section id="section20">
+      <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+        <span class="orange-line">
+        コピー<%= image_tag('select_copy_btn.png', alt: 'コピーモードのボタン', class: "toolbtn-image", style: "margin-bottom: 1.6rem;") %>
+        </span>
+      </h5>
+    </section>
+      <div class="sidebar-design">
+      <%= image_tag('select_copy_panel.png', alt: '選択ツールのコピーモードのパネルの図解', class: "toolpanel-image-600") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        選択範囲をコピーするモードです。<br>
+        コピーされた内容は内部にあるコピーレイヤーに保存され、ペーストボタン<%= image_tag('copy_btn.png', alt: 'ペーストボタン', class: "toolbtn-image") %>を使用することで何度でも複製が可能です。<br>
+        現在コピーされている内容は、オプション内にある<span style="color: #59afc7;" class="text-Rounded500">「現在コピー中の描画」</span>の項目から確認できます。<br>
+        コピーを作成するとコンパクトパネルにペーストボタン<%= image_tag('copy_btn.png', alt: 'ペーストボタン', class: "toolbtn-image") %>が追加で表示されます。<br>
+      </p>
+      <p>
+        <span class="sakura-line">同時に保管できるコピーは一つのみで、新たにコピーを作成すると以前のものは自動的に削除されます。</span><br>
+        コピー作成時に適用された変形は記録されず、<span style="color: #E19AB0;" class="text-Rounded500">元の状態の描画がコピーレイヤーに保存</span>されます。<br>
+      </p>
+      <p>
+        ペーストされる位置はコピー時の位置と同じです。位置を変更したい場合は、移動ツールを使用してください。<br>
+        コピーレイヤーに保存されている内容は、コピー削除ボタン<%= image_tag('select_copy_delete_btn.png', alt: 'コピーの削除ボタン', class: "toolbtn-image") %>で削除できますが、削除した内容は復元できないのでご注意ください。
+      </p>
+      <p>
+        <span><%= image_tag('select_copy_delete_btn.png', alt: 'コピーの削除ボタン', class: "toolbtn-image") %>：保持しているコピーデータを削除するボタン。</span><br>
+        <span><%= image_tag('copy_btn.png', alt: 'ペーストボタン', class: "toolbtn-image") %>：ペーストボタン。押す度にコピーしたペイントを何度でもペーストできます。</span>
+      </p>
+    </div>
+
+
+
+
+  
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+      <span class="orange-line">
+      ぼかし<%= image_tag('select_blur_btn.png', alt: 'ぼかしモードのボタン', class: "toolbtn-image", style: "margin-bottom: 1.6rem;") %>
+      </span>
+    </h5>
+
+      <div class="sidebar-design">
+      <%= image_tag('select_blur_panel.png', alt: '選択ツールのぼかしモードのパネルの図解', class: "toolpanel-image-600") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        このモードでは、選択範囲のペイントにぼかし加工を施すことができます。<br>
+        ぼかしの度合いは<span style="color: #59afc7;" class="text-Rounded500">0〜30</span>の範囲で調整可能で、オプション内の「実行ボタン」を押すたびに効果を重ねがけすることができます。<br>
+        ぼかしの効果は<span style="color: #E19AB0;" class="text-Rounded500">「サンプル」</span>で確認することができます。
+      </p><br>
+      <p>
+        コピーという項目にチェックを入れると原本を直接編集するのではなく、原本を複製した後にぼかし処理を行います。<br>
+        この場合、ぼかした描画の転移先は描画レイヤー以外を選択することをお勧めします。<br>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※転移先を原本と同じ描画レイヤーにすると原本が直接上書きされてしまうためコピー機能の効果はありません。</span>
+      </p>
+      <p>
+        原本をコピーしてから操作を行いたい場合、コピーの項目にチェックをいれるタイミングは決定ボタン<%= image_tag('select_decision_btn.png', alt: '選択ツールの決定ボタン', class: "explanation-image", style: "width: 70px;") %>を押す前に行なって下さい。<br>
+        また、範囲選択後に確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押してしまうと、ぼかし加工は適用されないので注意してください。
+      </p>
+    </div>
+
+
+
+
+  </div>
+
+</div>

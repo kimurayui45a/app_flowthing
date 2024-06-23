@@ -95,6 +95,8 @@ class StaticPagesController < ApplicationController
 
   def tool_explanation_second; end
 
+  def tool_explanation_third; end
+
   def idea_page; end
 
   def paint_help; end

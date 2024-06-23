@@ -26,13 +26,18 @@
           </div>
         </li>
         <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル1<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section3">
               <a href="#section1">詳細設定パネルの基本構造</a>
               <a href="#section2">ペン</a>
               <a href="#section3">筆圧設定</a>
-              <a href="#section4">選択/画像</a>
-              <a href="#section5">図形/テキスト</a>
+          </div>
+        </li>
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル2<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section4">
+              <%= link_to '選択/画像', tool_explanation_third_path + '#section1' %>
+              <%= link_to '図形/テキスト', tool_explanation_third_path + '#section2' %>
           </div>
         </li>
         <li><a href="#section6">サイズパネル</a></li>
@@ -49,7 +54,7 @@
 
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title">
-      <span class="text-line">詳細設定パネル</span>
+      <span class="text-line">詳細設定パネル1</span>
     </h2>
 
     
@@ -630,48 +635,6 @@
       <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded500">V値の最大変化量</span>：1度の描画アクション中に許可されるV値の変動幅を設定できます。現在選択しているカラー〜0の範囲で設定できます。<br>この値が大きいほど1度の描画でより広範囲の明度変化を行うことができます。</p><br>
     </div>
 
-
-
-    <section id="section4">
-      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
-        <span class="sub-line">
-          選択/画像
-        </span>
-      </h3>
-    </section>
-    <div class="sidebar-design">
-      <%= image_tag('select_panel.png', alt: '選択/画像の詳細設定パネルの図解', class: "toolpanel-image") %>
-    </div>
-
-    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
-      <span class="point-line">
-      選択/画像の詳細設定パネルの共通基本項目
-      </span>
-    </h4>
-
-    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
-
-
-      <p style="margin-bottom: -0.8rem;"><span style="color: #e4816c;" class="text-Rounded700">選択ツールのモードを切り替えるボタン</span><%= image_tag('select_mode_btnlist.png', alt: ' 選択ツールのモード切り替えのボタン', class: "explanation-image", style: "width: 150px;") %><br>
-      選択ツールのモードを切り替えられるボタンです。選択ツールには<span style="color: #F8A3B1;" class="text-Rounded500">「選択範囲を削除」「移動」「コピー」「選択範囲をぼかす」「選択範囲を塗りつぶす」</span>の5つのモードがあります。各モードの詳細は後述します。</p><br>
-
-
-      <p style="margin-bottom: -0.8rem;"><span style="color: #B9A82C;" class="text-Rounded500">画像挿入ツールに切り替え</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-image"></i></span>：画像挿入ツールに切り替わります。</p><br>
-      <p style="margin-bottom: -0.8rem;"><span style="color: #3A559D;" class="text-Rounded500">プレビュー</span><%= image_tag('select_preview.png', alt: ' 選択ツールのプレビュー', class: "explanation-image", style: "width: 50px;") %>：編集対象の描画を確認できます。</p><br>
-      <p style="margin-bottom: -0.8rem;"><span style="color: #59BC9D;" class="text-Rounded500">実行/キャンセル</span><%= image_tag('select_decision_btn.png', alt: ' 選択ツールの決定ボタン', class: "explanation-image", style: "width: 70px;") %><%= image_tag('select_cancel_btn.png', alt: ' 選択ツールのキャンセルボタン', class: "explanation-image", style: "width: 70px;") %>：選択範囲/画像の挿入に対して操作できるボタンです。</p><br>
-      <p style="margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded500">オプション</span>：詳細な設定が必要なモードは、この部分に追加項目が表示されます。</p><br>
-      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">回転/反転</span><%= image_tag('transform_btn.png', alt: ' 回転と反転のボタン', class: "explanation-image", style: "width: 100px;") %><br>
-      <span>
-        このボタンは、canvas内のペイントを回転または反転させます。<br>
-        選択範囲が指定されていない場合はcanvas全体が対象となりますが、選択範囲がある場合は、その範囲内のみ回転/反転が適用されます。<br>
-        操作は描画レイヤーのペイントにのみ影響します。</span></p><br>
-      <p style="margin-bottom: -1rem;">
-        <span><%= image_tag('counterclockwise_btn.png', alt: ' 反時計回りに回転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #B9A82C;" class="text-Rounded500">反時計回り</span>に90度回転させるボタンです。</span><br>
-        <span><%= image_tag('clockwise_btn.png', alt: ' 時計回りに回転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #3A559D;" class="text-Rounded500">時計回り</span>に90度回転させるボタンです。</span><br>
-        <span><%= image_tag('flip_horizontal_btn.png', alt: ' 左右反転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #59afc7;" class="text-Rounded500">左右</span>に反転させるボタンです。</span><br>
-        <span><%= image_tag('flip_upside_down_btn.png', alt: ' 上下反転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #E19AB0;" class="text-Rounded500">上下</span>に反転させるボタンです。</span>
-      </p>
-    </div>
 
   </div>
 

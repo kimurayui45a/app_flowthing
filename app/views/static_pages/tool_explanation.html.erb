@@ -27,13 +27,18 @@
           </div>
         </li>
         <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル1<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section3">
               <%= link_to '詳細設定パネルの基本構造', tool_explanation_second_path + '#section1' %>
               <%= link_to 'ペン', tool_explanation_second_path + '#section2' %>
               <%= link_to '筆圧設定', tool_explanation_second_path + '#section3' %>
-              <a href="#section2">選択/画像</a>
-              <a href="#section2">図形/テキスト</a>
+          </div>
+        </li>
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">詳細設定パネル2<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section4">
+              <%= link_to '選択/画像', tool_explanation_third_path + '#section1' %>
+              <%= link_to '図形/テキスト', tool_explanation_third_path + '#section2' %>
           </div>
         </li>
         <li><a href="#section3">サイズパネル</a></li>
@@ -406,7 +411,7 @@
         四角形を描画できるツールです。詳細は「詳細設定パネル」の項目にて解説します。</p><br>
 
         <p style="margin-bottom: -0.8rem;"><span style="color: #d98e3c;" class="text-Rounded700">ペーストボタン</span><%= image_tag('copy_btn.png', alt: 'コピーしたペイントを再度描画するボタン', class: "toolbtn-image") %>：
-        選択ツールにて「コピーモード」を選択しペイントのコピーを保持している状態の時に表示されるボタンです。コピーがない状態の時はボタンのUIは表示されません。</p><br>
+        選択ツールにて「<%= link_to 'コピーモード', tool_explanation_third_path + '#section20', class: "embedded-item text-Rounded500" %>」を選択しペイントのコピーを保持している状態の時に表示されるボタンです。コピーがない状態の時はボタンのUIは表示されません。</p><br>
     </div>
       
 

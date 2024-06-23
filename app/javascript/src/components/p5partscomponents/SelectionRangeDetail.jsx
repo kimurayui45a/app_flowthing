@@ -139,21 +139,35 @@ const SelectionRangeDetail = () => {
             ></div>
           </div>
 
-          <div className="selected-area-preview-layername">
-            <div style={{ color: '#ececec' }}>
-              <span>{selectArrangeMode === 'selectMove' ? '移動先：' : '描画先：'}</span>
-              <span style={{ fontWeight: '500' }}>
-                {selectSecondLayer ? '選択レイヤー' : '描画レイヤー'}
-              </span>
-            </div>
-            {selectSecondLayer ? (
-              <div>
-                <span style={{ color: '#E0ECC9' }}>{selectSecondLayerInfo ? selectSecondLayerInfo.name : '未選択'}</span>
+          {toolMode === 'imageTool' ? (
+            <div className="selected-area-preview-layername">
+              <div style={{ color: '#ececec' }}>
+                <span>描画先：</span>
+                <span style={{ fontWeight: '500' }}>
+                描画レイヤー
+                </span>
               </div>
-            ) : 
-            <span style={{ color: '#7FA8EB' }}>{selectedLayerInfo.name}</span>
-            }
-          </div>
+              <span style={{ color: '#7FA8EB' }}>{selectedLayerInfo?.name || '未選択'}</span>
+            </div>
+          ): (
+            <div className="selected-area-preview-layername">
+              <div style={{ color: '#ececec' }}>
+                <span>{selectArrangeMode === 'selectMove' ? '移動先：' : '描画先：'}</span>
+                <span style={{ fontWeight: '500' }}>
+                  {selectSecondLayer ? '選択レイヤー' : '描画レイヤー'}
+                </span>
+              </div>
+              {selectSecondLayer ? (
+                <div>
+                  <span style={{ color: '#E0ECC9' }}>{selectSecondLayerInfo ? selectSecondLayerInfo.name : '未選択'}</span>
+                </div>
+              ) : 
+              <span style={{ color: '#7FA8EB' }}>{selectedLayerInfo?.name || '未選択'}</span>
+
+              }
+            </div>
+          )}
+
         </div>
 
 
