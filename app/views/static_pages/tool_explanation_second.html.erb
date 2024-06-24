@@ -30,7 +30,8 @@
           <div class="accordion-content-sidebar" id="accordion-section3">
               <a href="#section1">詳細設定パネルの基本構造</a>
               <a href="#section2">ペン</a>
-              <a href="#section3">筆圧設定</a>
+              <a href="#section3">ペンの早見表</a>
+              <a href="#section4">筆圧設定</a>
           </div>
         </li>
         <li>
@@ -38,10 +39,11 @@
           <div class="accordion-content-sidebar" id="accordion-section4">
               <%= link_to '選択/画像', tool_explanation_third_path + '#section1' %>
               <%= link_to '図形/テキスト', tool_explanation_third_path + '#section2' %>
+              <%= link_to 'フォントの早見表', tool_explanation_third_path + '#section3' %>
           </div>
         </li>
-        <li><a href="#section6">サイズパネル</a></li>
-        <li><a href="#section7">スケールパネル</a></li>
+        <li><%= link_to 'サイズパネル', tool_explanation_third_path + '#section4' %></li>
+        <li><%= link_to 'スケールパネル', tool_explanation_third_path + '#section5' %></li>
       </ul>
     </div>
 
@@ -129,12 +131,13 @@
       </p><br>
       </div>
 
-    
-      <h4 class="explanation-section-pointtitle" style="margin-top: -0.5rem;">
-        <span class="point-line">
-        ペンの種類早見表
-        </span>
-      </h4>
+      <section id="section3">
+        <h4 class="explanation-section-pointtitle" style="margin-top: -0.5rem;">
+          <span class="point-line">
+          ペンの早見表
+          </span>
+        </h4>
+      </section>
       <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
         <table class="pen-type-table">
           <thead>
@@ -496,7 +499,7 @@
 
 
 
-    <section id="section3">
+    <section id="section4">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
           筆圧設定
@@ -634,7 +637,7 @@
       <span class="text-Rounded500" style="color: #EB625A;">※</span>現在選択しているカラーのV値が100である場合、現在選択できる最小値も100になるためこの値を操作することはできません。</p><br>
       <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded500">V値の最大変化量</span>：1度の描画アクション中に許可されるV値の変動幅を設定できます。現在選択しているカラー〜0の範囲で設定できます。<br>この値が大きいほど1度の描画でより広範囲の明度変化を行うことができます。</p><br>
     </div>
-
+<div style="height: 10rem; width: 100px;"></div>
 
   </div>
 

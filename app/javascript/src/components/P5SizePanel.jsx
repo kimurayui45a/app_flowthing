@@ -158,7 +158,7 @@ const P5SizePanel = () => {
         </div>
       </div>
 
-      <div className="tool-size-selectform">
+      <div className="tool-size-selectform tooltip-container">
         <input
           className="no-drag form-select-value"
           type="number"
@@ -175,6 +175,7 @@ const P5SizePanel = () => {
           <i className="bi bi-arrows-fullscreen"></i>
           <i className="bi bi-arrow-down-up"></i>
         </div>
+        <span className="tooltip-text">選択可能範囲：0.3〜100</span>
       </div>
 
       <div style={{ overflowY: 'auto', flex: 1 }} className="size-btn-block-container">

@@ -30,7 +30,8 @@
           <div class="accordion-content-sidebar" id="accordion-section3">
               <%= link_to '詳細設定パネルの基本構造', tool_explanation_second_path + '#section1' %>
               <%= link_to 'ペン', tool_explanation_second_path + '#section2' %>
-              <%= link_to '筆圧設定', tool_explanation_second_path + '#section3' %>
+              <%= link_to 'ペンの早見表', tool_explanation_second_path + '#section3' %>
+              <%= link_to '筆圧設定', tool_explanation_second_path + '#section4' %>
           </div>
         </li>
 
@@ -39,10 +40,11 @@
           <div class="accordion-content-sidebar" id="accordion-section4">
               <a href="#section1">選択/画像</a>
               <a href="#section2">図形/テキスト</a>
+              <a href="#section3">フォントの早見表</a>
           </div>
         </li>
-        <li><a href="#section6">サイズパネル</a></li>
-        <li><a href="#section7">スケールパネル</a></li>
+        <li><a href="#section4">サイズパネル</a></li>
+        <li><a href="#section5">スケールパネル</a></li>
       </ul>
     </div>
     <div class="sidebar-design">
@@ -583,16 +585,16 @@
         <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;"><i class="bi bi-arrow-down"></i>日本語対応していないフォントの表示</span><br>
         <%= image_tag('ja_arial_defo.png', alt: '日本語対応していないフォントの表示', class: "font-sample-image") %>
       </p><br>
-
     </div>
 
 
-      
-    <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
-      <span class="orange-line">
-      フォントの早見表
-      </span>
-    </h5>
+    <section id="section3">
+      <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+        <span class="orange-line">
+        フォントの早見表
+        </span>
+      </h5>
+    </section>
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9; margin-top: -1rem;">
       <table class="textfont-table">
@@ -658,6 +660,75 @@
         </tr>
       </table>
     </div>
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <section id="section4">
+      <h2 class="explanation-section-title">
+        <span class="text-line">サイズパネル</span>
+      </h2>
+    </section>
+
+    <div class="sidebar-design">
+      <%= image_tag('size_panel.png', alt: 'サイズパネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        各ツールのサイズを選択するパネルです。<br>
+        ペンや消しゴム、図形ツールの線のサイズを調整できます。<br>
+        サイズの選択範囲は<span class="sakura-line">「<span style="color: #59afc7;" class="text-Rounded500">0.3〜100</span>」</span>までで、<span style="color: #59afc7;" class="text-Rounded500">サイズ選択フォーム</span>または<span style="color: #E19AB0;" class="text-Rounded500">サイズ選択ボタン</span>を使用して設定します。<br>
+        パネル自体は伸縮可能で、外枠をクリックしてドラッグすることでサイズを変更できます。<br>
+        設定されたサイズは全てのツールに共通して適用されます。
+      </p>
+    </div>
+
+
+
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <section id="section5">
+      <h2 class="explanation-section-title">
+        <span class="text-line">スケールパネル</span>
+      </h2>
+    </section>
+
+    <div class="sidebar-design">
+      <%= image_tag('scale_panel_image.png', alt: 'スケールパネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        canvasのスケールと位置を調整できるパネルです。<br>
+        また、組み込まれた全体プレビュー機能によりcanvas全体の状態を確認できます。
+      </p>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #EB625A;" class="text-Rounded500">全体プレビュー</span>：canvas全体の状況を確認できるプレビューです。リアルタイム更新ではないため最新の状態を確認したい場合は<%= image_tag('preview_reload_btn.png', alt: 'レイヤーのプレビューを更新するボタン', class: "toolbtn-image") %>を押して手動更新して下さい。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #3A559D;" class="text-Rounded500">プレビュー更新</span><%= image_tag('preview_reload_btn.png', alt: 'レイヤーのプレビューを更新するボタン', class: "toolbtn-image") %>：プレビューが最新の状態に更新されます。全体プレビューだけでなくレイヤーパネルの個別プレビューも更新されます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded500">スケールスライダー</span><%= image_tag('scale_slider.png', alt: 'スケールスライダー', class: "explanation-image", style: "width: 120px;") %>：0.5倍〜5倍の範囲でcanvasを拡大縮小できます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #bfad28;" class="text-Rounded500">拡大ボタン</span><%= image_tag('scale_plus.png', alt: '拡大ボタン', class: "toolbtn-image") %>：canvasを0.5ずつ拡大できます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #7CBB72;" class="text-Rounded500">縮小ボタン</span><%= image_tag('scale_minus.png', alt: '縮小ボタン', class: "toolbtn-image") %>：canvasを0.5ずつ縮小できます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59BC9D;" class="text-Rounded500">スケールリセット</span><%= image_tag('scale_reset.png', alt: 'スケールリセット', class: "toolbtn-image") %>：canvasのスケールを初期値1に戻します。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">canvasの移動ツール</span><%= image_tag('canvas_move.png', alt: 'canvasの移動ツール', class: "toolbtn-image") %><br>
+      <%= image_tag('scale_move_image.png', alt: 'canvasの移動ツールのイメージ', class: "toolpanel-image") %><br>
+      作業スペース内でcanvasを自由に移動することができます。<br>
+      これによって、拡大したい部分を簡単に作業スペースの中心に配置することが可能です。
+      </p><br>
+
+    </div>
+
+
+
+<div style="height: 10rem; width: 100px;"></div>
+
+
+
+
 
   </div>
 
