@@ -5,7 +5,7 @@
   <% profile = current_user.profile if user_signed_in? %>
   <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-    <div class="text-Rounded700"><h1 class="sidebar-title">ツール</h1></div>
+    <div class="text-Rounded700"><h1 class="sidebar-title">ツール(ペイント)</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
           <li><a href="#section1">基本操作</a></li>
@@ -117,12 +117,18 @@
       パネルの表示/非表示
       </span>
     </h3>
-      <div class="sidebar-design">
-        <%= image_tag('close_btn.png', alt: '閉じるボタン', class: "toolpanel-image") %>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+
+      <div style="margin-top: 2.5rem;">
+        <div class="sidebar-design">
+          <%= image_tag('close_btn.png', alt: '閉じるボタン', class: "explanation-image", style: "width: 350px;") %>
+        </div>
+        <p style="margin-top: 1rem;">
+          ツールパネル以外のパネルは右上の「<i class="bi bi-x-lg" style="color: #F8A3B1;"></i>」より閉じる(非表示にする)ことが可能です。
+        </p>
       </div>
-    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
-      ツールパネル以外のパネルは右上の「<i class="bi bi-x-lg" style="color: #F8A3B1;"></i>」より閉じる(非表示にする)ことが可能です。
-    </p>
+    </div>
+
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
@@ -293,7 +299,7 @@
       </span>
     </h4>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
-      <span class="text-Rounded500" style="font-size: 0.85rem; margin-top: 0rem; color: #EB625A;">※
+      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※
       「ペン」「選択/テキスト/画像」は「<%= link_to '詳細設定パネル', tool_explanation_second_path + '#section1', class: "embedded-item text-Rounded500" %>」の項目にて解説します。
       </span>
     </p>
@@ -525,7 +531,7 @@
       このボタンを押すとレイヤー選択機能がオン<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>になり、レイヤーパネルの状態が下記の「<span class="text-Rounded500 point-line">レイヤー選択機能がオンの時のレイヤーパネル</span>」のものに変化します。</p><br>
     </div>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
-      <span class="text-Rounded500" style="font-size: 0.85rem; margin-top: 0rem; color: #EB625A;">※
+      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※
       レイヤー関連の機能については「レイヤーUI」の項目にて解説します。
       </span>
     </p>

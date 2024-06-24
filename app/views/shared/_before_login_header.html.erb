@@ -52,9 +52,20 @@
             <%= link_to '使い方', how_to_use_path, class: "text-Rounded500 header-text-Rounded500" %>
           </li>
 
-          <li class="header-explanation-none">
-            <%= link_to 'ツール', tool_explanation_path, class: "text-Rounded500 header-text-Rounded500" %>
+          <li  class="user-dropdown">
+            <button class='tool-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="text-Rounded500 header-text-Rounded500" style="margin-top: -0.2rem">ツール<i class="bi bi-caret-down-fill"  style="margin-left: 0.2rem;"></i></div>
+            </button>
+            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
+              <ul class='user-dropdown-list'>
+                <li class='user-dropdown-item'><%= link_to 'ペイント(基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ペイント(ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ペイント(選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'アニメーション', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+              <ul>
+            </div>
           </li>
+
 
           <li class="header-explanation-none">
             <%= link_to 'アイデア', idea_page_path, class: "text-Rounded500 header-text-Rounded500" %>
@@ -91,7 +102,13 @@
                 <%# <li class='user-dropdown-item'><%= link_to 'Sub Thing', sub_sample_path, class: 'user-dropdown-link' %>
 
                 <li class='user-dropdown-item'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ツール', tool_explanation_path, class: 'user-dropdown-link' %>
+
+
+                <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ツール(アニメーション)', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+
                 <li class='user-dropdown-item'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
 
                 <li class='user-dropdown-item header-list-none'><%= link_to '新規登録', sign_up_path, class: 'user-dropdown-link' %></li>

@@ -203,6 +203,24 @@ const PixiGuidePanel = () => {
           >
           [カスタム]Screen
           </div>
+
+
+          <div
+            className="flex pressure-panel-btn"
+            onClick={() => scrollGuide('specialGuideContainer', 2685)}
+            onTouchStart={() => scrollGuide('specialGuideContainer', 2685)}
+            style={{
+              borderTop: '0.5px solid #4A4A4A',
+              borderRadius: '7px 0px 0px 7px',
+              fontSize: '8px',
+              height: '30px',
+              width: '100px',
+              backgroundColor: '#c2c1c1',
+              boxShadow: '1px 1px black'
+            }}
+          >
+          詳細表示
+          </div>
         </div>
 
       <div id="specialGuideContainer" style={{ overflowY: 'auto', height: '300px', display: 'flex', flexDirection: 'column', marginTop: '10px', width: '360px', alignItems: 'center' }}>
@@ -234,6 +252,15 @@ const PixiGuidePanel = () => {
 
           アイコン：Flow Thingのスタイル変更やアニメーションの付与が行える[カスタム]パネルが表示されます。<br />
 
+
+          <div
+            className="panel-tool-button-guide"
+            style={{ margin: '7px 2px 2px 2px' }}
+            >
+            <i className="bi bi-geo-fill"></i>
+          </div>
+
+          アイコン：ステージ上の現在選択されているFlow Thingのスタイルとアニメーション情報が表示されます。<br />
 
           <div
             className="panel-tool-button-guide"
@@ -391,6 +418,12 @@ Flow Thingを選択し、[登録]を押すと追従アニメを付与できま�
 [速さ]の項目でScreenのスクロール速度を、[時間]の項目で切り替わり時間を設定できます。</div>
 
 
+<div style={{ marginBottom: '35px' }}><div className="guide-section"><span className="light-blue-text gaido-panel-title">[詳細表示]パネル</span></div>
+
+選択されているFlow Thingのスタイルとアニメーションの設定値を確認することができます。<br />
+「ステージ内の位置（中心基準）」の項目では、ステージの左上を原点 （X: 0, Y: 0）として、アイテムの中心がどの座標にあるかを表示します。<br />
+また、アニメ情報では、付与されているアニメーションは「実行中」と表示され、付与されていないものは「停止中」と表示されます。
+</div>
 
 
 

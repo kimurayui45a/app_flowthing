@@ -1,0 +1,206 @@
+<% content_for(:title, t('.title')) %>
+<div class='p5canvas-container'>
+
+  <% profile = current_user.profile if user_signed_in? %>
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+    <div class="text-Rounded700"><h1 class="sidebar-title">ツール(アニメ)</h1></div>
+    <div class="menu-sidebar text-Rounded500">
+      <ul>
+          <li><a href="#section1">基本操作</a></li>
+          <li><a href="#section1">リストパネル</a></li>
+          <li><a href="#section1">カスタムパネル</a></li>
+          <li><a href="#section1">詳細表示パネル</a></li>
+          <li><a href="#section1">ガイドパネル</a></li>
+
+      </ul>
+    </div>
+
+    <div class="sidebar-design">
+      <%= image_tag('tongari.png', alt: 'ツールページの画像', class: "sidebar-image2") %>
+    </div>
+  </div>
+
+  <div class="sidebar-content">
+
+
+    <section id="section1">
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title">
+        <span class="text-line">基本操作</span>
+      </h2>
+      <div class="sidebar-design">
+        <%= image_tag('anime_panel.png', alt: 'アニメツールの説明画像', class: "painttool-image") %>
+      </div>
+      <p class="explanation-section-text text-Rounded">
+        以下は大まかな基本操作です。さらなる詳細については、該当ツールを含むコントロールパネルの項目でご確認頂けます。
+      </p>
+    </section>
+
+
+    <h3 class="explanation-section-subtitle">
+      <span class="sub-line">
+      コントロールパネル
+      </span>
+    </h3>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        本アニメーションツールは以下の4つのコントロールパネルで構成されています。
+      </p>
+
+      <p>
+        <span style="color: #59afc7;" class="text-Rounded500">リストパネル</span>：使用できるFlow ThingとScreenが表示されるパネルです。ここからステージ上にアイテムを挿入できます。<br>
+        <span style="color: #856eaa;" class="text-Rounded500">カスタムパネル</span>：ステージ上のFlow ThingとScreenに詳細な情報を設定できるパネルです。<br>
+        <span style="color: #7CBB72;" class="text-Rounded500">詳細表示パネル</span>：選択されているFlow Thingのスタイルとアニメーションの設定値が表示されるパネルです。<br>
+        <span style="color: #E19AB0;" class="text-Rounded500">ガイドパネル</span>：アニメツールの全体ガイドを確認できるパネルです。
+      </p>
+
+      <div style="margin-top: 2.5rem;">
+        <span class="red-text text-Rounded500">
+        パネルの表示/非表示
+        </span>
+      
+        <div class="sidebar-design">
+          <%= image_tag('close_btn_anime.png', alt: '閉じるボタン', class: "explanation-image", style: "width: 350px;") %>
+        </div>
+        <p style="margin-top: 1rem;">
+          リストパネル以外のパネルは右上の「<i class="bi bi-x-lg" style="color: #F8A3B1;"></i>」より閉じる(非表示にする)ことが可能です。
+        </p>
+      </div>
+    </div>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      Flow Thing
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      <span style="color: #E19AB0;" class="text-Rounded500">「Flow Thing」</span>の項目で作成したアイテムをScreenの上に配置できます。<br>各Flow Thingにはスケール調整などの詳細設定を付与でき、それぞれに独自の特性を付与することが可能です。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      Screen
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      <span style="color: #E19AB0;" class="text-Rounded500">「Screen」</span>の項目で作成したアイテムを背景として挿入できます。<br>単独の静単一の静的背景に留まらず、複数のScreenを用いたスライドアニメーションの作成も可能です。
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      ステージ
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      中央のグレーの四角形がステージです。<br>ここにFlow ThingとScreenを配置しアニメーションを作成できます。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      挿入順序
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      ステージに配置されるFlow Thingは挿入された順序に従って層を形成します。<br>
+      <span class="sakura-line">先に挿入されたものは下層に、後に挿入されたものは上層に配置されます。Screenは常に最下層に位置します。</span>
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      スタイル設定
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      配置するFlow Thingには<span style="color: #E19AB0;" class="text-Rounded500">「スケール」「透明度」「角度」</span>の3つのスタイルを調整することが可能です。<br>
+      初期状態ではペイントツールで作成したcanvasサイズのまま挿入されますが、ここでサイズ調整を行うことができます。<br>
+      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※Screenにはこの機能はありません。</span>
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      アニメーションの種類
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      現在利用可能なアニメーションには、基本的な<span style="color: #E19AB0;" class="text-Rounded500">「上下アニメ」「左右アニメ」「回転/振り子アニメ」「縮尺アニメ」</span>と、<br>
+      特殊な<span style="color: #59afc7;" class="text-Rounded500">「ランダムアニメ」「追従アニメ」「移動範囲アニメ（四角形/円形）」</span>があります。<br>
+      これらを組み合わせることで、様々な動きを作成できます。<br>
+      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※一部使用できない組み合わせもございます。</span><br>
+      アニメーションの種類は今後さらに増やしていく予定です。
+    </p>
+
+<div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section2">
+      <h2 class="explanation-section-title">
+        <span class="text-line">リストパネル</span>
+      </h2>
+      <p class="explanation-section-text text-Rounded">
+        リストパネルは2つのタブに分かれており、<span style="color: #E19AB0;" class="text-Rounded500">「Flow Thingタブ」</span>と<span style="color: #59afc7;" class="text-Rounded500">「Screenタブ」</span>があります。
+      </p>
+    </section>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <span class="sub-line">
+        Flow Thingタブ
+      </span>
+    </h3>
+    <div class="sidebar-design">
+      <%= image_tag('list_flow.png', alt: 'リストパネルのFlow Thingタブの図解', class: "toolpanel-image") %>
+    </div>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded700">カスタムパネル表示ボタン</span><%= image_tag('anime_custom_btn.png', alt: 'カスタムパネル表示ボタン', class: "toolbtn-image") %>：
+        このボタンを押すとカスタムパネルが表示されます。<span style="color: #E19AB0;" class="text-Rounded500">「Flow Thingタブ」</span>を開いている間はFlow Thingに関する内容が表示されます。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded700">詳細表示パネル表示ボタン</span><%= image_tag('anime_detail_btn.png', alt: '詳細表示パネル表示ボタン', class: "toolbtn-image") %>：
+        このボタンを押すと詳細表示パネルが表示されます。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded700">ガイドパネル表示ボタン</span><%= image_tag('anime_guide_btn.png', alt: 'ガイドパネル表示ボタン', class: "toolbtn-image") %>：
+        このボタンを押すとガイドパネルが表示されます。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded700">削除ボタン</span><%= image_tag('anime_delete_btn.png', alt: '削除ボタン', class: "toolbtn-image") %>：
+        選択されているFlow Thingを削除するボタンです。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded700">Flow Thingボタン</span><%= image_tag('anime_flow_btn.png', alt: 'ステージ上にFlow Thingを挿入するボタン', class: "explanation-image", style: "width: 70px;") %>：
+        ステージ上にFlow Thingを挿入するボタンです。
+      </p><br>
+    </div>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <span class="sub-line">
+        Screenタブ
+      </span>
+    </h3>
+    <div class="sidebar-design">
+      <%= image_tag('list_screen.png', alt: 'リストパネルのScreenタブの図解', class: "toolpanel-image") %>
+    </div>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded700">カスタムパネル表示ボタン</span><%= image_tag('anime_custom_btn.png', alt: 'カスタムパネル表示ボタン', class: "toolbtn-image") %>：
+        このボタンを押すとカスタムパネルが表示されます。<span style="color: #59afc7;" class="text-Rounded500">「Screenタブ」</span>を開いている間はScreenに関する内容が表示されます。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded700">Screenボタン</span><%= image_tag('anime_screen_btn.png', alt: 'ステージ上にscreenを配置するボタン', class: "explanation-image", style: "width: 70px;") %>：
+        ステージ上にScreenを配置するボタンです。
+      </p><br>
+    </div>
+
+
+
+<div style="height: 10rem; width: 100px;"></div>
+
+  </div>
+
+</div>

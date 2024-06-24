@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   get 'tool_explanation', to: 'static_pages#tool_explanation'
   get 'tool_explanation_second', to: 'static_pages#tool_explanation_second'
   get 'tool_explanation_third', to: 'static_pages#tool_explanation_third'
+  get 'tool_explanation_anime', to: 'static_pages#tool_explanation_anime'
 
   #ペイントツールヘルプ
   get 'paint_help', to: 'static_pages#paint_help'

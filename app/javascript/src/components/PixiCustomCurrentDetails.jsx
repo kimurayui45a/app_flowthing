@@ -108,7 +108,7 @@ const PixiCustomCurrentDetails = () => {
         
 
           <div className="detail-text" style={{ marginTop: '0px' }}>
-            <span className="light-blue-text">作業スペース内の位置(中心基準)</span><br />
+            <span className="light-blue-text">ステージ内の位置(中心基準)</span><br />
             <span>X座標： {activeSpriteDetail.sprite_position.x || '---'}</span><br />
             <span>Y座標： {activeSpriteDetail.sprite_position.y || '---'}</span>
           </div>

@@ -1163,10 +1163,53 @@ html {
   left: 0;
   z-index: 9;
 }
+
 .user-dropdown-btn.is-open + .user-dropdown-body {
   display: block;
   z-index: 5;
 }
+
+
+.tool-dropdown-btn {
+  background-color: transparent;
+  box-sizing: border-box;
+  border: none; /* デフォルトのボーダーを削除 */
+  outline: none; /* フォーカス時のアウトラインを削除 */
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  //margin-top: -0.1rem;
+  margin-right: 1rem;
+}
+
+.tool-dropdown-btn:hover {
+  color: #1f5a89;
+}
+
+.tool-dropdown-btn.is-open::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  cursor: default;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+.tool-dropdown-btn.is-open + .user-dropdown-body {
+  display: block;
+  z-index: 5;
+}
+
+
+
+
+
+
+
 .user-dropdown-body {
   display: none;
   width: 250px;
@@ -8675,6 +8718,10 @@ background-color: #d1eee6;
     }
 
     .top-page-logo-none {
+      display: none;
+    }
+
+    .tool-dropdown-btn {
       display: none;
     }
 

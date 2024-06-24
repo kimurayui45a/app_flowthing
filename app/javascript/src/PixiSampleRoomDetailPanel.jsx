@@ -122,7 +122,7 @@ const PixiSampleRoomDetailPanel = () => {
         setSampleText({ title: 'ゴミ箱', place: '窓の側'});
         break;
       case 2:
-        setSampleText({ title: 'このアプリのマスコット', place: 'サンプルルーム'});
+        setSampleText({ title: 'このアプリの準マスコット', place: 'サンプルルーム'});
         break;
       case 3:
         setSampleText({ title: 'ポテチ', place: '床の上'});
@@ -151,7 +151,7 @@ const PixiSampleRoomDetailPanel = () => {
         setSampleText({ title: 'ゲーム', place: 'スナックの隣'});
         break;
       case 11:
-        setSampleText({ title: 'ししゃも', place: '宙'});
+        setSampleText({ title: 'このアプリのマスコット', place: 'スーパーにいた'});
         break;
       case 12:
         setSampleText({ title: '地縛霊', place: 'ししゃもの中'});

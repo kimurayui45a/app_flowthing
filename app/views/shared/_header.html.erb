@@ -54,46 +54,54 @@
             <%= link_to '使い方', how_to_use_path, class: "text-Rounded500 header-text-Rounded500" %>
           </li>
 
-          <li class="header-explanation-none">
-            <%= link_to 'ツール', tool_explanation_path, class: "text-Rounded500 header-text-Rounded500" %>
+
+
+
+
+          <li  class="user-dropdown">
+            <button class='tool-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="text-Rounded500 header-text-Rounded500" style="margin-top: -0.2rem">ツール<i class="bi bi-caret-down-fill"  style="margin-left: 0.2rem;"></i></div>
+            </button>
+            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
+              <ul class='user-dropdown-list'>
+                <li class='user-dropdown-item'><%= link_to 'ペイント(基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ペイント(ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'ペイント(選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item'><%= link_to 'アニメーション', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+              <ul>
+            </div>
           </li>
+
 
           <li class="header-explanation-none">
             <%= link_to 'アイデア', idea_page_path, class: "text-Rounded500 header-text-Rounded500" %>
           </li>
 
 
-<% if @profile.present? && !@profile.new_record? %>
-          <li class="header-main-none">
-            <%= link_to 'Flow Thing', items_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
+          <% if @profile.present? && !@profile.new_record? %>
+            <li class="header-main-none">
+              <%= link_to 'Flow Thing', items_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
-          <li class="header-main-none">
-            <%= link_to 'Sub Thing', sub_users_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
+            <li class="header-main-none">
+              <%= link_to 'Sub Thing', sub_users_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
-          <li class="header-main-none">
-            <%= link_to 'Screen', spaces_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
+            <li class="header-main-none">
+              <%= link_to 'Screen', spaces_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
-          <li class="header-main-none">
-            <%= link_to 'Flux Screen', composites_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
+            <li class="header-main-none">
+              <%= link_to 'Flux Screen', composites_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
 
-          <%# <li class="header-main-none">
-            <%= link_to 'ペイントツールがヘルプ', paint_help_path, class: "text-Rounded500 header-text-Rounded500" %>
-          
+            <%# <li class="header-main-none">
+              <%= link_to 'ペイントツールがヘルプ', paint_help_path, class: "text-Rounded500 header-text-Rounded500" %>
+            
           <% end %>
 
           <li  class="user-dropdown">
-
-
-
-
-
-
-
             <% if current_user && current_user.profile %>
               <% profile = current_user.profile %>
               <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
@@ -132,10 +140,17 @@
 
                 
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール', tool_explanation_path, class: 'user-dropdown-link' %>
+              
+
+
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(アニメーション)', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+
                 <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
 
-<% if @profile.present? && !@profile.new_record? %>
+                <% if @profile.present? && !@profile.new_record? %>
 
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
                 <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Sub Thing', sub_users_path, class: 'user-dropdown-link' %></li>
@@ -155,7 +170,6 @@
                 <li class='user-dropdown-item'><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'user-dropdown-link' %></li>
               <ul>
             </div>
-
           </li>
 
 <% if @profile.present? && !@profile.new_record? %>

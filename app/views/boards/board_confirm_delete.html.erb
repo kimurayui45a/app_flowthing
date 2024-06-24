@@ -1,5 +1,10 @@
-<div class="max767-container">
-<div class="btn-group">
+
+<% profile = current_user.profile if user_signed_in? %>
+<div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+
+<div class="info-container flex-column">
+
+  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
 <h1>
   <h2><%= @board.board_title %></h2>
   

@@ -4,7 +4,7 @@
   <% profile = current_user.profile if user_signed_in? %>
   <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-    <div class="text-Rounded700"><h1 class="sidebar-title">ツール</h1></div>
+    <div class="text-Rounded700"><h1 class="sidebar-title">ツール(ペイント)</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
           <li><%= link_to '基本操作', tool_explanation_path + '#section1' %></li>
@@ -185,7 +185,7 @@
         <p>
         これらの仕様により選択範囲/挿入画像の描画先レイヤーを自由に選択することが可能です。<br>
         レイヤーを移動する必要がない場合は他のレイヤーを選択せずに描画レイヤーにて操作を行なって下さい。<br>
-        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem; color: #EB625A;">※「選択ツール」「画像ツール」の操作中は、レイヤー選択機能をオンにしても挿入操作が完了するまでレイヤーの入れ替えなどの通常機能は利用できません。</span>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※「選択ツール」「画像ツール」の操作中は、レイヤー選択機能をオンにしても挿入操作が完了するまでレイヤーの入れ替えなどの通常機能は利用できません。</span>
         </p><br>
 
       <p>変形作業が完了しましたら、確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %><%= image_tag('image_confirm_btn.png', alt: '画像ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押して操作を終了できます。
@@ -298,7 +298,7 @@
       <p>
         コピーという項目にチェックを入れると原本を直接編集するのではなく、原本を複製した後にぼかし処理を行います。<br>
         この場合、ぼかした描画の転移先は描画レイヤー以外を選択することをお勧めします。<br>
-        <span class="text-Rounded500" style="font-size: 0.85rem; margin-top: 0rem; color: #EB625A;">※転移先を原本と同じ描画レイヤーにすると原本が直接上書きされてしまうためコピー機能の効果はありません。</span>
+        <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※転移先を原本と同じ描画レイヤーにすると原本が直接上書きされてしまうためコピー機能の効果はありません。</span>
       </p>
       <p>
         原本をコピーしてから操作を行いたい場合、コピーの項目にチェックをいれるタイミングは決定ボタン<%= image_tag('select_decision_btn.png', alt: '選択ツールの決定ボタン', class: "explanation-image", style: "width: 70px;") %>を押す前に行なって下さい。<br>
@@ -582,7 +582,7 @@
         <span style="color: #EB625A;" class="text-Rounded500">※日本語に対応していないフォントを使用した時の表示について</span><br>
         日本語に対応していないフォントを選択した場合、デフォルトの表示になります。<br>
         現在導入しているフォントは<span style="color: #59afc7;" class="text-Rounded500">「Noto Sans JP」「ヒラギノ明朝 ProN」「ヒラギノ丸ゴ ProN」</span>以外日本語に対応していないため下記の表示になります。<br>
-        <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;"><i class="bi bi-arrow-down"></i>日本語対応していないフォントの表示</span><br>
+        <span class="red-text text-Rounded500" style="font-size: 0.85rem;"><i class="bi bi-arrow-down"></i>日本語対応していないフォントの表示</span><br>
         <%= image_tag('ja_arial_defo.png', alt: '日本語対応していないフォントの表示', class: "font-sample-image") %>
       </p><br>
     </div>
