@@ -52,13 +52,11 @@
 
 
 
-
-
   <div class="sidebar-content">
 
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title">
-      <span class="text-line">詳細設定パネル2(選択/画像/図形/テキスト)</span>
+      <span class="text-line">詳細設定パネル2(選択/図形)</span>
     </h2>
 
     <section id="section1">
@@ -74,7 +72,7 @@
 
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
       <span class="point-line">
-      選択/画像の詳細設定パネルの共通基本項目
+      選択/画像の詳細設定パネルの共通項目
       </span>
     </h4>
 
@@ -212,7 +210,7 @@
       <p>
         選択範囲のみを削除するモードです。<br>
         このモードには決定/確定ボタンはなく、範囲選択後<%= image_tag('select_delete_btn_confirm.png', alt: '選択範囲削除ボタン', class: "explanation-image", style: "width: 70px;") %>ボタンを押すと選択された範囲のみが削除されます。<br>
-        また、<%= image_tag('select_delete_outside_btn.png', alt: '選択範囲外を削除するボタン', class: "toolbtn-image") %><span class="sakura-line">をアクティブにすると<span style="color: #59afc7;" class="text-Rounded500">選択範囲外</span>が削除</span>され選択範囲の中の描画だけが残ります。
+        また、<%= image_tag('select_delete_outside_btn.png', alt: '選択範囲外を削除するボタン', class: "toolbtn-image", style: "margin-top: -0.5rem;") %><span class="sakura-line">をアクティブにすると<span style="color: #59afc7;" class="text-Rounded500">選択範囲外</span>が削除</span>され選択範囲の中の描画だけが残ります。
       </p><br>
       <p>
         <span><%= image_tag('select_delete_whitebtn.png', alt: '選択範囲を削除するボタン', class: "toolbtn-image") %>：選択範囲の中を削除するモード。</span><br>
@@ -335,8 +333,6 @@
       </p>
     </div>
 
-
-
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
       <span class="point-line">
       画像ツール
@@ -362,6 +358,107 @@
       </p>
     </div>
 
+
+
+
+    <section id="section2">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          図形/テキスト
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('shapes_panel.png', alt: '図形/テキストの詳細設定パネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      図形/テキストの詳細設定パネルの共通項目
+      </span>
+    </h4>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;"><span style="color: #f49e25;" class="text-Rounded700">図形/テキストツールの切り替え</span><%= image_tag('sharp_btn_list.png', alt: '図形/テキストツールを切り替えるボタン', class: "explanation-image", style: "width: 150px;") %><br>
+        図形/テキストツールを切り替えられるボタンです。<span style="color: #F8A3B1;" class="text-Rounded500">「四角形」「円形」「三角形」「直線」「テキスト」</span>の5つのツールの切り替えが行えます。各ツールの詳細は後述します。
+      </p><br>
+      
+      <p style="margin-bottom: -0.8rem;"><span style="color: #3A559D;" class="text-Rounded500">プレビュー</span><%= image_tag('sharp_preview.png', alt: '図形/テキストツールのプレビュー', class: "explanation-image", style: "width: 50px;") %>：挿入する図形/テキストのスタイルを確認できます。</p><br>
+
+      <p><span style="color: #bfad28;" class="text-Rounded500">図形の挿入方法を選択</span><%= image_tag('sharptool_mode_btn.png', alt: '図形の挿入方法を選択するボタン', class: "explanation-image", style: "width: 50px;") %><br>
+        この図形ツールには<span style="color: #59BC9D;" class="text-Rounded500">「描画モード<%= image_tag('sharp_drawing_btn.png', alt: '描画モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>と<span style="color: #f49e25;" class="text-Rounded500">「配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>二つのモードがあります。<br>
+        <span style="color: #59BC9D;" class="text-Rounded500">「描画モード<%= image_tag('sharp_drawing_btn.png', alt: '描画モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>では、クリックしてドラッグすることで<span class="sakura-line">直感的に図形を描く</span>ことができます。<br>
+        一方、<span style="color: #f49e25;" class="text-Rounded500">「配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>では、あらかじめ数値を入力して<span class="sakura-line">決められたサイズ</span>の図形を挿入します。<br>
+        尚、<span class="sakura-line">テキストを挿入する場合は、自動的に<span style="color: #f49e25;" class="text-Rounded500">「配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span></span>が選択されます。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #7CBB72;" class="text-Rounded500">図形/テキストのサイズ選択</span>：挿入したい図形/テキストのサイズを数値で入力し設定できます。「配置モード」でのみこの数値が適応されます。</p><br>
+      <p><span style="color: #E19AB0;" class="text-Rounded500">回転/反転</span><%= image_tag('transform_btn.png', alt: '回転と反転のボタン', class: "explanation-image", style: "width: 100px;") %><br>
+      <span>
+        このボタンは、canvas内のペイントを回転または反転させます。<br>
+        選択範囲が指定されていない場合はcanvas全体が対象となりますが、選択範囲がある場合は、その範囲内のみ回転/反転が適用されます。<br>
+        操作は描画レイヤーのペイントにのみ影響します。</span></p><br>
+      <p>
+        <span><%= image_tag('counterclockwise_btn.png', alt: '反時計回りに回転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #B9A82C;" class="text-Rounded500">反時計回り</span>に90度回転させるボタンです。</span><br>
+        <span><%= image_tag('clockwise_btn.png', alt: '時計回りに回転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #3A559D;" class="text-Rounded500">時計回り</span>に90度回転させるボタンです。</span><br>
+        <span><%= image_tag('flip_horizontal_btn.png', alt: '左右反転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #59afc7;" class="text-Rounded500">左右</span>に反転させるボタンです。</span><br>
+        <span><%= image_tag('flip_upside_down_btn.png', alt: '上下反転するボタン', class: "toolbtn-image-20") %>：対象のペイントを<span style="color: #E19AB0;" class="text-Rounded500">上下</span>に反転させるボタンです。</span>
+      </p>
+
+      <p><span style="color: #59afc7;" class="text-Rounded500">透明度スライダー</span><%= image_tag('select_fill_slider.png', alt: '透明度スライダー', class: "explanation-image", style: "width: 170px;") %>：挿入する図形/テキストの透明度を調整できます。</p><br>
+
+      <p><span style="color: #856eaa;" class="text-Rounded500">使用カラー</span><%= image_tag('select_fill_picker.png', alt: '使用カラーのパレット', class: "explanation-image", style: "width: 80px;") %>：挿入する図形/テキストのカラーを選択できます。<br>
+      中央にある「<span style="color: #E19AB0;" class="text-Rounded500"><i class="bi bi-arrow-left-right"></i></span>」で塗りつぶしカラーにセットされているカラーの入れ変えを行えます。
+      </p><br>
+
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #856eaa;" class="text-Rounded500">スタイル選択</span><%= image_tag('sharp_style_list.png', alt: 'グラデーションの選択カラー', class: "explanation-image", style: "width: 85px;") %>
+      </p><br>
+      <div class="sidebar-design" style="margin-bottom: 1.5rem;">
+        <%= image_tag('sharp_style_image.png', alt: 'スタイルの種類のサンプル', class: "toolpanel-image") %>
+      </div>
+      <p>
+        挿入する図形/テキストのスタイルを選択できます。<br>
+        スタイルの種類は<span style="color: #59afc7;" class="text-Rounded500">「線のみ塗る<%= image_tag('sharp_style1', alt: '線のみ塗るボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.3rem;") %>」</span><span style="color: #E19AB0;" class="text-Rounded500">「内部のみ塗る<%= image_tag('sharp_style2', alt: '内部のみ塗るボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.3rem;") %>」</span><span style="color: #f49e25;" class="text-Rounded500">「線も内部も塗る<%= image_tag('sharp_style3', alt: '線も内部も塗るボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.3rem;") %>」</span>の3種類です。<br>
+        <span class="sakura-line">「直線」ツールではこの機能は適応されません。</span><br>
+      </p><br>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+      図形/テキストの各ツールの紹介
+      </span>
+    </h4>
+
+      
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+      <span class="orange-line">
+      四角形<%= image_tag('sharp_rect_btn.png', alt: '四角形のボタン', class: "toolbtn-image", style: "margin-bottom: 1.6rem;") %>
+      </span>
+    </h5>
+
+      <div class="sidebar-design">
+      <%= image_tag('select_fill_panel.png', alt: '選択ツールの塗りつぶしモードのパネルの図解', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p  style="margin-bottom: -0.8rem;">
+        選択範囲を塗りつぶすモードです。<br>
+        塗りつぶしは<span style="color: #E19AB0;" class="text-Rounded500">単色</span>または<span style="color: #E19AB0;" class="text-Rounded500">2色のグラデーション</span>で行うことが可能です。<br>
+        さらに、塗りつぶしの際には透明度を含むカラーの選択も可能です。
+      </p><br>
+      <p  style="margin-bottom: 3rem;">
+        単色塗りつぶしを行う場合、設定されたカラーの中から<span style="color: #3A559D;" class="text-Rounded500">青い枠</span><%= image_tag('fill_select_btn.png', alt: '塗りつぶしツールの選択カラー', class: "explanation-image", style: "width: 20px;") %>で囲まれたカラーで塗りつぶされます。<br>
+        グラデーションを適用する場合は、オプション内の<span style="color: #7f69a2;" class="text-Rounded500">塗りつぶしメニュー</span>から<%= image_tag('select_fill_picker.png', alt: 'グラデーションの選択カラー', class: "explanation-image", style: "width: 80px;") %>でカラーを選択し、方向ボタン<%= image_tag('fill_vertical_btn.png', alt: '塗りつぶしツールの垂直ボタン', class: "explanation-image", style: "width: 55px;") %><%= image_tag('fill_horizontal_btn.png', alt: '塗りつぶしツールの水平ボタン', class: "explanation-image", style: "width: 55px;") %>で方向を決めます。<br>
+        <%= image_tag('select_fill_picker.png', alt: 'グラデーションの選択カラー', class: "explanation-image", style: "width: 80px;") %>の中央にある「<span style="color: #E19AB0;" class="text-Rounded500"><i class="bi bi-arrow-left-right"></i></span>」で塗りつぶしカラーにセットされているカラーの入れ変えを行えます。<br>
+        このモードは確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押すまで何度でも操作の調整を行えます。
+      </p>
+
+      <p>
+        <span><%= image_tag('select_fill_slider.png', alt: '透明度スライダー', class: "explanation-image", style: "width: 170px;") %>：選択しているカラーの透明度を調整できます。</span><br>
+      </p>
+    </div>
 
 
 
