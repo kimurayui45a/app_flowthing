@@ -143,7 +143,7 @@
       本機能ではブラシサイズ・色の変化具合を手の力加減で調整できます。<br>
     </p>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -2.5rem;">
-      <span class="red-text text-Rounded500">※</span>
+      <span class="text-Rounded500" style="color: #EB625A;">※</span>
       ただし、この筆圧機能は、ペン型マウスやペンタブレットなどの特定の入力デバイスに限定されており、通常のマウスやタッチスクリーンでは利用できません。<br>
       さらに、使用しているブラウザやその設定によっては、筆圧機能が正常に作動しない場合があります。
     </p>
@@ -232,7 +232,7 @@
       チェックがついていない場合は12枚のレイヤー情報を1枚のレイヤーに集結して保存します。
     </p>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -2.5rem;">
-      <span class="red-text text-Rounded500">※</span>
+      <span class="text-Rounded500" style="color: #EB625A;">※</span>
       保存を行う際には保存したいレイヤーが表示状態にあることを確認してください。<br>
       非表示に設定されているレイヤーは、保存プロセス中にデータが削除されるため、結果として保存されません。<br>
       このため、保存したいレイヤーは必ず表示状態をオンにしてから保存ボタンを押して下さい。<br>
@@ -291,7 +291,7 @@
       </span>
     </h4>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
-      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※
+      <span class="text-Rounded500" style="font-size: 0.85rem; margin-top: 0rem; color: #EB625A;">※
       「ペン」「選択/テキスト/画像」は「<%= link_to '詳細設定パネル', tool_explanation_second_path + '#section1', class: "embedded-item text-Rounded500" %>」の項目にて解説します。
       </span>
     </p>
@@ -310,7 +310,7 @@
       <span class="red-text text-Rounded500">取り消し</span>を行なった後にこのボタンをクリックすると取り消された最後のペイントを再び適用し、作業を1ステップ進めることができます。<br>
       macでのみショートカットキーに対応しております。コマンドは<span class="text-Rounded500" style="color: #e4816c;">「shift」＋「command」＋「Z」</span>です。
       </p><br>
-      <p class="red-text text-Rounded" style="font-size: 0.85rem; margin-top: -1rem;">※
+      <p class="text-Rounded" style="font-size: 0.85rem; margin-top: -1rem; color: #EB625A;">※
         「選択/変形」と「取り消し/やり直し」について<br>
         変形中の操作を取り消すことはできません。「確定」を押した前後での描画の「取り消し/やり直し」は可能です。
       </p><br>
@@ -456,7 +456,7 @@
         2つのプレビューのうち片方は必ずカラーピッカーのポインタが示す色によって随時更新されます。<br>
         <span style="color: #F8A3B1;" class="text-Rounded500">「メインプレビュー」</span>と<span style="color: #59afc7;" class="text-Rounded500">「サブプレビュー」</span>は入れ替えボタン<%= image_tag('change_btn.png', alt: 'プレビュー入れ替えボタン', class: "toolbtn-image-20", style: "width: 15px;") %>をクリックすることで入れ替えることが可能です。<br>
         <span style="color: #F8A3B1;" class="text-Rounded500">「メインプレビュー」</span>もしくは<span style="color: #59afc7;" class="text-Rounded500">「サブプレビュー」</span>が示している色に更新したい場合は該当のプレビューをクリックして下さい。<br>
-        <span class="red-text text-Rounded" style="font-size: 0.85rem;">※入れ替えボタン<%= image_tag('change_btn.png', alt: 'プレビュー入れ替えボタン', class: "toolbtn-image-20", style: "width: 12px;") %>をクリックしたのみでは現在のカラーの変更は起こりません。</span>
+        <span class="text-Rounded" style="font-size: 0.85rem; color: #EB625A;">※入れ替えボタン<%= image_tag('change_btn.png', alt: 'プレビュー入れ替えボタン', class: "toolbtn-image-20", style: "width: 12px;") %>をクリックしたのみでは現在のカラーの変更は起こりません。</span>
         </p><br>
 
 
@@ -523,7 +523,7 @@
       このボタンを押すとレイヤー選択機能がオン<%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %>になり、レイヤーパネルの状態が下記の「<span class="text-Rounded500 point-line">レイヤー選択機能がオンの時のレイヤーパネル</span>」のものに変化します。</p><br>
     </div>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -1rem;">
-      <span class="red-text text-Rounded500" style="font-size: 0.85rem;  margin-top: 0rem;">※
+      <span class="text-Rounded500" style="font-size: 0.85rem; margin-top: 0rem; color: #EB625A;">※
       レイヤー関連の機能については「レイヤーUI」の項目にて解説します。
       </span>
     </p>
@@ -550,11 +550,11 @@
 
       <p><span style="color: #da96ab;" class="text-Rounded700">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>：
       選択レイヤーがある状態でこのボタンを押すと、<span style="color: #F8A3B1;" class="text-Rounded500">「描画レイヤー」</span>のペイントを<span style="color: #59afc7;" class="text-Rounded500">「選択レイヤー」</span>に移動します。<br>
-      <span class="red-text text-Rounded500">※</span>この機能ではブレンドモードや透明度は追従しません。そのため、ブレンドモードや透明度の効果がかかっていない状態で<span style="color: #F8A3B1;" class="text-Rounded500">ペイントのみが移動</span>します。</p><br>
+      <span class="text-Rounded500" style="color: #EB625A;">※</span>この機能ではブレンドモードや透明度は追従しません。そのため、ブレンドモードや透明度の効果がかかっていない状態で<span style="color: #F8A3B1;" class="text-Rounded500">ペイントのみが移動</span>します。</p><br>
 
       <p><span style="color: #da96ab;" class="text-Rounded700">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>：
       選択レイヤーがある状態でこのボタンを押すと、<span style="color: #F8A3B1;" class="text-Rounded500">「描画レイヤー」</span>のペイントを<span style="color: #59afc7;" class="text-Rounded500">「選択レイヤー」</span>にコピーして描画します。<br>
-      <span class="red-text text-Rounded500">※</span>この機能ではブレンドモードや透明度は追従しません。そのため、ブレンドモードや透明度の効果がかかっていない状態で<span style="color: #F8A3B1;" class="text-Rounded500">ペイントのみが移動</span>します。</p><br>
+      <span class="text-Rounded500" style="color: #EB625A;">※</span>この機能ではブレンドモードや透明度は追従しません。そのため、ブレンドモードや透明度の効果がかかっていない状態で<span style="color: #F8A3B1;" class="text-Rounded500">ペイントのみが移動</span>します。</p><br>
     </div>
 
     <h4 class="explanation-section-pointtitle" style="margin-top: 5rem;">
@@ -687,8 +687,8 @@
       この状態のレイヤーが現在<span style="color: #F8A3B1;" class="text-Rounded500">「ペイントできるレイヤー」</span>になります。作成したペイントはこの状態のレイヤーにのみ描画されます。</p><br>
 
       
-      <p class="red-text text-Rounded500">※レイヤーUIのクリック判定について</p><br>
-      <div style="margin-top: -2.5rem;"><%= image_tag('layer_click_area.png', alt: '※レイヤーUIのクリック判定に関する画像', class: "layer-ui-image") %></div>
+      <p class="text-Rounded500" style="color: #EB625A;">※レイヤーUIのクリック判定について</p><br>
+      <div style="margin-top: -2.5rem;"><%= image_tag('layer_click_area.png', alt: 'レイヤーUIのクリック判定に関する画像', class: "layer-ui-image") %></div>
       <p style="margin-top: -1rem; margin-bottom: 2.5rem;">上記の赤枠の部分がクリックで描画/選択レイヤーを切り替えられる判定部分になります。<br>
       その他の部分をクリックしても切り替えは発生しません。</p>
 

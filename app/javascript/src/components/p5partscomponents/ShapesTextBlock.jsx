@@ -233,7 +233,7 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
           {/* 行間フォーム */}
           <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-8px' }}>
             <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>行間</span></div>
-            <div style={{ alignItems: 'flex-end', display: 'flex' }}>
+            <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
               <input
                 className="no-drag form-select-value"
                 type="number"
@@ -245,6 +245,7 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
                 onChange={handleTextLeadingChange}
                 onBlur={handleTextLeadingBlur}
               /><span className="text-Rounded" style={{ fontSize: '14px', marginLeft: '4px', color:'#4A4A4A' }}>px</span>
+              <span className="tooltip-text">最大値50px</span>
             </div>
           </div>
         </>
@@ -410,7 +411,7 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
           {/* テキストの枠線の太さフォーム */}
           <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
             <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>枠線の太さ</span></div>
-            <div style={{ alignItems: 'flex-end', display: 'flex' }}>
+            <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
               <input
                 className="no-drag form-select-value"
                 type="number"
@@ -422,6 +423,7 @@ const ShapesTextBlock = ({ShapesTextParts}) => {
                 onChange={handleTextStrokeChange}
                 onBlur={handleTextStrokeBlur}
               /><span className="text-Rounded" style={{ fontSize: '14px', marginLeft: '4px', color:'#4A4A4A' }}>px</span>
+              <span className="tooltip-text">最大値20px</span>
             </div>
           </div>
         </>

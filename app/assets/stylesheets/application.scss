@@ -9455,6 +9455,16 @@ background-color: #d1eee6;
   width: 100px;
 }
 
+.font-sample-image {
+  display: inline-block;
+  margin: 0px auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+  // margin-left: 0.12rem;
+  margin: 0.2rem;
+  width: 150px;
+}
+
 .toolbtn-image-20 {
   width: 20px;
   display: inline-block;
@@ -10113,6 +10123,48 @@ background-color: #d1eee6;
 // .dot-sample-table tbody tr:hover {
 //   background-color: #f9f9f9; /* マウスオーバーで背景色を変更 */
 // }
+
+
+
+
+
+.textfont-table {
+  // width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.textfont-table th, .textfont-table td {
+  border: 1px solid #ccc;
+  padding: 0.2rem;
+}
+
+.textfont-table th {
+  background-color: #d6edf9;
+}
+
+.textfont-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+// .textfont-table-text {
+//   font-size: 0.7rem;
+//   line-height: 1.5;
+//   text-align: left;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
