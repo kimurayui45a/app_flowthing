@@ -87,7 +87,7 @@
       </span>
     </h3>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
-      <span style="color: #E19AB0;" class="text-Rounded500">「Screen」</span>の項目で作成したアイテムを背景として挿入できます。<br>単独の静単一の静的背景に留まらず、複数のScreenを用いたスライドアニメーションの作成も可能です。
+      <span style="color: #E19AB0;" class="text-Rounded500">「Screen」</span>の項目で作成したアイテムを背景として挿入できます。<br>単一の静的背景に留まらず、複数のScreenを用いたスライドアニメーションの作成も可能です。
     </p>
 
 
@@ -107,7 +107,8 @@
     </h3>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
       ステージに配置されるFlow Thingは挿入された順序に従って層を形成します。<br>
-      <span class="sakura-line">先に挿入されたものは下層に、後に挿入されたものは上層に配置されます。Screenは常に最下層に位置します。</span>
+      <span class="sakura-line">先に挿入されたものは下層に、後に挿入されたものは上層に配置されます。<br>
+        Screenは常に最下層に位置します。</span>
     </p>
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
@@ -150,6 +151,28 @@
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -4rem;">
       アニメーションの種類は今後さらに増やしていく予定です。
     </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 2rem;">
+      <span class="sub-line">
+      ステージのサイズと座標
+      </span>
+    </h3>
+    <div class="sidebar-design">
+      <%= image_tag('anime_coordinate.png', alt: '座標説明の図解', class: "toolpanel-image") %>
+    </div>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      現在、このアニメツールのステージのサイズは<span style="color: #EB625A;" class="text-Rounded500">横幅「800px」</span><span style="color: #3A559D;" class="text-Rounded500">縦幅「450px」</span>で設定されています。<br>
+      ステージの左上の点が座標 <span style="color: #59afc7;" class="text-Rounded500">(X: 0, Y: 0) </span>になります。<br>
+      Flow Thingは <span style="color: #f49e25;" class="text-Rounded500">中心点</span>を基準にステージ上の位置を記録しております。
+    </p><br>
+
+
+
+
+
+
+
+
 
 <div style="height: 7rem; width: 100px;"></div>
 
@@ -210,8 +233,13 @@
       </p><br>
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded700">Screenボタン</span><%= image_tag('anime_screen_btn.png', alt: 'ステージ上にscreenを配置するボタン', class: "explanation-image", style: "width: 70px;") %>：
-        ステージ上にScreenを配置するボタンです。
+        ステージ上にScreenを配置するボタンです。単一選択モードの場合、このボタンを押すたびに配置されるScreenが上書き更新されます。
+      </p><br>
+
+      <p><span style="color: #59afc7;" class="text-Rounded700">プレビュー</span><%= image_tag('anime_screen_preview.png', alt: 'screenのプレビュー', class: "explanation-image", style: "width: 100px;") %>：
+        現在のメインScreenを確認できるプレビューです。メインScreenは、複数のScreenの中で基本となる画面です。
       </p>
+      <p style="margin-top: 3rem;"><span class="sakura-line">「単一選択モード」や「メインScreen」などScreenの機能の詳細は後述の「<%= link_to 'カスタムパネルのScreen編',  '#section30', class: "embedded-item text-Rounded500" %>」で紹介します。</span></p>
     </div>
 
     <div style="height: 7rem; width: 100px;"></div>
@@ -227,23 +255,21 @@
       </p>
     </section>
 
-
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
         Flow Thing編
       </span>
     </h3>
-      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
 
       <p>カスタムパネルのFlow Thingの項目では<span style="color: #E19AB0;" class="text-Rounded500">「スタイル」「シンプル」「トクベツ」</span>の3つのタブに分かれております。</p>
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">スタイル</span>：Flow Thingの<span style="color: #7CBB72;" class="text-Rounded500">「スケール」「透明度」「角度」</span>の3つのスタイルを調整できる項目です。</p><br>
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">シンプル</span>：選択したステージ上のFlow Thingに基本的なアニメーションである<span style="color: #E19AB0;" class="text-Rounded500">「上下アニメ」「左右アニメ」「回転/振り子アニメ」「縮尺アニメ」</span>を設定できます。</p><br>
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">トクベツ</span>：選択したステージ上のFlow Thingに特殊なアニメーションである<span style="color: #59afc7;" class="text-Rounded500">「ランダムアニメ」「追従アニメ」「移動範囲アニメ（四角形/円形）」</span>を設定できます。</p>
-      
     </div>
 
 
-    <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem;">
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
       <span class="point-line">
       「スタイル」タブ
       </span>
@@ -269,6 +295,176 @@
 
 
 
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      「シンプル」タブ
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('anime_simple_style.png', alt: 'カスタムパネルのシンプルタブの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        Flow Thingに基本的なシンプルなアニメーションを付与できるパネルです。<br>
+        パネルの左端の<span style="color: #59afc7;" class="text-Rounded500">メニューバー</span>より各項目の場所にジャンプできます。<br>
+        対象のFlow Thingをクリックして選択し、<span style="color: #E19AB0;" class="text-Rounded500">「実行/停止」</span>ボタンを使用してアニメーションを開始または停止できます。<br>
+        アニメーションが既に付与されている場合は、このボタンで停止し、停止している場合は動作を開始します。<br>
+        アニメーションが付与されているFlow Thingの動作を変更するには、まず既存のアニメーションを停止し、その後新しい設定で再度実行してください。
+      </p>
+    </div>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      上下アニメ/左右アニメ
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('anime_simple_top_left.png', alt: '上下アニメの解説', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        対象のFlow Thingに上下/左右にスライドするアニメーションを設定できます。<br>スライドで移動する「距離」と「速さ」を設定できます。<br>
+        <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※「上下アニメ/左右アニメ」は「トクベツ」タブのアニメと同時実行できません。</span>
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+      </p>
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      回転アニメ/振り子アニメ
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('anime_simple_rotate.png', alt: '回転アニメの解説', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        対象のFlow Thingに360度の回転アニメと、左右に振り子のように揺れる振り子アニメを設定できます。<br>
+        回転アニメでは「回転の速さ」と「回転方向（時計回り・反時計回り）」を、振り子アニメでは「振り子の速さ」「回転方向（時計回り・反時計回り）」「最大回転角度（回転範囲）」を調整することが可能です。
+      </p><br>
+
+      <p><span style="color: #f49e25;" class="text-Rounded500">回転方向切り替え</span><%= image_tag('anime_direction_btn.png', alt: '回転/振り子アニメの回転方向を切り替えるボタン', class: "explanation-image", style: "width: 40px;") %><br>
+        <span><%= image_tag('anime_ clockwise_btn.png', alt: '時計回りに回転するボタン', class: "toolbtn-image-20") %>：回転方向を<span style="color: #E19AB0;" class="text-Rounded500">時計回り</span>に設定するボタンです。</span><br>
+        <span><%= image_tag('anime_counterclockwise_btn.png', alt: '反時計回りに回転するボタン', class: "toolbtn-image-20") %>：回転方向を<span style="color: #E19AB0;" class="text-Rounded500">反時計回り</span>に設定するボタンです。</span>
+      </p>
+
+      <p style="margin-bottom: -0.8rem; margin-top: 1rem;"><span style="color: #bfad28;" class="text-Rounded500">振り子アニメに切り替えるボタン</span><%= image_tag('anime_ rotate_btn.png', alt: '振り子アニメ切り替えボタン', class: "toolbtn-image-20") %>：このボタンを押すと項目が振り子アニメに切り替わります。</p><br>
+      <p><span style="color: #3A559D;" class="text-Rounded500">回転アニメに切り替えるボタン</span><%= image_tag('anime_ pendulum_btn.png', alt: '回転アニメ切り替えボタン', class: "toolbtn-image-20") %>：このボタンを押すと項目が回転アニメに切り替わります。</p>
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      縮尺アニメ
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('anime_simple_scale.png', alt: '縮尺アニメの解説', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        対象のFlow Thingに、スケールが変化するアニメーションを設定できます。<br>
+        「最大スケール」「最小スケール」「スケールが変化する速さ」を設定できます。
+      </p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      「トクベツ」タブ
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('anime_special_panel.png', alt: 'カスタムパネルのトクベツタブの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        Flow Thingに特殊なアニメーションを付与できるパネルです。<br>
+        パネルの左端の<span style="color: #59afc7;" class="text-Rounded500">メニューバー</span>より各項目の場所にジャンプできます。<br>
+        対象のFlow Thingをクリックして選択し、<span style="color: #E19AB0;" class="text-Rounded500">「実行/停止」</span>ボタンを使用してアニメーションを開始または停止できます。<br>
+        アニメーションが既に付与されている場合は、このボタンで停止し、停止している場合は動作を開始します。<br>
+        アニメーションが付与されているFlow Thingの動作を変更するには、まず既存のアニメーションを停止し、その後新しい設定で再度実行してください。
+      </p>
+    </div>
+
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      ランダムアニメ
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('anime_special_random.png', alt: 'ランダムアニメの解説', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        対象のFlow Thingに、ランダムに移動するアニメーションを設定できます。<br>
+        ランダムに移動先の目的地が決まり、そこに向かって対象のFlow Thingが移動します。<br>
+        目的地に到達すると新たな目的地がランダムで設定され再びそこに向かって移動します。<br>
+        「距離」の設定値は目的地にどれくらい近づいたら次の目的地への移動を開始するかを定義します。
+      </p><br>
+      <p>
+        「距離」の値が大きいほど、目的地到達の判定範囲が広がり、次の動作に切り替わるタイミングが早くなるため、全体の動きが速くなります。<br>
+        また、通常の「移動速度」も個別に設定することが可能です。
+      </p><br>
+    </div>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      追従アニメ
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('anime_special_follow.png', alt: '追従アニメの解説', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        対象のFlow Thingに、ステージ上のクリックをトリガーにマウス(カーソル)に追従するアニメーションを設定できます。<br>
+        ステージ上でクリックが発生すると対象のFlow Thingはマウス(カーソル)に向かってクリックが発生すると、Flow Thingはマウスに向かって移動し、マウスに到達するとアニメーションが停止します。<br>
+        次にステージ上でクリックされるまで、Flow Thingはその位置に停止します。<br>
+        <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※アニメの起動の判定はステージ上のみであり、他のFlow Thing上をクリックした場合アニメーションは発動しません。</span>
+      </p><br>
+
+      <p>各Flow Thingの移動速度は個別に調整可能です。<br>
+        このアニメーションは<span style="color: #7CBB72;" class="text-Rounded500">「登録」</span>ボタンによって実行され、選択中のFlow Thingに追従アニメを付与します。<br>
+        <span style="color: #f49e25;" class="text-Rounded500">「削除」</span>ボタンを押すと、選択中のFlow Thingからアニメーションが削除されます。<br>
+        <span style="color: #7CBB72;" class="text-Rounded500">「全削除」</span>ボタンを押すと、選択状態に関係なく全てのFlow Thingから追従アニメを削除できます。
+      </p>
+    </div>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 2rem; font-size: 1rem;">
+      <span class="sakura-line">
+      移動範囲アニメ[四角形/円形]
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('anime_moving_range.png', alt: '移動範囲アニメの解説', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        対象のFlow Thingに、指定範囲内で繰り返し移動するアニメーションを設定できます。<br>
+          アニメの開始位置は<span style="color: #E19AB0;" class="text-Rounded500">「X座標」「Y座標」</span>で指定します。<br>
+          <span style="color: #E19AB0;" class="text-Rounded500">「移動範囲アニメ[四角形]」</span>では、これらの座標が<span style="color: #E19AB0;" class="text-Rounded500">「左上の角」</span>として機能し、<span style="color: #59afc7;" class="text-Rounded500">「移動範囲アニメ[円形]」</span>では<span style="color: #59afc7;" class="text-Rounded500">「円の中心点」</span>として機能します。
+      </p><br>
+      <p>
+        移動範囲は<span style="color: #E19AB0;" class="text-Rounded500">「移動範囲アニメ[四角形]」</span>の場合<span style="color: #E19AB0;" class="text-Rounded500">「幅」「高さ」</span>で、<span style="color: #59afc7;" class="text-Rounded500">「移動範囲アニメ[円形]」</span>の場合は<span style="color: #59afc7;" class="text-Rounded500">「半径」</span>で設定します。<br>
+        また、<span style="color: #7CBB72;" class="text-Rounded500">「速さ」</span>の項目で移動速度も調整可能です。
+      </p>
+    </div>
+
+
+<section id="section30">
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+        Screen編
+      </span>
+    </h3>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+
+    </div>
+</section>
 
 <div style="height: 10rem; width: 100px;"></div>
 

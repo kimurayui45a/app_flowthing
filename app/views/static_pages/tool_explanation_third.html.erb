@@ -697,7 +697,7 @@
     </div>
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
-      <p style="margin-bottom: -0.8rem;">
+      <p>
         canvasのスケールと位置を調整できるパネルです。<br>
         また、組み込まれた全体プレビュー機能によりcanvas全体の状態を確認できます。
       </p>
@@ -712,10 +712,12 @@
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #7CBB72;" class="text-Rounded500">縮小ボタン</span><%= image_tag('scale_minus.png', alt: '縮小ボタン', class: "toolbtn-image") %>：canvasを0.5ずつ縮小できます。</p><br>
 
-      <p style="margin-bottom: -0.8rem;"><span style="color: #59BC9D;" class="text-Rounded500">スケールリセット</span><%= image_tag('scale_reset.png', alt: 'スケールリセット', class: "toolbtn-image") %>：canvasのスケールを初期値1に戻します。</p><br>
+      <p><span style="color: #59BC9D;" class="text-Rounded500">スケールリセット</span><%= image_tag('scale_reset.png', alt: 'スケールリセット', class: "toolbtn-image") %>：canvasのスケールを初期値1に戻します。</p><br>
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">canvasの移動ツール</span><%= image_tag('canvas_move.png', alt: 'canvasの移動ツール', class: "toolbtn-image") %><br>
-      <%= image_tag('scale_move_image.png', alt: 'canvasの移動ツールのイメージ', class: "toolpanel-image") %><br>
+      <%= image_tag('scale_move_image.png', alt: 'canvasの移動ツールのイメージ', class: "toolpanel-image") %>
+      </p><br>
+      <p>
       作業スペース内でcanvasを自由に移動することができます。<br>
       これによって、拡大したい部分を簡単に作業スペースの中心に配置することが可能です。
       </p><br>
