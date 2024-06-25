@@ -8,10 +8,10 @@
     <div class="menu-sidebar text-Rounded500">
       <ul>
           <li><a href="#section1">基本操作</a></li>
-          <li><a href="#section1">リストパネル</a></li>
-          <li><a href="#section1">カスタムパネル</a></li>
-          <%# <li><a href="#section1">詳細表示パネル</a></li>
-          <li><a href="#section1">ガイドパネル</a></li> %>
+          <li><a href="#section2">リストパネル</a></li>
+          <li><a href="#section3">カスタムパネル</a></li>
+          <li><a href="#section4">詳細表示パネル</a></li>
+          <li><a href="#section5">ガイドパネル</a></li>
 
       </ul>
     </div>
@@ -53,7 +53,7 @@
         <span style="color: #59afc7;" class="text-Rounded500">リストパネル</span>：使用できるFlow ThingとScreenが表示されるパネルです。ここからステージ上にアイテムを挿入できます。<br>
         <span style="color: #856eaa;" class="text-Rounded500">カスタムパネル</span>：ステージ上のFlow ThingとScreenに詳細な情報を設定できるパネルです。<br>
         <span style="color: #7CBB72;" class="text-Rounded500">詳細表示パネル</span>：選択されているFlow Thingのスタイルとアニメーションの設定値が表示されるパネルです。<br>
-        <span style="color: #E19AB0;" class="text-Rounded500">ガイドパネル</span>：アニメツールの全体ガイドを確認できるパネルです。
+        <span style="color: #E19AB0;" class="text-Rounded500">ガイドパネル</span>：アニメーションツールの全体ガイドを確認できるパネルです。
       </p>
 
       <div style="margin-top: 2.5rem;">
@@ -171,9 +171,6 @@
 
 
 
-
-
-
 <div style="height: 7rem; width: 100px;"></div>
 
     <section id="section2">
@@ -236,7 +233,7 @@
         ステージ上にScreenを配置するボタンです。単一選択モードの場合、このボタンを押すたびに配置されるScreenが上書き更新されます。
       </p><br>
 
-      <p><span style="color: #59afc7;" class="text-Rounded700">プレビュー</span><%= image_tag('anime_screen_preview.png', alt: 'screenのプレビュー', class: "explanation-image", style: "width: 100px;") %>：
+      <p><span style="color: #59afc7;" class="text-Rounded700">現在のメインScreen</span><%= image_tag('anime_screen_preview.png', alt: 'screenのプレビュー', class: "explanation-image", style: "width: 100px;") %>：
         現在のメインScreenを確認できるプレビューです。メインScreenは、複数のScreenの中で基本となる画面です。
       </p>
       <p style="margin-top: 3rem;"><span class="sakura-line">「単一選択モード」や「メインScreen」などScreenの機能の詳細は後述の「<%= link_to 'カスタムパネルのScreen編',  '#section30', class: "embedded-item text-Rounded500" %>」で紹介します。</span></p>
@@ -343,12 +340,12 @@
       </p><br>
 
       <p><span style="color: #f49e25;" class="text-Rounded500">回転方向切り替え</span><%= image_tag('anime_direction_btn.png', alt: '回転/振り子アニメの回転方向を切り替えるボタン', class: "explanation-image", style: "width: 40px;") %><br>
-        <span><%= image_tag('anime_ clockwise_btn.png', alt: '時計回りに回転するボタン', class: "toolbtn-image-20") %>：回転方向を<span style="color: #E19AB0;" class="text-Rounded500">時計回り</span>に設定するボタンです。</span><br>
+        <span><%= image_tag('anime_clockwise_btn.png', alt: '時計回りに回転するボタン', class: "toolbtn-image-20") %>：回転方向を<span style="color: #E19AB0;" class="text-Rounded500">時計回り</span>に設定するボタンです。</span><br>
         <span><%= image_tag('anime_counterclockwise_btn.png', alt: '反時計回りに回転するボタン', class: "toolbtn-image-20") %>：回転方向を<span style="color: #E19AB0;" class="text-Rounded500">反時計回り</span>に設定するボタンです。</span>
       </p>
 
-      <p style="margin-bottom: -0.8rem; margin-top: 1rem;"><span style="color: #bfad28;" class="text-Rounded500">振り子アニメに切り替えるボタン</span><%= image_tag('anime_ rotate_btn.png', alt: '振り子アニメ切り替えボタン', class: "toolbtn-image-20") %>：このボタンを押すと項目が振り子アニメに切り替わります。</p><br>
-      <p><span style="color: #3A559D;" class="text-Rounded500">回転アニメに切り替えるボタン</span><%= image_tag('anime_ pendulum_btn.png', alt: '回転アニメ切り替えボタン', class: "toolbtn-image-20") %>：このボタンを押すと項目が回転アニメに切り替わります。</p>
+      <p style="margin-bottom: -0.8rem; margin-top: 1rem;"><span style="color: #bfad28;" class="text-Rounded500">振り子アニメに切り替えるボタン</span><%= image_tag('anime_rotate_btn.png', alt: '振り子アニメ切り替えボタン', class: "toolbtn-image-20") %>：このボタンを押すと項目が振り子アニメに切り替わります。</p><br>
+      <p><span style="color: #3A559D;" class="text-Rounded500">回転アニメに切り替えるボタン</span><%= image_tag('anime_pendulum_btn.png', alt: '回転アニメ切り替えボタン', class: "toolbtn-image-20") %>：このボタンを押すと項目が回転アニメに切り替わります。</p>
     </div>
 
 
@@ -472,13 +469,14 @@
           この数値を上げることで動きが速くなり、この数値を小さくすると動きは遅くなります。
         </span>
       </p><br>
-      <p>
+      <p style="margin-bottom: -0.8rem;">
         <span><%= image_tag('anime_screenanime_top.png', alt: '「上」から「下」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「上」から「下」にスクロールするアニメーションを設定するボタンです。</span><br>
         <span><%= image_tag('anime_screenanime_bottom.png', alt: '「下」から「上」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「下」から「上」にスクロールするアニメーションを設定するボタンです。</span><br>
         <span><%= image_tag('anime_screenanime_left.png', alt: '「左」から「右」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「左」から「右」にスクロールするアニメーションを設定するボタンです。</span><br>
-        <span><%= image_tag('anime_screenanime_right.png', alt: '「右」から「左」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「右」から「左」にスクロールするアニメーションを設定するボタンです。</span><br>
+        <span><%= image_tag('anime_screenanime_right.png', alt: '「右」から「左」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「右」から「左」にスクロールするアニメーションを設定するボタンです。</span></p><br>
 
-        <span><%= image_tag('anime_screenanime_change.png', alt: '切り替えアニメのボタン', class: "toolbtn-image-20") %><br>
+      <p>
+        <span><%= image_tag('anime_screenanime_change.png', alt: '切り替えアニメのボタン', class: "toolbtn-image-20") %>切り替えアニメ<br>
         選択したScreenに切り替えアニメーションを設定するボタンです。<br>
         このアニメーションでは、選択されたScreenを指定された順序で表示します。<br>
         カスタムパネル上には「速さ」の項目の代わりに「時間」を設定するフォームが表示されます。<br>
@@ -500,24 +498,79 @@
     </div>
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
-      <p>
-        はじめに<span style="color: #59afc7;" class="text-Rounded500">複数選択ボタン</span>をオン<%= image_tag('anime_select_screen.png', alt: '複数選択ボタン', class: "explanation-image", style: "width: 80px;") %>にして下さい。<br>
+      <p style="margin-bottom: -0.8rem;">
+        はじめに<span style="color: #E19AB0;" class="text-Rounded500">複数選択ボタン</span>をオン<%= image_tag('anime_select_screen.png', alt: '複数選択ボタン', class: "explanation-image", style: "width: 80px;") %>にして下さい。<br>
         これにより、リストパネルに表示されているScreenを<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">最大20枚</span></span>まで選択することが可能になります。
       </p><br>
 
-      <p>
-        「複数選択」がオンの状態でScreenボタンをクリックすると、カスタムパネルの<span style="color: #59afc7;" class="text-Rounded500">「選択中のScreen」</span>に選択したScreenの名前が表示されます。<br>
-        それぞれの名前はクリック可能なボタン<%= image_tag('anime_select_tag.png', alt: '選択されているScreenのタグボタン', class: "explanation-image", style: "width: 60px;") %>になっており、クリックすることでそのScreenを項目から削除できます。<br>
-        アニメーションで使用するScreenは同じものを何度でも選択可能です。
+      <p style="margin-bottom: -0.8rem;">
+        複数選択ボタンがオン<%= image_tag('anime_select_screen.png', alt: '複数選択ボタン', class: "explanation-image", style: "width: 80px;") %>の状態で<span style="color: #E19AB0;" class="text-Rounded500">Screenボタン</span><%= image_tag('anime_screen_btn.png', alt: 'ステージ上にscreenを配置するボタン', class: "explanation-image", style: "width: 70px;") %>をクリックすると、カスタムパネルの<span style="color: #59afc7;" class="text-Rounded500">「選択中のScreen」</span>に選択したScreenの名前が表示されます。<br>
+        それぞれの名前はクリック可能なタグボタン<%= image_tag('anime_select_tag.png', alt: '選択されているScreenのタグボタン', class: "explanation-image", style: "width: 60px;") %>になっており、クリックすることでそのScreenを項目から削除できます。<br>
+        <span class="sakura-line">アニメーションで使用するScreenは同じものを何度でも選択可能です。</span>
       </p><br>
 
       <p>
-        選択したScreenでアニメーションを設定するには、「更新」ボタンを押します。<br>
-        これにより、「アニメの種類選択」で設定したアニメーションが適用され、再生が開始されます。
+        選択したScreenでアニメーションを設定するには、<span style="color: #E19AB0;" class="text-Rounded500">更新ボタン</span><%= image_tag('anime_select_update.png', alt: 'Screenのアニメ更新ボタン', class: "explanation-image", style: "width: 50px;") %>を押します。<br>
+        これにより、<span style="color: #59afc7;" class="text-Rounded500">「アニメの種類選択」</span>で設定したアニメーションが適用され、再生が開始されます。
+      </p>
+
+
+
+      <p style="margin-top: 3rem;">
+        アニメーションの編集が必要な場合は、「選択中のScreen」のScreenを追加または削除し、再び更新ボタンを押してください。<br>
+        アニメーションを停止したい場合は、<span style="color: #E19AB0;" class="text-Rounded500">単一選択ボタン</span>をオン<%= image_tag('anime_single_active_btn.png', alt: '単一選択ボタン', class: "explanation-image", style: "width: 80px;") %>にします。<br>
+        これにより、リストパネルの現在の<span style="color: #59afc7;" class="text-Rounded500">メインScreen</span><%= image_tag('anime_screen_preview.png', alt: 'screenのプレビュー', class: "explanation-image", style: "width: 80px;") %>に表示されているScreenのみが静的に表示され、<span class="sakura-line">アニメーションが停止</span>します。
+      </p>
+
+      <p>
+        アニメーションが動作中で単一選択ボタンがオン<%= image_tag('anime_single_active_btn.png', alt: '単一選択ボタン', class: "explanation-image", style: "width: 80px;") %>の場合、Screenボタンを押すとアニメーションが停止し、選択されたScreenのみが静的に表示されます。<br>
+      「選択中のScreen」に既に項目がある場合、複数選択ボタンがオフでも更新ボタンを押すだけでアニメーションが更新/再生されます。
       </p>
 
     </div>
 
+
+
+<div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section4">
+      <h2 class="explanation-section-title">
+        <span class="text-line">詳細表示パネル</span>
+      </h2>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('detail_panel.png', alt: '詳細表示パネルの図解', class: "toolpanel-image") %>
+    </div>
+
+
+<div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+  <p>
+    選択されているFlow Thingの現在の状況を表示するパネルです。<br>
+    <span style="color: #59afc7;" class="text-Rounded500">ステージ内の位置(中心基準)</span>の項目はステージ上の左上を<span style="color: #59afc7;" class="text-Rounded500">(X: 0, Y: 0) </span>とした時に対象のFlow Thingの中心点がどの位置にあるかを示しています。<br>
+    対象のFlow Thingに付与されているアニメーションの項目には<span style="color: #E19AB0;" class="text-Rounded500">実行中</span>と表示されます。
+  </p>
+  </div>
+
+
+
+<div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section4">
+      <h2 class="explanation-section-title">
+        <span class="text-line">ガイドパネル</span>
+      </h2>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('guide_panel.png', alt: 'ガイドパネルの図解', class: "toolpanel-image") %>
+    </div>
+
+
+<div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+  <p>
+    このパネルでは、アニメーションツール内で作業中に各ツールの詳細説明を確認することができるパネルです。<br>
+    パネルの右端の<span style="color: #59afc7;" class="text-Rounded500">メニューバー</span>より各項目の場所にジャンプできます。
+  </p>
+  </div>
 
 
 
