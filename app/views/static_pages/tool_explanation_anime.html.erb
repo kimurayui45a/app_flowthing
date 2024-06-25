@@ -10,8 +10,8 @@
           <li><a href="#section1">基本操作</a></li>
           <li><a href="#section1">リストパネル</a></li>
           <li><a href="#section1">カスタムパネル</a></li>
-          <li><a href="#section1">詳細表示パネル</a></li>
-          <li><a href="#section1">ガイドパネル</a></li>
+          <%# <li><a href="#section1">詳細表示パネル</a></li>
+          <li><a href="#section1">ガイドパネル</a></li> %>
 
       </ul>
     </div>
@@ -292,9 +292,6 @@
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">角度</span>：<span style="color: #59afc7;" class="text-Rounded500">0.1〜360</span>の範囲でFlow Thingの角度を設定できます。</p>
     </div>
 
-
-
-
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
       <span class="point-line">
       「シンプル」タブ
@@ -455,16 +452,76 @@
     </div>
 
 
-<section id="section30">
-    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
-      <span class="sub-line">
-        Screen編
-      </span>
-    </h3>
+    <section id="section30">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+        <span class="sub-line">
+          Screen編
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('anime_custom_screen.png', alt: 'カスタムパネルのScreenタブの図解', class: "toolpanel-image") %>
+    </div>
+
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>カスタムパネルのScreenの項目では、Screenに関するアニメーションの設定を行えます。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #3A559D;" class="text-Rounded500">アニメの種類の選択</span><%= image_tag('anime_screenanime_list.png', alt: 'アニメの種類を選択できる選択ボタン', class: "explanation-image", style: "width: 150px;") %><br>
+        <span>
+          ここでScreenに付与するアニメーションの種類を設定できます。<br>
+          <span style="color: #7CBB72;" class="text-Rounded500">「速さ」</span>の項目からスライドアニメーションの速さを 「<span style="color: #7CBB72;" class="text-Rounded500">1〜100</span>」の範囲で設定できます。<br>
+          この数値を上げることで動きが速くなり、この数値を小さくすると動きは遅くなります。
+        </span>
+      </p><br>
+      <p>
+        <span><%= image_tag('anime_screenanime_top.png', alt: '「上」から「下」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「上」から「下」にスクロールするアニメーションを設定するボタンです。</span><br>
+        <span><%= image_tag('anime_screenanime_bottom.png', alt: '「下」から「上」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「下」から「上」にスクロールするアニメーションを設定するボタンです。</span><br>
+        <span><%= image_tag('anime_screenanime_left.png', alt: '「左」から「右」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「左」から「右」にスクロールするアニメーションを設定するボタンです。</span><br>
+        <span><%= image_tag('anime_screenanime_right.png', alt: '「右」から「左」にスクロールするアニメのボタン', class: "toolbtn-image-20") %>：選択したScreenに「右」から「左」にスクロールするアニメーションを設定するボタンです。</span><br>
+
+        <span><%= image_tag('anime_screenanime_change.png', alt: '切り替えアニメのボタン', class: "toolbtn-image-20") %><br>
+        選択したScreenに切り替えアニメーションを設定するボタンです。<br>
+        このアニメーションでは、選択されたScreenを指定された順序で表示します。<br>
+        カスタムパネル上には「速さ」の項目の代わりに「時間」を設定するフォームが表示されます。<br>
+        時間はミリ秒単位で指定可能です。（<span style="color: #7CBB72;" class="text-Rounded500">1秒は1000ミリ秒に相当</span>）<br>
+        設定可能な範囲は「<span style="color: #7CBB72;" class="text-Rounded500">1〜600,000ミリ秒（10分）</span>」です。
+        </span>
+      </p>
+      <p>その他の項目については後述の「<span class="point-line">Screenのアニメーションの設定方法</span>」にて記載します。</p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      Screenのアニメーションの設定方法
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('anime_custom_screen_select.png', alt: 'Screenのアニメーションの設定方法の図解', class: "toolpanel-image") %>
+    </div>
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        はじめに<span style="color: #59afc7;" class="text-Rounded500">複数選択ボタン</span>をオン<%= image_tag('anime_select_screen.png', alt: '複数選択ボタン', class: "explanation-image", style: "width: 80px;") %>にして下さい。<br>
+        これにより、リストパネルに表示されているScreenを<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">最大20枚</span></span>まで選択することが可能になります。
+      </p><br>
+
+      <p>
+        「複数選択」がオンの状態でScreenボタンをクリックすると、カスタムパネルの<span style="color: #59afc7;" class="text-Rounded500">「選択中のScreen」</span>に選択したScreenの名前が表示されます。<br>
+        それぞれの名前はクリック可能なボタン<%= image_tag('anime_select_tag.png', alt: '選択されているScreenのタグボタン', class: "explanation-image", style: "width: 60px;") %>になっており、クリックすることでそのScreenを項目から削除できます。<br>
+        アニメーションで使用するScreenは同じものを何度でも選択可能です。
+      </p><br>
+
+      <p>
+        選択したScreenでアニメーションを設定するには、「更新」ボタンを押します。<br>
+        これにより、「アニメの種類選択」で設定したアニメーションが適用され、再生が開始されます。
+      </p>
 
     </div>
-</section>
+
+
+
+
+
 
 <div style="height: 10rem; width: 100px;"></div>
 

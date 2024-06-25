@@ -537,7 +537,7 @@ const updateOthersAnime = (newStatus) => {
 
 //背景アニメ更新ボタン
 const updateSpaceAnime = () => {
-
+  if (spaceSpritesAnime && spaceSpritesAnime.length > 0) {
   updateSpaceAnimeList(spaceAnimeSpeed, spaceAnimeDirection, spaceSpritesAnime, intervalTime)
 
   setSpaceInfo(prevSpaceInfo => ({
@@ -550,6 +550,9 @@ const updateSpaceAnime = () => {
       interval_time: intervalTime
     }
   }));
+} else {
+  handleAlertMessageAnime("選択中のScreenがありません。");
+}
 }
 
 

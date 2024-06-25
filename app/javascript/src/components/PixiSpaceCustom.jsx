@@ -293,7 +293,7 @@ const PixiSpaceCustom = () => {
                 <div className="angleDegrees_value space-sprites-anime-tag-name">
                   <div className="flex-start-center" style={{ marginLeft: '3px', paddingRight: '2px' }}>
                     <i className="bi bi-tag-fill"  style={{ fontSize: '12px', color: '#ececec', marginRight: '2px' }}></i>
-                    <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>
+                    <span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec', cursor: 'pointer' }}>
                       {sprite.space_name}
                     </span>
                   </div>

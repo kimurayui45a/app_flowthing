@@ -114,7 +114,7 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p style="margin-bottom: -0.8rem;">まず選択ツール<%= image_tag('select_tool_btn.png', alt: '選択ツールのボタン', class: "toolbtn-image") %>を選択して編集したい範囲をクリック&ドラッグで出現する四角で囲みます。<br>
-        <span class="text-Rounded500" style="color: #EB625A;">※</span>画像ツールの場合はこの操作は不要です。
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※画像ツールの場合はこの操作は不要です。</span>
       </p><br>
     </div>
 
@@ -132,7 +132,7 @@
         本ペイントツールで挿入できる画像ファイルの形式は<span class="red-text text-Rounded500">「jpeg」</span>と<span class="red-text text-Rounded500">「png」</span>になります。<br>
       </p><br>
       <p>
-        <span class="text-Rounded500" style="color: #EB625A;">※選択できる範囲に関する注意点</span><br>
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※選択できる範囲に関する注意点</span><br>
         canvas上で選択できる最小サイズは縦横<span class="red-text text-Rounded500">「5px以上」</span>です。<br>
         そのため、選択範囲が5px以下の場合、決定ボタンはアクティブになりません。
       </p>
@@ -159,7 +159,7 @@
         さらに、拡大縮小（上下左右の角のハンドル）や回転（上部の円形のハンドル）を行う前に<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">「Shift」キー</span></span>を押してからハンドルを掴むことで、<span class="sakura-line">均一な拡大縮小や90度ごとの回転</span>が可能になります。
       </p>
       <p>
-        <span class="text-Rounded500" style="color: #EB625A;">※「変形ツール」と「取り消し」「やり直し」に関する注意点</span><br>
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※「変形ツール」と「取り消し」「やり直し」に関する注意点</span><br>
         本ペイントツールでは「変形ツール」の操作は「取り消し」「やり直し」の対象外になっております。<br>
         そのため操作を取り消したい場合は一度<%= image_tag('select_cancel_btn.png', alt: '選択ツールのキャンセルボタン', class: "explanation-image", style: "width: 70px;") %>を押して最初から操作をやり直して下さい。
       </p>
@@ -428,7 +428,7 @@
         <span class="sakura-line">「直線」ツールではこの機能は適応されません。</span><br>
       </p><br>
       <p>
-        <span style="color: #EB625A;" class="text-Rounded500">※図形の線、テキストのサイズについて</span><br>
+        <span style="color: #EB625A; font-size: 0.85rem;" class="text-Rounded500">※図形の線、テキストのサイズについて</span><br>
         図形の枠線とテキストのサイズは<span class="sakura-line" style="color: #59afc7;">現在選択されている「ツールサイズ」に基づいております。</span><br>
         そのため線・テキストのサイズを変更したい場合は<span style="color: #EB625A;" class="text-Rounded500">サイズパネル</span>より操作して下さい。
       </p>
@@ -457,7 +457,7 @@
         四角形を描画できるツールです。<br>
         描画モード<%= image_tag('sharp_drawing_btn.png', alt: '描画モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>では操作時に<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">「Shift」キー</span></span>を押すことで<span style="color: #E19AB0;" class="text-Rounded500">正方形</span>を描くことができます。<br>
         また、配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>では<span style="color: #E19AB0;" class="text-Rounded500">グラデーションモード<%= image_tag('sharp_gradation.png', alt: 'グラデーションモードのボタン', class: "explanation-image", style: "width: 25px;") %></span>を選択でき、2色のグラデーションのかかった四角形を配置できます。<br>
-        <span class="text-Rounded500" style="color: #EB625A;">※「グラデーションモード」を使用できるのは「配置モード」のみとなります。</span>
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※「グラデーションモード」を使用できるのは「配置モード」のみとなります。</span>
       </p><br>
 
       <p>
@@ -488,7 +488,7 @@
         グラデーションモード<%= image_tag('sharp_gradation.png', alt: 'グラデーションモードのボタン', class: "explanation-image", style: "width: 25px;") %>で選択できる作成できる円形は<span style="color: #E19AB0;" class="text-Rounded500">「垂直方向のグラデーション<%= image_tag('round_gradation1.png', alt: '垂直方向からのグラデーションモードのボタン', class: "explanation-image", style: "width: 25px;") %>」</span>と<span style="color: #59afc7;" class="text-Rounded500">「円の中心からのグラデーション<%= image_tag('round_gradation2.png', alt: '円の中心からのグラデーションモードのボタン', class: "explanation-image", style: "width: 25px;") %>」</span>の2種類あります。<br>
         円形のグラデーションモードを使用する場合は、はじめにグラデーションモードモードボタンをオン<%= image_tag('sharp_gradation_active.png', alt: 'グラデーションモードがオンのボタン', class: "explanation-image", style: "width: 25px;") %>にして下さい。<br>
 
-        <span class="text-Rounded500" style="color: #EB625A;">※「グラデーションモード」を使用できるのは「配置モード」のみとなります。</span>
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※「グラデーションモード」を使用できるのは「配置モード」のみとなります。</span>
       </p><br>
 
       <p>配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>で作成できる円形のサイズは縦横200pxまでとなります。<br></p>
@@ -573,13 +573,13 @@
 
       <p style="margin-top: 2rem; margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded500">テキスト入力</span>：ここに挿入したいテキストを入力し、入力後canvasをクリック&ドラッグして文字を挿入できます。</p><br>
       <p style="margin-top: -1rem;">
-        <span style="color: #EB625A;" class="text-Rounded500">※テキストの挿入について</span><br>
+        <span style="color: #EB625A; font-size: 0.85rem;" class="text-Rounded500">※テキストの挿入について</span><br>
         テキストの挿入は図形ツールと同じで一度挿入したものは編集できません。<br>
         編集したい場合は通常のペイントと同じように編集して下さい。
       </p>
 
       <p style="margin-top: 2rem; margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">フォント選択</span><%= image_tag('text_font.png', alt: 'フォント選択のドロップダウン', class: "explanation-image", style: "width: 76px;") %>：挿入するテキストのフォントの種類を選択できます。<br>
-        <span style="color: #EB625A;" class="text-Rounded500">※日本語に対応していないフォントを使用した時の表示について</span><br>
+        <span style="color: #EB625A; font-size: 0.85rem;" class="text-Rounded500">※日本語に対応していないフォントを使用した時の表示について</span><br>
         日本語に対応していないフォントを選択した場合、デフォルトの表示になります。<br>
         現在導入しているフォントは<span style="color: #59afc7;" class="text-Rounded500">「Noto Sans JP」「ヒラギノ明朝 ProN」「ヒラギノ丸ゴ ProN」</span>以外日本語に対応していないため下記の表示になります。<br>
         <span class="red-text text-Rounded500" style="font-size: 0.85rem;"><i class="bi bi-arrow-down"></i>日本語対応していないフォントの表示</span><br>
