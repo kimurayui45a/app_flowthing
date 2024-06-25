@@ -112,11 +112,25 @@
 
     <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
+      選択状態
+      </span>
+    </h3>
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
+      <%= image_tag('anime_select.png', alt: '閉じるボタン', class: "explanation-image", style: "width: 140px;") %><br>
+      ステージ上のFlow Thingをクリックすると赤い枠線が表示されます。<br>
+      これが現在選択されているFlow Thingになります。<br>
+      選択を解除するにはステージ上で他にFlow Thingが配置されていない場所をクリックして下さい。<br>
+      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※選択の枠線はリアルタイム更新ではないためアニメの動きなどには追従しません。</span>
+    </p>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
       スタイル設定
       </span>
     </h3>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
-      配置するFlow Thingには<span style="color: #E19AB0;" class="text-Rounded500">「スケール」「透明度」「角度」</span>の3つのスタイルを調整することが可能です。<br>
+      配置するFlow Thingには<span style="color: #7CBB72;" class="text-Rounded500">「スケール」「透明度」「角度」</span>の3つのスタイルを調整することが可能です。<br>
       初期状態ではペイントツールで作成したcanvasサイズのまま挿入されますが、ここでサイズ調整を行うことができます。<br>
       <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※Screenにはこの機能はありません。</span>
     </p>
@@ -127,10 +141,13 @@
       </span>
     </h3>
     <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: 0rem;">
-      現在利用可能なアニメーションには、基本的な<span style="color: #E19AB0;" class="text-Rounded500">「上下アニメ」「左右アニメ」「回転/振り子アニメ」「縮尺アニメ」</span>と、<br>
+      現在利用可能なアニメーションには、基本的な<span style="color: #E19AB0;" class="text-Rounded500">「上下アニメ」「左右アニメ」「回転/振り子アニメ」「縮尺アニメ」</span>と、
       特殊な<span style="color: #59afc7;" class="text-Rounded500">「ランダムアニメ」「追従アニメ」「移動範囲アニメ（四角形/円形）」</span>があります。<br>
       これらを組み合わせることで、様々な動きを作成できます。<br>
-      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※一部使用できない組み合わせもございます。</span><br>
+      <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※一部使用できない組み合わせもございます。</span>
+    </p><br>
+      
+    <p class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; margin-top: -4rem;">
       アニメーションの種類は今後さらに増やしていく予定です。
     </p>
 
@@ -140,7 +157,7 @@
       <h2 class="explanation-section-title">
         <span class="text-line">リストパネル</span>
       </h2>
-      <p class="explanation-section-text text-Rounded">
+      <p class="explanation-section-text text-Rounded" style="margin-top: -2rem;">
         リストパネルは2つのタブに分かれており、<span style="color: #E19AB0;" class="text-Rounded500">「Flow Thingタブ」</span>と<span style="color: #59afc7;" class="text-Rounded500">「Screenタブ」</span>があります。
       </p>
     </section>
@@ -174,7 +191,7 @@
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded700">Flow Thingボタン</span><%= image_tag('anime_flow_btn.png', alt: 'ステージ上にFlow Thingを挿入するボタン', class: "explanation-image", style: "width: 70px;") %>：
         ステージ上にFlow Thingを挿入するボタンです。
-      </p><br>
+      </p>
     </div>
 
 
@@ -194,8 +211,62 @@
 
       <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded700">Screenボタン</span><%= image_tag('anime_screen_btn.png', alt: 'ステージ上にscreenを配置するボタン', class: "explanation-image", style: "width: 70px;") %>：
         ステージ上にScreenを配置するボタンです。
-      </p><br>
+      </p>
     </div>
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <section id="section3">
+      <h2 class="explanation-section-title">
+        <span class="text-line">カスタムパネル</span>
+      </h2>
+      <p class="explanation-section-text text-Rounded" style="margin-top: -2rem;">
+        カスタムパネルはリストパネルで表示されているタブに合わせて内容が変わります。<br>
+        リストパネルで<span style="color: #E19AB0;" class="text-Rounded500">「Flow Thingタブ」</span>を表示している場合は、Flow Thingに関する「スタイル」と「アニメーション」の内容が表示されます。<br>
+        リストパネルで<span style="color: #59afc7;" class="text-Rounded500">「Screenタブ」</span>を表示している場合は、Screenに関する「アニメーション」の内容が表示されます。
+      </p>
+    </section>
+
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+        Flow Thing編
+      </span>
+    </h3>
+      <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+
+      <p>カスタムパネルのFlow Thingの項目では<span style="color: #E19AB0;" class="text-Rounded500">「スタイル」「シンプル」「トクベツ」</span>の3つのタブに分かれております。</p>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">スタイル</span>：Flow Thingの<span style="color: #7CBB72;" class="text-Rounded500">「スケール」「透明度」「角度」</span>の3つのスタイルを調整できる項目です。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">シンプル</span>：選択したステージ上のFlow Thingに基本的なアニメーションである<span style="color: #E19AB0;" class="text-Rounded500">「上下アニメ」「左右アニメ」「回転/振り子アニメ」「縮尺アニメ」</span>を設定できます。</p><br>
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">トクベツ</span>：選択したステージ上のFlow Thingに特殊なアニメーションである<span style="color: #59afc7;" class="text-Rounded500">「ランダムアニメ」「追従アニメ」「移動範囲アニメ（四角形/円形）」</span>を設定できます。</p>
+      
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem;">
+      <span class="point-line">
+      「スタイル」タブ
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('anime_custom_style.png', alt: 'カスタムパネルのスタイルタブの図解', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        Flow Thingには、挿入前でも後でもスタイルを適用することが可能です。<br>
+        挿入時にはカスタムパネルのスタイルタブで指定されたスタイルが適用されます。<br>
+        挿入後にスタイルを変更したい場合は、対象のFlow Thingをクリックして選択し、新しいスタイルを設定して<span class="sakura-line"><span style="color: #59afc7;" class="text-Rounded500">「変更」</span></span>ボタンを押してください。<br>
+        <span class="text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※アニメーションは挿入後でないと付与できません。</span><br>
+      </p>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">スケール</span>：<span style="color: #59afc7;" class="text-Rounded500">0.01〜20</span>の範囲でFlow Thingのスケールを設定できます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">透明度</span>：<span style="color: #59afc7;" class="text-Rounded500">0.1〜1</span>の範囲でFlow Thingの透明度を設定できます。</p><br>
+
+      <p style="margin-bottom: -0.8rem;"><span style="color: #E19AB0;" class="text-Rounded500">角度</span>：<span style="color: #59afc7;" class="text-Rounded500">0.1〜360</span>の範囲でFlow Thingの角度を設定できます。</p>
+    </div>
+
+
 
 
 
