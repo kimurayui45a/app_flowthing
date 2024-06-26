@@ -16,7 +16,7 @@
           <div class="accordion-content-sidebar" id="accordion-section1">
               <a href="#section3">ペイントを入れてみよう</a>
               <a href="#section4">影をつけてみよう</a>
-              <a href="#section3">ししゃもを吊るしてみよう</a>
+              <a href="#section3">吊るしてみよう</a>
           </div>
         </li>
 
@@ -195,10 +195,66 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p style="margin-bottom: -0.8rem;">
-        挿入した画像に空間に合わせた影をつけてみましょう。
+        挿入した画像に影をつけてみましょう。<br>
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※今回使用する画像はあらかじめ切り取り加工をしております。</span>
+      </p>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+        ざっくり塗る
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('canvas_friend_base.png', alt: 'ざっくり影を塗る', class: "explanation-image", style: "width: 388px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        挿入した画像より下のレイヤーを選択し描画レイヤーにし、ベタ塗りペン<%= image_tag('pen_beta_btn.png', alt: 'ベタ塗りペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>で簡単にざっくり影を塗ります。<br>
+        このレイヤーを「影レイヤー」と命名します。<br>
+        この影に少しリアリティを持たせるためにぼかし効果を付与していきます。
       </p><br>
     </div>
 
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+        影レイヤーを複製してぼかす
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('canvas_friend_layer.png', alt: 'レイヤーの構成の画像', class: "explanation-image", style: "width: 470px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        影レイヤーを複製<span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>します。<br>
+        レイヤーの並び順は「下塗り」 ＞ 「複製した影レイヤー」 ＞ 「影レイヤー」 「挿入した画像」となります。 
+      </p><br>
+      <p>
+        下のレイヤーを全選択<%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>しぼかします。<br>
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※必要なとこのみ選択してぼかす方法もありますが、本ペイントツールの仕様で選択ツールの枠線部分に隙間が発生するため全選択のぼかしを使用しております。</span>
+      </p><br>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+        上の影レイヤーの外枠(フチ)を消す
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('canvas_friend_last.png', alt: '上の影レイヤーの外枠(フチ)を消す', class: "explanation-image", style: "width: 450px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        このペイントツールでは、特定のポイントのみを繊細にぼかす機能は搭載されておらず、選択した部分は自動的に均等にぼかされてしまいます。<br>
+        その為、手動で微調整する必要があります。
+      </p><br>
+      <p>
+        上のぼかし効果をかけていない影レイヤーの描画の外枠(フチ)に消しゴムをかけます。<br>
+        そうすることで下のぼかし効果がついたの影レイヤー(ぼかし)の描画が前面に表示されます。<br>
+        この方法で、ぼかしを必要とする部分のみを精密に調整し、程よいぼかし具合を実現できます。
+      </p><br>
+      <p>これまでのステップを繰り返して、挿入した画像に影を付けてみましょう。</p>
+    </div>
 
 
 

@@ -3680,10 +3680,10 @@ useEffect(() => {
   };
 
   //もしパネルが動かなかったときに押すボタン
-  // const rescuePanel = () => {
-  //   setIsDraggablePanel(true);
-  //   console.log('うご');
-  // };
+  const rescuePanel = () => {
+    setIsDraggablePanel(true);
+    console.log('うご');
+  };
 
 
   //「共有」
@@ -3784,13 +3784,13 @@ useEffect(() => {
     <div className="flex-column">
 
 
-{/* <div
+<div
         className="select-confirm-btn"
         onClick={rescuePanel}
         onTouchStart={rescuePanel}
         >
         もしパネルが動かなくなったらクリック
-      </div> */}
+      </div>
 
 {/* 
 <div
