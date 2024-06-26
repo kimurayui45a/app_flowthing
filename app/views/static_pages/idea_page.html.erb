@@ -9,14 +9,13 @@
       <ul>
 
           <li><a href="#section1">空間を作ってみよう</a></li>
-          <%# <li><a href="#section2">左右対称なペイント</a></li> %>
+          <li><a href="#section2">左右対称なペイント</a></li>
           
-        <%# <li>
+        <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section1">
-              <a href="#section1">切り取り方</a>
-              <a href="#section2">ペイントを入れてみよう</a>
-              <a href="#section3">影をつけてみよう</a>
+              <a href="#section3">ペイントを入れてみよう</a>
+              <a href="#section4">影をつけてみよう</a>
               <a href="#section3">ししゃもを吊るしてみよう</a>
           </div>
         </li>
@@ -32,10 +31,10 @@
           </div>
         </li>
 
-        <li><a href="#section3">アイテムを配置しよう</a></li> %>
+        <li><a href="#section3">アイテムを配置しよう</a></li>
 
 
-        <%# <li>
+        <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
               <a href="#section1">キャラクターを作ってみよう</a>
@@ -46,7 +45,13 @@
               <a href="#section2">下塗り</a>
               <a href="#section2">塗り込む/完成</a>
           </div>
-        </li> %>
+        </li>
+          <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編2<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">ししゃもすくい</a>
+          </div>
+        </li>
 
       </ul>
     </div>
@@ -67,14 +72,14 @@
       <h2 class="explanation-section-title">
         <span class="text-line">空間を作ってみよう</span>
       </h2>
-      <p class="explanation-section-text">
+      <p class="explanation-section-text text-Rounded">
         ここでは、実際にツールを使用してどのようなことができるかを、サンプルルームを例にして一緒に紹介します。<br>
         <span class="red-text text-Rounded700">この通りに作成する必要は全くございません!!</span>
       </p>
     </section>
 
     <div class="sidebar-design">
-      <%= image_tag('sampleroom_rahu.png', alt: 'サンプルページのラフの画像', class: "explanation-image", style: "width: 500px;") %>
+      <%= image_tag('sampleroom_rahu.png', alt: 'サンプルページのラフの画像', class: "toolpanel-image") %>
     </div>
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: 2rem;">
@@ -87,7 +92,7 @@
 
       <p>
         例えば筒状のポテトチップスなら詳細なパースを取り、単純な筒で表現します。<br>
-        <%= image_tag('potato_chip.png', alt: 'ポテトチップスの画像', class: "explanation-image", style: "width: 150px;") %><br>
+        <%= image_tag('potato_chip.png', alt: 'ポテトチップスの画像', class: "explanation-image", style: "width: 150px; transform: rotate(-1.2deg);") %><br>
       </p><br>
       <p>
         <span class="text-Rounded500 red-text" style="font-size: 1.3rem;">構想が決まったら各アイテムごとに<span style="color: #59afc7;" class="text-Rounded500">「Flow Thing」</span>と<span style="color: #59afc7;" class="text-Rounded500">「Screen」</span>を作成し、アイテムの写真やペイントを作成しましょう。</span><br>
@@ -95,31 +100,108 @@
     </div>
 
 
-    <%# <section id="section2">
+    <section id="section2">
       <div style="height: 7rem; width: 100px;"></div>
-      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+      <h2 class="explanation-section-title" style="margin-bottom: 3rem;">
         <span class="text-line">左右対称なペイント</span>
       </h2>
-      <p class="explanation-section-text">ここにセクション2の内容が入ります。</p>
-    </section> %>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_inversion.png', alt: '左右対称なペイントの画像', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>図形ツールを使用して左右対称な描画を作成してみましょう。</p>
+      <p style="margin-bottom: -0.8rem;">
+        半分だけ作成し、「<span style="color: #E19AB0;" class="text-Rounded500">レイヤー選択機能</span><%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %> ＞ <span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>」で複製します。
+      </p><br>
+      <p>
+        そして、そのレイヤーを反転<%= image_tag('flip_horizontal_btn.png', alt: '左右反転するボタン', class: "toolbtn-image-20") %>し、<span style="color: #7CBB72;" class="text-Rounded500">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>で描画を写し1枚のレイヤーに結合しましょう。<br>
+        もし反転後位置を調整したい場合は選択ツール<%= image_tag('select_tool_btn.png', alt: '選択ツールのボタン', class: "toolbtn-image") %>を使用して調整しましょう。<br>
+      </p>
+    </div>
+    <div class="sidebar-design" style="margin-top: -1rem;">
+      <%= image_tag('idea_inversion_canvas.png', alt: '左右対称なペイントの作成イメージ', class: "toolpanel-image") %>
+    </div>
 
 
+    <div style="height: 7rem; width: 100px;"></div>
+    <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+      <span class="text-line">画像を加工しよう</span>
+    </h2>
 
-
-
-
-
-
-
-
-<%# 
     <section id="section3">
-      <div style="height: 7rem; width: 100px;"></div>
-      <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-        <span class="text-line">セクション3</span>
-      </h2>
-      <p class="explanation-section-text">ここにセクション3の内容が入ります。</p>
-    </section> %>
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          ペイントを入れてみよう
+        </span>
+      </h3>
+    </section>
+    
+    <div class="sidebar-design">
+      <%= image_tag('canvas_step1.png', alt: '完成イメージ', class: "explanation-image", style: "width: 235px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        挿入した画像に簡単にペイントを加えてみましょう。<br>
+        挿入する画像は「キャンバス描かれたイラスト」というシナリオで加工してみます。<br>
+      </p><br>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+      切り取り
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('canvas_step2.png', alt: '挿入した画像を切り取り', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        まず、画像ツール<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-image"></i></span>で画像を挿入しましょう。<br>
+        そしてキャンバスに合わせて必要なとこのみ「<span style="color: #E19AB0;" class="text-Rounded500">選択</span> ＞ <span style="color: #59afc7;" class="text-Rounded500">範囲外を削除</span><%= image_tag('select_delete_outside_whitebtn.png', alt: '選択範囲外を削除するボタン', class: "toolbtn-image") %>」、もしくは消しゴム<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eraser-fill"></i></span>で削除します。
+      </p><br>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+        簡単なペイント
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('canvas_step3.png', alt: 'ペイントを入れてみようのイメージ', class: "explanation-image", style: "width: 360px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        挿入する画像は「キャンバス描かれたイラストというシナリオ」なので画像をキャンバスに馴染ませるために簡単に画像の端を加工してみましょう。<br>
+
+        消しゴム<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eraser-fill"></i></span>と<span style="color: #E19AB0;" class="text-Rounded500">色混ぜ</span><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-droplet-half"></i></span>を使用します。<br>
+        切り取った画像の外枠を消しゴムで不規則に消し、色混ぜで画像の色を拾いながら適当に伸ばしてみましょう。<br>
+
+        <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※色混ぜは画像のない部分をタッチして画像のある方向に引っ張ると消しゴムと同じように消すことができます。</span>
+      </p><br>
+    </div>
+
+
+
+    <section id="section4">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          影をつけてみよう
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('canvas_friend_image.png', alt: '影を入れてみようのイメージ', class: "toolpanel-image-600", style: "background-color: #acd3dd; border-radius: 0.8rem;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        挿入した画像に空間に合わせた影をつけてみましょう。
+      </p><br>
+    </div>
+
+
+
 
   </div>
 
