@@ -16,14 +16,14 @@
           <div class="accordion-content-sidebar" id="accordion-section1">
               <a href="#section3">ペイントを入れてみよう</a>
               <a href="#section4">影をつけてみよう</a>
-              <a href="#section3">吊るしてみよう</a>
+              <a href="#section5">吊るしてみよう</a>
           </div>
         </li>
 
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで作成しよう<i class="bi bi-chevron-down chevron-style"></i></div>
-          <div class="accordion-content-sidebar" id="accordion-section1">
-              <a href="#section1">イラスト作りの基本構造</a>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <%= link_to 'レイヤーを活用しよう', idea_page_second_path + '#section1' %>
               <a href="#section2">色塗りとレイヤー</a>
               <a href="#section3">グラデーションを使ってみよう</a>
               <a href="#section3">少し光っている表現</a>
@@ -210,7 +210,7 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
-        挿入した画像より下のレイヤーを選択し描画レイヤーにし、ベタ塗りペン<%= image_tag('pen_beta_btn.png', alt: 'ベタ塗りペンボタン', class: "toolbtn-image", style: "margin-bottom: 1.2rem;") %>で簡単にざっくり影を塗ります。<br>
+        挿入した画像より下のレイヤーを選択し描画レイヤーにし、ベタ塗りペン<%= image_tag('pen_beta_btn.png', alt: 'ベタ塗りペンボタン', class: "toolbtn-image") %>で簡単にざっくり影を塗ります。<br>
         このレイヤーを「影レイヤー」と命名します。<br>
         この影に少しリアリティを持たせるためにぼかし効果を付与していきます。
       </p><br>
@@ -227,7 +227,7 @@
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
         影レイヤーを複製<span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>します。<br>
-        レイヤーの並び順は「下塗り」 ＞ 「複製した影レイヤー」 ＞ 「影レイヤー」 「挿入した画像」となります。 
+        レイヤーの並び順は「下塗り」 ＞ 「複製した影レイヤー」 ＞ 「影レイヤー」 ＞ 「挿入した画像」となります。 
       </p><br>
       <p>
         下のレイヤーを全選択<%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>しぼかします。<br>
@@ -256,6 +256,33 @@
       <p>これまでのステップを繰り返して、挿入した画像に影を付けてみましょう。</p>
     </div>
 
+    <section id="section5">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          吊るしてみよう
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_fish_canvas.png', alt: '吊るしてみようの説明', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        それでは、ししゃもを吊るしてみましょう。<br>
+        まずは、ししゃもオーディションから始めます。<br>
+        各ししゃもはA面とB面で、それぞれチャンスが2回あります。<br>
+        しかし、ししゃもAは少し緊張しすぎて、B面のオーディションをパス...A面だけでその魅力を発揮しました。<br>
+        オーディションで優勝したししゃもは、このアプリのサンプルページに吊るされマスコットとして採用されます。<br>
+        その他のししゃもたちはアプリのフッターなどで、盛り上げ隊として活躍の場を得ます。
+      </p>
+    </div>
+
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <div><%= link_to 'ペイントで作成しよう', idea_page_second_path, class: "embedded-item text-Rounded500" %>に続きます。</div>
+
+    <div style="height: 10rem; width: 100px;"></div>
 
 
   </div>

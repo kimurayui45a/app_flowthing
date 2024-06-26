@@ -86,6 +86,7 @@ Rails.application.routes.draw do
   #説明ページ
   get 'how_to_use', to: 'static_pages#how_to_use'
   get 'idea_page', to: 'static_pages#idea_page'
+  get 'idea_page_second', to: 'static_pages#idea_page_second'
   get 'tool_explanation', to: 'static_pages#tool_explanation'
   get 'tool_explanation_second', to: 'static_pages#tool_explanation_second'
   get 'tool_explanation_third', to: 'static_pages#tool_explanation_third'

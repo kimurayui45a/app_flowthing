@@ -9589,6 +9589,40 @@ background-color: #d1eee6;
 }
 
 
+
+.steps-waza-layer {
+  counter-reset: step; /* カウンタ 'step' を0にリセット */
+}
+
+.steps-waza-layer p {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+.steps-waza-layer p::before {
+  content: counter(step); /* カウンタの値を表示 */
+  counter-increment: step; /* カウンタを増加 */
+  position: absolute;
+  left: 0; /* 番号を左端に配置 */
+  top: 0; /* 上端に揃える */
+  font-weight: bold; /* 番号を太字に */
+}
+
+/* 奇数番目の要素の数字の色を変更 */
+.steps-waza-layer p:nth-child(odd)::before {
+  color: #E19AB0;
+}
+
+/* 偶数番目の要素の数字の色を変更 */
+.steps-waza-layer p:nth-child(even)::before {
+  color: #59afc7;
+}
+
+
+
+
+
 //メディア対応
 @media (max-width: 1199px) {
   .sidebar {

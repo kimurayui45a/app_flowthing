@@ -101,6 +101,8 @@ class StaticPagesController < ApplicationController
 
   def idea_page; end
 
+  def idea_page_second; end
+
   def paint_help; end
   
 end

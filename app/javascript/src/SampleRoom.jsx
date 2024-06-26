@@ -9,13 +9,11 @@ const SampleRoom = () => {
   return (
     <>
       <PixiGroupSampleProvider>
-        <div className="flux-screen-show-third">
-          <div className="flux-screen-show-frame">
-            <div>
+
+            
               <SampleRoomPixi sampleRoomId={sampleRoomId} />
-            </div>
-          </div>
-        </div>
+            
+      
       </PixiGroupSampleProvider>
     </>
   );

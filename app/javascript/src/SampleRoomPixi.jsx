@@ -182,7 +182,7 @@ const SampleRoomPixi = ({ sampleRoomId }) => {
 
       //スプライト3(ポテチ)
       let spriteImage3 = Texture.from(sampleRoomItem3);
-      createSpriteSample(appRef.current, spriteImage3, 468.51171875, 357.7109375, 0.5, 1, 0, 3, 'noAnime');
+      createSpriteSample(appRef.current, spriteImage3, 468.51171875, 357.7109375, 0.5, 1, 358.8, 3, 'noAnime');
 
       //スプライト6(座布団)
       let spriteImage6 = Texture.from(sampleRoomItem6);

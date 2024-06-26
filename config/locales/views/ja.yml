@@ -18,6 +18,8 @@ ja:
       title: ツール
     idea_page:
       title: アイデア
+    idea_page_second:
+      title: アイデア
   users:
     sessions:
       new:

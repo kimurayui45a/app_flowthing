@@ -103,8 +103,15 @@ const [selectedSearchTarget, setSelectedSearchTarget] = useState('item');
       // console.log('allCompositeの中', allComposite)
     } else {
       // allComposite の中で一番大きいIDを持つ composite を見つける
-      const selectComposite = allComposite.reduce((max, composite) => composite.id > max.id ? composite : max, allComposite[0]);
+      //const selectComposite = allComposite.reduce((max, composite) => composite.id > max.id ? composite : max, allComposite[0]);
       
+      // allComposite の中で最新の updated_at を持つ composite を見つける
+      const selectComposite = allComposite.reduce((latest, composite) => {
+        return new Date(composite.updated_at) > new Date(latest.updated_at) ? composite : latest;
+      }, allComposite[0]);
+
+
+
       if (selectComposite) {
         const spaceData = selectComposite.composite_space;
         const itemData = selectComposite.composite_item;
@@ -114,6 +121,28 @@ const [selectedSearchTarget, setSelectedSearchTarget] = useState('item');
       }
     }
   }, []);
+
+  // useEffect(() => {
+  //   // allComposite 配列が空かどうかを確認
+  //   if (allComposite.length === 0) {
+  //     setDefaultPixi(false);
+  //     // console.log('allCompositeの中', allComposite)
+  //   } else {
+  //     // allComposite の中で最新の updated_at を持つ composite を見つける
+  //     const selectComposite = allComposite.reduce((latest, composite) => {
+  //       return new Date(composite.updated_at) > new Date(latest.updated_at) ? composite : latest;
+  //     }, allComposite[0]);
+  
+  //     if (selectComposite) {
+  //       const spaceData = selectComposite.composite_space;
+  //       const itemData = selectComposite.composite_item;
+  //       setSpaceObject(spaceData);
+  //       setItemObject(itemData);
+  //       setSelectCompositeName(selectComposite.composite_name);
+  //     }
+  //   }
+  // }, []);
+  
   
 //   useEffect(() => {
 // console.log('プロフ', profileId);
@@ -309,7 +338,7 @@ const [selectedSearchTarget, setSelectedSearchTarget] = useState('item');
             ) : (
               <>
                 {/* <PixiTest /> */}
-                <div className="info-btn-fram flex">
+                <div className="flex">
 
                 <SampleRoom />
 

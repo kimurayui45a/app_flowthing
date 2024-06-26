@@ -1,0 +1,194 @@
+<% content_for(:title, t('.title')) %>
+
+<div class='p5canvas-container'>
+
+  <% profile = current_user.profile if user_signed_in? %>
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+    <div class="text-Rounded700"><h1 class="sidebar-title">アイデア</h1></div>
+    <div class="menu-sidebar text-Rounded500">
+      <ul>
+          <%= link_to '空間を作ってみよう', idea_page_path + '#section1' %>
+          <%= link_to '左右対称なペイント', idea_page_path + '#section2' %>
+          
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+            <%= link_to 'ペイントを入れてみよう', idea_page_path + '#section3' %>
+            <%= link_to '影をつけてみよう', idea_page_path + '#section4' %>
+            <%= link_to '吊るしてみよう', idea_page_path + '#section5' %>
+          </div>
+        </li>
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで作成しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">レイヤーを活用しよう</a>
+              <a href="#section2">色塗りとレイヤー</a>
+              <a href="#section3">グラデーションを使ってみよう</a>
+              <a href="#section3">少し光っている表現</a>
+              <a href="#section3">色味を調整しよう</a>
+          </div>
+        </li>
+
+        <li><a href="#section3">アイテムを配置しよう</a></li>
+
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">キャラクターを作ってみよう</a>
+              <a href="#section2">構想</a>
+              <a href="#section3">ラフ(下書き)</a>
+              <a href="#section2">カラーリング</a>
+              <a href="#section2">線画</a>
+              <a href="#section2">下塗り</a>
+              <a href="#section2">塗り込む/完成</a>
+          </div>
+        </li>
+          <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編2<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">ししゃもすくい</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="sidebar-design">
+      <%= image_tag('mirror.png', alt: 'アイデアページのサイドバーの画像', class: "sidebar-image3") %>
+    </div>
+  </div>
+
+
+
+  <div class="sidebar-content">
+
+    <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
+      <span class="text-line">ペイントで作成しよう</span>
+    </h2>
+    <section id="section1">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          レイヤーを活用しよう
+        </span>
+      </h3>
+    </section>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        レイヤー機能を活用してペイントでアイテムを表現してみましょう。<br>
+        レイヤーを分けて作業することで、デザインの修正や比較が容易になります。<br>
+        この項目ではレイヤーを使用してアイテムを作成する基本的なテクニックをご紹介します。
+      </p>
+    </div>
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
+      <span class="point-line">
+        レイヤーの基本構造
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_layer.png', alt: 'レイヤー構成の説明', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-top: 2rem;">
+        基本的に扱いやすいとされるレイヤー構成は上記の図のようになっています...たぶん...。<br>
+        「線画」は必ずしもレイヤーを分ける必要はなく、「下塗り」や「上塗り」レイヤーと同じレイヤー上に描画する方法もあります。<br>
+        なので、下記の図はあくまで一つの参考例としてご覧ください。
+      </p><br>    
+      
+      <p style="margin-bottom: -0.2rem;"><span style="color: #E19AB0;" class="text-Rounded500">発光ハイライト</span>：一番明るくしたい場所やキラキラした装飾で使用するレイヤーです。下のレイヤーに色がないと効果が発揮されないレイヤーです。</p><br>
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #59afc7;" class="text-Rounded500">ハイライト</span>：上述の「発光」モードのレイヤーとは違い、「通常」モードでハイライトとなり得そうな色合いでペイントするレイヤーです。装飾などもここでペイントできます。</p><br>
+      
+      <p style="margin-bottom: -0.2rem;"><span style="color: #E19AB0;" class="text-Rounded500">線画</span>：イラストの線画(輪郭)などを描くレイヤーです。上の方にいますが、作成順序では「下書き」の次のステップにあたります。</p><br>
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #59afc7;" class="text-Rounded500">細部線画</span>：線の色が違ったり細かいパーツなど、他の線画とは区別したいものをここに描画します。</p><br>
+              
+      <p style="margin-bottom: -0.2rem;"><span style="color: #7CBB72;" class="text-Rounded500">上乗せ</span>：塗り込み用のレイヤーです。塗りの修正をしやすくするために「上塗り」レイヤーの上にこのレイヤーを設けここで色塗り作業をし、キリの良いところで下の「上塗り」レイヤーに転写します。<br>
+      これはあくまで修正を容易にするためであり、ペイントの手法によっては不要になるものです。そのため後述の「上塗り」レイヤーに直接塗りこんでも問題ありません。最終的には全て「上塗り」レイヤーに転写するためここにペイントはありません。</p><br>
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #E19AB0;" class="text-Rounded500">上塗り</span>：単色で構成された下塗りレイヤーをベースとして、より詳細な塗り込みのペイントを配置するレイヤーです。</p><br>
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #59afc7;" class="text-Rounded500">下塗り</span>：このレイヤーには主要となる色を単色で置いていきます。これにより、全体のイメージが明確になり、さらなる調整が容易に行えるようになります。</p><br>
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #E19AB0;" class="text-Rounded500">影</span>：主要部分とは分けて描画したい影などの背景パーツをここに配置します。</p><br>
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #59afc7;" class="text-Rounded500">下地</span>：線画作業が完了した後、全体をグレーなどの中間色で均一に塗りつぶす下地を作成します。これによって塗り残しの防止や全体のシルエットの確認になります。</p><br>
+
+
+      <p style="margin-bottom: -0.2rem;"><span style="color: #E19AB0;" class="text-Rounded500">下書き</span>：全体の構成や形・動きなど、はじめに決めておくべき内容をここに描きます。最終的な作品には表示されないため、修正や変更を気軽に加えることができます。</p><br>
+
+      <p style="margin-bottom: 2rem;"><span style="color: #7CBB72;" class="text-Rounded500">確認用下塗り</span>：このレイヤーは、塗り残しを防ぐために全面を一色で塗りつぶすために使用します。作業中のイラストの色と対照的な色を選ぶことで、未塗りの部分が一目でわかりやすくなり便利です。</p>
+
+      <p>
+        レイヤーに余裕がある場合は隣り合う部品はレイヤーを分けることもおすすめです。<br>
+        例えば、「掛け布団レイヤー」を上にし、その下に「敷き布団レイヤー」を配置します。これにより、敷き布団のペイントが布団に干渉しないようにすることができます。<br>
+        本ペイントツールはレイヤー上限が決まっているため適度にレイヤーの転写(統合)や不要なレイヤーは削除する必要がある場合がございます。<br>
+        削除に抵抗がある場合は<span class="sakura-line"><span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-download"></i></span>ボタンより対象のレイヤーのみを<span style="color: #7CBB72;" class="text-Rounded500">png保存</span>しいつでも復元</span>できるようにしましょう。<br>
+        <span class="sakura-line">こちらのやり方については「<%= link_to 'ちょっとした小技', tool_explanation_path + '#section40', class: "embedded-item text-Rounded500" %>」をご確認下さい。</span>
+      </p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+        レイヤーの作成順序
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>レイヤーの作成順序と作業工程の順序は概ね以下の通りです。<br>
+      <span style="color: #59afc7;" class="text-Rounded500">6</span>、<span style="color: #E19AB0;" class="text-Rounded500">7</span>、<span style="color: #59afc7;" class="text-Rounded500">8</span>のステップは全体のバランスを見ながら調整を行うため、必ずしもこの順序で進めるわけではありません。
+      </p><br>
+      <div class="steps-waza-layer" style="margin-top: -2.5rem;">
+        <p>下書き</p>
+        <p>線画/細部線画</p>
+        <p>確認用下塗り</p>
+        <p>下地</p>
+        <p>下塗り</p>
+        <p>上塗り/上乗せ/影</p>
+        <p>ハイライト</p>
+        <p>発光ハイライト</p>
+      </div>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem;">
+      <span class="point-line">
+        線画をレイヤー分けしない場合
+      </span>
+    </h4>
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_bed.png', alt: '線画をレイヤー分けしない場合', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        レイヤーを分けずに線画と塗りを同じレイヤー上に描画する方法を紹介します。<br>
+        この方法のメリットは、レイヤー枚数を節約できることと、一つのレイヤーで作業することによる修正のしやすさです。<br>
+        また、線画の分のレイヤーを節約できるため、その分のレイヤーを色調調整に回すことができます。<br>
+        線画と塗りが一体化するため、少しリアルなタッチでアイテムを表現するのに適しており、線画が際立つスタイルとは異なる効果を生み出します。
+      </p><br>
+    </div>
+
+    <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
+      <span class="orange-line">
+        下書きを作成
+      </span>
+    </h5>
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_bed2.png', alt: '線画をレイヤー分けしない場合の下書き', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        下書きと線画を作成します。<br>
+        線画は塗りと統合するので部品(敷き布団・掛け布団)でレイヤー分けをして作成します。<br>
+        下書きレイヤーは「簡単な上塗り」が終わったあたりで削除します。
+      </p><br>
+    </div>
+
+
+
+
+  </div>
+
+</div>
