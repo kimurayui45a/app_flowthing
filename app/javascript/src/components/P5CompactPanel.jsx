@@ -39,7 +39,7 @@ const P5CompactPanel = () => {
     setColorPreviewButton
   } = useP5Color();
 
-  const { toolMode, selectArrangeMode } = useP5ToolModeContext();
+  const { toolMode, selectArrangeMode, freeGetGroup } = useP5ToolModeContext();
 
   //フリーパレット(9色)の色を更新または削除する関数
   const updatePaletteColor9 = (index, color) => {
@@ -210,7 +210,7 @@ const P5CompactPanel = () => {
             key={index}
             className="palette-colors-freepalletBox"
             onClick={() => {
-              if ((toolMode === 'dropperTool') || ((toolMode === 'selectMode') && (selectArrangeMode === 'selectFillColor'))) {
+              if ((freeGetGroup.has(toolMode)) || ((toolMode === 'selectMode') && (selectArrangeMode === 'selectFillColor'))) {
                 handlePaletteClick9(color);
               } else {
                 updatePaletteColor9(index, currentColor);

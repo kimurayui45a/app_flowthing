@@ -126,7 +126,8 @@ module ApplicationHelper
       'items' => ['new_canvas', 'canvas_edit'],
       'sub_users' => ['new', 'peint_edit'],
       'spaces' => ['new', 'edit'],
-      'composites' => ['new', 'edit']
+      'composites' => ['new', 'edit'],
+      'profiles' => ['icon_edit', 'icon_edit_canvas']
     }
 
     # 現在のコントローラがリストに含まれているか、及び現在のアクションが該当するかをチェック

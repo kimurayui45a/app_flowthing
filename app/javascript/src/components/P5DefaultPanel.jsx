@@ -36,7 +36,7 @@ const P5DefaultPanel = ({ profileId }) => {
     toggleColorPreviewChange
   } = useP5Color();
 
-  const { toolMode, selectArrangeMode } = useP5ToolModeContext();
+  const { toolMode, selectArrangeMode, freeGetGroup } = useP5ToolModeContext();
 
 
 
@@ -223,7 +223,7 @@ const P5DefaultPanel = ({ profileId }) => {
             key={index}
             className="palette-colors-freepalletBox"
             onClick={() => {
-              if ((toolMode === 'dropperTool') || ((toolMode === 'selectMode') && (selectArrangeMode === 'selectFillColor'))) {
+              if ((freeGetGroup.has(toolMode)) || ((toolMode === 'selectMode') && (selectArrangeMode === 'selectFillColor'))) {
                 handlePaletteClick18(color);
               } else {
                 updatePaletteColor18(index, currentColor);

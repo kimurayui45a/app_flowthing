@@ -59,6 +59,9 @@ export const P5ToolModeProvider = ({ children, toolDateParameters }) => {
   //「図形」グループ
   const shapesTool = new Set(['rectTool', 'circleTool', 'triangleTool', 'lineTool', 'textTool']);
 
+  //フリーパレットのクリック使用を許可するグループ
+  const freeGetGroup = new Set(['rectTool', 'circleTool', 'triangleTool', 'lineTool', 'textTool', 'dropperTool', 'betaPen', 'mmPen', 'inkPen', 'watercolorPen', 'pencilPen', 'oilPen']);
+
   useEffect(() => {
     if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
       // JSON文字列をオブジェクトに解析
@@ -149,7 +152,8 @@ export const P5ToolModeProvider = ({ children, toolDateParameters }) => {
     setLayerToast,
     layerMessage,
     setLayerMessage,
-    handleAlertLayerMessage
+    handleAlertLayerMessage,
+    freeGetGroup
   };
 
   return (

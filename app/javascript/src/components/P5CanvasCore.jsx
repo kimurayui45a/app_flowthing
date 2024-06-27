@@ -3785,11 +3785,13 @@ useEffect(() => {
 
 
 <div
-        className="select-confirm-btn"
+        className="select-confirm-btn tooltip-container"
         onClick={rescuePanel}
         onTouchStart={rescuePanel}
+        style={{ width: 'auto' }}
         >
         もしパネルが動かなくなったらクリック
+        <span className="tooltip-text" style={{ textAlign: 'left' }}>もしもパネルが動かなくなったらこのボタンを押してください。改善される可能性があります。</span>
       </div>
 
 {/* 

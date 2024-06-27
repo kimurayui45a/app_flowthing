@@ -23,7 +23,8 @@
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで作成しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
               <a href="#section1">レイヤーを活用しよう</a>
-              <a href="#section2">色塗りとレイヤー</a>
+              <a href="#section2">ブレンドモードを活用しよう</a>
+              <a href="#section3">線画をレイヤー分けしないペイント</a>
               <a href="#section3">グラデーションを使ってみよう</a>
               <a href="#section3">少し光っている表現</a>
               <a href="#section3">色味を調整しよう</a>
@@ -67,6 +68,7 @@
     <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
       <span class="text-line">ペイントで作成しよう</span>
     </h2>
+
     <section id="section1">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
@@ -152,8 +154,36 @@
       </div>
     </div>
 
+    
+    <section id="section2">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+        <span class="sub-line">
+          ブレンドモードを活用しよう
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_canvas.png', alt: '線画をレイヤー分けしない場合', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+      キャンバスのイラストを作成しているときについ色を濃く塗りすぎてしまい、暗い印象になってしまいました。<br>
+      こんな時は<span style="color: #E19AB0;" class="text-Rounded500">ブレンドモード</span><%= image_tag('blendmode_select.png', alt: 'ブレンドモードのドロップダウンの画像', class: "explanation-image", style: "width: 100px;") %>を活用しましょう。<br>
+      「ブレンドモード」についての詳細は<%= link_to 'こちら', tool_explanation_path + '#section7', class: "embedded-item text-Rounded500" %>をご確認下さい。<br>
+      今回の場合は色調を調整したい対象のレイヤーより上のレイヤーを選択して描画レイヤーにし、そのレイヤーのブレンドモードを<span style="color: #E19AB0;" class="text-Rounded500">「比較(明)」</span>に設定します。<br>
+      そして、調整したい色よりも明るい色を選んで塗ります。この方法で、暗くなりすぎた部分も自然に明るく補正することが可能です。<br>
+      もし、暗い部分をさらに暗く強調したい場合は<span style="color: #59afc7;" class="text-Rounded500">「比較(暗)」</span>を使用してください。
+      </p><br>
+      <p>
+        ブレンドモードを使用する際は、レイヤーの透明度を100%に設定すると効果が強く出過ぎることがあります。<br>
+        そのため、透明度を調整して適切な強度に設定しましょう。<br>
+        <span style="color: #E19AB0;" class="text-Rounded500">透明度スライダー</span><%= image_tag('select_fill_slider.png', alt: '透明度スライダー', class: "explanation-image", style: "width: 120px;") %>を使って、色の重なり具合が自然になるように調節するのがおすすめです。
+      </p>
+    </div>
 
-    <section id="section1">
+
+
+    <section id="section3">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
           線画をレイヤー分けしないペイント
@@ -167,13 +197,9 @@
       <p>
         レイヤーを分けずに線画と塗りを同じレイヤー上に描画する方法を紹介します。<br>
         この方法のメリットは、レイヤー枚数を節約できることと、一つのレイヤーで作業することによる修正のしやすさです。<br>
-        線画と塗りが一体化するため、少しリアルなタッチでアイテムを表現するのに適しており、線画が際立つスタイルとは異なる効果を生み出します。
+        線画と塗りが一体化するため、少しリアルなタッチでアイテムを表現するのに適しており、線画が際立つスタイルとは異なる効果を生み出します。<br>
+        線画のレイヤーを節約できるため、その分のレイヤーを色調調整に回します。
       </p><br>
-      <p>
-        線画の分のレイヤーを節約できるため、その分のレイヤーを色調調整に回します。<br>
-        なのでここでは<span style="color: #E19AB0;" class="text-Rounded500">「ブレンドモード」</span>を使用した加工法も記述します。<br>
-        「ブレンドモード」についての詳細は<%= link_to 'こちら', tool_explanation_path + '#section7', class: "embedded-item text-Rounded500" %>をご確認下さい。
-      </p>
     </div>
 
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem;">
@@ -198,7 +224,7 @@
 
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 3rem;">
       <span class="point-line">
-        着色とブレンドモードによる色調調整
+        着色と色調調整
       </span>
     </h4>
     <div class="sidebar-design">
@@ -208,19 +234,22 @@
       <p>
         下塗りと簡単な上塗りが完了し、カラーリングの大まかなイメージが形成された段階で、線画レイヤーを上塗りレイヤーに<span style="color: #7CBB72;" class="text-Rounded500">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>して一枚のレイヤーに統合します。<br>
         これで線画の編集と上塗りレイヤーの編集が1枚のレイヤーで行えるようになりました。<br>
-        個別編集できないことが不安な場合は、線画レイヤーのみの複製をとっておくことをお勧めします。<br>
-        その後は上塗りレイヤーにブレンドモードが「通常」で描画できる範囲の必要な情報を追加していきます。
+        個別編集できないことが不安な場合は、線画レイヤーのみの複製をとっておきましょう。<br>
+        その後は上塗り/上乗せレイヤーに必要な情報をどんどん追加していきます。
       </p><br>
       <p>
-        レイヤーの「透明度」と「ブレンドモード」を駆使して、アイテムに繊細な強弱を加えます。<br>
-        この手法により、暗いエリアをさらに深く暗くしたり、明るいエリアをより鮮明に明るくすることができます。<br>
+        上塗りレイヤーに必要な情報を描き切れたらレイヤーの「透明度」と「ブレンドモード」を駆使して、アイテムに繊細な強弱を加えます。<br>
+        暗いエリアをさらに深く暗くし、明るいエリアをより鮮明に明るくします。
+      </p><br>
 
+      <p>
         ブレンドモードを使用して得られる色は、特別な効果によるものではなく、通常のレイヤーで再現可能な単なる色です。
         そのため、ブレンドモードで得た色をスポイト<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eyedropper"></i></span>で取得し、通常レイヤーにベタ塗りペン<%= image_tag('pen_beta_btn.png', alt: 'ベタ塗りペンボタン', class: "toolbtn-image") %>で同じ色を塗る方法も効果的です。<br>
         ベタ塗りペンをおすすめする理由は、他の筆圧がかかるペンだと筆圧によって色味が変わる可能性があるからです。<br>
         筆圧機能をオフにすれば他のペンでも問題ありませんが、ベタ塗りペンであれば確実にスポイトでとった色で着色することが可能です。
       </p>
     </div>
+
 
 
 
