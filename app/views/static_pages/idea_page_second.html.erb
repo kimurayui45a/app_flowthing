@@ -25,12 +25,12 @@
               <a href="#section1">レイヤーを活用しよう</a>
               <a href="#section2">ブレンドモードを活用しよう</a>
               <a href="#section3">線画をレイヤー分けしないペイント</a>
-              <a href="#section3">グラデーションを使ってみよう</a>
+              <%# <a href="#section4">グラデーションを使ってみよう</a>
               <a href="#section3">少し光っている表現</a>
-              <a href="#section3">色味を調整しよう</a>
+              <a href="#section3">色味を調整しよう</a> %>
           </div>
         </li>
-
+<%# 
         <li><a href="#section3">アイテムを配置しよう</a></li>
 
 
@@ -51,7 +51,7 @@
           <div class="accordion-content-sidebar" id="accordion-section2">
               <a href="#section1">ししゃもすくい</a>
           </div>
-        </li>
+        </li> %>
 
       </ul>
     </div>
@@ -96,6 +96,7 @@
       <p style="margin-top: 2rem;">
         基本的に扱いやすいとされるレイヤー構成は上記の図のようになっています...たぶん...。<br>
         「線画」は必ずしもレイヤーを分ける必要はなく、「下塗り」や「上塗り」レイヤーと同じレイヤー上に描画する方法もあります。<br>
+        「線画」をレイヤー分けしない場合は後述の「<span class="sub-line">線画をレイヤー分けしないペイント</span>」をご確認下さい。
         なので、下記の図はあくまで一つの参考例としてご覧ください。
       </p><br>    
       
@@ -154,9 +155,8 @@
       </div>
     </div>
 
-    
     <section id="section2">
-      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           ブレンドモードを活用しよう
         </span>
@@ -184,7 +184,7 @@
 
 
     <section id="section3">
-      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           線画をレイヤー分けしないペイント
         </span>
@@ -195,7 +195,7 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
-        レイヤーを分けずに線画と塗りを同じレイヤー上に描画する方法を紹介します。<br>
+        「線画」と「塗り」でレイヤーを分けずに同じレイヤー上で描画する方法を紹介します。<br>
         この方法のメリットは、レイヤー枚数を節約できることと、一つのレイヤーで作業することによる修正のしやすさです。<br>
         線画と塗りが一体化するため、少しリアルなタッチでアイテムを表現するのに適しており、線画が際立つスタイルとは異なる効果を生み出します。<br>
         線画のレイヤーを節約できるため、その分のレイヤーを色調調整に回します。
@@ -232,7 +232,7 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
-        下塗りと簡単な上塗りが完了し、カラーリングの大まかなイメージが形成された段階で、線画レイヤーを上塗りレイヤーに<span style="color: #7CBB72;" class="text-Rounded500">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>して一枚のレイヤーに統合します。<br>
+        下塗りと簡単な上塗りが完了し、カラーリングの大まかなイメージが形成された段階で、<span class="sakura-line text-Rounded500">線画レイヤーから上塗りレイヤーに<span style="color: #7CBB72;" class="text-Rounded500">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %></span>して一枚のレイヤーに統合します。<br>
         これで線画の編集と上塗りレイヤーの編集が1枚のレイヤーで行えるようになりました。<br>
         個別編集できないことが不安な場合は、線画レイヤーのみの複製をとっておきましょう。<br>
         その後は上塗り/上乗せレイヤーに必要な情報をどんどん追加していきます。
@@ -250,6 +250,8 @@
       </p>
     </div>
 
+
+    
 
 
 

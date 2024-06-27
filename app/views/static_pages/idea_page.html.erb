@@ -27,15 +27,15 @@
               <%= link_to 'ブレンドモードを活用しよう', idea_page_second_path + '#section2' %>
               <%= link_to '線画をレイヤー分けしないペイント', idea_page_second_path + '#section3' %>
               <a href="#section2">色塗りとレイヤー</a>
-              <a href="#section3">グラデーションを使ってみよう</a>
+              <%# <a href="#section3">グラデーションを使ってみよう</a>
               <a href="#section3">少し光っている表現</a>
-              <a href="#section3">色味を調整しよう</a>
+              <a href="#section3">色味を調整しよう</a> %>
           </div>
         </li>
 
-        <li><a href="#section3">アイテムを配置しよう</a></li>
+        <%# <li><a href="#section3">アイテムを配置しよう</a></li> %>
 
-
+<%# 
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
@@ -53,7 +53,7 @@
           <div class="accordion-content-sidebar" id="accordion-section2">
               <a href="#section1">ししゃもすくい</a>
           </div>
-        </li>
+        </li> %>
 
       </ul>
     </div>
@@ -186,7 +186,7 @@
 
 
     <section id="section4">
-      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           影をつけてみよう
         </span>
@@ -228,11 +228,13 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
-        影レイヤーを複製<span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>します。<br>
-        レイヤーの並び順は「下塗り」 ＞ 「複製した影レイヤー」 ＞ 「影レイヤー」 ＞ 「挿入した画像」となります。 
+        影レイヤーを<span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>します。<br>
+        レイヤーの並び順は「下塗り」 ＞ 「複製した影レイヤー」 ＞ 「影レイヤー」 ＞ 「挿入した画像」としております。<br>
+        「影レイヤー」とその複製の並び順はペイントの雰囲気に合わせて変更します。<br>
+        細部を調整する場合は、「複製した影レイヤー」を「影レイヤー」より上に配置し、光の効果を強調したい場合はその逆に配置すると望むペイントスタイルを実現できます。
       </p><br>
       <p>
-        下のレイヤーを全選択<%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>しぼかします。<br>
+        複製したら「複製した影レイヤー」を全選択<%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>しぼかします。<br>
         <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※必要なとこのみ選択してぼかす方法もありますが、本ペイントツールの仕様で選択ツールの枠線部分に隙間が発生するため全選択のぼかしを使用しております。</span>
       </p><br>
     </div>
@@ -259,7 +261,7 @@
     </div>
 
     <section id="section5">
-      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           吊るしてみよう
         </span>
