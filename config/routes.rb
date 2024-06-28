@@ -3,23 +3,23 @@ Rails.application.routes.draw do
 
 
 
-  # resources :profiles, only: %i[new create show edit update] do
-  #   member do
-  #     get 'icon_edit', as: 'icon_edit'
-  #     get 'icon_edit_canvas', as: 'icon_edit_canvas'
-  #     patch 'update_icon'
-  #     patch 'update_tool'
-  #   end
-  # end
-
-  resources :profiles, only: %i[new create show edit update]
-  get 'profiles/:id/icon_edit', to: 'profiles#icon_edit', as: 'icon_edit_profile'
-  resources :profiles do
+  resources :profiles, only: %i[new create show edit update] do
     member do
+      get 'icon_edit', as: 'icon_edit'
+      get 'icon_edit_canvas', as: 'icon_edit_canvas'
       patch 'update_icon'
       patch 'update_tool'
     end
   end
+
+  # resources :profiles, only: %i[new create show edit update]
+  # get 'profiles/:id/icon_edit', to: 'profiles#icon_edit', as: 'icon_edit_profile'
+  # resources :profiles do
+  #   member do
+  #     patch 'update_icon'
+  #     patch 'update_tool'
+  #   end
+  # end
 
   
   get 'static_pages/usersselect', to: 'static_pages#usersselect', as: 'usersselect'
