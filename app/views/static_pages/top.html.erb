@@ -12,7 +12,7 @@
   <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
 
 
-
+<li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
 
     <div id="reactAllComposite"
       data-composite-id-all="<%= @composites.to_json %>"
