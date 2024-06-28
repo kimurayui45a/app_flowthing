@@ -9,26 +9,29 @@
       <ul>
 
           <li><a href="#section1">空間を作ってみよう</a></li>
-          <li><a href="#section2">左右対称なペイント</a></li>
+          <%# <li><a href="#section2">左右対称なペイント</a></li> %>
           
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section1">
-              <a href="#section3">ペイントを入れてみよう</a>
-              <a href="#section4">影をつけてみよう</a>
-              <a href="#section5">吊るしてみよう</a>
+              <a href="#section2">ペイントを入れてみよう</a>
+              <a href="#section3">影をつけてみよう</a>
+              <a href="#section4">吊るしてみよう</a>
           </div>
         </li>
 
         <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで作成しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで表現しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
-              <%= link_to 'レイヤーを活用しよう', idea_page_second_path + '#section1' %>
-              <%= link_to 'ブレンドモードを活用しよう', idea_page_second_path + '#section2' %>
-              <%= link_to '線画をレイヤー分けしないペイント', idea_page_second_path + '#section3' %>
-              <a href="#section2">色塗りとレイヤー</a>
+              <%= link_to '左右対称なペイント', idea_page_second_path + '#section1' %>
+              <%= link_to 'レイヤーを活用しよう', idea_page_second_path + '#section2' %>
+              <%= link_to 'ブレンドモードを活用しよう', idea_page_second_path + '#section3' %>
+              <%= link_to '線画をレイヤー分けしないペイント', idea_page_second_path + '#section4' %>
+              <%= link_to 'グラデーションを使ってみよう', idea_page_second_path + '#section5' %>
+              <%= link_to '発光表現', idea_page_second_path + '#section6' %>
+              
               <%# <a href="#section3">グラデーションを使ってみよう</a>
-              <a href="#section3">少し光っている表現</a>
+              <a href="#section3"></a>
               <a href="#section3">色味を調整しよう</a> %>
           </div>
         </li>
@@ -67,17 +70,23 @@
 
   <div class="sidebar-content">
 
-
-
-    <section id="section1">
       <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title">
+        <span class="text-line">アイデア</span>
+      </h2>
+      <p class="explanation-section-text text-Rounded">
+        ここでは、実際に本ツールを使用してどのようなことができるかを少し見てみましょう。<br>
+        「ペイントツールの画像機能」「ペイントツールのペイント機能」「アニメーションツール」の3つに分けて紹介します。<br>
+        
+        <span class="red-text text-Rounded700" style="font-size: 1.2rem">この通りに作成する必要は全くございません!!</span>
+      </p>
+
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <section id="section1">
       <h2 class="explanation-section-title">
         <span class="text-line">空間を作ってみよう</span>
       </h2>
-      <p class="explanation-section-text text-Rounded">
-        ここでは、実際に本ツールを使用してどのようなことができるかを、サンプルルームを例にして一緒に紹介します。<br>
-        <span class="red-text text-Rounded700">この通りに作成する必要は全くございません!!</span>
-      </p>
     </section>
 
     <div class="sidebar-design">
@@ -102,28 +111,6 @@
     </div>
 
 
-    <section id="section2">
-      <div style="height: 7rem; width: 100px;"></div>
-      <h2 class="explanation-section-title" style="margin-bottom: 3rem;">
-        <span class="text-line">左右対称なペイント</span>
-      </h2>
-    </section>
-    <div class="sidebar-design">
-      <%= image_tag('idea_inversion.png', alt: '左右対称なペイントの画像', class: "toolpanel-image") %>
-    </div>
-    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
-      <p>図形ツールを使用して左右対称な描画を作成してみましょう。</p>
-      <p style="margin-bottom: -0.8rem;">
-        半分だけ作成し、「<span style="color: #E19AB0;" class="text-Rounded500">レイヤー選択機能</span><%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %> ＞ <span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>」で複製します。
-      </p><br>
-      <p>
-        そして、そのレイヤーを反転<%= image_tag('flip_horizontal_btn.png', alt: '左右反転するボタン', class: "toolbtn-image-20") %>し、<span style="color: #7CBB72;" class="text-Rounded500">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>で描画を写し1枚のレイヤーに結合しましょう。<br>
-        もし反転後位置を調整したい場合は選択ツール<%= image_tag('select_tool_btn.png', alt: '選択ツールのボタン', class: "toolbtn-image") %>を使用して調整しましょう。<br>
-      </p>
-    </div>
-    <div class="sidebar-design" style="margin-top: -1rem;">
-      <%= image_tag('idea_inversion_canvas.png', alt: '左右対称なペイントの作成イメージ', class: "toolpanel-image") %>
-    </div>
 
 
     <div style="height: 7rem; width: 100px;"></div>
@@ -131,7 +118,7 @@
       <span class="text-line">画像を加工しよう</span>
     </h2>
 
-    <section id="section3">
+    <section id="section2">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
           ペイントを入れてみよう
@@ -185,7 +172,7 @@
     </div>
 
 
-    <section id="section4">
+    <section id="section3">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           影をつけてみよう
@@ -231,7 +218,7 @@
         影レイヤーを<span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>します。<br>
         レイヤーの並び順は「下塗り」 ＞ 「複製した影レイヤー」 ＞ 「影レイヤー」 ＞ 「挿入した画像」としております。<br>
         「影レイヤー」とその複製の並び順はペイントの雰囲気に合わせて変更します。<br>
-        細部を調整する場合は、「複製した影レイヤー」を「影レイヤー」より上に配置し、光の効果を強調したい場合はその逆に配置すると望むペイントスタイルを実現できます。
+        細部を調整する場合は、「複製した影レイヤー」を「影レイヤー」より上に配置し、光の効果を強調したい場合はその逆に配置しています。
       </p><br>
       <p>
         複製したら「複製した影レイヤー」を全選択<%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>しぼかします。<br>
@@ -260,7 +247,7 @@
       <p>これまでのステップを繰り返して、挿入した画像に影を付けてみましょう。</p>
     </div>
 
-    <section id="section5">
+    <section id="section4">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           吊るしてみよう
@@ -284,7 +271,7 @@
 
     <div style="height: 7rem; width: 100px;"></div>
 
-    <div><%= link_to 'ペイントで作成しよう', idea_page_second_path, class: "embedded-item text-Rounded500" %>に続きます。</div>
+    <div><%= link_to 'ペイントで表現しよう', idea_page_second_path, class: "embedded-item text-Rounded500" %>に続きます。</div>
 
     <div style="height: 10rem; width: 100px;"></div>
 

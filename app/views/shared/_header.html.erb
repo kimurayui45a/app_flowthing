@@ -172,15 +172,16 @@
             </div>
           </li>
 
-<% if @profile.present? && !@profile.new_record? %>
-          <li>
-            <%= link_to usersselect_path do %>
-              <div class="header-button header-button:hover">
-                <i class="bi bi-pencil-square header-icon-pen"></i>
-              </div>
-            <% end %>
-          </li>
-<% end %>
+          <% if @profile.present? && !@profile.new_record? %>
+            <li>
+              <%= link_to usersselect_path do %>
+                <div class="header-button flex">
+                  <%# <i class="bi bi-pencil-square header-icon-pen"></i> %>
+                  <div>作成<i class="bi bi-pencil-square"></i></div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
 
           <%# <li class="room-dropdown">
             <div class='room-container'>

@@ -8,26 +8,27 @@
     <div class="menu-sidebar text-Rounded500">
       <ul>
           <%= link_to '空間を作ってみよう', idea_page_path + '#section1' %>
-          <%= link_to '左右対称なペイント', idea_page_path + '#section2' %>
+          
           
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section1">
-            <%= link_to 'ペイントを入れてみよう', idea_page_path + '#section3' %>
-            <%= link_to '影をつけてみよう', idea_page_path + '#section4' %>
-            <%= link_to '吊るしてみよう', idea_page_path + '#section5' %>
+            <%= link_to 'ペイントを入れてみよう', idea_page_path + '#section2' %>
+            <%= link_to '影をつけてみよう', idea_page_path + '#section3' %>
+            <%= link_to '吊るしてみよう', idea_page_path + '#section4' %>
           </div>
         </li>
 
         <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで作成しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで表現しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section2">
-              <a href="#section1">レイヤーを活用しよう</a>
-              <a href="#section2">ブレンドモードを活用しよう</a>
-              <a href="#section3">線画をレイヤー分けしないペイント</a>
-              <%# <a href="#section4">グラデーションを使ってみよう</a>
-              <a href="#section3">少し光っている表現</a>
-              <a href="#section3">色味を調整しよう</a> %>
+              <a href="#section1">左右対称なペイント</a>
+              <a href="#section2">レイヤーを活用しよう</a>
+              <a href="#section3">ブレンドモードを活用しよう</a>
+              <a href="#section4">線画をレイヤー分けしないペイント</a>
+              <a href="#section5">グラデーションを使ってみよう</a>
+              <a href="#section6">発光表現</a>
+              <%#<a href="#section3">色味を調整しよう</a> %>
           </div>
         </li>
 <%# 
@@ -64,12 +65,36 @@
 
 
   <div class="sidebar-content">
-
+<div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
-      <span class="text-line">ペイントで作成しよう</span>
+      <span class="text-line">ペイントで表現しよう</span>
     </h2>
 
+
     <section id="section1">
+      <div style="height: 7rem; width: 100px;"></div>
+      <h2 class="explanation-section-title" style="margin-bottom: 3rem;">
+        <span class="text-line">左右対称なペイント</span>
+      </h2>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_inversion.png', alt: '左右対称なペイントの画像', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>図形ツールを使用して左右対称な描画を作成してみましょう。</p>
+      <p style="margin-bottom: -0.8rem;">
+        半分だけ作成し、「<span style="color: #E19AB0;" class="text-Rounded500">レイヤー選択機能</span><%= image_tag('layer_selectbtn_active.png', alt: 'レイヤー選択機能をオンにするボタン', class: "toolbtn-image") %> ＞ <span style="color: #59afc7;" class="text-Rounded500">複製</span><%= image_tag('layer_paint_copy.png', alt: 'レイヤーのペイントを複製するボタン', class: "toolbtn-image") %>」で複製します。
+      </p><br>
+      <p>
+        そして、そのレイヤーを反転<%= image_tag('flip_horizontal_btn.png', alt: '左右反転するボタン', class: "toolbtn-image-20") %>し、<span style="color: #7CBB72;" class="text-Rounded500">転写</span><%= image_tag('layer_move.png', alt: 'レイヤーのペイントを転写するボタン', class: "toolbtn-image") %>で描画を写し1枚のレイヤーに結合しましょう。<br>
+        もし反転後位置を調整したい場合は選択ツール<%= image_tag('select_tool_btn.png', alt: '選択ツールのボタン', class: "toolbtn-image") %>を使用して調整しましょう。<br>
+      </p>
+    </div>
+    <div class="sidebar-design" style="margin-top: -1rem;">
+      <%= image_tag('idea_inversion_canvas.png', alt: '左右対称なペイントの作成イメージ', class: "toolpanel-image") %>
+    </div>
+
+    <section id="section2">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
           レイヤーを活用しよう
@@ -155,7 +180,7 @@
       </div>
     </div>
 
-    <section id="section2">
+    <section id="section3">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           ブレンドモードを活用しよう
@@ -183,7 +208,7 @@
 
 
 
-    <section id="section3">
+    <section id="section4">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
           線画をレイヤー分けしないペイント
@@ -250,8 +275,69 @@
       </p>
     </div>
 
+    <section id="section5">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
+        <span class="sub-line">
+          グラデーションを使ってみよう
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_soul.png', alt: 'グラデーションを使ってみようの説明', class: "toolpanel-image-600") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        グラデーション機能を使用したペイントを作成してみましょう。<br>
+        このペイントでは「線画」と「塗り」でレイヤーを分けます。<br>
+        「線画」レイヤーの下にグラデーションを使用する「塗り」レイヤーを配置します。<br>
+        「線画」全体を覆う範囲を選択ツール<%= image_tag('select_tool_btn.png', alt: '選択ツールのボタン', class: "toolbtn-image") %>で囲み、<span style="color: #59afc7;" class="text-Rounded500">塗りつぶし</span><%= image_tag('select_fill_btn.png', alt: '塗りつぶしモードのボタン', class: "toolbtn-image") %>で塗りつぶします。<br>
+        そして、不要な部分は消しゴム<span class="panel-tool-button" style="cursor: default; color: black; display: inline-flex;"><i class="bi bi-eraser-fill"></i></span>を使用して削除します。<br>
+        こうすると一部分にのみグラデーションがかかったペイントが作成できます。
+      </p>
+    </div>
+
 
     
+    <section id="section6">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
+        <span class="sub-line">
+          発光表現
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_soul2.png', alt: '発光表現の説明', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        こちらは「<%= link_to '影をつけてみよう', idea_page_path + '#section4', class: "embedded-item text-Rounded500" %>」の項目で取り上げたレイヤー複製機能とぼかし機能を組み合わせた手法と類似したものになります。<br>
+        今回はこの手法で光を表現してみましょう。<br>
+      </p>
+    </div>
+
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_soul3.png', alt: '発光表現の説明', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        まず塗りレイヤーを複製し、上のレイヤーを全選択<%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>しぼかします。<br>
+        ぼかしレイヤーを単独で使用すると、表面上は機能しているように見えるかもしれませんが、ぼかし効果による透明度の増加は、意図しない透明感や画像の過度なぼやけを引き起こすリスクがあります。<br>
+        そのため、原本の塗りレイヤーを保持してはっきりとした輪郭を維持しながら、ぼかしの効果を加えるために複製の手法を使用します。
+      </p>
+    </div>
+
+    <div class="sidebar-design">
+      <%= image_tag('idea_paint_soul4.png', alt: '発光表現の説明', class: "toolpanel-image") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        他の部分も同様の方法で作成し、最後にブレンドモードの「オーバーレイ」と「発光」で光を強調します。<br>
+        オーバーレイは画像のコントラストを高めるブレンドモードです。<br>
+        このモードは、中間色（グレー）を透明にし、暗い色はさらに暗くし、明るい色はさらに明るく表現するモードです。<br>
+        この機能を使用して全体の色調とさらに強調したい一部の色調を調整します。<br>
+        最後に「発光」で一番強調したい場所(光っている箇所)に色を置きます。
+      </p>
+    </div>
 
 
 

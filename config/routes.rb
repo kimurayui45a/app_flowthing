@@ -66,7 +66,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     unlocks: 'users/unlocks',
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    # omniauth_callbacks: 'users/omniauth_callbacks'
   }
   resources :users, only: [:destroy]
 
