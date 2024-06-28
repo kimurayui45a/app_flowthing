@@ -25,15 +25,15 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = current_user.profile
+    # @profile = current_user.profile
   end
 
   def edit
-    @profile = current_user.profile
+    # @profile = current_user.profile
   end
 
   def update
-    @profile = current_user.profile
+    # @profile = current_user.profile
     case profile_params[:selected_option]
     when 'color'
       @profile.image_icon = nil
@@ -51,16 +51,16 @@ class ProfilesController < ApplicationController
 
 
   def icon_edit
-    @profile = current_user.profile
+    # @profile = current_user.profile
   end
 
   def icon_edit_canvas
-    @profile = current_user.profile
+    # @profile = current_user.profile
   end
 
 
   def update_icon
-    @profile = current_user.profile
+    # @profile = current_user.profile
 
     if @profile.update(profile_icon_params)
       if request.headers['X-React-App'] == 'true'
@@ -81,7 +81,7 @@ class ProfilesController < ApplicationController
 
 
   def update_tool
-    @profile = current_user.profile
+    # @profile = current_user.profile
 
     if @profile.update(profile_tool_params)
       if request.headers['X-React-App'] == 'true'
