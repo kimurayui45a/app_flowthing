@@ -26,11 +26,11 @@ class ApplicationController < ActionController::Base
     login_path
   end
 
-  def check_user_status
-    user = User.find(params[:id])
-    if user.deleted_at
-      redirect_to login_path
-    end
-  end
+  # def check_user_status
+  #   user = User.find(params[:id])
+  #   if user.deleted_at
+  #     redirect_to login_path
+  #   end
+  # end
 
 end

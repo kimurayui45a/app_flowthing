@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :check_profile_completion, only: [:show, :edit]
-  before_action :check_user_status,  only:[:show]
+  # before_action :check_user_status,  only:[:show]
 
   def new
     @profile = Profile.new
