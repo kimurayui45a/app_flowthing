@@ -3,29 +3,29 @@
 <div class="p5canvas-container"> 
   <div class="login-container">
   <h1 class="signup-title"><%= t('.title') %></h1>
-   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-   <div class="fiel bottomu-ma-zinn">
+  <%# <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%# <div class="fiel bottomu-ma-zinn">
       <%= f.label :email %>
-     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div> 
+      <%# <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%# </div>  %>
 
-   <div class="field bottomu-ma-zinn"> %>
-    <%= f.label :password %>
-     <%= f.password_field :password, autocomplete: "current-password" %> 
-    </div>
+    <%# <div class="field bottomu-ma-zinn"> %>
+      <%# <%= f.label :password %>
+      <%# <%= f.password_field :password, autocomplete: "current-password" %> 
+    <%# </div> %>
 
-    <% if devise_mapping.rememberable? %> 
-     <div class="field"> %>
-       <%= f.check_box :remember_me %> 
-        <%= f.label :remember_me %> 
-      </div>
-     <% end %> 
+    <%# <% if devise_mapping.rememberable? %> 
+      <%# <div class="field"> %>
+        <%# <%= f.check_box :remember_me %> 
+        <%# <%= f.label :remember_me %> 
+      <%# </div> %>
+    <%# <% end %> 
 
-    <div class="actions bottomu-ma-zinn"> %>
-      <%= f.submit "ログイン", class: "sign-btn default-button green-button"  %> 
-    </div>
-  <% end %> 
+    <%# <div class="actions bottomu-ma-zinn"> %>
+      <%# <%= f.submit "ログイン", class: "sign-btn default-button green-button"  %> 
+    <%# </div> %>
+  <%# <% end %> 
 
-  <%# <%= render "users/shared/links" %> %>
+  <%= render "users/shared/links" %>
 </div>
 </div>
