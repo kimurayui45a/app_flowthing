@@ -1,10 +1,21 @@
 
+
+
+
+
+<% content_for(:title, t('.title')) %>
+
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
 <div class="info-container flex-column">
 
   <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+
+
+    <div class="delete-card" style="margin-top: 2rem;">
+      <div class="delete-background flex-start-start-flex-center">
+        <div class="flex-column">
 <h1>
   <h2><%= @board.board_title %></h2>
   
@@ -20,9 +31,23 @@
   <% end %>
 </h1>
 
-<p>本当にこの掲示板を削除しますか？</p>
+          <p style="font-size: 1rem;">本当にこのSub Thingを削除しますか？</p>
 
-<%= link_to '削除する', board_path(@board), id: "button-delete-#{@board.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('boards.board.delete_confirm') } %>
-<%= link_to 'キャンセル', boards_path %>
+
+          <p class="red-text" style="text-align: start;">※Sub Thingを削除すると関連するFlow Thingも全て削除されます。<br>このSub ThingのFlow ThingをFlux Screenに配置していた場合、そのFlow Thingも削除されます。</p>
+
+          <div class="flex-between" style="width: 20rem;">
+            <div>
+            <%= link_to 'キャンセル', boards_path %>
+            </div>
+            <div>
+              <%= link_to '削除する', board_path(@board), id: "button-delete-#{@board.id}", class: "delete-memo-link", data: { turbo_method: :delete, turbo_confirm: t('boards.board.delete_confirm') } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
-</div>
+

@@ -218,7 +218,7 @@ const PixiSampleRoomDetailPanel = () => {
         setSampleText({ title: 'ポイ', place: '水上'});
         break;
       case 27:
-        setSampleText({ title: 'ししゃもA', place: '水上(タスケテ...)'});
+        setSampleText({ title: 'ししゃもD', place: '水上(タスケテ...)'});
         break;
       case 28:
         setSampleText({ title: '地縛霊', place: 'ししゃもの中'});

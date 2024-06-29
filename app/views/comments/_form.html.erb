@@ -1,11 +1,11 @@
 
-<div id="comment-form">
+<div id="comment-form" class="text-Rounded comment-board-form">
   <div>
     <%= form_with model: comment, url: board_comments_path(board) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="comment-form">
         <%= f.label t('comments.comment.title') %><br>
-        <%= f.text_field :comment_title %>
+        <%= f.text_field :comment_title, class: "comment-board-form-title" %>
       </div>
 
       <div class="comment-form">

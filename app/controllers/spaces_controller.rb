@@ -49,7 +49,7 @@ class SpacesController < ApplicationController
 
   def destroy
     @space.destroy
-    redirect_to spaces_url, notice: 'Space was successfully destroyed.'
+    redirect_to spaces_url, success: t('defaults.flash_message.space_deleted', space: Space.model_name.human), status: :see_other
   end
 
   def confirm_delete

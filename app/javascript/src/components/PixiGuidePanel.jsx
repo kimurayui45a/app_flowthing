@@ -171,8 +171,8 @@ const PixiGuidePanel = () => {
 
           <div
             className="flex pressure-panel-btn"
-            onClick={() => scrollGuide('specialGuideContainer', 1625)}
-            onTouchStart={() => scrollGuide('specialGuideContainer', 1625)}
+            onClick={() => scrollGuide('specialGuideContainer', 1840)}
+            onTouchStart={() => scrollGuide('specialGuideContainer', 1840)}
             style={{
               borderTop: '0.5px solid #4A4A4A',
               borderRadius: '7px 0px 0px 7px',
@@ -189,8 +189,8 @@ const PixiGuidePanel = () => {
 
           <div
             className="flex pressure-panel-btn"
-            onClick={() => scrollGuide('specialGuideContainer', 2387)}
-            onTouchStart={() => scrollGuide('specialGuideContainer', 2387)}
+            onClick={() => scrollGuide('specialGuideContainer', 2602)}
+            onTouchStart={() => scrollGuide('specialGuideContainer', 2602)}
             style={{
               borderTop: '0.5px solid #4A4A4A',
               borderRadius: '7px 0px 0px 7px',
@@ -207,8 +207,8 @@ const PixiGuidePanel = () => {
 
           <div
             className="flex pressure-panel-btn"
-            onClick={() => scrollGuide('specialGuideContainer', 2685)}
-            onTouchStart={() => scrollGuide('specialGuideContainer', 2685)}
+            onClick={() => scrollGuide('specialGuideContainer', 2900)}
+            onTouchStart={() => scrollGuide('specialGuideContainer', 2900)}
             style={{
               borderTop: '0.5px solid #4A4A4A',
               borderRadius: '7px 0px 0px 7px',
@@ -311,12 +311,17 @@ const PixiGuidePanel = () => {
 
 
           <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[上下アニメ]</span></div>
-Flow Thingが上下にスライドします。スライド移動距離と速さを設定できます。
-
+Flow Thingが上下にスライドします。<br />
+スライドする移動範囲と進行具合を設定できます。<br />先に進行具合から決め、その後に移動範囲を設定すると速度感を掴みやすくなります。<br />
+進行具合を小さく設定すると速い動きになり、大きくするとゆっくりしたアニメーションになります。<br />
+続いて移動範囲を調整することで、たとえ進行具合が大きくても、広範囲を素早く動くアニメーションを実現できます。<br />
 
 
 <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[左右アニメ]</span></div>
-Flow Thingが左右にスライドします。スライド移動距離と速さを設定できます。
+Flow Thingが左右にスライドします。<br />
+スライドする移動範囲と進行具合を設定できます。<br />先に進行具合から決め、その後に移動範囲を設定すると速度感を掴みやすくなります。<br />
+進行具合を小さく設定すると速い動きになり、大きくするとゆっくりしたアニメーションになります。<br />
+続いて移動範囲を調整することで、たとえ進行具合が大きくても、広範囲を素早く動くアニメーションを実現できます。<br />
 
 
 <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[回転アニメ]</span></div>

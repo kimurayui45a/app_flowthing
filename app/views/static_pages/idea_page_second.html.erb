@@ -31,6 +31,15 @@
               <%#<a href="#section3">色味を調整しよう</a> %>
           </div>
         </li>
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">アイテムを動かしてみよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section3">
+            <%= link_to 'サンプルの詳細設定', idea_page_third_path + '#section1' %>
+            <%= link_to 'アニメを組み合わてみよう', idea_page_third_path + '#section2' %>
+            <%= link_to 'アニメを組み合わてみよう2', idea_page_third_path + '#section3' %>
+          </div>
+        </li>
 <%# 
         <li><a href="#section3">アイテムを配置しよう</a></li>
 
@@ -192,7 +201,7 @@
     </div>
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
-      キャンバスのイラストを作成しているときについ色を濃く塗りすぎてしまい、暗い印象になってしまいました。<br>
+      キャンバスのイラストを作成しているときについ「スタンドの色」を濃く塗りすぎてしまい、暗い印象になってしまいました。<br>
       こんな時は<span style="color: #E19AB0;" class="text-Rounded500">ブレンドモード</span><%= image_tag('blendmode_select.png', alt: 'ブレンドモードのドロップダウンの画像', class: "explanation-image", style: "width: 100px;") %>を活用しましょう。<br>
       「ブレンドモード」についての詳細は<%= link_to 'こちら', tool_explanation_path + '#section7', class: "embedded-item text-Rounded500" %>をご確認下さい。<br>
       今回の場合は色調を調整したい対象のレイヤーより上のレイヤーを選択して描画レイヤーにし、そのレイヤーのブレンドモードを<span style="color: #E19AB0;" class="text-Rounded500">「比較(明)」</span>に設定します。<br>
@@ -339,6 +348,7 @@
       </p>
     </div>
 
+<div style="height: 10rem; width: 100px;"></div>
 
 
   </div>

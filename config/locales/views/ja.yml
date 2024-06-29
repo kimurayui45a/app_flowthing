@@ -45,19 +45,29 @@ ja:
       title: プロフィール登録画面
     show:
       title: プロフィール詳細
-      withdrawal: 退会しますか？
+      withdrawal: 退会しますか？退会すると作成したアイテムは全て削除されます。
     edit:
       title: プロフィール編集
+    icon_edit:
+      title: オリジナルアイコンの作成
+    icon_edit_canvas:
+      title: オリジナルアイコンの編集
     form:
       color_code: カラーアイコン
       image_icon: 画像アイコン
       name: 命名(任意 ※最大20文字)
       profile_text: プロフィール(任意 ※最大2000文字)
   sub_users:
+    index:
+      title: Sub Thing一覧
+    new:
+      title: Sub Thing新規作成
     show:
-      title: Sub Thing 詳細
+      title: Sub Thing詳細
     sub_user:
       delete_confirm: 本当に削除しますか？
+    peint_edit:
+      title: Sub Thing編集
     form:
       sub_color: カラーアイコン
       image_icon: 画像アイコン
@@ -68,16 +78,18 @@ ja:
       sub_text: コメント(最大2000文字) ※任意
     confirm_delete:
       delete_confirm: 本当に削除しますか？
+      title: Sub Thingの削除確認
     search_form:
       search: 降順/昇順
       search_keyword: キーワード検索
       search_btn: 検索
   items:
     index:
+      title: Flow Thing一覧
     new: 
-      title: Flow Thing 作成
+      title: Flow Thing新規作成
     show:
-      title: Flow Thing 詳細
+      title: Flow Thing詳細
       delete_confirm: 削除しますか？
     item:
       delete_confirm: 削除しますか？
@@ -96,17 +108,51 @@ ja:
       search: 降順/昇順
       search_keyword: キーワード検索
       search_btn: 検索
+    canvas_edit: 
+      title: Flow Thing編集
+    new_canvas: 
+      title: Flow Thing新規作成
   spaces:
+    index: 
+      title: Screen一覧
+    show: 
+      title: Screen詳細
+    new: 
+      title: Screen新規作成
+    edit: 
+      title: Screen編集
     search_form:
       search: 降順/昇順
       search_keyword: キーワード検索
       search_btn: 検索
   composites:
+    index: 
+      title: Flux Screen一覧
+    show: 
+      title: Flux Screen詳細
+    new: 
+      title: Flux Screen新規作成
+    edit: 
+      title: Flux Screen編集
     search_form:
       search: 降順/昇順
       search_keyword: キーワード検索
       search_btn: 検索
+    confirm_delete: 
+      title: Flux Screenの削除確認
   boards:
+    index:
+      title: 掲示板一覧
+    new:
+      title: 掲示板の新規作成
+    show:
+      title: 掲示板
+    free:
+      title: 自由掲示板一覧
+    question:
+      title: 質問掲示板一覧
+    myboards_list:
+      title: My掲示板一覧
     form:
       title: タイトル
       text: 本文
@@ -119,6 +165,8 @@ ja:
       delete_confirm: 本当に削除しますか？
     board:
       delete_confirm: 本当に削除しますか？
+    item_new_board: 
+      title: Flow Thingの相談
   comments:
     comment:
       title: タイトル
@@ -163,3 +211,7 @@ ja:
       item_not_created: "Flow Thingを作成できませんでした"
       userall_not_updated: "何も作成できませんでした"
       created_with_item: "新しい掲示板を作成しました"
+      composite_deleted: "Flux Screenを削除しました"
+      composite_updated: "Flux Screenを更新しました"
+      composite_created: "Flux Screenを作成しました"
+      space_deleted: "Screenを削除しました"

@@ -1010,6 +1010,8 @@ if (direction === 'change') {
   //左右アニメーション
   const addContinuousHorizontalSwingAnimation = (sprite, app, amplitude, period) => {
     let startTime = app.ticker.lastTime;
+    console.log('スタート', startTime)
+    // console.log('ラスト', lastTime)
     const horizontalSwing = () => {
       if (!app.stage.children.includes(sprite)) {
         //console.log("スプライトは既に削除されています");
@@ -1020,6 +1022,10 @@ if (direction === 'change') {
       const elapsedTime = app.ticker.lastTime - startTime;
       const angle = (2 * Math.PI * elapsedTime) / period;
       sprite.x += amplitude * Math.sin(angle);
+
+      // console.log('elapsedTime', elapsedTime)
+      // console.log('angle', angle)
+      // console.log('sprite.x', sprite.x)
     };
 
     app.ticker.add(horizontalSwing);

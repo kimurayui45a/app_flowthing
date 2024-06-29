@@ -1,5 +1,5 @@
 
-
+<% content_for(:title, t('.title')) %>
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 

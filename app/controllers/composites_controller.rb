@@ -60,7 +60,7 @@ class CompositesController < ApplicationController
 
   def destroy
     @composite.destroy
-    redirect_to composites_url, notice: 'Composite was successfully destroyed.'
+    redirect_to composites_url, success: t('defaults.flash_message.composite_deleted', composite: Composite.model_name.human), status: :see_other
   end
 
   def confirm_delete

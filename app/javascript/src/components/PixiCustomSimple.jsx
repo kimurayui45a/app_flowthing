@@ -121,8 +121,8 @@ const PixiCustomSimple = () => {
             上下アニメ
           </span>
           <div className="flex-between" style={{ alignItems: 'flex-end', width: '150px', marginTop: '5px' }}>
-            <PixiPanelParts PanelParts="directionForm" direction="topBottom" type="amplitude" minValue={1} maxValue={800} formTitle="距離" inputValue={inputTopBottomAmplitude} explanation="移動距離" />
-            <PixiPanelParts PanelParts="directionForm" direction="topBottom" type="period" minValue={100} maxValue={10000} formTitle="速さ" inputValue={inputTopBottomPeriod} explanation="移動速度" />
+            <PixiPanelParts PanelParts="directionForm" direction="topBottom" type="amplitude" minValue={1} maxValue={800} formTitle="移動範囲" inputValue={inputTopBottomAmplitude} explanation="移動範囲" />
+            <PixiPanelParts PanelParts="directionForm" direction="topBottom" type="period" minValue={100} maxValue={10000} formTitle="進行具合" inputValue={inputTopBottomPeriod} explanation="進行具合" />
           </div>
 
           <div style={{ marginTop: '10px', marginBottom: '5px' }}>
@@ -135,8 +135,8 @@ const PixiCustomSimple = () => {
             左右アニメ
           </span>
           <div className="flex-between" style={{ alignItems: 'flex-end', width: '150px', marginTop: '5px' }}>
-            <PixiPanelParts PanelParts="directionForm" direction="leftRight" type="amplitude" minValue={1} maxValue={1050} formTitle="距離" inputValue={inputLeftRightAmplitude} explanation="移動距離" />
-            <PixiPanelParts PanelParts="directionForm" direction="leftRight" type="period" minValue={100} maxValue={10000} formTitle="速さ" inputValue={inputLeftRightPeriod} explanation="移動速度" />
+            <PixiPanelParts PanelParts="directionForm" direction="leftRight" type="amplitude" minValue={1} maxValue={1050} formTitle="移動範囲" inputValue={inputLeftRightAmplitude} explanation="移動範囲" />
+            <PixiPanelParts PanelParts="directionForm" direction="leftRight" type="period" minValue={100} maxValue={10000} formTitle="進行具合" inputValue={inputLeftRightPeriod} explanation="進行具合" />
           </div>
 
           <div style={{ marginTop: '10px', marginBottom: '5px' }}>
