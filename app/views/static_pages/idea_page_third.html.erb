@@ -13,10 +13,6 @@
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section1">
-              <a href="#section2">ペイントを入れてみよう</a>
-              <a href="#section3">影をつけてみよう</a>
-              <a href="#section4">吊るしてみよう</a>
-
               <%= link_to 'ペイントを入れてみよう', idea_page_path + '#section2' %>
               <%= link_to '影をつけてみよう', idea_page_path + '#section3' %>
               <%= link_to '吊るしてみよう', idea_page_path + '#section4' %>
@@ -38,10 +34,9 @@
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">アイテムを動かしてみよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section3">
-
-              <li><a href="#section1">スクリーン上の座標</a></li>
-              <li><a href="#section2">アニメを組み合わてみよう</a></li>
-              <li><a href="#section3">アニメを組み合わてみよう</a></li>
+              <a href="#section1">スクリーン上の座標</a>
+              <a href="#section2">アニメを組み合わてみよう</a>
+              <a href="#section3">アニメを組み合わてみよう2</a>
           </div>
         </li>
 
@@ -78,6 +73,7 @@
   <div class="sidebar-content">
 
 
+
     <div style="height: 7rem; width: 100px;"></div>
     <section id="section1">
       <h2 class="explanation-section-title">
@@ -85,16 +81,11 @@
       </h2>
     </section>
 
-
-  
-
-
-    <div class="flux-screen-show-third">
-      <div class="flux-screen-show-frame">
-        <div id="react-idea-page"></div>
+      <div class="flux-screen-show-third">
+        <div class="flux-screen-show-frame">
+          <div id="react-idea-page"></div>
+        </div>
       </div>
-    </div>
-
 
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: 2rem;">
       <p>
@@ -102,8 +93,21 @@
         配置したいアイテムを簡単に描いてみましょう。<br>
         例に挙げているサンプルルームは、動かすことを考慮して遠近感をあえて単純化し、それに基づいて作成しました。2DのRPGなどで使用されている仕法です。<br>
         本当は天井から見下ろしている空間ですが、パースを取り除きあえて全てのアイテムを均一に表現します。
+      </p><br>
+
+      <p>
+        例えば筒状のポテトチップスなら詳細なパースを取り、単純な筒で表現します。<br>
+        <%= image_tag('potato_chip.png', alt: 'ポテトチップスの画像', class: "explanation-image", style: "width: 150px; transform: rotate(-1.2deg);") %><br>
+      </p><br>
+      <p>
+        <span class="text-Rounded500 red-text" style="font-size: 1.3rem;">構想が決まったら各アイテムごとに<span style="color: #59afc7;" class="text-Rounded500">「Flow Thing」</span>と<span style="color: #59afc7;" class="text-Rounded500">「Screen」</span>を作成し、アイテムの写真やペイントを作成しましょう。</span><br>
       </p>
     </div>
+
+
+
+
+
 
 
 
@@ -112,6 +116,8 @@
     <div style="height: 7rem; width: 100px;"></div>
 
     <div><%= link_to 'ペイントで表現しよう', idea_page_second_path, class: "embedded-item text-Rounded500" %>に続きます。</div>
+
+
 
     <div style="height: 10rem; width: 100px;"></div>
 
