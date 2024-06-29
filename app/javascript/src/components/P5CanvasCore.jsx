@@ -3794,14 +3794,14 @@ useEffect(() => {
         <span className="tooltip-text" style={{ textAlign: 'left' }}>もしもパネルが動かなくなったらこのボタンを押してください。改善される可能性があります。</span>
       </div>
 
-{/* 
+
 <div
   className= "panel-tool-button-small midasi-t-five"
   onClick={sampleData}
 >
   <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pngデータ</span>
   
-</div> */}
+</div>
 
       <div ref={canvasContainerRef} style={{
           width: `${canvasSpaceSize.width}px`,

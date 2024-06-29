@@ -30,6 +30,7 @@ import SampleRoom from './src/SampleRoom';
 import NewSubUserCreate from './src/NewSubUserCreate';
 import NewProfileCanvas from './src/NewProfileCanvas';
 import EditProfileCanvas from './src/EditProfileCanvas';
+import IdeaPage from './src/IdeaPage';
 
 // document.addEventListener("turbo:load", function() {
 //   if (document.querySelector('.fabicon')) {
@@ -168,7 +169,8 @@ let dragRoot,
     sampleRoomRoot,
     newNewSubUserCreateRoot,
     newProfileCanvasRoot,
-    editProfileCanvasRoot;
+    editProfileCanvasRoot,
+    ideaPageRoot;
 
 
 document.addEventListener('turbo:load', () => {
@@ -438,6 +440,15 @@ document.addEventListener('turbo:load', () => {
     editProfileCanvasRoot.render(<EditProfileCanvas spaceSize={spaceSize} profileId={profileId} canvasData={canvasData} toolDateParameters={toolDateParameters} />);
   }
 
+
+  // 「IdeaPage」のマウント
+  const ideaPageContainer = document.getElementById('react-idea-page');
+  if (ideaPageContainer) {
+    ideaPageRoot = createRoot(ideaPageContainer);
+    ideaPageRoot.render(<IdeaPage />);
+  }
+
+
 });
 
 document.addEventListener('turbo:before-cache', () => {
@@ -571,6 +582,13 @@ document.addEventListener('turbo:before-cache', () => {
   if (editProfileCanvasRoot) {
     editProfileCanvasRoot.unmount();
     editProfileCanvasRoot = null;
+  }
+
+
+  //「IdeaPage」のアンマウント
+  if (ideaPageRoot) {
+    ideaPageRoot.unmount();
+    ideaPageRoot = null;
   }
 
 });

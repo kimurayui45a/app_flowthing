@@ -1594,7 +1594,6 @@ const applyScaleAnimationById = (app, spriteId, minScale, maxScale, period) => {
         : sprite
     )
   );
-
 };
 
 // const handleScaleAnimationById = () => {

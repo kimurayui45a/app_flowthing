@@ -9,11 +9,7 @@ const SampleRoom = () => {
   return (
     <>
       <PixiGroupSampleProvider>
-
-            
-              <SampleRoomPixi sampleRoomId={sampleRoomId} />
-            
-      
+        <SampleRoomPixi sampleRoomId={sampleRoomId} />
       </PixiGroupSampleProvider>
     </>
   );

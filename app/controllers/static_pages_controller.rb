@@ -37,6 +37,35 @@ class StaticPagesController < ApplicationController
     redirect_to root_path
   end
 
+
+
+  # def new_sample; end
+
+  # def sub_sample; end
+
+  # def flow_sample; end
+
+  def episode_sample; end
+
+  def how_to_use; end
+
+  def tool_explanation; end
+
+  def tool_explanation_second; end
+
+  def tool_explanation_third; end
+
+  def tool_explanation_anime; end
+
+  def idea_page; end
+
+  def idea_page_second; end
+
+  def idea_page_third; end
+
+  def paint_help; end
+
+
   private
 
   def create_sub_user
@@ -81,28 +110,5 @@ class StaticPagesController < ApplicationController
     params.require(:item).permit(:item_image, :item_canvas, :item_name, :item_text, :image_choice, :sub_user_id, :episode, :item_place)
   end
 
-  # def new_sample; end
-
-  # def sub_sample; end
-
-  # def flow_sample; end
-
-  # def episode_sample; end
-
-  def how_to_use; end
-
-  def tool_explanation; end
-
-  def tool_explanation_second; end
-
-  def tool_explanation_third; end
-
-  def tool_explanation_anime; end
-
-  def idea_page; end
-
-  def idea_page_second; end
-
-  def paint_help; end
   
 end

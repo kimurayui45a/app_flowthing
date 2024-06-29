@@ -12,7 +12,7 @@
   <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
 
 
-<li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
+<%= link_to 'アニメで表現しよう', episode_sample_path, class: "embedded-item text-Rounded500" %>
 
     <div id="reactAllComposite"
       data-composite-id-all="<%= @composites.to_json %>"
@@ -66,11 +66,11 @@
 
 <div style="margin-top: 3rem;"><span class="top-page-text">空間を作成できるモノ管理アプリ</span></div>
 
-        <div class="flux-screen-show-third">
-          <div class="flux-screen-show-frame">
-<div id="react-sample-room"></div>
-</div>
-</div>
+      <div class="flux-screen-show-third">
+        <div class="flux-screen-show-frame">
+          <div id="react-sample-room"></div>
+        </div>
+      </div>
 
       <div style="margin-bottom: 2rem;">
         <span class="text-left info-text">

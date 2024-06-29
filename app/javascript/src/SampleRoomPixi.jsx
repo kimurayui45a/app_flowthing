@@ -17,6 +17,7 @@ const SampleRoomPixi = ({ sampleRoomId }) => {
       setActiveSpriteSample,
       sampleRoomItem2,
 
+      //myRoom(サンプルルーム)
       sampleRoomItem3,
       sampleRoomItem4,
       sampleRoomItem5,
@@ -29,7 +30,17 @@ const SampleRoomPixi = ({ sampleRoomId }) => {
       sampleRoomItem12,
       sampleRoomItem13,
       sampleRoomItem14,
-      sampleRoomItem15
+      sampleRoomItem15,
+
+      //アイデアページ
+      sampleRoomItem16,
+      sampleRoomItem17,
+      sampleRoomItem18,
+      sampleRoomItem19,
+      sampleRoomItem20,
+      sampleRoomItem21,
+      sampleRoomItem22,
+      ideaPageSpace
     } = usePixiGroupSample();
 
   //pixiを管理するref
@@ -231,7 +242,47 @@ const SampleRoomPixi = ({ sampleRoomId }) => {
       //スプライト13(ロゴ)
       let spriteImage13 = Texture.from(sampleRoomItem13);
       createSpriteSample(appRef.current, spriteImage13, 101.921875, 66.21484375, 0.25, 1, 0, 13, 'noAnime');
-      
+    
+    } else if (sampleRoomId === 'ideaPage') {
+      //背景スプライト
+      let ideaSpace = Texture.from(ideaPageSpace);
+      handleAddBackground(appRef.current, ideaSpace)
+
+      //スプライト作成
+      //(app, texture, x, y, scaleValue, alphaValue, angleDegrees, spriteid, anime)
+
+
+      //スプライト22(スイッチのみ) スプライトidは21からスタート
+      let spriteImage22 = Texture.from(sampleRoomItem22);
+      createSpriteSample(appRef.current, spriteImage22, 273, 400, 0.3, 0.4, 150, 21, 'noAnime');
+
+      //スプライト20(クラゲ・正面)
+      let spriteImage20 = Texture.from(sampleRoomItem20);
+      createSpriteSample(appRef.current, spriteImage20, 507.265625, 235.6796875, 0.15, 1, 0, 22, 'upScale');
+
+      //スプライト21(クラゲ・よこ)
+      let spriteImage21 = Texture.from(sampleRoomItem21);
+      createSpriteSample(appRef.current, spriteImage21, 255.515625, 296.37109375, 0.15, 1, 0, 23, 'rotatePendulum');
+
+      //スプライト21(ししゃもB)
+      let spriteImage17 = Texture.from(sampleRoomItem17);
+      createSpriteSample(appRef.current, spriteImage17, 205.7734375, 129.02734375, 0.4, 1, 0, 24, 'lertPendulum');
+
+      //スプライト18(ししゃもC)
+      let spriteImage18 = Texture.from(sampleRoomItem18);
+      createSpriteSample(appRef.current, spriteImage18, 598.95703125, 394.234375, 0.25, 1, 0, 25, 'rectPendulum');
+
+      //スプライト19(ポイ)
+      let spriteImage19 = Texture.from(sampleRoomItem19);
+      createSpriteSample(appRef.current, spriteImage19, 613.48828125, 171.43359375, 0.4, 1, 0, 26, 'noAnime');
+
+      //スプライト16(ししゃもA)
+      let spriteImage16 = Texture.from(sampleRoomItem16);
+      createSpriteSample(appRef.current, spriteImage16, 583.10546875, 177.4921875, 0.5, 1, 25, 27, 'noAnime');
+
+      //スプライト12(地縛霊) サンプルルームと被らないようにあえてspriteImage122とする
+      let spriteImage122 = Texture.from(sampleRoomItem12);
+      createSpriteSample(appRef.current, spriteImage122, 466.91015625, 73.2734375, 0.35, 1, 0, 28, 'soulPendulum');
 
     }
 
@@ -373,6 +424,20 @@ const createSpriteSample = (app, texture, x, y, scaleValue, alphaValue, angleDeg
       addRandomAnime(app, sprite, 0.05, 1)
     } else if (anime === 'boundary') {
       addBoundaryAnime(app, sprite, 20, 90, 760, 345, 0.01)
+    } else if (anime === 'upScale') {
+      addTopBottomAnimation(sprite, app, 1, 10000)
+      addScaleAnimationSample(sprite, app, 0.1, 0.2, 10000)
+    } else if (anime === 'rotatePendulum') {
+      addPendulumAnime(app, sprite, 30, 2000, true)
+      addCircularAnimationSample(app, sprite, 80, 380, 80, 0.01)
+    } else if (anime === 'lertPendulum') {
+      addPendulumAnime(app, sprite, 45, 2000, true)
+      addLeftRightAnimation(sprite, app, 1, 10000)
+    } else if (anime === 'rectPendulum') {
+      addPendulumAnime(app, sprite, 45, 2000, true)
+      addBoundaryAnime(app, sprite, 550, 350, 200, 1, 0.01)
+    } else if (anime === 'soulPendulum') {
+      addPendulumAnime(app, sprite, 30, 2000, true)
     }
   }
 
@@ -388,6 +453,91 @@ const createSpriteSample = (app, texture, x, y, scaleValue, alphaValue, angleDeg
   //   // 非同期処理が不要な場合でもPromiseを返す
   //   return Promise.resolve(sprite);
   // }
+};
+
+
+
+//上下アニメーション
+const addTopBottomAnimation = (sprite, app, amplitude, period) => {
+  let startTime = app.ticker.lastTime;
+  const verticalSwing = () => {
+    if (!app.stage.children.includes(sprite)) {
+      //console.log("スプライトは既に削除されています");
+      app.ticker.remove(verticalSwing); // スプライトが削除されたらTickerからこの関数を削除する
+      return; // スプライトが存在しなければ関数を抜ける
+    }
+
+    const elapsedTime = app.ticker.lastTime - startTime;
+    const angle = (2 * Math.PI * elapsedTime) / period;
+    sprite.y += amplitude * Math.sin(angle);
+  };
+  app.ticker.add(verticalSwing);
+  sprite.stopVerticalAnimation = () => app.ticker.remove(verticalSwing);
+};
+
+
+  //左右アニメーション
+  const addLeftRightAnimation = (sprite, app, amplitude, period) => {
+    let startTime = app.ticker.lastTime;
+    const horizontalSwing = () => {
+      if (!app.stage.children.includes(sprite)) {
+        //console.log("スプライトは既に削除されています");
+        app.ticker.remove(horizontalSwing); // スプライトが削除されたらTickerからこの関数を削除する
+        return; // スプライトが存在しなければ関数を抜ける
+      }
+
+      const elapsedTime = app.ticker.lastTime - startTime;
+      const angle = (2 * Math.PI * elapsedTime) / period;
+      sprite.x += amplitude * Math.sin(angle);
+    };
+
+    app.ticker.add(horizontalSwing);
+    sprite.stopAnimation = () => app.ticker.remove(horizontalSwing); // スプライトに停止関数を追加
+  };
+
+
+//スケールアニメ
+const addScaleAnimationSample = (sprite, app, minScale, maxScale, period) => {
+  let startTime = app.ticker.lastTime;
+  const scaleAnimation = () => {
+    if (!app.stage.children.includes(sprite)) {
+      //console.log("スプライトは既に削除されています");
+      app.ticker.remove(scaleAnimation); // スプライトが削除されたらTickerからこの関数を削除する
+      return; // スプライトが存在しなければ関数を抜ける
+    }
+
+    const elapsedTime = app.ticker.lastTime - startTime;
+    const phase = (elapsedTime / period) * Math.PI * 2; // 完全なサイクル
+    const scale = minScale + (maxScale - minScale) * (1 + Math.sin(phase)) / 2;
+    sprite.scale.set(scale, scale);
+  };
+  app.ticker.add(scaleAnimation);
+  sprite.stopScaleAnimationTicker = () => app.ticker.remove(scaleAnimation);
+};
+
+
+//指定範囲内の移動(円形)
+const addCircularAnimationSample = (app, sprite, centerX, centerY, radius, speed) => {
+
+  let angle = 0;
+
+  const tickerCallback = () => {
+    if (!app.stage.children.includes(sprite)) {
+      //console.log("スプライトが削除されたため、移動を停止します");
+      app.ticker.remove(tickerCallback);
+      return;
+    }
+
+    sprite.x = centerX + radius * Math.cos(angle);
+    sprite.y = centerY + radius * Math.sin(angle);
+    angle += speed;
+    if (angle >= 2 * Math.PI) {
+      angle = 0;
+    }
+  };
+
+  app.ticker.add(tickerCallback);
+  sprite.stopCircularMoveAnimation = () => app.ticker.remove(tickerCallback);
 };
 
 

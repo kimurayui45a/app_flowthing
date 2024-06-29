@@ -12,15 +12,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :profiles, only: %i[new create show edit update]
-  # get 'profiles/:id/icon_edit', to: 'profiles#icon_edit', as: 'icon_edit_profile'
-  # resources :profiles do
-  #   member do
-  #     patch 'update_icon'
-  #     patch 'update_tool'
-  #   end
-  # end
-
   
   get 'static_pages/usersselect', to: 'static_pages#usersselect', as: 'usersselect'
   get 'static_pages/newcontents', to: 'static_pages#newcontents', as: 'newcontents'
@@ -96,6 +87,7 @@ Rails.application.routes.draw do
   get 'how_to_use', to: 'static_pages#how_to_use'
   get 'idea_page', to: 'static_pages#idea_page'
   get 'idea_page_second', to: 'static_pages#idea_page_second'
+  get 'idea_page_third', to: 'static_pages#idea_page_third'
   get 'tool_explanation', to: 'static_pages#tool_explanation'
   get 'tool_explanation_second', to: 'static_pages#tool_explanation_second'
   get 'tool_explanation_third', to: 'static_pages#tool_explanation_third'

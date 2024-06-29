@@ -1,0 +1,121 @@
+<% content_for(:title, t('.title')) %>
+
+<div class='p5canvas-container'>
+
+  <% profile = current_user.profile if user_signed_in? %>
+  <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+    <div class="text-Rounded700"><h1 class="sidebar-title">アイデア</h1></div>
+    <div class="menu-sidebar text-Rounded500">
+      <ul>
+
+          <%= link_to '空間を作ってみよう', idea_page_path + '#section1' %>
+          
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section1">
+              <a href="#section2">ペイントを入れてみよう</a>
+              <a href="#section3">影をつけてみよう</a>
+              <a href="#section4">吊るしてみよう</a>
+
+              <%= link_to 'ペイントを入れてみよう', idea_page_path + '#section2' %>
+              <%= link_to '影をつけてみよう', idea_page_path + '#section3' %>
+              <%= link_to '吊るしてみよう', idea_page_path + '#section4' %>
+          </div>
+        </li>
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">ペイントで表現しよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <%= link_to '左右対称なペイント', idea_page_second_path + '#section1' %>
+              <%= link_to 'レイヤーを活用しよう', idea_page_second_path + '#section2' %>
+              <%= link_to 'ブレンドモードを活用しよう', idea_page_second_path + '#section3' %>
+              <%= link_to '線画をレイヤー分けしないペイント', idea_page_second_path + '#section4' %>
+              <%= link_to 'グラデーションを使ってみよう', idea_page_second_path + '#section5' %>
+              <%= link_to '発光表現', idea_page_second_path + '#section6' %>
+          </div>
+        </li>
+
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">アイテムを動かしてみよう<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section3">
+
+              <li><a href="#section1">スクリーン上の座標</a></li>
+              <li><a href="#section2">アニメを組み合わてみよう</a></li>
+              <li><a href="#section3">アニメを組み合わてみよう</a></li>
+          </div>
+        </li>
+
+<%# 
+        <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">キャラクターを作ってみよう</a>
+              <a href="#section2">構想</a>
+              <a href="#section3">ラフ(下書き)</a>
+              <a href="#section2">カラーリング</a>
+              <a href="#section2">線画</a>
+              <a href="#section2">下塗り</a>
+              <a href="#section2">塗り込む/完成</a>
+          </div>
+        </li>
+          <li>
+          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編2<i class="bi bi-chevron-down chevron-style"></i></div>
+          <div class="accordion-content-sidebar" id="accordion-section2">
+              <a href="#section1">ししゃもすくい</a>
+          </div>
+        </li> %>
+
+      </ul>
+    </div>
+
+    <div class="sidebar-design">
+      <%= image_tag('mirror.png', alt: 'アイデアページのサイドバーの画像', class: "sidebar-image3") %>
+    </div>
+  </div>
+
+
+
+  <div class="sidebar-content">
+
+
+    <div style="height: 7rem; width: 100px;"></div>
+    <section id="section1">
+      <h2 class="explanation-section-title">
+        <span class="text-line">アイテムを動かしてみよう</span>
+      </h2>
+    </section>
+
+
+  
+
+
+    <div class="flux-screen-show-third">
+      <div class="flux-screen-show-frame">
+        <div id="react-idea-page"></div>
+      </div>
+    </div>
+
+
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;  margin-top: 2rem;">
+      <p>
+        まず<span style="color: #59afc7;" class="text-Rounded500">「Flow Thing」</span>か<span style="color: #59afc7;" class="text-Rounded500">「Screen」</span>のレイヤー保存できるペイントツールを活用して構想(ラフ)を作成しましょう。<br>
+        配置したいアイテムを簡単に描いてみましょう。<br>
+        例に挙げているサンプルルームは、動かすことを考慮して遠近感をあえて単純化し、それに基づいて作成しました。2DのRPGなどで使用されている仕法です。<br>
+        本当は天井から見下ろしている空間ですが、パースを取り除きあえて全てのアイテムを均一に表現します。
+      </p>
+    </div>
+
+
+
+
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <div><%= link_to 'ペイントで表現しよう', idea_page_second_path, class: "embedded-item text-Rounded500" %>に続きます。</div>
+
+    <div style="height: 10rem; width: 100px;"></div>
+
+
+  </div>
+
+</div>

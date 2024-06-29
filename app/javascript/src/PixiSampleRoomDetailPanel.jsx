@@ -24,15 +24,21 @@ const PixiSampleRoomDetailPanel = () => {
       sampleRoomItem13,
       sampleRoomItem14,
       sampleRoomItem15,
-      pixiDetailPanelVisibleSample,
-      setPixiDetailPanelVisibleSample,
       togglePixiDetailPanelSampleClose,
       activeSpriteSample,
-      setActiveSpriteSample,
       pixiDetailPanelSample,
       setPixiDetailPanelSample,
       handlePixiPanelSampleDragStop,
-      characterLogo
+      characterLogo,
+
+      //アイデアページ
+      sampleRoomItem16,
+      sampleRoomItem17,
+      sampleRoomItem18,
+      sampleRoomItem19,
+      sampleRoomItem20,
+      sampleRoomItem21,
+      sampleRoomItem22
     } = usePixiGroupSample();
 
 
@@ -104,6 +110,31 @@ const PixiSampleRoomDetailPanel = () => {
         setSampleImage(sampleRoomItem15);
         break;
 
+      case 21:
+        setSampleImage(sampleRoomItem22);
+        break;
+      case 22:
+        setSampleImage(sampleRoomItem20);
+        break;
+      case 23:
+        setSampleImage(sampleRoomItem21);
+        break;
+      case 24:
+        setSampleImage(sampleRoomItem17);
+        break;
+      case 25:
+        setSampleImage(sampleRoomItem18);
+        break;
+      case 26:
+        setSampleImage(sampleRoomItem19);
+        break;
+      case 27:
+        setSampleImage(sampleRoomItem16);
+        break;
+      case 28:
+        setSampleImage(sampleRoomItem12);
+        break;
+
       default:
         setSampleImage(characterLogo);
         break;
@@ -165,6 +196,32 @@ const PixiSampleRoomDetailPanel = () => {
         break;
       case 15:
         setSampleText({ title: '友達', place: '机の上'});
+        break;
+
+
+      case 21:
+        setSampleText({ title: 'もう動かない', place: '水中'});
+        break;
+      case 22:
+        setSampleText({ title: 'クラゲA', place: '水中'});
+        break;
+      case 23:
+        setSampleText({ title: 'クラゲB', place: '水中'});
+        break;
+      case 24:
+        setSampleText({ title: 'ししゃもB', place: '水中'});
+        break;
+      case 25:
+        setSampleText({ title: 'ししゃもC', place: '水中'});
+        break;
+      case 26:
+        setSampleText({ title: 'ポイ', place: '水上'});
+        break;
+      case 27:
+        setSampleText({ title: 'ししゃもA', place: '水上(タスケテ...)'});
+        break;
+      case 28:
+        setSampleText({ title: '地縛霊', place: 'ししゃもの中'});
         break;
 
       default:
