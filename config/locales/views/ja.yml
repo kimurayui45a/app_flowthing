@@ -192,8 +192,8 @@ ja:
     flash_message:
       created: "ユーザーを作成しました"
       not_created: "ユーザーを作成出来ませんでした"
-      updated: "ユーザー情報を更新しました"
-      not_updated: "ユーザー情報を更新出来ませんでした"
+      updated: "プロフィール情報を更新しました"
+      not_updated: "プロフィール情報を更新出来ませんでした"
       deleted: "Sub Thingを削除しました"
       sub_user_updated: "Sub Thingを更新しました"
       sub_user_not_updated: "Sub Thingを更新出来ませんでした"
@@ -215,3 +215,4 @@ ja:
       composite_updated: "Flux Screenを更新しました"
       composite_created: "Flux Screenを作成しました"
       space_deleted: "Screenを削除しました"
+      profile_not_updated: "プロフィールを更新できませんでした。"

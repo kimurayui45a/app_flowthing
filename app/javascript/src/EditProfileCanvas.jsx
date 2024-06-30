@@ -142,7 +142,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
         }
     
       } else {
-        console.error('送信失敗');
+        console.error('保存失敗');
 
       }
 
@@ -213,7 +213,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
                     }}
                   >
                     <span style={{ color: '#3e3e3e' }}>途中保存</span>
-                    <span className="tooltip-text" style={{ textAlign: 'left' }}>送信後のリダイレクトが発生せず、送信後引き続き作業できます。</span>
+                    <span className="tooltip-text" style={{ textAlign: 'left' }}>保存後のリダイレクトが発生せず、引き続き作業できます。</span>
                   </div>
 
                   <div
@@ -231,12 +231,12 @@ const [panelPosition, setPanelPosition] = useState(() => {
 
                     <span style={{ color: '#3e3e3e' }}>通常保存</span>
                     
-                    <span className="tooltip-text" style={{ textAlign: 'left' }}>送信後のリダイレクトが発生するため作業終了となります。</span>
+                    <span className="tooltip-text" style={{ textAlign: 'left' }}>保存後のリダイレクトが発生するため作業終了となります。</span>
                   </div>
                 </div>
 
 
-          <button type="submit" className="btn btn-primary" style={{ marginTop: '60px' }}>データ送信</button>
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '60px', marginBottom: '60px' }}>保存</button>
 
 
         </form>

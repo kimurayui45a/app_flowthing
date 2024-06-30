@@ -105,6 +105,8 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
     setBoundaryAnimeHeight,
     inputBoundaryAnimeHeight,
     setInputBoundaryAnimeHeight,
+    boundaryType,
+    setBoundaryType,
 
     //円形アニメ
     circularAnimeSpeed,
@@ -528,6 +530,61 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
     }
   };
 
+  const toggleBoundaryTypeCheck = () => {
+    setBoundaryType(!boundaryType);
+  };
+
+
+
+
+//範囲アニメ[四角形]スピード
+const updateBoundarySpeedForm = (newValue, minValue, maxValue) => {
+  if (newValue >= minValue && newValue <= maxValue) {
+    setBoundaryAnimeSpeed(newValue)
+    setInputBoundaryAnimeSpeed(String(newValue))
+  }
+};
+
+  const handleBoundarySpeedChange = (e) => {
+    const value = e.target.value;
+    setInputBoundaryAnimeSpeed(String(value))
+  };
+
+const handleBoundarySpeedForm = (minValue, maxValue) => {
+  const inputNewValue = parseFloat(inputBoundaryAnimeSpeed);
+  const newValue = Math.round(inputNewValue * 100) / 100;
+
+  if (newValue >= minValue && newValue <= maxValue) {
+    updateBoundarySpeedForm(newValue, minValue, maxValue);
+  } else {
+    setInputBoundaryAnimeSpeed(String(boundaryAnimeSpeed))
+  }
+};
+
+
+const adjustSpeedToBoundary = (min, max) => {
+  let currentSpeed = parseFloat(inputBoundaryAnimeSpeed);
+  if (currentSpeed < min) {
+    currentSpeed = min;
+  } else if (currentSpeed > max) {
+    currentSpeed = max;
+  }
+  setInputBoundaryAnimeSpeed(String(currentSpeed));
+  setBoundaryAnimeSpeed(currentSpeed)
+};
+
+useEffect(() => {
+  // `boundaryType` が変更された時に呼ばれる
+  if (boundaryType) {
+    adjustSpeedToBoundary(1, 200);
+  } else {
+    adjustSpeedToBoundary(0.01, 1);
+  }
+}, [boundaryType]);
+
+
+
+
   switch (PanelParts) {
     case 'directionForm':
       return  (
@@ -801,6 +858,48 @@ const PixiPanelParts = ({ PanelParts, formTitle, inputValue, direction, type, mi
               </div>
             </>
           );
+
+          case 'selectBoundaryTypeBtn':
+            return (
+              <>
+                {/* 「範囲アニメ」のタイプ変更 */}
+                <div
+                  type="checkbox"
+                  className="layers-save-checkbox tooltip-container"
+                  checked={boundaryType}
+                  onClick={toggleBoundaryTypeCheck}
+                  onTouchStart={toggleBoundaryTypeCheck}
+                >
+                  {boundaryType && <i className="bi bi-check-lg"></i>}
+                  <span className="tooltip-text">四角形アニメの動きを変える</span>
+                </div>
+              </>
+            );
+
+            case 'selectBoundarySpeedValue':
+              return (
+                <>
+                  {/* 「「範囲アニメ[四角形]」のスピード */}
+                  <div className="flex-column-start" style={{ alignItems: 'flex-start', marginTop:'-6px' }}>
+                    <div><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>速さ</span></div>
+                    <div style={{ alignItems: 'flex-end', display: 'flex' }} className="tooltip-container">
+                      <input
+                        className="no-drag form-select-value"
+                        type="number"
+                        min={minValue}
+                        max={maxValue}
+                        step="0.01"
+                        style={{ width: '60px', fontSize: '14px' }}
+                        value={inputBoundaryAnimeSpeed}
+                        onChange={handleBoundarySpeedChange}
+                        onBlur={() => handleBoundarySpeedForm(minValue, maxValue)}
+                      />
+                      <span className="tooltip-text" style={{ textAlign: 'left' }}>移動速度<br />最大値 {maxValue}</span>
+                    </div>
+                  </div>
+                </>
+              );
+
       default:
         return  (
           <>

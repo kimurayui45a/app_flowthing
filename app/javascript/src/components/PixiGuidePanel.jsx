@@ -189,8 +189,8 @@ const PixiGuidePanel = () => {
 
           <div
             className="flex pressure-panel-btn"
-            onClick={() => scrollGuide('specialGuideContainer', 2602)}
-            onTouchStart={() => scrollGuide('specialGuideContainer', 2602)}
+            onClick={() => scrollGuide('specialGuideContainer', 2822)}
+            onTouchStart={() => scrollGuide('specialGuideContainer', 2822)}
             style={{
               borderTop: '0.5px solid #4A4A4A',
               borderRadius: '7px 0px 0px 7px',
@@ -198,7 +198,7 @@ const PixiGuidePanel = () => {
               height: '30px',
               width: '100px',
               backgroundColor: '#c2c1c1',
-              boxShadow: '1px 1px black'
+              borderBottom: '0.5px solid #4A4A4A'
             }}
           >
           [カスタム]Screen
@@ -207,8 +207,8 @@ const PixiGuidePanel = () => {
 
           <div
             className="flex pressure-panel-btn"
-            onClick={() => scrollGuide('specialGuideContainer', 2900)}
-            onTouchStart={() => scrollGuide('specialGuideContainer', 2900)}
+            onClick={() => scrollGuide('specialGuideContainer', 3120)}
+            onTouchStart={() => scrollGuide('specialGuideContainer', 3120)}
             style={{
               borderTop: '0.5px solid #4A4A4A',
               borderRadius: '7px 0px 0px 7px',
@@ -406,7 +406,13 @@ Flow Thingを選択し、[登録]を押すと追従アニメを付与できま�
 
 <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[移動範囲アニメ]（四角形）</span></div>
 選択しアニメを付与したFlow Thingが四角形の形に移動します。ステージ内の左上が（X: 0, Y: 0）となっており、それを基準に[X座標][Y座標]の項目でアニメスタートの位置を指定できます。（X: 1, Y: 1）が最小値となります。<br />
-また、[幅]と[高さ]で移動範囲を、[速さ]で移動速度を設定できます。
+また、[幅]と[高さ]で移動範囲を、[速さ]で移動速度を設定できます。<br />
+「移動範囲アニメ[四角形]」では、チェックボックスにより移動スタイルを変更できます。<br />
+<p style={{ marginTop: '10px' }}>
+<span style={{ color: '#59afc7' }}>1辺時間一定</span>：このモードでは各辺を移動する時間が一定です。その結果、長い辺では速く移動し、短い辺ではゆっくり移動します。<br />
+<span style={{ color: '#59afc7' }}>全辺時間一定</span>：全ての辺を同じ速度で移動します。辺の長さに関係なく均一な速度で進むため、一貫性のある滑らかな動きになります。<br />
+これにより、「1辺時間一定」では変化に富んだ動き、一方で「全辺時間一定」では均一な速度での動きを演出できます。
+</p>
 
 <div style={{ marginTop: '5px' }}><span className="t-text gaido-panel-title">[移動範囲アニメ]（円形）</span></div>
 選択しアニメを付与したFlow Thingが円形の形に移動します。ステージ内の左上が（X: 0, Y: 0）となっており、それを基準に[X座標][Y座標]の項目でアニメスタートの位置を指定できます。（X: 1, Y: 1）が最小値となり、指定した値が円の中心となります。<br />

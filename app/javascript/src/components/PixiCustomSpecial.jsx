@@ -22,7 +22,8 @@ const PixiCustomSpecial = () => {
     inputCircularAnimeSpeed,
     inputCircularAnimeXValue,
     inputCircularAnimeYValue,
-    inputCircularAnimeRadius
+    inputCircularAnimeRadius,
+    boundaryType
   } = usePixiGroup();
 
   const { 
@@ -165,7 +166,24 @@ const PixiCustomSpecial = () => {
             移動範囲アニメ[四角形]
           </span>
           <div className="flex-items-end" style={{ width: '150px', marginTop: '5px' }}>
-            <PixiPanelParts PanelParts="randomAnimeForm" type="boundarySpeed" formTitle="速さ" inputValue={inputBoundaryAnimeSpeed} explanation="移動速度" />
+            {/* <PixiPanelParts PanelParts="randomAnimeForm" type="boundarySpeed" formTitle="速さ" inputValue={inputBoundaryAnimeSpeed} explanation="移動速度" /> */}
+
+            <div className="flex-between" style={{ alignItems: 'center', marginTop: '5px', width: '150px' }}>
+              <PixiPanelParts PanelParts="selectBoundaryTypeBtn" />
+              {boundaryType ? (
+                <>
+                <span className="text-Rounded" style={{ fontSize: '8px', color: '#ececec' }}>全辺時間一定</span>
+                <PixiPanelParts PanelParts="selectBoundarySpeedValue" minValue={1} maxValue={200} />
+                </>
+              ) : (
+                <>
+                <span className="text-Rounded" style={{ fontSize: '8px', color: '#ececec' }}>1辺時間一定</span>
+                <PixiPanelParts PanelParts="selectBoundarySpeedValue" minValue={0.01} maxValue={1} />
+                </>
+              )}
+            </div>
+
+
             <div className="flex-between" style={{ alignItems: 'flex-end', marginTop: '5px', width: '150px' }}>
               <PixiPanelParts PanelParts="boundaryAnimeForm" type="xValue" formTitle="X座標" inputValue={inputBoundaryAnimeXValue} explanation="アニメ開始位置" />
               <PixiPanelParts PanelParts="boundaryAnimeForm" type="yValue" formTitle="Y座標" inputValue={inputBoundaryAnimeYValue} explanation="アニメ開始位置" />
@@ -175,9 +193,11 @@ const PixiCustomSpecial = () => {
               <PixiPanelParts PanelParts="boundaryAnimeForm" type="height" formTitle="高さ" inputValue={inputBoundaryAnimeHeight} explanation="移動範囲" />
             </div>
           </div>
+          
           <div style={{ marginTop: '10px', marginBottom: '5px' }}>
             <PixiPanelParts PanelParts="directionRunButton" handleRunButton={handleBoundaryAnimation} formTitle="実行/停止" />
           </div>
+
         </div>
 
 

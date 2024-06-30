@@ -423,7 +423,7 @@ const createSpriteSample = (app, texture, x, y, scaleValue, alphaValue, angleDeg
     } else if (anime === 'random') {
       addRandomAnime(app, sprite, 0.05, 1)
     } else if (anime === 'boundary') {
-      addBoundaryAnime(app, sprite, 20, 90, 760, 345, 0.01)
+      addBoundaryAnime(app, sprite, 20, 90, 760, 345, 10, true)
     } else if (anime === 'upScale') {
       addTopBottomAnimation(sprite, app, 1, 10000)
       addScaleAnimationSample(sprite, app, 0.1, 0.2, 10000)
@@ -435,7 +435,7 @@ const createSpriteSample = (app, texture, x, y, scaleValue, alphaValue, angleDeg
       addLeftRightAnimation(sprite, app, 1, 10000)
     } else if (anime === 'rectPendulum') {
       addPendulumAnime(app, sprite, 45, 2000, true)
-      addBoundaryAnime(app, sprite, 550, 350, 200, 1, 0.01)
+      addBoundaryAnime(app, sprite, 550, 350, 200, 1, 0.01, false)
     } else if (anime === 'soulPendulum') {
       addPendulumAnime(app, sprite, 30, 2000, true)
     }
@@ -611,38 +611,115 @@ const addRandomAnime = (app, sprite, easing, closeEnough) => {
 
 
 //指定範囲内の移動
-const addBoundaryAnime = (app, sprite, x, y, width, height, speed) => {
+// const addBoundaryAnime = (app, sprite, x, y, width, height, speed) => {
+//   let side = 0; // 0: 上辺, 1: 右辺, 2: 下辺, 3: 左辺
+//   let progress = 0; // 0から1までの進行状況
+
+//   const updatePosition = () => {
+
+//     if (!app.stage.children.includes(sprite)) {
+//       // console.log("スプライトは既に削除されています");
+//       app.ticker.remove(updatePosition); // スプライトが削除されたらTickerからこの関数を削除する
+//       return; // スプライトが存在しなければ関数を抜ける
+//     }
+
+//     // const { x, y, width, height, speed } = boundary;
+//     switch (side) {
+//       case 0: // 上辺を移動
+//         sprite.x = x + progress * width;
+//         sprite.y = y;
+//         break;
+//       case 1: // 右辺を移動
+//         sprite.x = x + width;
+//         sprite.y = y + progress * height;
+//         break;
+//       case 2: // 下辺を移動
+//         sprite.x = x + width - progress * width;
+//         sprite.y = y + height;
+//         break;
+//       case 3: // 左辺を移動
+//         sprite.x = x;
+//         sprite.y = y + height - progress * height;
+//         break;
+//     }
+//     progress += speed; // 進行速度を調整
+//     if (progress >= 1) {
+//       progress = 0;
+//       side = (side + 1) % 4; // 次の辺に移動
+//     }
+//   };
+
+//   app.ticker.add(updatePosition);
+//   sprite.stopBoundaryAnimationTicker = () => app.ticker.remove(updatePosition);
+// };
+
+
+
+//指定範囲内の移動(四角形)
+const addBoundaryAnime = (app, sprite, x, y, width, height, speed, boolType) => {
   let side = 0; // 0: 上辺, 1: 右辺, 2: 下辺, 3: 左辺
   let progress = 0; // 0から1までの進行状況
 
   const updatePosition = () => {
 
     if (!app.stage.children.includes(sprite)) {
-      // console.log("スプライトは既に削除されています");
+      //console.log("スプライトは既に削除されています");
       app.ticker.remove(updatePosition); // スプライトが削除されたらTickerからこの関数を削除する
       return; // スプライトが存在しなければ関数を抜ける
     }
 
     // const { x, y, width, height, speed } = boundary;
-    switch (side) {
-      case 0: // 上辺を移動
-        sprite.x = x + progress * width;
-        sprite.y = y;
-        break;
-      case 1: // 右辺を移動
-        sprite.x = x + width;
-        sprite.y = y + progress * height;
-        break;
-      case 2: // 下辺を移動
-        sprite.x = x + width - progress * width;
-        sprite.y = y + height;
-        break;
-      case 3: // 左辺を移動
-        sprite.x = x;
-        sprite.y = y + height - progress * height;
-        break;
+
+    if (boolType) {
+      let edgeLength;
+      switch (side) {
+        case 0: 
+          sprite.x = x + progress * width;
+          sprite.y = y;
+          edgeLength = width;
+          break;
+        case 1: 
+          sprite.x = x + width;
+          sprite.y = y + progress * height;
+          edgeLength = height;
+          break;
+        case 2: 
+          sprite.x = x + width - progress * width;
+          sprite.y = y + height;
+          edgeLength = width;
+          break;
+        case 3: 
+          sprite.x = x;
+          sprite.y = y + height - progress * height;
+          edgeLength = height;
+          break;
+      }
+    
+      const normalizedSpeed = speed / edgeLength; 
+      progress += normalizedSpeed; 
+
+    } else {
+      switch (side) {
+        case 0: // 上辺を移動
+          sprite.x = x + progress * width;
+          sprite.y = y;
+          break;
+        case 1: // 右辺を移動
+          sprite.x = x + width;
+          sprite.y = y + progress * height;
+          break;
+        case 2: // 下辺を移動
+          sprite.x = x + width - progress * width;
+          sprite.y = y + height;
+          break;
+        case 3: // 左辺を移動
+          sprite.x = x;
+          sprite.y = y + height - progress * height;
+          break;
+      }
+      progress += speed; // 進行速度を調整
     }
-    progress += speed; // 進行速度を調整
+
     if (progress >= 1) {
       progress = 0;
       side = (side + 1) % 4; // 次の辺に移動
@@ -652,6 +729,16 @@ const addBoundaryAnime = (app, sprite, x, y, width, height, speed) => {
   app.ticker.add(updatePosition);
   sprite.stopBoundaryAnimationTicker = () => app.ticker.remove(updatePosition);
 };
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -35,31 +35,9 @@
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">アイテムを動かしてみよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section3">
               <a href="#section1">サンプルの詳細設定</a>
-              <a href="#section2">アニメを組み合わてみよう</a>
-              <a href="#section3">アニメを組み合わてみよう2</a>
+              <a href="#section2">アニメを組み合わせてみよう</a>
           </div>
         </li>
-
-<%# 
-        <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
-          <div class="accordion-content-sidebar" id="accordion-section2">
-              <a href="#section1">キャラクターを作ってみよう</a>
-              <a href="#section2">構想</a>
-              <a href="#section3">ラフ(下書き)</a>
-              <a href="#section2">カラーリング</a>
-              <a href="#section2">線画</a>
-              <a href="#section2">下塗り</a>
-              <a href="#section2">塗り込む/完成</a>
-          </div>
-        </li>
-          <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編2<i class="bi bi-chevron-down chevron-style"></i></div>
-          <div class="accordion-content-sidebar" id="accordion-section2">
-              <a href="#section1">ししゃもすくい</a>
-          </div>
-        </li> %>
-
       </ul>
     </div>
 
@@ -106,6 +84,7 @@
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
       <p>
         はじめに、このサンプルで取り上げるアニメーションの種類とアイテムの初期座標について図解を用いて説明します。<br>
+        図のX座標/Y座標の位置にアイテムの中心点を配置しています。<br>
         座標は範囲移動アニメーションを作成する上で重要な要素ですので、ぜひ参考にしてください。<br>
         この理解を深めることで、アニメーションの設定がより容易になります。<br>
         <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※図中のアイテムの位置とテキストで示された座標にズレがある部分がございますが、テキストに記載されている座標の値が正確です。</span>
@@ -113,13 +92,143 @@
     </div>
 
 
+    <section id="section2">
+      <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
+        <span class="sub-line">
+          アニメを組み合わせてみよう
+        </span>
+      </h3>
+    </section>
+    <div class="sidebar-design">
+      <%= image_tag('idea_anime_fish2.png', alt: 'グラデーションを使ってみようの説明', class: "explanation-image", style: "width: 400px;") %>
+    </div>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        各アイテムに付与されているアニメーションの設定値を詳しく紹介します。<br>
+        紹介するのは、上記の図に名前が記され、アニメーションが設定されているアイテムのみになります。
+      </p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+        ししゃもB(左上のししゃも)
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">左右アニメ</span><br>
+        <span>移動範囲：1</span><br>
+        <span>進行具合：10000</span>
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">振り子アニメ</span><br>
+        <span>速さ：2000</span><br>
+        <span>最大回転角度：45</span><br>
+        <span>回転方向：時計回り</span>
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+        左右アニメでは値を「1(移動範囲で設定できる値の最小値)」と「10000(進行具合で設定できる値の最大値)」に設定することでししゃもは非常にゆっくりと左右に移動します。<br>
+        進行具合を大きく取ることで、動きが緩やかで滑らかになり、穏やかな雰囲気を演出しています。
+      </p><br>
+      <p>
+        振り子アニメを使用してししゃもがただ左右に移動するだけでなく、上下にも揺れる動きを加えます。<br>
+        これにより、単調な直線移動ではなく、ゆらゆらとした動きが生まれます。<br>
+        このようなアニメーションの組み合わせは、水中生物がゆっくりと水中を漂っているかのような表現をするのに適しています。
+      </p>
+    </div>
+
+
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+        ししゃもC(右下のししゃも)
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">移動範囲アニメ[四角形]</span><br>
+        <span>タイプ：1辺時間一定</span><br>
+        <span>速さ：0.01</span><br>
+        <span>X座標：550</span><br>
+        <span>Y座標：350</span><br>
+        <span>幅：200</span><br>
+        <span>高さ：1</span>
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">振り子アニメ</span><br>
+        <span>速さ：2000</span><br>
+        <span>最大回転角度：45</span><br>
+        <span>回転方向：時計回り</span>
+      </p><br>
+      <p>
+        移動範囲アニメ[四角形]の「速さ」のタイプを「1辺時間一定」にし、アイテムが1辺の移動にかける時間を一定にします。<br>
+        そうすることで短い辺「1」での動きが非常に遅くなり、ししゃもが一時的にその場にとどまるかのような動きを表現しています。<br>
+        これにより、魚が泳ぐ方向を変える際に、短期間停止して方向転換する様子を演出しています。
+      </p>
+    </div>
 
 
 
 
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+        クラゲA(ポイの周辺にいるクラゲ)
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">上下アニメ</span><br>
+        <span>移動範囲：1</span><br>
+        <span>進行具合：10000</span>
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">縮尺アニメ</span><br>
+        <span>最大値：0.2</span><br>
+        <span>最小値：0.1</span><br>
+        <span>速さ：10000</span>
+      </p><br>
+      <p>
+        上下アニメを使用して縦方向にゆっくりとした動きを作成します。<br>
+        この動きに加えて、縮尺アニメを組み合わせることで、アイテムのスケールを動的に変化させます。<br>
+        スケールが最大になる時はアイテムが手前に感じられ、最小になる時は遠くに感じられるため、奥行きのある錯視を生み出します。<br>
+        この効果によりクラゲが水中の一定範囲内を漂っているような動きを演出しております。<br>
+        スケールの変動は他のアニメーションの設定と調和させながら微調整してください。
+      </p>
+    </div>
 
 
+    <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
+      <span class="point-line">
+        クラゲB(左下のクラゲ)
+      </span>
+    </h4>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">移動範囲アニメ[円形]</span><br>
+        <span>半径：80</span><br>
+        <span>速さ：0.01</span><br>
+        <span>X座標：80</span><br>
+        <span>Y座標：380</span>
+      </p><br>
+      <p style="margin-bottom: -0.8rem;">
+        <span style="color: #E19AB0;" class="text-Rounded500">振り子アニメ</span><br>
+        <span>速さ：2000</span><br>
+        <span>最大回転角度：30</span><br>
+        <span>回転方向：時計回り</span>
+      </p><br>
+      <p>
+        移動範囲アニメ[円形]を用いて、指定した中心座標を基点にアイテムが円運動を行います。<br>
+        ステージの境界を超えて一部が視界から消えるよう配置することで、見える範囲に制限されない広がりを演出しています。<br>
+        この円形の動きに振り子アニメを組み合わせることで、クラゲが水中を漂うような自然な動きを表現しています。
+      </p>
+    </div>
 
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <div style="margin-bottom: 2rem;"><%= link_to '画像編集', idea_page_path, class: "embedded-item text-Rounded500" %>のページへ</div>
+
+    <div><%= link_to 'ペイント', idea_page_second_path, class: "embedded-item text-Rounded500" %>のページへ</div>
 
     <div style="height: 10rem; width: 100px;"></div>
 

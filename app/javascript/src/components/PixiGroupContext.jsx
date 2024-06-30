@@ -135,7 +135,8 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
   }, [moveClickSpeed]);
 
 
-
+  //範囲アニメ[四角形]で1辺を通過する時間を均一にするか
+  const [boundaryType, setBoundaryType] = useState(false);
 
   //範囲アニメの速さ
   const [boundaryAnimeSpeed, setBoundaryAnimeSpeed] = useState(0.01);
@@ -538,6 +539,8 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
     setBoundaryAnimeHeight,
     inputBoundaryAnimeHeight,
     setInputBoundaryAnimeHeight,
+    boundaryType,
+    setBoundaryType,
 
     //円形アニメ
     circularAnimeSpeed,

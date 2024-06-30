@@ -58,7 +58,8 @@ const PixiComponent = ({ itemAllId, spaceAllId, onDataFromGrandchild, pixiMode, 
     intervalTime,
     setIntervalTime,
     pixiGuidePanelVisible,
-    pixiDetailsPanelVisible
+    pixiDetailsPanelVisible,
+    boundaryType
   } = usePixiGroup();
 
 
@@ -381,7 +382,7 @@ const [maxSpaceSprites, setMaxSpaceSprites] = useState(20);
               
                   setMoveClickSprites(loadData => [...loadData, newLoadData])
                 } else if (spriteData.anime_value.rotate_mode === 'boundary') {
-                  applyBoundaryAnimation(appRef.current, sprite.id, spriteData.anime_value.boundary_date);
+                  applyBoundaryAnimation(appRef.current, sprite.id, spriteData.anime_value.boundary_date, spriteData.anime_value.boundary_type);
                 } else if (spriteData.anime_value.rotate_mode === 'circular') {
                   addCircular(appRef.current, sprite.id, spriteData.anime_value.center_x, spriteData.anime_value.center_y, spriteData.anime_value.radius_value, spriteData.anime_value.speed_value);
                 }
@@ -1734,7 +1735,7 @@ const handleMoveClickDeleteAll = () => {
 
 
 //指定範囲内の移動(四角形)
-const addBoundaryAnimation = (app, sprite, boundary) => {
+const addBoundaryAnimation = (app, sprite, boundary, boolType) => {
   let side = 0; // 0: 上辺, 1: 右辺, 2: 下辺, 3: 左辺
   let progress = 0; // 0から1までの進行状況
 
@@ -1747,25 +1748,57 @@ const addBoundaryAnimation = (app, sprite, boundary) => {
     }
 
     const { x, y, width, height, speed } = boundary;
-    switch (side) {
-      case 0: // 上辺を移動
-        sprite.x = x + progress * width;
-        sprite.y = y;
-        break;
-      case 1: // 右辺を移動
-        sprite.x = x + width;
-        sprite.y = y + progress * height;
-        break;
-      case 2: // 下辺を移動
-        sprite.x = x + width - progress * width;
-        sprite.y = y + height;
-        break;
-      case 3: // 左辺を移動
-        sprite.x = x;
-        sprite.y = y + height - progress * height;
-        break;
+
+    if (boolType) {
+      let edgeLength;
+      switch (side) {
+        case 0: 
+          sprite.x = x + progress * width;
+          sprite.y = y;
+          edgeLength = width;
+          break;
+        case 1: 
+          sprite.x = x + width;
+          sprite.y = y + progress * height;
+          edgeLength = height;
+          break;
+        case 2: 
+          sprite.x = x + width - progress * width;
+          sprite.y = y + height;
+          edgeLength = width;
+          break;
+        case 3: 
+          sprite.x = x;
+          sprite.y = y + height - progress * height;
+          edgeLength = height;
+          break;
+      }
+    
+      const normalizedSpeed = speed / edgeLength; 
+      progress += normalizedSpeed; 
+
+    } else {
+      switch (side) {
+        case 0: // 上辺を移動
+          sprite.x = x + progress * width;
+          sprite.y = y;
+          break;
+        case 1: // 右辺を移動
+          sprite.x = x + width;
+          sprite.y = y + progress * height;
+          break;
+        case 2: // 下辺を移動
+          sprite.x = x + width - progress * width;
+          sprite.y = y + height;
+          break;
+        case 3: // 左辺を移動
+          sprite.x = x;
+          sprite.y = y + height - progress * height;
+          break;
+      }
+      progress += speed; // 進行速度を調整
     }
-    progress += speed; // 進行速度を調整
+
     if (progress >= 1) {
       progress = 0;
       side = (side + 1) % 4; // 次の辺に移動
@@ -1776,10 +1809,11 @@ const addBoundaryAnimation = (app, sprite, boundary) => {
   sprite.stopBoundaryAnimationTicker = () => app.ticker.remove(updatePosition);
 };
 
+
 // アニメーションをスプライトに適用する
-const applyBoundaryAnimation = (app, spriteId, boundary) => {
+const applyBoundaryAnimation = (app, spriteId, boundary, boolType) => {
   modifySpriteById(app, spriteId, sprite => {
-    addBoundaryAnimation(app, sprite, boundary);
+    addBoundaryAnimation(app, sprite, boundary, boolType);
   });
 
   setSpriteInfo(prevSprites =>
@@ -1790,7 +1824,8 @@ const applyBoundaryAnimation = (app, spriteId, boundary) => {
             others_anime: true,
             anime_value: {
               rotate_mode: 'boundary',
-              boundary_date: boundary
+              boundary_date: boundary,
+              boundary_type: boolType
             }
           }
         : sprite
@@ -1825,7 +1860,7 @@ const handleBoundaryAnimation = () => {
   } else if (sprite.others_anime) {
     stopBoundaryAnimation(activeSprite)
   } else {
-    applyBoundaryAnimation(appRef.current, activeSprite, boundary);
+    applyBoundaryAnimation(appRef.current, activeSprite, boundary, boundaryType);
   }
 };
 
@@ -2043,23 +2078,23 @@ const stopCircularMove = (spriteId) => {
   };
 
   //現在のspriteInfoの中身を確認する
-  const checkSpriteInfo = () => {
-    console.log('spriteInfoの中身', spriteInfo )
-    // console.log('背景データの中身', spaceInfo )
-    // console.log('ざんき', maxSprite);
-    // console.log('クリックストライプ', moveClickSprites);
-    console.log('選択スプライトのid', activeSprite);
-    // console.log('背景アニメリスト', spaceSpritesAnime);
-    // console.log('アイテムの中', itemAllId)
-  };
+  // const checkSpriteInfo = () => {
+  //   console.log('spriteInfoの中身', spriteInfo )
+  //   // console.log('背景データの中身', spaceInfo )
+  //   // console.log('ざんき', maxSprite);
+  //   // console.log('クリックストライプ', moveClickSprites);
+  //   console.log('選択スプライトのid', activeSprite);
+  //   // console.log('背景アニメリスト', spaceSpritesAnime);
+  //   // console.log('アイテムの中', itemAllId)
+  // };
   
   //選択中のスプライトの詳細
-  useEffect(() => {
-    if (activeSprite) {
-      const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
-      console.log('選択中のスプライト情報', sprite);
-    }
-  }, [activeSprite]);
+  // useEffect(() => {
+  //   if (activeSprite) {
+  //     const sprite = spriteInfo.find(s => s.sprite_id === activeSprite);
+  //     console.log('選択中のスプライト情報', sprite);
+  //   }
+  // }, [activeSprite]);
 
 
   //「送信ボタン」が押された時にデータを保存

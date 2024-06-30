@@ -9202,7 +9202,7 @@ background-color: #d1eee6;
   -o-object-fit: cover;
   object-fit: cover;
   width: 280px;
-  margin-top: 3.2rem;
+  margin-top: 8rem;
 }
 
 .sidebar-title {
@@ -9658,7 +9658,7 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
     width: 250px;
-    margin-top: 3.2rem;
+    margin-top: 8rem;
   }
 
   .sidebar-content {
@@ -9815,7 +9815,7 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
     width: 205px;
-    margin-top: 3.2rem;
+    margin-top: 8rem;
   }
 
   .sidebar-title {
@@ -9992,7 +9992,7 @@ background-color: #d1eee6;
     -o-object-fit: cover;
     object-fit: cover;
     width: 175px;
-    margin-top: 3.2rem;
+    margin-top: 8rem;
   }
 
 
@@ -10436,4 +10436,17 @@ background-color: #d1eee6;
 
 .comment-board-form-title {
   width: 600px;
+}
+
+.create-btn {
+  background-color: #EB625A;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.tool-statement {
+  text-align: left;
+  width: 500px;
+  font-size: 0.8rem;
 }

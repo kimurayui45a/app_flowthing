@@ -3788,20 +3788,20 @@ useEffect(() => {
         className="select-confirm-btn tooltip-container"
         onClick={rescuePanel}
         onTouchStart={rescuePanel}
-        style={{ width: 'auto' }}
+        style={{ width: 'auto', marginBottom: '10px' }}
         >
-        もしパネルが動かなくなったらクリック
-        <span className="tooltip-text" style={{ textAlign: 'left' }}>もしもパネルが動かなくなったらこのボタンを押してください。改善される可能性があります。</span>
+        もしパネルが動かなくなったらクリックして下さい
+        <span className="tooltip-text" style={{ textAlign: 'left' }}>もしもコントロールパネルが動かなくなったらこのボタンを押してください。<br />改善される可能性があります。</span>
       </div>
 
 
-<div
+{/* <div
   className= "panel-tool-button-small midasi-t-five"
   onClick={sampleData}
 >
   <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pngデータ</span>
   
-</div>
+</div> */}
 
       <div ref={canvasContainerRef} style={{
           width: `${canvasSpaceSize.width}px`,

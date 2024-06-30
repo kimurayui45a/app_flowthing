@@ -1,11 +1,28 @@
 <% content_for(:title, t('.title')) %>
 
-<div class="p5canvas-container">
+<div class="p5canvas-container flex-column">
   <h1 class="section-title" style="margin-top: 2rem;">
     <span class="red-text">Screen編集</span>
     
   </h1>
-<span class="red-text">このツールはPCのフルスクリーンでの作業を推奨しております。</span>
+
+    <div class="tool-statement" style="margin-bottom: 2rem;">
+      <p class="red-text text-Rounded500" style="margin-bottom: -0.8rem;">注意</p><br>
+      <p style="margin-bottom: -0.8rem;">作業中のこまめな途中保存を推奨します。</p><br>
+      <p>
+        <span style="color: #3A559D;" class="text-Rounded500">もしコントロールパネルが動かなくなったら</span><br>
+        万が一、パネルがスライドできなくなった場合は、下記の<span style="color: #59afc7;" class="text-Rounded500">「もしパネルが動かなくなったらクリック」</span>ボタンを押してください。<br>
+        改善されない場合は、一度保存後にページを離れて再度アクセスしてください。
+      </p><br>
+      <p>
+        <span style="color: #EB625A;" class="text-Rounded500">もしcanvasが白紙に戻ってしまったら</span><br>
+        長時間作業する場合、ブラウザの状況によりリロードが発生し、canvasが白紙に戻る可能性があります。<br>
+        その場合は保存せずにページを離れてください。<br>
+        保存を押してしまうと、canvasが白紙で上書きされる恐れがあります。
+      </p><br>
+    </div>
+
+
 
   <div id="reactEditSpaceCanvas"
     data-profile-id="<%= @profile.id %>"

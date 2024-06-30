@@ -116,7 +116,7 @@ const PixiCustomCurrentDetails = () => {
 
           <div style={{ marginTop: '16px' }} className="detail-text">
           <span className="light-blue-text">スタイル</span><br />
-            <span>スケール：{activeSpriteDetail.sprite_scale || '---'}</span><br />
+            <span>縮尺：{activeSpriteDetail.sprite_scale || '---'}</span><br />
             <span>透明度：{activeSpriteDetail.sprite_alpha || '---'}</span><br />
             <span>角度：{activeSpriteDetail.angleDegrees_value || '0'}</span>
           </div>
@@ -234,7 +234,7 @@ const PixiCustomCurrentDetails = () => {
 
 
           <div className="detail-text" style={{ marginTop: '16px' }}>
-            <span className="light-blue-text">スケールアニメ(
+            <span className="light-blue-text">縮尺アニメ(
               <span style={{ color: activeSpriteDetail.scale_anime ? '#F8A3B1' : '#4A4A4A' }}>
                 {activeSpriteDetail.scale_anime ? '実行中' : '停止中'}
               </span>
@@ -323,6 +323,14 @@ const PixiCustomCurrentDetails = () => {
 
             {activeSpriteDetail.others_anime && activeSpriteDetail.anime_value.rotate_mode === 'boundary' ? (
               <>
+                <span>タイプ：
+                  <span className="detail-value">
+                    
+
+                    {activeSpriteDetail.anime_value.boundary_type ? '全辺時間一定' : '1辺時間一定'}
+                  </span>
+                </span><br />
+
                 <span>速さ：
                   <span className="detail-value">
                     {activeSpriteDetail.anime_value.boundary_date.speed}

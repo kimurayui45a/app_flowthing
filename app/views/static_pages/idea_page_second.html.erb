@@ -36,8 +36,7 @@
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">アイテムを動かしてみよう<i class="bi bi-chevron-down chevron-style"></i></div>
           <div class="accordion-content-sidebar" id="accordion-section3">
             <%= link_to 'サンプルの詳細設定', idea_page_third_path + '#section1' %>
-            <%= link_to 'アニメを組み合わてみよう', idea_page_third_path + '#section2' %>
-            <%= link_to 'アニメを組み合わてみよう2', idea_page_third_path + '#section3' %>
+            <%= link_to 'アニメを組み合わせてみよう', idea_page_third_path + '#section2' %>
           </div>
         </li>
 <%# 
@@ -348,7 +347,14 @@
       </p>
     </div>
 
-<div style="height: 10rem; width: 100px;"></div>
+
+    <div style="height: 7rem; width: 100px;"></div>
+
+    <div style="margin-bottom: 2rem;"><%= link_to '画像編集', idea_page_path, class: "embedded-item text-Rounded500" %>のページへ</div>
+
+    <div><%= link_to 'アニメーション', idea_page_third_path, class: "embedded-item text-Rounded500" %>のページへ</div>
+
+    <div style="height: 10rem; width: 100px;"></div>
 
 
   </div>

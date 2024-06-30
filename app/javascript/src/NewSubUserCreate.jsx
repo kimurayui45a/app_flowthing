@@ -158,7 +158,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
         const data = await response.json();
         window.location.href = data.redirect_url;
       } else {
-        console.error('送信失敗');
+        console.error('保存失敗');
         handleAlertMessage("文字数が上限を超えています。\n「命名」は最大20文字、「コメント」は2000文字でお願い致します。")
       }
     } catch (error) {
@@ -243,7 +243,7 @@ const [panelPosition, setPanelPosition] = useState(() => {
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary" style={{ marginTop: '60px' }}>データ送信</button>
+          <button type="submit" className="btn btn-primary" style={{ marginTop: '60px', marginBottom: '60px' }}>保存</button>
 
 
         </form>
