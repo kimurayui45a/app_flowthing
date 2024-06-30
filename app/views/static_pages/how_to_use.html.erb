@@ -68,13 +68,19 @@
         <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
         </span>
       </h2>
-      <p class="explanation-section-text">
+      <p class="explanation-section-text" style="margin-bottom: -0.8rem;">
         「Sub Thing」とは登録した「もの(Flow Thing)」の
         <span class="red-text text-Rounded500">「持ち主」</span>
         や
         <span class="red-text text-Rounded500">「カテゴリー」</span>
         のような立ち位置の存在です。<br>
-        「Sub Thing」と一緒に登録することで「もの」の分類が簡単になります。<br>
+      </p>
+      <p class="explanation-section-text" style="margin-bottom: -2rem;">
+        まずは「Sub Thing」を作成し、その後で関連する「Flow Thing」を追加していきます。<br>
+        「Flow Thing」を作成するには「Sub Thing」の<%= link_to '一覧ページ', sub_users_path, class: "embedded-item text-Rounded500" %>から作成したい「Sub Thing」カードを選択し、その詳細ページに進みます。<br>
+        そこで<span style="color: #E19AB0;" class="text-Rounded500">「New Flow Thing」</span>ボタンをクリックすると、選択したSub Thingに紐づくFlow Thingの作成が可能です。
+      </p><br>
+      <p class="explanation-section-text">
         1つの「Sub Thing」に対して「Flow Thing」は幾つでも登録可能です。
       </p>
     </section>
@@ -165,13 +171,26 @@
       <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
         <span class="text-line">Flux Screen</span>
       </h2>
-      <p class="explanation-section-text">
-        「Flux Screen」は作成した「背景(Screen)」に「Flow Thing」を配置できる項目です。<br>
-        配置時にちょっとしたアニメーションを付与できます。<br>
-        作成した「Flux Screen」はトップページに表示されます。<br>
-        「Flux Screen」内の「Flow Thing」をクリックするとその「Flow Thing」の詳細が表示され、さらに詳細ページにジャンプできます。
-      </p>
     </section>
+    <p class="explanation-section-text">
+      「Flux Screen」は作成した「背景(Screen)」に「Flow Thing」を配置できる項目です。<br>
+      配置時にちょっとしたアニメーションを付与できます。<br>
+      作成した「Flux Screen」はトップページに表示されます。<br>
+      「Flux Screen」内の「Flow Thing」をクリックするとその「Flow Thing」の詳細が表示され、さらに詳細ページにジャンプできます。
+    </p>
+
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
+      <span class="sub-line">
+      探し物をする
+      </span>
+    </h3>
+    <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9;">
+      <p>
+        トップページの上部に配置された「探し物をする」検索フォームを使用すると、アプリ内で作成された「Flow Thing」または「Flux Screen」を検索できます。<br>
+        検索したい対象を「Flow Thing」または「Flux Screen」で選択し、キーワードを入力して検索します。<br>
+        検索結果から「Flow Thing」を選択するとその詳細ページに移動し、「Flux Screen」を選択するとそのスクリーンがトップページで表示されるようになります。
+      </p>
+    </div>
 
     <div style="height: 7rem; width: 100px;"></div>
 
@@ -179,6 +198,10 @@
       <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
         <span class="text-line">利用範囲の早見表</span>
       </h2>
+    </section>
+    <p class="explanation-section-text" style="margin-bottom: -0.8rem;">
+      下記の表は、アプリ内で作成した制作物が利用できる範囲を示した表です。
+    </p>
       <table class="how-to-use-table">
         <tr class="text-Rounded">
           <th>項目名</th>
@@ -223,7 +246,7 @@
           <td>◯</td>
         </tr>
       </table>
-    </section>
+    
 
     <div style="height: 7rem; width: 100px;"></div>
 
@@ -250,7 +273,7 @@
         <span class="text-line">プロフィール</span>
       </h2>
     </section>
-    <h3 class="explanation-section-subtitle" style="margin-bottom: 1.5rem;">
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
       テーマカラー
       </span>
@@ -262,7 +285,7 @@
       </p>
     </div>
 
-    <h3 class="explanation-section-subtitle" style="margin-bottom: 1.5rem;">
+    <h3 class="explanation-section-subtitle" style="margin-bottom: 0rem;">
       <span class="sub-line">
       ブラウザのサイズ
       </span>

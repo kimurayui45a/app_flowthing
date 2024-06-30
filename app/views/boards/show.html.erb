@@ -1,5 +1,5 @@
 <% content_for(:title, t('.title')) %>
-<div class="maxboard-container flex-column">
+<div class="maxboard-container flex-column" style="padding-top: 10rem;">
 
 
 
@@ -61,9 +61,9 @@
     <% if @board.item %>
       <% case @board.item.image_choice %>
       <% when 'item_image' %>
-        <%= image_tag @board.item.item_image.url, class: "user-profileicon" %>
+        <%= image_tag @board.item.item_image.url, class: "board_image" %>
       <% when 'item_canvas' %>
-        <img src="<%= @board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon" >
+        <img src="<%= @board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="board_image" >
       <% else %>
         <div class="no-image-icon">No Image</div>
       <% end %>

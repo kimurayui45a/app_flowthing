@@ -2337,7 +2337,7 @@ summary {
 .board-show-container {
   display: block;
   height: auto;
-  width: 20rem;
+  width: 40rem;
   // border-radius: 5px;
   padding: 1rem;
   // border: 2px dashed #7f7f7f;
@@ -2348,6 +2348,8 @@ summary {
   box-shadow: 0 0.125rem 0.3125rem 0 #575757;
   justify-content: center;
   background-color: white;
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .user-show-imageicon {
@@ -10449,4 +10451,29 @@ background-color: #d1eee6;
   text-align: left;
   width: 500px;
   font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .comment-container-text {
+    width: 600px;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-align: left;
+  }
+  .comment-board-form {
+    width: 600px;
+  }
+}
+
+.board_image {
+  width: 200px;
+  height: auto;
+  // border-radius: 50%;
+  display: inline-block;
+  margin: 0px auto;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
 }
