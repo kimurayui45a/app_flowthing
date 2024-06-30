@@ -51,7 +51,7 @@ export const PixiGroupProvider = ({ children, panelPosition }) => {
 
 
   //スプライトのスケール
-  const [scaleSprite, setScaleSprite] = useState(1);
+  const [scaleSprite, setScaleSprite] = useState(0.5);
   const [inputScaleSprite, setInputScaleSprite] = useState(String(scaleSprite));
 
   //スプライトのスケール
