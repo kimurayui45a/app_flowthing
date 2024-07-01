@@ -586,7 +586,7 @@ html {
   margin-top: 2rem;
   text-align: right;
   margin-left: auto;
-  transition: opacity 0.3s ease; /* トランジションを追加 */
+  transition: opacity 0.3s ease;
 }
 
 .trash-botann:hover {
@@ -898,8 +898,7 @@ html {
 // }
 
 // .item-list-show .sub-user-itemicon {
-//   /* ここに固定幅や他の必要なスタイルを設定 */
-//   width: 200px; /* 例：幅を200pxに固定 */
+//   width: 200px;
   
 // }
 
@@ -1105,8 +1104,8 @@ html {
 .header-button {
   background-color: transparent;
   box-sizing: border-box;
-  border: none; /* デフォルトのボーダーを削除 */
-  outline: none; /* フォーカス時のアウトラインを削除 */
+  border: none;
+  outline: none;
   width: 5rem;
   height: 5rem;
   // border-bottom: solid 0.375rem #7f7f7f;
@@ -1173,8 +1172,8 @@ html {
 .tool-dropdown-btn {
   background-color: transparent;
   box-sizing: border-box;
-  border: none; /* デフォルトのボーダーを削除 */
-  outline: none; /* フォーカス時のアウトラインを削除 */
+  border: none;
+  outline: none;
   width: 5rem;
   height: 5rem;
   display: flex;
@@ -1250,8 +1249,8 @@ html {
 .room-dropdown-btn {
   background-color: transparent;
   box-sizing: border-box;
-  border: none; /* デフォルトのボーダーを削除 */
-  outline: none; /* フォーカス時のアウトラインを削除 */
+  border: none;
+  outline: none;
   width: 10rem;
   height: 5rem;
   border-bottom: solid 0.375rem #7f7f7f;
@@ -1305,25 +1304,6 @@ html {
   text-decoration: none;
   color: #507a75;
 }
-
-
-// @media (max-width: 959px) {
-//   .search-form {
-//     position: absolute; /* 絶対位置指定 */
-//     top: 150px; /* 上端から250pxの位置に設定 */
-//     right: 0; /* 右端に合わせる */
-//     /* 必要に応じてその他のスタイルを追加 */
-//   }
-// }
-
-// @media (max-width: 959px) {
-//   .room-container {
-//     position: absolute; /* 絶対位置指定 */
-//     top: 250px; /* 上端から250pxの位置に設定 */
-//     right: 0; /* 右端に合わせる */
-//     /* 必要に応じてその他のスタイルを追加 */
-//   }
-// }
 
 
 /* サインアップ
@@ -1393,7 +1373,7 @@ html {
 }
 
 .disabled-input {
-  opacity: 0.5; /* 半透明にする */
+  opacity: 0.5;
 }
 
 .usericonColor {
@@ -1566,17 +1546,17 @@ html {
 
 /* ドロップゾーンのスタイル */
 #dropzone-1, #dropzone-2, #dropzone-21 {
-  position: relative; /* 絶対位置指定された子要素を正しく配置するために必要 */
-  width: 100%;        /* 適切なサイズに設定 */
-  height: 1000px;      /* 適切なサイズに設定 */
+  position: relative;
+  width: 100%;
+  height: 1000px;
   border: 2px dashed #aaa;
   margin-top: 20px;
 }
 
 /* ドラッグ可能な要素のスタイル */
 #colorPalette-1, #colorPalette-2, #colorPalette-21 {
-  position: absolute; /* ドラッグ時の位置調整のために必要 */
-  z-index: 15;      /* 他の要素の上に表示 */
+  position: absolute;
+  z-index: 15;
   /* その他のスタイル（サイズ、背景色など） */
   width: 250px;
   height: 410px;
@@ -1590,8 +1570,8 @@ html {
 }
 
 #tool-custom-1, #tool-custom-2, #tool-custom-21 {
-  position: absolute; /* ドラッグ時の位置調整のために必要 */
-  z-index: 14;      /* 他の要素の上に表示 */
+  position: absolute;
+  z-index: 14;
   /* その他のスタイル（サイズ、背景色など） */
   width: auto;
   height: 170px;
@@ -1604,8 +1584,8 @@ html {
 }
 
 #shapes-tool-1, #shapes-tool-2, #shapes-tool-21 {
-  position: absolute; /* ドラッグ時の位置調整のために必要 */
-  z-index: 13;      /* 他の要素の上に表示 */
+  position: absolute;
+  z-index: 13;
   /* その他のスタイル（サイズ、背景色など） */
   width: 350px;
   height: 100px;
@@ -1800,8 +1780,8 @@ div.selected {
   border-width: 2px;
   border-style: solid;
   border-color: green;
-  display: block; /* ブロックレベル要素として表示 */
-  margin: auto; /* 水平方向の自動マージンで中央揃え */
+  display: block;
+  margin: auto;
 }
 
 .myCanvas-radius {
@@ -1815,28 +1795,27 @@ div.selected {
 .sizeBtn {
   width: 40px;
   height: 40px;
-  display: flex; /* Flexboxを使う */
-  flex-direction: column; /* 子要素を縦方向に並べる */
-  justify-content: center; /* 子要素を垂直方向に中央揃え */
-  align-items: center; /* 子要素を水平方向に中央揃え */
-  text-align: center; /* テキストを中央揃え */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin: 1px;
   background-color: #c2c1c1;
   cursor: pointer;
   box-shadow: 1px 1px black;
   border-radius: 2px;
-  font-size: 10px; /* デフォルトのフォントサイズ */
+  font-size: 10px;
 }
 
 .sizeBtn i {
-  font-size: 7px; /* アイコンのサイズ */
-  /* アイコンのスタイルに関する追加の設定があればここに記述 */
+  font-size: 7px;
 }
 
 .sizeBtn div {
-  display: flex; /* 各子要素もFlexboxに */
-  justify-content: center; /* 水平方向に中央揃え */
-  align-items: center; /* 垂直方向に中央揃え */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .selected-size-btn {
@@ -1896,24 +1875,6 @@ div.selected {
   font-weight: 400;
   font-style: normal;
 }
-
-
-
-
-// /* カスタムラジオボタンのスタイル */
-// .custom-radio + label {
-//   background-color: #eee;
-//   padding: 10px;
-//   border: 1px solid #ddd;
-//   display: inline-block;
-//   cursor: pointer;
-// }
-
-// /* 選択されたときのスタイル */
-// .custom-radio:checked + label {
-//   background-color: #bada55;
-//   color: white;
-// }
 
 
 
@@ -2024,7 +1985,7 @@ div.selected {
 }
 
 .subuser-disabled {
-  opacity: 0.5; /* 半透明にする */
+  opacity: 0.5;
 }
 
 .subuser-iconColor {
@@ -2193,13 +2154,11 @@ div.selected {
 }
 
 details[open] .item-summary-style {
-  /* detailsが開かれたときにテキストを折り返す */
   white-space: normal;
   text-overflow: clip;
 }
 
 details[open] .subuser-summary-style {
-  /* detailsが開かれたときにテキストを折り返す */
   white-space: normal;
   text-overflow: clip;
 }
@@ -2387,10 +2346,10 @@ summary {
 /* comments.css または適切なスタイルシートファイルに追加 */
 .sticky-form {
   position: sticky;
-  bottom: 0; /* 画面の下部に固定 */
-  background: #fff; /* 背景色 */
-  padding: 10px; /* パディング */
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.2); /* 影をつける（オプション） */
+  bottom: 0;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
 }
 
 
@@ -2429,7 +2388,7 @@ summary {
 }
 
 #accordion-toggle:checked + .accordion-label + .accordion-content {
-  max-height: 1000px; /* コンテンツの最大高さを調整 */
+  max-height: 1000px;
 }
 
 
@@ -2458,18 +2417,18 @@ summary {
 }
 
 #user-icon {
-  width: 50px; /* アイコンのサイズを設定 */
-  height: 50px; /* アイコンのサイズを設定 */
-  border-radius: 50%; /* 丸く表示 */
-  object-fit: cover; /* 画像の比率を保ちつつ、要素に合わせて表示 */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 
 #myDropdown {
-  width: 200px; /* 幅の指定 */
-  padding: 10px; /* パディング */
-  border: 1px solid #ccc; /* ボーダー */
-  border-radius: 4px; /* ボーダーの角を丸くする */
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 
@@ -2558,42 +2517,34 @@ summary {
 /* ヘルパー隠し評価(隠しぼかし) */
 
 .blur-0-card {
-  /* ぼかし効果なし */
   filter: blur(0);
 }
 
 .blur-1-card {
-  /* ぼかし効果なし */
   filter: blur(0.2px);
 }
 
 .blur-2-card {
-  /* 軽いぼかし効果 */
   filter: blur(0.5px);
 }
 
 .blur-3-card {
-  /* 最大のぼかし効果 */
   filter: blur(1px);
 }
 
 .blur-4-card {
-  /* ぼかし効果なし */
   filter: blur(1.5px);
 }
 
 .blur-5-card {
-  /* ぼかし効果なし */
   filter: blur(3px);
 }
 
 .blur-6-card {
-  /* 軽いぼかし効果 */
   filter: blur(5px);
 }
 
 .blur-7-card {
-  /* 最大のぼかし効果 */
   filter: blur(7px);
 }
 
@@ -2756,8 +2707,8 @@ summary {
 
 .info-botann .wave {
   position: absolute;
-  width: 700px; /* 個々の四角形の幅 */
-  height: 700px; /* 個々の四角形の高さ */
+  width: 700px;
+  height: 700px;
   background-color: #3168dd;
   animation: wavePause linear 10s infinite;
   top: 50%;
@@ -2997,10 +2948,9 @@ summary {
 
 
 .episode-text-container {
-  overflow: hidden; /* コンテナの外に出たテキストを隠す */
-  text-overflow: ellipsis; /* テキストがオーバーフローしたときに省略記号を表示 */
-  // white-space: nowrap; /* テキストを一行に保つ */
-  max-width: 40rem; /* 最大幅を設定（必要に応じて調整） */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 40rem;
   max-height: 8rem;
   padding: 1rem;
 }
@@ -3011,7 +2961,7 @@ summary {
     transform: rotate(0deg) translateX(0);
   }
   100% {
-    transform: rotate(360deg) translateX(100px); /* ここを変更して異なる動きを作成 */
+    transform: rotate(360deg) translateX(100px);
   }
 }
 
@@ -3020,10 +2970,10 @@ summary {
 }
 
 .frame {
-  background-color: white; /* フレームの背景色 */
-  width: auto; /* フレームの幅 */
-  height: 17rem; /* フレームの高さ */
-  border: 1rem solid black; /* フレームの枠線 */
+  background-color: white;
+  width: auto;
+  height: 17rem;
+  border: 1rem solid black;
   border-radius: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3042,17 +2992,17 @@ summary {
 }
 
 .scroll-container {
-  width: 30rem; /* コンテナの幅 */
-  height: 160rem; /* コンテナの高さ */
-  overflow-y: auto; /* 垂直方向にスクロールバーを表示 */
-  border: 1px solid black; /* 枠線を表示（見た目のため） */
+  width: 30rem;
+  height: 160rem;
+  overflow-y: auto;
+  border: 1px solid black;
   // transform: rotate(20deg);
 }
 
 .scrollable-container {
-  width: 45rem; /* コンテナの最大幅 */
-  height: 13rem; /* コンテナの最大高さ */
-  overflow: auto; /* コンテンツがはみ出たらスクロールバーを表示 */
+  width: 45rem;
+  height: 13rem;
+  overflow: auto;
 }
 
 .episode-title-contents {
@@ -3075,10 +3025,10 @@ summary {
 }
 
 .frame-no-episode {
-  background-color: white; /* フレームの背景色 */
-  width: auto; /* フレームの幅 */
-  height: 17rem; /* フレームの高さ */
-  border: 1rem solid black; /* フレームの枠線 */
+  background-color: white;
+  width: auto;
+  height: 17rem;
+  border: 1rem solid black;
   border-radius: 2rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3097,15 +3047,15 @@ summary {
 }
 
 .holes {
-  width: 8rem; /* 穴の部分の幅 */
-  height: 6rem; /* 穴の部分の高さ */
-  background-color: white; /* 穴の部分の背景色 */
+  width: 8rem;
+  height: 6rem;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 10px 0; /* 上下の余白 */
+  padding: 10px 0;
   display: grid;
-  gap: 5px; /* 穴同士の間隔 */
+  gap: 5px;
   background-repeat: space repeat;
   border: 1rem solid black;
   border-radius: 1.5rem;
@@ -3150,9 +3100,8 @@ summary {
 
 
 .flying-star {
-  display: none; /* ホバーしていない時は非表示 */
-  position: absolute; /* アイコンの位置を調整 */
-  /* 位置の詳細設定 */
+  display: none;
+  position: absolute;
 }
 
 /* フォーム
@@ -3496,7 +3445,7 @@ summary {
 
 
 .google-auth-btn {
-  background-color: #4285F4; /* Googleブルー */
+  background-color: #4285F4;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -3507,7 +3456,7 @@ summary {
 
 /* フォームのスタイル調整（必要に応じて） */
 .google-auth-form {
-  margin-bottom: 10px; /* ボタン間の余白調整 */
+  margin-bottom: 10px;
 }
 
 
@@ -3558,7 +3507,7 @@ summary {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0; /* 上下のマージンを追加 */
+  margin: 20px 0;
 }
 
 
@@ -3634,47 +3583,6 @@ summary {
   user-select: none;
 }
 
-
-
-// .slider-container {
-//   width: 300px;
-//   margin: 20px;
-// }
-
-// .slider {
-//   appearance: none; /* 標準プロパティ */
-//   -webkit-appearance: none; /* ウェブキットベースのブラウザでデフォルトスタイルを無効にする */
-//   width: 100%;
-//   height: 10px;
-//   border-radius: 5px;
-//   background: #ddd;
-//   outline: none;
-//   opacity: 0.7;
-//   -webkit-transition: .2s; /* トランジション効果 */
-//   transition: opacity .2s;
-// }
-
-// .slider:hover {
-//   opacity: 1;
-// }
-
-// .slider::-webkit-slider-thumb {
-//   -webkit-appearance: none; /* ウェブキットベースのブラウザでデフォルトスタイルを無効にする */
-//   appearance: none;
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   background: #4CAF50;
-//   cursor: pointer;
-// }
-
-// .slider::-moz-range-thumb {
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 50%;
-//   background: #4CAF50;
-//   cursor: pointer;
-// }
 
 .custom-checkbox {
   position: relative;
@@ -3817,8 +3725,8 @@ summary {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px; /* 線の厚さ */
-  background-color: #4A4A4A; /* 線の色 */
+  height: 6px;
+  background-color: #4A4A4A;
 }
 
 .panel-visible-button::after {
@@ -3826,8 +3734,8 @@ summary {
   position: absolute;
   top: 1px;
   left: 1px;
-  height: 2px; /* 点のサイズ */
-  width: 6px; /* 点3つと2つの0.5px間隔を含む全体の幅 */
+  height: 2px;
+  width: 6px;
   background: linear-gradient(to right, #c2c1c1 33%, transparent 33% 66%, #c2c1c1 66% 99%, transparent 99%);
 }
 
@@ -4077,7 +3985,7 @@ summary {
 }
 
 .toggle-switch .checked .switch-handle {
-  transform: translateX(15px); /* ハンドルを右に移動 */
+  transform: translateX(15px);
 }
 
 .top-line-block {
@@ -4154,17 +4062,17 @@ summary {
  /* カラープレビュー */
 .color-preview-container {
   position: relative;
-  width: 40px; /* 必要に応じて調整 */
-  height: 40px; /* 必要に応じて調整 */
+  width: 40px;
+  height: 40px;
 }
 
 .color-preview {
   position: absolute;
   width: 25px;
   height: 25px;
-  top: 0; /* 重なる部分の調整 */
-  left: 0; /* 重なる部分の調整 */
-  z-index: 51; /* color-previewを前面に */
+  top: 0;
+  left: 0;
+  z-index: 51;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -4173,9 +4081,9 @@ summary {
   position: absolute;
   width: 25px;
   height: 25px;
-  bottom: 0px; /* 位置の微調整 */
-  right: 0px; /* 位置の微調整 */
-  z-index: 50; /* color-preview-buttonを背面に */
+  bottom: 0px;
+  right: 0px;
+  z-index: 50;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -4188,8 +4096,8 @@ summary {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0; /* 重なる部分の調整 */
-  right: 0; /* 重なる部分の調整 */
+  top: 0;
+  right: 0;
 }
 
 .preview-change-button:hover .change-cls-1,
@@ -4201,11 +4109,11 @@ summary {
 .color-preview::after, .color-preview-button::after {
   content: "";
   position: absolute;
-  top: -2px; /* ボーダーの太さを考慮して調整 */
+  top: -2px;
   left: -2px;
-  width: calc(100% + 4px); /* 元の要素のサイズ + ボーダーの太さと間隔 */
+  width: calc(100% + 4px);
   height: calc(100% + 4px);
-  border: 2.5px solid transparent; /* 初期状態では透明 */
+  border: 2.5px solid transparent;
   box-sizing: border-box;
   z-index: -1;
   border-radius: 6px;
@@ -4331,11 +4239,11 @@ summary {
 .color-preview-fast::after, .color-preview-second::after {
   content: "";
   position: absolute;
-  top: -2px; /* ボーダーの太さを考慮して調整 */
+  top: -2px;
   left: -2px;
-  width: calc(100% + 4px); /* 元の要素のサイズ + ボーダーの太さと間隔 */
+  width: calc(100% + 4px);
   height: calc(100% + 4px);
-  border: 2.5px solid transparent; /* 初期状態では透明 */
+  border: 2.5px solid transparent;
   box-sizing: border-box;
   z-index: -1;
   border-radius: 6px;
@@ -4588,8 +4496,8 @@ summary {
 
 /* レイヤープレビュー */
 .layers-info-preview-container {
-  width: 56px; /* プレビュー全体の幅 */
-  height: 42px; /* プレビュー全体の高さ */
+  width: 56px;
+  height: 42px;
   overflow: hidden;
   position: relative;
   border: 1px solid #4A4A4A;
@@ -4788,18 +4696,6 @@ summary {
   color: #ececec;
 }
 
-/* コントロールパネル（詳細パネル共通）
------------------------------------------- */
-
-
-
-
-
-
-
-/* コントロールパネル（選択ツールの詳細パネル）
------------------------------------------- */
-
 
 /* コントロールパネル（詳細パネル）
 ------------------------------------------ */
@@ -4936,8 +4832,8 @@ summary {
 
 /* 一時レイヤープレビュー */
 .selected-area-preview-container {
-  width: 88px; /* プレビュー全体の幅 */
-  height: 66px; /* プレビュー全体の高さ */
+  width: 88px;
+  height: 66px;
   overflow: hidden;
   position: relative;
   border: 1px solid #4A4A4A;
@@ -5357,8 +5253,8 @@ summary {
 
 /* ペンツールプレビュー */
 .pen-tool-preview-container {
-  width: 90px; /* プレビュー全体の幅 */
-  height: 90px; /* プレビュー全体の高さ */
+  width: 90px;
+  height: 90px;
   overflow: hidden;
   position: relative;
   border: 1px solid #4A4A4A;
@@ -5409,61 +5305,24 @@ summary {
 }
 
 
-// .brush-preview-container {
-//   width: 140px;
-//   height: 140px;
-//   border-radius: 50%;
-//   background-color: #2196F3; /* ユーザーが選択した色 */
-//   position: relative;
-//   overflow: hidden;
-// }
-
-// .dot-pattern {
-//   width: 100%;
-//   height: 100%;
-//   background-image: radial-gradient(circle, transparent 20%, #FFFFFF 20%);
-//   background-size: 10px 10px; /* ドットのサイズと間隔 */
-// }
-
 
 .brush-preview-container {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background-color: #2196F3; /* ユーザーが選択した色 */
+  background-color: #2196F3;
   position: relative;
   overflow: hidden;
 }
 .brush-preview-container::before {
   content: "";
   position: absolute;
-  width: 10px; /* ドットの横幅 */
-  height: 5px; /* ドットの縦幅 */
-  background-color: #FFFFFF; /* ドットの色 */
-  top: 50%; /* ドットの縦位置 */
-  left: 50%; /* ドットの横位置 */
+  width: 10px;
+  height: 5px;
+  background-color: #FFFFFF;
+  top: 50%;
+  left: 50%;
 }
-
-
-
-// .triangle {
-//   background: #d72929;
-//   height: calc(tan(60deg) * 60px / 2);
-//   width: 60px;
-//   clip-path: polygon(50% 0, 100% 100%, 0 100%);
-// }
-
-// .triangle {
-//   width: 0px;
-//   height: 0px;
-//   border-top: 25px solid transparent;
-//   border-right: 25px solid transparent;
-//   border-left: 25px solid transparent;
-//   border-bottom: 50px solid blue;
-// }
-
-
-
 
 
 .alpha-colors-preview-small {
@@ -5506,11 +5365,11 @@ summary {
 .color-preview-fast-small::after, .color-preview-second-small::after {
   content: "";
   position: absolute;
-  top: -2px; /* ボーダーの太さを考慮して調整 */
+  top: -2px;
   left: -2px;
-  width: calc(100% + 4px); /* 元の要素のサイズ + ボーダーの太さと間隔 */
+  width: calc(100% + 4px);
   height: calc(100% + 4px);
-  border: 2.5px solid transparent; /* 初期状態では透明 */
+  border: 2.5px solid transparent;
   box-sizing: border-box;
   z-index: -1;
   border-radius: 6px;
@@ -5595,8 +5454,8 @@ summary {
 
 /* Pixi背景プレビュー */
 .pixi-space-preview-container {
-  width: 120px; /* プレビュー全体の幅 */
-  height: 90px; /* プレビュー全体の高さ */
+  width: 120px;
+  height: 90px;
   overflow: hidden;
   position: relative;
   border: 1px solid #4A4A4A;
@@ -5933,18 +5792,18 @@ summary {
 }
 
 .animated-text {
-  font-weight: bold; /* ボールドにして明確なグラデーションを表示 */
+  font-weight: bold;
   background: linear-gradient(110deg, #c2c1c1 4%, #7f7f7f 13%, #9ADFCB 25%, #FBC8C3 50%, #717171 60%, #646464 70%, #393939 95%, #c2c1c1 99%); /* グラデーションの指定 */
-  -webkit-background-clip: text; /* テキスト形状に背景をクリップ */
-  -webkit-text-fill-color: transparent; /* テキストの色を透明に設定 */
-  background-clip: text; /* 標準プロパティも指定 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .animated-text-hanntenn {
-  background: linear-gradient(-110deg, #494949 50%, #c2c1c1 75%); /* グラデーションの指定 */
-  -webkit-background-clip: text; /* テキスト形状に背景をクリップ */
-  -webkit-text-fill-color: transparent; /* テキストの色を透明に設定 */
-  background-clip: text; /* 標準プロパティも指定 */  
+  background: linear-gradient(-110deg, #494949 50%, #c2c1c1 75%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .dotgothic16 {
@@ -6018,29 +5877,6 @@ summary {
   filter: blur(0.2px);
 }
 
-// .area {
-//   width: 100%;  /* ヘッダー全体の幅にフィットするように設定 */
-//   height: 100%; /* 必要に応じてヘッダーの高さにもフィットさせる */
-//   max-width: 100%;  /* 最大幅も100%に設定して、常に画面全体をカバー */
-//   margin: 0 auto;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: absolute;
-// }
-
-// .dairiseki {
-//   background-color: rgba(100,100,100,0.2);
-//   width: 100%;  /* コンテナの幅をヘッダー全体にフィットさせる */
-//   height: 5rem;  /* 高さを5remに設定 */
-//   filter: grayscale(100%);
-//   opacity: 0.3;
-// }
-
-// svg {
-//   width: 100%;  /* SVGをコンテナの幅に合わせる */
-//   height: 100%; /* SVGをコンテナの高さに合わせる */
-// }
 
 .flex-animated-text {
   position: relative;
@@ -6310,19 +6146,6 @@ background-color: #d1eee6;
   padding: 1rem;
 }
 
-// .flux-screen-show-frame-second {
-//   background: linear-gradient(140deg, #918370, #948b78, #776d56, #746b5b, #64594b);
-//   box-shadow: rgba(0, 0, 0, 0.3) 1px 0.5px 1px 1px inset;
-//   border-radius: 0.2rem;
-//   /* margin: 3px; */
-//   /* border: 1px solid #544b45; */
-//   width: auto;
-//   height: auto;
-//   display: flex;
-//   align-items: center;
-//   padding: 0.5rem;
-//   //transform: scale(1);
-// }
 
 
 .flux-screen-show-third {
@@ -6377,7 +6200,7 @@ background-color: #d1eee6;
   position: relative;
   text-align: right;
   margin-left: auto;
-  transition: opacity 0.3s ease; /* トランジションを追加 */
+  transition: opacity 0.3s ease;
 }
 
 .logo-transform-item-card {
@@ -7042,7 +6865,7 @@ background-color: #d1eee6;
   margin-top: 2rem;
   text-align: right;
   margin-left: auto;
-  transition: opacity 0.3s ease; /* トランジションを追加 */
+  transition: opacity 0.3s ease;
 }
 
 
@@ -7131,45 +6954,7 @@ background-color: #d1eee6;
   font-size: 3rem;
 }
 
-//ここ
 @media (max-width: 652px) {
-
-  // .user-dropdown-btn {
-  //   background-color: transparent;
-  //   box-sizing: border-box;
-  //   border: none; /* デフォルトのボーダーを削除 */
-  //   outline: none; /* フォーカス時のアウトラインを削除 */
-  //   width: 2.5rem;
-  //   height: 2.5rem;
-  //   // border-bottom: solid 0.375rem #7f7f7f;
-  // }
-
-  // .flux-screen-show-third {
-  //   transform: scale(0.6);
-  // }
-
-  // .header-button {
-  //   background-color: transparent;
-  //   box-sizing: border-box;
-  //   border: none; /* デフォルトのボーダーを削除 */
-  //   outline: none; /* フォーカス時のアウトラインを削除 */
-  //   width: 2.5rem;
-  //   height: 2.5rem;
-  //   // border-bottom: solid 0.375rem #7f7f7f;
-  // }
-
-  // .user-headericon {
-  //   width: 1.25rem;
-  //   height: 1.25rem;
-  //   border-radius: 50%;
-  //   display: inline-block;
-  //   object-fit: cover;
-  // }
-
-  // .header-icon-pen {
-  //   font-size: 1.5rem;
-  // }
-
   .logo-transform-header {
     transform: scale(0.7);
     margin-left: -3rem;
@@ -7732,17 +7517,17 @@ background-color: #d1eee6;
 
 
 .button-style-death {
-  background: none; /* 背景色を消去 */
-  color: inherit; /* 親要素から色を継承 */
-  border: none; /* ボーダーを消去 */
-  padding: 0; /* パディングをリセット */
-  margin: 0; /* マージンをリセット */
-  outline: none; /* アウトラインを消去 */
-  font-family: inherit; /* 親要素のフォントファミリーを継承 */
-  font-size: inherit; /* 親要素のフォントサイズを継承 */
-  cursor: pointer; /* カーソルをポインターに設定 */
-  line-height: inherit; /* 親要素から行の高さを継承 */
-  text-align: center; /* テキストを中央揃え */
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  text-align: center;
 }
 
 // .canvas-paint-container {
@@ -7895,22 +7680,22 @@ background-color: #d1eee6;
 
 
 .aquarium {
-  width: 300px;   /* 水槽の幅 */
-  height: 200px;  /* 水槽の高さ */
-  border: 10px solid #5c5c5c;  /* 水槽の境界線 */
-  box-shadow: 0 0 8px #000;  /* 影を追加 */
-  position: relative;  /* 相対位置 */
-  overflow: hidden;  /* 内部要素がはみ出さないようにする */
-  background-color: #e0f4fc;  /* 水槽の背景色 */
+  width: 300px;
+  height: 200px;
+  border: 10px solid #5c5c5c;
+  box-shadow: 0 0 8px #000;
+  position: relative;
+  overflow: hidden;
+  background-color: #e0f4fc;
 }
 
 .water {
-  width: 100%;  /* 水の幅（水槽と同じ） */
-  height: 85%;  /* 水の高さ（水槽の85%） */
-  background-color: rgba(0, 123, 255, 0.3);  /* 水の色と透明度 */
-  position: absolute;  /* 絶対位置 */
-  bottom: 0;  /* 下部からの位置 */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.8); /* 水面の効果 */
+  width: 100%;
+  height: 85%;
+  background-color: rgba(0, 123, 255, 0.3);
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 
@@ -8188,17 +7973,17 @@ background-color: #d1eee6;
   border: 1px solid white;
   border-radius: 50%;
   //transform: translateX(-50%);
-  //opacity: 0; /* 初期状態では見えない */
+  //opacity: 0;
   animation: riseBubble-fast 4s infinite ease-in-out;
-  //animation-play-state: paused; /* ホバーしていない時は動かない */
+  //animation-play-state: paused;
   //z-index: 81;
-  animation: none; /* 初期値としてアニメーションを無効化 */
+  animation: none;
   animation-fill-mode: none;
 }
 
 .water-border:hover .bubble-fast {
-  animation: riseBubble-fast 4s infinite ease-in-out; /* .bubble-fastの場合はriseBubble-fastを使用 */
-  animation-fill-mode: none; /* ホバーをやめた時に初期状態に戻る */
+  animation: riseBubble-fast 4s infinite ease-in-out;
+  animation-fill-mode: none;
 }
 
 @keyframes riseBubble-fast {
@@ -8236,16 +8021,16 @@ background-color: #d1eee6;
   border: 1px solid white;
   border-radius: 50%;
   //transform: translateX(-50%);
-  //opacity: 0; /* 初期状態では見えない */
+  //opacity: 0;
   animation: riseBubble-second 4s infinite ease-in-out;
-  //animation-play-state: paused; /* ホバーしていない時は動かない */
+  //animation-play-state: paused;
   //z-index: 82;
-  animation: none; /* 初期値としてアニメーションを無効化 */
+  animation: none;
   animation-fill-mode: none;
 }
 
 .water-border:hover .bubble-second {
-  animation: riseBubble-second 4s infinite ease-in-out; /* .bubble-fastの場合はriseBubble-fastを使用 */
+  animation: riseBubble-second 4s infinite ease-in-out;
   animation-fill-mode: none;
 }
 
@@ -8284,16 +8069,16 @@ background-color: #d1eee6;
   border: 1px solid white;
   border-radius: 50%;
   //transform: translateX(-50%);
-  //opacity: 0; /* 初期状態では見えない */
+  //opacity: 0;
   animation: riseBubble-third 4s infinite ease-in-out;
-  //animation-play-state: paused; /* ホバーしていない時は動かない */
+  //animation-play-state: paused;
   //z-index: 83;
-  animation: none; /* 初期値としてアニメーションを無効化 */
+  animation: none;
   animation-fill-mode: none;
 }
 
 .water-border:hover .bubble-third {
-  animation: riseBubble-third 4s infinite ease-in-out; /* .bubble-fastの場合はriseBubble-fastを使用 */
+  animation: riseBubble-third 4s infinite ease-in-out;
   animation-fill-mode: none;
 }
 
@@ -9272,19 +9057,19 @@ background-color: #d1eee6;
 }
 
 .how-to-use-table th, .styled-sheet td {
-  border: 1px solid #ddd; /* 境界線のスタイル */
+  border: 1px solid #ddd;
   padding: 0.5rem;
   text-align: center; 
   font-size: 0.8rem;
 }
 
 .how-to-use-table th {
-  background-color: #d6edf9; /* 見出し行の背景色 */
+  background-color: #d6edf9;
   // color: black;
 }
 
 .how-to-use-table tr {
-  // border: 1px solid #ddd; /* 境界線のスタイル */
+  // border: 1px solid #ddd;
   padding: 0.5rem;
   text-align: center; 
   font-size: 0.8rem;
@@ -9577,23 +9362,23 @@ background-color: #d1eee6;
 }
 
 .steps-waza p::before {
-  content: counter(step); /* カウンタの値を表示 */
-  counter-increment: step; /* カウンタを増加 */
+  content: counter(step);
+  counter-increment: step;
   position: absolute;
-  left: 0; /* 番号を左端に配置 */
-  top: 0; /* 上端に揃える */
-  font-weight: bold; /* 番号を太字に */
+  left: 0;
+  top: 0;
+  font-weight: bold;
   color: #3a559d;
 }
 
 .steps-waza {
-  counter-reset: step; /* カウンタ 'step' を0にリセット */
+  counter-reset: step;
 }
 
 
 
 .steps-waza-layer {
-  counter-reset: step; /* カウンタ 'step' を0にリセット */
+  counter-reset: step;
 }
 
 .steps-waza-layer p {
@@ -9603,12 +9388,12 @@ background-color: #d1eee6;
 }
 
 .steps-waza-layer p::before {
-  content: counter(step); /* カウンタの値を表示 */
-  counter-increment: step; /* カウンタを増加 */
+  content: counter(step);
+  counter-increment: step;
   position: absolute;
-  left: 0; /* 番号を左端に配置 */
-  top: 0; /* 上端に揃える */
-  font-weight: bold; /* 番号を太字に */
+  left: 0;
+  top: 0;
+  font-weight: bold;
 }
 
 /* 奇数番目の要素の数字の色を変更 */
@@ -9620,8 +9405,6 @@ background-color: #d1eee6;
 .steps-waza-layer p:nth-child(even)::before {
   color: #59afc7;
 }
-
-
 
 
 
@@ -9688,7 +9471,7 @@ background-color: #d1eee6;
   }
   
   .how-to-use-table th, .styled-sheet td {
-    border: 1px solid #ddd; /* 境界線のスタイル */
+    border: 1px solid #ddd;
     padding: 0.3rem;
     text-align: center; 
     font-size: 0.7rem;
@@ -9700,7 +9483,7 @@ background-color: #d1eee6;
   }
 
   .how-to-use-table tr {
-    // border: 1px solid #ddd; /* 境界線のスタイル */
+    // border: 1px solid #ddd;
     padding: 0.3rem;
     text-align: center; 
     font-size: 0.7rem;
@@ -10028,14 +9811,14 @@ background-color: #d1eee6;
   }
   
   .how-to-use-table th, .styled-sheet td {
-    border: 1px solid #ddd; /* 境界線のスタイル */
+    border: 1px solid #ddd;
     padding: 0.3rem;
     text-align: center; 
     font-size: 0.6rem;
   }
 
   .how-to-use-table tr {
-    // border: 1px solid #ddd; /* 境界線のスタイル */
+    // border: 1px solid #ddd;
     padding: 0.3rem;
     text-align: center; 
     font-size: 0.86em;
@@ -10109,9 +9892,9 @@ background-color: #d1eee6;
 
 
 .accordion-content-sidebar {
-  display: none; /* デフォルトではコンテンツを非表示にする */
-  overflow: hidden; /* コンテンツのはみ出しを防ぐ */
-  transition: max-height 0.2s ease-out; /* トランジションでスムーズに表示 */
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
   justify-content: center;
 }
 
@@ -10187,7 +9970,7 @@ background-color: #d1eee6;
   border-collapse: collapse;
   text-align: center;
   font-size: 0.8rem;
-  table-layout: fixed; /* 列の幅を均一に設定 */
+  table-layout: fixed;
 }
 
 .dot-sample-table th, .dot-sample-table td {
@@ -10202,12 +9985,6 @@ background-color: #d1eee6;
 .dot-sample-table td {
   background-color: #fff;
 }
-
-// .dot-sample-table tbody tr:hover {
-//   background-color: #f9f9f9; /* マウスオーバーで背景色を変更 */
-// }
-
-
 
 
 
@@ -10374,7 +10151,6 @@ background-color: #d1eee6;
   padding: 0.8rem;
   transform: scale(1);
 }
-
 
 .flux-screen-show-frame-idea {
   box-shadow: 0 0.125rem 0.3125rem 0 #D6D7D6;

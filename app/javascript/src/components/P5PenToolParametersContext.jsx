@@ -228,8 +228,6 @@ export const P5PenToolParametersProvider = ({ children, toolDateParameters }) =>
   const [inputShapesTextStroke, setInputShapesTextStroke] = useState(String(shapesTextStroke));
 
 
-
-
   //データをロード
   useEffect(() => {
     if (toolDateParameters && toolDateParameters !== '' && toolDateParameters !== 'undefined' && toolDateParameters !== 'null') {
@@ -311,9 +309,6 @@ export const P5PenToolParametersProvider = ({ children, toolDateParameters }) =>
       }
     }
   }, [toolDateParameters]);
-
-
-
 
 
   //フォームの仮入力と実際の値との同期(Input関係)

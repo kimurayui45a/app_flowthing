@@ -6,6 +6,7 @@ import { P5ColorProvider } from './P5ColorContext';
 import { P5PenToolParametersProvider } from './P5PenToolParametersContext';
 
 
+//イラストツールの中核
 const P5CanvasSet = ({
   canvasSize,
   onDataFromGrandchild,

@@ -33,7 +33,6 @@ export const P5PanelGroupProvider = ({ children, notLayerSave, panelPosition, to
   // }, [isDraggablePanel, p5DrawingEnabled]);
 
 
-
   //メインパネルの表示切り替え
   const [mainPanelMode, setMainPanelMode] = useState(true);
 

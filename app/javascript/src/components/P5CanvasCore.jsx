@@ -3782,9 +3782,7 @@ useEffect(() => {
 
   return (
     <div className="flex-column">
-
-
-<div
+      <div
         className="select-confirm-btn tooltip-container"
         onClick={rescuePanel}
         onTouchStart={rescuePanel}
@@ -3794,16 +3792,16 @@ useEffect(() => {
         <span className="tooltip-text" style={{ textAlign: 'left' }}>もしもコントロールパネルが動かなくなったらこのボタンを押してください。<br />改善される可能性があります。</span>
       </div>
 
+      {/* <div
+        className= "panel-tool-button-small midasi-t-five"
+        onClick={sampleData}
+      >
+        <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pngデータ</span>
+      </div> */}
 
-{/* <div
-  className= "panel-tool-button-small midasi-t-five"
-  onClick={sampleData}
->
-  <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pngデータ</span>
-  
-</div> */}
-
-      <div ref={canvasContainerRef} style={{
+      <div
+        ref={canvasContainerRef} 
+        style={{
           width: `${canvasSpaceSize.width}px`,
           height: `${canvasSpaceSize.height}px`,
           border: '1px solid black',
@@ -3839,24 +3837,23 @@ useEffect(() => {
             </div>
           )}
 
-
-    {/* 対象のレイヤーが選択されていない時に出るアラートメッセージ */}
-    {layerToast && (
-      <div
-      className="alert-message"
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-60%, 40%)',
-          textAlign: 'left',
-          lineHeight: '1.3',
-          whiteSpace: 'pre-wrap'
-        }}
-      >
-        {layerMessage}
-      </div>
-    )}
+          {/* 対象のレイヤーが選択されていない時に出るアラートメッセージ */}
+          {layerToast && (
+            <div
+            className="alert-message"
+              style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-60%, 40%)',
+                textAlign: 'left',
+                lineHeight: '1.3',
+                whiteSpace: 'pre-wrap'
+              }}
+            >
+              {layerMessage}
+            </div>
+          )}
 
           <P5Cursor />
           {colorPalettePanelVisible && <P5ColorPalettePanel />}
@@ -3875,30 +3872,6 @@ useEffect(() => {
           onTouchStart={() => setP5DrawingEnabled(true)}
         ></div>
       </div>
-
-      {/* <button onClick={getData}>レイヤーを手動保存</button> */}
-      {/* <button onClick={savePc}>pcに保存</button> */}
-      {/* <div
-        className= "panel-tool-button-small tooltip-container midasi-t-five"
-        onClick={savePc}
-        onTouchStart={savePc}
-        style={{
-          backgroundColor: '#c2c1c1',
-          borderRadius: '5px',
-          borderRight: '0.5px solid #4A4A4A',
-          width: '90px',
-          height: '40px',
-          marginLeft: '659px',
-          marginTop: '10px',
-          boxShadow: 'black 1px 1px',
-          textAlign: 'center'
-        }}
-      >
-        <span style={{ color: '#3e3e3e', fontSize: '12px' }}>pcに保存(png)</span>
-        
-        <span className="tooltip-text" style={{ textAlign: 'left' }}>お客様のPCに作成された描画をpngで保存できます。</span>
-      </div> */}
-
 
       {canvasP5ToPixi && (
         <div
@@ -3945,17 +3918,6 @@ useEffect(() => {
         </svg>
         </div>
       )}
-
-      {/* テスト用 */}
-      {/* <div
-        className="panel-tool-button"
-        onClick={() => handleToolChange('inkPen')}
-        onTouchStart={() => handleToolChange('inkPen')}
-        style={{ backgroundColor: toolMode === 'inkPen' ? '#9199AE' : '#c2c1c1' }}
-      >
-        <i className="bi bi-pencil-fill"></i>
-      </div> */}
-
     </div>
   );
 };
