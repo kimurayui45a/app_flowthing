@@ -1,5 +1,4 @@
 <footer>
-
   <% profile = current_user.profile if user_signed_in? %>
   <div class="footer-style" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
     <div class="footer-image-icon"><%= image_tag('footer_left.png', alt: '左のフッターの画像', class: "footer-image") %></div>

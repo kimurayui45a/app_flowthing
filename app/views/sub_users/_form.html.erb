@@ -2,10 +2,6 @@
 <div class="fabric">
   <%= f.fields_for :sub_user, sub_user do |sub_user_form| %>
     <!-- カラーアイコン/画像アイコンプレビュー  -->
-
-
-
-
     <div class="form-card">
       <div class="form-card-background flex-start-start-flex-center">
         <div class="flex-column">
@@ -45,11 +41,6 @@
             </div>
           </div>
 
-
-
-
-
-
           <div class="form-card-container">
             <div class="flex-column">
               <div id="subcolorPreview"></div>
@@ -65,7 +56,6 @@
                 <%= sub_user_form.hidden_field :icon_choice, id: "icon_choice" %>
                 <%= sub_user_form.hidden_field :sub_canvas, id: "sub_canvas" %>
               </div>
-
             
               <div class="form-card-subuser-container form-card-background-white form-card-top" id="subColorInput">
                 <label for="subuserColorCode">
@@ -121,17 +111,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- 描画ツール/オンオフ  -->
     <div id="fabricSwitchSub" class="hidden-canvas">

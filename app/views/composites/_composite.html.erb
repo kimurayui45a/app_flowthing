@@ -2,64 +2,53 @@
 
 
 <article id="composite_<%= composite.id %>", class="screen-card-container">
-<div class="flex">
+  <div class="flex">
     <details class="screen-details-bord">
       <summary class="space-summary-style"><%= composite.composite_name.present? ? composite.composite_name : 'No Name' %></summary>
       <span><%= composite.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
     </details>
-</div>
+  </div>
 
-    <section class="screen-card-objectbox">
-      <div class="screen-icon-card-frame">
-        <div class="space-item-shadow"></div>
-
-<%= link_to composite_path(composite) do %>
-          <% if composite.composite_image.present? %>
-<div class="water-border">
-<div class="water-contents">
-  <div class="bubble-fast"></div>
-  <div class="bubble-second"></div>
-  <div class="bubble-third"></div>
-    <div class="water-upper-highlight"></div>
-      <div class="water-top"></div>
-  <div class="water-upper"></div>
-<div class="water-underline"></div>
-<div class="water-background">
-  <div class="water-background-second">
-  <div style="margin-bottom: 20px;">
-      
-            <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
-
-        </div>
-        </div>
-</div>
-</div>
-</div>
-          <% end %>
+  <section class="screen-card-objectbox">
+    <div class="screen-icon-card-frame">
+      <div class="space-item-shadow"></div>
+      <%= link_to composite_path(composite) do %>
+        <% if composite.composite_image.present? %>
+          <div class="water-border">
+            <div class="water-contents">
+              <div class="bubble-fast"></div>
+              <div class="bubble-second"></div>
+              <div class="bubble-third"></div>
+              <div class="water-upper-highlight"></div>
+              <div class="water-top"></div>
+              <div class="water-upper"></div>
+            <div class="water-underline"></div>
+              <div class="water-background">
+                <div class="water-background-second">
+                  <div style="margin-bottom: 20px;">
+                    <img src="<%= composite.composite_image %>" alt="Canvas Image" class="space-card-icon">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
+      <% end %>
+    </div>
 
-
-
-
-
+    <div class="screen-card-flex">
+      <div>
+        <%= link_to edit_composite_path(composite), class: "edit-memo-link pencil-fill-space" do %>
+          <i class="bi bi-pencil-fill trash-fill-font-screen"></i>
+        <% end %>
       </div>
 
-
-
-
-      <div class="screen-card-flex">
-        <div>
-          <%= link_to edit_composite_path(composite), class: "edit-memo-link pencil-fill-space" do %>
-            <i class="bi bi-pencil-fill trash-fill-font-screen"></i>
-          <% end %>
-        </div>
-
-        <div>
-          <%= link_to confirm_delete_composite_path(composite), class: "delete-confirm-link" do %>
-            <i class="bi bi-trash-fill trash-fill-font-screen"></i>
-          <% end %>
-        </div> 
+      <div>
+        <%= link_to confirm_delete_composite_path(composite), class: "delete-confirm-link" do %>
+          <i class="bi bi-trash-fill trash-fill-font-screen"></i>
+        <% end %>
       </div> 
-    </section>
+    </div> 
+  </section>
 </article>
 

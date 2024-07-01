@@ -2,21 +2,16 @@
 <div class="p5canvas-container">
   <h1 class="section-title" style="margin-top: 2rem;">
     <span class="red-text">Flux Screen新規作成</span>
-    
   </h1>
-
-<div class="flex" style="margin-top: 2rem;">
-
-  <div id="reactNewCompositeCreate"
-    data-profile-id="<%= @profile.id %>"
-    data-item-id-all="<%= @items.to_json %>"
-    data-space-id-all="<%= @spaces.to_json %>"
-    data-sub-user-id-all="<%= @sub_users.to_json %>"
-    data-space-size="<%= @profile.space_size %>"
-  >
-</div>
-
-
-</div>
+  <div class="flex" style="margin-top: 2rem;">
+    <div id="reactNewCompositeCreate"
+      data-profile-id="<%= @profile.id %>"
+      data-item-id-all="<%= @items.to_json %>"
+      data-space-id-all="<%= @spaces.to_json %>"
+      data-sub-user-id-all="<%= @sub_users.to_json %>"
+      data-space-size="<%= @profile.space_size %>"
+    >
+    </div>
+  </div>
 </div>
 

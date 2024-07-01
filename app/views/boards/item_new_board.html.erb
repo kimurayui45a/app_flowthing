@@ -3,28 +3,22 @@
 
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
-
-<div class="info-container flex-column">
-
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
-
-  <div>
-    <h1 class="section-title">
-      <span class="red-text">このFlow Thingについて相談する</span>
-    </h1>
-
-    <%= form_with model: @board, url: item_board_create_boards_path, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= f.hidden_field :item_id, value: @item.id %>
-  
-      <%= render 'item_board_form', f: f, item: @item %>
-
-      
-      <div class="user-createform">
-        <%= f.submit "投稿", class: "btn btn-success", id: "submit-button", type: 'button', onclick: 'submit()' %>
-      </div>
-    <% end %>
-  </div> 
-</div>
+  <div class="info-container flex-column">
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div>
+      <h1 class="section-title">
+        <span class="red-text">このFlow Thingについて相談する</span>
+      </h1>
+      <%= form_with model: @board, url: item_board_create_boards_path, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= render 'item_board_form', f: f, item: @item %>
+        
+        <div class="user-createform">
+          <%= f.submit "投稿", class: "btn btn-success", id: "submit-button", type: 'button', onclick: 'submit()' %>
+        </div>
+      <% end %>
+    </div> 
+  </div>
 </div>
 

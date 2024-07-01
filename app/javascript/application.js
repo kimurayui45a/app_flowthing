@@ -45,6 +45,7 @@ document.addEventListener("turbo:load", function() {
 });
 
 
+// 旧イラストツールの名残
 // function restoreSubCanvas() {
 //   var canvasElement = document.getElementById('restoredSubCanvas');
 //   var subCanvasData = JSON.parse(canvasElement.dataset.canvasJson);

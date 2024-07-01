@@ -1,207 +1,131 @@
 <header>
-<div class="header-container <%= 'header-container-paint' if apply_paint_class? %>">
-  <div class='header-design'>
+  <div class="header-container <%= 'header-container-paint' if apply_paint_class? %>">
+    <div class='header-design'>
 
-    <div class='header-layout'>
-
-
-      <div>
-        <%= link_to '/', class: 'app-logo' do %>
-
-        <div><%= image_tag('flowthing_logo6.png', alt: 'ロゴ', class: "logo-image") %></div>
-<%# 
-      <div class="flex flex-animated-text logo-transform-header">
-        <div class="flex-between flex-animated-text-absolute logo-blur-05">
-          <div class="animated-text">
-            <span class='zen-antique logo-setting'>F</span>
-            <span class='sawarabi-mincho logo-setting'>l</span>
-            <span class="logo-setting">o</span>
-            <span class='dotgothic16'>w</span>
-
-            <span class='potta-one logo-setting-t logo-setting'>T</span>
-            <span class='rocknroll-one logo-setting-hi'>h</span>
-            <span class='yuji-mai logo-setting-hi'>i</span>
-            <span class='yuji-syuku logo-setting-n'>n</span>
-          </div>
-          <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-        </div>
-
-        <div class="flex-between logo-blur-15">
-          <div class="animated-text">
-            <span class='zen-antique logo-setting'>F</span>
-            <span class='sawarabi-mincho logo-setting'>l</span>
-            <span class="logo-setting">o</span>
-            <span class='dotgothic16'>w</span>
-
-            <span class='potta-one logo-setting-t logo-setting'>T</span>
-            <span class='rocknroll-one logo-setting-hi'>h</span>
-            <span class='yuji-mai logo-setting-hi'>i</span>
-            <span class='yuji-syuku logo-setting-n'>n</span>
-          </div>
-          <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-        </div>
-      </div> %>
-        <% end %>
-      </div>
-    
-
-  
-      <div>
-        <ul class='nav-contents'>
-
-
-          <li class="header-explanation-none">
-            <%= link_to '使い方', how_to_use_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
-
-
-
-
-
-          <li  class="user-dropdown">
-            <button class='tool-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="text-Rounded500 header-text-Rounded500" style="margin-top: -0.2rem">ツール<i class="bi bi-caret-down-fill"  style="margin-left: 0.2rem;"></i></div>
-            </button>
-            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
-              <ul class='user-dropdown-list'>
-                <li class='user-dropdown-item'><%= link_to 'ペイント(基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ペイント(ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ペイント(選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'アニメーション', tool_explanation_anime_path, class: 'user-dropdown-link' %>
-              <ul>
-            </div>
-          </li>
-
-
-          <li class="header-explanation-none">
-            <%= link_to 'アイデア', idea_page_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
-
-
-          <% if @profile.present? && !@profile.new_record? %>
-            <li class="header-main-none">
-              <%= link_to 'Flow Thing', items_path, class: "text-Rounded500 header-text-Rounded500" %>
-            </li>
-
-            <li class="header-main-none">
-              <%= link_to 'Sub Thing', sub_users_path, class: "text-Rounded500 header-text-Rounded500" %>
-            </li>
-
-            <li class="header-main-none">
-              <%= link_to 'Screen', spaces_path, class: "text-Rounded500 header-text-Rounded500" %>
-            </li>
-
-            <li class="header-main-none">
-              <%= link_to 'Flux Screen', composites_path, class: "text-Rounded500 header-text-Rounded500" %>
-            </li>
-
-
-            <%# <li class="header-main-none">
-              <%= link_to 'ペイントツールがヘルプ', paint_help_path, class: "text-Rounded500 header-text-Rounded500" %>
-            
+      <div class='header-layout'>
+        <div>
+          <%= link_to '/', class: 'app-logo' do %>
+            <div><%= image_tag('flowthing_logo6.png', alt: 'ロゴ', class: "logo-image") %></div>
           <% end %>
+        </div>
+    
+        <div>
+          <ul class='nav-contents'>
 
-          <li  class="user-dropdown">
-            <% if current_user && current_user.profile %>
-              <% profile = current_user.profile %>
-              <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="header-explanation-none">
+              <%= link_to '使い方', how_to_use_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
+            <li  class="user-dropdown">
+              <button class='tool-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="text-Rounded500 header-text-Rounded500" style="margin-top: -0.2rem">ツール<i class="bi bi-caret-down-fill"  style="margin-left: 0.2rem;"></i></div>
+              </button>
+              <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
+                <ul class='user-dropdown-list'>
+                  <li class='user-dropdown-item'><%= link_to 'ペイント(基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ペイント(ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ペイント(選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'アニメーション', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+                <ul>
+              </div>
+            </li>
 
-                <% if profile.profile_icon? %>
+            <li class="header-explanation-none">
+              <%= link_to 'アイデア', idea_page_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
-                  <% if profile.profile_canvas.present? %>
-                    <img src="<%= profile.profile_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-headericon">
+            <% if @profile.present? && !@profile.new_record? %>
+              <li class="header-main-none">
+                <%= link_to 'Flow Thing', items_path, class: "text-Rounded500 header-text-Rounded500" %>
+              </li>
+
+              <li class="header-main-none">
+                <%= link_to 'Sub Thing', sub_users_path, class: "text-Rounded500 header-text-Rounded500" %>
+              </li>
+
+              <li class="header-main-none">
+                <%= link_to 'Screen', spaces_path, class: "text-Rounded500 header-text-Rounded500" %>
+              </li>
+
+              <li class="header-main-none">
+                <%= link_to 'Flux Screen', composites_path, class: "text-Rounded500 header-text-Rounded500" %>
+              </li>
+
+              
+            <% end %>
+
+            <li  class="user-dropdown">
+              <% if current_user && current_user.profile %>
+                <% profile = current_user.profile %>
+                <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                  <% if profile.profile_icon? %>
+                    <% if profile.profile_canvas.present? %>
+                      <img src="<%= profile.profile_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-headericon">
+                    <% else %>
+                      <div class="header-no-canvas-icon">
+                        <span>No Image</span>
+                      </div>
+                    <% end %>
+
                   <% else %>
-                    <div class="header-no-canvas-icon">
-                      <span>No Image</span>
+                    <div style="background-color: <%= profile.color_code %>;" class="user-headericon">
+                      <%= image_tag('small_chara_icon.png', alt: 'デフォルトのアイコン', class: "userdefault-icon-header") %>
                     </div>
                   <% end %>
 
-                <% else %>
-                  <div style="background-color: <%= profile.color_code %>;" class="user-headericon">
-                    <%= image_tag('small_chara_icon.png', alt: 'デフォルトのアイコン', class: "userdefault-icon-header") %>
-                  </div>
-                <% end %>
-
-              </button>
-              <% else %>
-              <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person" style="font-size: 2rem;"></i>
                 </button>
-            <% end %>
-
-            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
-              <ul class='user-dropdown-list'>
-
-
-
-        <% if @profile.present? && !@profile.new_record? %>
-                  <li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
-                  <% else %>
-                  <li class='user-dropdown-item'><%= link_to 'プロフィール', new_profile_path, class: 'user-dropdown-link' %></li>
-                <% end %>
-
-                
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
-              
-
-
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(アニメーション)', tool_explanation_anime_path, class: 'user-dropdown-link' %>
-
-                <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
-
-                <% if @profile.present? && !@profile.new_record? %>
-
-                <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
-                <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Sub Thing', sub_users_path, class: 'user-dropdown-link' %></li>
-              
-                <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Screen', spaces_path, class: 'user-dropdown-link' %></li>
-                <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flux Screen', composites_path, class: 'user-dropdown-link' %></li>
-
-                <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
-
-                
-                  <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %></li>
-                <% end %>
-
-                
-
-
-                <li class='user-dropdown-item'><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'user-dropdown-link' %></li>
-              <ul>
-            </div>
-          </li>
-
-          <% if @profile.present? && !@profile.new_record? %>
-            <li>
-              <%= link_to usersselect_path do %>
-                <div class="header-button flex">
-                  <%# <i class="bi bi-pencil-square header-icon-pen"></i> %>
-                  <div class="flex create-btn">作成<i class="bi bi-pencil-square" style="color: white; margin-left: 0.2rem;"></i></div>
-                </div>
+                <% else %>
+                <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person" style="font-size: 2rem;"></i>
+                  </button>
               <% end %>
-            </li>
-          <% end %>
 
-          <%# <li class="room-dropdown">
-            <div class='room-container'>
-              <button class='room-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <span>他のroomへ<i class="bi bi-door-open-fill"></i></span>
-              </button>
-              <div class="room-dropdown-body dropdown-menu dropdown-menu-end">
-                <ul class='room-dropdown-list'>
-                  <li class='room-dropdown-item'><a href="#" class='room-dropdown-link'>roomの表示</a></li>
-                  <li class='room-dropdown-item'><a href="#" class='room-dropdown-link'>roomを追加</a></li>
+              <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
+                <ul class='user-dropdown-list'>
+                  <% if @profile.present? && !@profile.new_record? %>
+                    <li class='user-dropdown-item'><%= link_to 'プロフィール', profile_path(@profile), class: 'user-dropdown-link' %></li>
+                  <% else %>
+                    <li class='user-dropdown-item'><%= link_to 'プロフィール', new_profile_path, class: 'user-dropdown-link' %></li>
+                  <% end %>
+
+                  <li class='user-dropdown-item header-hamburger-btn'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(ペイント-選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'ツール(アニメーション)', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item header-hamburger-btn'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
+
+                  <% if @profile.present? && !@profile.new_record? %>
+
+                  <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flow Thing', items_path, class: 'user-dropdown-link' %></li>
+                  <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Sub Thing', sub_users_path, class: 'user-dropdown-link' %></li>
+                
+                  <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Screen', spaces_path, class: 'user-dropdown-link' %></li>
+                  <li class='user-dropdown-item header-mainlist-none'><%= link_to 'Flux Screen', composites_path, class: 'user-dropdown-link' %></li>
+
+                  <%# <li class='user-dropdown-item'><a href="#" class='user-dropdown-link'>サブユーザーに切り替え</a></li> %>
+
+                  
+                    <li class='user-dropdown-item'><%= link_to '掲示板', boards_path, class: 'user-dropdown-link' %></li>
+                  <% end %>
+
+                  <li class='user-dropdown-item'><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete }, class: 'user-dropdown-link' %></li>
                 <ul>
               </div>
-            </div>
-          </li> %>
+            </li>
+            <% if @profile.present? && !@profile.new_record? %>
+              <li>
+                <%= link_to usersselect_path do %>
+                  <div class="header-button flex">
+                    <%# <i class="bi bi-pencil-square header-icon-pen"></i> %>
+                    <div class="flex create-btn">作成<i class="bi bi-pencil-square" style="color: white; margin-left: 0.2rem;"></i></div>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
 
-        </ul>
       </div>
     </div>
-  </div>
   </div>
 </header>

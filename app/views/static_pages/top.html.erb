@@ -3,56 +3,42 @@
 
 
 <% if user_signed_in? %>
-<% if current_user.profile&.color_code.present? %>
+  <% if current_user.profile&.color_code.present? %>
+    <div class='p5canvas-container how-to-use-container' style="background-color: <%= current_user.profile.color_code %>;">
 
-  <div class='p5canvas-container how-to-use-container' style="background-color: <%= current_user.profile.color_code %>;">
+      <div class="info-container">
+        <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+        <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
 
-  <div class="info-container">
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
-  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
-
-
-
-
-    <div id="reactAllComposite"
-      data-composite-id-all="<%= @composites.to_json %>"
-      data-item-id-all="<%= @items.to_json %>"
-      data-space-id-all="<%= @spaces.to_json %>"
-      data-sub-user-id-all="<%= @sub_users.to_json %>"
-      data-profile-id="<%= @profile.to_json %>"
-    >
+        <div id="reactAllComposite"
+          data-composite-id-all="<%= @composites.to_json %>"
+          data-item-id-all="<%= @items.to_json %>"
+          data-space-id-all="<%= @spaces.to_json %>"
+          data-sub-user-id-all="<%= @sub_users.to_json %>"
+          data-profile-id="<%= @profile.to_json %>"
+        >
+        </div>
+      </div>
     </div>
-</div>
+  <% else %>
 
+    <div class='p5canvas-container how-to-use-container'>
+      <div class="login-container" style="height: 100rem;">
+        <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+        <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
+          
+        <p style="margin-top: 5rem;">まだ<span class="red-text">新規アカウント登録</span>が完了しておりません。<br>下記より登録手続きを完了して下さい。</p><br>
+        <%= link_to '新規アカウント登録を完了する', new_profile_path, class: "text-Rounded500 no-profile-btn" %>
+      </div>
     </div>
-
-
-    <% else %>
-
+  <% end %>
+<% else %>
+    
   <div class='p5canvas-container how-to-use-container'>
-
-    <div class="login-container" style="height: 100rem;">
+    <div class="info-container">
       <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
       <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
-        
-      <p style="margin-top: 5rem;">まだ<span class="red-text">新規アカウント登録</span>が完了しておりません。<br>下記より登録手続きを完了して下さい。</p><br>
-      <%= link_to '新規アカウント登録を完了する', new_profile_path, class: "text-Rounded500 no-profile-btn" %>
-
-    </div>
-  </div>
-
-    <% end %>
-  <% else %>
-  <div class='p5canvas-container how-to-use-container'>
-
-
-
-
-  <div class="info-container">
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
-  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
-
-  <div class="top-page-logo-none info-fish-poi"><%= image_tag('fishpoi.png', alt: 'ししゃもを乗せたポイ', class: "top-fish-poi") %></div>
+      <div class="top-page-logo-none info-fish-poi"><%= image_tag('fishpoi.png', alt: 'ししゃもを乗せたポイ', class: "top-fish-poi") %></div>
 
       <div class="caution-statement">
         <span class="text-left info-text">
@@ -60,78 +46,62 @@
         </span>
       </div>
 
-    <div class="flex-column">
+      <div class="flex-column">
 
-<div style="margin-top: 3rem;"><%= image_tag('toplong_logo.png', alt: 'トップページのロゴ', class: "top-page-logo") %></div>
+        <div style="margin-top: 3rem;"><%= image_tag('toplong_logo.png', alt: 'トップページのロゴ', class: "top-page-logo") %></div>
+        <div style="margin-top: 3rem;"><span class="top-page-text">空間を作成できるモノ管理アプリ</span></div>
 
-<div style="margin-top: 3rem;"><span class="top-page-text">空間を作成できるモノ管理アプリ</span></div>
+        <div class="flux-screen-show-third">
+          <div class="flux-screen-show-frame">
+            <div id="react-sample-room"></div>
+          </div>
+        </div>
 
-      <div class="flux-screen-show-third">
-        <div class="flux-screen-show-frame">
-          <div id="react-sample-room"></div>
+        <div style="margin-bottom: 2rem;">
+          <span class="text-left info-text">
+            お気に入りのグッズやコレクション、ペットや家族、<br>
+            実態はないけど何となくあると感じる「モノ」などを自由に表現して整理できます。
+          </span>
+        </div>
+
+        <h2 class="info-section2-title">
+          <span class="info-section2-line">Sample</span>
+        </h2>
+
+        <div style="margin-bottom: 2rem;">
+          <span class="text-left info-text">
+            アイテム(Flow Thing)を作って、背景(Screen)に配置してみましょう。<br>
+            実際のアプリでは背景の作成も可能です。
+          </span>
+        </div>
+
+        <div id="react-drag"></div>
+
+        <div style="margin-top: 5rem;">
+          <span class="text-left info-text">
+            <div class="new-account-section">
+              <span>
+                登録はこちらから
+              </span>
+            </div>
+            <div>
+              <span class="text-left">
+                ※ 本アプリは全て無料です。
+              </span> 
+            </div>
+          </span>
+        </div>
+        <div class="new-account-container">
+          <%= link_to sign_up_path, class: "new-account-btn" do %>
+            <div><%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "new-account-icon") %></div>
+            <div class="new-account-text"><span>新規登録</span></div>
+            <div class="new-account-arrow"><i class="bi bi-arrow-right-short"></i></div>
+          <% end %>
         </div>
       </div>
-
-      <div style="margin-bottom: 2rem;">
-        <span class="text-left info-text">
-          お気に入りのグッズやコレクション、ペットや家族、<br>
-          実態はないけど何となくあると感じる「モノ」などを自由に表現して整理できます。
-        </span>
-      </div>
-
-      <h2 class="info-section2-title">
-        <span class="info-section2-line">Sample</span>
-      </h2>
-
-      <div style="margin-bottom: 2rem;">
-        <span class="text-left info-text">
-          アイテム(Flow Thing)を作って、背景(Screen)に配置してみましょう。<br>
-          実際のアプリでは背景の作成も可能です。
-        </span>
-      </div>
-
-
-      <div id="react-drag"></div>
-
-
-      <div style="margin-top: 5rem;">
-        <span class="text-left info-text">
-
-<div class="new-account-section">
-  <span>
-          登録はこちらから
-          </span>
-          </div>
-<div>
-        <span class="text-left">
-          ※ 本アプリは全て無料です。
-        </span> 
-          </div>
-
-        </span>
-      </div>
-
-<%# <div class="new-account-btn">
-  <div><span>新規登録</span></div>
-</div> %>
-
-
-<div class="new-account-container">
-  <%= link_to sign_up_path, class: "new-account-btn" do %>
-    <div><%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "new-account-icon") %></div>
-    <div class="new-account-text"><span>新規登録</span></div>
-    <div class="new-account-arrow"><i class="bi bi-arrow-right-short"></i></div>
-  <% end %>
-</div>
     </div>
   </div>
-
-
-
-
-
-</div>
-  <% end %>
+<% end %>
 
 
 

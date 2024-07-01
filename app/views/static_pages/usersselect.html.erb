@@ -2,12 +2,10 @@
 
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
+  <div class="info-container flex-column">
 
-<div class="info-container flex-column">
-
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
-  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
-
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
 
     <% if @sub_users.blank? %>
       <div class="section-title">
@@ -22,7 +20,6 @@
     <div class="create-usersselect-card">
       <div class="create-usersselect-background flex-start-start-flex-center">
         <div class="flex-column">
-
           <%= link_to new_sub_user_path, class: 'tooltip-container' do %>
             <div class="flex create-usersselect-container">
               <div><i class="bi bi-pencil-square" style="font-size: 2rem;"></i></div>
@@ -30,7 +27,6 @@
             </div>
             <span class="tooltip-text" style="text-align: start;">新しくSub Thingを作成します。</span>
           <% end %>
-
 
           <% if @sub_users.present? %>
             <%= link_to sub_users_path, class: 'tooltip-container' do %>
@@ -59,10 +55,6 @@
             </div>
           <% end %>
 
-
-
-
-
           <% if @spaces.present? %>
             <%= link_to composites_path, class: 'tooltip-container' do %>
               <div class="flex create-usersselect-container">
@@ -80,8 +72,6 @@
                 <span class="tooltip-text" style="text-align: start;">はじめにSub Thingを「新規作成」して下さい。</span>
               </div>
           <% end %>
-
-
         </div>
       </div>
     </div>

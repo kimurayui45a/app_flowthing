@@ -6,150 +6,124 @@
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container flex-column">
+  <div class="info-container flex-column">
 
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
-  <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
-
-  
-  <div class="item-show-space">
-    <h1 class="section-title user-show-contents">
-      <span class="f-text">プロフィール</span>
-    </h1>
-
-    <div class="profile-icon-frame">
-      <% if current_user && current_user.profile %>
-        <% profile = current_user.profile %>
-          <% if profile.profile_icon? %>
-            <% if profile.profile_canvas.present? %>
-              <img src="<%= profile.profile_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="profileicon-paint">
-            <% else %>
-              <div class="no-canvas-icon">
-                <span>下記のPeint Iconより<br>アイコンを作ってみましょう</span>
-              </div>
-
-            <% end %>
-          <% else %>
-            <div style="background-color: <%= profile.color_code %>;" class="profileicon-big">
-              <%= image_tag('small_chara_icon.png', alt: 'デフォルトのアイコン', class: "userdefault-icon-profile") %>
-            </div>
-          <% end %>
-      <% end %>
-
-    </div>
-
-
-    <div class="user-show-name-contents">
-      <span class="f-text"><%= @profile.name %></span>
-    </div>
-
-    <div class="content motto-miru user-show-comment-contents">
-      <span class="comment-text">プロフィール/テキスト</span>
-      <% text = @profile.profile_text.present? ? @profile.profile_text.to_s : 'No Profile Text' %>
-      <% lines = text.split("\n") %>
-      <% preview_text = lines.first(3).join("\n") %>
-      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
-      <% if text.length > 80 or lines.length > 3 %>
-        <span class="default-view">
-          <%= simple_format(preview_text + '。。。') %>
-        </span>
-        <span class="hidden-view" style="display: none;">
-          <%= simple_format text %>
-        </span>
-        <div class="toggle-view">もっと見る</div>
-      <% else %>
-        <span>
-          <%= simple_format text %>
-        </span>
-      <% end %>
-    </div>
-
-
-
-
-<div class="user-show-name-contents">
-  <% if @profile.space_size %>
-    <span class="f-text">
-      <% case @profile.space_size %>
-      <% when 1400 %>
-        横幅1440px以上のPC
-      <% when 1200 %>
-        横幅1280px〜1440pxのPC
-      <% when 1000 %>
-        横幅1000px〜1280px(iPad Pro推奨)
-      <% else %>
-        横幅1000px以下
-      <% end %>
-    </span>
-  <% else %>
-    <span class="f-text">情報がありません</span>
-  <% end %>
-</div>
-
-
-
-
-
-
-
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="top-page-logo-none info-wave3-logo"><%= image_tag('wave3.png', alt: '円形の波のアイコン', class: "top-wave3-logo") %></div>
     
-    <div class="user-show-botann flex-between">
-      <%= link_to edit_profile_path(@profile), class: 'balloon-botann' do %>  
-        <div>
-          <i class="bi bi-pen-fill pen-fill-icon"></i>
-        </div>
-        <div class="balloon-botann-text">
-          Edit<br>
-          Profile
-        </div>
-      <% end %>
+    <div class="item-show-space">
+      <h1 class="section-title user-show-contents">
+        <span class="f-text">プロフィール</span>
+      </h1>
 
+      <div class="profile-icon-frame">
+        <% if current_user && current_user.profile %>
+          <% profile = current_user.profile %>
+            <% if profile.profile_icon? %>
+              <% if profile.profile_canvas.present? %>
+                <img src="<%= profile.profile_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="profileicon-paint">
+              <% else %>
+                <div class="no-canvas-icon">
+                  <span>下記のPeint Iconより<br>アイコンを作ってみましょう</span>
+                </div>
 
-<% if @profile.profile_canvas.present? %>
-      <%= link_to icon_edit_canvas_profile_path(@profile), class: 'balloon-botann tooltip-container' do %>  
-        <div>
-          <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
-        </div>
-        <div class="balloon-botann-text">
-          Edit<br>
-          Icon
-        </div>
-        <span class="tooltip-text" style="text-align: start;">プロフィールのアイコンを編集できます。</span>
-      <% end %>
-<% else %>
-
-      <%= link_to icon_edit_profile_path(@profile), class: 'balloon-botann tooltip-container' do %>  
-        <div>
-          <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
-        </div>
-        <div class="balloon-botann-text">
-          Paint<br>
-          Icon
-        </div>
-        <span class="tooltip-text" style="text-align: start;">プロフィールのアイコンを作成しましょう。</span>
-      <% end %>
-<% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <% if user_signed_in? && @profile.user_id == current_user.id %>
-        <%= link_to user_path(current_user), data: { turbo_method: :delete, turbo_confirm: t('.withdrawal') }, class: 'balloon-botann' do %>
-        <div class="balloon-botann-text withdrawal-red-text withdrawal-image-container">
-          退会する<br>
-        </div>
+              <% end %>
+            <% else %>
+              <div style="background-color: <%= profile.color_code %>;" class="profileicon-big">
+                <%= image_tag('small_chara_icon.png', alt: 'デフォルトのアイコン', class: "userdefault-icon-profile") %>
+              </div>
+            <% end %>
         <% end %>
-      <% end %>
+      </div>
+
+      <div class="user-show-name-contents">
+        <span class="f-text"><%= @profile.name %></span>
+      </div>
+
+      <div class="content motto-miru user-show-comment-contents">
+        <span class="comment-text">プロフィール/テキスト</span>
+        <% text = @profile.profile_text.present? ? @profile.profile_text.to_s : 'No Profile Text' %>
+        <% lines = text.split("\n") %>
+        <% preview_text = lines.first(3).join("\n") %>
+        <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+        <% if text.length > 80 or lines.length > 3 %>
+          <span class="default-view">
+            <%= simple_format(preview_text + '。。。') %>
+          </span>
+          <span class="hidden-view" style="display: none;">
+            <%= simple_format text %>
+          </span>
+          <div class="toggle-view">もっと見る</div>
+        <% else %>
+          <span>
+            <%= simple_format text %>
+          </span>
+        <% end %>
+      </div>
+
+      <div class="user-show-name-contents">
+        <% if @profile.space_size %>
+          <span class="f-text">
+            <% case @profile.space_size %>
+            <% when 1400 %>
+              横幅1440px以上のPC
+            <% when 1200 %>
+              横幅1280px〜1440pxのPC
+            <% when 1000 %>
+              横幅1000px〜1280px(iPad Pro推奨)
+            <% else %>
+              横幅1000px以下
+            <% end %>
+          </span>
+        <% else %>
+          <span class="f-text">情報がありません</span>
+        <% end %>
+      </div>
+      
+      <div class="user-show-botann flex-between">
+        <%= link_to edit_profile_path(@profile), class: 'balloon-botann' do %>  
+          <div>
+            <i class="bi bi-pen-fill pen-fill-icon"></i>
+          </div>
+          <div class="balloon-botann-text">
+            Edit<br>
+            Profile
+          </div>
+        <% end %>
+
+        <% if @profile.profile_canvas.present? %>
+          <%= link_to icon_edit_canvas_profile_path(@profile), class: 'balloon-botann tooltip-container' do %>  
+            <div>
+              <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
+            </div>
+            <div class="balloon-botann-text">
+              Edit<br>
+              Icon
+            </div>
+            <span class="tooltip-text" style="text-align: start;">プロフィールのアイコンを編集できます。</span>
+          <% end %>
+        <% else %>
+
+          <%= link_to icon_edit_profile_path(@profile), class: 'balloon-botann tooltip-container' do %>  
+            <div>
+              <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
+            </div>
+            <div class="balloon-botann-text">
+              Paint<br>
+              Icon
+            </div>
+            <span class="tooltip-text" style="text-align: start;">プロフィールのアイコンを作成しましょう。</span>
+          <% end %>
+        <% end %>
+
+        <% if user_signed_in? && @profile.user_id == current_user.id %>
+          <%= link_to user_path(current_user), data: { turbo_method: :delete, turbo_confirm: t('.withdrawal') }, class: 'balloon-botann' do %>
+          <div class="balloon-botann-text withdrawal-red-text withdrawal-image-container">
+            退会する<br>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

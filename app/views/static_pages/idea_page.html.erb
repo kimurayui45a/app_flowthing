@@ -1,15 +1,12 @@
 <% content_for(:title, t('.title')) %>
 
 <div class='p5canvas-container'>
-
   <% profile = current_user.profile if user_signed_in? %>
   <div class="sidebar" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
     <div class="text-Rounded700"><h1 class="sidebar-title">アイデア</h1></div>
     <div class="menu-sidebar text-Rounded500">
       <ul>
-
-          <li><a href="#section1">空間を作ってみよう</a></li>
-          <%# <li><a href="#section2">左右対称なペイント</a></li> %>
+        <li><a href="#section1">空間を作ってみよう</a></li>
           
         <li>
           <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">画像を加工しよう<i class="bi bi-chevron-down chevron-style"></i></div>
@@ -39,27 +36,6 @@
             <%= link_to 'アニメを組み合わせてみよう', idea_page_third_path + '#section2' %>
           </div>
         </li>
-
-<%# 
-        <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編<i class="bi bi-chevron-down chevron-style"></i></div>
-          <div class="accordion-content-sidebar" id="accordion-section2">
-              <a href="#section1">キャラクターを作ってみよう</a>
-              <a href="#section2">構想</a>
-              <a href="#section3">ラフ(下書き)</a>
-              <a href="#section2">カラーリング</a>
-              <a href="#section2">線画</a>
-              <a href="#section2">下塗り</a>
-              <a href="#section2">塗り込む/完成</a>
-          </div>
-        </li>
-          <li>
-          <div class="accordion-toggle-sidebar" style="padding: 0.25rem;">番外編2<i class="bi bi-chevron-down chevron-style"></i></div>
-          <div class="accordion-content-sidebar" id="accordion-section2">
-              <a href="#section1">ししゃもすくい</a>
-          </div>
-        </li> %>
-
       </ul>
     </div>
 
@@ -68,21 +44,17 @@
     </div>
   </div>
 
-
-
   <div class="sidebar-content">
-
-      <div style="height: 7rem; width: 100px;"></div>
-      <h2 class="explanation-section-title">
-        <span class="text-line">アイデア</span>
-      </h2>
-      <p class="explanation-section-text text-Rounded">
-        ここでは、実際に本ツールを使用してどのようなことができるかを少し見てみましょう。<br>
-        「画像編集」「<%= link_to 'ペイント', idea_page_second_path, class: "embedded-item text-Rounded500" %>」「<%= link_to 'アニメーション', idea_page_third_path, class: "embedded-item text-Rounded500" %>」の3つに分けて紹介します。<br>
-        
-        <span class="red-text text-Rounded700" style="font-size: 1.2rem">この通りに作成する必要は全くございません!!</span>
-      </p>
-
+    <div style="height: 7rem; width: 100px;"></div>
+    <h2 class="explanation-section-title">
+      <span class="text-line">アイデア</span>
+    </h2>
+    <p class="explanation-section-text text-Rounded">
+      ここでは、実際に本ツールを使用してどのようなことができるかを少し見てみましょう。<br>
+      「画像編集」「<%= link_to 'ペイント', idea_page_second_path, class: "embedded-item text-Rounded500" %>」「<%= link_to 'アニメーション', idea_page_third_path, class: "embedded-item text-Rounded500" %>」の3つに分けて紹介します。<br>
+      
+      <span class="red-text text-Rounded700" style="font-size: 1.2rem">この通りに作成する必要は全くございません!!</span>
+    </p>
 
     <div style="height: 7rem; width: 100px;"></div>
     <section id="section1">
@@ -111,9 +83,6 @@
         <span class="text-Rounded500 red-text" style="font-size: 1.3rem;">構想が決まったら各アイテムごとに<span style="color: #59afc7;" class="text-Rounded500">「Flow Thing」</span>と<span style="color: #59afc7;" class="text-Rounded500">「Screen」</span>を作成し、アイテムの写真やペイントを作成しましょう。</span><br>
       </p>
     </div>
-
-
-
 
     <div style="height: 7rem; width: 100px;"></div>
     <h2 class="explanation-section-title" style="margin-bottom: 0rem;">
@@ -153,7 +122,6 @@
       </p><br>
     </div>
 
-
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 2rem;">
       <span class="point-line">
         簡単なペイント
@@ -172,8 +140,6 @@
         <span class="text-Rounded500" style="color: #EB625A; font-size: 0.85rem;">※色混ぜは画像のない部分をタッチして画像のある方向に引っ張ると消しゴムと同じように消すことができます。</span>
       </p><br>
     </div>
-
-
     <section id="section3">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem; margin-top: 4rem;">
         <span class="sub-line">
@@ -270,16 +236,10 @@
       </p>
     </div>
 
-
     <div style="height: 7rem; width: 100px;"></div>
-
     <div style="margin-bottom: 2rem;"><%= link_to 'ペイント', idea_page_second_path, class: "embedded-item text-Rounded500" %>のページへ</div>
-
     <div><%= link_to 'アニメーション', idea_page_third_path, class: "embedded-item text-Rounded500" %>のページへ</div>
-
     <div style="height: 10rem; width: 100px;"></div>
 
-
   </div>
-
 </div>

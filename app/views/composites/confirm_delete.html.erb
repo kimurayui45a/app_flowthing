@@ -3,21 +3,15 @@
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container flex-column">
-
+  <div class="info-container flex-column">
   <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
-
-
-
     <div class="delete-card" style="margin-top: 2rem;">
       <div class="delete-background flex-start-start-flex-center">
         <div class="flex-column">
           <h1 style="font-size: 2rem;">
-
             <% if @composite.composite_image.present? %>
               <img src="<%= @composite.composite_image %>" alt="Canvas Image" style="object-fit: contain;" class="delete-space-icon">
             <% end %>
-
             の削除確認
           </h1>
 

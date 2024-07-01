@@ -5,45 +5,41 @@
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container">
+  <div class="info-container">
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
 
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <h1 class="midasi-title" style="margin-top: 4rem;">
+      <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
+      <span>Screen</span>
+    </h1>
 
-
-
-
-  <h1 class="midasi-title" style="margin-top: 4rem;">
-    <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
-    <span>Screen</span>
-  </h1>
-
-  <div class="flex-end-end">  
-    <%= link_to new_space_path, class: 'tooltip-container' do %>
-      <div class="flex create-usersselect-container">
-        <div><i class="bi bi-image bi-image-title" style="font-size: 2rem;"></i></div>
-        <div class="newcontents_text"><span>Screenを作成<span></div>
-        <span class="tooltip-text" style="text-align: start;">Flow Thingを配置するScreenを作成できます。</span>
-      </div>
-    <% end %>
-  </div>
-
-  <%= render 'search_form', q: @q, url: spaces_path %>
-
-  <div class="item-list-container">
-    <% if @spaces.present? %>
-      <% @spaces.each do |spaces| %>
-        <div class="item-list-card">
-          <%= render spaces %>
+    <div class="flex-end-end">  
+      <%= link_to new_space_path, class: 'tooltip-container' do %>
+        <div class="flex create-usersselect-container">
+          <div><i class="bi bi-image bi-image-title" style="font-size: 2rem;"></i></div>
+          <div class="newcontents_text"><span>Screenを作成<span></div>
+          <span class="tooltip-text" style="text-align: start;">Flow Thingを配置するScreenを作成できます。</span>
         </div>
       <% end %>
-    <% else %>
-      <div class="noitem-text" style="font-size: 1rem;">Screenがありません</div>
-    <% end %>
-  </div>
+    </div>
 
-  <div style="margin: 5rem 3rem;">
-    <%= paginate @spaces %>
-  </div>
+    <%= render 'search_form', q: @q, url: spaces_path %>
 
-</div>
+    <div class="item-list-container">
+      <% if @spaces.present? %>
+        <% @spaces.each do |spaces| %>
+          <div class="item-list-card">
+            <%= render spaces %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="noitem-text" style="font-size: 1rem;">Screenがありません</div>
+      <% end %>
+    </div>
+
+    <div style="margin: 5rem 3rem;">
+      <%= paginate @spaces %>
+    </div>
+
+  </div>
 </div>

@@ -2,27 +2,25 @@
 
 
 <div class="flex-column">
-<div class="form-card">
-  <div class="board-card-background flex-column">
-    <div class="flex-column">
-
-      <div class="form-card-container">
-
-        <div class="board-createform-text">
-          <div class="user-createform-text">
-            <%= f.label t('.title') %><span class="red-text"> <%= t('.contents_note') %></span>
-            <%= f.text_field :board_title, class: "form-control board-item-form", id: "board_title" %>
+  <div class="form-card">
+    <div class="board-card-background flex-column">
+      <div class="flex-column">
+        <div class="form-card-container">
+          <div class="board-createform-text">
+            <div class="user-createform-text">
+              <%= f.label t('.title') %><span class="red-text"> <%= t('.contents_note') %></span>
+              <%= f.text_field :board_title, class: "form-control board-item-form", id: "board_title" %>
+            </div>
+            <div class="user-createform-text">
+              <%= f.label t('.text') %><span class="red-text"> <%= t('.contents_note') %></span>
+              <%= f.text_area :board_text, class: "form-control board-item-form", row: 10, style: "height: 200px", id: "board_text" %>
+            </div>
           </div>
-          <div class="user-createform-text">
-            <%= f.label t('.text') %><span class="red-text"> <%= t('.contents_note') %></span>
-            <%= f.text_area :board_text, class: "form-control board-item-form", row: 10, style: "height: 200px", id: "board_text" %>
-          </div>
+
         </div>
-
       </div>
     </div>
   </div>
-</div>
 </div>
 
 

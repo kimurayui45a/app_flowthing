@@ -2,9 +2,7 @@
 <div class="p5canvas-container">
   <h1 class="section-title" style="margin-top: 2rem;">
     <span class="red-text">Flux Screen編集</span>
-    
   </h1>
-
 
   <div id="reactEditComposite"
     data-profile-id="<%= @profile.id %>"
@@ -12,9 +10,6 @@
     data-item-id-all="<%= @items.to_json %>"
     data-space-id-all="<%= @spaces.to_json %>"
     data-sub-user-id-all="<%= @sub_users.to_json %>"
-
-
-
     data-space-data="<%= @composite.composite_space %>"
     data-item-data="<%= @composite.composite_item %>"
 
@@ -25,6 +20,5 @@
     data-space-size="<%= @profile.space_size %>"
   >
   </div>
-
 </div>
 

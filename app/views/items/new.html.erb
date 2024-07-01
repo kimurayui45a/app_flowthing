@@ -8,11 +8,8 @@
 
     <%= form_with model: @item, id: 'item_create_form', multipart: true, data: { turbo: false }, html: { onsubmit: 'return false;' } do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
       <%= f.hidden_field :sub_user_id, value: @sub_user.id %>
-  
       <%= render 'form_item_create', f: f %>
-      
       
       <div class="user-createform">
       

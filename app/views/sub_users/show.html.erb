@@ -4,136 +4,157 @@
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container flex-column">
+  <div class="info-container flex-column">
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
 
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="user-show-space">
+      <div class="user-show-name-contents">
+        <div class="section-title">
+          <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
+        </div>
+        <span class="sub-name-text f-text"><%= @sub_user.sub_name.present? ? @sub_user.sub_name : 'No Name' %></span>
+      </div>
 
-
-
-
-  <div class="user-show-space">
-
-  <div class="user-show-name-contents">
-
-
-    <div class="section-title">
-      <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span>
-    </div>
-    <span class="sub-name-text f-text"><%= @sub_user.sub_name.present? ? @sub_user.sub_name : 'No Name' %></span>
-
-  </div>
-
-    <div class="user-icon-frame">
-      <% if @sub_user.icon_choice.present? %>
-        <% case @sub_user.icon_choice %>
-          <% when 'sub_image' %>
-            <!-- sub_image の内容を表示 -->
-            <% if @sub_user.sub_image.present? %>
-              <%= image_tag @sub_user.sub_image.url, class: "user-show-imageicon" %>
-            <% end %>
-          <% when 'sub_canvas' %>
-            
-            <!-- sub_canvas の内容を表示 -->
-            <img src="<%= @sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-show-imageicon">
-            
-          <% when 'sub_color' %>
-            <!-- sub_color の内容を表示 -->
-            <div style="background-color: <%= @sub_user.sub_color %>;" class="user-show-imageicon"></div>
-          <% else %>
-            <p>アイコンは設定されていません。</p>
+      <div class="user-icon-frame">
+        <% if @sub_user.icon_choice.present? %>
+          <% case @sub_user.icon_choice %>
+            <% when 'sub_image' %>
+              <!-- sub_image の内容を表示 -->
+              <% if @sub_user.sub_image.present? %>
+                <%= image_tag @sub_user.sub_image.url, class: "user-show-imageicon" %>
+              <% end %>
+            <% when 'sub_canvas' %>
+              
+              <!-- sub_canvas の内容を表示 -->
+              <img src="<%= @sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-show-imageicon">
+              
+            <% when 'sub_color' %>
+              <!-- sub_color の内容を表示 -->
+              <div style="background-color: <%= @sub_user.sub_color %>;" class="user-show-imageicon"></div>
+            <% else %>
+              <p>アイコンは設定されていません。</p>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
 
-    <div class="content motto-miru user-show-comment-contents">
-      <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span>
-      <% text = @sub_user.sub_text.present? ? @sub_user.sub_text : 'No Comment' %>
-      <% lines = text.split("\n") %>
-      <% preview_text = lines.first(3).join("\n") %>
-      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
-      <% if text.length > 80 or lines.length > 3 %>
-        <span class="default-view">
-          <%= simple_format(preview_text + '。。。') %>
-        </span>
-        <span class="hidden-view" style="display: none;">
-          <%= simple_format text %>
-        </span>
-        <div class="toggle-view">もっと見る</div>
-      <% else %>
-        <span>
-          <%= simple_format text %>
-        </span>
-      <% end %>
-    </div>
+      <div class="content motto-miru user-show-comment-contents">
+        <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span>
+        <% text = @sub_user.sub_text.present? ? @sub_user.sub_text : 'No Comment' %>
+        <% lines = text.split("\n") %>
+        <% preview_text = lines.first(3).join("\n") %>
+        <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+        <% if text.length > 80 or lines.length > 3 %>
+          <span class="default-view">
+            <%= simple_format(preview_text + '。。。') %>
+          </span>
+          <span class="hidden-view" style="display: none;">
+            <%= simple_format text %>
+          </span>
+          <div class="toggle-view">もっと見る</div>
+        <% else %>
+          <span>
+            <%= simple_format text %>
+          </span>
+        <% end %>
+      </div>
 
-    <div class="sub-item-list">
-      <span class="list-title">
-        <span class="f-text">F</span>low <span class="t-text">T</span>hing
-        <span class="light-blue-text">L</span>ist
-        <span class="red-text"><i class="bi bi-gift-fill"></i></span>
-        <span class="f-text"><em><%= @sub_user.items_count %></em></span>
-      </span>
+      <div class="sub-item-list">
+        <span class="list-title">
+          <span class="f-text">F</span>low <span class="t-text">T</span>hing
+          <span class="light-blue-text">L</span>ist
+          <span class="red-text"><i class="bi bi-gift-fill"></i></span>
+          <span class="f-text"><em><%= @sub_user.items_count %></em></span>
+        </span>
 
-      <div class="item-list-show">
-        <% if @items.present? %>
-          <% @items.each do |item| %>
-            <%= link_to item_path(item) do %>
-              <% case item.image_choice %>
-              <% when 'item_image' %>
-              <div class="sub-user-itemicon">
-                <%= image_tag item.item_image.url, class: "item-image-icon" %>
-              </div>
-              <% when 'item_canvas' %>
-              <div class="sub-user-itemicon">
-                <div class="back-white-rect">
-                  <img src="<%= item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="item-image-icon" >
+        <div class="item-list-show">
+          <% if @items.present? %>
+            <% @items.each do |item| %>
+              <%= link_to item_path(item) do %>
+                <% case item.image_choice %>
+                <% when 'item_image' %>
+                <div class="sub-user-itemicon">
+                  <%= image_tag item.item_image.url, class: "item-image-icon" %>
                 </div>
-              </div>
-              <% else %>
-              <div class="sub-user-itemicon">
-                <div class="no-name-icon"><%= item.item_name %></div>
-              </div>
+                <% when 'item_canvas' %>
+                <div class="sub-user-itemicon">
+                  <div class="back-white-rect">
+                    <img src="<%= item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="item-image-icon" >
+                  </div>
+                </div>
+                <% else %>
+                <div class="sub-user-itemicon">
+                  <div class="no-name-icon"><%= item.item_name %></div>
+                </div>
+                <% end %>
               <% end %>
             <% end %>
+          <% else %>
+          <div class="no-item-frame">
+            <div class="no-item-icon">No Item</div>
+          </div>
           <% end %>
-        <% else %>
-        <div class="no-item-frame">
-          <div class="no-item-icon">No Item</div>
         </div>
-        <% end %>
+        <div style="margin: 2rem 3rem;">
+          <%= paginate @items %>
+        </div>
       </div>
-      <div style="margin: 2rem 3rem;">
-        <%= paginate @items %>
-      </div>
-    </div>
 
-    <div class="flex-between user-show-botann">
-      <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>
-        <div>
-          <i class="bi bi-balloon-fill balloon-icon balloon-action"></i>
-        </div>
-        <div class="balloon-botann-text">
-          New<br>
-          Flow Thing
-        </div>
-      <% end %>
-
-      <%# <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>
-          <%# <div>
-            <i class="bi bi-balloon-fill balloon-icon balloon-action-blue"></i>
+      <div class="flex-between user-show-botann">
+        <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann' do %>
+          <div>
+            <i class="bi bi-balloon-fill balloon-icon balloon-action"></i>
           </div>
           <div class="balloon-botann-text">
             New<br>
-            Flow Paint
+            Flow Thing
           </div>
-          <span class="tooltip-text">Flow Thingを描く</span> %>
-        <%# <% end %>
+        <% end %>
+        <%# <%= link_to new_canvas_item_path(sub_user_id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>
+            <%# <div>
+              <i class="bi bi-balloon-fill balloon-icon balloon-action-blue"></i>
+            </div>
+            <div class="balloon-botann-text">
+              New<br>
+              Flow Paint
+            </div>
+            <span class="tooltip-text">Flow Thingを描く</span> %>
+          <%# <% end %>
 
-
-        <% if @sub_user.icon_choice.present? %>
-          <% case @sub_user.icon_choice %>
-          <% when 'sub_image' %>
-            <% if @sub_user.sub_image.present? %>
+          <% if @sub_user.icon_choice.present? %>
+            <% case @sub_user.icon_choice %>
+            <% when 'sub_image' %>
+              <% if @sub_user.sub_image.present? %>
+                <%= link_to edit_sub_user_path(@sub_user), class: 'balloon-botann' do %>  
+                  <div>
+                    <i class="bi bi-pen-fill pen-fill-icon"></i>
+                  </div>
+                  <div class="balloon-botann-text">
+                    Edit<br>
+                    Sub Thing
+                  </div>
+                <% end %>  
+              <% end %>
+            <% when 'sub_canvas' %>
+              <%= link_to peint_edit_sub_user_path(id: @sub_user.id), class: 'balloon-botann' do %>   
+                <div>
+                  <i class="bi bi-pen-fill pen-fill-icon"></i>
+                </div>
+                <div class="balloon-botann-text">
+                  Edit<br>
+                  Sub Paint
+                </div>
+              <% end %>  
+            <% when 'sub_color' %>
+              <%= link_to edit_sub_user_path(@sub_user), class: 'balloon-botann' do %>  
+                <div>
+                  <i class="bi bi-pen-fill pen-fill-icon"></i>
+                </div>
+                <div class="balloon-botann-text">
+                  Edit<br>
+                  Sub Color
+                </div>
+              <% end %> 
+            <% else %>
               <%= link_to edit_sub_user_path(@sub_user), class: 'balloon-botann' do %>  
                 <div>
                   <i class="bi bi-pen-fill pen-fill-icon"></i>
@@ -142,67 +163,36 @@
                   Edit<br>
                   Sub Thing
                 </div>
-              <% end %>  
+              <% end %> 
             <% end %>
-          <% when 'sub_canvas' %>
-            <%= link_to peint_edit_sub_user_path(id: @sub_user.id), class: 'balloon-botann' do %>   
-              <div>
-                <i class="bi bi-pen-fill pen-fill-icon"></i>
-              </div>
-              <div class="balloon-botann-text">
-                Edit<br>
-                Sub Paint
-              </div>
-            <% end %>  
-          <% when 'sub_color' %>
-            <%= link_to edit_sub_user_path(@sub_user), class: 'balloon-botann' do %>  
-              <div>
-                <i class="bi bi-pen-fill pen-fill-icon"></i>
-              </div>
-              <div class="balloon-botann-text">
-                Edit<br>
-                Sub Color
-              </div>
-            <% end %> 
-          <% else %>
-            <%= link_to edit_sub_user_path(@sub_user), class: 'balloon-botann' do %>  
-              <div>
-                <i class="bi bi-pen-fill pen-fill-icon"></i>
-              </div>
-              <div class="balloon-botann-text">
-                Edit<br>
-                Sub Thing
-              </div>
-            <% end %> 
+          <% end %>
+
+          <% unless @sub_user.icon_choice == 'sub_canvas' %>
+          <%= link_to canvas_edit_sub_user_path(id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>  
+            <div>
+              <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
+            </div>
+            <div class="balloon-botann-text">
+              Create<br>
+              Flow Paint
+            </div>
+            <span class="tooltip-text" style="text-align: start;">このSub Thingのアイコンを描画できます。<br>ただし、一度このツールを利用してアイコンを作成すると、将来の編集はすべて描画ツールを通じて行う必要があります。</span>
           <% end %>
         <% end %>
-
-        <% unless @sub_user.icon_choice == 'sub_canvas' %>
-        <%= link_to canvas_edit_sub_user_path(id: @sub_user.id), class: 'balloon-botann tooltip-container' do %>  
-          <div>
-            <i class="bi bi-easel2-fill pen-fill-icon-easel"></i>
-          </div>
-          <div class="balloon-botann-text">
-            Create<br>
-            Flow Paint
-          </div>
-          <span class="tooltip-text" style="text-align: start;">このSub Thingのアイコンを描画できます。<br>ただし、一度このツールを利用してアイコンを作成すると、将来の編集はすべて描画ツールを通じて行う必要があります。</span>
-        <% end %>
-      <% end %>
-
+      </div>
     </div>
-  </div>
 
-  <div>
-    <%= link_to confirm_delete_sub_user_path(@sub_user), class: "trash-botann" do %>
-      <div>
-        <i class="bi bi-trash-fill trash-icon"></i>
-      </div>
-      <div class="trash-icon-text">
-        Delete<br>
-        Sub Thing？
-      </div>
-    <% end %>
-  </div> 
-</div>
+    <div>
+      <%= link_to confirm_delete_sub_user_path(@sub_user), class: "trash-botann" do %>
+        <div>
+          <i class="bi bi-trash-fill trash-icon"></i>
+        </div>
+        <div class="trash-icon-text">
+          Delete<br>
+          Sub Thing？
+        </div>
+      <% end %>
+    </div> 
+
+  </div>
 </div>

@@ -52,8 +52,6 @@
     </div>
   </div>
 
-
-
   <div class="sidebar-content">
 
     <div style="height: 7rem; width: 100px;"></div>
@@ -118,7 +116,6 @@
       </p><br>
     </div>
 
-
     <h5 class="explanation-section-pointtitle" style="margin-bottom: -0.5rem; font-size: 1rem;">
       <span class="sakura-line">
       決定ボタン/挿入ボタンを押す
@@ -165,7 +162,6 @@
       </p>
     </div>
 
-
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 4rem; font-size: 1rem;">
       <span class="sakura-line">
       レイヤー選択/操作完了
@@ -181,18 +177,16 @@
       一方、「画像ツール」では、画像を挿入後に変形ツールを起動してもレイヤー選択機能はオンになりませんが、操作が確定するまで描画先レイヤーは自動的に追従します。<br>
       また、挿入操作中の画像の透明度は、描画先レイヤーの透明度設定に従い調整が可能です。
       </p><br>
-
-        <p>
-        これらの仕様により選択範囲/挿入画像の描画先レイヤーを自由に選択することが可能です。<br>
-        レイヤーを移動する必要がない場合は他のレイヤーを選択せずに描画レイヤーにて操作を行なって下さい。<br>
-        <span class="red-text text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※「選択ツール」「画像ツール」の操作中は、レイヤー選択機能をオンにしても挿入操作が完了するまでレイヤーの入れ替えなどの通常機能は利用できません。</span>
-        </p><br>
+      <p>
+      これらの仕様により選択範囲/挿入画像の描画先レイヤーを自由に選択することが可能です。<br>
+      レイヤーを移動する必要がない場合は他のレイヤーを選択せずに描画レイヤーにて操作を行なって下さい。<br>
+      <span class="red-text text-Rounded500" style="font-size: 0.85rem; color: #EB625A;">※「選択ツール」「画像ツール」の操作中は、レイヤー選択機能をオンにしても挿入操作が完了するまでレイヤーの入れ替えなどの通常機能は利用できません。</span>
+      </p><br>
 
       <p>変形作業が完了しましたら、確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %><%= image_tag('image_confirm_btn.png', alt: '画像ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押して操作を終了できます。
         挿入された画像は挿入後は他のペイントと同じcanvasに張り付いたものとなりますので、再び編集したい場合は選択ツールにて範囲選択して下さい。
       </p>
     </div>
-
 
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
       <span class="point-line">
@@ -221,7 +215,6 @@
       </p>
     </div>
 
-
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
       <span class="orange-line">
       移動<%= image_tag('select_move_btn.png', alt: '移動モードのボタン', class: "toolbtn-image", style: "margin-bottom: 1.6rem;") %>
@@ -245,7 +238,6 @@
         <span><%= image_tag('select_all_btn.png', alt: '全選択ボタン', class: "explanation-image", style: "width: 30px;") %>：全選択ボタン。</span>
       </p>
     </div>
-
 
     <section id="section20">
       <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
@@ -305,7 +297,6 @@
         また、範囲選択後に確定ボタン<%= image_tag('select_confirm_btn.png', alt: '選択ツールの確定ボタン', class: "explanation-image", style: "width: 70px;") %>を押してしまうと、ぼかし加工は適用されないので注意してください。
       </p>
     </div>
-
   
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
       <span class="orange-line">
@@ -359,10 +350,6 @@
         尚、挿入画像がcanvasの<span class="red-text text-Rounded500">2倍以上</span>のサイズである場合、<span style="color: #59afc7;" class="text-Rounded500">「画像を実際のサイズで挿入する」</span>オプションにチェックが入っていても、画像は自動的に縮小され、canvasにフィットするように挿入されます。
       </p>
     </div>
-
-
-
-
     <section id="section2">
       <h3 class="explanation-section-subtitle" style="margin-bottom: 3rem;">
         <span class="sub-line">
@@ -390,8 +377,6 @@
       <p><span style="color: #bfad28;" class="text-Rounded500">図形の挿入方法を選択</span><%= image_tag('sharptool_mode_btn.png', alt: '図形の挿入方法を選択するボタン', class: "explanation-image", style: "width: 50px;") %><br>
         この図形ツールには<span style="color: #59BC9D;" class="text-Rounded500">「描画モード<%= image_tag('sharp_drawing_btn.png', alt: '描画モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>と<span style="color: #f49e25;" class="text-Rounded500">「配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>二つのモードがあります。<br>
         <span style="color: #59BC9D;" class="text-Rounded500">「描画モード<%= image_tag('sharp_drawing_btn.png', alt: '描画モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>では、クリックしてドラッグすることで<span class="sakura-line">直感的に図形を描く</span>ことができます。</p><br>
-        
-        
         <p>一方、<span style="color: #f49e25;" class="text-Rounded500">「配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span>では、あらかじめ数値を入力して<span class="sakura-line">決められたサイズ</span>の図形を挿入します。<br>
           詳細設定パネルの入力フォームより設定値を入力し、canvasをクリック＆ドラッグすると設定した図形/テキストが挿入配置されます。<br>
           尚、<span class="sakura-line">テキストを挿入する場合は、自動的に<span style="color: #f49e25;" class="text-Rounded500">「配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>」</span></span>が選択されます。
@@ -434,13 +419,11 @@
       </p>
     </div>
 
-
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
       <span class="point-line">
       図形ツールの紹介
       </span>
     </h4>
-
       
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
       <span class="orange-line">
@@ -493,8 +476,6 @@
 
       <p>配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>で作成できる円形のサイズは縦横200pxまでとなります。<br></p>
     </div>
-
-
               
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
       <span class="orange-line">
@@ -514,8 +495,6 @@
         このツールにはグラデーションモードは含まれておらず、配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>で作成可能な三角形の最大サイズは縦横200pxです。
       </p>
     </div>
-
-
               
     <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
       <span class="orange-line">
@@ -535,7 +514,6 @@
         このツールにはグラデーションモードは含まれておらず、配置モード<%= image_tag('sharp_arrangement_btn.png', alt: '配置モードのボタン', class: "explanation-image", style: "width: 25px; margin-top: -0.5rem;") %>で作成可能な直線の最大サイズは縦横200pxです。
       </p>
     </div>
-
 
     <h4 class="explanation-section-pointtitle" style="margin-bottom: 0rem;">
       <span class="point-line">
@@ -570,7 +548,6 @@
         <span><%= image_tag('text_bald_italic.png', alt: 'ボールドイタリック', class: "toolbtn-image-20") %>：挿入するテキストのスタイルを<span style="color: #E19AB0;" class="text-Rounded500">「ボールドイタリック」</span>にします。</span>
       </p>
 
-
       <p style="margin-top: 2rem; margin-bottom: -0.8rem;"><span style="color: #59afc7;" class="text-Rounded500">テキスト入力</span>：ここに挿入したいテキストを入力し、入力後canvasをクリック&ドラッグして文字を挿入できます。</p><br>
       <p style="margin-top: -1rem;">
         <span style="color: #EB625A; font-size: 0.85rem;" class="text-Rounded500">※テキストの挿入について</span><br>
@@ -587,7 +564,6 @@
       </p><br>
     </div>
 
-
     <section id="section3">
       <h5 class="explanation-section-pointtitle" style="margin-bottom: 1.5rem; font-size: 1rem;">
         <span class="orange-line">
@@ -599,64 +575,64 @@
     <div class="explanation-section-text text-Rounded" style="margin-left: 0.5rem; line-height: 1.9; margin-top: -1rem;">
       <table class="textfont-table">
         <tr>
-            <th>フォント名</th>
-            <th>日本語<br><%= image_tag('text_style_btn.png', alt: 'テキストスタイルを選択するボタン', class: "explanation-image", style: "width: 95px;") %></th>
-            <th>ローマ字<br><%= image_tag('text_style_btn.png', alt: 'テキストスタイルを選択するボタン', class: "explanation-image", style: "width: 95px;") %></th>
+          <th>フォント名</th>
+          <th>日本語<br><%= image_tag('text_style_btn.png', alt: 'テキストスタイルを選択するボタン', class: "explanation-image", style: "width: 95px;") %></th>
+          <th>ローマ字<br><%= image_tag('text_style_btn.png', alt: 'テキストスタイルを選択するボタン', class: "explanation-image", style: "width: 95px;") %></th>
         </tr>
         <tr>
-            <td>Noto Sans JP</td>
-            <td><%= image_tag('ja_noto.png', alt: 'Noto Sans JP', class: "font-sample-image") %></td>
-            <td><%= image_tag('roma_noto.png', alt: 'Noto Sans JP', class: "font-sample-image") %></td>
+          <td>Noto Sans JP</td>
+          <td><%= image_tag('ja_noto.png', alt: 'Noto Sans JP', class: "font-sample-image") %></td>
+          <td><%= image_tag('roma_noto.png', alt: 'Noto Sans JP', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>ヒラギノ明朝 ProN</td>
-            <td><%= image_tag('ja_hira.png', alt: 'ヒラギノ明朝 ProN', class: "font-sample-image") %></td>
-            <td><%= image_tag('roma_hira.png', alt: 'ヒラギノ明朝 ProN', class: "font-sample-image") %></td>
+          <td>ヒラギノ明朝 ProN</td>
+          <td><%= image_tag('ja_hira.png', alt: 'ヒラギノ明朝 ProN', class: "font-sample-image") %></td>
+          <td><%= image_tag('roma_hira.png', alt: 'ヒラギノ明朝 ProN', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>ヒラギノ丸ゴ ProN</td>
-            <td><%= image_tag('ja_hiramaru.png', alt: 'ヒラギノ丸ゴ ProN', class: "font-sample-image") %></td>
-            <td><%= image_tag('roma_hiramaru.png', alt: 'ヒラギノ丸ゴ ProN', class: "font-sample-image") %></td>
+          <td>ヒラギノ丸ゴ ProN</td>
+          <td><%= image_tag('ja_hiramaru.png', alt: 'ヒラギノ丸ゴ ProN', class: "font-sample-image") %></td>
+          <td><%= image_tag('roma_hiramaru.png', alt: 'ヒラギノ丸ゴ ProN', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Arial</td>
-            <td>-</td>
-            <td><%= image_tag('roma_arial.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Arial</td>
+          <td>-</td>
+          <td><%= image_tag('roma_arial.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Times New Roman</td>
-            <td>-</td>
-            <td><%= image_tag('roma_times.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Times New Roman</td>
+          <td>-</td>
+          <td><%= image_tag('roma_times.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Georgia</td>
-            <td>-</td>
-            <td><%= image_tag('roma_georgia.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Georgia</td>
+          <td>-</td>
+          <td><%= image_tag('roma_georgia.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Garamond</td>
-            <td>-</td>
-            <td><%= image_tag('roma_garamond.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Garamond</td>
+          <td>-</td>
+          <td><%= image_tag('roma_garamond.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Verdana</td>
-            <td>-</td>
-            <td><%= image_tag('roma_verdana.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Verdana</td>
+          <td>-</td>
+          <td><%= image_tag('roma_verdana.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Tahoma</td>
-            <td>-</td>
-            <td><%= image_tag('roma_tahoma.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Tahoma</td>
+          <td>-</td>
+          <td><%= image_tag('roma_tahoma.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Trebuchet MS</td>
-            <td>-</td>
-            <td><%= image_tag('roma_trebuchet.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Trebuchet MS</td>
+          <td>-</td>
+          <td><%= image_tag('roma_trebuchet.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
         <tr>
-            <td>Courier New</td>
-            <td>-</td>
-            <td><%= image_tag('roma_courier.png', alt: 'Arial', class: "font-sample-image") %></td>
+          <td>Courier New</td>
+          <td>-</td>
+          <td><%= image_tag('roma_courier.png', alt: 'Arial', class: "font-sample-image") %></td>
         </tr>
       </table>
     </div>
@@ -681,10 +657,6 @@
         設定されたサイズは全てのツールに共通して適用されます。
       </p>
     </div>
-
-
-
-
     <div style="height: 7rem; width: 100px;"></div>
     <section id="section5">
       <h2 class="explanation-section-title">
@@ -723,15 +695,7 @@
       </p><br>
 
     </div>
-
-
-
-<div style="height: 10rem; width: 100px;"></div>
-
-
-
-
+    <div style="height: 10rem; width: 100px;"></div>
 
   </div>
-
 </div>

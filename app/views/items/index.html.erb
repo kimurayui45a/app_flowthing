@@ -1,34 +1,32 @@
 <% content_for(:title, t('.title')) %>
 
-
-
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container">
+  <div class="info-container">
 
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
 
-  <h1 class="midasi-title" style="margin-top: 4rem;">
+    <h1 class="midasi-title" style="margin-top: 4rem;">
+      
+      <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
+    </h1>
     
-    <span class="f-text">F</span>low <span class="t-text">T</span>hing</span>
-  </h1>
-  
-<%= render 'search_form', q: @q, url: items_path %>
+    <%= render 'search_form', q: @q, url: items_path %>
 
-  <div class="item-list-container">
-    <% if @items.present? %>
-      <% @items.each do |item| %>
-        <div class="item-list-card">
-          <%= render partial: 'items/item', locals: { item: item, sub_user: @sub_user } %>
-        </div>
+    <div class="item-list-container">
+      <% if @items.present? %>
+        <% @items.each do |item| %>
+          <div class="item-list-card">
+            <%= render partial: 'items/item', locals: { item: item, sub_user: @sub_user } %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="noitem-text" style="font-size: 1rem;">Flow Thingがありません</div>
       <% end %>
-    <% else %>
-      <div class="noitem-text" style="font-size: 1rem;">Flow Thingがありません</div>
-    <% end %>
+    </div>
+    <div style="margin: 5rem 3rem;">
+    <%= paginate @items %>
+    </div>
   </div>
-  <div style="margin: 5rem 3rem;">
-  <%= paginate @items %>
-  </div>
-</div>
 </div>

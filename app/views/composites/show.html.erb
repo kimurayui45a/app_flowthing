@@ -2,101 +2,85 @@
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container flex-column">
+  <div class="info-container flex-column">
 
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
 
+    <div class="flux-screen-show-space">
 
+      <div class="flux-screen-show-third">
+        <div class="flux-screen-show-frame">
+          <div class="flux-screen-show-frame-second">
+            <div id="reactLoadComposite"
+              data-composite-id="<%= @composite.id %>"
+              data-item-id-all="<%= @items.to_json %>"
+              data-space-id-all="<%= @spaces.to_json %>"
+              data-sub-user-id-all="<%= @sub_users.to_json %>"
 
+              data-space-data="<%= @composite.composite_space %>"
+              data-item-data="<%= @composite.composite_item %>"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="gradient-border">
+        <div class="content motto-miru screen-show-comment-contents">
+          <div class="nameplate-white" style="margin-bottom: 1rem;"><%= @composite.composite_name.present? ? @composite.composite_name : 'No Name' %>
+            <div class="flex">
+              <div style="font-size: 1rem;"><span><%= @composite.created_at.strftime("%Y年%m月%d日") %></span></div>
+              <div style="font-size: 1rem;"><span>〜</div></span>
+              <div style="font-size: 1rem;"><span><%= @composite.updated_at.strftime("%Y年%m月%d日") %></span></div>
+            </div>
+          </div>
 
-  <div class="flux-screen-show-space">
-
-
-
-
-
-
-
-
-  <div class="flux-screen-show-third">
-    <div class="flux-screen-show-frame">
-      <div class="flux-screen-show-frame-second">
-        <div id="reactLoadComposite"
-          data-composite-id="<%= @composite.id %>"
-          data-item-id-all="<%= @items.to_json %>"
-          data-space-id-all="<%= @spaces.to_json %>"
-          data-sub-user-id-all="<%= @sub_users.to_json %>"
-
-          data-space-data="<%= @composite.composite_space %>"
-          data-item-data="<%= @composite.composite_item %>"
-        >
+          <%# <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span> %>
+          <% text = @composite.composite_text.present? ? @composite.composite_text : 'No Comment' %>
+          <% lines = text.split("\n") %>
+          <% preview_text = lines.first(3).join("\n") %>
+          <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+          <% if text.length > 80 or lines.length > 3 %>
+            <span class="default-view">
+              <%= simple_format(preview_text + '。。。') %>
+            </span>
+            <span class="hidden-view" style="display: none;">
+              <%= simple_format text %>
+            </span>
+            <div class="toggle-view">もっと見る</div>
+          <% else %>
+            <span>
+              <%= simple_format text %>
+            </span>
+          <% end %>
         </div>
       </div>
     </div>
-  </div>
 
-
-<div class="gradient-border">
-    <div class="content motto-miru screen-show-comment-contents">
-
-      <div class="nameplate-white" style="margin-bottom: 1rem;"><%= @composite.composite_name.present? ? @composite.composite_name : 'No Name' %>
-      
-      <div class="flex">
-      <div style="font-size: 1rem;"><span><%= @composite.created_at.strftime("%Y年%m月%d日") %></span></div>
-      <div style="font-size: 1rem;"><span>〜</div></span>
-      <div style="font-size: 1rem;"><span><%= @composite.updated_at.strftime("%Y年%m月%d日") %></span></div>
-      </div>
-      </div>
-
-      <%# <span class="comment-text"><i class="bi bi-tag-fill"></i>コメント</span> %>
-      <% text = @composite.composite_text.present? ? @composite.composite_text : 'No Comment' %>
-      <% lines = text.split("\n") %>
-      <% preview_text = lines.first(3).join("\n") %>
-      <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
-      <% if text.length > 80 or lines.length > 3 %>
-        <span class="default-view">
-          <%= simple_format(preview_text + '。。。') %>
-        </span>
-        <span class="hidden-view" style="display: none;">
-          <%= simple_format text %>
-        </span>
-        <div class="toggle-view">もっと見る</div>
-      <% else %>
-        <span>
-          <%= simple_format text %>
-        </span>
-      <% end %>
-    </div>
-  </div>
-  </div>
-
-
-<div class="flex-between user-show-botann">
-    <div>
-      <%= link_to edit_composite_path(@composite), class: 'balloon-botann' do %>  
+    <div class="flex-between user-show-botann">
         <div>
-          <i class="bi bi-pen-fill pen-fill-icon"></i>
+          <%= link_to edit_composite_path(@composite), class: 'balloon-botann' do %>  
+            <div>
+              <i class="bi bi-pen-fill pen-fill-icon"></i>
+            </div>
+            <div class="balloon-botann-text">
+              Edit<br>
+              Composite
+            </div>
+          <% end %>  
         </div>
-        <div class="balloon-botann-text">
-          Edit<br>
-          Composite
+      <div>
+        <%= link_to confirm_delete_composite_path(@composite), class: "flux-screen-trash-botann" do %>
+        <div>
+          <i class="bi bi-trash-fill trash-icon"></i>
         </div>
-      <% end %>  
+        <div class="trash-icon-text">
+          Delete<br>
+          Composite？
+        </div>
+        <% end %>
+      </div> 
     </div>
-  <div>
-    <%= link_to confirm_delete_composite_path(@composite), class: "flux-screen-trash-botann" do %>
-    <div>
-      <i class="bi bi-trash-fill trash-icon"></i>
-    </div>
-    <div class="trash-icon-text">
-      Delete<br>
-      Composite？
-    </div>
-    <% end %>
-  </div> 
-</div>
 
-
-</div>
+  </div>
 </div>

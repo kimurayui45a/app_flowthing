@@ -3,15 +3,12 @@
   <h1 class="section-title" style="margin-top: 2rem;">
     <span class="red-text">プロフィールのアイコンを作成</span>
   </h1>
+  <div style="margin-bottom: 2rem;"><span class="red-text">※プロフィールアイコンはレイヤーごとの保存はできません。</span></div>
+    <div id="reactProfileCanvas"
+      data-profile-id="<%= @profile.id %>"
+      data-space-size="<%= @profile.space_size %>"
 
-<div style="margin-bottom: 2rem;"><span class="red-text">※プロフィールアイコンはレイヤーごとの保存はできません。</span></div>
-
-  <div id="reactProfileCanvas"
-    data-profile-id="<%= @profile.id %>"
-    data-space-size="<%= @profile.space_size %>"
-
-    data-tool-parameters="<%= @profile.tool_data %>"
-  >
+      data-tool-parameters="<%= @profile.tool_data %>"
+    >
   </div>
-
 </div>

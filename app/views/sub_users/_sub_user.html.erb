@@ -1,83 +1,82 @@
 <article id="sub_user_<%= sub_user.id %>", class="<%= container_class_for_items_count(sub_user.items_count) %> <%= blur_class_for_last_accessed(sub_user) %> user-card-container">
-    <details class="details-box">
-      <summary class="subuser-summary-style"><%= sub_user.sub_name.present? ? sub_user.sub_name : '---' %></summary>
-      <span><%= sub_user.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
-    </details>
+  <details class="details-box">
+    <summary class="subuser-summary-style"><%= sub_user.sub_name.present? ? sub_user.sub_name : '---' %></summary>
+    <span><%= sub_user.updated_at.strftime("%Y年%m月%d日 %H:%M") %></span>
+  </details>
 
-
-    <section class="user-objectbox">
-      <div class="icon-object">
-        <%= link_to sub_user_path(sub_user) do %>
-          <% if sub_user.icon_choice.present? %>
-            <% case sub_user.icon_choice %>
-            <% when 'sub_image' %>
-                <!-- sub_image の内容を表示 -->
-                <% if sub_user.sub_image.present? %>
-                    <%= image_tag sub_user.sub_image.url, class: "user-profileicon" %>
-                <% end %>
-            <% when 'sub_canvas' %>
-                <!-- sub_canvas の内容を表示 -->
-                <img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon">
-            <% when 'sub_color' %>
-                <!-- sub_color の内容を表示 -->
-                <div style="background-color: <%= sub_user.sub_color %>;" class="user-profileicon"></div>
-            <% else %>
-                <div class="no-image-icon">No Image</div>
-            <% end %>
+  <section class="user-objectbox">
+    <div class="icon-object">
+      <%= link_to sub_user_path(sub_user) do %>
+        <% if sub_user.icon_choice.present? %>
+          <% case sub_user.icon_choice %>
+          <% when 'sub_image' %>
+              <!-- sub_image の内容を表示 -->
+              <% if sub_user.sub_image.present? %>
+                  <%= image_tag sub_user.sub_image.url, class: "user-profileicon" %>
+              <% end %>
+          <% when 'sub_canvas' %>
+              <!-- sub_canvas の内容を表示 -->
+              <img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="user-profileicon">
+          <% when 'sub_color' %>
+              <!-- sub_color の内容を表示 -->
+              <div style="background-color: <%= sub_user.sub_color %>;" class="user-profileicon"></div>
+          <% else %>
+              <div class="no-image-icon">No Image</div>
           <% end %>
         <% end %>
-      </div>
-      <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> <%= sub_user.items_count %></span>
+      <% end %>
+    </div>
+    <span> Flow Thing <i class="bi bi-gift-fill icon-small"></i> <%= sub_user.items_count %></span>
 
-
-      <div class="icon-count-container">
+    <div class="icon-count-container">
       <% icon_classes = icon_class_for_items_count(sub_user.items_count) %>
       <% icon_classes.each do |icon_class| %>
         <% unless icon_class == 'default-icon' %>
           <i class="<%= icon_class %>"></i>
         <% end %>
       <% end %>
-      </div>
-      <div class="item-flex">
-<% if sub_user.icon_choice.present? %>
-<% case sub_user.icon_choice %>
-<% when 'sub_image' %>
-  <% if sub_user.sub_image.present? %>
-    <div>
-      <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
-        <i class="bi bi-pencil-fill trash-fill-font"></i>
-      <% end %>
     </div>
-  <% end %>
-<% when 'sub_canvas' %>
-  <div>
-    <%= link_to peint_edit_sub_user_path(id: sub_user.id), class: "edit-memo-link pencil-fill-space" do %>
-      <i class="bi bi-pencil-fill trash-fill-font"></i>
-    <% end %>
-  </div>
 
-<% when 'sub_color' %>
-  <div>
-    <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
-      <i class="bi bi-pencil-fill trash-fill-font"></i>
-    <% end %>
-  </div>
-<% else %>
-    <div>
-      <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
-        <i class="bi bi-pencil-fill trash-fill-font"></i>
-      <% end %>
-    </div>
-<% end %>
-<% end %>
-
+    <div class="item-flex">
+      <% if sub_user.icon_choice.present? %>
+        <% case sub_user.icon_choice %>
+        <% when 'sub_image' %>
+        <% if sub_user.sub_image.present? %>
+          <div>
+            <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+              <i class="bi bi-pencil-fill trash-fill-font"></i>
+            <% end %>
+          </div>
+        <% end %>
+        <% when 'sub_canvas' %>
         <div>
-          <%= link_to confirm_delete_sub_user_path(sub_user), class: "delete-confirm-link" do %>
-            <i class="bi bi-trash-fill trash-fill-font"></i>
+          <%= link_to peint_edit_sub_user_path(id: sub_user.id), class: "edit-memo-link pencil-fill-space" do %>
+            <i class="bi bi-pencil-fill trash-fill-font"></i>
           <% end %>
-        </div> 
+        </div>
+
+        <% when 'sub_color' %>
+        <div>
+          <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+            <i class="bi bi-pencil-fill trash-fill-font"></i>
+          <% end %>
+        </div>
+        <% else %>
+          <div>
+            <%= link_to edit_sub_user_path(sub_user), class: "edit-memo-link pencil-fill-space" do %>
+              <i class="bi bi-pencil-fill trash-fill-font"></i>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div>
+        <%= link_to confirm_delete_sub_user_path(sub_user), class: "delete-confirm-link" do %>
+          <i class="bi bi-trash-fill trash-fill-font"></i>
+        <% end %>
       </div> 
-    </section>
+    </div> 
+  </section>
 </article>
 
 

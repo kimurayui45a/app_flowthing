@@ -1,110 +1,78 @@
 <% content_for(:title, t('.title')) %>
 <div class="maxboard-container flex-column" style="padding-top: 10rem;">
 
+  <div class="question-btn-group">
+    <div class="board-menu">
+        <div style="position: absolute; top: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+        <div style="position: absolute; top: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+        <div style="position: absolute; bottom: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+        <div style="position: absolute; bottom: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
+      <div>
+        <%= link_to new_board_path do %>
+            <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">掲示板を作成</span></div>
+        <% end %>
+      </div>
 
+        <div class="board-menu-text">
+        
+          <%= link_to boards_path do %>
+            <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">全体掲示板</span></div>
+          <% end %>
 
+        </div>
+        <div>
+          <%= link_to free_boards_path do %>
+            <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">自由掲示板</span></div>
+          <% end %>  
+        
+        </div>
 
-
-<div class="question-btn-group">
-  <div class="board-menu">
-    <div style="position: absolute; top: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
-    <div style="position: absolute; top: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
-    <div style="position: absolute; bottom: 0; left: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
-    <div style="position: absolute; bottom: 0; right: 1px; color: #7f7f7f;"><i class="bi bi-pentagon-fill"></i></div>
-  <div>
-    <%= link_to new_board_path do %>
-        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">掲示板を作成</span></div>
-    <% end %>
-  </div>
-
-    <div class="board-menu-text">
-    
-      <%= link_to boards_path do %>
-        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">全体掲示板</span></div>
-      <% end %>
-
-    </div>
-    <div>
-      <%= link_to free_boards_path do %>
-        <div style="margin-bottom: 1rem;"><span class="board-menu-text" style="margin-bottom: 2rem;">自由掲示板</span></div>
-      <% end %>  
-    
-    </div>
-
-    <div>
-      <%= link_to question_boards_path do %>
-        <div><span class="board-menu-text" style="margin-bottom: 2rem;">質問掲示板</span></div>
-      <% end %>
+        <div>
+          <%= link_to question_boards_path do %>
+            <div><span class="board-menu-text" style="margin-bottom: 2rem;">質問掲示板</span></div>
+          <% end %>
+        </div>
+      </div>
     </div>
     
-  
-  </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-  <%# <div>
-      <%= link_to '掲示板', boards_path, class: 'board-btn' %>
-  
-  <article id="board<%= @board.id %>" class="board-show-container flex-column">
-    <h3><%= @board.board_title %></h3>
-
-
-
-    <% if @board.item %>
-      <% case @board.item.image_choice %>
-      <% when 'item_image' %>
-        <%= image_tag @board.item.item_image.url, class: "board_image" %>
-      <% when 'item_canvas' %>
-        <img src="<%= @board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="board_image" >
+    <article id="board<%= @board.id %>" class="board-show-container flex-column">
+      <h3><%= @board.board_title %></h3>
+      <% if @board.item %>
+        <% case @board.item.image_choice %>
+        <% when 'item_image' %>
+          <%= image_tag @board.item.item_image.url, class: "board_image" %>
+        <% when 'item_canvas' %>
+          <img src="<%= @board.item.item_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="board_image" >
+        <% else %>
+          <div class="no-image-icon">No Image</div>
+        <% end %>
       <% else %>
-        <div class="no-image-icon">No Image</div>
+        <div class="board-no-image-icon">No Image</div>
       <% end %>
-    <% else %>
-      <div class="board-no-image-icon">No Image</div>
-    <% end %>
 
-
-
-
-
-
-    <p><%= @board.comments_count %> comments</p>
-    
-<div class="content motto-miru user-show-comment-contents">
-  <%# <span class="comment-text"><i class="bi bi-film"></i>内容</span> %>
-  <% text = @board.board_text.present? ? @board.board_text : 'No Episode' %>
-  <% lines = text.split("\n") %>
-  <% preview_text = lines.first(3).join("\n") %>
-  <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
-  <% if text.length > 80 or lines.length > 3 %>
-    <span class="default-view">
-      <%= simple_format(preview_text + '。。。') %>
-    </span>
-    <span class="hidden-view" style="display: none;">
-      <%= simple_format text %>
-    </span>
-    <div class="toggle-view">もっと見る</div>
-  <% else %>
-    <span>
-      <%= simple_format text %>
-    </span>
-  <% end %>
-</div>
-
-
-    
-
-  </article>
-
-
+      <p><%= @board.comments_count %> comments</p>
+      
+      <div class="content motto-miru user-show-comment-contents">
+        <%# <span class="comment-text"><i class="bi bi-film"></i>内容</span> %>
+        <% text = @board.board_text.present? ? @board.board_text : 'No Episode' %>
+        <% lines = text.split("\n") %>
+        <% preview_text = lines.first(3).join("\n") %>
+        <% preview_text = preview_text.length > 80 ? preview_text.first(80) : preview_text %>
+        <% if text.length > 80 or lines.length > 3 %>
+          <span class="default-view">
+            <%= simple_format(preview_text + '。。。') %>
+          </span>
+          <span class="hidden-view" style="display: none;">
+            <%= simple_format text %>
+          </span>
+          <div class="toggle-view">もっと見る</div>
+        <% else %>
+          <span>
+            <%= simple_format text %>
+          </span>
+        <% end %>
+      </div>
+    </article>
     <%= render 'comments/form', comment: @comment, board: @board %>
     <div class="row">
       <div>

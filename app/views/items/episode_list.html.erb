@@ -5,7 +5,6 @@
     <h1 class="section-title episode-title-contents">
       <span>Episode</span>
     </h1>
-    
 
     <%= link_to episode_list_path, class: "tropical-botann" do %>
       <div>
@@ -16,92 +15,90 @@
         Chaos
       </div>
     <% end %>
-    
-
-  <div class="scrollable-container">
-    <div class="episode-user-list">
-      <% if @sub_users.present? %>
-        <% @sub_users.each do |sub_user| %>
-          <%= link_to episode_list_path(sub_user_id: sub_user.id) do %>
-            <% if sub_user.icon_choice.present? %>
-              <% case sub_user.icon_choice %>
-              <% when 'sub_image' %>
-                  <% if sub_user.sub_image.present? %>
+      
+    <div class="scrollable-container">
+      <div class="episode-user-list">
+        <% if @sub_users.present? %>
+          <% @sub_users.each do |sub_user| %>
+            <%= link_to episode_list_path(sub_user_id: sub_user.id) do %>
+              <% if sub_user.icon_choice.present? %>
+                <% case sub_user.icon_choice %>
+                <% when 'sub_image' %>
+                    <% if sub_user.sub_image.present? %>
+                      <div class="episode-subicon-frame">
+                        <%= image_tag sub_user.sub_image.url, class: "episode-image-icon" %>
+                      </div>
+                    <% end %>
+                <% when 'sub_canvas' %>
                     <div class="episode-subicon-frame">
-                      <%= image_tag sub_user.sub_image.url, class: "episode-image-icon" %>
+                      <div class="canvas-container-parent">
+                      <div class="episode-canvas-back">
+                        
+                        <img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="episode-usericon">
+    
+                      </div>
+                      </div>
                     </div>
-                  <% end %>
-              <% when 'sub_canvas' %>
+                <% when 'sub_color' %>
                   <div class="episode-subicon-frame">
-                    <div class="canvas-container-parent">
-                    <div class="episode-canvas-back">
-                      
-                      <img src="<%= sub_user.sub_canvas %>" alt="Canvas Image" style="object-fit: contain;" class="episode-usericon">
-  
-                    </div>
-                    </div>
+                    <div style="background-color: <%= sub_user.sub_color %>;" class="episode-image-icon"></div>
                   </div>
-              <% when 'sub_color' %>
-                <div class="episode-subicon-frame">
-                  <div style="background-color: <%= sub_user.sub_color %>;" class="episode-image-icon"></div>
-                </div>
-              <% else %>
-                  <div class="no-image-icon">No Image</div>
+                <% else %>
+                    <div class="no-image-icon">No Image</div>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
 
-
-<div class="scroll-container-back">
-  <div class="holes-container">
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-    <div class="holes"></div>
-  </div>  
-  <div class="scroll-container">
-    <div class="scroll-content">
-      <!-- スクロールする内容 -->
-      <% if @episodes.present? %>
-        <% @episodes.each do |episode| %>
-          <%= link_to item_path(episode.id) do %>
-            <div class="frame">
-              <%= episode.episode.present? ? episode.episode : 'none' %>
-            </div>
+  <div class="scroll-container-back">
+    <div class="holes-container">
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+      <div class="holes"></div>
+    </div>  
+    <div class="scroll-container">
+      <div class="scroll-content">
+        <!-- スクロールする内容 -->
+        <% if @episodes.present? %>
+          <% @episodes.each do |episode| %>
+            <%= link_to item_path(episode.id) do %>
+              <div class="frame">
+                <%= episode.episode.present? ? episode.episode : 'none' %>
+              </div>
+            <% end %>
           <% end %>
+        <% else %>
+          <div class="frame-no-episode">No Episode</div>
         <% end %>
-      <% else %>
-        <div class="frame-no-episode">No Episode</div>
-      <% end %>
+      </div>
     </div>
-  </div>
   <div class="holes-container">
     <div class="holes"></div>
     <div class="holes"></div>

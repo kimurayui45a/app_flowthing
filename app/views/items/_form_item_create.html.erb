@@ -1,118 +1,109 @@
 <div class="itemformcr">
 
+  <div class="form-card">
+    <div class="item-form-card-background flex-start-start-flex-center">
+      <div class="flex-column">
 
+        <div class="section-title logo-transform-form-card">
+          <div class="app-logo">
+            <div class="flex flex-animated-text">
+              <div class="flex-between flex-animated-text-absolute logo-blur-05">
+                <div class="animated-text">
+                  <span class='zen-antique logo-setting'>F</span>
+                  <span class='sawarabi-mincho logo-setting'>l</span>
+                  <span class="logo-setting">o</span>
+                  <span class='dotgothic16'>w</span>
 
-
-<div class="form-card">
-  <div class="item-form-card-background flex-start-start-flex-center">
-    <div class="flex-column">
-
-      <div class="section-title logo-transform-form-card">
-        <div class="app-logo">
-          <div class="flex flex-animated-text">
-            <div class="flex-between flex-animated-text-absolute logo-blur-05">
-              <div class="animated-text">
-                <span class='zen-antique logo-setting'>F</span>
-                <span class='sawarabi-mincho logo-setting'>l</span>
-                <span class="logo-setting">o</span>
-                <span class='dotgothic16'>w</span>
-
-                <span class='potta-one logo-setting-t logo-setting'>T</span>
-                <span class='rocknroll-one logo-setting-hi'>h</span>
-                <span class='yuji-mai logo-setting-hi'>i</span>
-                <span class='yuji-syuku logo-setting-n'>n</span>
+                  <span class='potta-one logo-setting-t logo-setting'>T</span>
+                  <span class='rocknroll-one logo-setting-hi'>h</span>
+                  <span class='yuji-mai logo-setting-hi'>i</span>
+                  <span class='yuji-syuku logo-setting-n'>n</span>
+                </div>
+                <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
               </div>
-              <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-            </div>
 
-            <div class="flex-between logo-blur-15">
-              <div class="animated-text">
-                <span class='zen-antique logo-setting'>F</span>
-                <span class='sawarabi-mincho logo-setting'>l</span>
-                <span class="logo-setting">o</span>
-                <span class='dotgothic16'>w</span>
+              <div class="flex-between logo-blur-15">
+                <div class="animated-text">
+                  <span class='zen-antique logo-setting'>F</span>
+                  <span class='sawarabi-mincho logo-setting'>l</span>
+                  <span class="logo-setting">o</span>
+                  <span class='dotgothic16'>w</span>
 
-                <span class='potta-one logo-setting-t logo-setting'>T</span>
-                <span class='rocknroll-one logo-setting-hi'>h</span>
-                <span class='yuji-mai logo-setting-hi'>i</span>
-                <span class='yuji-syuku logo-setting-n'>n</span>
+                  <span class='potta-one logo-setting-t logo-setting'>T</span>
+                  <span class='rocknroll-one logo-setting-hi'>h</span>
+                  <span class='yuji-mai logo-setting-hi'>i</span>
+                  <span class='yuji-syuku logo-setting-n'>n</span>
+                </div>
+                <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
               </div>
-              <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="form-card-container">
-        <div class="flex-column">
-          
-          <div id="itemimagePreview"></div>
-
-          <div class="user-createform-text">
-            <label for="iconItemChoice"><%= t('items.form.image_choice') %></label><br>
-                      
-            <select id="iconItemChoice" name="dummy_image_choice">
-              <option value="no_image" selected><%= t('items.form.no_image') %></option>
-              <option value="item_image"><%= t('items.form.item_image') %></option>
-              
-            </select>
-
-            <%= f.hidden_field :image_choice, id: "image_choice" %>
-            <%= f.hidden_field :item_save_canvas, id: "item_save_canvas" %>
-            <%= f.hidden_field :canvas_size, id: "canvas_size" %>
+        <div class="form-card-container">
+          <div class="flex-column">
             
+            <div id="itemimagePreview"></div>
+
+            <div class="user-createform-text">
+              <label for="iconItemChoice"><%= t('items.form.image_choice') %></label><br>
+                        
+              <select id="iconItemChoice" name="dummy_image_choice">
+                <option value="no_image" selected><%= t('items.form.no_image') %></option>
+                <option value="item_image"><%= t('items.form.item_image') %></option>
+                
+              </select>
+
+              <%= f.hidden_field :image_choice, id: "image_choice" %>
+              <%= f.hidden_field :item_save_canvas, id: "item_save_canvas" %>
+              <%= f.hidden_field :canvas_size, id: "canvas_size" %>
+              
+            </div>
+
+            <div class="subuser-disabled sub-image-container form-card-background-white form-card-top" id="itemImageInput">
+            
+              <label for="itemImage">
+                <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio">
+                <%= f.label :item_image, t('items.form.item_image') %>
+                <%= f.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
+                <%= f.hidden_field :item_canvas, id: "item_canvas" %>
+              </label>
+            </div>
+
           </div>
 
-          <div class="subuser-disabled sub-image-container form-card-background-white form-card-top" id="itemImageInput">
-          
-            <label for="itemImage">
-              <input type="radio" name="inputItem" value="item_image" id="itemImage" class="custom-radio">
-              <%= f.label :item_image, t('items.form.item_image') %>
-              <%= f.file_field :item_image, class: "form-control", accept: 'image/*', id: "item_image" %>
-              <%= f.hidden_field :item_canvas, id: "item_canvas" %>
-            </label>
+          <div class="item-createform-text-right">
+            <span class="red-text"><%= t('items.form.contents_note_icon') %></span>
+            <div class="user-createform-text">
+              <%= f.label :item_name, t('items.form.item_name') %>
+              <%= f.text_field :item_name, class: "form-control", id: "item_name" %>
+            </div>
+            <div class="user-createform-text">
+              <%= f.label :item_text, t('items.form.item_text') %>
+              <%= f.text_area :item_text, class: "form-control item-form-card-textform", style: "resize: none" , row: 10 %>
+            </div>
           </div>
-
         </div>
+          <div class="flex-start-start">
+            <div class="item-form-card-createform-text">
+              <%= f.label :item_place, t('items.form.item_place') %>
+              <%= f.text_field :item_place, class: "form-control" %>
+            </div>
 
-        <div class="item-createform-text-right">
-          <span class="red-text"><%= t('items.form.contents_note_icon') %></span>
-          <div class="user-createform-text">
-            <%= f.label :item_name, t('items.form.item_name') %>
-            <%= f.text_field :item_name, class: "form-control", id: "item_name" %>
+            <div class="item-form-card-createform-text">
+              <%= f.label :episode, t('items.form.episode') %><span class="red-text"> <%= t('items.form.contents_note') %></span>
+              <%= f.text_area :episode, class: "form-control item-form-card-textepisode", style: "resize: none" , row: 10, id: "episode" %>
+            </div>
           </div>
-          <div class="user-createform-text">
-            <%= f.label :item_text, t('items.form.item_text') %>
-            <%= f.text_area :item_text, class: "form-control item-form-card-textform", style: "resize: none" , row: 10 %>
-          </div>
-        </div>
       </div>
-        <div class="flex-start-start">
-          <div class="item-form-card-createform-text">
-            <%= f.label :item_place, t('items.form.item_place') %>
-            <%= f.text_field :item_place, class: "form-control" %>
-          </div>
-
-          <div class="item-form-card-createform-text">
-            <%= f.label :episode, t('items.form.episode') %><span class="red-text"> <%= t('items.form.contents_note') %></span>
-            <%= f.text_area :episode, class: "form-control item-form-card-textepisode", style: "resize: none" , row: 10, id: "episode" %>
-          </div>
-        </div>
     </div>
   </div>
-</div>
-
-
-
-
-
 
   <div id="fabricSwitchItem">
     <!-- 描画ツール  -->
     <div id="canvas-making-21">
       <div class="dropzone" id="dropzone-21">
         <div class="canvas-container-parent">
-
           <canvas id="iconmakingCanvas-21" class="myCanvas" width="400" height="400"></canvas><br>
         </div>
 
@@ -213,50 +204,49 @@
         </div>
 
         <div class="draggable" id="shapes-tool-21">
-            <div class="toolsize-title"><span>図形</span></div>
-            <div class="icon-palletbox shapes-tool">
-              <div class="pallettool flex-between">
-                <div>
-                  <div id="useRectangleTool-21" class="pain-button">
-                    <i class="bi bi-square"></i>
-                  </div>
+          <div class="toolsize-title"><span>図形</span></div>
+          <div class="icon-palletbox shapes-tool">
+            <div class="pallettool flex-between">
+              <div>
+                <div id="useRectangleTool-21" class="pain-button">
+                  <i class="bi bi-square"></i>
                 </div>
-                <div>
-                  <div id="drawCircleTool-21" class="pain-button">
-                    <i class="bi bi-circle"></i>
-                  </div>
+              </div>
+              <div>
+                <div id="drawCircleTool-21" class="pain-button">
+                  <i class="bi bi-circle"></i>
                 </div>
+              </div>
 
-                <div>
-                  <div id="drawTriangleTool-21" class="pain-button">
-                    <i class="bi bi-triangle"></i>
-                  </div>
+              <div>
+                <div id="drawTriangleTool-21" class="pain-button">
+                  <i class="bi bi-triangle"></i>
                 </div>
+              </div>
 
-                <div id="drawLineTool-21" class="pain-button"><i class="bi bi-slash-lg"></i></div>
-                <div class="form-tool">
-                  <label for="cornerRadiusInput-21"><i class="bi bi-bounding-box-circles"></i></label>
-                  <input type="number" id="cornerRadiusInput-21" min="0" max="20" step="1" value="0" width="50">
-                </div>
+              <div id="drawLineTool-21" class="pain-button"><i class="bi bi-slash-lg"></i></div>
+              <div class="form-tool">
+                <label for="cornerRadiusInput-21"><i class="bi bi-bounding-box-circles"></i></label>
+                <input type="number" id="cornerRadiusInput-21" min="0" max="20" step="1" value="0" width="50">
+              </div>
 
-                <div class="form-tool">
-                  <label for="fillCheckbox-21"><i class="bi bi-back"></i></label>
-                  <input type="checkbox" id="fillCheckbox-21" checked>
-                </div>
+              <div class="form-tool">
+                <label for="fillCheckbox-21"><i class="bi bi-back"></i></label>
+                <input type="checkbox" id="fillCheckbox-21" checked>
+              </div>
 
-                <div class="form-tool">
-                  <label for="strokeCustomInput-21"><i class="bi bi-border-width"></i></label>
-                  <input type="number" id="strokeCustomInput-21" min="0" max="20" step="1" value="2" width="50">
-                </div>
+              <div class="form-tool">
+                <label for="strokeCustomInput-21"><i class="bi bi-border-width"></i></label>
+                <input type="number" id="strokeCustomInput-21" min="0" max="20" step="1" value="2" width="50">
+              </div>
 
-                <div class="form-tool">
-                  <label for="opacitySlider-21"><i class="bi bi-snapchat"></i></label>
-                  <input type="number" id="opacitySlider-21" min="0" max="100" step="1" value="100" width="50">
-                </div>
+              <div class="form-tool">
+                <label for="opacitySlider-21"><i class="bi bi-snapchat"></i></label>
+                <input type="number" id="opacitySlider-21" min="0" max="100" step="1" value="100" width="50">
               </div>
             </div>
           </div>
-
+        </div>
       </div>
     </div>
   </div>

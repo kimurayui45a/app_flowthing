@@ -1,71 +1,52 @@
 <% content_for(:title, t('.title')) %>
 
-
-
 <% profile = current_user.profile if user_signed_in? %>
 <div class="p5canvas-container how-to-use-container" style="background-color: <%= user_signed_in? && profile && profile.color_code ? profile.color_code : '#acd3dd' %>;">
 
-<div class="info-container">
+  <div class="info-container">
 
-  <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
+    <div class="flux-screen-plate">
+      <div class="flux-screen-plate-second">
+        <h1 class="screen-title" style="margin-top: 4rem;">
+          <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
+          <span>Flux Screen</span>
+        </h1>
+        <%# <%= render 'search_form', q: @q, url: sub_users_path %>
+        <%= render 'search_form', q: @q, url: composites_path %>
+      </div>
+    </div>
 
+    <div class="bubble-container">
+        <div class="bubble"></div>
+    </div>
 
-
-
-  <div class="flux-screen-plate">
-    <div class="flux-screen-plate-second">
-<h1 class="screen-title" style="margin-top: 4rem;">
-  <%# <span class="light-blue-text">S</span>ub <span class="red-text">T</span>hing</span> %>
-  <span>Flux Screen</span>
-</h1>
-
-<%# <%= render 'search_form', q: @q, url: sub_users_path %>
-
-<%= render 'search_form', q: @q, url: composites_path %>
-
-</div>
-</div>
-
-
-<div class="bubble-container">
-    <div class="bubble"></div>
-</div>
-
-
-
-
-<div class="flex-end-end">
-  <% if @spaces.present? %>
-          <%= link_to new_composite_path, class: 'tooltip-container' do %>
-            <div class="flex create-usersselect-container" style="background-color: white;">
-              <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
-              <div class="newcontents_text"><span><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>を配置する<span></div>
-              <span class="tooltip-text" style="text-align: start;">作成したScreenにFlow Thingを配置できます。</span>
-            </div>
-          <% end %>
-          <% end %>
-</div>
-
-  <div class="screen-list-container">
-    <% if @composites.present? %>
-      <% @composites.each do |composites| %>
-        <div class="screen-list-card">
-          <%= render composites %>
-        </div>
+    <div class="flex-end-end">
+      <% if @spaces.present? %>
+        <%= link_to new_composite_path, class: 'tooltip-container' do %>
+          <div class="flex create-usersselect-container" style="background-color: white;">
+            <div><i class="bi bi-box-seam-fill" style="font-size: 2rem;"></i></div>
+            <div class="newcontents_text"><span><span class="f-text">F</span>low <span class="t-text">T</span>hing</span>を配置する<span></div>
+            <span class="tooltip-text" style="text-align: start;">作成したScreenにFlow Thingを配置できます。</span>
+          </div>
+        <% end %>
       <% end %>
-    <% else %>
-      <div class="noitem-text" style="font-size: 1rem;">Flux Screenがありません</div>
-    <% end %>
+    </div>
+
+    <div class="screen-list-container">
+      <% if @composites.present? %>
+        <% @composites.each do |composites| %>
+          <div class="screen-list-card">
+            <%= render composites %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="noitem-text" style="font-size: 1rem;">Flux Screenがありません</div>
+      <% end %>
+    </div>
+
+    <div style="margin: 0rem 0rem 5rem 0rem;">
+      <%= paginate @composites %>
+    </div>
   </div>
-
-
-
-
-  <div style="margin: 0rem 0rem 5rem 0rem;">
-    <%= paginate @composites %>
-  </div>
-
-
-
-</div>
 </div>

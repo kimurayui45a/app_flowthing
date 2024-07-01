@@ -1,127 +1,86 @@
 
 <header>
   <div class="header-container">
-  <div class='header-design'>
-    <div class='header-layout'>
+    <div class='header-design'>
+      <div class='header-layout'>
 
-      <div>
-        <%= link_to '/', class: 'app-logo' do %>
-        <div><%= image_tag('flowthing_logo6.png', alt: 'ロゴ', class: "logo-image") %></div>
-<%# 
-      <div class="flex flex-animated-text logo-transform-header">
-        <div class="flex-between flex-animated-text-absolute logo-blur-05">
-          <div class="animated-text">
-            <span class='zen-antique logo-setting'>F</span>
-            <span class='sawarabi-mincho logo-setting'>l</span>
-            <span class="logo-setting">o</span>
-            <span class='dotgothic16'>w</span>
-
-            <span class='potta-one logo-setting-t logo-setting'>T</span>
-            <span class='rocknroll-one logo-setting-hi'>h</span>
-            <span class='yuji-mai logo-setting-hi'>i</span>
-            <span class='yuji-syuku logo-setting-n'>n</span>
-          </div>
-          <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
+        <div>
+          <%= link_to '/', class: 'app-logo' do %>
+          <div><%= image_tag('flowthing_logo6.png', alt: 'ロゴ', class: "logo-image") %></div>
+          <% end %>
         </div>
-
-        <div class="flex-between logo-blur-15">
-          <div class="animated-text">
-            <span class='zen-antique logo-setting'>F</span>
-            <span class='sawarabi-mincho logo-setting'>l</span>
-            <span class="logo-setting">o</span>
-            <span class='dotgothic16'>w</span>
-
-            <span class='potta-one logo-setting-t logo-setting'>T</span>
-            <span class='rocknroll-one logo-setting-hi'>h</span>
-            <span class='yuji-mai logo-setting-hi'>i</span>
-            <span class='yuji-syuku logo-setting-n'>n</span>
-          </div>
-          <div class="mirror-horizontal animated-text-hanntenn"><p class='slackside-one'>g</p></div>
-        </div>
-      </div> %>
-        <% end %>
-      </div>
     
-
-  
-      <div>
-        <ul class='nav-contents'>
+        <div>
+          <ul class='nav-contents'>
 
 
-          <li class="header-explanation-none">
-            <%= link_to '使い方', how_to_use_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
+            <li class="header-explanation-none">
+              <%= link_to '使い方', how_to_use_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
-          <li  class="user-dropdown">
-            <button class='tool-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="text-Rounded500 header-text-Rounded500" style="margin-top: -0.2rem">ツール<i class="bi bi-caret-down-fill"  style="margin-left: 0.2rem;"></i></div>
-            </button>
-            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
-              <ul class='user-dropdown-list'>
-                <li class='user-dropdown-item'><%= link_to 'ペイント(基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ペイント(ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ペイント(選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'アニメーション', tool_explanation_anime_path, class: 'user-dropdown-link' %>
-              <ul>
-            </div>
-          </li>
-
-
-          <li class="header-explanation-none">
-            <%= link_to 'アイデア', idea_page_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
-
-          <li class="header-login-none">
-            <%= link_to 'ログイン', login_path, class: "text-Rounded500 header-text-Rounded500" %>
-          </li>
-
-          <li class="header-btn-none">
-            <%# <%= link_to new_sample_path do %>
-              <%# <div class="header-button">
-                <i class="bi bi-pencil-square header-icon-pen"></i>
-              </div> %>
-            <%# <% end %>
-              <%= link_to sign_up_path, class: "new-account-btn-header" do %>
-              <div><%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "new-account-icon-header") %></div>
-              <div class="new-account-text-header"><span>新規登録</span></div>
-              <div class="new-account-arrow-header"><i class="bi bi-arrow-right-short"></i></div>
-            <% end %>
-          </li>
-
-
-
-
-          <li  class="user-dropdown header-hamburger-btn">
-              <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-list header-icon-pen"></i>
+            <li  class="user-dropdown">
+              <button class='tool-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="text-Rounded500 header-text-Rounded500" style="margin-top: -0.2rem">ツール<i class="bi bi-caret-down-fill"  style="margin-left: 0.2rem;"></i></div>
               </button>
+              <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
+                <ul class='user-dropdown-list'>
+                  <li class='user-dropdown-item'><%= link_to 'ペイント(基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ペイント(ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ペイント(選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'アニメーション', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+                <ul>
+              </div>
+            </li>
 
-            <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
-              <ul class='user-dropdown-list'>
-                <%# <li class='user-dropdown-item'><%= link_to 'Flow Thing', flow_sample_path, class: 'user-dropdown-link' %>
-                <%# <li class='user-dropdown-item'><%= link_to 'Sub Thing', sub_sample_path, class: 'user-dropdown-link' %>
+            <li class="header-explanation-none">
+              <%= link_to 'アイデア', idea_page_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
-                <li class='user-dropdown-item'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
+            <li class="header-login-none">
+              <%= link_to 'ログイン', login_path, class: "text-Rounded500 header-text-Rounded500" %>
+            </li>
 
+            <li class="header-btn-none">
+              <%# <%= link_to new_sample_path do %>
+                <%# <div class="header-button">
+                  <i class="bi bi-pencil-square header-icon-pen"></i>
+                </div> %>
+              <%# <% end %>
+                <%= link_to sign_up_path, class: "new-account-btn-header" do %>
+                <div><%= image_tag('small_chara_icon.png', alt: '新規登録ボタンのアイコン', class: "new-account-icon-header") %></div>
+                <div class="new-account-text-header"><span>新規登録</span></div>
+                <div class="new-account-arrow-header"><i class="bi bi-arrow-right-short"></i></div>
+              <% end %>
+            </li>
+            <li  class="user-dropdown header-hamburger-btn">
+                <button class='user-dropdown-btn' data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-list header-icon-pen"></i>
+                </button>
 
-                <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
-                <li class='user-dropdown-item'><%= link_to 'ツール(アニメーション)', tool_explanation_anime_path, class: 'user-dropdown-link' %>
+              <div class='user-dropdown-body dropdown-menu dropdown-menu-end'>
+                <ul class='user-dropdown-list'>
+                  <%# <li class='user-dropdown-item'><%= link_to 'Flow Thing', flow_sample_path, class: 'user-dropdown-link' %>
+                  <%# <li class='user-dropdown-item'><%= link_to 'Sub Thing', sub_sample_path, class: 'user-dropdown-link' %>
 
-                <li class='user-dropdown-item'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
+                  <li class='user-dropdown-item'><%= link_to '使い方', how_to_use_path, class: 'user-dropdown-link' %>
 
-                <li class='user-dropdown-item header-list-none'><%= link_to '新規登録', sign_up_path, class: 'user-dropdown-link' %></li>
-                <li class='user-dropdown-item header-list-none'><%= link_to 'ログイン', login_path, class: 'user-dropdown-link' %></li>
-              <ul>
-            </div>
+                  <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-基本操作)', tool_explanation_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-ペン)', tool_explanation_second_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ツール(ペイント-選択/図形)', tool_explanation_third_path, class: 'user-dropdown-link' %>
+                  <li class='user-dropdown-item'><%= link_to 'ツール(アニメーション)', tool_explanation_anime_path, class: 'user-dropdown-link' %>
 
-          </li>
+                  <li class='user-dropdown-item'><%= link_to 'アイデア', idea_page_path, class: 'user-dropdown-link' %> 
 
-          
-        </ul>
+                  <li class='user-dropdown-item header-list-none'><%= link_to '新規登録', sign_up_path, class: 'user-dropdown-link' %></li>
+                  <li class='user-dropdown-item header-list-none'><%= link_to 'ログイン', login_path, class: 'user-dropdown-link' %></li>
+                <ul>
+              </div>
+
+            </li>
+            
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </header>

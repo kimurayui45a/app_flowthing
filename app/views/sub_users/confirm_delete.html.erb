@@ -7,7 +7,6 @@
 
   <div class="top-page-logo-none info-wave-logo"><%= image_tag('wave-half.png', alt: '円形の波のアイコン', class: "top-wave-logo") %></div>
 
-
     <div class="delete-card" style="margin-top: 2rem;">
       <div class="delete-background flex-start-start-flex-center">
         <div class="flex-column">
@@ -36,13 +35,11 @@
           </h1>
 
           <p style="font-size: 1rem;">本当にこのSub Thingを削除しますか？</p>
-
           <% if @sub_user.items_count.present? %>
             <p>関連するFlow Thing数: <%= @sub_user.items_count %></p>
           <% end %>
 
           <p class="red-text" style="text-align: start;">※Sub Thingを削除すると関連するFlow Thingも全て削除されます。<br>このSub ThingのFlow ThingをFlux Screenに配置していた場合、そのFlow Thingも削除されます。</p>
-
           <div class="flex-between" style="width: 20rem;">
             <div>
             <%= link_to 'キャンセル', sub_users_path %>
