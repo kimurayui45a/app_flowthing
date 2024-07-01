@@ -3776,7 +3776,6 @@ useEffect(() => {
     //詳細パネル（画像）
     defaultScaleMode,
     setDefaultScaleMode
-
   };
 
 
