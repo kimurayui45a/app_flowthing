@@ -38,7 +38,6 @@ const ColorFormBlock = () => {
     setInputV
   } = useP5Color();
 
-
   const hRef = useRef(h);
   const sRef = useRef(s);
   const vRef = useRef(v);

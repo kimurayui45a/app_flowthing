@@ -10,6 +10,7 @@ const SelectToolComponent = ({handleChangeButton, selectToolButton}) => {
 
   const { handleCopyLayerConfirm } = useP5CanvasCoreShare();
 
+
   switch (selectToolButton) {
     case 'selectMode':
       return  (

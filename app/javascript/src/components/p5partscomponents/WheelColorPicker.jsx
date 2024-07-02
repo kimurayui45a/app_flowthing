@@ -33,7 +33,6 @@ const WheelColorPicker = () => {
 
   //「currentColor」でboxPickerと連携しているためform処理はwheelPickerコンポーネントにのみ記述する
   useEffect(() => {
-    // カラーピッカーが既に存在しない場合のみ初期化
 
     // 円形カラーピッカーの初期化
     if (!wheelPickerRef.current) {
@@ -53,8 +52,7 @@ const WheelColorPicker = () => {
             }
           ]
         });
-      
-        
+
 
       // const handleColorChange = function(color) {
       //   setCurrentColor(color.rgbaString);

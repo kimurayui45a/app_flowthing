@@ -26,6 +26,7 @@ const SelectModeDetail = ({selectToolPanelParts, previewClassName, fastPreviewCl
     handleSelectFillColorChange
   } = useP5CanvasCoreShare();
 
+  
   // const { 
   //   showSizeAndDetailPanels,
   //   toggleColorPalettePanelVisible,

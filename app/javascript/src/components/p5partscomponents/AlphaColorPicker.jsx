@@ -20,10 +20,9 @@ const AlphaColorPicker = () => {
 
   const selectAlphaColorPreviewRef = useRef(selectAlphaColorPreview);
 
-    // currentColorが変更されたときに実行するuseEffect
-    useEffect(() => {
-      selectAlphaColorPreviewRef.current = selectAlphaColorPreview;
-    }, [selectAlphaColorPreview]);
+  useEffect(() => {
+    selectAlphaColorPreviewRef.current = selectAlphaColorPreview;
+  }, [selectAlphaColorPreview]);
 
   useEffect(() => {
     if (!alphaPickerRef.current) {

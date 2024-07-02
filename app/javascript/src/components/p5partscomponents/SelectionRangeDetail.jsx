@@ -113,7 +113,7 @@ const SelectionRangeDetail = () => {
 
   return (
     <>
-    {/* 「選択範囲」グループパネル・上部 */}
+      {/* 「選択範囲」グループパネル・上部 */}
       <div className="selection-range-topline">
         {/* 選択ツールのモードボタン */}
         <div className="selection-range-topline-left">
@@ -163,14 +163,10 @@ const SelectionRangeDetail = () => {
                 </div>
               ) : 
               <span style={{ color: '#7FA8EB' }}>{selectedLayerInfo?.name || '未選択'}</span>
-
               }
             </div>
           )}
-
         </div>
-
-
 
         {/* 「選択範囲」削除ボタン */}
         {toolMode === 'selectMode' && selectArrangeMode === 'selectAreaDelete' && (
@@ -317,34 +313,28 @@ const SelectionRangeDetail = () => {
             </>
           )}
 
-        <div className="inversion-btn-block">
+          <div className="inversion-btn-block">
+            {/* 選択範囲の描画の表示切り替え */}
+            {/* <div
+              className={`layers-visibility-checkbox tooltip-container ${selectedAreaShow ? "checked" : ""}`}
+              onClick={handleSelectedAreaShow}
+              onTouchStart={handleSelectedAreaShow}
+              >
+              {selectedAreaShow && <i className="bi bi-camera-video-fill"></i>}
+              <span className="tooltip-text">選択範囲の描画の表示切り替え</span>
+            </div> */}
 
+            {/* 左に90度回転ボタン */}
+            <ShapesPartsComponent ShapesFormParts="rotateVerticalOppositionBtn" />
+            {/* 右に90度反転ボタン */}
+            <ShapesPartsComponent ShapesFormParts="rotateVerticalBtn" />
+            
+            {/* 左右反転ボタン */}
+            <ShapesPartsComponent ShapesFormParts="leftAndRightBtn" />
+            {/* 上下反転ボタン */}
+            <ShapesPartsComponent ShapesFormParts="topAndBottomBtn" />
 
-          {/* 選択範囲の描画の表示切り替え */}
-          {/* <div
-            className={`layers-visibility-checkbox tooltip-container ${selectedAreaShow ? "checked" : ""}`}
-            onClick={handleSelectedAreaShow}
-            onTouchStart={handleSelectedAreaShow}
-            >
-            {selectedAreaShow && <i className="bi bi-camera-video-fill"></i>}
-            <span className="tooltip-text">選択範囲の描画の表示切り替え</span>
-          </div> */}
-
-
-          {/* 左に90度回転ボタン */}
-          <ShapesPartsComponent ShapesFormParts="rotateVerticalOppositionBtn" />
-          {/* 右に90度反転ボタン */}
-          <ShapesPartsComponent ShapesFormParts="rotateVerticalBtn" />
-          
-          {/* 左右反転ボタン */}
-          <ShapesPartsComponent ShapesFormParts="leftAndRightBtn" />
-          {/* 上下反転ボタン */}
-          <ShapesPartsComponent ShapesFormParts="topAndBottomBtn" />
-
-
-
-
-        </div>
+          </div>
         </div>
       </div>
 

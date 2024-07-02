@@ -52,7 +52,6 @@ const ShapesPartsComponent = ({ShapesFormParts, direction, inputValue, formTitle
     setShapesGradation,
   } = useP5PenToolParametersContext();
 
-
   // const { 
   //   showSizeAndDetailPanels,
   //   toggleColorPalettePanelVisible,

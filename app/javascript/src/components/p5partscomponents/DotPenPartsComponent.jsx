@@ -7,7 +7,7 @@ import { useP5CanvasCoreShare } from '../P5CanvasCoreShareContext';
 // import { PenToolShareValueComponent } from './PenToolShareValueComponent';
 
 
-
+//エアブラシ・厚塗りペン専門のパーツ提供コンポーネント
 const DotPenPartsComponent = ({dotPenFormParts, tool, inputValue, widthInputValue, heightInputValue}) => {
 
 

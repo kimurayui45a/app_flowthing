@@ -67,8 +67,6 @@ const DetailDotPenBlock = () => {
   } = useP5PenToolParametersContext();
 
 
-
-
   //選択されたツールに応じてオプション内の内容を切り替える
   const renderDotPenToolComponent = (toolMode) => {
     if (toolMode === 'pencilPen') {

@@ -53,9 +53,6 @@ const TopLineBlock = ({ profileId }) => {
           </>
         )}
 
-        
-
-
         {/* アンドゥ */}
         <div
           className="panel-tool-button tooltip-container"
@@ -104,7 +101,6 @@ const TopLineBlock = ({ profileId }) => {
           <span className="tooltip-text">レイヤーの状態を保存</span>
         </div>
       )}
-
 
         {/* 「自動表示モード」のアクティブを切り替えるトグルスイッチ */}
         <div className="toggle-switch" onClick={toggleAutomaticMode} onTouchStart={toggleAutomaticMode}>

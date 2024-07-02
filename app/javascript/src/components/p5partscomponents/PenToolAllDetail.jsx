@@ -111,7 +111,7 @@ const PenToolAllDetail = () => {
   
           <div style={{ width: '100px' }} className="flex-end-start">
             <div className="flex-column-start">
-            <div style={{ lineHeight: '0.7', textAlign: 'left' }}><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>このペンには<br />「ぼかし・筆圧」機能<br />はついていません。</span></div>
+              <div style={{ lineHeight: '0.7', textAlign: 'left' }}><span className="text-Rounded" style={{ fontSize: '10px', color: '#ececec' }}>このペンには<br />「ぼかし・筆圧」機能<br />はついていません。</span></div>
 
               <div style={{ height: '36px', width: '100px' }}></div>
 

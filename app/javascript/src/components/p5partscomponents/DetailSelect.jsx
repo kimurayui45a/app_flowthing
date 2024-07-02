@@ -12,7 +12,6 @@ const DetailSelect = () => {
 
   // const { handleImage, copyLayerActive, handleCopyLayerConfirm, getLayersInfoData } = useP5CanvasCoreShare();
 
-
   // const { 
   //   showSizeAndDetailPanels,
   //   toggleColorPalettePanelVisible,

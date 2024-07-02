@@ -147,7 +147,6 @@ const ShapesDetail = () => {
                 </>
               )}
 
-
               {/* 図形のサイズを指定するform */}
               <div className="flex-column-end" style={{ alignItems: 'flex-start' }}>
                 {(toolMode !== 'lineTool' && toolMode !== 'textTool') && (

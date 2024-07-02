@@ -8,6 +8,7 @@ const PenToolComponent = ({handleChangeButton, selectPenButton, penClassName}) =
     toolMode
   } = useP5ToolModeContext();
 
+
   switch (selectPenButton) {
     case 'betaPen':
       return  (

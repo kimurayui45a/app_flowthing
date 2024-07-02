@@ -3671,7 +3671,7 @@ useEffect(() => {
 
 
 
-  // メインレイヤーのプレビュー
+  // pngデータ
   const sampleData = () => {
     if (p5InstanceRef.current) {
       const dataURL = p5InstanceRef.current.canvas.toDataURL('image/png');
@@ -3682,7 +3682,6 @@ useEffect(() => {
   //もしパネルが動かなかったときに押すボタン
   const rescuePanel = () => {
     setIsDraggablePanel(true);
-    console.log('うご');
   };
 
 

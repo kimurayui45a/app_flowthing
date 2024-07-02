@@ -140,8 +140,6 @@ const DetailMixPenBlock = () => {
   };
 
 
-
-
   return (
     <>
       <div

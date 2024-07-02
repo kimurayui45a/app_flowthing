@@ -27,7 +27,6 @@ const DetailPen = () => {
   } = useP5ToolModeContext();
 
 
-
   // コンテナ内で特定の位置(例: 200px)にスクロールする関数
   const scrollToItem = (containerId, position) => {
     const container = document.getElementById(containerId);

@@ -53,7 +53,6 @@ const BoxColorPicker = () => {
             }
           ]
         });
-      
 
 
       // const handleColorChange = function(color) {
@@ -66,8 +65,6 @@ const BoxColorPicker = () => {
       const syncColors = (color) => {
         setCurrentColor(color.rgbaString);
       };
-
-      
 
     //カラーピッカーとRGBフォームを同期
     const updateRGBA = (color) => {
@@ -130,7 +127,6 @@ const BoxColorPicker = () => {
       boxPickerRef.current.color.set(currentColor);
     }
   }, [currentColor]);
-  
 
 
   return (

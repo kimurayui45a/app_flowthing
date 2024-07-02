@@ -153,9 +153,6 @@ const DetailSmoothPenBlock = () => {
   }
 
 
-
-
-
   return (
     <div>
 
