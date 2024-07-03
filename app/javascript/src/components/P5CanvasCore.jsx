@@ -2482,15 +2482,15 @@ useEffect(() => {
             //色混ぜツールの処理
             //p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
 
-  if (mixToolColor) {
-    p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
-  } else {
-    layer.erase();
-    layer.strokeWeight(toolSizeRef.current);
-    layer.line(prev.x, prev.y, p.mouseX / zoomScale, p.mouseY / zoomScale);
-    prev.x = p.mouseX / zoomScale;
-    prev.y = p.mouseY / zoomScale;
-  }
+            if (mixToolColor) {
+              p.mixToolEvent(event, strokeWeightBasedOnPressure, colorH, colorS, colorV, currentAlphaMix);
+            } else {
+              layer.erase();
+              layer.strokeWeight(toolSizeRef.current);
+              layer.line(prev.x, prev.y, p.mouseX / zoomScale, p.mouseY / zoomScale);
+              prev.x = p.mouseX / zoomScale;
+              prev.y = p.mouseY / zoomScale;
+            }
 
             return;
           } else if  (toolModeRef.current === 'pencilPen' || toolModeRef.current === 'oilPen') {
