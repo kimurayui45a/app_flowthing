@@ -2197,7 +2197,7 @@ useEffect(() => {
               
                   // selectedArea.currentの幅と高さに基づいてobjectを更新
                   if (selectionWidth >= 5 && selectionHeight >= 5) {
-                    // objectに読み込んだ画像に合わせた数値を定義
+                    
                     objectRef.current = { x: selectionX, y: selectionY, width: selectionWidth, height: selectionHeight, angle: 0 };
               
                     selectedAreaRef.current = p.createGraphics(selectionWidth, selectionHeight);
