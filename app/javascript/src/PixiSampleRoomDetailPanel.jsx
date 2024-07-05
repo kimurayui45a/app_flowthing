@@ -5,8 +5,6 @@ import { usePixiGroupSample } from './PixiGroupSampleContext';
 
 const PixiSampleRoomDetailPanel = () => {
 
-
-
     //全体共有からの取得
     const {
       sampleRoomItem,
